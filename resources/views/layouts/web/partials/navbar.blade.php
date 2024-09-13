@@ -1,5 +1,5 @@
 <header class="bg-white shadow-sm lg:w-fixed lg:h-auto lg:opacity-1" style="padding: 8px 120px; gap: 0px; border: 0px solid transparent; border-bottom: 1px solid var(--Base-0, #FFFFFF); display: flex; justify-content: space-between;">
-    <div class="webapp-navbar w-full px-4 sm:px-6 lg:px-8">
+    <div class="webapp-navbar w-full">
         <div class="webapp-navbar-inner flex items-center justify-between h-16">
             <div class="left flex items-center flex-shrink-0 relative">
                 <a href="/" class="brand relative block lg:w-[204px] lg:h-[34px] md:w-[120px] md:h-[30px]">
@@ -65,7 +65,7 @@
                         Login
                         <img src="assets/img/icons/login.svg" alt="Login Icon" class="ml-2 lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px] relative lg:top-[1.67px] md:top-[0px] lg:left-[1.67px] gap-0 opacity-1">
                     </a>
-                    <a href="#" class="bg-[#4A6DCB] px-6 py-3 rounded-lg flex items-center justify-center lg:w-[100%] lg:h-[50px] md:w-[100%] md:h-[45px] hover:bg-[#3d5bb4] transition duration-150 ease-in-out whitespace-nowrap">
+                    <a href="#" class="bg-[#4A6DCB] px-6 py-3 rounded-lg flex items-center justify-center lg:w-[100%] lg:h-[100%] md:w-[100%] md:h-[45px] hover:bg-[#3d5bb4] transition duration-150 ease-in-out whitespace-nowrap">
                         <span class="lg:w-[86px] lg:h-[23px] md:w-[70px] md:h-[20px] font-inter lg:text-lg md:text-base font-medium leading-[23.2px] text-center text-[#F3F5FC]">Contact Us</span>
                     </a>
                 </div>

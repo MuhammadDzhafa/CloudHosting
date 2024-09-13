@@ -11726,10 +11726,10 @@ a.has-text-danger-dark:focus {
     padding-left: 1rem !important
 }
 
-.px-4 {
+/* .px-4 {
     padding-left: 1rem !important;
     padding-right: 1rem !important
-}
+} */
 
 .py-4 {
     padding-top: 1rem !important;
@@ -11787,8 +11787,8 @@ a.has-text-danger-dark:focus {
 }
 
 .px-6 {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important
+    /* padding-left: 3rem !important;
+    padding-right: 3rem !important */
 }
 
 .py-6 {
