@@ -1,4 +1,4 @@
-{{-- <section class="section-frame padding-1 gap-[50px]" id="target-section">
+{{-- <section class="section-frame padding-1 gap-6 md:gap-12" id="target-section">
     <h2 class="text-3xl md:text-4xl title-section text-center">
         Cloud Hosting
     </h2>

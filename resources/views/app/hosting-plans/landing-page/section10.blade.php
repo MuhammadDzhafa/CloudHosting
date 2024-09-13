@@ -1,4 +1,4 @@
-{{-- <div class="section-frame padding-1 gap-[50px]">
+{{-- <div class="section-frame padding-1 gap-6 md:gap-12">
     <div class="page-content-inner">
         <div class="lifestyle-dashboard lifestyle-dashboard-v5">
             <div class="dashboard-title is-main text-center mb-12">

@@ -1,4 +1,4 @@
-<section class="section-frame padding-1 gap-12 lg:gap-[50px] md:gap-[24px]">
+<section class="section-frame padding-1 gap-6 md:gap-12">
     <h2 class="title-section text-center">Trusted by Over 100 Multinational Companies</h2>
     <div class="clients-row">
         @foreach([
