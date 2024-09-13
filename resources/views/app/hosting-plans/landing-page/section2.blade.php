@@ -6,7 +6,7 @@
         <h2 class="title-section text-white">Search Your <br />Domain Name</h2>
     </div>
 
-    <!-- Search Input and Buttons -->
+    <!-- Search Input and Buttonss -->
     <div class="flex flex-col flex-grow gap-4">
         <div class="flex justify-center flex-row gap-2">
             <div class="field flex-grow h-full mb-0">
