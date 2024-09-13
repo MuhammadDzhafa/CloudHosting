@@ -1,4 +1,4 @@
-<section class="section-frame padding-1 gap-[50px] ">
+<section class="section-frame padding-1 gap-12 lg:gap-[50px] md:gap-[24px] ">
         <!-- <div class="container">
             <h3 class="titlee mx-auto mb-6"
                 style="max-width: 1200px; height: 43px; font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 700; line-height: 43.2px; text-align: center; color: #283252;">
