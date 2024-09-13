@@ -443,12 +443,10 @@ p {
     .background-container {
         position: absolute;
         inset: 0;
-        z-index: 25;
     }
 
     .background-image {
-        height: 602px;
-        /* Height for large screens and up */
+        height: 602px; /* Height for large screens and up */
     }
 }
 
@@ -575,6 +573,7 @@ p {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    z-index: 100;
 }
 
 .client-logo {

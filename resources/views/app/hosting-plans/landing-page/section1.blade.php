@@ -1,7 +1,7 @@
 <div class="section-framee padding-1">
-        {{-- <div class="background-container">
+        <div class="background-container">
             <img src="/assets/img/bg/bg-pattern2.svg" alt="Background Pattern" class="background-image">
-        </div> --}}
+        </div>
     <div>
         <div class="flex flex-wrap items-center">
             <div class="w-full lg:w-1/2">
