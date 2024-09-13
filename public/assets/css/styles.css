@@ -573,7 +573,7 @@ p {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    z-index: 100;
+    z-index: 50;
 }
 
 .client-logo {
