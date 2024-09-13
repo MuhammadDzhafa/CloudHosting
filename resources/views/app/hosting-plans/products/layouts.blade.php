@@ -2062,7 +2062,7 @@
 
                     <div class="page-content-inner">
 
-                        <!-- Datatable -->
+                        <!-- Dataatablee -->
                         
                         <div class="table-wrapper" data-simplebar>
                             <table id="users-datatable" class="table is-datatable is-hoverable">
