@@ -12,13 +12,14 @@
 .textarea,
 .input,
 .button {
+    font-family: 'Inter';
     -moz-appearance: none;
     -webkit-appearance: none;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     border: 1px solid transparent;
-    border-radius: 4px;
+    border-radius: 8px;
     -webkit-box-shadow: none;
     box-shadow: none;
     display: -webkit-inline-box;
@@ -35,7 +36,11 @@
     padding-right: calc(0.75em - 1px);
     padding-top: calc(0.5em - 1px);
     position: relative;
-    vertical-align: top
+    vertical-align: top;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
 }
 
 .pagination-previous:focus,
@@ -1233,7 +1238,7 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 
 .button.is-primary:hover,
 .button.is-primary.is-hovered {
-    background-color: #611abe;
+    background-color: #395FC6;
     border-color: transparent;
     color: #fff
 }
@@ -22075,6 +22080,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 }
 
 .webapp-navbar .webapp-navbar-inner .center .centered-drops {
+    justify-content: end;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -22082,7 +22088,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    max-width: 580px
+    max-width: 100%
 }
 
 .webapp-navbar .webapp-navbar-inner .center .centered-drops .centered-drop,
@@ -28264,12 +28270,16 @@ body.is-dark .button.h-action.is-hoverable:hover {
 
 .button.h-button {
     padding: 8px 22px 8px 22px;
-    height: 35.5px;
-    line-height: 1.1;
-    font-size: .95rem;
-    font-family: "Roboto", sans-serif;
+    height: 47px;
+    line-height: 23.2px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
     -webkit-transition: all .3s;
-    transition: all .3s
+    transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
 }
 
 .button.h-button:not([disabled]) {
@@ -28290,8 +28300,8 @@ body.is-dark .button.h-action.is-hoverable:hover {
 
 .button.h-button.is-primary.is-raised:hover {
     opacity: .9;
-    -webkit-box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2);
-    box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2)
+    -webkit-box-shadow: 0 14px 26px -12px rgba(var(--Brand-Primary-500-rgb), .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(var(--Brand-Primary-500-rgb), .2);
+    box-shadow: 0 14px 26px -12px rgba(var(--Brand-Primary-500-rgb), .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(var(--Brand-Primary-500-rgb), .2);    
 }
 
 .button.h-button.is-primary.is-elevated {
@@ -39352,6 +39362,11 @@ body.is-dark .filepond-profile-wrap:hover .lnil,
 body.is-dark .filepond-square-wrap:hover .lnil {
     color: #797bf2
 }
+
+:root {
+    --Brand-Primary-500-rgb: 74, 109, 203;
+}
+
 
 body.is-dark .filepond-uploader .filepond--root,
 body.is-dark .filepond-profile-wrap .filepond--root,
