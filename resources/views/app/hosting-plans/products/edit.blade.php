@@ -2111,12 +2111,8 @@
         </div>
 
         <!-- Content Wrapper -->
-        <<<<<<< HEAD <div id="app-projects" class="view-wrapper" data-naver-offset="214"
-            data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
-            =======
             <div id="app-projects" class="view-wrapper" data-naver-offset="214"
                 data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
-                >>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                 <div class="page-content-wrapper">
                     <div class="page-content is-relative">
                         <div class="page-title has-text-centered">

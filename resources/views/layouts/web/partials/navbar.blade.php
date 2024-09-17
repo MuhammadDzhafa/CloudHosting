@@ -44,7 +44,7 @@
                     <!-- Akhir Dropdown -->
 
                     <a href="#"
-                        class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">Blog</a>
+                        class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">Articles</a>
                     <a href="#"
                         class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">FAQ</a>
                     <div class="relative flex items-center">
@@ -88,7 +88,11 @@
                         <img src="assets/img/icons/login.svg" alt="Login Icon"
                             class="ml-2 lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px] relative lg:top-[1.67px] md:top-[0px] lg:left-[1.67px] gap-0 opacity-1">
                     </a>
-                    <a class="button h-button is-primary is-raised">Contact Us</a>
+                    <a
+                        class="bg-[#4A6DCB] h-[36px] p-[8px_12px] gap-[8px] rounded-[8px] text-white flex items-center justify-center">
+                        Contact Us
+                    </a>
+
                 </div>
             </div>
         </div>

@@ -35,14 +35,16 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="huro-app" class="app-wrapper">
@@ -91,10 +93,13 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" />
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/7.jpg" />
                                                 </div>
                                                 <div class="user-content">
-                                                    <p class="user-info"><span class="name">Alice C.</span> left a comment.</p>
+                                                    <p class="user-info"><span class="name">Alice C.</span> left a
+                                                        comment.</p>
                                                     <p class="time">1 hour ago</p>
                                                 </div>
                                             </a>
@@ -102,10 +107,13 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" />
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/12.jpg" />
                                                 </div>
                                                 <div class="user-content">
-                                                    <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
+                                                    <p class="user-info"><span class="name">Joshua S.</span> uploaded
+                                                        a file.</p>
                                                     <p class="time">2 hours ago</p>
                                                 </div>
                                             </a>
@@ -113,10 +121,13 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" />
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/13.jpg" />
                                                 </div>
                                                 <div class="user-content">
-                                                    <p class="user-info"><span class="name">Tara S.</span> sent you a message.</p>
+                                                    <p class="user-info"><span class="name">Tara S.</span> sent you a
+                                                        message.</p>
                                                     <p class="time">2 hours ago</p>
                                                 </div>
                                             </a>
@@ -124,10 +135,13 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" />
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/25.jpg" />
                                                 </div>
                                                 <div class="user-content">
-                                                    <p class="user-info"><span class="name">Melany W.</span> left a comment.</p>
+                                                    <p class="user-info"><span class="name">Melany W.</span> left a
+                                                        comment.</p>
                                                     <p class="time">3 hours ago</p>
                                                 </div>
                                             </a>
@@ -139,14 +153,16 @@
                         <div class="dropdown is-right is-spaced dropdown-trigger user-dropdown">
                             <div class="is-trigger" aria-haspopup="true">
                                 <div class="profile-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
                                 </div>
                             </div>
                             <div class="dropdown-menu" role="menu">
                                 <div class="dropdown-content">
                                     <div class="dropdown-head">
                                         <div class="h-avatar is-large">
-                                            <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                            <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
                                         </div>
                                         <div class="meta">
                                             <span>Erik Kovalsky</span>
@@ -202,10 +218,11 @@
                                     </a>
                                     <hr class="dropdown-divider">
                                     <div class="dropdown-item is-button">
-                                        <button class="button h-button is-primary is-raised is-fullwidth logout-button">
+                                        <button
+                                            class="button h-button is-primary is-raised is-fullwidth logout-button">
                                             <span class="icon is-small">
-                                              <i data-feather="log-out"></i>
-                                          </span>
+                                                <i data-feather="log-out"></i>
+                                            </span>
                                             <span>Logout</span>
                                         </button>
                                     </div>
@@ -309,8 +326,8 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    
-                     <!-- Layouts -->
+
+                    <!-- Layouts -->
                     <li>
                         <a href="/admin-grid-users-1.html" id="layouts-sidebar-menu" data-content="Layouts">
                             <img src="/assets/img/product/inventory-2.svg" alt="">
@@ -411,8 +428,10 @@
                     </div>
 
                     <div class="img-wrap has-text-centered">
-                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
-                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
+                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg"
+                            alt="">
+                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg"
+                            alt="">
                     </div>
                 </div>
             </div>
@@ -445,15 +464,18 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
+                                    <img class="badge" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Joshua S.</span>
                                     <span>
-                                      <i data-feather="map-pin"></i>
-                                      Las Vegas, NV
-                                  </span>
+                                        <i data-feather="map-pin"></i>
+                                        Las Vegas, NV
+                                    </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -463,15 +485,18 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
+                                    <img class="badge" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Melany W.</span>
                                     <span>
-                                      <i data-feather="map-pin"></i>
-                                      San Jose, CA
-                                  </span>
+                                        <i data-feather="map-pin"></i>
+                                        San Jose, CA
+                                    </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -481,15 +506,18 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
+                                    <img class="badge" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Esteban C.</span>
                                     <span>
-                                      <i data-feather="map-pin"></i>
-                                      Miami, FL
-                                  </span>
+                                        <i data-feather="map-pin"></i>
+                                        Miami, FL
+                                    </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -499,15 +527,18 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
+                                    <img class="badge" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Tara S.</span>
                                     <span>
-                                      <i data-feather="map-pin"></i>
-                                      New York, NY
-                                  </span>
+                                        <i data-feather="map-pin"></i>
+                                        New York, NY
+                                    </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -519,7 +550,8 @@
                             <!--Project-->
                             <div class="project-card">
                                 <div class="project-inner">
-                                    <img class="project-avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/logos/slicer.svg" alt="">
+                                    <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/icons/logos/slicer.svg" alt="">
                                     <div class="meta">
                                         <span>The slicer project</span>
                                         <span>getslicer.io</span>
@@ -529,19 +561,23 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-                                    <progress class="progress is-primary is-tiny" value="31" max="100">31%</progress>
+                                    <progress class="progress is-primary is-tiny" value="31"
+                                        max="100">31%</progress>
                                     <div class="foot-stats">
                                         <span>5 / 24</span>
 
                                         <div class="avatar-stack">
                                             <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                    data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
                                             </div>
                                             <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/5.jpg" alt="">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                    data-demo-src="assets/img/avatars/photos/5.jpg" alt="">
                                             </div>
                                             <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                    data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -551,7 +587,8 @@
                             <!--Project-->
                             <div class="project-card">
                                 <div class="project-inner">
-                                    <img class="project-avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/logos/metamovies.svg" alt="">
+                                    <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/icons/logos/metamovies.svg" alt="">
                                     <div class="meta">
                                         <span>Metamovies reworked</span>
                                         <span>metamovies.co</span>
@@ -561,16 +598,19 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-                                    <progress class="progress is-primary is-tiny" value="84" max="100">84%</progress>
+                                    <progress class="progress is-primary is-tiny" value="84"
+                                        max="100">84%</progress>
                                     <div class="foot-stats">
                                         <span>28 / 31</span>
 
                                         <div class="avatar-stack">
                                             <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                    data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
                                             </div>
                                             <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                    data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -580,7 +620,8 @@
                             <!--Project-->
                             <div class="project-card">
                                 <div class="project-inner">
-                                    <img class="project-avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/logos/fastpizza.svg" alt="">
+                                    <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/icons/logos/fastpizza.svg" alt="">
                                     <div class="meta">
                                         <span>Fast Pizza redesign</span>
                                         <span>fastpizza.com</span>
@@ -590,16 +631,19 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-                                    <progress class="progress is-primary is-tiny" value="60" max="100">60%</progress>
+                                    <progress class="progress is-primary is-tiny" value="60"
+                                        max="100">60%</progress>
                                     <div class="foot-stats">
                                         <span>25 / 39</span>
 
                                         <div class="avatar-stack">
                                             <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                    data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
                                             </div>
                                             <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150"
+                                                    data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -623,7 +667,8 @@
                                 <!--Timeline item-->
                                 <div class="timeline-item">
                                     <div class="timeline-icon">
-                                        <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
+                                        <img class="avatar" src="https://via.placeholder.com/150x150"
+                                            data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
                                     </div>
                                     <div class="timeline-content">
                                         <p>Meeting with Alice</p>
@@ -751,7 +796,9 @@
                         <div class="recent-block">
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="" data-user-popover="0">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/7.jpg" alt=""
+                                        data-user-popover="0">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Alice C.</span>
@@ -760,7 +807,9 @@
                             </a>
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/13.jpg" alt=""
+                                        data-user-popover="6">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Tara S.</span>
@@ -769,7 +818,9 @@
                             </a>
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/22.jpg" alt="" data-user-popover="5">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150"
+                                        data-demo-src="assets/img/avatars/photos/22.jpg" alt=""
+                                        data-user-popover="5">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Jimmy H.</span>
@@ -1330,7 +1381,8 @@
                 <ul class="submenu">
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Lists <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Lists <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1362,7 +1414,7 @@
                     <li class="has-children">
                         <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Flex Lists <i
-                                  data-feather="chevron-right"></i></a>
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1387,7 +1439,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Datatable <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Datatable <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1418,7 +1471,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Placeload <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Placeload <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1450,7 +1504,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Card Grid <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Card Grid <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1481,7 +1536,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1506,7 +1562,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">User Grid <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">User Grid <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1538,7 +1595,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Personal <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Personal <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1569,7 +1627,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Pages <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Pages <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1624,7 +1683,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Subpages <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Subpages <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1655,7 +1715,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Projects <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Projects <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1698,7 +1759,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Utility <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Utility <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1730,7 +1792,7 @@
                     <li class="has-children">
                         <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Onboarding <i
-                                  data-feather="chevron-right"></i></a>
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1768,7 +1830,7 @@
                     <li class="has-children">
                         <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Error Pages <i
-                                  data-feather="chevron-right"></i></a>
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1809,7 +1871,8 @@
         </div>
 
         <!-- Content Wrapper -->
-        <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
+        <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu"
+            data-mobile-item="#home-sidebar-menu-mobile">
             <div class="page-content-wrapper">
                 <div class="page-content is-relative">
                     <div class="page-title has-text-centered">
@@ -1856,17 +1919,21 @@
                                                     <h6 class="heading-title">Notifications</h6>
                                                 </div>
                                                 <div class="heading-right">
-                                                    <a class="notification-link" href="/admin-profile-notifications.html">See all</a>
+                                                    <a class="notification-link"
+                                                        href="/admin-profile-notifications.html">See all</a>
                                                 </div>
                                             </div>
                                             <ul class="notification-list">
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" />
+                                                            <img class="user-photo" alt=""
+                                                                src="https://via.placeholder.com/150x150"
+                                                                data-demo-src="assets/img/avatars/photos/7.jpg" />
                                                         </div>
                                                         <div class="user-content">
-                                                            <p class="user-info"><span class="name">Alice C.</span> left a comment.</p>
+                                                            <p class="user-info"><span class="name">Alice C.</span>
+                                                                left a comment.</p>
                                                             <p class="time">1 hour ago</p>
                                                         </div>
                                                     </a>
@@ -1874,10 +1941,13 @@
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" />
+                                                            <img class="user-photo" alt=""
+                                                                src="https://via.placeholder.com/150x150"
+                                                                data-demo-src="assets/img/avatars/photos/12.jpg" />
                                                         </div>
                                                         <div class="user-content">
-                                                            <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
+                                                            <p class="user-info"><span class="name">Joshua S.</span>
+                                                                uploaded a file.</p>
                                                             <p class="time">2 hours ago</p>
                                                         </div>
                                                     </a>
@@ -1885,10 +1955,13 @@
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" />
+                                                            <img class="user-photo" alt=""
+                                                                src="https://via.placeholder.com/150x150"
+                                                                data-demo-src="assets/img/avatars/photos/13.jpg" />
                                                         </div>
                                                         <div class="user-content">
-                                                            <p class="user-info"><span class="name">Tara S.</span> sent you a message.</p>
+                                                            <p class="user-info"><span class="name">Tara S.</span>
+                                                                sent you a message.</p>
                                                             <p class="time">2 hours ago</p>
                                                         </div>
                                                     </a>
@@ -1896,10 +1969,13 @@
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" />
+                                                            <img class="user-photo" alt=""
+                                                                src="https://via.placeholder.com/150x150"
+                                                                data-demo-src="assets/img/avatars/photos/25.jpg" />
                                                         </div>
                                                         <div class="user-content">
-                                                            <p class="user-info"><span class="name">Melany W.</span> left a comment.</p>
+                                                            <p class="user-info"><span class="name">Melany W.</span>
+                                                                left a comment.</p>
                                                             <p class="time">3 hours ago</p>
                                                         </div>
                                                     </a>
@@ -1926,14 +2002,16 @@
                         </div>
 
                         <div class="buttons">
-                            <button class="button h-button is-primary is-elevated h-modal-trigger" data-modal="demo-right-actions-modal">
-                                <span class="icon">
+                            <button class="button h-button is-primary is-elevated h-modal-trigger"
+                                data-modal="demo-right-actions-modal">
+                                <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
                                 <span>New Group</span>
                             </button>
-                            <button class="button h-button is-primary is-elevated h-modal-trigger" data-modal="create-new-product-modal">
-                                <span class="icon">
+                            <button class="button h-button is-primary is-elevated h-modal-trigger"
+                                data-modal="create-new-product-modal">
+                                <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="lnir lnir-circle-plus"></i>
                                 </span>
                                 <span>Add User</span>
@@ -1957,7 +2035,8 @@
                                         <div class="field">
                                             <label class="label">Enter Group Name</label>
                                             <div class="control">
-                                                <input type="text" class="input" placeholder="E.g. Cloud Hosting">
+                                                <input type="text" class="input"
+                                                    placeholder="E.g. Cloud Hosting">
                                             </div>
                                         </div>
                                     </div>
@@ -2010,7 +2089,8 @@
                                             <div class="field">
                                                 <label class="label">Product Name</label>
                                                 <div class="control">
-                                                    <input type="text" class="input" placeholder="E.g. Basic Plan">
+                                                    <input type="text" class="input"
+                                                        placeholder="E.g. Basic Plan">
                                                 </div>
                                             </div>
                                         </div>
@@ -2018,7 +2098,8 @@
                                             <div class="field">
                                                 <label class="label">Product Description</label>
                                                 <div class="control">
-                                                    <input type="text" class="input" placeholder="E.g. Starter website">
+                                                    <input type="text" class="input"
+                                                        placeholder="E.g. Starter website">
                                                 </div>
                                             </div>
                                         </div>
@@ -2058,12 +2139,12 @@
                             </div>
                         </div>
                     </div>
-                    
+
 
                     <div class="page-content-inner">
 
                         <!-- Dataatablee -->
-                        
+
                         <div class="table-wrapper" data-simplebar>
                             <table id="users-datatable" class="table is-datatable is-hoverable">
                                 <thead>
@@ -2077,15 +2158,19 @@
                                 </thead>
                                 <tbody>
                                     <tr class="is-striped-row">
-                                        <td><p>Personal Cloud Hosting</p></td>
+                                        <td>
+                                            <p>Personal Cloud Hosting</p>
+                                        </td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <div class="d-flex justify-end">
-                                                <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-3"></a>
-                                                <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
-                                            </div>                                            
+                                                <a href=""><img src="assets/img/product/edit.svg"
+                                                        alt="" class="mr-3"></a>
+                                                <a href=""><img src="assets/img/product/trash.svg"
+                                                        alt=""></a>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2094,9 +2179,12 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg" alt=""
+                                                    class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg" alt=""
+                                                    class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2105,9 +2193,12 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2116,20 +2207,27 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr class="is-striped-row">
-                                        <td><p>Corporate Cloud Hosting</p></td>
+                                        <td>
+                                            <p>Corporate Cloud Hosting</p>
+                                        </td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <div class="d-flex justify-end">
-                                                <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-3"></a>
-                                                <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                                <a href=""><img src="assets/img/product/edit.svg"
+                                                        alt="" class="mr-3"></a>
+                                                <a href=""><img src="assets/img/product/trash.svg"
+                                                        alt=""></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -2139,9 +2237,12 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2150,9 +2251,12 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2161,20 +2265,27 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr class="is-striped-row">
-                                        <td><p>WordPress Hosting</p></td>
+                                        <td>
+                                            <p>WordPress Hosting</p>
+                                        </td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <div class="d-flex justify-end">
-                                                <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-3"></a>
-                                                <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                                <a href=""><img src="assets/img/product/edit.svg"
+                                                        alt="" class="mr-3"></a>
+                                                <a href=""><img src="assets/img/product/trash.svg"
+                                                        alt=""></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -2184,9 +2295,12 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2195,9 +2309,12 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2206,18 +2323,21 @@
                                         <td>USD 2.99</td>
                                         <td>20</td>
                                         <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        
-                        
-                        
-                        
+
+
+
+
 
                         <div id="paging-first-datatable" class="pagination datatable-pagination">
                             <div class="datatable-info">

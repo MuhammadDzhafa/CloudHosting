@@ -37,10 +37,10 @@
     padding-top: calc(0.5em - 1px);
     position: relative;
     vertical-align: top;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
 .pagination-previous:focus,
@@ -1231,7 +1231,7 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 }
 
 .button.is-primary {
-    background-color: #4A6DCB;
+    background-color: #643493;
     border-color: transparent;
     color: #fff
 }
@@ -1672,7 +1672,7 @@ fieldset[disabled] .button.is-info.is-inverted.is-outlined {
 }
 
 .button.is-success {
-    background-color: #06d6a0;
+    background-color: #4A6DCB;
     border-color: transparent;
     color: #fff
 }
@@ -28270,10 +28270,22 @@ body.is-dark .button.h-action.is-hoverable:hover {
 
 .button.h-button {
     padding: 8px 22px 8px 22px;
+    height: 35.5px;
+    line-height: 1.1;
+    font-size: .95rem;
+    font-family: "Inter", sans-serif;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+.button.h-buttonn {
+    padding: 8px 22px 8px 22px;
     height: 47px;
     line-height: 23.2px;
     font-size: 16px;
-    font-weight: 500;
     font-family: "Inter", sans-serif;
     -webkit-transition: all .3s;
     transition: all .3s;

@@ -995,7 +995,7 @@ p {
 .icon {
     width: 80px;
     height: 69.65px;
-    /* min-width: 80px; */
+    min-width: 80px;
     min-height: 69.65px;
 }
 
