@@ -1916,7 +1916,7 @@
                                         <div class="dropdown-content">
                                             <div class="heading">
                                                 <div class="heading-left">
-                                                    <h6 class="heading-title">Notifications</h6>
+                                                    <h6 class="heading-title">Notificationss</h6>
                                                 </div>
                                                 <div class="heading-right">
                                                     <a class="notification-link"
