@@ -995,7 +995,7 @@ p {
 .icon {
     width: 80px;
     height: 69.65px;
-    /* min-width: 80px; */
+    min-width: 80px;
     min-height: 69.65px;
 }
 
@@ -1444,10 +1444,3 @@ p {
     line-height: 15.4px;
 }
 
-/* ========================================================= */
-/*                     Edit Product table                         */
-/* ========================================================= */
-
-.form-layout {
-    max-width: 100%;
-}

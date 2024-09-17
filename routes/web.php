@@ -6,10 +6,15 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+<<<<<<< HEAD
 use App\Http\Controllers\ProductController;
 
 /* Welcome */
 
+=======
+
+/* Welcome */
+>>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
 Route::get('/', function () {
     return view('welcome');
 });
@@ -43,7 +48,11 @@ Route::post('/forgot-email', [ForgotPasswordController::class, 'recoverEmail'])
     ->name('email.recover');
 Route::get('/sms-sent-confirmation', function () {
     return view('layouts.auth.recovery.emailrecovery.sms-sent-confirmation', ['phone' => session('phone')]);
+<<<<<<< HEAD
 })->name('sms.sent.confirmation');
+=======
+    })->name('sms.sent.confirmation');
+>>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
 
 /* Tampilans */
 Route::get('/tampilan2', [HostingController::class, 'tampilan2']);
@@ -64,7 +73,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 /* Login with Google */
 
+<<<<<<< HEAD
 Route::get('/auth/redirect', [SocialiteController::class, 'redirect']);
+=======
+Route::get('/auth/redirect',[SocialiteController::class, 'redirect']);
+>>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
 Route::get('/auth/google/callback', [SocialiteController::class, 'callback']);
 
 /* Sign up with google */
@@ -87,9 +100,13 @@ Route::get('/client-area/dashboard', function () {
     return view('app.hosting-plans.client-area.dashboard-client');
 })->name('client.dashboard');
 
+<<<<<<< HEAD
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
 
 
 /* Crud Product */
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+=======
+Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
+>>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099

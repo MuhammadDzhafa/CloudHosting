@@ -9,16 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // Add 'phone' column, no need to drop 'date_of_birth' for SQLite
-            if (Schema::hasColumn('users', 'date_of_birth')) {
-                if (config('database.default') !== 'sqlite') {
-                    // Only attempt to drop column if not using SQLite
-                    $table->dropColumn('date_of_birth');
-                }
-            }
+            // Hapus kolom 'date_of_birth' dari sini
+            $table->dropColumn('date_of_birth');
             $table->string('phone')->nullable();
         });
     }
@@ -29,8 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('phone');
+            // Tambahkan kembali kolom 'date_of_birth' jika rollback
             $table->date('date_of_birth')->nullable();
+            $table->dropColumn('phone');
         });
     }
 };

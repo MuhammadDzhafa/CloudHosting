@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\Product;
+=======
+>>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+<<<<<<< HEAD
     public function edit(Product $product)
     {
         return view('products.edit', compact('product'));
@@ -23,5 +27,9 @@ class ProductController extends Controller
         $product->update($validated);
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
+=======
+    function index(){
+        return view('app.hosting-plans.products.index');
+>>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
     }
 }
