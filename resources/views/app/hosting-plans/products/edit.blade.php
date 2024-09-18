@@ -35,16 +35,14 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="huro-app" class="app-wrapper">
@@ -428,10 +426,8 @@
                     </div>
 
                     <div class="img-wrap has-text-centered">
-                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg"
-                            alt="">
-                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg"
-                            alt="">
+                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
+                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -464,18 +460,15 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
-                                        alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
+                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Joshua S.</span>
                                     <span>
-                                        <i data-feather="map-pin"></i>
-                                        Las Vegas, NV
-                                    </span>
+                                      <i data-feather="map-pin"></i>
+                                      Las Vegas, NV
+                                  </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -494,9 +487,9 @@
                                 <div class="meta">
                                     <span>Melany W.</span>
                                     <span>
-                                        <i data-feather="map-pin"></i>
-                                        San Jose, CA
-                                    </span>
+                                      <i data-feather="map-pin"></i>
+                                      San Jose, CA
+                                  </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -1916,7 +1909,7 @@
                                         <div class="dropdown-content">
                                             <div class="heading">
                                                 <div class="heading-left">
-                                                    <h6 class="heading-title">Notifications</h6>
+                                                    <h6 class="heading-title">Notificationss</h6>
                                                 </div>
                                                 <div class="heading-right">
                                                     <a class="notification-link"
@@ -1994,9 +1987,7 @@
                     </div>
 
                     <div class="page-content-inner">
-
-                        <!--Form Layout 2-->
-                        <div class="form-layout is-split">
+                        <div class="form-layout">
                             <div class="form-outer">
                                 <div class="form-header stuck-header">
                                     <div class="form-header-inner">
@@ -2007,153 +1998,185 @@
                                 </div>
                                 <div class="form-body">
                                     <div class="form-section">
-                                        <div class="tabs-wrapper">
+                                        <div class="h-tabs-wrapper">
                                             <div class="tabs-inner">
-                                                <div class="tabs is-centered" style="margin-bottom:unset">
+                                                <div class="tabs">
                                                     <ul>
-                                                        <li data-tab="team-tab" class="is-active"><a>Product Info</a>
-                                                        </li>
-                                                        <li data-tab="projects-tab"><a>Product Specifications</a></li>
+                                                        <li><a>Product Info</a></li>
+                                                        <li class="is-active"><a>Product Specifications</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
-
-
-                                            <div id="team-tab" class="tab-content is-active">
-                                                <div class="form-section is-grey">
-
+                                        </div>
+                    
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <div class="field">
+                                                    <label>SSD Storage</label>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                    <p class="help">Range</p>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>RAM</label>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                    <p class="help">Range</p>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>CPU</label>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                    <p class="help">Core</p>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>I/O</label>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                    <p class="help">KB/s</p>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>Entry Process</label>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>NPROC</label>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>SSL</label>
+                                                    <div class="control">
+                                                        <input type="text" class="input" value="Free" readonly>
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>Backup</label>
+                                                    <div class="control">
+                                                        <input type="text" class="input" value="Weekly" readonly>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div id="projects-tab" class="tab-content">
-                                                <div class="form-section is-grey">
-                                                    <h3>Personal Info</h3>
-
-                                                    <div class="field">
-                                                        <div class="control has-icon">
-                                                            <input class="input" placeholder="First Name *">
-                                                            <div class="form-icon">
-                                                                <i data-feather="user"></i>
-                                                            </div>
+                    
+                                            <div class="column is-6">
+                                                <div class="field">
+                                                    <label>Max Domain</label>
+                                                    <div class="h-radio-group">
+                                                        <div class="h-radio is-circle">
+                                                            <input type="radio" name="max_domain">
+                                                            <span></span>
+                                                            <label>Unlimited</label>
+                                                        </div>
+                                                        <div class="h-radio is-circle is-checked">
+                                                            <input type="radio" name="max_domain" checked>
+                                                            <span></span>
+                                                            <label>Limited</label>
                                                         </div>
                                                     </div>
-                                                    <div class="field">
-                                                        <div class="control has-icon">
-                                                            <input class="input" placeholder="Last Name *">
-                                                            <div class="form-icon">
-                                                                <i data-feather="user"></i>
-                                                            </div>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>Max Email Account</label>
+                                                    <div class="h-radio-group">
+                                                        <div class="h-radio is-circle">
+                                                            <input type="radio" name="max_email">
+                                                            <span></span>
+                                                            <label>Unlimited</label>
+                                                        </div>
+                                                        <div class="h-radio is-circle is-checked">
+                                                            <input type="radio" name="max_email" checked>
+                                                            <span></span>
+                                                            <label>Limited</label>
                                                         </div>
                                                     </div>
-                                                    <div class="field">
-                                                        <div class="control has-icon">
-                                                            <input class="input" placeholder="Email Address *">
-                                                            <div class="form-icon">
-                                                                <i data-feather="mail"></i>
-                                                            </div>
+                                                    <div class="control">
+                                                        <input type="number" class="input" placeholder="0">
+                                                    </div>
+                                                </div>
+                    
+                                                <!-- Repeat similar structure for Max Bandwidth, Max Database, Max Addon Domain, Max Parked Domain, Max FTP Account -->
+                    
+                                                <div class="field">
+                                                    <label>SSH</label>
+                                                    <div class="h-radio-group">
+                                                        <div class="h-radio is-circle is-checked">
+                                                            <input type="radio" name="ssh" checked>
+                                                            <span></span>
+                                                            <label>No</label>
+                                                        </div>
+                                                        <div class="h-radio is-circle">
+                                                            <input type="radio" name="ssh">
+                                                            <span></span>
+                                                            <label>Yes</label>
                                                         </div>
                                                     </div>
-                                                    <div class="field">
-                                                        <div class="control has-icon">
-                                                            <input class="input" placeholder="Phone Number *">
-                                                            <div class="form-icon">
-                                                                <i data-feather="phone"></i>
-                                                            </div>
+                                                </div>
+                    
+                                                <div class="field">
+                                                    <label>Free Domain</label>
+                                                    <div class="h-radio-group">
+                                                        <div class="h-radio is-circle is-checked">
+                                                            <input type="radio" name="free_domain" checked>
+                                                            <span></span>
+                                                            <label>Unlimited</label>
+                                                        </div>
+                                                        <div class="h-radio is-circle">
+                                                            <input type="radio" name="free_domain">
+                                                            <span></span>
+                                                            <label>Limited</label>
                                                         </div>
                                                     </div>
-                                                    <h3>Payout Details</h3>
-
-                                                    <div class="field">
-                                                        <div class="control">
-                                                            <div class="h-select">
-                                                                <div class="select-box">
-                                                                    <span>Bank Account</span>
-                                                                </div>
-                                                                <div class="select-icon">
-                                                                    <i data-feather="chevron-down"></i>
-                                                                </div>
-                                                                <div class="select-drop has-slimscroll-sm">
-                                                                    <div class="drop-inner">
-                                                                        <div class="option-row">
-                                                                            <input type="radio"
-                                                                                name="account_select">
-                                                                            <div class="option-meta">
-                                                                                <span>AMEX **** 42</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="option-row">
-                                                                            <input type="radio"
-                                                                                name="account_select">
-                                                                            <div class="option-meta">
-                                                                                <span>HSBC **** 29</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="field">
-                                                        <div class="control">
-                                                            <div class="h-select">
-                                                                <div class="select-box">
-                                                                    <span>Transfer Fees</span>
-                                                                </div>
-                                                                <div class="select-icon">
-                                                                    <i data-feather="chevron-down"></i>
-                                                                </div>
-                                                                <div class="select-drop has-slimscroll-sm">
-                                                                    <div class="drop-inner">
-                                                                        <div class="option-row">
-                                                                            <input type="radio"
-                                                                                name="fees_selection">
-                                                                            <div class="option-meta">
-                                                                                <span>Super Fast - $3.00</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="option-row">
-                                                                            <input type="radio"
-                                                                                name="fees_selection">
-                                                                            <div class="option-meta">
-                                                                                <span>Regular - $0.50</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="field">
-                                                        <label>Notify me when funds are ready?</label>
-                                                        <div class="control">
-                                                            <label class="radio">
-                                                                <input type="radio" name="notification_selection"
-                                                                    checked>
-                                                                <span></span>
-                                                                Yes
-                                                            </label>
-
-                                                            <label class="radio is-outlined is-primary">
-                                                                <input type="radio" name="notification_selection">
-                                                                <span></span>
-                                                                No
-                                                            </label>
-                                                        </div>
+                                                    <div class="control">
+                                                        <input type="text" class="input" placeholder="E.g. .net, .com">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-footer">
+                                    <div class="form-footer-inner">
+                                        <div class="buttons">
+                                            <button class="button h-button is-light">Button</button>
+                                            <button class="button h-button is-primary is-raised">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                </div>
-            </div>
+                        
+                        
+                        
+                        
+
+    <div id="paging-first-datatable" class="pagination datatable-pagination">
+        <div class="datatable-info">
+            <span></span>
         </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
 
 
         <!--Huro Scripts-->
@@ -2193,7 +2216,7 @@
 
 
 
-        <!-- Charts js -->
+    <!-- Charts js -->
 
 
 
@@ -2201,7 +2224,7 @@
 
         <!--Wizard-->
 
-        <!-- Layouts js -->
+    <!-- Layouts js -->
 
 
 
@@ -2213,7 +2236,7 @@
 
 
 
-        <script src="assets/js/syntax.js" async></script>
+    <script src="assets/js/syntax.js" async></script>
     </div>
 </body>
 
