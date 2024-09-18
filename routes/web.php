@@ -102,10 +102,16 @@ Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, '
 // Route::get('/product', [ProductController::class, ''])->name('product.index');
 
 /* Crud Hosting Package */
-Route::get('/clients', [ClientController::class, 'index']);
-Route::get('/clients/create', [ClientController::class, 'create']);
-Route::post('/clients', [ClientController::class, 'store']);
-Route::get('/clients/{id}', [ClientController::class, 'show']);
-Route::get('/clients/{id}/edit', [ClientController::class, 'edit']);
-Route::patch('/clients/{id}', [ClientController::class, 'update']);
-Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
+Route::get('/clients', [ClientController::class, 'index'])->name('app.admin.clients.index');
+// Route::get('/clients/{id}', [ClientController::class, 'show']);
+// Route::get('/clients/create', ClientController::class . '@create')->name('clients.create');
+// Route::get('/clients/store', ClientController::class . '@store')->name('clients.store');
+Route::get('/clients/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
+Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
+
+// Route::get('/clients/create', [ClientController::class, 'create']);
+// Route::post('/clients', [ClientController::class, 'store']);
+// Route::get('/clients/{id}', [ClientController::class, 'show']);
+// Route::get('/clients/{id}/edit', [ClientController::class, 'edit']);
+// Route::patch('/clients/{id}', [ClientController::class, 'update']);
+// Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
