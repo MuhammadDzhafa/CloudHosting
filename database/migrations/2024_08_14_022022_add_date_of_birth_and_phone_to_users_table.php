@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Hapus kolom 'date_of_birth' dari sini
-            $table->dropColumn('date_of_birth');
+            $table->date('date_of_birth')->nullable();
             $table->string('phone')->nullable();
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Tambahkan kembali kolom 'date_of_birth' jika rollback
-            $table->date('date_of_birth')->nullable();
+            $table->dropColumn('date_of_birth');
             $table->dropColumn('phone');
         });
     }
