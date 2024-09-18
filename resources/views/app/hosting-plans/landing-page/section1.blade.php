@@ -35,7 +35,7 @@
 
             </div>
             <div class="w-full lg:w-1/2 lg:mt-0 relative">
-                <img src="{{ asset('assets/img/hp.svg') }}" alt="Smartphone" class="smartphone-image">
+                <img src="{{ asset('assets/img/hero.svg') }}" alt="Smartphone" class="smartphone-image">
 
                 <div class="tooltip tooltip-1">
                     <img src="{{ asset('assets/img/icons/tooltip-1.svg') }}" alt="Tooltip 1">
