@@ -91,5 +91,8 @@ Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, '
 
 
 /* Crud Product */
-Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+// Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::create('/product', [ProductController::class, 'create'])->name('product.create');
+Route::create('/group', [ProductController::class, 'create'])->name('group.createGroup');
+Route::get('/product', [ProductController::class, ''])->name('product.index');

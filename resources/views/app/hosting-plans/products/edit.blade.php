@@ -35,24 +35,14 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- Fonts -->
-<<<<<<< HEAD
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-=======
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-<<<<<<< HEAD
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-=======
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="huro-app" class="app-wrapper">
@@ -101,7 +91,6 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-<<<<<<< HEAD
                                                     <img class="user-photo" alt=""
                                                         src="https://via.placeholder.com/150x150"
                                                         data-demo-src="assets/img/avatars/photos/7.jpg" />
@@ -109,12 +98,6 @@
                                                 <div class="user-content">
                                                     <p class="user-info"><span class="name">Alice C.</span> left a
                                                         comment.</p>
-=======
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" />
-                                                </div>
-                                                <div class="user-content">
-                                                    <p class="user-info"><span class="name">Alice C.</span> left a comment.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                     <p class="time">1 hour ago</p>
                                                 </div>
                                             </a>
@@ -122,7 +105,6 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-<<<<<<< HEAD
                                                     <img class="user-photo" alt=""
                                                         src="https://via.placeholder.com/150x150"
                                                         data-demo-src="assets/img/avatars/photos/12.jpg" />
@@ -130,12 +112,6 @@
                                                 <div class="user-content">
                                                     <p class="user-info"><span class="name">Joshua S.</span> uploaded
                                                         a file.</p>
-=======
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" />
-                                                </div>
-                                                <div class="user-content">
-                                                    <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                     <p class="time">2 hours ago</p>
                                                 </div>
                                             </a>
@@ -143,7 +119,6 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-<<<<<<< HEAD
                                                     <img class="user-photo" alt=""
                                                         src="https://via.placeholder.com/150x150"
                                                         data-demo-src="assets/img/avatars/photos/13.jpg" />
@@ -151,12 +126,6 @@
                                                 <div class="user-content">
                                                     <p class="user-info"><span class="name">Tara S.</span> sent you a
                                                         message.</p>
-=======
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" />
-                                                </div>
-                                                <div class="user-content">
-                                                    <p class="user-info"><span class="name">Tara S.</span> sent you a message.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                     <p class="time">2 hours ago</p>
                                                 </div>
                                             </a>
@@ -164,7 +133,6 @@
                                         <li>
                                             <a class="notification-item">
                                                 <div class="img-left">
-<<<<<<< HEAD
                                                     <img class="user-photo" alt=""
                                                         src="https://via.placeholder.com/150x150"
                                                         data-demo-src="assets/img/avatars/photos/25.jpg" />
@@ -172,12 +140,6 @@
                                                 <div class="user-content">
                                                     <p class="user-info"><span class="name">Melany W.</span> left a
                                                         comment.</p>
-=======
-                                                    <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" />
-                                                </div>
-                                                <div class="user-content">
-                                                    <p class="user-info"><span class="name">Melany W.</span> left a comment.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                     <p class="time">3 hours ago</p>
                                                 </div>
                                             </a>
@@ -189,24 +151,16 @@
                         <div class="dropdown is-right is-spaced dropdown-trigger user-dropdown">
                             <div class="is-trigger" aria-haspopup="true">
                                 <div class="profile-avatar">
-<<<<<<< HEAD
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
-=======
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                             </div>
                             <div class="dropdown-menu" role="menu">
                                 <div class="dropdown-content">
                                     <div class="dropdown-head">
                                         <div class="h-avatar is-large">
-<<<<<<< HEAD
                                             <img class="avatar" src="https://via.placeholder.com/150x150"
                                                 data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
-=======
-                                            <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                         </div>
                                         <div class="meta">
                                             <span>Erik Kovalsky</span>
@@ -262,18 +216,11 @@
                                     </a>
                                     <hr class="dropdown-divider">
                                     <div class="dropdown-item is-button">
-<<<<<<< HEAD
                                         <button
                                             class="button h-button is-primary is-raised is-fullwidth logout-button">
                                             <span class="icon is-small">
                                                 <i data-feather="log-out"></i>
                                             </span>
-=======
-                                        <button class="button h-button is-primary is-raised is-fullwidth logout-button">
-                                            <span class="icon is-small">
-                                              <i data-feather="log-out"></i>
-                                          </span>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                             <span>Logout</span>
                                         </button>
                                     </div>
@@ -377,13 +324,8 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-<<<<<<< HEAD
 
                     <!-- Layouts -->
-=======
-                    
-                     <!-- Layouts -->
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                     <li>
                         <a href="/admin-grid-users-1.html" id="layouts-sidebar-menu" data-content="Layouts">
                             <img src="/assets/img/product/inventory-2.svg" alt="">
@@ -484,15 +426,8 @@
                     </div>
 
                     <div class="img-wrap has-text-centered">
-<<<<<<< HEAD
-                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg"
-                            alt="">
-                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg"
-                            alt="">
-=======
                         <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
                         <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                     </div>
                 </div>
             </div>
@@ -525,29 +460,15 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-<<<<<<< HEAD
-                                    <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
-                                        alt="">
-=======
                                     <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <div class="meta">
                                     <span>Joshua S.</span>
                                     <span>
-<<<<<<< HEAD
-                                        <i data-feather="map-pin"></i>
-                                        Las Vegas, NV
-                                    </span>
-=======
                                       <i data-feather="map-pin"></i>
                                       Las Vegas, NV
                                   </span>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -557,29 +478,18 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-<<<<<<< HEAD
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
                                         alt="">
-=======
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <div class="meta">
                                     <span>Melany W.</span>
                                     <span>
-<<<<<<< HEAD
-                                        <i data-feather="map-pin"></i>
-                                        San Jose, CA
-                                    </span>
-=======
                                       <i data-feather="map-pin"></i>
                                       San Jose, CA
                                   </span>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -589,29 +499,18 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-<<<<<<< HEAD
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
                                         alt="">
-=======
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <div class="meta">
                                     <span>Esteban C.</span>
                                     <span>
-<<<<<<< HEAD
                                         <i data-feather="map-pin"></i>
                                         Miami, FL
                                     </span>
-=======
-                                      <i data-feather="map-pin"></i>
-                                      Miami, FL
-                                  </span>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -621,29 +520,18 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-<<<<<<< HEAD
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
                                         alt="">
-=======
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <div class="meta">
                                     <span>Tara S.</span>
                                     <span>
-<<<<<<< HEAD
                                         <i data-feather="map-pin"></i>
                                         New York, NY
                                     </span>
-=======
-                                      <i data-feather="map-pin"></i>
-                                      New York, NY
-                                  </span>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -655,12 +543,8 @@
                             <!--Project-->
                             <div class="project-card">
                                 <div class="project-inner">
-<<<<<<< HEAD
                                     <img class="project-avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/icons/logos/slicer.svg" alt="">
-=======
-                                    <img class="project-avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/logos/slicer.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                     <div class="meta">
                                         <span>The slicer project</span>
                                         <span>getslicer.io</span>
@@ -670,18 +554,13 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-<<<<<<< HEAD
                                     <progress class="progress is-primary is-tiny" value="31"
                                         max="100">31%</progress>
-=======
-                                    <progress class="progress is-primary is-tiny" value="31" max="100">31%</progress>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                     <div class="foot-stats">
                                         <span>5 / 24</span>
 
                                         <div class="avatar-stack">
                                             <div class="h-avatar is-small">
-<<<<<<< HEAD
                                                 <img class="avatar" src="https://via.placeholder.com/150x150"
                                                     data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
                                             </div>
@@ -692,15 +571,6 @@
                                             <div class="h-avatar is-small">
                                                 <img class="avatar" src="https://via.placeholder.com/150x150"
                                                     data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
-=======
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                                            </div>
-                                            <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/5.jpg" alt="">
-                                            </div>
-                                            <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                             </div>
                                         </div>
                                     </div>
@@ -710,12 +580,8 @@
                             <!--Project-->
                             <div class="project-card">
                                 <div class="project-inner">
-<<<<<<< HEAD
                                     <img class="project-avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/icons/logos/metamovies.svg" alt="">
-=======
-                                    <img class="project-avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/logos/metamovies.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                     <div class="meta">
                                         <span>Metamovies reworked</span>
                                         <span>metamovies.co</span>
@@ -725,30 +591,19 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-<<<<<<< HEAD
                                     <progress class="progress is-primary is-tiny" value="84"
                                         max="100">84%</progress>
-=======
-                                    <progress class="progress is-primary is-tiny" value="84" max="100">84%</progress>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                     <div class="foot-stats">
                                         <span>28 / 31</span>
 
                                         <div class="avatar-stack">
                                             <div class="h-avatar is-small">
-<<<<<<< HEAD
                                                 <img class="avatar" src="https://via.placeholder.com/150x150"
                                                     data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
                                             </div>
                                             <div class="h-avatar is-small">
                                                 <img class="avatar" src="https://via.placeholder.com/150x150"
                                                     data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
-=======
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
-                                            </div>
-                                            <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                             </div>
                                         </div>
                                     </div>
@@ -758,12 +613,8 @@
                             <!--Project-->
                             <div class="project-card">
                                 <div class="project-inner">
-<<<<<<< HEAD
                                     <img class="project-avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/icons/logos/fastpizza.svg" alt="">
-=======
-                                    <img class="project-avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/logos/fastpizza.svg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                     <div class="meta">
                                         <span>Fast Pizza redesign</span>
                                         <span>fastpizza.com</span>
@@ -773,30 +624,19 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-<<<<<<< HEAD
                                     <progress class="progress is-primary is-tiny" value="60"
                                         max="100">60%</progress>
-=======
-                                    <progress class="progress is-primary is-tiny" value="60" max="100">60%</progress>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                     <div class="foot-stats">
                                         <span>25 / 39</span>
 
                                         <div class="avatar-stack">
                                             <div class="h-avatar is-small">
-<<<<<<< HEAD
                                                 <img class="avatar" src="https://via.placeholder.com/150x150"
                                                     data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
                                             </div>
                                             <div class="h-avatar is-small">
                                                 <img class="avatar" src="https://via.placeholder.com/150x150"
                                                     data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
-=======
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                                            </div>
-                                            <div class="h-avatar is-small">
-                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                             </div>
                                         </div>
                                     </div>
@@ -820,12 +660,8 @@
                                 <!--Timeline item-->
                                 <div class="timeline-item">
                                     <div class="timeline-icon">
-<<<<<<< HEAD
                                         <img class="avatar" src="https://via.placeholder.com/150x150"
                                             data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-=======
-                                        <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                     </div>
                                     <div class="timeline-content">
                                         <p>Meeting with Alice</p>
@@ -953,13 +789,9 @@
                         <div class="recent-block">
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
-<<<<<<< HEAD
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/7.jpg" alt=""
                                         data-user-popover="0">
-=======
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="" data-user-popover="0">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <div class="flex-meta">
                                     <span>Alice C.</span>
@@ -968,13 +800,9 @@
                             </a>
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
-<<<<<<< HEAD
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/13.jpg" alt=""
                                         data-user-popover="6">
-=======
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <div class="flex-meta">
                                     <span>Tara S.</span>
@@ -983,13 +811,9 @@
                             </a>
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
-<<<<<<< HEAD
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/22.jpg" alt=""
                                         data-user-popover="5">
-=======
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/22.jpg" alt="" data-user-popover="5">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                 </div>
                                 <div class="flex-meta">
                                     <span>Jimmy H.</span>
@@ -1550,12 +1374,8 @@
                 <ul class="submenu">
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Lists <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Lists <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1587,11 +1407,7 @@
                     <li class="has-children">
                         <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Flex Lists <i
-<<<<<<< HEAD
                                     data-feather="chevron-right"></i></a>
-=======
-                                  data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1616,12 +1432,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Datatable <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Datatable <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1652,12 +1464,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Placeload <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Placeload <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1689,12 +1497,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Card Grid <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Card Grid <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1725,12 +1529,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Tile Grid <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1755,12 +1555,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">User Grid <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">User Grid <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1792,12 +1588,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Personal <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Personal <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1828,12 +1620,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Pages <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Pages <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1888,12 +1676,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Subpages <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Subpages <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1924,12 +1708,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Projects <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Projects <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -1972,12 +1752,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-<<<<<<< HEAD
                             <a href="javascript:void(0);" class="parent-link">Utility <i
                                     data-feather="chevron-right"></i></a>
-=======
-                            <a href="javascript:void(0);" class="parent-link">Utility <i data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -2009,11 +1785,7 @@
                     <li class="has-children">
                         <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Onboarding <i
-<<<<<<< HEAD
                                     data-feather="chevron-right"></i></a>
-=======
-                                  data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -2051,11 +1823,7 @@
                     <li class="has-children">
                         <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Error Pages <i
-<<<<<<< HEAD
                                     data-feather="chevron-right"></i></a>
-=======
-                                  data-feather="chevron-right"></i></a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                         </div>
                         <ul>
                             <li>
@@ -2096,12 +1864,8 @@
         </div>
 
         <!-- Content Wrapper -->
-<<<<<<< HEAD
         <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu"
             data-mobile-item="#home-sidebar-menu-mobile">
-=======
-        <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
             <div class="page-content-wrapper">
                 <div class="page-content is-relative">
                     <div class="page-title has-text-centered">
@@ -2145,25 +1909,17 @@
                                         <div class="dropdown-content">
                                             <div class="heading">
                                                 <div class="heading-left">
-<<<<<<< HEAD
                                                     <h6 class="heading-title">Notificationss</h6>
                                                 </div>
                                                 <div class="heading-right">
                                                     <a class="notification-link"
                                                         href="/admin-profile-notifications.html">See all</a>
-=======
-                                                    <h6 class="heading-title">Notifications</h6>
-                                                </div>
-                                                <div class="heading-right">
-                                                    <a class="notification-link" href="/admin-profile-notifications.html">See all</a>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                 </div>
                                             </div>
                                             <ul class="notification-list">
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-<<<<<<< HEAD
                                                             <img class="user-photo" alt=""
                                                                 src="https://via.placeholder.com/150x150"
                                                                 data-demo-src="assets/img/avatars/photos/7.jpg" />
@@ -2171,12 +1927,6 @@
                                                         <div class="user-content">
                                                             <p class="user-info"><span class="name">Alice C.</span>
                                                                 left a comment.</p>
-=======
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Alice C.</span> left a comment.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                             <p class="time">1 hour ago</p>
                                                         </div>
                                                     </a>
@@ -2184,7 +1934,6 @@
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-<<<<<<< HEAD
                                                             <img class="user-photo" alt=""
                                                                 src="https://via.placeholder.com/150x150"
                                                                 data-demo-src="assets/img/avatars/photos/12.jpg" />
@@ -2192,12 +1941,6 @@
                                                         <div class="user-content">
                                                             <p class="user-info"><span class="name">Joshua S.</span>
                                                                 uploaded a file.</p>
-=======
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                             <p class="time">2 hours ago</p>
                                                         </div>
                                                     </a>
@@ -2205,7 +1948,6 @@
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-<<<<<<< HEAD
                                                             <img class="user-photo" alt=""
                                                                 src="https://via.placeholder.com/150x150"
                                                                 data-demo-src="assets/img/avatars/photos/13.jpg" />
@@ -2213,12 +1955,6 @@
                                                         <div class="user-content">
                                                             <p class="user-info"><span class="name">Tara S.</span>
                                                                 sent you a message.</p>
-=======
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Tara S.</span> sent you a message.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                             <p class="time">2 hours ago</p>
                                                         </div>
                                                     </a>
@@ -2226,7 +1962,6 @@
                                                 <li>
                                                     <a class="notification-item">
                                                         <div class="img-left">
-<<<<<<< HEAD
                                                             <img class="user-photo" alt=""
                                                                 src="https://via.placeholder.com/150x150"
                                                                 data-demo-src="assets/img/avatars/photos/25.jpg" />
@@ -2234,12 +1969,6 @@
                                                         <div class="user-content">
                                                             <p class="user-info"><span class="name">Melany W.</span>
                                                                 left a comment.</p>
-=======
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Melany W.</span> left a comment.</p>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                             <p class="time">3 hours ago</p>
                                                         </div>
                                                     </a>
@@ -2257,99 +1986,6 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div class="container">
-                        <h1 class="title is-2">Edit Product</h1>
-
-                        <div class="tabs is-boxed">
-                            <ul>
-                                <li><a href="#product-info">Product Info</a></li>
-                                <li class="is-active"><a href="#product-specifications">Product Specifications</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <form action="{{ route('products.update', $product) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-
-                            <div id="product-specifications" class="tab-content">
-                                <div class="columns is-multiline">
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">SSD Storage</label>
-                                            <div class="control">
-                                                <input class="input" type="number" name="ssd_storage"
-                                                    value="0">
-                                            </div>
-                                            <p class="help">Range</p>
-                                        </div>
-                                    </div>
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">RAM</label>
-                                            <div class="control">
-                                                <input class="input" type="number" name="ram" value="0">
-                                            </div>
-                                            <p class="help">Range</p>
-                                        </div>
-                                    </div>
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">CPU</label>
-                                            <div class="control">
-                                                <input class="input" type="number" name="cpu" value="0">
-                                            </div>
-                                            <p class="help">Core</p>
-                                        </div>
-                                    </div>
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">I/O</label>
-                                            <div class="control">
-                                                <input class="input" type="number" name="io" value="0">
-                                            </div>
-                                            <p class="help">KB/s</p>
-                                        </div>
-                                    </div>
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">Entry Process</label>
-                                            <div class="control">
-                                                <input class="input" type="number" name="entry_process"
-                                                    value="0">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">NPROC</label>
-                                            <div class="control">
-                                                <input class="input" type="number" name="nproc" value="0">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">SSL</label>
-                                            <div class="control">
-                                                <div class="select">
-                                                    <select name="ssl">
-                                                        <option value="free">Free</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-half">
-                                        <div class="field">
-                                            <label class="label">Backup</label>
-                                            <div class="control">
-                                                <div class="select">
-                                                    <select name="backup">
-                                                        <option value="weekly">Weekly</option>
-                                                    </select>
-=======
                     <div class="page-content-inner">
                         <div class="form-layout">
                             <div class="form-outer">
@@ -2510,126 +2146,11 @@
                                                     <div class="control">
                                                         <input type="text" class="input" placeholder="E.g. .net, .com">
                                                     </div>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-
-                                @php
-                                    $limitFields = [
-                                        'Max Domain',
-                                        'Max Email Account',
-                                        'Max Bandwidth',
-                                        'Max Database',
-                                        'Max Addon Domain',
-                                        'Max Parked Domain',
-                                        'Max FTP Account',
-                                    ];
-                                @endphp
-
-                                @foreach ($limitFields as $field)
-                                    <div class="field">
-                                        <label class="label">{{ $field }}</label>
-                                        <div class="control">
-                                            <label class="radio">
-                                                <input type="radio" name="{{ Str::slug($field) }}_limit"
-                                                    value="unlimited">
-                                                Unlimited
-                                            </label>
-                                            <label class="radio">
-                                                <input type="radio" name="{{ Str::slug($field) }}_limit"
-                                                    value="limited" checked>
-                                                Limited
-                                            </label>
-                                            <input class="input is-inline" type="number"
-                                                name="{{ Str::slug($field) }}_value" value="0"
-                                                style="width: 100px;">
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                                <div class="field">
-                                    <label class="label">SSH</label>
-                                    <div class="control">
-                                        <label class="radio">
-                                            <input type="radio" name="ssh" value="no" checked>
-                                            No
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="ssh" value="yes">
-                                            Yes
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="field">
-                                    <label class="label">Free Domain</label>
-                                    <div class="control">
-                                        <label class="radio">
-                                            <input type="radio" name="free_domain_limit" value="unlimited" checked>
-                                            Unlimited
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="free_domain_limit" value="limited">
-                                            Limited
-                                        </label>
-                                        <input class="input is-inline" type="text" name="free_domain_value"
-                                            placeholder="E.g. .net, .com" style="width: 200px;">
-                                    </div>
-                                </div>
-
-                                <div class="field is-grouped is-grouped-right">
-                                    <p class="control">
-                                        <button type="button" class="button is-light">Cancel</button>
-                                    </p>
-                                    <p class="control">
-                                        <button type="submit" class="button is-primary">Confirm</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-
-
-
-
-                    <div id="paging-first-datatable" class="pagination datatable-pagination">
-                        <div class="datatable-info">
-                            <span></span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!--Huro Scripts-->
-    <!--Load Mapbox-->
-
-    <!-- Concatenated plugins -->
-    <script src="assets/js/app.js"></script>
-
-    <!-- Huro js -->
-    <script src="assets/js/functions.js"></script>
-    <script src="assets/js/main.js" async></script>
-    <script src="assets/js/components.js" async></script>
-    <script src="assets/js/popover.js" async></script>
-    <script src="assets/js/widgets.js" async></script>
-
-
-    <!-- Additional Features -->
-    <script src="assets/js/touch.js" async></script>
-
-    <!-- Landing page js -->
-
-    <!-- Dashboards js -->
-=======
                                 <div class="form-footer">
                                     <div class="form-footer-inner">
                                         <div class="buttons">
@@ -2678,7 +2199,6 @@
         <!-- Landing page js -->
 
         <!-- Dashboards js -->
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
 
 
 
@@ -2696,7 +2216,6 @@
 
 
 
-<<<<<<< HEAD
     <!-- Charts js -->
 
 
@@ -2706,17 +2225,6 @@
     <!--Wizard-->
 
     <!-- Layouts js -->
-=======
-        <!-- Charts js -->
-
-
-
-        <!--Forms-->
-
-        <!--Wizard-->
-
-        <!-- Layouts js -->
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
 
 
 
@@ -2728,16 +2236,8 @@
 
 
 
-<<<<<<< HEAD
     <script src="assets/js/syntax.js" async></script>
     </div>
 </body>
 
 </html>
-=======
-        <script src="assets/js/syntax.js" async></script>
-    </div>
-</body>
-
-</html>
->>>>>>> 57f2d7277b8d0952113036ba683daf36e0167099
