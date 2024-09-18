@@ -5,9 +5,7 @@
             <p class="text-base-hero mb-0 text-white">Choose the perfect hosting plan to fit your needs
                 and get your website live.</p>
         </div>
-        <button id="orderNowBtn" type="button" class="button-light-grey rounded-full">
-            Order Now
-        </button> 
+        <a class="button h-button is-white">Order Now</a>
     </div>
     <img src="{{ asset('assets/img/laptop.svg') }}" alt="Laptop on desk" class="img-cta md:self-center">
 </div>
