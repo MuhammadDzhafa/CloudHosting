@@ -15,7 +15,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('app.clients.index', compact('clients'));
+        return view('app.admin.clients.index', compact('clients'));
     }
 
     public function create()
@@ -82,10 +82,10 @@ class ClientController extends Controller
         return redirect()->route('app.admin.clients.index')->with('success', 'Client updated successfully');
     }
     
-    // public function destroy($id)
-    // {
-    //     $client = Client::find($id);
-    //     $client->delete();
-    //     return redirect()->route('clients.index');
-    // }
+    public function destroy($id)
+    {
+        $client = Client::where('client_id', $id)->firstOrFail();
+        $client->delete();
+        return redirect()->route('app.admin.clients.index')->with('success', 'Client deleted successfully');
+    }
 }
