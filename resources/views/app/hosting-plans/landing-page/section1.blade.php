@@ -25,13 +25,15 @@
                     <span class="price-suffix">/mon</span>
                 </p>
 
-                <a class="button h-button is-info is-outlined mr-3"><span class="btn-text explore-button"
-                        onclick="scrollToSection()">Explore Now</span>
-                    <svg class="btn-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.16669 10H15.8334M10.8334 5L15.8334 10L10.8334 15" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </a>
+                <div class="button-container">
+                    <a class="button h-button is-info is-outlined mr-3">
+                        <span class="btn-text explore-button" onclick="scrollToSection()">Explore Now</span>
+                        <svg class="btn-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.16669 10H15.8334M10.8334 5L15.8334 10L10.8334 15" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
 
             </div>
             <div class="w-full lg:w-1/2 lg:mt-0 relative">

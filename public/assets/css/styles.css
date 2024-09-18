@@ -295,6 +295,12 @@ p {
 
 
 @media (max-width: 768px) {
+    .button.is-info.is-outlined {
+        display: flex;
+        justify-content: center; /* Horizontal alignment */
+        align-items: center;     /* Vertical alignment */ 
+    }
+
     .text-secondary {
         font-weight: 600;
         margin-bottom: 2px;
@@ -375,7 +381,11 @@ p {
         transition: background-color 0.3s;
         max-width: 129px;
         margin: 0 auto;
-    }
+        -webkit-transition: background-color 0.3s;
+        -moz-transition: background-color 0.3s;
+        -ms-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+}
     
     .button-container {
         display: flex;

@@ -26056,7 +26056,7 @@ body.is-dark .sidebar-panel.is-messages .start-conversation {
 
 .mobile-subsidebar {
     position: fixed;
-    top: 42px;
+    /* top: 42px; */
     left: 0;
     height: calc(100% - 60px);
     width: 400px;
