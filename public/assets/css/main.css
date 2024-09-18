@@ -719,7 +719,9 @@ fieldset[disabled] .button.is-text {
 }
 
 .button.is-white {
-    background-color: #fff;
+    padding: 12px 16px !important;
+    border-radius: 9999px;
+    background-color: #DDDFDF;
     border-color: transparent;
     color: #0a0a0a
 }
@@ -1525,14 +1527,20 @@ fieldset[disabled] .button.is-link.is-inverted.is-outlined {
 }
 
 .button.is-info {
-    background-color: #039be5;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    background-color: #4A6DCB;
     border-color: transparent;
-    color: #fff
+    color: #fff;
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    -ms-border-radius: 8px !important;
+    -o-border-radius: 8px !important;
 }
 
 .button.is-info:hover,
 .button.is-info.is-hovered {
-    background-color: #0392d8;
+    background-color: #395FC6;
     border-color: transparent;
     color: #fff
 }
@@ -1588,17 +1596,22 @@ fieldset[disabled] .button.is-info.is-inverted {
 }
 
 .button.is-info.is-outlined {
+    border-radius: 9999px !important;
     background-color: transparent;
-    border-color: #039be5;
-    color: #039be5
+    border-color: #395FC6;
+    color: #395FC6;
+    -webkit-border-radius: 9999px !important;
+    -moz-border-radius: 9999px !important;
+    -ms-border-radius: 9999px !important;
+    -o-border-radius: 9999px !important;
 }
 
 .button.is-info.is-outlined:hover,
 .button.is-info.is-outlined.is-hovered,
 .button.is-info.is-outlined:focus,
 .button.is-info.is-outlined.is-focused {
-    background-color: #039be5;
-    border-color: #039be5;
+    background-color: #395FC6;
+    border-color: #395FC6;
     color: #fff
 }
 
@@ -73806,7 +73819,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 }
 
 .form-layout.is-split {
-    max-width: 840px
+    max-width: 100%
 }
 
 .form-layout.is-split .form-outer .form-body {
@@ -73817,7 +73830,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding: 20px
+    /* padding: 20px */
 }
 
 .form-layout.is-split .form-outer .form-body .form-section.is-grey {

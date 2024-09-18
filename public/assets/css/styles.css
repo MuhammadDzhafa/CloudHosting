@@ -225,6 +225,7 @@ p {
 }
 
 .btn-text {
+    margin-right: 5px;
     font-size: 1rem;
     /* default text-base */
     font-weight: 500;

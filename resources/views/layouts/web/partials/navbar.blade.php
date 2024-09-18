@@ -88,10 +88,7 @@
                         <img src="assets/img/icons/login.svg" alt="Login Icon"
                             class="ml-2 lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px] relative lg:top-[1.67px] md:top-[0px] lg:left-[1.67px] gap-0 opacity-1">
                     </a>
-                    <a
-                        class="bg-[#4A6DCB] h-[36px] p-[8px_12px] gap-[8px] rounded-[8px] text-white flex items-center justify-center">
-                        Contact Us
-                    </a>
+                    <a class="button h-button is-info">Contact Us</a>
 
                 </div>
             </div>
