@@ -1882,13 +1882,13 @@
                             </span>
                         </div> --}}
 
-                        <div class="title-wrap">
-                            <h1 class="title is-4">Products</h1>
-                        </div>
+                            <div class="title-wrap">
+                                <h1 class="title is-4">Products</h1>
+                            </div>
 
-                        <div class="toolbar ml-auto">
+                            <div class="toolbar ml-auto">
 
-                            {{-- <div class="toolbar-link">
+                                {{-- <div class="toolbar-link">
                                 <label class="dark-mode ml-auto">
                                     <input type="checkbox" checked>
                                     <span></span>
@@ -1980,11 +1980,11 @@
                             </div>
 
 
-                            <a class="toolbar-link right-panel-trigger" data-panel="activity-panel">
-                                <img src="/assets/img/product/account.svg" alt="">
-                            </a>
+                                <a class="toolbar-link right-panel-trigger" data-panel="activity-panel">
+                                    <img src="/assets/img/product/account.svg" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
                     <div class="page-content-inner">
                         <div class="form-layout">
@@ -2167,36 +2167,36 @@
                         
                         
 
-                        <div id="paging-first-datatable" class="pagination datatable-pagination">
-                            <div class="datatable-info">
-                                <span></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+    <div id="paging-first-datatable" class="pagination datatable-pagination">
+        <div class="datatable-info">
+            <span></span>
         </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
 
 
-        <!--Huro Scripts-->
-        <!--Load Mapbox-->
+    <!--Huro Scripts-->
+    <!--Load Mapbox-->
 
-        <!-- Concatenated plugins -->
-        <script src="assets/js/app.js"></script>
+    <!-- Concatenated plugins -->
+    <script src="assets/js/app.js"></script>
 
-        <!-- Huro js -->
-        <script src="assets/js/functions.js"></script>
-        <script src="assets/js/main.js" async></script>
-        <script src="assets/js/components.js" async></script>
-        <script src="assets/js/popover.js" async></script>
-        <script src="assets/js/widgets.js" async></script>
+    <!-- Huro js -->
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/js/main.js" async></script>
+    <script src="assets/js/components.js" async></script>
+    <script src="assets/js/popover.js" async></script>
+    <script src="assets/js/widgets.js" async></script>
 
 
-        <!-- Additional Features -->
-        <script src="assets/js/touch.js" async></script>
+    <!-- Additional Features -->
+    <script src="assets/js/touch.js" async></script>
 
-        <!-- Landing page js -->
+    <!-- Landing page js -->
 
         <!-- Dashboards js -->
 
@@ -2220,9 +2220,9 @@
 
 
 
-    <!--Forms-->
+        <!--Forms-->
 
-    <!--Wizard-->
+        <!--Wizard-->
 
     <!-- Layouts js -->
 
