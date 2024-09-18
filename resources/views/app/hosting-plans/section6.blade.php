@@ -26,8 +26,8 @@
         }
 
         .font-inter {
-            font-family: 'Inter', sans-serif;
-        }
+            font-family: 'Inter', sans-serif;;
+        };
     </style> -->
 </head>
 <body>
