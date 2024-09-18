@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\TestimonialController;
 
 /* Welcome */
 Route::get('/', function () {
@@ -76,6 +77,9 @@ Route::get('/auth/google/redirect', [RegisterController::class, 'redirectToGoogl
 Route::get('/auth/google/callback', [RegisterController::class, 'handleGoogleCallback'])->name('google.callback');
 Route::get('/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
 Route::post('/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
+
+/* Admin */
+Route::get('/admin/testimonial', [TestimonialController::class, 'showTestimonials'])->name('testimonials.show');
 
 Route::get('/profile.update', function () {
     return view('layouts.auth.profile-update');
