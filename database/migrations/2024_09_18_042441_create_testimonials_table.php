@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('domain_web');
             $table->string('testimonial_text');
             $table->string('picture');
+            $table->string('occupation');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
             $table->timestamps();
         });
     }

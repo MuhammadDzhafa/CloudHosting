@@ -23,6 +23,18 @@
                 <label for="picture" class="form-label">Picture (optional)</label>
                 <input type="file" class="form-control" id="picture" name="picture">
             </div>
+            <div class="form-group">
+            <label for="occupation">Occupation</label>
+            <input type="text" class="form-control" id="occupation" name="occupation">
+          </div>
+          <div class="form-group">
+            <label for="facebook">Facebook Profile (Optional)</label>
+            <input type="url" class="form-control" id="facebook" name="facebook">
+          </div>
+          <div class="form-group">
+            <label for="instagram">Instagram Profile (Optional)</label>
+            <input type="url" class="form-control" id="instagram" name="instagram">
+          </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

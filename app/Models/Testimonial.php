@@ -14,7 +14,10 @@ class Testimonial extends Model
     protected $fillable = [
         'domain_web',
         'testimonial_text',
-        'picture'
+        'picture',
+        'occupation',
+        'facebook',
+        'instagram'
     ];
 
 }

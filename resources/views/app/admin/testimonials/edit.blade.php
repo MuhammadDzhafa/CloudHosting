@@ -50,6 +50,21 @@
                 <input type="file" class="form-control" id="picture" name="picture">
             </div>
 
+            <div class="mb-3">
+                <label for="occupation" class="form-label">Occupation</label>
+                <input type="text" class="form-control" id="occupation" name="occupation" value="{{ $testimonial->occupation }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="facebook" class="form-label">Facebook URL</label>
+                <input type="url" class="form-control" id="facebook" name="facebook" value="{{ $testimonial->facebook }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="instagram" class="form-label">Instagram URL</label>
+                <input type="url" class="form-control" id="instagram" name="instagram" value="{{ $testimonial->instagram }}">
+            </div>
+
             <button type="submit" class="btn btn-success">Update</button>
             <a href="{{ route('testimonials.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
