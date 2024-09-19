@@ -1455,3 +1455,15 @@ p {
     line-height: 15.4px;
 }
 
+
+@media (max-width: 1300px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1300px) {
+    .navbar-burger {
+        display: none;
+    }
+}
