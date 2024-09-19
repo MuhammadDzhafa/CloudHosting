@@ -35,16 +35,14 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="huro-app" class="app-wrapper">
@@ -429,6 +427,8 @@
                     <div class="img-wrap has-text-centered">
                         <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
                         <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
+                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
+                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -461,17 +461,15 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
+                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Joshua S.</span>
                                     <span>
-                                        <i data-feather="map-pin"></i>
-                                        Las Vegas, NV
-                                    </span>
+                                      <i data-feather="map-pin"></i>
+                                      Las Vegas, NV
+                                  </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -489,9 +487,9 @@
                                 <div class="meta">
                                     <span>Melany W.</span>
                                     <span>
-                                        <i data-feather="map-pin"></i>
-                                        San Jose, CA
-                                    </span>
+                                      <i data-feather="map-pin"></i>
+                                      San Jose, CA
+                                  </span>
                                 </div>
                                 <a class="link">
                                     <i data-feather="arrow-right"></i>
@@ -1917,7 +1915,7 @@
                                         <div class="dropdown-content">
                                             <div class="heading">
                                                 <div class="heading-left">
-                                                    <h6 class="heading-title">Notifications</h6>
+                                                    <h6 class="heading-title">Notificationss</h6>
                                                 </div>
                                                 <div class="heading-right">
                                                     <a class="notification-link"
@@ -1995,9 +1993,7 @@
                     </div>
 
                     <div class="page-content-inner">
-
-                        <!--Form Layout 2-->
-                        <div class="form-layout is-split">
+                        <div class="form-layout">
                             <div class="form-outer">
                                 <div class="form-header stuck-header">
                                     <div class="form-header-inner">
@@ -2008,13 +2004,12 @@
                                 </div>
                                 <div class="form-body">
                                     <div class="form-section">
-                                        <div class="tabs-wrapper">
+                                        <div class="h-tabs-wrapper">
                                             <div class="tabs-inner">
-                                                <div class="tabs is-centered" style="margin-bottom:unset">
+                                                <div class="tabs">
                                                     <ul>
-                                                        <li data-tab="team-tab" class="is-active"><a>Product Info</a>
-                                                        </li>
-                                                        <li data-tab="projects-tab"><a>Product Specifications</a></li>
+                                                        <li><a>Product Info</a></li>
+                                                        <li class="is-active"><a>Product Specifications</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

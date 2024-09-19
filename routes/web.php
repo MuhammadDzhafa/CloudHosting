@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TldController; 
 use App\Http\Controllers\ProductController;
 
 /* Welcome */
@@ -93,7 +95,20 @@ Route::get('/client-area/dashboard', function () {
 
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
 
-
 /* Crud Product */
-Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+// Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+// Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+// Route::post('/product', [ProductController::class, 'create'])->name('product.create');
+// Route::post('/group', [ProductController::class, 'create'])->name('group.createGroup');
+// Route::get('/product', [ProductController::class, ''])->name('product.index');
+
+/* Crud Hosting Package */
+Route::get('/clients', [ClientController::class, 'index'])->name('app.admin.clients.index');
+Route::get('/clients/create', ClientController::class . '@create')->name('clients.create');
+Route::get('/clients/store', ClientController::class . '@store')->name('clients.store');
+Route::get('/clients/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
+Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
+Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+/* CRUD TLD */
+Route::resource('tlds', TldController::class);
