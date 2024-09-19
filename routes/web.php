@@ -102,9 +102,29 @@ Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, '
 // Route::get('/product', [ProductController::class, ''])->name('product.index');
 
 /* Crud Hosting Package */
-Route::get('/clients', ClientController::class .'@index')->name('clients.index');
-Route::get('/clients/create', ClientController::class . '@create')->name('clients.create');
-Route::get('/clients/store', ClientController::class . '@store')->name('clients.store');
+// Route::get('/clients', ClientController::class .'@index')->name('clients.index');
+// Route::get('/clients/create', ClientController::class . '@create')->name('clients.create');
+// Route::post('/clients/store', ClientController::class . '@store')->name('clients.store');
+// CRUD Client Package
+Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
+Route::post('/clients/store', [ClientController::class, 'store'])->name('clients.store');
+Route::get('/clients/{client}', [ClientController::class, 'show'])->name('clients.show');
+Route::get('/clients/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
+Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
+Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+
+/* Crud Testimonial Package */
+Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
+Route::post('/testimonials/store', [TestimonialController::class, 'store'])->name('testimonials.store');
+Route::get('/testimonials/{id}', [TestimonialController::class, 'show'])->name('testimonials.show');
+Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonials.edit');
+Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
+Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
+
+
 
 // Route::post('/clients', [ClientController::class, 'store']);
 // Route::get('/clients/{id}', [ClientController::class, 'show']);
