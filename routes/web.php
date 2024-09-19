@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TldController; 
 use App\Http\Controllers\ProductController;
 
 /* Welcome */
@@ -108,3 +109,6 @@ Route::get('/clients/store', ClientController::class . '@store')->name('clients.
 Route::get('/clients/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
 Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+/* CRUD TLD */
+Route::resource('tlds', TldController::class);
