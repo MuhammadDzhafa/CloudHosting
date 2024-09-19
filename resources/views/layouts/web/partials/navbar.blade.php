@@ -9,7 +9,7 @@
                 </a>
             </div>
 
-            <div class="center flex-grow flex justify-center">
+            <div class="center flex-grow flex justify-center hide-on-mobile">
                 <div id="webapp-navbar-menu" class="centered-drops flex items-center space-x-10 lg:space-x-12">
                     <a href="#"
                         class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">Home</a>
@@ -90,6 +90,14 @@
                     </a>
                     <a class="button h-button is-info">Contact Us</a>
 
+                </div>
+            </div>
+
+            <div class="brand-start">
+                <div class="navbar-burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
