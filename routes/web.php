@@ -8,8 +8,8 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\TldController; 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TldController;
+use App\Http\Controllers\HostingPlanController;
 
 /* Welcome */
 
@@ -95,6 +95,22 @@ Route::get('/client-area/dashboard', function () {
 
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
 
+
+Route::resource('clients', ClientController::class);
+
+Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
+Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
+Route::get('/testimonials/{id}', [TestimonialController::class, 'show'])->name('testimonials.show');
+Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonials.edit');
+Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
+Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
+
+// Route::post('/clients', [ClientController::class, 'store']);
+// Route::get('/clients/{id}', [ClientController::class, 'show']);
+// Route::get('/clients/{id}/edit', [ClientController::class, 'edit']);
+// Route::patch('/clients/{id}', [ClientController::class, 'update']);
+// Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
 /* Crud Product */
 // Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 // Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');

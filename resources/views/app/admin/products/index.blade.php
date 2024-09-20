@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -218,7 +218,8 @@
                                     </a>
                                     <hr class="dropdown-divider">
                                     <div class="dropdown-item is-button">
-                                        <button class="button h-button is-primary is-raised is-fullwidth logout-button">
+                                        <button
+                                            class="button h-button is-primary is-raised is-fullwidth logout-button">
                                             <span class="icon is-small">
                                                 <i data-feather="log-out"></i>
                                             </span>
@@ -327,7 +328,7 @@
                     </li>
 
                     <!-- Layouts -->
-                    <li>
+                    <li class="is-active">
                         <a href="/admin-grid-users-1.html" id="layouts-sidebar-menu" data-content="Layouts">
                             <img src="/assets/img/product/inventory-2.svg" alt="">
                         </a>
@@ -427,8 +428,10 @@
                     </div>
 
                     <div class="img-wrap has-text-centered">
-                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
-                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
+                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg"
+                            alt="">
+                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg"
+                            alt="">
                     </div>
                 </div>
             </div>
@@ -464,7 +467,8 @@
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Joshua S.</span>
@@ -484,7 +488,8 @@
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Melany W.</span>
@@ -504,7 +509,8 @@
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Esteban C.</span>
@@ -524,7 +530,8 @@
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
                                         data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
                                     <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg"
+                                        alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Tara S.</span>
@@ -554,7 +561,8 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-                                    <progress class="progress is-primary is-tiny" value="31" max="100">31%</progress>
+                                    <progress class="progress is-primary is-tiny" value="31"
+                                        max="100">31%</progress>
                                     <div class="foot-stats">
                                         <span>5 / 24</span>
 
@@ -590,7 +598,8 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-                                    <progress class="progress is-primary is-tiny" value="84" max="100">84%</progress>
+                                    <progress class="progress is-primary is-tiny" value="84"
+                                        max="100">84%</progress>
                                     <div class="foot-stats">
                                         <span>28 / 31</span>
 
@@ -622,7 +631,8 @@
                                     </a>
                                 </div>
                                 <div class="project-foot">
-                                    <progress class="progress is-primary is-tiny" value="60" max="100">60%</progress>
+                                    <progress class="progress is-primary is-tiny" value="60"
+                                        max="100">60%</progress>
                                     <div class="foot-stats">
                                         <span>25 / 39</span>
 
@@ -787,7 +797,8 @@
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/7.jpg" alt="" data-user-popover="0">
+                                        data-demo-src="assets/img/avatars/photos/7.jpg" alt=""
+                                        data-user-popover="0">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Alice C.</span>
@@ -797,7 +808,8 @@
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
+                                        data-demo-src="assets/img/avatars/photos/13.jpg" alt=""
+                                        data-user-popover="6">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Tara S.</span>
@@ -807,7 +819,8 @@
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/22.jpg" alt="" data-user-popover="5">
+                                        data-demo-src="assets/img/avatars/photos/22.jpg" alt=""
+                                        data-user-popover="5">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Jimmy H.</span>
@@ -828,7 +841,7 @@
                 <div class="dropdown project-dropdown dropdown-trigger is-spaced">
                     <div class="h-avatar is-small">
                         <span class="avatar is-fake is-h-green">
-                            <span>H</span>
+                          <span>H</span>
                         </span>
                     </div>
                     <span class="status-indicator"></span>
@@ -838,7 +851,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-warning">
-                                        <span>D</span>
+                                      <span>D</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -849,7 +862,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-h-green">
-                                        <span>H</span>
+                                      <span>H</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -860,7 +873,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-info">
-                                        <span>L</span>
+                                      <span>L</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -871,7 +884,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-h-purple">
-                                        <span>B</span>
+                                      <span>B</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -891,8 +904,7 @@
                 <ul>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Lists <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Lists <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -923,8 +935,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Flex Lists <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Flex Lists <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -949,8 +960,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Datatable <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Datatable <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -981,8 +991,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Placeload <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Placeload <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1014,8 +1023,7 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Card Grid <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Card Grid <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1046,8 +1054,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1072,8 +1079,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">User Grid <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">User Grid <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1105,8 +1111,7 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Personal <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Personal <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1137,8 +1142,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Pages <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Pages <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1193,8 +1197,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Subpages <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Subpages <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1225,8 +1228,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Projects <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Projects <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1264,8 +1266,7 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Utility <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Utility <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1296,8 +1297,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Onboarding <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Onboarding <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1334,8 +1334,7 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Error Pages <i
-                                    data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Error Pages <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -1880,13 +1879,13 @@
                         <!-- Sidebar Trigger -->
                         {{-- <div class="huro-hamburger nav-trigger push-resize" data-sidebar="layouts-sidebar">
                             <span class="menu-toggle has-chevron">
-                                <span class="icon-box-toggle">
-                                    <span class="rotate">
-                                        <i class="icon-line-top"></i>
-                                        <i class="icon-line-center"></i>
-                                        <i class="icon-line-bottom"></i>
-                                    </span>
-                                </span>
+                  <span class="icon-box-toggle">
+                    <span class="rotate">
+                      <i class="icon-line-top"></i>
+                      <i class="icon-line-center"></i>
+                      <i class="icon-line-bottom"></i>
+                    </span>
+                            </span>
                             </span>
                         </div> --}}
 
@@ -1994,798 +1993,422 @@
                         </div>
                     </div>
 
-                    <div class="page-content-inner">
+                    <div class="list-flex-toolbar">
+                        <div class="control has-icon">
+                            <input class="input" placeholder="Search..." />
+                            <div class="form-icon">
+                                <i data-feather="search"></i>
+                            </div>
+                        </div>
 
-                        <!--Form Layout 2-->
-                        <div class="form-layout is-split">
-                            <div class="form-outer">
-                                <div class="form-header stuck-header">
-                                    <div class="form-header-inner">
-                                        <div class="left">
-                                            <h3>Edit Product</h3>
+                        <div class="buttons">
+                            <button class="button h-button is-primary is-elevated h-modal-trigger"
+                                data-modal="demo-right-actions-modal">
+                                <span class="icon" style="min-width: unset">
+                                    <i aria-hidden="true" class="fas fa-plus"></i>
+                                </span>
+                                <span>New Group</span>
+                            </button>
+                            <button class="button h-button is-primary is-elevated h-modal-trigger"
+                                data-modal="create-new-product-modal">
+                                <span class="icon" style="min-width: unset">
+                                    <i aria-hidden="true" class="lnir lnir-circle-plus"></i>
+                                </span>
+                                <span>Add User</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- <--Modals--> --}}
+                    <div id="demo-right-actions-modal" class="modal h-modal">
+                        <div class="modal-background h-modal-close"></div>
+                        <div class="modal-content">
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <h3>Create a New Group</h3>
+                                    <button class="h-modal-close ml-auto" aria-label="close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </header>
+                                <div class="modal-card-body">
+                                    <div class="inner-content">
+                                        <div class="field">
+                                            <label class="label">Enter Group Name</label>
+                                            <div class="control">
+                                                <input type="text" class="input"
+                                                    placeholder="E.g. Cloud Hosting">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-body">
-                                    <div class="form-section">
-                                        <div class="tabs-wrapper" style="width: 100%;">
-                                            <div class="tabs-inner">
-                                                <div class="tabs is-centered" style="margin-bottom:unset">
-                                                    <ul>
-                                                        <li data-tab="team-tab" class="is-active"><a>Product Info</a>
-                                                        </li>
-                                                        <li data-tab="projects-tab"><a>Product Specifications</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <div id="team-tab" class="tab-content is-active">
-                                                <div class="form-section is-grey">
-                                                    <div class="column is-12-mobile is-4-tablet is-4-desktop"
-                                                        style="border-right: 1px solid #e5e5e5;">
-                                                        <div class="columns">
-                                                            <div class="column is-6 ">
-                                                                <div class="column-content">
-                                                                    <div class="field">
-                                                                        <label>SSD Storage</label>
-                                                                        <div
-                                                                            class="field is-inline-flex is-align-items-center">
-                                                                            <div class="control has-icon">
-                                                                                <input class="input" placeholder="0">
-                                                                            </div>
-                                                                            <h4 class="ml-2">GB</h4>
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="field">
-                                                                        <label>CPU</label>
-                                                                        <div
-                                                                            class="field is-inline-flex is-align-items-center">
-                                                                            <div class="control has-icon">
-                                                                                <input class="input" placeholder="0">
-                                                                            </div>
-                                                                            <h4 class="ml-2">Core</h4>
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="field">
-                                                                        <label>Entry Process</label>
-                                                                        <div
-                                                                            class="field is-inline-flex is-align-items-center">
-                                                                            <div class="control has-icon">
-                                                                                <input class="input" placeholder="0">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="field">
-                                                                        <label>SSL</label>
-                                                                        <div
-                                                                            class="field is-inline-flex is-align-items-center">
-                                                                            <div class="control has-icon">
-                                                                                <div class="control has-icon">
-                                                                                    <input class="input"
-                                                                                        placeholder="Free" disabled>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="column is-6">
-                                                                <div class="column-content">
-                                                                    <h3>RAM</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">GB</h4>
-
-                                                                    </div>
-                                                                    <h3>I/O</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">KB/s</h4>
-
-                                                                    </div>
-                                                                    <h3>NPROC</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>Backup</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="Weekly"
-                                                                                disabled>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="column is-12-mobile is-4-tablet is-8-desktop">
-                                                        <div class="column-content">
-                                                            <div class="field-container">
-                                                                <h3>Max Domain</h3>
-                                                                <div class="field">
-                                                                    <div class="control is-flex"
-                                                                        style="align-items: center; gap: 10px;">
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Unlimited
-                                                                        </label>
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Limited
-                                                                        </label>
-                                                                        <input class="input" placeholder="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="field-container">
-                                                                <h3>Max Bandwidth</h3>
-                                                                <div class="field">
-                                                                    <div class="control is-flex"
-                                                                        style="align-items: center; gap: 10px;">
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Unlimited
-                                                                        </label>
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Limited
-                                                                        </label>
-                                                                        <input class="input" placeholder="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="field-container">
-                                                                <h3>Max Addon Domain</h3>
-                                                                <div class="field">
-                                                                    <div class="control is-flex"
-                                                                        style="align-items: center; gap: 10px;">
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Unlimited
-                                                                        </label>
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Limited
-                                                                        </label>
-                                                                        <input class="input" placeholder="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="field-container">
-                                                                <h3>Max FTP Account</h3>
-                                                                <div class="field">
-                                                                    <div class="control is-flex"
-                                                                        style="align-items: center; gap: 10px;">
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Unlimited
-                                                                        </label>
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Limited
-                                                                        </label>
-                                                                        <input class="input" placeholder="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="field-container">
-                                                                <h3>Free Domain</h3>
-                                                                <div class="field">
-                                                                    <div class="control is-flex"
-                                                                        style="align-items: center; gap: 10px;">
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Unlimited
-                                                                        </label>
-                                                                        <label
-                                                                            class="radio is-outlined is-primary is-inline-flex">
-                                                                            <input type="radio" name="outlined_radio">
-                                                                            <span></span>
-                                                                            Limited
-                                                                        </label>
-                                                                        <input class="input" placeholder="0">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- <div class="column is-12-mobile is-4-tablet is-4-desktop">
-                                                        <div class="columns">
-                                                            
-                                                            <div class="column is-6"> 
-                                                                <div class="column-content">
-                                                                    <h3>SSD Storage</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">Range</h4>
-                                                                       
-                                                                    </div>
-                                                                    <h3>CPU</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">Core</h4>
-                                                                        
-                                                                    </div>
-                                                                    <h3>Entry Process</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>SSL</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="Free"
-                                                                                disabled>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="column is-6"> 
-                                                                <div class="column-content">
-                                                                    <h3>RAM</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">Range</h4>
-                                                                       
-                                                                    </div>
-                                                                    <h3>I/O</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">KB/s</h4>
-                                                                        
-                                                                    </div>
-                                                                    <h3>NPROC</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>Backup</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="Weekly"
-                                                                                disabled>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="column is-12-mobile is-4-tablet is-8-desktop">
-                                                        <div class="column-content">
-                                                            <h3>Max Domain</h3>
-                                                            <div class="field">
-                                                                <div class="control is-inline-flex"
-                                                                    style="align-items: center; gap: 10px;">
-                                                                    <label class="radio">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Unlimited
-                                                                    </label>
-                                                                    <label class="radio is-outlined is-primary">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Limited
-                                                                    </label>
-                                                                    <input class="input" placeholder="0"
-                                                                        style="max-width: 100px;">
-                                                                </div>
-                                                            </div>
-                                                            <h3>Max Bandwidth</h3>
-                                                            <div class="field">
-                                                                <div class="control is-inline-flex"
-                                                                    style="align-items: center; gap: 10px;">
-                                                                    <label class="radio">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Unlimited
-                                                                    </label>
-                                                                    <label class="radio is-outlined is-primary">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Limited
-                                                                    </label>
-                                                                    <input class="input" placeholder="0"
-                                                                        style="max-width: 100px;">
-                                                                </div>
-                                                            </div>
-                                                            <h3>Max Addon Domain</h3>
-                                                            <div class="field">
-                                                                <div class="control is-inline-flex"
-                                                                    style="align-items: center; gap: 10px;">
-                                                                    <label class="radio">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Unlimited
-                                                                    </label>
-                                                                    <label class="radio is-outlined is-primary">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Limited
-                                                                    </label>
-                                                                    <input class="input" placeholder="0"
-                                                                        style="max-width: 100px;">
-                                                                </div>
-                                                            </div>
-                                                            <h3>Max FTP Account</h3>
-                                                            <div class="field">
-                                                                <div class="control is-inline-flex"
-                                                                    style="align-items: center; gap: 10px;">
-                                                                    <label class="radio">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Unlimited
-                                                                    </label>
-                                                                    <label class="radio is-outlined is-primary">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Limited
-                                                                    </label>
-                                                                    <input class="input" placeholder="0"
-                                                                        style="max-width: 100px;">
-                                                                </div>
-                                                            </div>
-                                                            <h3>Free Domain</h3>
-                                                            <div class="field">
-                                                                <div class="control is-inline-flex"
-                                                                    style="align-items: center; gap: 10px;">
-                                                                    <label class="radio">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Unlimited
-                                                                    </label>
-                                                                    <label class="radio is-outlined is-primary">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Limited
-                                                                    </label>
-                                                                    <input class="input" placeholder="0"
-                                                                        style="max-width: 100px;" disabled>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- <div id="projects-tab" class="tab-content">
-                                            <div class="form-section is-grey">
-                                                <div class="columns">
-                                                    <div class="column is-12-mobile is-4-tablet is-4-desktop">
-                                                        <div class="columns">
-                                                           
-                                                            <div class="column is-6"> 
-                                                                <div class="column-content">
-                                                                    <h3>SSD Storage</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">Range</h4>
-                                                                      
-                                                                    </div>
-                                                                    <h3>CPU</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">Core</h4>
-                                                                       
-                                                                    </div>
-                                                                    <h3>Entry Process</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>SSL</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="Free"
-                                                                                disabled>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="column is-6"> 
-                                                                <div class="column-content">
-                                                                    <h3>RAM</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">Range</h4>
-                                                                       
-                                                                    </div>
-                                                                    <h3>I/O</h3>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                        <h4 class="ml-2">KB/s</h4>
-                                                                        
-                                                                    </div>
-                                                                    <h3>NPROC</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>Backup</h3>
-                                                                    <div class="field">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="Weekly"
-                                                                                disabled>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="column is-12-mobile is-4-tablet is-4-desktop">
-                                                        <div class="columns">
-                                                            
-                                                            <div class="column is-6"> 
-                                                                <div class="column-content">
-                                                                    <h3>p Domain</h3>
-                                                                    <div class="field">
-                                                                        <div class="control inline-flex space-x-4">
-                                                                            <label class="radio">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Unlimited
-                                                                            </label>
-                                                                            <label class="radio is-outlined is-primary">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Limited
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>Max Bandwidth</h3>
-                                                                    <div class="field">
-                                                                        <div class="control inline-flex space-x-4">
-                                                                            <label class="radio">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Unlimited
-                                                                            </label>
-                                                                            <label class="radio is-outlined is-primary">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Limited
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>Max Addon Domain</h3>
-                                                                    <div class="field">
-                                                                        <div class="control inline-flex space-x-4">
-                                                                            <label class="radio">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Unlimited
-                                                                            </label>
-                                                                            <label class="radio is-outlined is-primary">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Limited
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>Max FTP Account</h3>
-                                                                    <div class="field">
-                                                                        <div class="control inline-flex space-x-4">
-                                                                            <label class="radio">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Unlimited
-                                                                            </label>
-                                                                            <label class="radio is-outlined is-primary">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Limited
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <h3>Free Domain</h3>
-                                                                    <div class="field">
-                                                                        <div class="control inline-flex space-x-4">
-                                                                            <label class="radio">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Unlimited
-                                                                            </label>
-                                                                            <label class="radio is-outlined is-primary">
-                                                                                <input type="radio"
-                                                                                    name="outlined_radio">
-                                                                                <span></span>
-                                                                                Limited
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="column is-6"> 
-                                                                <div class="column-content">
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div
-                                                                        class="field is-inline-flex is-align-items-center">
-                                                                        <div class="control has-icon">
-                                                                            <input class="input" placeholder="0">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="column is-12-mobile is-4-tablet is-4-desktop">
-                                                        <div class="column-content">
-                                                            <div class="columns">
-                                                               
-                                                                <div class="column is-6"> 
-                                                                    <div class="column-content">
-                                                                        <h3>Max Email Account</h3>
-                                                                        <div class="field">
-                                                                            <div class="control inline-flex space-x-4">
-                                                                                <label class="radio">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    Unlimited
-                                                                                </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    Limited
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <h3>Max Database</h3>
-                                                                        <div class="field">
-                                                                            <div class="control inline-flex space-x-4">
-                                                                                <label class="radio">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    Unlimited
-                                                                                </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    Limited
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <h3>Max Parked Domain</h3>
-                                                                        <div class="field">
-                                                                            <div class="control inline-flex space-x-4">
-                                                                                <label class="radio">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    Unlimited
-                                                                                </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    Limited
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <h3>SSL</h3>
-                                                                        <div class="field">
-                                                                            <div class="control has-icon">
-                                                                                <input class="input" placeholder="Free">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="column is-6"> 
-                                                                    <div class="column-content">
-                                                                        <div
-                                                                            class="field is-inline-flex is-align-items-center">
-                                                                            <div class="control has-icon">
-                                                                                <input class="input" placeholder="0">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="field is-inline-flex is-align-items-center">
-                                                                            <div class="control has-icon">
-                                                                                <input class="input" placeholder="0">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="field is-inline-flex is-align-items-center">
-                                                                            <div class="control has-icon">
-                                                                                <input class="input" placeholder="0">
-                                                                            </div>
-                                                                        </div>
-                                                                        <h3>SSH</h3>
-                                                                        <div class="field">
-                                                                            <div class="control inline-flex space-x-4">
-                                                                                <label class="radio">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    No
-                                                                                </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary">
-                                                                                    <input type="radio"
-                                                                                        name="outlined_radio">
-                                                                                    <span></span>
-                                                                                    Yes
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="columns">
-                                                    <div class="column is-12-mobile is-4-tablet is-4-desktop">
-                                                        <div class="column is-4"></div>
-                                                        <div class="column is-8">
-                                                            <h3>Free Domain</h3>
-                                                            <div class="field">
-                                                                <div class="control is-inline-flex"
-                                                                    style="align-items: center; gap: 10px;">
-                                                                    <label class="radio">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Unlimited
-                                                                    </label>
-                                                                    <label class="radio is-outlined is-primary">
-                                                                        <input type="radio" name="outlined_radio">
-                                                                        <span></span>
-                                                                        Limited
-                                                                    </label>
-                                                                    <input class="input" placeholder="0"
-                                                                        style="max-width: 100px;" disabled>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                    </div>
+                                <div class="modal-card-foot is-end">
+                                    <a class="button h-button is-rounded h-modal-close">Cancel</a>
+                                    <a class="button h-button is-primary is-raised is-rounded">Submit</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div id="create-new-product-modal" class="modal h-modal">
+                        <div class="modal-background h-modal-close"></div>
+                        <div class="modal-content">
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <h3>Create a New Product</h3>
+                                    <button class="h-modal-close ml-auto" aria-label="close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </header>
+                                <div class="modal-card-body">
+                                    <div class="columns is-multiline">
+                                        <div class="column is-6">
+                                            <div class="field">
+                                                <label class="label">Product Group</label>
+                                                <div class="control">
+                                                    <div class="h-select">
+                                                        <select class="select">
+                                                            <option>Select Group</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="field">
+                                                <label class="label">Product Type</label>
+                                                <div class="control">
+                                                    <div class="h-select">
+                                                        <select class="select">
+                                                            <option>Select Type</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="field">
+                                                <label class="label">Product Name</label>
+                                                <div class="control">
+                                                    <input type="text" class="input"
+                                                        placeholder="E.g. Basic Plan">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="field">
+                                                <label class="label">Product Description</label>
+                                                <div class="control">
+                                                    <input type="text" class="input"
+                                                        placeholder="E.g. Starter website">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-12">
+                                            <div class="field">
+                                                <div class="control">
+                                                    <label class="checkbox">
+                                                        <input type="checkbox">
+                                                        <span></span>
+                                                        Discount
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="field">
+                                                <label class="label">Discount (%)</label>
+                                                <div class="control">
+                                                    <input type="number" class="input" value="0" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column is-6">
+                                            <div class="field">
+                                                <label class="label">After Discount</label>
+                                                <div class="control">
+                                                    <input type="number" class="input" value="0" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-card-foot is-end">
+                                    <button class="button h-button is-rounded h-modal-close">Cancel</button>
+                                    <button class="button h-button is-primary is-raised is-rounded">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="page-content-inner">
+
+                        <!-- Dataatablee -->
+
+                        <div class="table-wrapper" data-simplebar>
+                            <table id="users-datatable" class="table is-datatable is-hoverable">
+                                <thead>
+                                    <tr class="color-row">
+                                        <th>PRODUCT NAME</th>
+                                        <th>TYPE</th>
+                                        <th>PRICE</th>
+                                        <th>STOCK</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="is-striped-row">
+                                        <td>
+                                            <p>Personal Cloud Hosting</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="d-flex justify-end">
+                                                <a href=""><img src="assets/img/product/edit.svg"
+                                                        alt="" class="mr-3"></a>
+                                                <a href=""><img src="assets/img/product/trash.svg"
+                                                        alt=""></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Strato Lite</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg" alt=""
+                                                    class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg" alt=""
+                                                    class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Alto Lite</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cirrus Lite</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr class="is-striped-row">
+                                        <td>
+                                            <p>Corporate Cloud Hosting</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="d-flex justify-end">
+                                                <a href=""><img src="assets/img/product/edit.svg"
+                                                        alt="" class="mr-3"></a>
+                                                <a href=""><img src="assets/img/product/trash.svg"
+                                                        alt=""></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Strato</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Alto</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cirrus</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr class="is-striped-row">
+                                        <td>
+                                            <p>WordPress Hosting</p>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="d-flex justify-end">
+                                                <a href=""><img src="assets/img/product/edit.svg"
+                                                        alt="" class="mr-3"></a>
+                                                <a href=""><img src="assets/img/product/trash.svg"
+                                                        alt=""></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Strato</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Alto</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cirrus</th>
+                                        <td>Hosting</td>
+                                        <td>USD 2.99</td>
+                                        <td>20</td>
+                                        <td>
+                                            <a href=""><img src="assets/img/product/open.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/edit.svg"
+                                                    alt="" class="mr-6"></a>
+                                            <a href=""><img src="assets/img/product/trash.svg"
+                                                    alt=""></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+
+                        <div id="paging-first-datatable" class="pagination datatable-pagination">
+                            <div class="datatable-info">
+                                <span></span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!--Huro Scripts-->
-    <!--Load Mapbox-->
+        <!--Huro Scripts-->
+        <!--Load Mapbox-->
 
-    <!-- Concatenated plugins -->
-    <script src="assets/js/app.js"></script>
+        <!-- Concatenated plugins -->
+        <script src="assets/js/app.js"></script>
 
-    <!-- Huro js -->
-    <script src="assets/js/functions.js"></script>
-    <script src="assets/js/main.js" async></script>
-    <script src="assets/js/components.js" async></script>
-    <script src="assets/js/popover.js" async></script>
-    <script src="assets/js/widgets.js" async></script>
+        <!-- Huro js -->
+        <script src="assets/js/functions.js"></script>
+        <script src="assets/js/main.js" async></script>
+        <script src="assets/js/components.js" async></script>
+        <script src="assets/js/popover.js" async></script>
+        <script src="assets/js/widgets.js" async></script>
 
 
-    <!-- Additional Features -->
-    <script src="assets/js/touch.js" async></script>
+        <!-- Additional Features -->
+        <script src="assets/js/touch.js" async></script>
 
-    <!-- Landing page js -->
+        <!-- Landing page js -->
 
-    <!-- Dashboards js -->
+        <!-- Dashboards js -->
 
-    <!-- Charts js -->
 
-    <!--Forms-->
 
-    <!--Wizard-->
 
-    <!-- Layouts js -->
 
-    <script src="assets/js/syntax.js" async></script>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Charts js -->
+
+
+
+        <!--Forms-->
+
+        <!--Wizard-->
+
+        <!-- Layouts js -->
+
+
+
+
+
+
+
+
+
+
+
+        <script src="assets/js/syntax.js" async></script>
     </div>
 </body>
 

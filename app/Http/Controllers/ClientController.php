@@ -8,6 +8,8 @@ use App\Models\Client;
 //import return type View
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class ClientController extends Controller
 {
@@ -30,13 +32,26 @@ class ClientController extends Controller
         $client->password = bcrypt($request->input('password')); // Hash the password
         $client->phone_number = $request->input('phone_number');
         $client->name = $request->input('name');
-        $client->picture = $request->file('picture'); // Assuming you want to store the uploaded file
+        
+        // Handle picture upload or set default picture
+        if ($request->hasFile('picture')) {
+            // File was uploaded
+            $filePath = $request->file('picture')->store('client_pictures', 'public');
+            $client->picture = $filePath;
+        } else {
+            $filePath = 'client_pictures/default_picture'. '.png'; // Use time() to avoid filename conflicts
+            // Save the new path in the database
+            $client->picture = $filePath;
+        }
+
         $client->occupation = $request->input('occupation');
         $client->facebook = $request->input('facebook');
         $client->instagram = $request->input('instagram');
         $client->save();
-        return redirect()->route('app.admin.clients.index');
+
+        return redirect()->route('clients.index');
     }
+
 
     public function show($id)
     {

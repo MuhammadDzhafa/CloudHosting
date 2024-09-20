@@ -43,11 +43,11 @@ class HostingController extends Controller
 
     public function product()
     {
-        return view('app.hosting-plans.products.index');
+        return view('app.admin.products.index');
     }
 
     public function edit()
     {
-        return view('app.hosting-plans.products.edit');
+        return view('app.admin.products.edit');
     }
 }

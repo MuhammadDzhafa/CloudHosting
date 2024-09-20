@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id('testimonial_id');
             $table->string('domain_web');
             $table->string('testimonial_text');
-            $table->date('date');
+            $table->string('picture');
+            $table->string('occupation');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
             $table->timestamps();
         });
     }

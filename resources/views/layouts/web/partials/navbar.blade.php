@@ -4,7 +4,7 @@
         <div class="webapp-navbar-inner flex items-center justify-between h-16">
             <div class="left flex items-center flex-shrink-0 relative">
                 <a href="/" class="brand relative block lg:w-[204px] lg:h-[34px] md:w-[120px] md:h-[30px]">
-                    <img class="light-image absolute w-full h-full" src="assets/img/logos/logo/awanhosting.svg"
+                    <img class="light-image w-full h-full" src="assets/img/logos/logo/awanhosting.svg"
                         alt="Awan Hosting" />
                 </a>
             </div>
