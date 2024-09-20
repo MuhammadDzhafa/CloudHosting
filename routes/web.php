@@ -109,5 +109,6 @@ Route::get('/hosting-plans/create', [HostingPlanController::class, 'create'])->n
 Route::post('/hosting-plans', [HostingPlanController::class, 'store'])->name('hosting-plans.store');
 Route::get('/hosting-plans/{id}', [HostingPlanController::class, 'show'])->name('hosting-plans.show');
 Route::get('/hosting-plans/{id}/edit', [HostingPlanController::class, 'edit'])->name('hosting-plans.edit');
-Route::put('/hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
+Route::put('hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
 Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
+Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
