@@ -96,8 +96,14 @@ Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, '
 
 
 Route::resource('clients', ClientController::class);
-Route::resource('testimonials', TestimonialController::class);
 
+Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
+Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
+Route::get('/testimonials/{id}', [TestimonialController::class, 'show'])->name('testimonials.show');
+Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonials.edit');
+Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
+Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
 // Route::post('/clients', [ClientController::class, 'store']);
 // Route::get('/clients/{id}', [ClientController::class, 'show']);

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Testimonial extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $primaryKey = 'testimonial_id';
 
@@ -20,4 +21,6 @@ class Testimonial extends Model
         'instagram'
     ];
 
+    // Kolom soft delete
+    protected $dates = ['deleted_at'];
 }

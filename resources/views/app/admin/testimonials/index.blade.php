@@ -59,7 +59,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Products</title>
+    <title>Awan Hosting :: Testimonials</title>
     <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
 
     <!-- Google Tag Manager -->
@@ -1403,7 +1403,7 @@
                         </div> --}}
 
                         <div class="title-wrap">
-                            <h1 class="title is-4">Products</h1>
+                            <h1 class="title is-4">Testimonials</h1>
                         </div>
 
                         <div class="toolbar ml-auto">
@@ -1516,8 +1516,8 @@
 
                         <div class="buttons">
                             <a href="{{ route('testimonials.create') }}">
-                                <button class="button h-button is-primary is-elevated h-modal-trigger"
-                                    data-modal="demo-right-actions-modal">
+                                <button class="button h-button is-primary is-elevated h-modal-trigger">
+                                    <!-- data-modal="demo-right-actions-modal"> -->
                                     <span class="icon" style="min-width: unset">
                                         <i aria-hidden="true" class="fas fa-plus"></i>
                                     </span>
@@ -1658,7 +1658,7 @@
                                 <thead>
                                     <tr class="color-row">
                                         <th>DOMAIN NAME</th>
-                                        <th>TESTIMONIAL</th>
+                                        <th style="max-width: 200px;">TESTIMONIAL</th>
                                         <th>PICTURE</th>
                                         <th>OCCUPATION</th>
                                         <th>ACTION</th>
@@ -1668,7 +1668,7 @@
                                 @foreach ($testimonials as $testimonial)
                                     <tr>
                                         <td>{{ $testimonial->domain_web }}</td>
-                                        <td>{{ $testimonial->testimonial_text }}</td>
+                                        <td style="max-width: 200px;">{{ $testimonial->testimonial_text }}</td>
                                         <td>
                                             @if ($testimonial->picture)
                                                 <img src="{{ asset('storage/' . $testimonial->picture) }}" alt="Picture" style="width: 100px;">
