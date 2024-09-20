@@ -1,10 +1,10 @@
-{{-- <div class="mobile-main-sidebar">
+<div class="mobile-main-sidebar">
     <div class="mobile-subsidebar">
         <div class="inner">
             <div class="sidebar-title">
                 <h3>Layouts</h3>
             </div>
-    
+
             <ul class="submenu">
                 <li class="has-children">
                     <div class="collapse-wrap">
@@ -40,7 +40,7 @@
                 <li class="has-children">
                     <div class="collapse-wrap">
                         <a href="javascript:void(0);" class="parent-link">Product<i
-                              data-feather="chevron-right"></i></a>
+                                data-feather="chevron-right"></i></a>
                     </div>
                     <ul>
                         <li>
@@ -408,7 +408,7 @@
                 <li class="has-children">
                     <div class="collapse-wrap">
                         <a href="javascript:void(0);" class="parent-link">Onboarding <i
-                              data-feather="chevron-right"></i></a>
+                                data-feather="chevron-right"></i></a>
                     </div>
                     <ul>
                         <li>
@@ -446,7 +446,7 @@
                 <li class="has-children">
                     <div class="collapse-wrap">
                         <a href="javascript:void(0);" class="parent-link">Error Pages <i
-                              data-feather="chevron-right"></i></a>
+                                data-feather="chevron-right"></i></a>
                     </div>
                     <ul>
                         <li>
@@ -482,7 +482,7 @@
                     </ul>
                 </li>
             </ul>
-    
+
         </div>
     </div>
-</div> --}}
+</div>
