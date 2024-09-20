@@ -427,6 +427,8 @@
                     <div class="img-wrap has-text-centered">
                         <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
                         <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
+                        <img class="light-image" src="assets/img/illustrations/right-panel/languages.svg" alt="">
+                        <img class="dark-image" src="assets/img/illustrations/right-panel/languages-dark.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -459,10 +461,8 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
+                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Joshua S.</span>

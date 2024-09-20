@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TldController; 
 use App\Http\Controllers\ProductController;
 
 /* Welcome */
