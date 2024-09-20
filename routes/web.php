@@ -111,4 +111,9 @@ Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
 
 /* CRUD TLD */
-Route::resource('tlds', TldController::class);
+Route::get('/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index');
+Route::get('/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
+Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
+Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
+Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
+Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');

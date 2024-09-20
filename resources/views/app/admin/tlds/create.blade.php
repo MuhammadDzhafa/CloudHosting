@@ -11,8 +11,8 @@
 <body>
     <div class="container">
         <h1>Add New TLD</h1>
-        <a href="{{ route('tlds.index') }}"  class="btn btn-secondary">Back to TLDs</a>
-        <form action="{{ route('tlds.store') }}" method="POST">
+        <a href="/tlds"  class="btn btn-secondary">Back to TLDs</a>
+        <form action="/tlds/store" method="POST">
             @csrf
             <div class="form-group">
                 <label for="tld_name">TLD Name:</label>
