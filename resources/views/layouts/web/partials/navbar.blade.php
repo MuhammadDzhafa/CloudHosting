@@ -1,6 +1,5 @@
-<header class="bg-white shadow-sm lg:w-fixed lg:h-auto lg:opacity-1"
-    style="padding: 8px 120px; gap: 0px; border: 0px solid transparent; border-bottom: 1px solid var(--Base-0, #FFFFFF); display: flex; justify-content: space-between;">
-    <div class="webapp-navbar w-full">
+<header class="bg-white shadow-sm lg:w-fixed lg:h-auto lg:opacity-1">
+    <div class="webapp-navbar w-full" >
         <div class="webapp-navbar-inner flex items-center justify-between h-16">
             <div class="left flex items-center flex-shrink-0 relative">
                 <a href="/" class="brand relative block lg:w-[204px] lg:h-[34px] md:w-[120px] md:h-[30px]">
@@ -8,7 +7,6 @@
                         alt="Awan Hosting" />
                 </a>
             </div>
-
             <div class="center flex-grow flex justify-center hide-on-mobile">
                 <div id="webapp-navbar-menu" class="centered-drops flex items-center space-x-10 lg:space-x-12">
                     <a href="#"
@@ -88,7 +86,7 @@
                         <img src="assets/img/icons/login.svg" alt="Login Icon"
                             class="ml-2 lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px] relative lg:top-[1.67px] md:top-[0px] lg:left-[1.67px] gap-0 opacity-1">
                     </a>
-                    <a class="button h-button is-info">Contact Us</a>
+                    <a class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white">Contact Us</a>
 
                 </div>
             </div>

@@ -96,7 +96,7 @@ Route::get('/client-area/dashboard', function () {
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
 
 
-Route::resource('clients', ClientController::class);
+// Route::resource('clients', ClientController::class);
 
 Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
 Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');

@@ -91,10 +91,8 @@
                 </div>
             </div>
 
-            <div class="page-content-inner">
                 @yield('landing-page')
                     {{-- @include('layouts.web.partials.scrolltotop') --}}
-            </div>
         </div>
 
         <!--Huro Scripts-->
