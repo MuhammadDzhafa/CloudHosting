@@ -9,9 +9,15 @@ class Testimonial extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'testimonial_id';
+
     protected $fillable = [
         'domain_web',
-        'testimonial_text'
+        'testimonial_text',
+        'picture',
+        'occupation',
+        'facebook',
+        'instagram'
     ];
 
 }

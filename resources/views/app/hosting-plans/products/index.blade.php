@@ -1,1 +1,0 @@
-@extends('app.hosting-plans.products.layouts')

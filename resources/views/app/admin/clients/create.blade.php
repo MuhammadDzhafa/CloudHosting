@@ -15,11 +15,6 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
       <a class="navbar-brand h1" href={{ route('clients.index') }}>CRUD Clients</a>
-      <div class="justify-end ">
-        <div class="col ">
-          <a class="btn btn-sm btn-success" href={{ route('clients.create') }}>Add Client</a>
-        </div>
-      </div>
     </div>
   </nav>
 
@@ -27,7 +22,7 @@
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col-10 col-md-8 col-lg-6">
         <h3>Add a Client</h3>
-        <form action="{{ route('clients.store') }}" method="post">
+        <form action="{{ route('clients.store') }}" method="post" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
             <label for="name">Name</label>
@@ -46,9 +41,14 @@
             <input type="tel" class="form-control" id="phone_number" name="phone_number">
           </div>
           <div class="form-group">
-            <label for="picture">Picture (Optional)</label>
-            <input type="file" class="form-control" id="picture" name="picture">
-          </div>
+            <label class="picture" for="picture">GAMBAR</label>
+            <input type="file" class="form-control @error('image') is-invalid @enderror" id="picture" name="picture">
+                @error('image')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
           <div class="form-group">
             <label for="occupation">Occupation</label>
             <input type="text" class="form-control" id="occupation" name="occupation">
@@ -63,7 +63,7 @@
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Create Client</button>
-        </form>
+        </f>
       </div>
     </div>
   </div>
