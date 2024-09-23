@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Edit TLD</h1>
-        <a href="{{ route('tlds.index') }}" class="btn btn-secondary">Back to TLDs</a>
+        <a href="/tlds" class="btn btn-secondary">Back to TLDs</a>
         <form action="{{ route('tlds.update', $tld) }}" method="POST">
             @csrf
             @method('PUT')

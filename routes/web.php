@@ -57,8 +57,8 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
-Route::get('/product', [HostingController::class, 'product']);
-Route::get('/edit', [HostingController::class, 'edit']);
+Route::get('/products', [HostingController::class, 'product']);
+Route::get('/product-edit', [HostingController::class, 'edit']);
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -105,9 +105,6 @@ Route::get('/testimonials/{id}', [TestimonialController::class, 'show'])->name('
 Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonials.edit');
 Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
 Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
-
-/* CRUD TLD */
-Route::resource('tlds', TldController::class);
 
 /* Hosting Plan */
 Route::get('/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');

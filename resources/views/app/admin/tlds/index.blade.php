@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>TLDs</h1>
-        <a href="{{ route('tlds.create') }}" class="btn btn-primary">Add New TLD</a>
+        <a href="/tlds/create" class="btn btn-primary">Add New TLD</a>
         <table class="table">
             <thead>
                 <tr>
@@ -22,7 +22,7 @@
                 @foreach ($tlds as $tld)
                     <tr>
                         <td>{{ $tld->tld_name }}</td>
-                        <td>${{ number_format($tld->tld_price, 2) }}</td>
+                        <td>Rp{{ number_format($tld->tld_price, 0, ',', '.') }}</td>
                         <td>
                             <a href="{{ route('tlds.edit', $tld) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('tlds.destroy', $tld) }}" method="POST" style="display:inline;">
