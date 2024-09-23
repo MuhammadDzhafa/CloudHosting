@@ -12,11 +12,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- Google Tag Manager -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -91,10 +92,8 @@
                 </div>
             </div>
 
-            <div class="page-content-inner">
-                @yield('landing-page')
-                    {{-- @include('layouts.web.partials.scrolltotop') --}}
-            </div>
+            @yield('landing-page')
+            {{-- @include('layouts.web.partials.scrolltotop') --}}
         </div>
 
         <!--Huro Scripts-->

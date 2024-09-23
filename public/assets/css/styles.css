@@ -1456,7 +1456,7 @@ p {
 }
 
 
-@media (max-width: 1300px) {
+/* @media (max-width: 1300px) {
     .hide-on-mobile {
         display: none !important;
     }
@@ -1466,4 +1466,4 @@ p {
     .navbar-burger {
         display: none;
     }
-}
+} */

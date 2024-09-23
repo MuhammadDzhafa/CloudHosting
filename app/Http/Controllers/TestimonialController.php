@@ -12,7 +12,7 @@ class TestimonialController extends Controller
     public function index(): View
     {
         $testimonials = Testimonial::latest()->paginate(10);
-        return view('app.admin.testimonials.index', compact('testimonials'));
+        return view('app.admin.testimonials.index', ['testimonials' => $testimonials]);
     }
 
     public function create(): View
@@ -50,15 +50,14 @@ class TestimonialController extends Controller
 
     public function show(Testimonial $testimonial): View
     {
-        return view('app.admin.testimonials.show', compact('testimonial'));
+        return view('app.admin.testimonials.show', ['testimonial' => $testimonial]);
     }
 
     public function edit($id): View
     {
         $testimonial = Testimonial::where('testimonial_id', $id)->firstOrFail();
-        return view('app.admin.testimonials.edit', compact('testimonial'));
+        return view('app.admin.testimonials.edit', ['testimonial' => $testimonial]);
     }
-
 
     public function update(Request $request, $id)
     {

@@ -20,4 +20,5 @@ class Testimonial extends Model
         'instagram'
     ];
 
+    // Kolom soft delete
 }
