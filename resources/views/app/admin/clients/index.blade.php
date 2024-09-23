@@ -91,10 +91,10 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <div class="container-fluid">
-        <a class="navbar-brand h1" href={{ route('clients.index') }}>CRUD Clients</a>
+        <a class="navbar-brand h1" href="clients">CRUD Clients</a>
         <div class="justify-end ">
             <div class="col ">
-            <a class="btn btn-sm btn-success" href={{ route('clients.create') }}>Add Client</a>
+            <a class="btn btn-sm btn-success" href="clients/create">Add Client</a>
             </div>
         </div>
         </div>

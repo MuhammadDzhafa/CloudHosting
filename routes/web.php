@@ -57,8 +57,8 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
-Route::get('/product', [HostingController::class, 'product']);
-Route::get('/edit', [HostingController::class, 'edit']);
+Route::get('/products', [HostingController::class, 'product']);
+Route::get('/product-edit', [HostingController::class, 'edit']);
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -96,8 +96,7 @@ Route::get('/client-area/dashboard', function () {
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
 
 
-Route::resource('clients', ClientController::class);
-
+/* CRUD Testimonial */
 Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
 Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
 Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
@@ -106,22 +105,11 @@ Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->n
 Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
 Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
-// Route::post('/clients', [ClientController::class, 'store']);
-// Route::get('/clients/{id}', [ClientController::class, 'show']);
-// Route::get('/clients/{id}/edit', [ClientController::class, 'edit']);
-// Route::patch('/clients/{id}', [ClientController::class, 'update']);
-// Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
-/* Crud Product */
-// Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-// Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
-// Route::post('/product', [ProductController::class, 'create'])->name('product.create');
-// Route::post('/group', [ProductController::class, 'create'])->name('group.createGroup');
-// Route::get('/product', [ProductController::class, ''])->name('product.index');
-
-/* Crud Hosting Package */
-Route::get('/clients', [ClientController::class, 'index'])->name('app.admin.clients.index');
-Route::get('/clients/create', ClientController::class . '@create')->name('clients.create');
-Route::get('/clients/store', ClientController::class . '@store')->name('clients.store');
+/* Crud Clients */
+Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
+Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
 Route::get('/clients/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
 Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');

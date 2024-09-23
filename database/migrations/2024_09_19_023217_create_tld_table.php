@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tld', function (Blueprint $table) {
             $table->id('tld_id');
             $table->string('tld_name');
-            $table->decimal('tld_price', 3, 2);
+            $table->integer('tld_price');
             $table->timestamps();
         });
     }
