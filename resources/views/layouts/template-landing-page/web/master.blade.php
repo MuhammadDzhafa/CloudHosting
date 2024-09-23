@@ -66,18 +66,18 @@
         <div class="infraloader is-full is-active"></div>
 
         <!--Mobile navbar-->
-        @include("layouts.mobile.navbar")
+        @include("layouts.template-landing-page.mobile.navbar")
         <!--Mobile sidebar-->
-        @include("layouts.mobile.sidebar")
+        @include("layouts.template-landing-page.mobile.sidebar")
         <!--Webapp navbar alt-->
-        @include("layouts.web.partials.navbar")
+        @include("layouts.template-landing-page.web.partials.navbar")
 
         <!--Languages panel-->
-        @include("layouts.web.partials.languages")
+        @include("layouts.template-landing-page.web.partials.languages")
         <!--Activity panel-->
-        @include("layouts.web.partials.activity")
+        @include("layouts.template-landing-page.web.partials.activity")
         <!--Page body-->
-        @include("layouts.mobile.subsidebar")
+        @include("layouts.template-landing-page.mobile.subsidebar")
 
 
         <!-- Content Wrapper -->
@@ -85,15 +85,15 @@
 
             <div class="page-title has-text-centered is-webapp">
                 <div class="toolbar ml-auto">
-                    @include("layouts.web.partials.toolbar.mode")
-                    @include("layouts.web.partials.toolbar.languages")
-                    @include("layouts.web.partials.toolbar.notifications")
-                    @include("layouts.web.partials.toolbar.activity")
+                    @include("layouts.template-landing-page.web.partials.toolbar.mode")
+                    @include("layouts.template-landing-page.web.partials.toolbar.languages")
+                    @include("layouts.template-landing-page.web.partials.toolbar.notifications")
+                    @include("layouts.template-landing-page.web.partials.toolbar.activity")
                 </div>
             </div>
 
             @yield('landing-page')
-            {{-- @include('layouts.web.partials.scrolltotop') --}}
+            {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
         </div>
 
         <!--Huro Scripts-->
