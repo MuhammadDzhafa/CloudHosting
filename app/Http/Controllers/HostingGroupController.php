@@ -34,7 +34,6 @@ class HostingGroupController extends Controller
         return view('product', compact('hostingGroup')); // Correct view for editing
     }
 
-
     public function update(Request $request, $id)
     {
         $request->validate([

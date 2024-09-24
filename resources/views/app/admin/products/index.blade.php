@@ -223,7 +223,7 @@
 
                         <div class="buttons">
                             <button class="button h-button is-primary is-elevated h-modal-trigger" style="border-radius: 4px;"
-                                    data-modal="new-group-button">
+                                data-modal="new-group-button">
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
@@ -366,7 +366,6 @@
                     <div class="page-content-inner">
 
                         <!-- Datatable -->
-                    @foreach ($hostingGroups as $group)
                         <div class="table-wrapper" data-simplebar>
                             <table id="users-datatable" class="table is-datatable is-hoverable">
                                 <thead>
@@ -379,6 +378,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($hostingGroups as $group)
                                     <tr class="is-striped-row">
                                         <td>
                                             <p>{{ $group->name }}</p>
@@ -388,242 +388,84 @@
                                         <td></td>
                                         <td>
                                             <div class="d-flex justify-end">
-                                            <a href="#" class="edit-link" data-id="{{ $group->hosting_group_id }}" data-name="{{ $group->name }}">
-                                                <img src="assets/img/product/edit.svg" alt="" class="mr-3">
-                                            </a>
+                                                <a href="#" class="edit-link" data-id="{{ $group->hosting_group_id }}" data-name="{{ $group->name }}">
+                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                                </a>
 
                                                 <a href=""><img src="assets/img/product/trash.svg"
                                                         alt=""></a>
                                             </div>
                                         </td>
                                     </tr>
-                                    <script>
-                                    document.addEventListener('DOMContentLoaded', () => {
-                                        const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
-                                        const newGroupModal = document.querySelector('#new-group-modal');
-                                        const newGroupForm = document.querySelector('#new-group-form');
-                                        const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
-                                        const modalTitle = document.querySelector('#modal-title'); // Judul modal
-
-                                        // Fungsi untuk membuka modal dan mereset isinya
-                                        function openModal(isEdit = false, groupId = null, groupName = '') {
-                                            if (isEdit) {
-                                                modalTitle.textContent = 'Edit Group'; // Judul untuk edit
-                                                newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
-                                                newGroupForm.method = 'POST'; // Set method untuk POST
-                                                // Tambahkan input hidden untuk metode PUT
-                                                let methodField = newGroupForm.querySelector('input[name="_method"]');
-                                                if (!methodField) {
-                                                    methodField = document.createElement('input');
-                                                    methodField.type = 'hidden';
-                                                    methodField.name = '_method';
-                                                    methodField.value = 'PUT';
-                                                    newGroupForm.appendChild(methodField);
-                                                }
-                                                newGroupForm.name.value = groupName; // Isi nama grup untuk edit
-                                            } else {
-                                                resetForm(); // Reset form untuk menambah grup baru
-                                                modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
-                                                newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
-                                                delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
-                                            }
-                                            newGroupModal.classList.add('is-active'); // Buka modal
-                                        }
-
-                                        // Handle tombol "Add New Group"
-                                        addNewGroupButton.addEventListener('click', () => {
-                                            openModal(); // Buka modal untuk menambah grup baru
-                                        });
-
-                                        // Handle edit button clicks
-                                        document.querySelectorAll('.edit-link').forEach(link => {
-                                            link.addEventListener('click', () => {
-                                                const groupId = link.getAttribute('data-id');
-                                                const groupName = link.getAttribute('data-name');
-                                                openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
-                                            });
-                                        });
-
-                                        // Modal close handling
-                                        modalCloseButton.addEventListener('click', () => {
-                                            resetForm(); // Reset form saat modal ditutup
-                                            newGroupModal.classList.remove('is-active'); // Tutup modal
-                                        });
-
-                                        // Reset form function
-                                        function resetForm() {
-                                            newGroupForm.reset(); // Bersihkan semua field di form
-                                            const methodField = newGroupForm.querySelector('input[name="_method"]');
-                                            if (methodField) {
-                                                methodField.remove(); // Hapus hidden input untuk PUT jika ada
-                                            }
-                                        }
-                                    });
-                                </script>
-                                    <tr>
-                                        <th>Strato Lite</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg" alt=""
-                                                    class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg" alt=""
-                                                    class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Alto Lite</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Cirrus Lite</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="is-striped-row">
-                                        <td>
-                                            <!-- <p>Corporate Cloud Hosting</p> -->
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex justify-end">
-                                                <a href=""><img src="assets/img/product/edit.svg"
-                                                        alt="" class="mr-3"></a>
-                                                <a href=""><img src="assets/img/product/trash.svg"
-                                                        alt=""></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Strato</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Alto</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Cirrus</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="is-striped-row">
-                                        <td>
-                                            <!-- <p>WordPress Hosting</p> -->
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex justify-end">
-                                                <a href=""><img src="assets/img/product/edit.svg"
-                                                        alt="" class="mr-3"></a>
-                                                <a href=""><img src="assets/img/product/trash.svg"
-                                                        alt=""></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Strato</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Alto</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Cirrus</th>
-                                        <td>Hosting</td>
-                                        <td>USD 2.99</td>
-                                        <td>20</td>
-                                        <td>
-                                            <a href=""><img src="assets/img/product/open.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/edit.svg"
-                                                    alt="" class="mr-6"></a>
-                                            <a href=""><img src="assets/img/product/trash.svg"
-                                                    alt=""></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    @endforeach
 
-                   
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
+                                const newGroupModal = document.querySelector('#new-group-modal');
+                                const newGroupForm = document.querySelector('#new-group-form');
+                                const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
+                                const modalTitle = document.querySelector('#modal-title'); // Judul modal
+
+                                // Fungsi untuk membuka modal dan mereset isinya
+                                function openModal(isEdit = false, groupId = null, groupName = '') {
+                                    if (isEdit) {
+                                        modalTitle.textContent = 'Edit Group'; // Judul untuk edit
+                                        newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
+                                        newGroupForm.method = 'POST'; // Set method untuk POST
+                                        // Tambahkan input hidden untuk metode PUT
+                                        let methodField = newGroupForm.querySelector('input[name="_method"]');
+                                        if (!methodField) {
+                                            methodField = document.createElement('input');
+                                            methodField.type = 'hidden';
+                                            methodField.name = '_method';
+                                            methodField.value = 'PUT';
+                                            newGroupForm.appendChild(methodField);
+                                        }
+                                        newGroupForm.name.value = groupName; // Isi nama grup untuk edit
+                                    } else {
+                                        resetForm(); // Reset form untuk menambah grup baru
+                                        modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
+                                        newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
+                                        delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
+                                    }
+                                    newGroupModal.classList.add('is-active'); // Buka modal
+                                }
+
+                                // Handle tombol "Add New Group"
+                                addNewGroupButton.addEventListener('click', () => {
+                                    openModal(); // Buka modal untuk menambah grup baru
+                                });
+
+                                // Handle edit button clicks
+                                document.querySelectorAll('.edit-link').forEach(link => {
+                                    link.addEventListener('click', () => {
+                                        const groupId = link.getAttribute('data-id');
+                                        const groupName = link.getAttribute('data-name');
+                                        openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
+                                    });
+                                });
+
+                                // Modal close handling
+                                modalCloseButton.addEventListener('click', () => {
+                                    resetForm(); // Reset form saat modal ditutup
+                                    newGroupModal.classList.remove('is-active'); // Tutup modal
+                                });
+
+                                // Reset form function
+                                function resetForm() {
+                                    newGroupForm.reset(); // Bersihkan semua field di form
+                                    const methodField = newGroupForm.querySelector('input[name="_method"]');
+                                    if (methodField) {
+                                        methodField.remove(); // Hapus hidden input untuk PUT jika ada
+                                    }
+                                }
+                            });
+                        </script>
 
 
 
