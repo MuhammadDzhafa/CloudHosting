@@ -77,8 +77,7 @@
         @include('layouts.template-admin.mobile.subsidebar')
 
         <!-- Content Wrapper -->
-        <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu"
-            data-mobile-item="#home-sidebar-menu-mobile">
+        <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
             <div class="page-content-wrapper">
                 <div class="page-content is-relative">
                     <div class="page-title has-text-centered">
@@ -90,7 +89,6 @@
                             @include("layouts.template-admin.web.partials.toolbar.activity-panel")
                         </div>
                     </div>
-
                     <div class="list-flex-toolbar">
                         <div class="control has-icon">
                             <input class="input" placeholder="Search..." />
@@ -133,10 +131,9 @@
                                             </td>
                                             <td>{{ $testimonial->occupation }}</td>
                                             <td>
-                                            <a href="javascript:void(0);" class="edit-link" data-id="{{ $testimonial->testimonial_id }}" data-domain="{{ $testimonial->domain_web }}" data-text="{{ $testimonial->testimonial_text }}" data-picture="{{ $testimonial->picture }}" data-occupation="{{ $testimonial->occupation }}" data-facebook="{{ $testimonial->facebook }}" data-instagram="{{ $testimonial->instagram }}">
-                                                <img src="assets/img/product/edit.svg" alt="" class="mr-6">
-                                            </a>
-
+                                                <a href="javascript:void(0);" class="edit-link" data-id="{{ $testimonial->testimonial_id }}" data-domain="{{ $testimonial->domain_web }}" data-text="{{ $testimonial->testimonial_text }}" data-picture="{{ $testimonial->picture }}" data-occupation="{{ $testimonial->occupation }}" data-facebook="{{ $testimonial->facebook }}" data-instagram="{{ $testimonial->instagram }}">
+                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-6">
+                                                </a>
                                                 <form action="{{ route('testimonials.destroy', $testimonial->testimonial_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
                                                     @csrf
                                                     @method('DELETE')
@@ -156,13 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    @include("app.admin.testimonials.create")
-
-
-
-        <!--Huro Scripts-->
-        <!--Load Mapbox-->
-
+        @include("app.admin.testimonials.modal")
 
         <!-- Concatenated plugins -->
         <script src="assets/js/app.js"></script>
@@ -174,10 +165,8 @@
         <script src="assets/js/popover.js" async></script>
         <script src="assets/js/widgets.js" async></script>
 
-
         <!-- Additional Features -->
         <script src="assets/js/touch.js" async></script>
-
         <script src="assets/js/syntax.js" async></script>
     </div>
 </body>

@@ -401,14 +401,19 @@
     });
 
     /*section9 javascript*/
+    document.addEventListener('DOMContentLoaded', function () {
     const slider = document.querySelector('#slider');
     const sliderContent = document.querySelector('.slider-content');
     const sliderItems = document.querySelectorAll('.slider-item');
+    
     if (slider && sliderContent && sliderItems.length > 0) {
         let currentIndex = 0;
 
+        // Adjust width of sliderContent based on the number of items and their width
+        const itemWidth = sliderItems[0].offsetWidth;
+        sliderContent.style.width = `${sliderItems.length * itemWidth}px`;
+
         function showSlide(index) {
-            const itemWidth = sliderItems[0].offsetWidth;
             sliderContent.style.transform = `translateX(${-index * itemWidth}px)`;
         }
 
@@ -425,9 +430,36 @@
                 showSlide(currentIndex);
             }
         });
-
-        sliderContent.style.width = `${sliderItems.length * 34}%`;
     }
+});
+
+    // const slider = document.querySelector('#slider');
+    // const sliderContent = document.querySelector('.slider-content');
+    // const sliderItems = document.querySelectorAll('.slider-item');
+    // if (slider && sliderContent && sliderItems.length > 0) {
+    //     let currentIndex = 0;
+
+    //     function showSlide(index) {
+    //         const itemWidth = sliderItems[0].offsetWidth;
+    //         sliderContent.style.transform = `translateX(${-index * itemWidth}px)`;
+    //     }
+
+    //     document.querySelector('#prev').addEventListener('click', () => {
+    //         if (currentIndex > 0) {
+    //             currentIndex--;
+    //             showSlide(currentIndex);
+    //         }
+    //     });
+
+    //     document.querySelector('#next').addEventListener('click', () => {
+    //         if (currentIndex < sliderItems.length - 1) {
+    //             currentIndex++;
+    //             showSlide(currentIndex);
+    //         }
+    //     });
+
+    //     sliderContent.style.width = `${sliderItems.length * 34}%`;
+    // }
 
 
     /*section14 javascript*/
