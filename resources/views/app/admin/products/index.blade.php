@@ -761,14 +761,14 @@
                         </div>
 
                         <div class="buttons">
-                            <button class="button h-button is-primary is-elevated h-modal-trigger"
+                            <button class="button h-button is-primary is-elevated h-modal-trigger" style="border-radius: 4px;"
                                 data-modal="demo-right-actions-modal">
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
                                 <span>New Group</span>
                             </button>
-                            <button class="button h-button is-primary is-elevated h-modal-trigger"
+                            <button class="button h-button is-primary is-elevated h-modal-trigger" style="border-radius: 4px;"
                                 data-modal="create-new-product-modal">
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="lnir lnir-circle-plus"></i>
