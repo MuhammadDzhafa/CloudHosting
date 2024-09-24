@@ -169,545 +169,6 @@
 
             </div>
         </div>
-        <!--Page body-->
-
-        {{-- <div id="layouts-sidebar" class="sidebar-panel is-generic">
-            <div class="subpanel-header">
-
-                <div class="dropdown project-dropdown dropdown-trigger is-spaced">
-                    <div class="h-avatar is-small">
-                        <span class="avatar is-fake is-h-green">
-                          <span>H</span>
-                        </span>
-                    </div>
-                    <span class="status-indicator"></span>
-
-                    <div class="dropdown-menu" role="menu">
-                        <div class="dropdown-content">
-                            <div class="dropdown-block">
-                                <div class="h-avatar is-small">
-                                    <span class="avatar is-fake is-warning">
-                                      <span>D</span>
-                                    </span>
-                                </div>
-                                <div class="meta">
-                                    <span class="dark-inverted">Delivery App Project</span>
-                                    <span>Food For Good</span>
-                                </div>
-                            </div>
-                            <div class="dropdown-block">
-                                <div class="h-avatar is-small">
-                                    <span class="avatar is-fake is-h-green">
-                                      <span>H</span>
-                                    </span>
-                                </div>
-                                <div class="meta">
-                                    <span class="dark-inverted">Health and Fitness Dashboard</span>
-                                    <span>Fit'n'Dance</span>
-                                </div>
-                            </div>
-                            <div class="dropdown-block">
-                                <div class="h-avatar is-small">
-                                    <span class="avatar is-fake is-info">
-                                      <span>L</span>
-                                    </span>
-                                </div>
-                                <div class="meta">
-                                    <span class="dark-inverted">Learning Tracker Dashboard</span>
-                                    <span>Fit'n'Dance</span>
-                                </div>
-                            </div>
-                            <div class="dropdown-block">
-                                <div class="h-avatar is-small">
-                                    <span class="avatar is-fake is-h-purple">
-                                      <span>B</span>
-                                    </span>
-                                </div>
-                                <div class="meta">
-                                    <span class="dark-inverted">Banking and Finance Dashboard</span>
-                                    <span>H Bank</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h3 class="no-mb">Layouts</h3>
-                <div class="panel-close">
-                    <i data-feather="x"></i>
-                </div>
-            </div>
-            <div class="inner" data-simplebar>
-                <ul>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Lists <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-view-1.html">
-                                    <i class="lnil lnil-list-alt"></i>
-                                    <span>List View V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-view-2.html">
-                                    <i class="lnil lnil-list-alt"></i>
-                                    <span>List View V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-view-3.html">
-                                    <i class="lnil lnil-list-alt"></i>
-                                    <span>List View V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-view-4.html">
-                                    <i class="lnil lnil-list-alt"></i>
-                                    <span>List View V4</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Flex Lists <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-flex-1.html">
-                                    <i class="lnil lnil-list-alt-1"></i>
-                                    <span>Flex List V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-flex-2.html">
-                                    <i class="lnil lnil-list-alt-1"></i>
-                                    <span>Flex List V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-flex-3.html">
-                                    <i class="lnil lnil-list-alt-1"></i>
-                                    <span>Flex List V3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Datatable <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-datatable-1.html">
-                                    <i class="lnil lnil-layout-alt"></i>
-                                    <span>Datatable V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-datatable-2.html">
-                                    <i class="lnil lnil-layout-alt"></i>
-                                    <span>Datatable V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-datatable-3.html">
-                                    <i class="lnil lnil-layout-alt"></i>
-                                    <span>Datatable V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-list-datatable-4.html">
-                                    <i class="lnil lnil-layout-alt"></i>
-                                    <span>Datatable V4</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Placeload <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-placeload-1.html">
-                                    <i class="lnil lnil-reload"></i>
-                                    <span>Placeload V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-placeload-2.html">
-                                    <i class="lnil lnil-reload"></i>
-                                    <span>Placeload V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-placeload-3.html">
-                                    <i class="lnil lnil-reload"></i>
-                                    <span>Placeload V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-placeload-4.html">
-                                    <i class="lnil lnil-reload"></i>
-                                    <span>Placeload V4</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Card Grid <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-cards-1.html">
-                                    <i class="lnil lnil-grid-alt"></i>
-                                    <span>Card Grid V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-cards-2.html">
-                                    <i class="lnil lnil-grid-alt"></i>
-                                    <span>Card Grid V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-cards-3.html">
-                                    <i class="lnil lnil-grid-alt"></i>
-                                    <span>Card Grid V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-cards-4.html">
-                                    <i class="lnil lnil-grid-alt"></i>
-                                    <span>Card Grid V4</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-tiles-1.html">
-                                    <i class="lnil lnil-layout-alt-2"></i>
-                                    <span>Tile Grid V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-tiles-2.html">
-                                    <i class="lnil lnil-layout-alt-2"></i>
-                                    <span>Tile Grid V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-tiles-3.html">
-                                    <i class="lnil lnil-layout-alt-2"></i>
-                                    <span>Tile Grid V3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">User Grid <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-users-1.html">
-                                    <i class="lnil lnil-users-alt"></i>
-                                    <span>User Grid V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-users-2.html">
-                                    <i class="lnil lnil-users-alt"></i>
-                                    <span>User Grid V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-users-3.html">
-                                    <i class="lnil lnil-users-alt"></i>
-                                    <span>User Grid V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-grid-users-4.html">
-                                    <i class="lnil lnil-users-alt"></i>
-                                    <span>User Grid V4</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Personal <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-profile-view.html">
-                                    <i class="lnil lnil-user-alt"></i>
-                                    <span>Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-profile-edit-1.html">
-                                    <i class="lnil lnil-pencil"></i>
-                                    <span>Edit Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-profile-notifications.html">
-                                    <i class="lnil lnil-notification"></i>
-                                    <span>Notifications</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-profile-settings.html">
-                                    <i class="lnil lnil-cog"></i>
-                                    <span>Settings</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Pages <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/auth-login-1.html">
-                                    <i class="lnil lnil-pointer-right"></i>
-                                    <span>Login v1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/auth-login-2.html">
-                                    <i class="lnil lnil-pointer-right"></i>
-                                    <span>Login v2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/auth-login-3.html">
-                                    <i class="lnil lnil-pointer-right"></i>
-                                    <span>Login v3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/auth-signup-2.html">
-                                    <i class="lnil lnil-crown"></i>
-                                    <span>Signup v1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/auth-signup-3.html">
-                                    <i class="lnil lnil-crown"></i>
-                                    <span>Signup v2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/auth-signup-1.html">
-                                    <i class="lnil lnil-crown"></i>
-                                    <span>Signup Flow</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-search-results.html">
-                                    <i class="lnil lnil-search-alt"></i>
-                                    <span>Search Results</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-search-empty.html">
-                                    <i class="lnil lnil-search-alt"></i>
-                                    <span>Empty Search</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Subpages <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-saas-billing.html">
-                                    <i class="lnil lnil-credit-card"></i>
-                                    <span>SaaS Billing</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-welcome.html">
-                                    <i class="lnil lnil-door-alt"></i>
-                                    <span>Welcome</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-action-page-1.html">
-                                    <i class="lnil lnil-thunderbolt"></i>
-                                    <span>Action Page V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-action-page-2.html">
-                                    <i class="lnil lnil-thunderbolt"></i>
-                                    <span>Action Page V2</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Projects <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-projects-projects.html">
-                                    <i class="lnil lnil-grid-alt"></i>
-                                    <span>Projects V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-projects-projects-2.html">
-                                    <i class="lnil lnil-grid-alt"></i>
-                                    <span>Projects V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-projects-projects-3.html">
-                                    <i class="lnil lnil-grid-alt"></i>
-                                    <span>Projects V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-projects-project.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Project Details</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-kanban-board.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Kanban Board</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Utility <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-utility-account-confirm.html">
-                                    <i class="lnil lnil-thunderbolt"></i>
-                                    <span>Confirm Account</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-utility-promotion.html">
-                                    <i class="lnil lnil-magnet"></i>
-                                    <span>Promotion Page</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-utility-invoice.html">
-                                    <i class="lnil lnil-calculator-alt"></i>
-                                    <span>Invoice</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-utility-status.html">
-                                    <i class="lnil lnil-checkmark-circle"></i>
-                                    <span>App Status</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Onboarding <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/admin-onboarding-page-1.html">
-                                    <i class="lnil lnil-train"></i>
-                                    <span>Onboarding V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-onboarding-page-2.html">
-                                    <i class="lnil lnil-train-alt"></i>
-                                    <span>Onboarding V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-onboarding-page-3.html">
-                                    <i class="lnil lnil-car"></i>
-                                    <span>Onboarding V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-onboarding-page-4.html">
-                                    <i class="lnil lnil-car-alt"></i>
-                                    <span>Onboarding V4</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/admin-onboarding-page-5.html">
-                                    <i class="lnil lnil-train"></i>
-                                    <span>Onboarding V5</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Error Pages <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="/error-page-1.html">
-                                    <i class="lnil lnil-cross-circle"></i>
-                                    <span>Error 404 V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/error-page-2.html">
-                                    <i class="lnil lnil-cross-circle"></i>
-                                    <span>Error 404 V2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/error-page-3.html">
-                                    <i class="lnil lnil-cross-circle"></i>
-                                    <span>Error 404 V3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/error-page-4.html">
-                                    <i class="lnil lnil-cross-circle"></i>
-                                    <span>Error 404 V4</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="/error-page-5.html">
-                                    <i class="lnil lnil-cross-circle"></i>
-                                    <span>Error 500 V1</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div> --}}
         @include('layouts.template-admin.mobile.subsidebar')
 
         <!-- Content Wrapper -->
@@ -762,7 +223,7 @@
 
                         <div class="buttons">
                             <button class="button h-button is-primary is-elevated h-modal-trigger" style="border-radius: 4px;"
-                                data-modal="demo-right-actions-modal">
+                                    data-modal="new-group-button">
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
@@ -779,31 +240,33 @@
                     </div>
 
                     {{-- <--Modals--> --}}
-                    <div id="demo-right-actions-modal" class="modal h-modal">
+                    <div id="new-group-modal" class="modal h-modal">
                         <div class="modal-background h-modal-close"></div>
                         <div class="modal-content">
                             <div class="modal-card">
                                 <header class="modal-card-head">
-                                    <h3>Create a New Group</h3>
+                                    <h3 id="modal-title">Create a New Group</h3>
                                     <button class="h-modal-close ml-auto" aria-label="close">
                                         <i data-feather="x"></i>
                                     </button>
                                 </header>
-                                <div class="modal-card-body">
-                                    <div class="inner-content">
-                                        <div class="field">
-                                            <label class="label">Enter Group Name</label>
-                                            <div class="control">
-                                                <input type="text" class="input"
-                                                    placeholder="E.g. Cloud Hosting">
+                                <form method="POST" id="new-group-form" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-card-body">
+                                        <div class="inner-content">
+                                            <div class="field">
+                                                <label class="label">Enter Group Name</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" name="name" placeholder="E.g. Cloud Hosting" required>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-card-foot is-end">
-                                    <a class="button h-button is-rounded h-modal-close">Cancel</a>
-                                    <a class="button h-button is-primary is-raised is-rounded">Submit</a>
-                                </div>
+                                    <div class="modal-card-foot is-end">
+                                        <a class="button h-button is-rounded h-modal-close">Cancel</a>
+                                        <button type="submit" class="button h-button is-primary is-raised is-rounded">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -903,7 +366,7 @@
                     <div class="page-content-inner">
 
                         <!-- Datatable -->
-
+                    @foreach ($hostingGroups as $group)
                         <div class="table-wrapper" data-simplebar>
                             <table id="users-datatable" class="table is-datatable is-hoverable">
                                 <thead>
@@ -918,20 +381,85 @@
                                 <tbody>
                                     <tr class="is-striped-row">
                                         <td>
-                                            <p>Personal Cloud Hosting</p>
+                                            <p>{{ $group->name }}</p>
                                         </td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <div class="d-flex justify-end">
-                                                <a href=""><img src="assets/img/product/edit.svg"
-                                                        alt="" class="mr-3"></a>
+                                            <a href="#" class="edit-link" data-id="{{ $group->hosting_group_id }}" data-name="{{ $group->name }}">
+                                                <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                            </a>
+
                                                 <a href=""><img src="assets/img/product/trash.svg"
                                                         alt=""></a>
                                             </div>
                                         </td>
                                     </tr>
+                                    <script>
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
+                                        const newGroupModal = document.querySelector('#new-group-modal');
+                                        const newGroupForm = document.querySelector('#new-group-form');
+                                        const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
+                                        const modalTitle = document.querySelector('#modal-title'); // Judul modal
+
+                                        // Fungsi untuk membuka modal dan mereset isinya
+                                        function openModal(isEdit = false, groupId = null, groupName = '') {
+                                            if (isEdit) {
+                                                modalTitle.textContent = 'Edit Group'; // Judul untuk edit
+                                                newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
+                                                newGroupForm.method = 'POST'; // Set method untuk POST
+                                                // Tambahkan input hidden untuk metode PUT
+                                                let methodField = newGroupForm.querySelector('input[name="_method"]');
+                                                if (!methodField) {
+                                                    methodField = document.createElement('input');
+                                                    methodField.type = 'hidden';
+                                                    methodField.name = '_method';
+                                                    methodField.value = 'PUT';
+                                                    newGroupForm.appendChild(methodField);
+                                                }
+                                                newGroupForm.name.value = groupName; // Isi nama grup untuk edit
+                                            } else {
+                                                resetForm(); // Reset form untuk menambah grup baru
+                                                modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
+                                                newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
+                                                delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
+                                            }
+                                            newGroupModal.classList.add('is-active'); // Buka modal
+                                        }
+
+                                        // Handle tombol "Add New Group"
+                                        addNewGroupButton.addEventListener('click', () => {
+                                            openModal(); // Buka modal untuk menambah grup baru
+                                        });
+
+                                        // Handle edit button clicks
+                                        document.querySelectorAll('.edit-link').forEach(link => {
+                                            link.addEventListener('click', () => {
+                                                const groupId = link.getAttribute('data-id');
+                                                const groupName = link.getAttribute('data-name');
+                                                openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
+                                            });
+                                        });
+
+                                        // Modal close handling
+                                        modalCloseButton.addEventListener('click', () => {
+                                            resetForm(); // Reset form saat modal ditutup
+                                            newGroupModal.classList.remove('is-active'); // Tutup modal
+                                        });
+
+                                        // Reset form function
+                                        function resetForm() {
+                                            newGroupForm.reset(); // Bersihkan semua field di form
+                                            const methodField = newGroupForm.querySelector('input[name="_method"]');
+                                            if (methodField) {
+                                                methodField.remove(); // Hapus hidden input untuk PUT jika ada
+                                            }
+                                        }
+                                    });
+                                </script>
                                     <tr>
                                         <th>Strato Lite</th>
                                         <td>Hosting</td>
@@ -976,7 +504,7 @@
                                     </tr>
                                     <tr class="is-striped-row">
                                         <td>
-                                            <p>Corporate Cloud Hosting</p>
+                                            <!-- <p>Corporate Cloud Hosting</p> -->
                                         </td>
                                         <td></td>
                                         <td></td>
@@ -1034,7 +562,7 @@
                                     </tr>
                                     <tr class="is-striped-row">
                                         <td>
-                                            <p>WordPress Hosting</p>
+                                            <!-- <p>WordPress Hosting</p> -->
                                         </td>
                                         <td></td>
                                         <td></td>
@@ -1093,8 +621,9 @@
                                 </tbody>
                             </table>
                         </div>
+                    @endforeach
 
-
+                   
 
 
 
