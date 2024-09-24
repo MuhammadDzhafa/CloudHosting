@@ -10,6 +10,8 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TldController;
 use App\Http\Controllers\HostingPlanController;
+use App\Http\Controllers\HostingGroupController;
+
 
 /* Welcome */
 
@@ -121,3 +123,24 @@ Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
 Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
 Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
 Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
+
+/* Hosting Plan */
+Route::get('/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');
+Route::get('/hosting-plans/create', [HostingPlanController::class, 'create'])->name('hosting-plans.create');
+Route::post('/hosting-plans', [HostingPlanController::class, 'store'])->name('hosting-plans.store');
+Route::get('/hosting-plans/{id}', [HostingPlanController::class, 'show'])->name('hosting-plans.show');
+Route::get('/hosting-plans/{id}/edit', [HostingPlanController::class, 'edit'])->name('hosting-plans.edit');
+Route::put('hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
+Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
+Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
+
+/* Hosting Group */
+Route::get('/products', [HostingGroupController::class, 'index'])->name('product');
+Route::get('/products/create', [HostingGroupController::class, 'create'])->name('products.create');
+Route::post('/products', [HostingGroupController::class, 'store'])->name('hosting-groups.store');
+Route::get('/products/{id}', [HostingGroupController::class, 'show'])->name('products.show');
+Route::get('/products/{id}/edit', [HostingGroupController::class, 'edit'])->name('hosting-groups.edit');
+Route::put('/products/{id}', [HostingGroupController::class, 'update'])->name('products.update');
+Route::delete('/products/{id}', [HostingGroupController::class, 'destroy'])->name('products.destroy');
+Route::post('/products/{id}/restore', [HostingGroupController::class, 'restore'])->name('products.restore');
+
