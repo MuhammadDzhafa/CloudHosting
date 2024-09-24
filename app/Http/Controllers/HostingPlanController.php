@@ -9,13 +9,13 @@ class HostingPlanController extends Controller
 {
     public function index()
     {
-        $hostingPlans = HostingPlan::all();
+        $hostingPlans = HostingPlan::withTrashed()->get(); // Menampilkan semua termasuk yang dihapus
         return view('app.admin.hosting-plans.index', ['hostingPlans' => $hostingPlans]);
     }
 
     public function create()
     {
-        return view('hosting-plans.create');
+        return view('app.admin.hosting-plans.create');
     }
 
     public function store(Request $request)
@@ -53,11 +53,12 @@ class HostingPlanController extends Controller
     public function edit($id)
     {
         $hostingPlan = HostingPlan::findOrFail($id);
-        return view('hosting-plans.edit', ['hostingPlan' => $hostingPlan]);
+        return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan]);
     }
 
     public function update(Request $request, $id)
     {
+        // dd('$request-all');
         $validatedData = $request->validate([
             'group_id' => 'required',
             'name' => 'required',
@@ -86,7 +87,14 @@ class HostingPlanController extends Controller
     public function destroy($id)
     {
         $hostingPlan = HostingPlan::findOrFail($id);
-        $hostingPlan->delete();
+        $hostingPlan->delete(); // Ini sekarang melakukan soft delete
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan deleted successfully.');
+    }
+
+    public function restore($id)
+    {
+        $hostingPlan = HostingPlan::withTrashed()->findOrFail($id);
+        $hostingPlan->restore();
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan restored successfully.');
     }
 }

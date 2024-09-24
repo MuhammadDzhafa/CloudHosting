@@ -1,7 +1,7 @@
-@extends('layouts.web.master')
+@extends('layouts.template-landing-page.web.master')
 
 @section('landing-page')
-    
+
 @include("app.hosting-plans.landing-page.section1")
 @include("app.hosting-plans.landing-page.section2")
 @include("app.hosting-plans.landing-page.section3")
@@ -15,79 +15,81 @@
 @include("app.hosting-plans.landing-page.section11")
 @include("app.hosting-plans.landing-page.section12")
 @include("app.hosting-plans.landing-page.section13")
-    
+
 @endsection
 
 @section('scripts')
-        <script>
-            /*section1 javascript*/
-            function scrollToSection() {
-                const targetSection = document.getElementById("target-section");
-                targetSection.scrollIntoView({ behavior: "smooth" });
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-            const words = ['Easy', 'Fast', 'Secure', 'Efficient'];
-            let currentIndex = 0;
-
-            function changeText() {
-                const animatedTextElement = document.getElementById('animated-text'); // Get the single element
-                animatedTextElement.classList.add('changing');
-
-                setTimeout(() => {
-                    animatedTextElement.classList.remove('changing');
-                    animatedTextElement.textContent = words[currentIndex];
-                }, 300);
-
-                currentIndex = (currentIndex + 1) % words.length;
-            }
-
-            setInterval(changeText, 1800);
+<script>
+    /*section1 javascript*/
+    function scrollToSection() {
+        const targetSection = document.getElementById("target-section");
+        targetSection.scrollIntoView({
+            behavior: "smooth"
         });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const words = ['Easy', 'Fast', 'Secure', 'Efficient'];
+        let currentIndex = 0;
+
+        function changeText() {
+            const animatedTextElement = document.getElementById('animated-text'); // Get the single element
+            animatedTextElement.classList.add('changing');
+
+            setTimeout(() => {
+                animatedTextElement.classList.remove('changing');
+                animatedTextElement.textContent = words[currentIndex];
+            }, 300);
+
+            currentIndex = (currentIndex + 1) % words.length;
+        }
+
+        setInterval(changeText, 1800);
+    });
 
 
-            // document.addEventListener('DOMContentLoaded', () => {
-            //     const words = ['Easy', 'Fast', 'Secure', 'Efficient'];
-            //     let currentIndex = 0;
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const words = ['Easy', 'Fast', 'Secure', 'Efficient'];
+    //     let currentIndex = 0;
 
-            //     function changeText() {
-            //         const animatedTextElements = document.querySelectorAll('.animated-text');
-            //         animatedTextElements.forEach(element => {
-            //             element.classList.add('changing');
-            //             setTimeout(() => {
-            //                 element.classList.remove('changing');
-            //                 element.textContent = words[currentIndex];
-            //             }, 300);
-            //         });
-            //         currentIndex = (currentIndex + 1) % words.length;
-            //     }
+    //     function changeText() {
+    //         const animatedTextElements = document.querySelectorAll('.animated-text');
+    //         animatedTextElements.forEach(element => {
+    //             element.classList.add('changing');
+    //             setTimeout(() => {
+    //                 element.classList.remove('changing');
+    //                 element.textContent = words[currentIndex];
+    //             }, 300);
+    //         });
+    //         currentIndex = (currentIndex + 1) % words.length;
+    //     }
 
-            //     setInterval(changeText, 1800);
-            // });
+    //     setInterval(changeText, 1800);
+    // });
 
-            
 
-            // Section2 JavaScript
-            const viewPriceListLink = document.getElementById('view-price-list');
-            const priceListSection = document.getElementById('price-list-section');
-            if (viewPriceListLink && priceListSection) {
-                const arrowIcon = viewPriceListLink.querySelector('svg');
-                viewPriceListLink.addEventListener('click', event => {
-                    event.preventDefault();
-                    priceListSection.classList.toggle('active');
-                    arrowIcon.classList.toggle('rotate-180');
-                });
-            }
 
-            // Search Domain Availability
-            document.getElementById('search-btn').addEventListener('click', function () {
-                    const searchQuery = document.getElementById('domain-search').value;
-                    const dropdownContainer = document.getElementById('dropdown-container');
-                    const dropdownContent = document.getElementById('dropdown-content');
+    // Section2 JavaScript
+    const viewPriceListLink = document.getElementById('view-price-list');
+    const priceListSection = document.getElementById('price-list-section');
+    if (viewPriceListLink && priceListSection) {
+        const arrowIcon = viewPriceListLink.querySelector('svg');
+        viewPriceListLink.addEventListener('click', event => {
+            event.preventDefault();
+            priceListSection.classList.toggle('active');
+            arrowIcon.classList.toggle('rotate-180');
+        });
+    }
 
-                    if (searchQuery) {
-                        // Simulating search results - replace with actual data
-                        dropdownContent.innerHTML = `
+    // Search Domain Availability
+    document.getElementById('search-btn').addEventListener('click', function() {
+        const searchQuery = document.getElementById('domain-search').value;
+        const dropdownContainer = document.getElementById('dropdown-container');
+        const dropdownContent = document.getElementById('dropdown-content');
+
+        if (searchQuery) {
+            // Simulating search results - replace with actual data
+            dropdownContent.innerHTML = `
                         
                         <div class="message is-success flex-row flex justify-between items-center">
                             <div class="message-body">
@@ -119,326 +121,412 @@
                         
                     `;
 
-                        // Apply animation class to show the dropdown
-                        dropdownContainer.classList.add('show');
-                    } else {
-                        // Hide the container if there's no search
-                        dropdownContainer.classList.remove('show');
-                    }
-                });
+            // Apply animation class to show the dropdown
+            dropdownContainer.classList.add('show');
+        } else {
+            // Hide the container if there's no search
+            dropdownContainer.classList.remove('show');
+        }
+    });
 
 
-            /* Pick TLD Card */
-            // Select the input field
-            const searchInput = document.getElementById('domain-search');
+    /* Pick TLD Card */
+    // Select the input field
+    const searchInput = document.getElementById('domain-search');
 
-            // Function to replace the TLD of a domain
-            function replaceTLD(domainName, newTLD) {
-                // Use regex to match everything from the first dot in the last two segments
-                return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
+    // Function to replace the TLD of a domain
+    function replaceTLD(domainName, newTLD) {
+        // Use regex to match everything from the first dot in the last two segments
+        return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
+    }
+
+    // Select the container with the 'domain-container' id
+    const domainContainer = document.getElementById('domain-container');
+
+    // Add event listeners to each popular domain card
+    document.querySelectorAll('.popular-domain').forEach(domainCard => {
+        domainCard.addEventListener('click', function() {
+            const selectedTLD = this.getAttribute('data-domain'); // Get the clicked TLD
+            const currentDomain = searchInput.value; // Get the current input value
+
+            if (currentDomain) {
+                // Replace the existing TLD with the selected one
+                searchInput.value = replaceTLD(currentDomain, selectedTLD);
+            } else {
+                // If input is empty, just set the selected TLD
+                searchInput.value = selectedTLD;
             }
-
-            // Select the container with the 'domain-container' id
-            const domainContainer = document.getElementById('domain-container');
-
-            // Add event listeners to each popular domain card
-            document.querySelectorAll('.popular-domain').forEach(domainCard => {
-                domainCard.addEventListener('click', function () {
-                    const selectedTLD = this.getAttribute('data-domain');  // Get the clicked TLD
-                    const currentDomain = searchInput.value;  // Get the current input value
-
-                    if (currentDomain) {
-                        // Replace the existing TLD with the selected one
-                        searchInput.value = replaceTLD(currentDomain, selectedTLD);
-                    } else {
-                        // If input is empty, just set the selected TLD
-                        searchInput.value = selectedTLD;
-                    }
-                });
-            });
+        });
+    });
 
 
-            /*section6 javascript*/
-                const storageSlider = document.getElementById('storage-slider');
-                const ramSlider = document.getElementById('ram-slider');
-                const cpuSlider = document.getElementById('cpu-slider');
-                
-                const totalPriceElement = document.getElementById('total-price');
-                
-                // Storage options
-                const storageOptions = [
-                    { value: '120 GB', price: 20 },
-                    { value: '240 GB', price: 30 },
-                    { value: '256 GB', price: 40 },
-                    { value: '480 GB', price: 50 },
-                    { value: '512 GB', price: 60 }
-                ];
+    /*section6 javascript*/
+    const storageSlider = document.getElementById('storage-slider');
+    const ramSlider = document.getElementById('ram-slider');
+    const cpuSlider = document.getElementById('cpu-slider');
 
-                // RAM options
-                const ramOptions = [
-                    { value: '4 GB', price: 20 },
-                    { value: '8 GB', price: 30 },
-                    { value: '16 GB', price: 40 },
-                    { value: '32 GB', price: 50 },
-                    { value: '64 GB', price: 60 }
-                ];
+    const totalPriceElement = document.getElementById('total-price');
 
-                // CPU options
-                const cpuOptions = [
-                    { value: '4 Core', price: 20 },
-                    { value: '8 Core', price: 30 },
-                    { value: '12 Core', price: 40 },
-                    { value: '16 Core', price: 50 },
-                    { value: '24 Core', price: 60 }
-                ];
+    // Storage options
+    const storageOptions = [{
+            value: '120 GB',
+            price: 20
+        },
+        {
+            value: '240 GB',
+            price: 30
+        },
+        {
+            value: '256 GB',
+            price: 40
+        },
+        {
+            value: '480 GB',
+            price: 50
+        },
+        {
+            value: '512 GB',
+            price: 60
+        }
+    ];
 
-                function updateTotalPrice() {
-                    // Get the selected price for storage, RAM, and CPU
-                    const selectedStorage = storageOptions[storageSlider.value].price;
-                    const selectedRam = ramOptions[ramSlider.value].price;
-                    const selectedCpu = cpuOptions[cpuSlider.value].price;
-                    
-                    // Calculate total price
-                    const totalPrice = selectedStorage + selectedRam + selectedCpu;
-                    
-                    // Update the total price element (remove .00 if the number is an integer)
-                    totalPriceElement.textContent = totalPrice % 1 === 0 ? totalPrice : totalPrice.toFixed(2);
-                }
+    // RAM options
+    const ramOptions = [{
+            value: '4 GB',
+            price: 20
+        },
+        {
+            value: '8 GB',
+            price: 30
+        },
+        {
+            value: '16 GB',
+            price: 40
+        },
+        {
+            value: '32 GB',
+            price: 50
+        },
+        {
+            value: '64 GB',
+            price: 60
+        }
+    ];
 
-                // Add event listeners to sliders
-                storageSlider.addEventListener('input', updateTotalPrice);
-                ramSlider.addEventListener('input', updateTotalPrice);
-                cpuSlider.addEventListener('input', updateTotalPrice);
+    // CPU options
+    const cpuOptions = [{
+            value: '4 Core',
+            price: 20
+        },
+        {
+            value: '8 Core',
+            price: 30
+        },
+        {
+            value: '12 Core',
+            price: 40
+        },
+        {
+            value: '16 Core',
+            price: 50
+        },
+        {
+            value: '24 Core',
+            price: 60
+        }
+    ];
 
-                // Set initial value
-                updateTotalPrice();
+    function updateTotalPrice() {
+        // Get the selected price for storage, RAM, and CPU
+        const selectedStorage = storageOptions[storageSlider.value].price;
+        const selectedRam = ramOptions[ramSlider.value].price;
+        const selectedCpu = cpuOptions[cpuSlider.value].price;
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const storageSlider = document.getElementById('storage-slider');
-                const storageValue = document.getElementById('storage-value');
-                const storagePrice = document.getElementById('storage-price');
-                
-                const storageOptions = [
-                    { value: '120 GB', price: '$ 20/mon' },
-                    { value: '240 GB', price: '$ 30/mon' },
-                    { value: '256 GB', price: '$ 40/mon' },
-                    { value: '480 GB', price: '$ 50/mon' },
-                    { value: '512 GB', price: '$ 60/mon' }
-                ];
-                
-                function updateStorage() {
-                    const selectedOption = storageOptions[storageSlider.value];
-                    storageValue.textContent = selectedOption.value;
-                    storagePrice.textContent = selectedOption.price;
-                }
-                
-                storageSlider.addEventListener('input', updateStorage);
-                
-                // Set initial value
-                updateStorage();
-            });
+        // Calculate total price
+        const totalPrice = selectedStorage + selectedRam + selectedCpu;
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const ramSlider = document.getElementById('ram-slider');
-                const ramValue = document.getElementById('ram-value');
-                const ramPrice = document.getElementById('ram-price');
-                
-                const ramOptions = [
-                    { value: '4 GB', price: '$ 20/mon' },
-                    { value: '8 GB', price: '$ 30/mon' },
-                    { value: '16 GB', price: '$ 40/mon' },
-                    { value: '32 GB', price: '$ 50/mon' },
-                    { value: '64 GB', price: '$ 60/mon' }
-                ];
-                
-                function updateRam() {
-                    const selectedOption = ramOptions[ramSlider.value];
-                    ramValue.textContent = selectedOption.value;
-                    ramPrice.textContent = selectedOption.price;
-                }
-                
-                ramSlider.addEventListener('input', updateRam);
-                
-                // Set initial value
-                updateRam();
-            });
+        // Update the total price element (remove .00 if the number is an integer)
+        totalPriceElement.textContent = totalPrice % 1 === 0 ? totalPrice : totalPrice.toFixed(2);
+    }
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const cpuSlider = document.getElementById('cpu-slider');
-                const cpuValue = document.getElementById('cpu-value');
-                const cpuPrice = document.getElementById('cpu-price');
-                
-                const cpuOptions = [
-                    { value: '4 Core', price: '$ 20/mon' },
-                    { value: '8 Core', price: '$ 30/mon' },
-                    { value: '12 Core', price: '$ 40/mon' },
-                    { value: '16 Core', price: '$ 50/mon' },
-                    { value: '24 Core', price: '$ 60/mon' }
-                ];
-                
-                function updateCpu() {
-                    const selectedOption = cpuOptions[cpuSlider.value];
-                    cpuValue.textContent = selectedOption.value;
-                    cpuPrice.textContent = selectedOption.price;
-                }
-                
-                cpuSlider.addEventListener('input', updateCpu);
-                
-                // Set initial value
-                updateCpu();
-            });
+    // Add event listeners to sliders
+    storageSlider.addEventListener('input', updateTotalPrice);
+    ramSlider.addEventListener('input', updateTotalPrice);
+    cpuSlider.addEventListener('input', updateTotalPrice);
 
+    // Set initial value
+    updateTotalPrice();
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const tabs = document.querySelectorAll('.tab');
-                const tabContents = document.querySelectorAll('.tab-content');
-                const slider = document.querySelector('.slider');
-                
-                tabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        const target = tab.getAttribute('data-target');
-                        tabContents.forEach(content => {
-                            content.classList.toggle('is-active', content.id === target);
-                        });
-                        tabs.forEach(t => t.classList.remove('text-white'));
-                        tab.classList.add('text-white');
-                        updateSlider(tab);
-                    });
-                });
+    document.addEventListener('DOMContentLoaded', function() {
+        const storageSlider = document.getElementById('storage-slider');
+        const storageValue = document.getElementById('storage-value');
+        const storagePrice = document.getElementById('storage-price');
 
-                function updateSlider(activeTab) {
-                    const tabWidth = activeTab.offsetWidth;
-                    const tabOffset = activeTab.offsetLeft;
-                    slider.style.width = `${tabWidth}px`;
-                    slider.style.left = `${tabOffset}px`;
-                }
-            });
-
-            /*section9 javascript*/
-            const slider = document.querySelector('#slider');
-            const sliderContent = document.querySelector('.slider-content');
-            const sliderItems = document.querySelectorAll('.slider-item');
-            if (slider && sliderContent && sliderItems.length > 0) {
-                let currentIndex = 0;
-
-                function showSlide(index) {
-                    const itemWidth = sliderItems[0].offsetWidth;
-                    sliderContent.style.transform = `translateX(${-index * itemWidth}px)`;
-                }
-
-                document.querySelector('#prev').addEventListener('click', () => {
-                    if (currentIndex > 0) {
-                        currentIndex--;
-                        showSlide(currentIndex);
-                    }
-                });
-
-                document.querySelector('#next').addEventListener('click', () => {
-                    if (currentIndex < sliderItems.length - 1) {
-                        currentIndex++;
-                        showSlide(currentIndex);
-                    }
-                });
-
-                sliderContent.style.width = `${sliderItems.length * 34}%`;
+        const storageOptions = [{
+                value: '120 GB',
+                price: '$ 20/mon'
+            },
+            {
+                value: '240 GB',
+                price: '$ 30/mon'
+            },
+            {
+                value: '256 GB',
+                price: '$ 40/mon'
+            },
+            {
+                value: '480 GB',
+                price: '$ 50/mon'
+            },
+            {
+                value: '512 GB',
+                price: '$ 60/mon'
             }
+        ];
+
+        function updateStorage() {
+            const selectedOption = storageOptions[storageSlider.value];
+            storageValue.textContent = selectedOption.value;
+            storagePrice.textContent = selectedOption.price;
+        }
+
+        storageSlider.addEventListener('input', updateStorage);
+
+        // Set initial value
+        updateStorage();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const ramSlider = document.getElementById('ram-slider');
+        const ramValue = document.getElementById('ram-value');
+        const ramPrice = document.getElementById('ram-price');
+
+        const ramOptions = [{
+                value: '4 GB',
+                price: '$ 20/mon'
+            },
+            {
+                value: '8 GB',
+                price: '$ 30/mon'
+            },
+            {
+                value: '16 GB',
+                price: '$ 40/mon'
+            },
+            {
+                value: '32 GB',
+                price: '$ 50/mon'
+            },
+            {
+                value: '64 GB',
+                price: '$ 60/mon'
+            }
+        ];
+
+        function updateRam() {
+            const selectedOption = ramOptions[ramSlider.value];
+            ramValue.textContent = selectedOption.value;
+            ramPrice.textContent = selectedOption.price;
+        }
+
+        ramSlider.addEventListener('input', updateRam);
+
+        // Set initial value
+        updateRam();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const cpuSlider = document.getElementById('cpu-slider');
+        const cpuValue = document.getElementById('cpu-value');
+        const cpuPrice = document.getElementById('cpu-price');
+
+        const cpuOptions = [{
+                value: '4 Core',
+                price: '$ 20/mon'
+            },
+            {
+                value: '8 Core',
+                price: '$ 30/mon'
+            },
+            {
+                value: '12 Core',
+                price: '$ 40/mon'
+            },
+            {
+                value: '16 Core',
+                price: '$ 50/mon'
+            },
+            {
+                value: '24 Core',
+                price: '$ 60/mon'
+            }
+        ];
+
+        function updateCpu() {
+            const selectedOption = cpuOptions[cpuSlider.value];
+            cpuValue.textContent = selectedOption.value;
+            cpuPrice.textContent = selectedOption.price;
+        }
+
+        cpuSlider.addEventListener('input', updateCpu);
+
+        // Set initial value
+        updateCpu();
+    });
 
 
-            /*section14 javascript*/
-            document.addEventListener('DOMContentLoaded', function() {
-                const orderNowBtn = document.getElementById('orderNowBtn');
-                orderNowBtn.addEventListener('click', function() {
-                    const section7 = document.getElementById('section7');
-                    if (section7) {
-                        section7.scrollIntoView({ behavior: 'smooth' });
-                    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const slider = document.querySelector('.slider');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-target');
+                tabContents.forEach(content => {
+                    content.classList.toggle('is-active', content.id === target);
                 });
+                tabs.forEach(t => t.classList.remove('text-white'));
+                tab.classList.add('text-white');
+                updateSlider(tab);
             });
+        });
 
-        /*Ai Chat javascript*/
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatButton = document.getElementById('ai-chat-button');
-            const chatWindow = document.getElementById('ai-chat-window');
-            const closeChat = document.getElementById('close-chat');
-            const userInput = document.getElementById('user-input');
-            const sendMessage = document.getElementById('send-message');
-            const chatMessages = document.getElementById('chat-messages');
-            const initialContent = document.getElementById('initial-content');
-            const greeting = document.getElementById('greeting');
+        function updateSlider(activeTab) {
+            const tabWidth = activeTab.offsetWidth;
+            const tabOffset = activeTab.offsetLeft;
+            slider.style.width = `${tabWidth}px`;
+            slider.style.left = `${tabOffset}px`;
+        }
+    });
 
-            console.log('DOM Loaded');
+    /*section9 javascript*/
+    const slider = document.querySelector('#slider');
+    const sliderContent = document.querySelector('.slider-content');
+    const sliderItems = document.querySelectorAll('.slider-item');
+    if (slider && sliderContent && sliderItems.length > 0) {
+        let currentIndex = 0;
 
-            if (chatWindow) {
+        function showSlide(index) {
+            const itemWidth = sliderItems[0].offsetWidth;
+            sliderContent.style.transform = `translateX(${-index * itemWidth}px)`;
+        }
+
+        document.querySelector('#prev').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSlide(currentIndex);
+            }
+        });
+
+        document.querySelector('#next').addEventListener('click', () => {
+            if (currentIndex < sliderItems.length - 1) {
+                currentIndex++;
+                showSlide(currentIndex);
+            }
+        });
+
+        sliderContent.style.width = `${sliderItems.length * 34}%`;
+    }
+
+
+    /*section14 javascript*/
+    document.addEventListener('DOMContentLoaded', function() {
+        const orderNowBtn = document.getElementById('orderNowBtn');
+        orderNowBtn.addEventListener('click', function() {
+            const section7 = document.getElementById('section7');
+            if (section7) {
+                section7.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    /*Ai Chat javascript*/
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatButton = document.getElementById('ai-chat-button');
+        const chatWindow = document.getElementById('ai-chat-window');
+        const closeChat = document.getElementById('close-chat');
+        const userInput = document.getElementById('user-input');
+        const sendMessage = document.getElementById('send-message');
+        const chatMessages = document.getElementById('chat-messages');
+        const initialContent = document.getElementById('initial-content');
+        const greeting = document.getElementById('greeting');
+
+        console.log('DOM Loaded');
+
+        if (chatWindow) {
+            chatWindow.classList.add('hidden');
+        }
+
+        if (chatButton) {
+            chatButton.addEventListener('click', function() {
+                console.log('Chat button clicked');
+                chatWindow.classList.toggle('hidden');
+                userInput.focus();
+            });
+        }
+
+        if (closeChat) {
+            closeChat.addEventListener('click', function() {
+                console.log('Close button clicked');
                 chatWindow.classList.add('hidden');
-            }
-
-            if (chatButton) {
-                chatButton.addEventListener('click', function() {
-                    console.log('Chat button clicked');
-                    chatWindow.classList.toggle('hidden');
-                    userInput.focus();
-                });
-            }
-
-            if (closeChat) {
-                closeChat.addEventListener('click', function() {
-                    console.log('Close button clicked');
-                    chatWindow.classList.add('hidden');
-                    // Reset chat when closed
-                    if (initialContent) initialContent.style.display = 'block';
-                    if (greeting) greeting.style.display = 'block';
-                    if (chatMessages) {
-                        chatMessages.style.display = 'none';
-                        chatMessages.innerHTML = '';
-                    }
-                });
-            }
-
-            if (sendMessage) {
-                sendMessage.addEventListener('click', sendUserMessage);
-            }
-
-            if (userInput) {
-                userInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        sendUserMessage();
-                    }
-                });
-            }
-
-            function sendUserMessage() {
-                const message = userInput.value.trim();
-                if (message) {
-                    console.log('Sending message:', message);
-                    
-                    // Hide initial content and greeting
-                    if (initialContent) {
-                        initialContent.style.display = 'none';
-                    }
-                    if (greeting) {
-                        greeting.style.display = 'none';
-                    }
-                    
-                    // Show and clear chat messages
-                    if (chatMessages) {
-                        chatMessages.style.display = 'block';
-                        chatMessages.innerHTML = ''; // Clear existing messages
-                    }
-                    
-                    addMessage('user', message);
-                    userInput.value = '';
-                    
-                    // Simulate AI response
-                    setTimeout(() => {
-                        addMessage('ai', `You said: ${message}`);
-                    }, 1000);
-                } else {
-                    console.log('Message is empty');
+                // Reset chat when closed
+                if (initialContent) initialContent.style.display = 'block';
+                if (greeting) greeting.style.display = 'block';
+                if (chatMessages) {
+                    chatMessages.style.display = 'none';
+                    chatMessages.innerHTML = '';
                 }
-            }
+            });
+        }
 
-            function addMessage(sender, text) {
+        if (sendMessage) {
+            sendMessage.addEventListener('click', sendUserMessage);
+        }
+
+        if (userInput) {
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    sendUserMessage();
+                }
+            });
+        }
+
+        function sendUserMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                console.log('Sending message:', message);
+
+                // Hide initial content and greeting
+                if (initialContent) {
+                    initialContent.style.display = 'none';
+                }
+                if (greeting) {
+                    greeting.style.display = 'none';
+                }
+
+                // Show and clear chat messages
+                if (chatMessages) {
+                    chatMessages.style.display = 'block';
+                    chatMessages.innerHTML = ''; // Clear existing messages
+                }
+
+                addMessage('user', message);
+                userInput.value = '';
+
+                // Simulate AI response
+                setTimeout(() => {
+                    addMessage('ai', `You said: ${message}`);
+                }, 1000);
+            } else {
+                console.log('Message is empty');
+            }
+        }
+
+        function addMessage(sender, text) {
             if (!chatMessages) return;
 
             const messageElement = document.createElement('div');
@@ -470,7 +558,7 @@
 
             messageElement.textContent = text;
             chatMessages.appendChild(messageElement);
-            
+
             // Auto-scroll to the bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -478,32 +566,32 @@
 
     /* Dropdown Languages */
     const langDropdown = document.getElementById('langDropdown');
-        const langMenu = document.getElementById('langMenu');
-        const selectedFlag = document.getElementById('selectedFlag');
-        const selectedLang = document.getElementById('selectedLang');
+    const langMenu = document.getElementById('langMenu');
+    const selectedFlag = document.getElementById('selectedFlag');
+    const selectedLang = document.getElementById('selectedLang');
 
-        // Toggle the visibility of the language menu
-        langDropdown.addEventListener('click', function() {
-            langMenu.classList.toggle('hidden');
-        });
+    // Toggle the visibility of the language menu
+    langDropdown.addEventListener('click', function() {
+        langMenu.classList.toggle('hidden');
+    });
 
-        // Handle click events for selecting a language
-        langMenu.addEventListener('click', function(event) {
-            const selectedElement = event.target.closest('a[data-lang]');
-            if (selectedElement) {
-                const lang = selectedElement.getAttribute('data-lang');
-                const flagSrc = selectedElement.querySelector('img').getAttribute('src');
-                
-                // Update the flag and language text
-                selectedFlag.setAttribute('src', flagSrc);
-                selectedLang.textContent = lang.toUpperCase();
-                
-                // Hide the language menu
-                langMenu.classList.add('hidden');
-                
-                // TODO: Perform language change logic here
-            }
-        });
-        </script>
+    // Handle click events for selecting a language
+    langMenu.addEventListener('click', function(event) {
+        const selectedElement = event.target.closest('a[data-lang]');
+        if (selectedElement) {
+            const lang = selectedElement.getAttribute('data-lang');
+            const flagSrc = selectedElement.querySelector('img').getAttribute('src');
+
+            // Update the flag and language text
+            selectedFlag.setAttribute('src', flagSrc);
+            selectedLang.textContent = lang.toUpperCase();
+
+            // Hide the language menu
+            langMenu.classList.add('hidden');
+
+            // TODO: Perform language change logic here
+        }
+    });
+</script>
 
 @endsection

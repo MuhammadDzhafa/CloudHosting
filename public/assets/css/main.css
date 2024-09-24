@@ -20512,7 +20512,7 @@ body.is-curved {
     padding: 0 0 60px 0;
     margin-left: 80px;
     background: #f0f0f0;
-    background: #f2f2f2;
+    background: white;
     -webkit-transition: all .3s;
     transition: all .3s
 }
@@ -82805,7 +82805,7 @@ body.is-dark .inbox-dropdown div>.button {
     .view-wrapper {
         width: 100% !important;
         margin-left: 0 !important;
-        margin-top: 60px !important
+        margin-top: 60px !important;
     }
 
     .view-wrapper.is-webapp {
