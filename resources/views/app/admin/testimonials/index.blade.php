@@ -1515,144 +1515,208 @@
                         </div>
 
                         <div class="buttons">
-                            <a href="{{ route('testimonials.create') }}">
-                                <button class="button h-button is-primary is-elevated h-modal-trigger">
-                                    <!-- data-modal="demo-right-actions-modal"> -->
-                                    <span class="icon" style="min-width: unset">
-                                        <i aria-hidden="true" class="fas fa-plus"></i>
-                                    </span>
-                                    <span>Add New</span>
-                                </button>
-                            </a>
+                            <button class="button h-button is-primary is-elevated h-modal-trigger addData" data-modal="addandedit">
+                                <span class="icon" style="min-width: unset">
+                                    <i aria-hidden="true" class="fas fa-plus"></i>
+                                </span>
+                                <span>Add New</span>
+                            </button>
                         </div>
+
+
                     </div>
 
-                    {{-- <--Modals--> --}}
-                    <div id="demo-right-actions-modal" class="modal h-modal">
+                    {{-- Modals --}}
+                    <div id="addandedit" class="modal h-modal">
                         <div class="modal-background h-modal-close"></div>
                         <div class="modal-content">
                             <div class="modal-card">
                                 <header class="modal-card-head">
-                                    <h3>Create a New Group</h3>
+                                    <h3 id="modal-title">Add Testimonial</h3>
                                     <button class="h-modal-close ml-auto" aria-label="close">
                                         <i data-feather="x"></i>
                                     </button>
                                 </header>
                                 <div class="modal-card-body">
                                     <div class="inner-content">
-                                        <div class="field">
-                                            <label class="label">Enter Group Name</label>
-                                            <div class="control">
-                                                <input type="text" class="input"
-                                                    placeholder="E.g. Cloud Hosting">
+                                        <form id="testimonial-form" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="field">
+                                                <label class="label" for="domain_web">Domain Web</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" id="domain_web" name="domain_web" required>
+                                                </div>
                                             </div>
-                                        </div>
+
+                                            <div class="field">
+                                                <label class="label" for="testimonial_text">Testimonial Text</label>
+                                                <div class="control">
+                                                    <textarea class="textarea" id="testimonial_text" name="testimonial_text" rows="3" required></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="field">
+                                                <div class="control">
+                                                    <div class="file has-name is-fullwidth">
+                                                        <label class="file-label" for="picture">
+                                                            <input class="file-input" type="file" id="picture" name="picture">
+                                                            <span class="file-cta">
+                                                                <span class="file-icon">
+                                                                    <i class="lnil lnil-lg lnil-cloud-upload"></i>
+                                                                </span>
+                                                                <span class="file-label" id="picture" name="picture">
+                                                                    Chosee a file..
+                                                                </span>
+                                                            </span>
+                                                            <span class="file-name light-text" id="picture-name">
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <img id="picture-preview" src="" style="max-width: 100px; margin-top: 10px;">
+                                                </div>
+                                            </div>
+
+                                            <div class="field">
+                                                <label class="label" for="occupation">Occupation</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" id="occupation" name="occupation">
+                                                </div>
+                                            </div>
+
+                                            <div class="field">
+                                                <label class="label" for="facebook">Facebook Profile (Optional)</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" id="facebook" name="facebook">
+                                                </div>
+                                            </div>
+
+                                            <div class="field">
+                                                <label class="label" for="instagram">Instagram Profile (Optional)</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" id="instagram" name="instagram">
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-card-foot is-end">
+                                                <a class="button h-button is-rounded h-modal-close">Cancel</a>
+                                                <button type="submit" class="button h-button is-primary is-raised is-rounded">Submit</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                </div>
-                                <div class="modal-card-foot is-end">
-                                    <a class="button h-button is-rounded h-modal-close">Cancel</a>
-                                    <a class="button h-button is-primary is-raised is-rounded">Submit</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div id="create-new-product-modal" class="modal h-modal">
-                        <div class="modal-background h-modal-close"></div>
-                        <div class="modal-content">
-                            <div class="modal-card">
-                                <header class="modal-card-head">
-                                    <h3>Create a New Product</h3>
-                                    <button class="h-modal-close ml-auto" aria-label="close">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </header>
-                                <div class="modal-card-body">
-                                    <div class="columns is-multiline">
-                                        <div class="column is-6">
-                                            <div class="field">
-                                                <label class="label">Product Group</label>
-                                                <div class="control">
-                                                    <div class="h-select">
-                                                        <select class="select">
-                                                            <option>Select Group</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column is-6">
-                                            <div class="field">
-                                                <label class="label">Product Type</label>
-                                                <div class="control">
-                                                    <div class="h-select">
-                                                        <select class="select">
-                                                            <option>Select Type</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column is-6">
-                                            <div class="field">
-                                                <label class="label">Product Name</label>
-                                                <div class="control">
-                                                    <input type="text" class="input"
-                                                        placeholder="E.g. Basic Plan">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column is-6">
-                                            <div class="field">
-                                                <label class="label">Product Description</label>
-                                                <div class="control">
-                                                    <input type="text" class="input"
-                                                        placeholder="E.g. Starter website">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column is-12">
-                                            <div class="field">
-                                                <div class="control">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox">
-                                                        <span></span>
-                                                        Discount
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column is-6">
-                                            <div class="field">
-                                                <label class="label">Discount (%)</label>
-                                                <div class="control">
-                                                    <input type="number" class="input" value="0" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="column is-6">
-                                            <div class="field">
-                                                <label class="label">After Discount</label>
-                                                <div class="control">
-                                                    <input type="number" class="input" value="0" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-card-foot is-end">
-                                    <button class="button h-button is-rounded h-modal-close">Cancel</button>
-                                    <button class="button h-button is-primary is-raised is-rounded">Continue</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                        const editLinks = document.querySelectorAll('.edit-link');
+                        const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
+                        const form = document.querySelector('#testimonial-form');
+                        const fileInput = document.querySelector('#picture');
+                        const fileNameDisplay = document.querySelector('#picture-name');
+                        const picturePreview = document.querySelector('#picture-preview');
 
+                        fileInput.addEventListener('change', (event) => {
+                            const file = event.target.files[0]; // Ambil file yang dipilih
+                            if (file) {
+                                fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    picturePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
+                                };
+                                reader.readAsDataURL(file);
+                            } else {
+                                fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
+                                picturePreview.src = ''; // Hapus preview gambar
+                            }
+                        });
+
+                        // Fungsi untuk membuka modal dan mereset isinya
+                        function openModal(isEdit = false) {
+                            if (isEdit) {
+                                document.querySelector('#modal-title').textContent = 'Edit Testimonial';
+                            } else {
+                                resetForm();
+                                document.querySelector('#modal-title').textContent = 'Add Testimonial';
+                            }
+                            document.querySelector('#addandedit').classList.add('is-active');
+                        }
+
+                        // Handle add button click
+                        addNewButton.addEventListener('click', () => {
+                            resetForm(); // Reset the form for adding new testimonial
+                            document.querySelector('#modal-title').textContent = 'Add Testimonial'; // Set modal title
+                            form.action = "{{ route('testimonials.store') }}"; // Set action for adding
+                            form.method = 'POST'; // Set method to POST
+                            document.querySelector('#demo-right-actions-modal').classList.add('is-active'); // Open modal
+                        });
+
+                        // Handle edit button clicks
+                        editLinks.forEach(link => {
+                            link.addEventListener('click', () => {
+                                const id = link.getAttribute('data-id');
+                                const domain = link.getAttribute('data-domain');
+                                const text = link.getAttribute('data-text');
+                                const picture = link.getAttribute('data-picture');
+                                const occupation = link.getAttribute('data-occupation');
+                                const facebook = link.getAttribute('data-facebook');
+                                const instagram = link.getAttribute('data-instagram');
+
+                                // Set modal action for editing
+                                form.action = `/testimonials/${id}`; // Set action for PUT
+                                form.method = 'POST'; // Set method to POST
+
+                                // Populate form fields
+                                document.querySelector('#domain_web').value = domain;
+                                document.querySelector('#testimonial_text').value = text;
+                                document.querySelector('#occupation').value = occupation;
+                                document.querySelector('#facebook').value = facebook;
+                                document.querySelector('#instagram').value = instagram;
+                                document.querySelector('#picture-preview').src = picture ? `/storage/${picture}` : '';
+                                document.querySelector('#picture-name').textContent = picture ? picture.split('/').pop() : 'Choose a file…';
+
+                                // Ensure PUT method hidden input is there
+                                let methodField = form.querySelector('input[name="_method"]');
+                                if (!methodField) {
+                                    methodField = document.createElement('input');
+                                    methodField.type = 'hidden';
+                                    methodField.name = '_method';
+                                    methodField.value = 'PUT';
+                                    form.appendChild(methodField);
+                                }
+
+                                // Open modal
+                                openModal(true);
+                            });
+                        });
+
+                        // Modal close handling
+                        modal.addEventListener('click', (event) => {
+                            if (event.target === modal || event.target.classList.contains('h-modal-close')) {
+                                resetForm(); // Reset form when modal is closed
+                                modal.classList.remove('is-active'); // Close modal
+                            }
+                        });
+                        
+
+                        // Function to reset the form
+                        function resetForm() {
+                            form.reset(); // Clear all fields
+                            document.querySelector('#picture-preview').src = ''; // Clear picture preview
+                            document.querySelector('#picture-name').textContent = 'Choose a file…'; // Reset file name display
+
+                            // Remove hidden input for PUT method if it exists
+                            const methodField = form.querySelector('input[name="_method"]');
+                            if (methodField) {
+                                methodField.remove();
+                            }
+                        }
+                    });
+
+                    </script>
 
                     <div class="page-content-inner">
-
-                        <!-- Dataatablee -->
-
                         <div class="table-wrapper" data-simplebar>
                             <table id="users-datatable" class="table is-datatable is-hoverable">
                                 <thead>
@@ -1665,32 +1729,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($testimonials as $testimonial)
-                                    <tr>
-                                        <td>{{ $testimonial->domain_web }}</td>
-                                        <td style="max-width: 200px;">{{ $testimonial->testimonial_text }}</td>
-                                        <td>
-                                            @if ($testimonial->picture)
-                                                <img src="{{ asset('storage/' . $testimonial->picture) }}" alt="Picture" style="width: 100px;">
-                                            @else
-                                                No Image
-                                            @endif
-                                        </td>
-                                        <td>{{ $testimonial->occupation }}</td>
-                                        <td>
-                                            <a href="{{ route('testimonials.edit', $testimonial->testimonial_id) }}"><img src="assets/img/product/edit.svg" alt=""
-                                                    class="mr-6"></a>
-                                            <!-- Delete Button with Trash Icon -->
-                                            <form action="{{ route('testimonials.destroy', $testimonial->testimonial_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                    <img src="assets/img/product/trash.svg" alt="Delete">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @foreach ($testimonials as $testimonial)
+                                        <tr>
+                                            <td>{{ $testimonial->domain_web }}</td>
+                                            <td style="max-width: 200px;">{{ $testimonial->testimonial_text }}</td>
+                                            <td>
+                                                @if ($testimonial->picture)
+                                                    <img src="{{ asset('storage/' . $testimonial->picture) }}" alt="Picture" style="width: 100px;">
+                                                @else
+                                                    No Image
+                                                @endif
+                                            </td>
+                                            <td>{{ $testimonial->occupation }}</td>
+                                            <td>
+                                            <a href="javascript:void(0);" class="edit-link" data-id="{{ $testimonial->testimonial_id }}" data-domain="{{ $testimonial->domain_web }}" data-text="{{ $testimonial->testimonial_text }}" data-picture="{{ $testimonial->picture }}" data-occupation="{{ $testimonial->occupation }}" data-facebook="{{ $testimonial->facebook }}" data-instagram="{{ $testimonial->instagram }}">
+                                                <img src="assets/img/product/edit.svg" alt="" class="mr-6">
+                                            </a>
+
+                                                <form action="{{ route('testimonials.destroy', $testimonial->testimonial_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                                        <img src="assets/img/product/trash.svg" alt="Delete">
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -1699,15 +1764,13 @@
                                 <span></span>
                             </div>
                         </div>
-
                     </div>
-                </div>
-            </div>
-        </div>
+
 
 
         <!--Huro Scripts-->
         <!--Load Mapbox-->
+
 
         <!-- Concatenated plugins -->
         <script src="assets/js/app.js"></script>
@@ -1722,36 +1785,6 @@
 
         <!-- Additional Features -->
         <script src="assets/js/touch.js" async></script>
-
-        <!-- Landing page js -->
-
-        <!-- Dashboards js -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Charts js -->
-
-
-
-        <!--Forms-->
-
-        <!--Wizard-->
-
-        <!-- Layouts js -->
 
         <script src="assets/js/syntax.js" async></script>
     </div>
