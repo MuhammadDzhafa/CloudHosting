@@ -121,3 +121,13 @@ Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
 Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
 Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
 Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
+
+/* Hosting Plan */
+Route::get('/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');
+Route::get('/hosting-plans/create', [HostingPlanController::class, 'create'])->name('hosting-plans.create');
+Route::post('/hosting-plans', [HostingPlanController::class, 'store'])->name('hosting-plans.store');
+Route::get('/hosting-plans/{id}', [HostingPlanController::class, 'show'])->name('hosting-plans.show');
+Route::get('/hosting-plans/{id}/edit', [HostingPlanController::class, 'edit'])->name('hosting-plans.edit');
+Route::put('hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
+Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
+Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
