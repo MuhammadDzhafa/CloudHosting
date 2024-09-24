@@ -15,11 +15,11 @@
     flex-direction: column;
 }
 
-.padding-2{
+.padding-2 {
     padding: 100px 120px 50px 120px;
 }
 
-.padding-3{
+.padding-3 {
     padding: 0px 120px 0px 120px;
 }
 
@@ -43,7 +43,7 @@
     padding: 12px 16px;
     justify-content: center;
     align-items: center;
-    background:#F2F3F3;
+    background: #F2F3F3;
     font-family: "Inter", sans-serif;
     color: #45494A;
     font-size: 16px;
@@ -83,7 +83,7 @@
     padding: 12px 16px;
     justify-content: center;
     align-items: center;
-    background:#F2F3F3;
+    background: #F2F3F3;
     font-family: "Inter", sans-serif;
     color: #45494A;
     font-size: 16px;
@@ -297,8 +297,10 @@ p {
 @media (max-width: 768px) {
     .button.is-info.is-outlined {
         display: flex;
-        justify-content: center; /* Horizontal alignment */
-        align-items: center;     /* Vertical alignment */ 
+        justify-content: center;
+        /* Horizontal alignment */
+        align-items: center;
+        /* Vertical alignment */
     }
 
     .text-secondary {
@@ -314,9 +316,11 @@ p {
     .smartphone-image {
         display: none;
     }
+
     .tooltip img {
         display: none;
     }
+
     .background-image {
         height: 300px;
         /* Height for small screens and up */
@@ -327,7 +331,7 @@ p {
         line-height: 35px;
         text-align: center;
     }
-    
+
 
     .text-base {
         font-size: 18px;
@@ -385,14 +389,15 @@ p {
         -moz-transition: background-color 0.3s;
         -ms-transition: background-color 0.3s;
         -o-transition: background-color 0.3s;
-}
-    
+    }
+
     .button-container {
         display: flex;
-        justify-content: center; /* Centers the button horizontally */
+        justify-content: center;
+        /* Centers the button horizontally */
         align-items: center;
     }
-    
+
     .background-container {
         position: absolute;
         inset: 0;
@@ -410,7 +415,7 @@ p {
     }
 
 
-    .padding-1{
+    .padding-1 {
         padding: 100px 120px;
     }
 
@@ -457,7 +462,8 @@ p {
     }
 
     .background-image {
-        height: 602px; /* Height for large screens and up */
+        height: 602px;
+        /* Height for large screens and up */
     }
 }
 
@@ -525,12 +531,14 @@ p {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: all 0.5s ease-out; /* Ease-out effect */
+    transition: all 0.5s ease-out;
+    /* Ease-out effect */
 }
 
 /* Visible state with animation */
 #dropdown-container.show {
-    max-height: 400px; /* Adjust based on your design */
+    max-height: 400px;
+    /* Adjust based on your design */
     opacity: 1;
 }
 
@@ -545,7 +553,8 @@ p {
 }
 
 .table-cell {
-    padding: 0.5rem 1rem; /* 8px 16px */
+    padding: 0.5rem 1rem;
+    /* 8px 16px */
     font-size: 18px;
     font-weight: 600;
     line-height: 23.4px;
@@ -709,7 +718,7 @@ p {
     margin-top: 10px;
 }
 
-@media (max-width:  768px) {
+@media (max-width: 768px) {
     .content {
         color: #3C476C;
         font-family: 'Inter', sans-serif;
@@ -995,7 +1004,8 @@ p {
 /* ========================================================= */
 .vertical-line {
     position: absolute;
-    left: 2.75rem; /* 11px */
+    left: 2.75rem;
+    /* 11px */
     top: 0;
     bottom: 0;
     height: 80%;
@@ -1015,7 +1025,8 @@ p {
     font-size: 18px;
     font-weight: 700;
     line-height: 23.4px;
-    margin-bottom: 1.25rem; /* 5px */
+    margin-bottom: 1.25rem;
+    /* 5px */
 }
 
 .service-description {
@@ -1041,7 +1052,7 @@ p {
         font-family: 'Inter', sans-serif;
         opacity: 100%;
     }
-    
+
     .service-title {
         color: white;
         font-size: 23px;
@@ -1055,7 +1066,8 @@ p {
         font-size: 20px;
         font-weight: 600;
         line-height: 26px;
-        margin-bottom: 1.25rem; /* 5px */
+        margin-bottom: 1.25rem;
+        /* 5px */
     }
 
     .service-description {
@@ -1077,10 +1089,11 @@ p {
         font-family: 'Inter', sans-serif;
         opacity: 100%;
     }
-    
+
     .service-title {
         color: white;
-        font-size: 2.25rem; /* 4xl */
+        font-size: 2.25rem;
+        /* 4xl */
         font-weight: 700;
         text-align: left;
     }
@@ -1094,40 +1107,51 @@ p {
 @media (max-width: 1024px) {
     .img-slide {
         width: 35%;
-        height: auto; /* Mengatur tinggi secara otomatis berdasarkan lebar */
+        height: auto;
+        /* Mengatur tinggi secara otomatis berdasarkan lebar */
     }
+
     .client-review {
         font-size: 18px;
     }
 }
+
 @media (max-width: 768px) {
     .img-slide {
-        width: 100%; /* Mengatur gambar agar memenuhi lebar kontainer */
-        height: auto; /* Menyesuaikan tinggi berdasarkan lebar yang baru */
-        max-width: 300px; /* Batas maksimum ukuran gambar agar tetap proporsional */
+        width: 100%;
+        /* Mengatur gambar agar memenuhi lebar kontainer */
+        height: auto;
+        /* Menyesuaikan tinggi berdasarkan lebar yang baru */
+        max-width: 300px;
+        /* Batas maksimum ukuran gambar agar tetap proporsional */
     }
+
     .title-section {
         font-family: 'Inter', sans-serif;
         font-size: 23px;
     }
-    
+
     .text-base-hero {
         font-size: 14px;
         line-height: 20.3px;
         text-align: center;
     }
-    
+
     .client-review {
-        margin-top: 20px; /* Tambahkan jarak atas untuk membuatnya turun ke bawah */
+        margin-top: 20px;
+        /* Tambahkan jarak atas untuk membuatnya turun ke bawah */
     }
 
     .quote-icon {
-        align-self: flex-start; /* Mengatur posisi ikon di atas */
+        align-self: flex-start;
+        /* Mengatur posisi ikon di atas */
     }
 
     .slider-item {
-        flex-direction: column; /* Mengatur arah flex menjadi kolom saat layar >= 768px */
-        align-items: flex-start; /* Mengatur item dalam kolom menjadi rata kiri */
+        flex-direction: column;
+        /* Mengatur arah flex menjadi kolom saat layar >= 768px */
+        align-items: flex-start;
+        /* Mengatur item dalam kolom menjadi rata kiri */
     }
 }
 
@@ -1174,7 +1198,8 @@ p {
 .slider-button {
     position: absolute;
     bottom: 4px;
-    right: 4px; /* Menempatkan tombol di sebelah kanan */
+    right: 4px;
+    /* Menempatkan tombol di sebelah kanan */
     width: 50px;
     height: 50px;
     background-color: #4A6DCB;
@@ -1183,17 +1208,21 @@ p {
     border-radius: 50%;
     focus: outline-none;
     display: flex;
-    align-items: center; /* Pusatkan ikon di dalam tombol secara vertikal */
-    justify-content: center; /* Pusatkan ikon di dalam tombol secara horizontal */
+    align-items: center;
+    /* Pusatkan ikon di dalam tombol secara vertikal */
+    justify-content: center;
+    /* Pusatkan ikon di dalam tombol secara horizontal */
 }
 
 /* Jarak antara tombol slider */
 #prev {
-    right: 60px; /* Menempatkan tombol "prev" sedikit lebih ke kiri */
+    right: 60px;
+    /* Menempatkan tombol "prev" sedikit lebih ke kiri */
 }
 
 #next {
-    right: 4px; /* Menempatkan tombol "next" tetap di kanan bawah */
+    right: 4px;
+    /* Menempatkan tombol "next" tetap di kanan bawah */
 }
 
 
@@ -1295,7 +1324,7 @@ p {
         text-align: center;
         align-items: center;
         gap: 10px;
-    }   
+    }
 }
 
 @media (max-width:768px) {
@@ -1310,7 +1339,7 @@ p {
         line-height: 29.9px;
         text-align: center;
     }
-    
+
     .text-base-hero {
         font-size: 14px;
         /* font-weight: 400; */
@@ -1432,25 +1461,32 @@ p {
 }
 
 .mr-3 {
-    margin-right: 0.75rem; /* Atur margin sesuai kebutuhan */
+    margin-right: 0.75rem;
+    /* Atur margin sesuai kebutuhan */
 }
 
 .menu-item {
     display: flex;
-    flex-direction: column; /* Mengatur arah elemen secara vertikal */
-    align-items: center;    /* Menyelaraskan elemen di tengah secara horizontal */
-    text-align: center;     /* Teks berada di tengah */
+    flex-direction: column;
+    /* Mengatur arah elemen secara vertikal */
+    align-items: center;
+    /* Menyelaraskan elemen di tengah secara horizontal */
+    text-align: center;
+    /* Teks berada di tengah */
 }
 
 .menu-item img {
-    margin-bottom: 5px; /* Menambahkan sedikit jarak antara logo dan teks */
+    margin-bottom: 5px;
+    /* Menambahkan sedikit jarak antara logo dan teks */
 }
 
 .menu-item p {
     font-family: 'Inter';
     font-size: 11px;
-    color: #643493;        /* Warna teks */
-    padding: 0 20px;    /* Padding 10px pada kanan dan kiri */
+    color: #643493;
+    /* Warna teks */
+    padding: 0 20px;
+    /* Padding 10px pada kanan dan kiri */
     font-weight: 500;
     line-height: 15.4px;
 }

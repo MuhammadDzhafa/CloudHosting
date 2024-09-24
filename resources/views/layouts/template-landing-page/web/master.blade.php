@@ -12,11 +12,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- Google Tag Manager -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -65,18 +66,18 @@
         <div class="infraloader is-full is-active"></div>
 
         <!--Mobile navbar-->
-        @include("layouts.mobile.navbar")
+        @include("layouts.template-landing-page.mobile.navbar")
         <!--Mobile sidebar-->
-        @include("layouts.mobile.sidebar")
+        @include("layouts.template-landing-page.mobile.sidebar")
         <!--Webapp navbar alt-->
-        @include("layouts.web.partials.navbar")
+        @include("layouts.template-landing-page.web.partials.navbar")
 
         <!--Languages panel-->
-        @include("layouts.web.partials.languages")
+        @include("layouts.template-landing-page.web.partials.languages")
         <!--Activity panel-->
-        @include("layouts.web.partials.activity")
+        @include("layouts.template-landing-page.web.partials.activity")
         <!--Page body-->
-        @include("layouts.mobile.subsidebar")
+        @include("layouts.template-landing-page.mobile.subsidebar")
 
 
         <!-- Content Wrapper -->
@@ -84,15 +85,15 @@
 
             <div class="page-title has-text-centered is-webapp">
                 <div class="toolbar ml-auto">
-                    @include("layouts.web.partials.toolbar.mode")
-                    @include("layouts.web.partials.toolbar.languages")
-                    @include("layouts.web.partials.toolbar.notifications")
-                    @include("layouts.web.partials.toolbar.activity")
+                    @include("layouts.template-landing-page.web.partials.toolbar.mode")
+                    @include("layouts.template-landing-page.web.partials.toolbar.languages")
+                    @include("layouts.template-landing-page.web.partials.toolbar.notifications")
+                    @include("layouts.template-landing-page.web.partials.toolbar.activity")
                 </div>
             </div>
 
-                @yield('landing-page')
-                    {{-- @include('layouts.web.partials.scrolltotop') --}}
+            @yield('landing-page')
+            {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
         </div>
 
         <!--Huro Scripts-->

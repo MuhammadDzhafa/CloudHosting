@@ -2014,7 +2014,7 @@
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="lnir lnir-circle-plus"></i>
                                 </span>
-                                <span>Add User</span>
+                                <span>Add Product</span>
                             </button>
                         </div>
                     </div>

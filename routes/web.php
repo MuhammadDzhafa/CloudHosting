@@ -57,8 +57,8 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
-Route::get('/product', [HostingController::class, 'product']);
-Route::get('/edit', [HostingController::class, 'edit']);
+Route::get('/products', [HostingController::class, 'product']);
+Route::get('/product-edit', [HostingController::class, 'edit']);
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -96,6 +96,7 @@ Route::get('/client-area/dashboard', function () {
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
 
 
+/* CRUD Testimonial */
 Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
 Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
 Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
@@ -104,6 +105,7 @@ Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->n
 Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
 Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
+/* Crud Clients */
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
 Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
@@ -111,3 +113,11 @@ Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.sh
 Route::get('/clients/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
 Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+/* CRUD TLD */
+Route::get('/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index');
+Route::get('/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
+Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
+Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
+Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
+Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');

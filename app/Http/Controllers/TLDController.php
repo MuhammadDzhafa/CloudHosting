@@ -30,7 +30,7 @@ class TLDController extends Controller
         $tlds->tld_price = $request->input('tld_price');
         $tlds->save();
 
-        return redirect()->route('tlds.index')->with('success', 'TLD created successfully.');
+        return redirect()->route('app.admin.tlds.index')->with('success', 'TLD created successfully.');
     }
 
     // Menampilkan detail TLD
@@ -58,13 +58,13 @@ class TLDController extends Controller
             'tld_price' => $request->tld_price,
         ]);
 
-        return redirect()->route('tlds.index')->with('success', 'TLD updated successfully.');
+        return redirect()->route('app.admin.tlds.index')->with('success', 'TLD updated successfully.');
     }
 
     // Menghapus TLD dari database
     public function destroy(Tld $tld)
     {
         $tld->delete();
-        return redirect()->route('tlds.index')->with('success', 'TLD deleted successfully.');
+        return redirect()->route('app.admin.tlds.index')->with('success', 'TLD deleted successfully.');
     }
 }
