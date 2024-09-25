@@ -153,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-        @include("app.admin.testimonials.modal")
+        @include("app.admin.testimonials.create")
 
         <!-- Concatenated plugins -->
         <script src="assets/js/app.js"></script>

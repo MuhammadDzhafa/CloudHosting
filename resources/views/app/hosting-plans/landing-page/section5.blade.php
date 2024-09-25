@@ -1,9 +1,4 @@
-<section class="section-frame padding-1 gap-6 md:gap-12">
-        <!-- <div class="container">
-            <h3 class="titlee mx-auto mb-6"
-                style="max-width: 1200px; height: 43px; font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 700; line-height: 43.2px; text-align: center; color: #283252;">
-                Find the Perfect Solutions for You
-            </h3> -->
+<!-- <section class="section-frame padding-1 gap-6 md:gap-12">
             <h2 class="title-section text-center">
                 Find the Perfect Solutions for You
             </h2>
@@ -36,8 +31,7 @@
                     </div>
                 </div>
             </div>
-        <!-- </div> -->
     </section>
     @push('styles')
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
-    @endpush
+    @endpush -->

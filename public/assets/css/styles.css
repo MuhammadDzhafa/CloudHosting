@@ -1155,6 +1155,10 @@ p {
     }
 }
 
+.slider-content {
+    width: 100% !important;
+}
+
 .quote-icon {
     width: 69px;
     height: 69px;

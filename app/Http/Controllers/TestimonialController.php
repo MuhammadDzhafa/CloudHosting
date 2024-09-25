@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
+use Intervention\Image\Facades\Image;
 
 
 class TestimonialController extends Controller
@@ -172,6 +173,10 @@ class TestimonialController extends Controller
         return redirect()->route('testimonials.index')->with('success', 'Testimonial permanently deleted.');
     }
 
-
+    public function section9(): View
+    {
+        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web','facebook', 'instagram')->get();
+        return view('app.hosting-plans.landing-page.section9', ['testimonials' => $testimonials]);
+    }
 
 }

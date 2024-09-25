@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testimonial; // Import the Testimonial model
+use Illuminate\View\View; // Import the View class
+
 use Illuminate\Http\Request;
 
 class HostingController extends Controller
 {
-    public function index()
+
+    public function index(): View
     {
-        return view('app.hosting-plans.landing-page.index');
+        // Fetch the testimonials data
+        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
+
+        // Return the landing page view with testimonials
+        return view('app.hosting-plans.landing-page.index', ['testimonials' => $testimonials]);
     }
 
     public function tampilan3()
