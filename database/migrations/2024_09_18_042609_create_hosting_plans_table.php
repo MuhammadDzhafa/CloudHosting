@@ -13,23 +13,27 @@ return new class extends Migration
     {
         Schema::create('hosting_plans', function (Blueprint $table) {
             $table->id('hosting_plans_id');
-            $table->string('group_id');
             $table->string('name');
-            $table->string('max_domain');
-            $table->string('max_addon_domain');
-            $table->string('max_email_account');
-            $table->string('max_database');
-            $table->string('max_io');
-            $table->string('nproc');
-            $table->string('entry_process');
-            $table->string('max_bandwidth');
-            $table->string('ssl');
-            $table->string('backup');
+            $table->string('group_id');
+            $table->enum('type', ['Regular Hosting', 'Custom Hosting']);
+            $table->string('description');
             $table->string('RAM');
             $table->string('storage');
             $table->string('CPU');
-            $table->string('description');
-            $table->string('type');
+            $table->string('max_io');
+            $table->string('nproc');
+            $table->string('entry_process');
+            $table->string('ssl');
+            $table->string('backup');
+            $table->string('max_database');
+            $table->string('max_bandwidth');
+            $table->string('max_email_account');
+            $table->string('max_ftp_account');
+            $table->string('max_domain');
+            $table->string('max_addon_domain');
+            $table->string(column: 'max_parked_domain');
+            $table->string('ssh');
+            $table->string('free_domain');
             $table->timestamps();
         });
     }
