@@ -30,6 +30,7 @@ class HostingGroupController extends Controller
 
     public function edit($id)
     {
+        // $hostingGroup = HostingGroup::where('hosting_Group_id', $id)->firstOrFail();
         $hostingGroup = HostingGroup::findOrFail($id); // Find the hosting group
         return view('product', compact('hostingGroup')); // Correct view for editing
     }

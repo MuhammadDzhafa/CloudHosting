@@ -840,18 +840,6 @@
                                         <div class="left">
                                             <h3>Products</h3>
                                         </div>
-                                        <div class="right">
-                                            <div class="buttons">
-                                                <a href="/products" class="button h-button is-light is-dark-outlined">
-                                                    <!-- <span class="icon">
-                                                        <i class="lnir lnir-arrow-left rem-100"></i>
-                                                    </span> -->
-                                                    <span>Cancel</span>
-                                                </a>
-                                                <button id="save-button"
-                                                    class="button h-button is-primary is-raised">Save</button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -1215,6 +1203,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="right">
+                                        <div class="buttons px-3 py-2" style="display: flex; justify-content: center; gap: 7px;">
+                                            <a href="/products" class="button h-button is-light is-dark-outlined">
+                                                <span>Button</span>
+                                            </a>
+                                            <button id="save-button" class="button h-button is-primary is-raised rounded-lg">Confirm</button>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>

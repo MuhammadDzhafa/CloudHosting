@@ -388,12 +388,12 @@
                                         <td></td>
                                         <td>
                                             <div class="d-flex justify-end">
-                                                <a href="#" class="edit-link" data-id="{{ $group->hosting_group_id }}" data-name="{{ $group->name }}">
+                                                <a href="javascript:void(0);" class="edit-link" data-id="{{ $group->hosting_group_id }}" data-name="{{ $group->name }}">
                                                     <img src="assets/img/product/edit.svg" alt="" class="mr-3">
                                                 </a>
 
-                                                <a href=""><img src="assets/img/product/trash.svg"
-                                                        alt=""></a>
+
+                                                <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -415,7 +415,7 @@
                                 function openModal(isEdit = false, groupId = null, groupName = '') {
                                     if (isEdit) {
                                         modalTitle.textContent = 'Edit Group'; // Judul untuk edit
-                                        newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
+                                        newGroupForm.action = `/products/${groupId}`; // Set action untuk update
                                         newGroupForm.method = 'POST'; // Set method untuk POST
                                         // Tambahkan input hidden untuk metode PUT
                                         let methodField = newGroupForm.querySelector('input[name="_method"]');
@@ -430,6 +430,7 @@
                                     } else {
                                         resetForm(); // Reset form untuk menambah grup baru
                                         modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
+                                        methodField.innerHTML = ''; // Remove PUT method
                                         newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
                                         delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
                                     }
