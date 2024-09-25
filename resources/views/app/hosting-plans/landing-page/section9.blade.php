@@ -2,6 +2,7 @@
     <h2 class="text-3xl md:text-4xl title-section text-center">
         Hear Directly from Our Satisfied Clients
     </h2>    
+    </h2>    
     <div id="slider" class="relative w-full overflow-hidden">
         <div class="slider-content flex transition-transform duration-300 ease-in-out" style="width: 100%; width: unset;" >
             @foreach($testimonials as $testimonial)

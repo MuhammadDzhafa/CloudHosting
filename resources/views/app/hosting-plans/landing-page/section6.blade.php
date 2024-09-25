@@ -5,12 +5,12 @@
     <div class="container-project">
         <div class="tabs-wrapper  is-triple-slider">
             <div class="tabs-inner">
-                <div class="tabs">
+                <div class="tabs" style="max-width: unset;">
                     <ul>
                         <li data-tab="custom-tab" class="is-active"><a><span>Custom</span></a></li>
                         <li data-tab="corporate-tab"><a><span>Corporate</span></a></li>
                         <li data-tab="personal-tab"><a><span>Personal</span></a></li>
-                        <li class="tab-naver"></li>
+                        <li class="tab-naver" style="background:#4A6DCB;"></li>
                     </ul>
                 </div>
             </div>
