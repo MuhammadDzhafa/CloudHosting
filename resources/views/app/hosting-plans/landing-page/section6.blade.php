@@ -47,7 +47,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">Storage</label>
-                                    <div id="storage-price" class="custom-price">$ 20/mon</div>
+                                    <div id="storage-price" class="custom-price">IDR 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="storage-value" class="custom-slider-value">120 GB</div>
@@ -58,7 +58,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">RAM</label>
-                                    <div id="ram-price" class="custom-price">$ 20/mon</div>
+                                    <div id="ram-price" class="custom-price">IDR 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="ram-value" class="custom-slider-value">4 GB</div>
@@ -69,7 +69,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">CPU</label>
-                                    <div id="cpu-price" class="custom-price">$ 20/mon</div>
+                                    <div id="cpu-price" class="custom-price">IDR 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="cpu-value" class="custom-slider-value">4 Core</div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="flex items-center w-full">
                         <div class="custom-total-price">
-                            <span class="custom-dollar-sign">$</span>
+                            <span class="custom-dollar-sign">IDR</span>
                             <span id="total-price" class="custom-total-amount">1.99</span>
                             <span class="custom-monthly">/mon</span>
                         </div>
@@ -112,21 +112,21 @@
                             <div class="price-container text-center mb-4">
                                 <span class="flex items-center justify-center">
                                     <span
-                                        class="w-[9px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
                                     <span
-                                        class="w-[94px] h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">14.99</span>
+                                        class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">20.000</span>
                                     <span
-                                        class="w-[34px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
                                 </span>
 
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        $15.99 /mon
+                                        IDR 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">
-                                        Save 10%
+                                        Save 30%
                                     </span>
                                 </div>
                             </div>
@@ -184,17 +184,17 @@
                             <div class="price-container text-center mb-4">
                                 <span class="flex items-center justify-center">
                                     <span
-                                        class="w-[9px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">$</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">$</span>
                                     <span
-                                        class="w-[94px] h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Base-0,#FFFFFF)]">29.99</span>
+                                        class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Base-0,#FFFFFF)]">20.000</span>
                                     <span
-                                        class="w-[34px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">/mon</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">/mon</span>
                                 </span>
 
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Base-0,#FFFFFF)] line-through">
-                                        $34.99 /mon
+                                        IDR 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Brand-Tertiary-300,#D3F2FD)] ml-2"
@@ -257,20 +257,20 @@
                             <div class="price-container text-center mb-4">
                                 <span class="flex items-center justify-center">
                                     <span
-                                        class="w-[9px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
                                     <span
-                                        class="w-[94px] h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">54.99</span>
+                                        class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">20.000</span>
                                     <span
-                                        class="w-[34px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
                                 </span>
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        $55.99 /mon
+                                        IDR 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">
-                                        Save 10%
+                                        Save 30%
                                     </span>
                                 </div>
                             </div>
@@ -334,21 +334,21 @@
                             <div class="price-container text-center mb-4">
                                 <span class="flex items-center justify-center">
                                     <span
-                                        class="w-[9px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
                                     <span
-                                        class="w-[94px] h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">0.99</span>
+                                        class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">20.000</span>
                                     <span
-                                        class="w-[34px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
                                 </span>
 
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        $1.99 /mon
+                                        IDR 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">
-                                        Save 10%
+                                        Save 30%
                                     </span>
                                 </div>
                             </div>
@@ -406,17 +406,17 @@
                             <div class="price-container text-center mb-4">
                                 <span class="flex items-center justify-center">
                                     <span
-                                        class="w-[9px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">$</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">$</span>
                                     <span
-                                        class="w-[94px] h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Base-0,#FFFFFF)]">1.99</span>
+                                        class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Base-0,#FFFFFF)]">20.000</span>
                                     <span
-                                        class="w-[34px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">/mon</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-0,#FFFFFF)]">/mon</span>
                                 </span>
 
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Base-0,#FFFFFF)] line-through">
-                                        $3.99 /mon
+                                        IDR 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Brand-Tertiary-300,#D3F2FD)] ml-2"
@@ -479,20 +479,20 @@
                             <div class="price-container text-center mb-4">
                                 <span class="flex items-center justify-center">
                                     <span
-                                        class="w-[9px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">$</span>
                                     <span
-                                        class="w-[94px] h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">3.99</span>
+                                        class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">20.000</span>
                                     <span
-                                        class="w-[34px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
+                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
                                 </span>
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        $4.99 /mon
+                                        IDR 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">
-                                        Save 10%
+                                        Save 30%
                                     </span>
                                 </div>
                             </div>
