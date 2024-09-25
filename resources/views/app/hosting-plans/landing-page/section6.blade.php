@@ -1,4 +1,4 @@
-<section class="section-frame padding-1 gap-6 md:gap-12" id="target-section">
+<!-- <section class="section-frame padding-1 gap-6 md:gap-12" id="target-section">
     <h2 class="text-3xl md:text-4xl title-section text-center">
         Cloud Hosting
     </h2>
@@ -99,7 +99,6 @@
             <div id="corporate-tab" class="tab-content">
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                        <!-- Strato -->
                         <div
                             class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
                             <h5
@@ -172,7 +171,6 @@
                             </button>
                             <a href="#" class="block text-center text-[#4A6DCB] mt-4">More detail →</a>
                         </div>
-                        <!-- Alto -->
                         <div
                             class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white custom-gradient">
                             <h5
@@ -246,7 +244,6 @@
                             </button>
                             <a href="#" class="block text-center text-white mt-4">More detail →</a>
                         </div>
-                        <!-- Cirrus -->
                         <div
                             class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
                             <h5
@@ -324,7 +321,6 @@
             <div id="personal-tab" class="tab-content">
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                        <!-- Strato -->
                         <div
                             class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
                             <h5
@@ -397,7 +393,6 @@
                             </button>
                             <a href="#" class="block text-center text-[#4A6DCB] mt-4">More detail →</a>
                         </div>
-                        <!-- Alto -->
                         <div
                             class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white custom-gradient">
                             <h5
@@ -471,7 +466,6 @@
                             </button>
                             <a href="#" class="block text-center text-white mt-4">More detail →</a>
                         </div>
-                        <!-- Cirrus -->
                         <div
                             class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
                             <h5
@@ -547,4 +541,4 @@
                 </div>
             </div>
         </div>
-</section>
+</section> -->
