@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -132,8 +132,7 @@
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/7.jpg" alt=""
-                                        data-user-popover="0">
+                                        data-demo-src="assets/img/avatars/photos/7.jpg" alt="" data-user-popover="0">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Alice C.</span>
@@ -143,8 +142,7 @@
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/13.jpg" alt=""
-                                        data-user-popover="6">
+                                        data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Tara S.</span>
@@ -154,8 +152,7 @@
                             <a class="media-flex-center">
                                 <div class="h-avatar is-small">
                                     <img class="avatar" src="https://via.placeholder.com/150x150"
-                                        data-demo-src="assets/img/avatars/photos/22.jpg" alt=""
-                                        data-user-popover="5">
+                                        data-demo-src="assets/img/avatars/photos/22.jpg" alt="" data-user-popover="5">
                                 </div>
                                 <div class="flex-meta">
                                     <span>Jimmy H.</span>
@@ -176,7 +173,7 @@
                 <div class="dropdown project-dropdown dropdown-trigger is-spaced">
                     <div class="h-avatar is-small">
                         <span class="avatar is-fake is-h-green">
-                          <span>H</span>
+                            <span>H</span>
                         </span>
                     </div>
                     <span class="status-indicator"></span>
@@ -186,7 +183,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-warning">
-                                      <span>D</span>
+                                        <span>D</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -197,7 +194,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-h-green">
-                                      <span>H</span>
+                                        <span>H</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -208,7 +205,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-info">
-                                      <span>L</span>
+                                        <span>L</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -219,7 +216,7 @@
                             <div class="dropdown-block">
                                 <div class="h-avatar is-small">
                                     <span class="avatar is-fake is-h-purple">
-                                      <span>B</span>
+                                        <span>B</span>
                                     </span>
                                 </div>
                                 <div class="meta">
@@ -239,7 +236,8 @@
                 <ul>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Lists <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Lists <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -270,7 +268,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Flex Lists <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Flex Lists <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -295,7 +294,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Datatable <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Datatable <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -326,7 +326,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Placeload <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Placeload <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -358,7 +359,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Card Grid <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Card Grid <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -389,7 +391,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -414,7 +417,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">User Grid <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">User Grid <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -446,7 +450,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Personal <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Personal <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -477,7 +482,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Pages <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Pages <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -532,7 +538,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Subpages <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Subpages <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -563,7 +570,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Projects <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Projects <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -601,7 +609,8 @@
                     <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Utility <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Utility <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -632,7 +641,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Onboarding <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Onboarding <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -669,7 +679,8 @@
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Error Pages <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Error Pages <i
+                                    data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
@@ -840,6 +851,18 @@
                                         <div class="left">
                                             <h3>Products</h3>
                                         </div>
+                                        <div class="right">
+                                            <div class="buttons">
+                                                <a href="/products" class="button h-button is-light is-dark-outlined">
+                                                    <span class="icon" style="min-width: 0px; min-height: 0px;">
+                                                        <i class="lnir lnir-arrow-left rem-100"></i>
+                                                    </span>
+                                                    <span>Cancel</span>
+                                                </a>
+                                                <button id="save-button"
+                                                    class="button h-button is-primary is-raised">Save</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -847,34 +870,47 @@
                                     <div class="tabs-inner">
                                         <div class="tabs is-centered" style="margin-bottom:0px">
                                             <ul>
-                                                <li data-tab="team-tab" class="is-active"><a>Product Info</a></li>
-                                                <li data-tab="projects-tab"><a>Product Specifications</a></li>
+                                                <li data-tab="team-tab"><a>Product Info</a></li>
+                                                <li data-tab="projects-tab" class="is-active"><a>Pricing</a></li>
+                                                <li data-tab="tasks-tab"><a>Product Specifications</a></li>
                                             </ul>
                                         </div>
                                     </div>
 
                                     <div class="form-body" style="background-color: #FAFAFA;">
                                         <div class="form-section is-grey">
-                                            <div id="team-tab" class="tab-content is-active">
+                                            <div id="team-tab" class="tab-content">
 
                                                 <div class="column" style="padding-left:310px; padding-right:310px">
-                                                    <div class="is-flex" style="gap: 30px; width: 100%; align-items: flex-start;">
+                                                    <div class="is-flex"
+                                                        style="gap: 30px; width: 100%; align-items: flex-start;">
                                                         <div class="field" style="flex-basis: 50%;">
                                                             <label>Product Group</label>
                                                             <div class="dropdown dropdown-trigger" style="width: 100%;">
                                                                 <div class="is-trigger" style="width: 100%;">
-                                                                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                                                                        <span>Select Group</span>
-                                                                        <span class="icon is-small" style="min-width: 0; min-height: 0;">
-                                                                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                                                    <button class="button" aria-haspopup="true"
+                                                                        aria-controls="dropdown-menu"
+                                                                        style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                                                        <span id="selectedGroup">Select Group</span>
+                                                                        <span class="icon is-small"
+                                                                            style="min-width: 0; min-height: 0;">
+                                                                            <i class="fas fa-angle-down"
+                                                                                aria-hidden="true"></i>
                                                                         </span>
                                                                     </button>
                                                                 </div>
-                                                                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                                                <div class="dropdown-menu" id="dropdown-menu"
+                                                                    role="menu">
                                                                     <div class="dropdown-content">
-                                                                        <a href="#" class="dropdown-item font-size-base">Personal Cloud Hosting</a>
-                                                                        <a href="#" class="dropdown-item font-size-base">Corporate Cloud Hosting</a>
-                                                                        <a href="#" class="dropdown-item font-size-base">WordPress Hosting</a>
+                                                                        <a href="#"
+                                                                            class="dropdown-item font-size-base">Personal
+                                                                            Cloud Hosting</a>
+                                                                        <a href="#"
+                                                                            class="dropdown-item font-size-base">Corporate
+                                                                            Cloud Hosting</a>
+                                                                        <a href="#"
+                                                                            class="dropdown-item font-size-base">WordPress
+                                                                            Hosting</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -884,18 +920,27 @@
                                                             <label>Product Type</label>
                                                             <div class="dropdown dropdown-trigger" style="width: 100%;">
                                                                 <div class="is-trigger" style="width: 100%;">
-                                                                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                                                                        <span>Select Type</span>
-                                                                        <span class="icon is-small" style="min-width: 0; min-height: 0;">
-                                                                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                                                    <button class="button" aria-haspopup="true"
+                                                                        aria-controls="dropdown-menu"
+                                                                        style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                                                        <span id="selectedType">Select Type</span>
+                                                                        <span class="icon is-small"
+                                                                            style="min-width: 0; min-height: 0;">
+                                                                            <i class="fas fa-angle-down"
+                                                                                aria-hidden="true"></i>
                                                                         </span>
                                                                     </button>
 
                                                                 </div>
-                                                                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                                                <div class="dropdown-menu" id="dropdown-menu"
+                                                                    role="menu">
                                                                     <div class="dropdown-content">
-                                                                        <a href="#" class="dropdown-item font-size-base">Regular Hosting</a>
-                                                                        <a href="#" class="dropdown-item font-size-base">Custom Hosting</a>
+                                                                        <a href="#" class="dropdown-item font-size-base"
+                                                                            data-value="Regular Hosting">Regular
+                                                                            Hosting</a>
+                                                                        <a href="#" class="dropdown-item font-size-base"
+                                                                            data-value="Custom Hosting">Custom
+                                                                            Hosting</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -903,47 +948,138 @@
                                                     </div>
 
 
-                                                    <div class="is-flex" style="gap: 30px; align-items: flex-start; width: 100%;">
+                                                    <div class="is-flex"
+                                                        style="gap: 30px; align-items: flex-start; width: 100%;">
                                                         <div class="field" style="flex-basis: 50%;">
                                                             <label>Product Name</label>
-                                                            <input class="input" placeholder="E.g Basic Plan" style="width: 100%; padding: 10px;">
+                                                            <input class="input" placeholder="E.g Basic Plan"
+                                                                style="width: 100%; padding: 10px;">
                                                         </div>
                                                         <div class="field" style="flex-basis: 50%;">
                                                             <label>Product Description</label>
-                                                            <input class="input" placeholder="E.g Starter website" style="width: 100%; padding: 10px;">
-                                                        </div>
-                                                    </div>
-
-
-
-                                                    <div class="field">
-                                                        <label>Pricing Monthly (IDR)</label>
-                                                        <input class="input" placeholder="0">
-                                                    </div>
-
-                                                    <div class="field">
-                                                        <label class="checkbox is-outlined is-primary p-0">
-                                                            <input type="checkbox">
-                                                            <span></span>
-                                                            Discount
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="is-flex" style="gap: 30px; width: 100%;">
-                                                        <div class="field" style="flex-basis: 50%;">
-                                                            <label>Discount (%)</label>
-                                                            <input class="input disabled" placeholder="0" disabled style="width: 100%;">
-                                                        </div>
-                                                        <div class="field" style="flex-basis: 50%;">
-                                                            <label>Price After Discount</label>
-                                                            <input class="input disabled" placeholder="0" disabled style="width: 100%;">
+                                                            <input class="input" placeholder="E.g Starter website"
+                                                                style="width: 100%; padding: 10px;">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div id="projects-tab" class="tab-content is-active">
+                                                <div class="table-wrapper" style="min-height:100px" data-simplebar>
+                                                    <table id="users-datatable"
+                                                        class="table is-datatable is-hoverable has-text-centered">
+                                                        <thead>
+                                                            <tr class="color-row">
+                                                                <th></th>
+                                                                <th class="has-text-centered">One Time/Monthly</th>
+                                                                <th class="has-text-centered">Quarterly</th>
+                                                                <th class="has-text-centered">Semi-Annually</th>
+                                                                <th class="has-text-centered">Annually</th>
+                                                                <th class="has-text-centered">Biennially</th>
+                                                                <th class="has-text-centered">Triennially</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Enable</th>
+                                                                <td><label class="checkbox is-outlined is-primary">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                    </label></td>
+                                                                <td><label class="checkbox is-outlined is-primary">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                    </label></td>
+                                                                <td><label class="checkbox is-outlined is-primary">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                    </label></td>
+                                                                <td><label class="checkbox is-outlined is-primary">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                    </label></td>
+                                                                <td><label class="checkbox is-outlined is-primary">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                    </label></td>
+                                                                <td><label class="checkbox is-outlined is-primary">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                    </label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Price</th>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Discount (%)</th>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="control">
+                                                                        <input class="input has-text-centered">
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div id="projects-tab" class="tab-content">
+                                        <div id="tasks-tab" class="tab-content">
                                             <div class="columns is-justify-content-center">
                                                 <div class="column is-12-mobile is-4-tablet is-4-desktop"
                                                     style="border-right:1px solid #e5e5e5; padding-right:40px">
@@ -1185,34 +1321,27 @@
                                                     <!-- Free Domain -->
                                                     <div class="field">
                                                         <label>Free Domain</label>
-                                                        <div class="control is-flex is-align-items-center is-justify-content-center" style="gap:10px">
-                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                <input type="radio" name="free_domain_radio" value="No">
+                                                        <div class="control is-flex is-align-items-center is-justify-content-center"
+                                                            style="gap:10px">
+                                                            <label class="radio is-outlined is-primary p-0"
+                                                                style="display: flex; align-items: center;">
+                                                                <input type="radio" name="free_domain_radio">
                                                                 <span></span>
                                                                 No
                                                             </label>
-                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                <input type="radio" name="free_domain_radio" value="Yes">
+                                                            <label class="radio is-outlined is-primary p-0"
+                                                                style="display: flex; align-items: center;">
+                                                                <input type="radio" name="free_domain_radio">
                                                                 <span></span>
                                                                 Yes
                                                             </label>
-                                                            <input class="free-domain-input input" name="free_domain" placeholder=".net, .com" disabled>
+                                                            <input class="input">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="right">
-                                        <div class="buttons px-3 py-2" style="display: flex; justify-content: center; gap: 7px;">
-                                            <a href="/products" class="button h-button is-light is-dark-outlined">
-                                                <span>Button</span>
-                                            </a>
-                                            <button id="save-button" class="button h-button is-primary is-raised rounded-lg">Confirm</button>
-                                        </div>
-                                    </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -1221,8 +1350,28 @@
             </div>
         </div>
     </div>
-    </div>
 
+
+    <script>
+        // Function to handle dropdown selection for Group
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor behavior
+                const parentDropdown = e.target.closest('.dropdown'); // Find the closest dropdown
+                const selectedText = e.target.textContent; // Get the text of the clicked item
+
+                // Check if the dropdown is for group or type
+                if (parentDropdown.querySelector('#selectedGroup')) {
+                    document.getElementById('selectedGroup').textContent = selectedText;
+                } else if (parentDropdown.querySelector('#selectedType')) {
+                    document.getElementById('selectedType').textContent = selectedText;
+                }
+
+                // Optionally, close the dropdown (if dropdown functionality is implemented)
+                // parentDropdown.classList.remove('is-active'); 
+            });
+        });
+    </script>
 
     <!--Huro Scripts-->
     <!--Load Mapbox-->

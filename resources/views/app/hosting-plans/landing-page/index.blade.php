@@ -62,86 +62,87 @@
     // Storage options
     const storageOptions = [{
             value: '120 GB',
-            price: 20
+            price: 5000
         },
         {
             value: '240 GB',
-            price: 30
+            price: 10000
         },
         {
             value: '256 GB',
-            price: 40
+            price: 15000
         },
         {
             value: '480 GB',
-            price: 50
+            price: 20000
         },
         {
             value: '512 GB',
-            price: 60
+            price: 25000
         }
     ];
 
     // RAM options
     const ramOptions = [{
             value: '4 GB',
-            price: 20
+            price: 5000
         },
         {
             value: '8 GB',
-            price: 30
+            price: 10000
         },
         {
             value: '16 GB',
-            price: 40
+            price: 15000
         },
         {
             value: '32 GB',
-            price: 50
+            price: 20000
         },
         {
             value: '64 GB',
-            price: 60
+            price: 25000
         }
     ];
 
     // CPU options
     const cpuOptions = [{
             value: '4 Core',
-            price: 20
+            price: 5000
         },
         {
             value: '8 Core',
-            price: 30
+            price: 10000
         },
         {
             value: '12 Core',
-            price: 40
+            price: 15000
         },
         {
             value: '16 Core',
-            price: 50
+            price: 20000
         },
         {
             value: '24 Core',
-            price: 60
+            price: 25000
         }
     ];
 
     function updateTotalPrice() {
-        // Get the selected price for storage, RAM, and CPU
         const selectedStorage = storageOptions[storageSlider.value].price;
         const selectedRam = ramOptions[ramSlider.value].price;
         const selectedCpu = cpuOptions[cpuSlider.value].price;
 
-        // Calculate total price
+        // Hitung total harga
         const totalPrice = selectedStorage + selectedRam + selectedCpu;
 
-        // Update the total price element (remove .00 if the number is an integer)
-        totalPriceElement.textContent = totalPrice % 1 === 0 ? totalPrice : totalPrice.toFixed(2);
+        // Update tampilan total harga dengan titik sebagai pemisah ribuan
+        totalPriceElement.textContent = `${totalPrice.toLocaleString('id-ID')}`;
     }
 
-    // Add event listeners to sliders
+
+
+    // Set event listener untuk update harga
     storageSlider.addEventListener('input', updateTotalPrice);
     ramSlider.addEventListener('input', updateTotalPrice);
     cpuSlider.addEventListener('input', updateTotalPrice);
@@ -156,23 +157,23 @@
 
         const storageOptions = [{
                 value: '120 GB',
-                price: '$ 20/mon'
+                price: 'IDR 5.000/mon'
             },
             {
                 value: '240 GB',
-                price: '$ 30/mon'
+                price: 'IDR 10.000/mon'
             },
             {
                 value: '256 GB',
-                price: '$ 40/mon'
+                price: 'IDR 15.000/mon'
             },
             {
                 value: '480 GB',
-                price: '$ 50/mon'
+                price: 'IDR 20.000/mon'
             },
             {
                 value: '512 GB',
-                price: '$ 60/mon'
+                price: 'IDR 25.000/mon'
             }
         ];
 
@@ -195,23 +196,23 @@
 
         const ramOptions = [{
                 value: '4 GB',
-                price: '$ 20/mon'
+                price: 'IDR 5.000/mon'
             },
             {
                 value: '8 GB',
-                price: '$ 30/mon'
+                price: 'IDR 10.000/mon'
             },
             {
                 value: '16 GB',
-                price: '$ 40/mon'
+                price: 'IDR 15.000/mon'
             },
             {
                 value: '32 GB',
-                price: '$ 50/mon'
+                price: 'IDR 20.000/mon'
             },
             {
                 value: '64 GB',
-                price: '$ 60/mon'
+                price: 'IDR 25.000/mon'
             }
         ];
 
@@ -234,23 +235,23 @@
 
         const cpuOptions = [{
                 value: '4 Core',
-                price: '$ 20/mon'
+                price: 'IDR 5.000/mon'
             },
             {
                 value: '8 Core',
-                price: '$ 30/mon'
+                price: 'IDR 10.000/mon'
             },
             {
                 value: '12 Core',
-                price: '$ 40/mon'
+                price: 'IDR 15.000/mon'
             },
             {
                 value: '16 Core',
-                price: '$ 50/mon'
+                price: 'IDR 20.000/mon'
             },
             {
                 value: '24 Core',
-                price: '$ 60/mon'
+                price: 'IDR 25.000/mon'
             }
         ];
 

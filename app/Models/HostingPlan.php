@@ -14,7 +14,6 @@ class HostingPlan extends Model
     protected $primaryKey = 'hosting_plans_id';
 
     protected $fillable = [
-        'hostingplan_id',
         'name',
         'group_id',
         'type',
@@ -27,7 +26,7 @@ class HostingPlan extends Model
         'entry_process',
         'ssl',
         'backup',
-        'max_database',     
+        'max_database',
         'max_bandwidth',
         'max_email_account',
         'max_ftp_account',

@@ -22,28 +22,28 @@ class HostingPlanController extends Controller
     public function store(Request $request)
     {
         // Validate the input
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string',
-            'group_id' => 'required|string',
+            'group_id' => 'required|integer',
             'type' => 'required|in:Regular Hosting,Custom Hosting',
             'description' => 'required|string',
-            'RAM' => 'required|string',
-            'storage' => 'required|string',
+            'RAM' => 'required|integer',
+            'storage' => 'required|integer',
             'CPU' => 'required|string',
-            'max_io' => 'required|string',
-            'nproc' => 'required|string',
-            'entry_process' => 'required|string',
-            'ssl' => 'required|string',
+            'max_io' => 'required|integer',
+            'nproc' => 'required|integer',
+            'entry_process' => 'required|integer',
+            'ssl' => 'required|boolean',
             'backup' => 'required|string',
-            'max_database' => 'required|string',
-            'max_bandwidth' => 'required|string',
-            'max_email_account' => 'required|string',
-            'max_ftp_account' => 'required|string',
-            'max_domain' => 'required|string',
-            'max_addon_domain' => 'required|string',
-            'max_parked_domain' => 'required|string',
-            'ssh' => 'required|string',
-            'free_domain' => 'required|string',
+            'max_database' => 'required|integer',
+            'max_bandwidth' => 'required|integer',
+            'max_email_account' => 'required|integer',
+            'max_ftp_account' => 'required|integer',
+            'max_domain' => 'required|integer',
+            'max_addon_domain' => 'required|integer',
+            'max_parked_domain' => 'required|integer',
+            'ssh' => 'required|boolean',
+            'free_domain' => 'required|boolean',
         ]);
 
         // Create and save the new hosting plan
@@ -71,10 +71,10 @@ class HostingPlanController extends Controller
             'free_domain' => $request->input('free_domain'),
         ]);
 
-        $hostingPlan->save();
+        $hostingPlan = HostingPlan::create($validatedData);
 
-        // Redirect to the edit page of the newly created hosting plan
-        return redirect()->route('hosting-plans.index', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan created successfully.');
+        // Redirect to the index page with a success message
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting plan created successfully.');
     }
 
 
@@ -110,14 +110,14 @@ class HostingPlanController extends Controller
             'ssl' => 'required|string',
             'backup' => 'required|string',
             'max_database' => 'required|string',
-            'max_bandwidth' => 'required|string',
-            'max_email_account' => 'required|string',
-            'max_ftp_account' => 'required|string',
-            'max_domain' => 'required|string',
-            'max_addon_domain' => 'required|string',
-            'max_parked_domain' => 'required|string',
-            'ssh' => 'required|string',
-            'free_domain' => 'required|string',
+            // 'max_bandwidth' => 'required|string',
+            // 'max_email_account' => 'required|string',
+            // 'max_ftp_account' => 'required|string',
+            // 'max_domain' => 'required|string',
+            // 'max_addon_domain' => 'required|string',
+            // 'max_parked_domain' => 'required|string',
+            // 'ssh' => 'required|string',
+            // 'free_domain' => 'required|string',
         ]);
 
         // Find the hosting plan by ID
@@ -138,17 +138,15 @@ class HostingPlanController extends Controller
             'ssl' => $request->ssl,
             'backup' => $request->backup,
             'max_database' => $request->max_database,
-            'max_bandwidth' => $request->max_bandwidth,
-            'max_email_account' => $request->max_email_account,
-            'max_ftp_account' => $request->max_ftp_account,
-            'max_domain' => $request->max_domain,
-            'max_addon_domain' => $request->max_addon_domain,
-            'max_parked_domain' => $request->max_parked_domain,
-            'ssh' => $request->ssh,
-            'free_domain' => $request->free_domain,
+            // 'max_bandwidth' => $request->max_bandwidth,
+            // 'max_email_account' => $request->max_email_account,
+            // 'max_ftp_account' => $request->max_ftp_account,
+            // 'max_domain' => $request->max_domain,
+            // 'max_addon_domain' => $request->max_addon_domain,
+            // 'max_parked_domain' => $request->max_parked_domain,
+            // 'ssh' => $request->ssh,
+            // 'free_domain' => $request->free_domain,
         ]);
-
-        dd($hostingPlan);
 
         // Redirect or return a response
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting plan updated successfully.');

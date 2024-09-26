@@ -77,3 +77,4 @@
         <button id="next" class="absolute bottom-4 right-4 w-[50px] h-[50px] bg-indigo-500 text-white p-2 rounded-full focus:outline-none bg:#4A6DCB">❯</button>
     </div>
 </div>
+     -->

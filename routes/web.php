@@ -63,8 +63,8 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
-Route::get('/products', [HostingController::class, 'product']);
-Route::get('/product-edit', [HostingController::class, 'edit']);
+// Route::get('/products', [HostingController::class, 'product']);
+// Route::get('/product-edit', [HostingController::class, 'edit']);
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -147,4 +147,3 @@ Route::get('/products/{id}/edit', [HostingGroupController::class, 'edit'])->name
 Route::put('/products/{id}', [HostingGroupController::class, 'update'])->name('products.update');
 Route::delete('/products/{id}', [HostingGroupController::class, 'destroy'])->name('products.destroy');
 Route::post('/products/{id}/restore', [HostingGroupController::class, 'restore'])->name('products.restore');
-
