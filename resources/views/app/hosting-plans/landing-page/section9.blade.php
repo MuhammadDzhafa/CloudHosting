@@ -48,10 +48,10 @@
         <div class="slider-content flex transition-transform duration-300 ease-in-out">
         @foreach($testimonials as $testimonial)
             <div class="slider-item flex-none w-full flex items-center justify-between bg-white">
-                <div class="relative rounded-full flex items-center" style="width: 100%; height: 100%; background: radial-gradient(circle, rgba(74, 109, 203, 1) 20%, rgba(74, 109, 203, 0) 67%); align-items: center; justify-content: center;">
-                    <img src="{{ asset('storage/' . $testimonial->picture) }}" alt="Satisfied Clients" class="rounded-full" style="width: 400px; height: 388.99px;">
+                <div class="relative rounded-full flex items-center w-1/2 " style="height: 100%; background: radial-gradient(circle, rgba(74, 109, 203, 1) 20%, rgba(74, 109, 203, 0) 63%); align-items: center; justify-content: center;">
+                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Satisfied Clients" class="rounded-full" style="width: 400px; height: 388.99px;">
                 </div>
-                <div class="text-left ml-8">
+                <div class="text-left ml-8 w-1/2">
                     <div class="flex items-center gap-4">
                         <div class="w-[69px] h-[69px] p-[10px] bg-[#B8C5EB] rounded-[12px] flex items-center justify-center opacity-100">
                         <span class="text-[49px] leading-[49px]" style="font-family: Inter; font-weight: 700; color: #643493;">

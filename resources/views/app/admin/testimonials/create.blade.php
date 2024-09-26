@@ -138,7 +138,7 @@
                 document.querySelector('#occupation').value = occupation;
                 document.querySelector('#facebook').value = facebook;
                 document.querySelector('#instagram').value = instagram;
-                document.querySelector('#picture-preview').src = picture ? `/storage/${picture}` : '';
+                document.querySelector('#picture-preview').src = picture ? `/storage/testimonial_pictures/${picture}` : '';
                 document.querySelector('#picture-name').textContent = picture ? picture.split('/').pop() : 'Choose a file…';
 
                 // Ensure PUT method hidden input is there

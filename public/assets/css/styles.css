@@ -1108,7 +1108,6 @@ p {
     .img-slide {
         width: 35%;
         height: auto;
-        /* Mengatur tinggi secara otomatis berdasarkan lebar */
     }
 
     .client-review {

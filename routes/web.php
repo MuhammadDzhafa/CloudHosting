@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/phpinfo', function() {
+    return phpinfo();
+});
+
 /* Dashboard - Protected by Auth Middleware */
 Route::get('/landing-page', [HostingController::class, 'index']);
 
