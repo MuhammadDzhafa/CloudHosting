@@ -26,13 +26,14 @@ class HostingGroupController extends Controller
 
         HostingGroup::create($request->all()); // Simpan data baru
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group created successfully.');
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group created successfully.');
     }
 
     public function edit($id)
     {
         // $hostingGroup = HostingGroup::where('hosting_Group_id', $id)->firstOrFail();
         $hostingGroup = HostingGroup::findOrFail($id); // Find the hosting group
-        return view('product', compact('hostingGroup')); // Correct view for editing
+        return view('hosting-plans', compact('hostingGroup')); // Correct view for editing
     }
 
     public function update(Request $request, $id)

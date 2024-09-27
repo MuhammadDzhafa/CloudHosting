@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HostingPlan extends Model
 {
-    use SoftDeletes;
-    use HasFactory;
+    use SoftDeletes, HasFactory;
 
     protected $primaryKey = 'hosting_plans_id';
 
     protected $fillable = [
         'name',
-        'group_id',
+        'hosting_group_id', // Make sure the field name is correct
         'type',
         'description',
         'RAM',
@@ -36,8 +35,15 @@ class HostingPlan extends Model
         'ssh',
         'free_domain',
     ];
+
     public function prices()
     {
         return $this->hasMany(Price::class, 'hosting_plans_id');
     }
+
+    public function hostingGroup()
+    {
+        return $this->belongsTo(HostingGroup::class, 'hosting_group_id', 'hosting_group_id');
+    }
 }
+

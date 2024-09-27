@@ -22,11 +22,51 @@ class HostingPlanController extends Controller
         return view('app.admin.hosting-plans.create');
     }
 
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string',
+    //         'hosting_group_id' => 'required|exists:hosting_groups,hostinggroup_id',
+    //         'type' => 'required|string',
+    //         'description' => 'required|string',
+    //     ]);
+
+    //     // Create the hosting plan and store it in the database
+    //     $hostingPlan = HostingPlan::create([
+    //         'name' => $request->name,
+    //         'hosting_group_id' => $request->hosting_group_id,
+    //         'type' => $request->type,
+    //         'description' => $request->description,
+    //         'RAM' => '0',
+    //         'storage' => '0',
+    //         'CPU' => '0',
+    //         'max_io' => '0',
+    //         'nproc' => '0',
+    //         'entry_process' => '0',
+    //         'ssl' => 'free',
+    //         'backup' => 'weekly',
+    //         'max_database' => 'Unlimited',
+    //         'max_bandwidth' => 'Unlimited',
+    //         'max_email_account' => 'Unlimited',
+    //         'max_ftp_account' => 'Unlimited',
+    //         'max_domain' => 'Unlimited',
+    //         'max_addon_domain' => 'Unlimited',
+    //         'max_parked_domain' => 'Unlimited',
+    //         'ssh' => 'No',
+    //         'free_domain' => 'No',
+    //     ]);
+
+    //     $hostingPlan->save();
+
+    //     // Redirect to the edit page of the newly created hosting plan
+    //     return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan created successfully.');
+    // }
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
-            'group_id' => 'required|string',
+            'hosting_group_id' => 'required|exists:hosting_groups,hosting_group_id', // Correct column name
             'type' => 'required|string',
             'description' => 'required|string',
         ]);
@@ -34,7 +74,7 @@ class HostingPlanController extends Controller
         // Create the hosting plan and store it in the database
         $hostingPlan = HostingPlan::create([
             'name' => $request->name,
-            'group_id' => $request->group_id,
+            'hosting_group_id' => $request->hosting_group_id, // Correct field name
             'type' => $request->type,
             'description' => $request->description,
             'RAM' => '0',
@@ -61,6 +101,7 @@ class HostingPlanController extends Controller
         // Redirect to the edit page of the newly created hosting plan
         return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan created successfully.');
     }
+
 
 
     public function show($id)

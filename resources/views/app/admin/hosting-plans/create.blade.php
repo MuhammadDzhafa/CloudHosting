@@ -20,15 +20,10 @@
                             </div>
                             <div class="dropdown-menu" id="group-dropdown-menu" role="menu">
                                 <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item" data-value="1"
-                                        onclick="selectGroup(this)">Personal
-                                        Cloud Hosting</a>
-                                    <a href="#" class="dropdown-item" data-value="2"
-                                        onclick="selectGroup(this)">Corporate
-                                        Cloud Hosting</a>
-                                    <a href="#" class="dropdown-item" data-value="3"
-                                        onclick="selectGroup(this)">WordPress
-                                        Hosting</a>
+                                @foreach ($hostingGroups as $group)
+                                    <a href="#" class="dropdown-item" data-value="{{ $group->hosting_group_id }}"
+                                        onclick="selectGroup(this)">{{ $group->name }}</a>
+                                @endforeach
                                 </div>
                             </div>
                         </div>
