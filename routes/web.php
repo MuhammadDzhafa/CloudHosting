@@ -63,8 +63,6 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
-// Route::get('/products', [HostingController::class, 'product']);
-// Route::get('/product-edit', [HostingController::class, 'edit']);
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -139,11 +137,11 @@ Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])-
 Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
 
 /* Hosting Group */
-Route::get('/products', [HostingGroupController::class, 'index'])->name('product');
-Route::get('/products/create', [HostingGroupController::class, 'create'])->name('products.create');
-Route::post('/products', [HostingGroupController::class, 'store'])->name('hosting-groups.store');
-Route::get('/products/{id}', [HostingGroupController::class, 'show'])->name('products.show');
-Route::get('/products/{id}/edit', [HostingGroupController::class, 'edit'])->name('hosting-groups.edit');
-Route::put('/products/{id}', [HostingGroupController::class, 'update'])->name('products.update');
-Route::delete('/products/{id}', [HostingGroupController::class, 'destroy'])->name('products.destroy');
-Route::post('/products/{id}/restore', [HostingGroupController::class, 'restore'])->name('products.restore');
+Route::get('/hosting-groups', [HostingGroupController::class, 'index'])->name('product');
+Route::get('/hosting-groups/create', [HostingGroupController::class, 'create'])->name('products.create');
+Route::post('/hosting-groups', [HostingGroupController::class, 'store'])->name('hosting-groups.store');
+Route::get('/hosting-groups/{id}', [HostingGroupController::class, 'show'])->name('products.show');
+Route::get('/hosting-groups/{id}/edit', [HostingGroupController::class, 'edit'])->name('hosting-groups.edit');
+Route::put('/hosting-groups/{id}', [HostingGroupController::class, 'update'])->name('products.update');
+Route::delete('/hosting-groups/{id}', [HostingGroupController::class, 'destroy'])->name('products.destroy');
+Route::post('/hosting-groups/{id}/restore', [HostingGroupController::class, 'restore'])->name('products.restore');
