@@ -25,7 +25,7 @@ class HostingGroupController extends Controller
         ]);
 
         HostingGroup::create($request->all()); // Simpan data baru
-        return redirect()->route('hosting-plans')->with('success', 'Hosting Group created successfully.');
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group created successfully.');
     }
 
     public function edit($id)
@@ -43,13 +43,13 @@ class HostingGroupController extends Controller
 
         $hostingGroup = HostingGroup::findOrFail($id);
         $hostingGroup->update($request->all()); // Perbarui data
-        return redirect()->route('hosting-plans')->with('success', 'Hosting Group updated successfully.');
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group updated successfully.');
     }
 
     public function destroy($id)
     {
         $hostingGroup = HostingGroup::findOrFail($id);
         $hostingGroup->delete(); // Hapus data
-        return redirect()->route('product')->with('success', 'Hosting Group deleted successfully.');
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group deleted successfully.');
     }
 }

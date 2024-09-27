@@ -139,3 +139,13 @@ Route::put('hosting-plans/{id}', [HostingPlanController::class, 'update'])->name
 Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
 Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
 Route::delete('/prices/{price}', [PriceController::class, 'destroy'])->name('price.destroy');
+
+/* Hosting Group */
+Route::get('/hosting-groups', [HostingGroupController::class, 'index'])->name('hosting-groups');
+Route::get('/hosting-groups/create', [HostingGroupController::class, 'create'])->name('hosting-groups.create');
+Route::post('/hosting-groups', [HostingGroupController::class, 'store'])->name('hosting-groups.store');
+Route::get('/hosting-groups/{id}', [HostingGroupController::class, 'show'])->name('hosting-groups.show');
+Route::get('/hosting-groups/{id}/edit', [HostingGroupController::class, 'edit'])->name('hosting-groups.edit');
+Route::put('/hosting-groups/{id}', [HostingGroupController::class, 'update'])->name('hosting-groups.update');
+Route::delete('/hosting-groups/{id}', [HostingGroupController::class, 'destroy'])->name('hosting-groups.destroy');
+Route::post('/hosting-groups/{id}/restore', [HostingGroupController::class, 'restore'])->name('hosting-groups.restore');

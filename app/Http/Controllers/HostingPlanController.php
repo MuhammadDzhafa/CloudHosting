@@ -56,6 +56,8 @@ class HostingPlanController extends Controller
             'free_domain' => 'No',
         ]);
 
+        $hostingPlan->save();
+
         // Redirect to the edit page of the newly created hosting plan
         return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan created successfully.');
     }

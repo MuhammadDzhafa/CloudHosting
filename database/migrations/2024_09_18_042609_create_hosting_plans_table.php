@@ -37,8 +37,8 @@ return new class extends Migration
             $table->timestamps();
 
 
-            // Menambahkan foreign key constraint
-            $table->foreign('group_id')->references('hosting_group_id')->on('hosting_groups')->onDelete('cascade'); // Baris ini ditambahkan
+            // // Menambahkan foreign key constraint
+            // $table->foreign('group_id')->references('hosting_group_id')->on('hosting_groups')->onDelete('cascade'); // Baris ini ditambahkan
         });
     }
 
