@@ -10,8 +10,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TldController;
 use App\Http\Controllers\HostingPlanController;
-use App\Http\Controllers\HostingGroupController;
-
+use App\Http\Controllers\PriceController;
 
 /* Welcome */
 
@@ -145,3 +144,5 @@ Route::get('/hosting-groups/{id}/edit', [HostingGroupController::class, 'edit'])
 Route::put('/hosting-groups/{id}', [HostingGroupController::class, 'update'])->name('products.update');
 Route::delete('/hosting-groups/{id}', [HostingGroupController::class, 'destroy'])->name('products.destroy');
 Route::post('/hosting-groups/{id}/restore', [HostingGroupController::class, 'restore'])->name('products.restore');
+
+Route::delete('/prices/{price}', [PriceController::class, 'destroy'])->name('price.destroy');

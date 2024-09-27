@@ -227,21 +227,13 @@
                                 </span>
                                 <span>New Group</span>
                             </button>
-
-                            <button class="button h-button is-primary is-elevated" style="border-radius: 4px;"
-                                onclick="window.location.href='/hosting-plans/create';">
-                                <span class="icon" style="min-width: unset">
-                                    <i aria-hidden="true" class="lnir lnir-circle-plus"></i>
-                                </span>
-                                <span>New Product</span>
-                            </button>
-                            <!-- <button class="button h-button is-primary is-elevated h-modal-trigger"
+                            <button class="button h-button is-primary is-elevated h-modal-trigger"
                                 style="border-radius: 4px;" data-modal="create-new-product-modal">
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="lnir lnir-circle-plus"></i>
                                 </span>
                                 <span>New Product</span>
-                            </button> -->
+                            </button>
                         </div>
                     </div>
 
@@ -277,20 +269,36 @@
                         </div>
                     </div>
 
-                    <div id="confirm-delete-modal" class="modal h-modal">
-                        <div class="modal-background h-modal-close"></div>
-                        <div class="modal-content">
-                            <div class="modal-card">
-                                <header class="modal-card-head">
-                                    <h3>Confirm Delete</h3>
-                                    <button class="h-modal-close ml-auto" aria-label="close">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </header>
-                                @include('app.admin.hosting-plans.delete')
+
+                        <div id="create-new-product-modal" class="modal h-modal">
+                            <div class="modal-background h-modal-close"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <h3>Create a New Product</h3>
+                                        <button class="h-modal-close ml-auto" aria-label="close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </header>
+                                    @include('app.admin.hosting-plans.create')
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div id="confirm-delete-modal" class="modal h-modal">
+                            <div class="modal-background h-modal-close"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <h3>Confirm Delete</h3>
+                                        <button class="h-modal-close ml-auto" aria-label="close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </header>
+                                    @include('app.admin.hosting-plans.delete')
+                                </div>
+                            </div>
+                        </div>
 
                     <div class="page-content-inner">
 
