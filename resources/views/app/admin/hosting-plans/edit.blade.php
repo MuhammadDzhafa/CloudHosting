@@ -475,7 +475,7 @@
                                                                                     <input type="radio" name="max_database_radio" id="max_database_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_database_input" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled>
+                                                                                <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled>
                                                                             </div>
                                                                         </div>
 
@@ -491,7 +491,7 @@
                                                                                     <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_bandwidth_input" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled>
+                                                                                <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled>
                                                                             </div>
                                                                         </div>
 
@@ -507,7 +507,7 @@
                                                                                     <input type="radio" name="max_email_radio" id="max_email_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_email_input" placeholder="0" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled>
+                                                                                <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled>
                                                                             </div>
                                                                         </div>
 
@@ -523,7 +523,7 @@
                                                                                     <input type="radio" name="max_ftp_radio" id="max_ftp_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_ftp_input" placeholder="0" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled>
+                                                                                <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -543,7 +543,7 @@
                                                                                     <input type="radio" name="max_domain_radio" id="max_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_domain_input" placeholder="0" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled>
+                                                                                <input class="input" id="max_domain_input" placeholder="0" name="max_domain" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled>
                                                                             </div>
                                                                         </div>
 
@@ -559,7 +559,7 @@
                                                                                     <input type="radio" name="max_addon_domain_radio" id="max_addon_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_addon_domain_input" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled>
+                                                                                <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled>
                                                                             </div>
                                                                         </div>
 
@@ -575,7 +575,7 @@
                                                                                     <input type="radio" name="max_parked_domain_radio" id="max_parked_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_parked_domain_input" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled>
+                                                                                <input class="input" id="max_parked_domain_input" name="max_parked_domain" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled>
                                                                             </div>
                                                                         </div>
 
@@ -584,11 +584,11 @@
                                                                             <label>SSH</label>
                                                                             <div class="control" style="display: flex; align-items: center; gap: 10px;">
                                                                                 <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="ssh_radio" id="ssh_no" value="No">
+                                                                                    <input type="radio" name="ssh" id="ssh_no" value="No">
                                                                                     <span></span> No
                                                                                 </label>
                                                                                 <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="ssh_radio" id="ssh_yes" value="Yes">
+                                                                                    <input type="radio" name="ssh" id="ssh_yes" value="Yes">
                                                                                     <span></span> Yes
                                                                                 </label>
                                                                             </div>
@@ -608,7 +608,7 @@
                                                                         <input type="radio" name="free_domain_radio" id="free_domain_yes" value="Yes">
                                                                         <span></span> Yes
                                                                     </label>
-                                                                    <input class="input" id="free_domain_input" name="free_domain_input" value="{{ old('free_domain', $hostingPlan->free_domain) }}">
+                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}">
                                                                 </div>
                                                             </div>
 
@@ -655,7 +655,7 @@
             setRadioButton('max_domain', 'Unlimited');
             setRadioButton('max_addon_domain', 'Unlimited');
             setRadioButton('max_parked_domain', 'Unlimited');
-            setRadioButton('ssh', 'No');
+            setRadioButton('ssh', 'No'); // Default SSH to "No"
             setRadioButton('free_domain', 'No');
 
             const radios = document.querySelectorAll('input[type="radio"]');
@@ -718,8 +718,39 @@
             handleInputStateWithRadio('max_domain', 'max_domain_input', "{{ old('max_domain', $hostingPlan->max_domain) }}");
             handleInputStateWithRadio('max_addon_domain', 'max_addon_domain_input', "{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}");
             handleInputStateWithRadio('max_parked_domain', 'max_parked_domain_input', "{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}");
+
+            // SSH Status logic
+            const sshNo = document.getElementById('ssh_no');
+            const sshYes = document.getElementById('ssh_yes');
+
+            // Default set ke No
+            sshNo.checked = true;
+
+            // Set radio button berdasarkan data dari database
+            if (hostingPlanData.sshStatus === "Yes") {
+                sshYes.checked = true;
+            }
+
+            // Fungsi untuk menangani perubahan radio button SSH
+            const handleSSHChange = () => {
+                if (sshYes.checked) {
+                    console.log("SSH Enabled");
+                    // Lakukan aksi penyimpanan untuk SSH Yes (via form submit atau AJAX)
+                } else {
+                    console.log("SSH Disabled");
+                    // Lakukan aksi penyimpanan untuk SSH No
+                }
+            };
+
+            // Event listener untuk perubahan pada radio button SSH
+            sshNo.addEventListener('change', handleSSHChange);
+            sshYes.addEventListener('change', handleSSHChange);
+
+            // Panggil handleSSHChange untuk menyimpan status awal saat halaman di-refresh
+            handleSSHChange();
         });
     </script>
+
 
     <!--Huro Scripts-->
     <!--Load Mapbox-->

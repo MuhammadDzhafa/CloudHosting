@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HostingPlan;
+use App\Models\HostingGroup;
 use Illuminate\Http\Request;
 
 class HostingPlanController extends Controller
@@ -10,8 +11,9 @@ class HostingPlanController extends Controller
     public function index()
     {
         // $hostingPlans = HostingPlan::withTrashed()->get();
-        $hostingPlans = HostingPlan::get();
-        return view('app.admin.hosting-plans.index', ['hostingPlans' => $hostingPlans]);
+        $hostingPlans = HostingPlan::all();
+        $hostingGroups = HostingGroup::all();
+        return view('app.admin.hosting-plans.index', ['hostingPlans' => $hostingPlans, 'hostingGroups' => $hostingGroups]);
     }
 
     public function create()
@@ -110,21 +112,23 @@ class HostingPlanController extends Controller
             'ssl' => 'required|string',
             'backup' => 'required|string',
             'max_database' => 'required|string',
-            // 'max_bandwidth' => 'required|string',
-            // 'max_email_account' => 'required|string',
-            // 'max_ftp_account' => 'required|string',
-            // 'max_domain' => 'required|string',
-            // 'max_addon_domain' => 'required|string',
-            // 'max_parked_domain' => 'required|string',
-            // 'ssh' => 'required|string',
-            // 'free_domain' => 'required|string',
+            'max_bandwidth' => 'required|string',
+            'max_email_account' => 'required|string',
+            'max_ftp_account' => 'required|string',
+            'max_domain' => 'required|string',
+            'max_addon_domain' => 'required|string',
+            'max_parked_domain' => 'required|string',
+            'ssh' => 'required|string',
+            'free_domain' => 'required|string',
         ]);
 
         // Find the hosting plan by ID
         $hostingPlan = HostingPlan::findOrFail($id);
+        $hostingPlan->update($request->all());
 
         // Update the hosting plan with the request data
         $hostingPlan->update([
+            // dd($request->all()),
             'name' => $request->name,
             'group_id' => $request->group_id,
             'type' => $request->type,
@@ -138,14 +142,14 @@ class HostingPlanController extends Controller
             'ssl' => $request->ssl,
             'backup' => $request->backup,
             'max_database' => $request->max_database,
-            // 'max_bandwidth' => $request->max_bandwidth,
-            // 'max_email_account' => $request->max_email_account,
-            // 'max_ftp_account' => $request->max_ftp_account,
-            // 'max_domain' => $request->max_domain,
-            // 'max_addon_domain' => $request->max_addon_domain,
-            // 'max_parked_domain' => $request->max_parked_domain,
-            // 'ssh' => $request->ssh,
-            // 'free_domain' => $request->free_domain,
+            'max_bandwidth' => $request->max_bandwidth,
+            'max_email_account' => $request->max_email_account,
+            'max_ftp_account' => $request->max_ftp_account,
+            'max_domain' => $request->max_domain,
+            'max_addon_domain' => $request->max_addon_domain,
+            'max_parked_domain' => $request->max_parked_domain,
+            'ssh' => $request->ssh,
+            'free_domain' => $request->free_domain,
         ]);
 
         // Redirect or return a response
