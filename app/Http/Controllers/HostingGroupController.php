@@ -9,13 +9,13 @@ class HostingGroupController extends Controller
 {
     public function index()
     {
-        $hostingGroups = HostingGroup::all(); // Ambil semua data
-        return view('app.admin.products.index', compact('hostingGroups'));
+        $hostingGroups = HostingGroup::all();
+        return view('app.admin.hosting-plans.index', ['hostingGroups' => $hostingGroups]);
     }
 
     public function create()
     {
-        return view('app.admin.products.create'); // Tampilkan form untuk membuat hosting group
+        return view('app.admin.hosting-plans.create'); // Tampilkan form untuk membuat hosting group
     }
 
     public function store(Request $request)
@@ -25,7 +25,7 @@ class HostingGroupController extends Controller
         ]);
 
         HostingGroup::create($request->all()); // Simpan data baru
-        return redirect()->route('product')->with('success', 'Hosting Group created successfully.');
+        return redirect()->route('hosting-plans')->with('success', 'Hosting Group created successfully.');
     }
 
     public function edit($id)
@@ -43,7 +43,7 @@ class HostingGroupController extends Controller
 
         $hostingGroup = HostingGroup::findOrFail($id);
         $hostingGroup->update($request->all()); // Perbarui data
-        return redirect()->route('product')->with('success', 'Hosting Group updated successfully.');
+        return redirect()->route('hosting-plans')->with('success', 'Hosting Group updated successfully.');
     }
 
     public function destroy($id)
