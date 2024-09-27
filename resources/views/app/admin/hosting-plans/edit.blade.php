@@ -100,11 +100,11 @@
                                                         <span class="icon" style="min-width: 0px; min-height: 0px;">
                                                             <i class="lnir lnir-arrow-left rem-100"></i>
                                                         </span>
-                                                        <span>Cancel</span>
+                                                        <span>Back to Hosting Plans</span>
                                                     </a>
                                                     <button id="save-button"
                                                         class="button h-button is-primary is-raised"
-                                                        type="submit">Save</button>
+                                                        type="submit">Save Change</button>
 
                                                 </div>
                                             </div>
@@ -231,123 +231,103 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- <!-- <div id="projects-tab" class="tab-content">
+                                                <div id="projects-tab" class="tab-content">
                                                     <div class="table-wrapper" style="min-height:100px" data-simplebar>
                                                         <table id="users-datatable"
                                                             class="table is-datatable is-hoverable has-text-centered">
                                                             <thead>
                                                                 <tr class="color-row">
                                                                     <th></th>
-                                                                    <th class="has-text-centered">One
-                                                                        Time/Monthly</th>
+                                                                    <th class="has-text-centered">One Time/Monthly</th>
                                                                     <th class="has-text-centered">Quarterly</th>
-                                                                    <th class="has-text-centered">Semi-Annually
-                                                                    </th>
+                                                                    <th class="has-text-centered">Semi-Annually</th>
                                                                     <th class="has-text-centered">Annually</th>
-                                                                    <th class="has-text-centered">Biennially
-                                                                    </th>
-                                                                    <th class="has-text-centered">Triennially
-                                                                    </th>
+                                                                    <th class="has-text-centered">Biennially</th>
+                                                                    <th class="has-text-centered">Triennially</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Enable</th>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <label class="checkbox is-outlined is-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="prices[{{ $duration }}][enable]"
+                                                                                    class="toggle-checkbox"
+                                                                                    @if(isset($prices[$duration]['price']) && !empty($prices[$duration]['price']))
+                                                                                    checked @endif>
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                    @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price</th>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][price]"
+                                                                                    class="input has-text-centered toggle-input"
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['price'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
+                                                                    @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Discount (%)</th>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][discount]"
+                                                                                    class="input has-text-centered toggle-discount"
+                                                                                    min="0" max="100"
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['discount'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Price After</th>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][price_after]"
+                                                                                    class="input has-text-centered toggle-price-after"
+                                                                                    required
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['price_after'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Actions</th>
+                                                                    <!-- Optional: You can add a header for clarity -->
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            @if(isset($prices[$duration]))
+                                                                                <button type="button" class="is-danger button"
+                                                                                    onclick="deletePrice({{ $prices[$duration]->price_id }})">Delete</button>
+                                                                            @else
+                                                                                <span>No Price Available</span>
+                                                                            @endif
+                                                                        </td>
+                                                                    @endforeach
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                </div>  --> --}}
+                                                </div>
+
 
                                                 <div id="tasks-tab" class="tab-content">
                                                     <div class="columns is-justify-content-center">
@@ -810,6 +790,83 @@
             document.getElementById('type-hidden').value = value; // Update hidden input
         }
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('.toggle-checkbox');
+            const inputs = document.querySelectorAll('.toggle-input');
+            const discounts = document.querySelectorAll('.toggle-discount');
+            const pricesAfter = document.querySelectorAll('.toggle-price-after');
+
+            // Function to toggle input disabled state based on checkbox
+            const toggleInputs = () => {
+                checkboxes.forEach((checkbox, index) => {
+                    const isChecked = checkbox.checked;
+                    inputs[index].disabled = !isChecked;
+                    discounts[index].disabled = !isChecked;
+                    pricesAfter[index].disabled = !isChecked;
+                });
+            };
+
+            // Function to calculate price after discount
+            const calculatePriceAfter = (index) => {
+                const price = parseFloat(inputs[index].value) || 0;
+                const discount = parseFloat(discounts[index].value) || 0;
+                const priceAfter = price - (price * (discount / 100));
+                pricesAfter[index].value = priceAfter;
+            };
+
+            // Initially run the toggle function on page load
+            toggleInputs();  // This makes sure inputs are enabled/disabled correctly based on initial checkbox state
+
+            // Add event listeners to all checkboxes
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.addEventListener('change', () => {
+                    toggleInputs();
+                });
+
+                // Add input event listeners for Price and Discount inputs
+                inputs[index].addEventListener('input', () => {
+                    if (checkbox.checked) {
+                        calculatePriceAfter(index);
+                    }
+                });
+                discounts[index].addEventListener('input', () => {
+                    if (checkbox.checked) {
+                        calculatePriceAfter(index);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+        function deletePrice(priceId) {
+            if (confirm("Are you sure you want to delete this price?")) {
+                fetch(`/prices/${priceId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            location.reload();
+                        } else {
+                            alert('Failed to delete the price. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the price.');
+                    });
+            }
+        }
+    </script>
+
+
 
     <!--Huro Scripts-->
     <!--Load Mapbox-->

@@ -10,6 +10,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TldController;
 use App\Http\Controllers\HostingPlanController;
+use App\Http\Controllers\PriceController;
 
 /* Welcome */
 
@@ -131,3 +132,4 @@ Route::get('/hosting-plans/{id}/edit', [HostingPlanController::class, 'edit'])->
 Route::put('/hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
 Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
 Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
+Route::delete('/prices/{price}', [PriceController::class, 'destroy'])->name('price.destroy');

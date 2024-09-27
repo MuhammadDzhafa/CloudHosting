@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('max_ftp_account');
             $table->string('max_domain');
             $table->string('max_addon_domain');
-            $table->string(column: 'max_parked_domain');
+            $table->string('max_parked_domain');
             $table->string('ssh');
             $table->string('free_domain');
             $table->timestamps();

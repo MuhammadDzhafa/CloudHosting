@@ -37,4 +37,8 @@ class HostingPlan extends Model
         'ssh',
         'free_domain',
     ];
+    public function prices()
+    {
+        return $this->hasMany(Price::class, 'hosting_plans_id');
+    }
 }
