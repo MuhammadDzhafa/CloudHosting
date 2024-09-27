@@ -124,7 +124,7 @@
                                             <td style="max-width: 200px;">{{ $testimonial->testimonial_text }}</td>
                                             <td>
                                                 @if ($testimonial->picture)
-                                                    <img src="{{ asset('storage/' . $testimonial->picture) }}" alt="Picture" style="width: 100px;">
+                                                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Picture" style="width: 100px;">
                                                 @else
                                                     No Image
                                                 @endif

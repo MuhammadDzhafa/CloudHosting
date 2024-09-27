@@ -47,7 +47,7 @@
                 </a>
             </li>
             <li>
-                <a href="/products" id="products" data-content="Products" class="menu-item">
+                <a href="/hosting-plans" id="hosting-plans" data-content="Hosting Plans" class="menu-item">
                     <i class="sidebar-svg" data-feather="archive"></i>
                 </a>
             </li>

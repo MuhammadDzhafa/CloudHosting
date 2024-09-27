@@ -1,4 +1,4 @@
-<!-- <section class="section-frame padding-1 gap-6 md:gap-12" id="target-section">
+<section class="section-frame padding-1 gap-6 md:gap-12" id="target-section">
     <h2 class="text-3xl md:text-4xl title-section text-center">
         Cloud Hosting
     </h2>
@@ -50,7 +50,7 @@
                                     <div id="storage-price" class="custom-price">IDR 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <div id="storage-value" class="custom-slider-value">120 GB</div>
+                                    <div id="storage-value" class="custom-slider-value text-center" style="width: 70px;">120 GB</div>
                                     <input id="storage-slider" type="range" min="0" max="4" step="1" value="0"
                                         class="custom-slider">
                                 </div>
@@ -61,7 +61,7 @@
                                     <div id="ram-price" class="custom-price">IDR 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <div id="ram-value" class="custom-slider-value">4 GB</div>
+                                    <div id="ram-value" class="custom-slider-value text-center" style="width: 70px;">4 GB</div>
                                     <input id="ram-slider" type="range" min="0" max="4" step="1" value="0"
                                         class="custom-slider">
                                 </div>
@@ -72,7 +72,7 @@
                                     <div id="cpu-price" class="custom-price">IDR 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <div id="cpu-value" class="custom-slider-value">4 Core</div>
+                                    <div id="cpu-value" class="custom-slider-value text-center" style="width: 70px;">4 Core</div>
                                     <input id="cpu-slider" type="range" min="0" max="4" step="1" value="0"
                                         class="custom-slider">
                                 </div>
@@ -99,11 +99,11 @@
             <div id="corporate-tab" class="tab-content">
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                        <div
-                            class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
+                    @foreach ( $hostingPlans as $hostingPlan )
+                        <div class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
                             <h5
                                 class="text-xl font-bold text-[#4A6DCB] mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">
-                                Strato
+                                {{ $hostingPlan->name }}
                             </h5>
                             <p
                                 class="text-gray-600 mb-4 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-500,#7C7C7C)]">
@@ -135,31 +135,31 @@
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                    14 GB SSD Storage
+                                        {{ $hostingPlan->storage }} GB SSD Storage
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                    6 GB RAM
+                                        {{ $hostingPlan->RAM }} RAM
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                    4 Core CPU
+                                        {{ $hostingPlan->CPU }} Core CPU
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                    Unlimited Domain
+                                        {{ $hostingPlan->max_domain }} Domain
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                    Free SSL
+                                        {{ $hostingPlan->ssl }} SSL
                                 </li>
                             </ul>
                             <button
@@ -171,6 +171,25 @@
                             </button>
                             <a href="#" class="block text-center text-[#4A6DCB] mt-4">More detail →</a>
                         </div>
+                    @endforeach
+                        <script>
+                            // Menunggu dokumen sepenuhnya dimuat
+                            document.addEventListener("DOMContentLoaded", function() {
+                                // Mengambil semua elemen hosting plan
+                                document.querySelectorAll('.hosting-plan').forEach((plan) => {
+                                    const isBestSeller = plan.dataset.bestSeller === 'yes'; // Ambil nilai dari data attribute
+
+                                    if (isBestSeller) {
+                                        // Tambahkan kelas CSS untuk styling
+                                        plan.classList.add('bg-gradient-custom', 'text-white'); // Tambahkan gaya latar belakang dan teks
+                                        plan.querySelector('h5').classList.add('text-white'); // Ganti warna teks judul
+                                        plan.querySelector('p.plan-description').classList.add('text-white'); // Ganti warna teks deskripsi
+                                        plan.querySelector('p.plan-price').classList.add('text-white'); // Ganti warna teks harga
+                                    }
+                                });
+                            });
+                        </script>
+                        <!-- Alto -->
                         <div
                             class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white custom-gradient">
                             <h5
