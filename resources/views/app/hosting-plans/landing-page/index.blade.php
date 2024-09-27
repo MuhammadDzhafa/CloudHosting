@@ -21,53 +21,24 @@
 @section('scripts')
 <script>
     /*section1 javascript*/
-    function scrollToSection() {
-        const targetSection = document.getElementById("target-section");
-        targetSection.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
         const words = ['Easy', 'Fast', 'Secure', 'Efficient'];
         let currentIndex = 0;
 
         function changeText() {
-            const animatedTextElement = document.getElementById('animated-text'); // Get the single element
-            animatedTextElement.classList.add('changing');
-
-            setTimeout(() => {
-                animatedTextElement.classList.remove('changing');
-                animatedTextElement.textContent = words[currentIndex];
-            }, 300);
-
+            const animatedTextElements = document.querySelectorAll('.animated-text');
+            animatedTextElements.forEach(element => {
+                element.classList.add('changing');
+                setTimeout(() => {
+                    element.classList.remove('changing');
+                    element.textContent = words[currentIndex];
+                }, 300);
+            });
             currentIndex = (currentIndex + 1) % words.length;
         }
 
         setInterval(changeText, 1800);
     });
-
-
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     const words = ['Easy', 'Fast', 'Secure', 'Efficient'];
-    //     let currentIndex = 0;
-
-    //     function changeText() {
-    //         const animatedTextElements = document.querySelectorAll('.animated-text');
-    //         animatedTextElements.forEach(element => {
-    //             element.classList.add('changing');
-    //             setTimeout(() => {
-    //                 element.classList.remove('changing');
-    //                 element.textContent = words[currentIndex];
-    //             }, 300);
-    //         });
-    //         currentIndex = (currentIndex + 1) % words.length;
-    //     }
-
-    //     setInterval(changeText, 1800);
-    // });
-
-
 
     // Section2 JavaScript
     const viewPriceListLink = document.getElementById('view-price-list');
@@ -81,85 +52,6 @@
         });
     }
 
-    // Search Domain Availability
-    document.getElementById('search-btn').addEventListener('click', function() {
-        const searchQuery = document.getElementById('domain-search').value;
-        const dropdownContainer = document.getElementById('dropdown-container');
-        const dropdownContent = document.getElementById('dropdown-content');
-
-        if (searchQuery) {
-            // Simulating search results - replace with actual data
-            dropdownContent.innerHTML = `
-                        
-                        <div class="message is-success flex-row flex justify-between items-center">
-                            <div class="message-body">
-                            <strong> ${searchQuery}</strong> is available
-                            <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-                            </div>
-                            <button class="button h-button is-success rounded-full">Add to Cart</button>
-                        </div>
-
-                        <div class="message flex-row flex justify-between items-center">
-                            <div class="message-body">
-                            <strong> ${searchQuery}</strong> is not available
-                            </div>
-                            <button class="button h-button rounded-full">WHOIS</button>
-                        </div>
-
-                        <div>
-                            <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
-                            <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
-                            Indonesia, here are some domain name recommendations with education-related
-                            TLD:</p>
-                            <div class="message is-primary flex-row flex justify-between items-center">
-                                <div class="message-body">
-                                    <strong> ${searchQuery}.edu</strong> is available
-                                    <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-                                </div>
-                                <button class="button h-button is-primary rounded-full">Add to Cart</button>
-                        </div>
-                        
-                    `;
-
-            // Apply animation class to show the dropdown
-            dropdownContainer.classList.add('show');
-        } else {
-            // Hide the container if there's no search
-            dropdownContainer.classList.remove('show');
-        }
-    });
-
-
-    /* Pick TLD Card */
-    // Select the input field
-    const searchInput = document.getElementById('domain-search');
-
-    // Function to replace the TLD of a domain
-    function replaceTLD(domainName, newTLD) {
-        // Use regex to match everything from the first dot in the last two segments
-        return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
-    }
-
-    // Select the container with the 'domain-container' id
-    const domainContainer = document.getElementById('domain-container');
-
-    // Add event listeners to each popular domain card
-    document.querySelectorAll('.popular-domain').forEach(domainCard => {
-        domainCard.addEventListener('click', function() {
-            const selectedTLD = this.getAttribute('data-domain'); // Get the clicked TLD
-            const currentDomain = searchInput.value; // Get the current input value
-
-            if (currentDomain) {
-                // Replace the existing TLD with the selected one
-                searchInput.value = replaceTLD(currentDomain, selectedTLD);
-            } else {
-                // If input is empty, just set the selected TLD
-                searchInput.value = selectedTLD;
-            }
-        });
-    });
-
-
     /*section6 javascript*/
     const storageSlider = document.getElementById('storage-slider');
     const ramSlider = document.getElementById('ram-slider');
@@ -170,86 +62,87 @@
     // Storage options
     const storageOptions = [{
             value: '120 GB',
-            price: 20
+            price: 5000
         },
         {
             value: '240 GB',
-            price: 30
+            price: 10000
         },
         {
             value: '256 GB',
-            price: 40
+            price: 15000
         },
         {
             value: '480 GB',
-            price: 50
+            price: 20000
         },
         {
             value: '512 GB',
-            price: 60
+            price: 25000
         }
     ];
 
     // RAM options
     const ramOptions = [{
             value: '4 GB',
-            price: 20
+            price: 5000
         },
         {
             value: '8 GB',
-            price: 30
+            price: 10000
         },
         {
             value: '16 GB',
-            price: 40
+            price: 15000
         },
         {
             value: '32 GB',
-            price: 50
+            price: 20000
         },
         {
             value: '64 GB',
-            price: 60
+            price: 25000
         }
     ];
 
     // CPU options
     const cpuOptions = [{
             value: '4 Core',
-            price: 20
+            price: 5000
         },
         {
             value: '8 Core',
-            price: 30
+            price: 10000
         },
         {
             value: '12 Core',
-            price: 40
+            price: 15000
         },
         {
             value: '16 Core',
-            price: 50
+            price: 20000
         },
         {
             value: '24 Core',
-            price: 60
+            price: 25000
         }
     ];
 
     function updateTotalPrice() {
-        // Get the selected price for storage, RAM, and CPU
         const selectedStorage = storageOptions[storageSlider.value].price;
         const selectedRam = ramOptions[ramSlider.value].price;
         const selectedCpu = cpuOptions[cpuSlider.value].price;
 
-        // Calculate total price
+        // Hitung total harga
         const totalPrice = selectedStorage + selectedRam + selectedCpu;
 
-        // Update the total price element (remove .00 if the number is an integer)
-        totalPriceElement.textContent = totalPrice % 1 === 0 ? totalPrice : totalPrice.toFixed(2);
+        // Update tampilan total harga dengan titik sebagai pemisah ribuan
+        totalPriceElement.textContent = `${totalPrice.toLocaleString('id-ID')}`;
     }
 
-    // Add event listeners to sliders
+
+
+    // Set event listener untuk update harga
     storageSlider.addEventListener('input', updateTotalPrice);
     ramSlider.addEventListener('input', updateTotalPrice);
     cpuSlider.addEventListener('input', updateTotalPrice);
@@ -264,23 +157,23 @@
 
         const storageOptions = [{
                 value: '120 GB',
-                price: '$ 20/mon'
+                price: 'IDR 5.000/mon'
             },
             {
                 value: '240 GB',
-                price: '$ 30/mon'
+                price: 'IDR 10.000/mon'
             },
             {
                 value: '256 GB',
-                price: '$ 40/mon'
+                price: 'IDR 15.000/mon'
             },
             {
                 value: '480 GB',
-                price: '$ 50/mon'
+                price: 'IDR 20.000/mon'
             },
             {
                 value: '512 GB',
-                price: '$ 60/mon'
+                price: 'IDR 25.000/mon'
             }
         ];
 
@@ -303,23 +196,23 @@
 
         const ramOptions = [{
                 value: '4 GB',
-                price: '$ 20/mon'
+                price: 'IDR 5.000/mon'
             },
             {
                 value: '8 GB',
-                price: '$ 30/mon'
+                price: 'IDR 10.000/mon'
             },
             {
                 value: '16 GB',
-                price: '$ 40/mon'
+                price: 'IDR 15.000/mon'
             },
             {
                 value: '32 GB',
-                price: '$ 50/mon'
+                price: 'IDR 20.000/mon'
             },
             {
                 value: '64 GB',
-                price: '$ 60/mon'
+                price: 'IDR 25.000/mon'
             }
         ];
 
@@ -342,23 +235,23 @@
 
         const cpuOptions = [{
                 value: '4 Core',
-                price: '$ 20/mon'
+                price: 'IDR 5.000/mon'
             },
             {
                 value: '8 Core',
-                price: '$ 30/mon'
+                price: 'IDR 10.000/mon'
             },
             {
                 value: '12 Core',
-                price: '$ 40/mon'
+                price: 'IDR 15.000/mon'
             },
             {
                 value: '16 Core',
-                price: '$ 50/mon'
+                price: 'IDR 20.000/mon'
             },
             {
                 value: '24 Core',
-                price: '$ 60/mon'
+                price: 'IDR 25.000/mon'
             }
         ];
 
@@ -441,6 +334,31 @@
                 });
             }
         });
+    });
+
+    /*Scroll To Top javascript*/
+    document.addEventListener('DOMContentLoaded', function() {
+        var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        var rootElement = document.documentElement;
+
+        function handleScroll() {
+            var scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+            if ((rootElement.scrollTop / scrollTotal) > 0.20) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        }
+
+        function scrollToTop() {
+            rootElement.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        scrollToTopBtn.addEventListener('click', scrollToTop);
+        document.addEventListener('scroll', handleScroll);
     });
 
     /*Ai Chat javascript*/
@@ -563,35 +481,5 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     });
-
-    /* Dropdown Languages */
-    const langDropdown = document.getElementById('langDropdown');
-    const langMenu = document.getElementById('langMenu');
-    const selectedFlag = document.getElementById('selectedFlag');
-    const selectedLang = document.getElementById('selectedLang');
-
-    // Toggle the visibility of the language menu
-    langDropdown.addEventListener('click', function() {
-        langMenu.classList.toggle('hidden');
-    });
-
-    // Handle click events for selecting a language
-    langMenu.addEventListener('click', function(event) {
-        const selectedElement = event.target.closest('a[data-lang]');
-        if (selectedElement) {
-            const lang = selectedElement.getAttribute('data-lang');
-            const flagSrc = selectedElement.querySelector('img').getAttribute('src');
-
-            // Update the flag and language text
-            selectedFlag.setAttribute('src', flagSrc);
-            selectedLang.textContent = lang.toUpperCase();
-
-            // Hide the language menu
-            langMenu.classList.add('hidden');
-
-            // TODO: Perform language change logic here
-        }
-    });
 </script>
-
 @endsection

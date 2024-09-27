@@ -11,11 +11,17 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TldController;
 use App\Http\Controllers\HostingPlanController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\HostingGroupController;
+
 
 /* Welcome */
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/phpinfo', function() {
+    return phpinfo();
 });
 
 /* Dashboard - Protected by Auth Middleware */
@@ -126,10 +132,10 @@ Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.dest
 /* Hosting Plan */
 Route::get('/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');
 Route::get('/hosting-plans/create', [HostingPlanController::class, 'create'])->name('hosting-plans.create');
-Route::post('/hosting-plans/store', [HostingPlanController::class, 'store'])->name('hosting-plans.store');
+Route::post('/hosting-plans', [HostingPlanController::class, 'store'])->name('hosting-plans.store');
 Route::get('/hosting-plans/{id}', [HostingPlanController::class, 'show'])->name('hosting-plans.show');
 Route::get('/hosting-plans/{id}/edit', [HostingPlanController::class, 'edit'])->name('hosting-plans.edit');
-Route::put('/hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
+Route::put('hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
 Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
 Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
 Route::delete('/prices/{price}', [PriceController::class, 'destroy'])->name('price.destroy');

@@ -39,7 +39,7 @@
             <div class="mb-3">
                 <label for="picture" class="form-label">Current Picture</label><br>
                 @if ($testimonial->picture)
-                    <img src="{{ asset('storage/' . $testimonial->picture) }}" alt="Testimonial Picture" width="150">
+                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Testimonial Picture" width="150">
                 @else
                     <p>No picture available</p>
                 @endif

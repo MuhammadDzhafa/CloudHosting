@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HostingPlan;
+use App\Models\HostingGroup;
 use Illuminate\Http\Request;
 use App\Models\Price;
 
@@ -11,8 +12,9 @@ class HostingPlanController extends Controller
     public function index()
     {
         // $hostingPlans = HostingPlan::withTrashed()->get();
-        $hostingPlans = HostingPlan::get();
-        return view('app.admin.hosting-plans.index', ['hostingPlans' => $hostingPlans]);
+        $hostingPlans = HostingPlan::all();
+        $hostingGroups = HostingGroup::all();
+        return view('app.admin.hosting-plans.index', ['hostingPlans' => $hostingPlans, 'hostingGroups' => $hostingGroups]);
     }
 
     public function create()
@@ -41,8 +43,8 @@ class HostingPlanController extends Controller
             'max_io' => '0',
             'nproc' => '0',
             'entry_process' => '0',
-            'ssl' => 'free',
-            'backup' => 'weekly',
+            'ssl' => 'Free',
+            'backup' => 'Weekly',
             'max_database' => 'Unlimited',
             'max_bandwidth' => 'Unlimited',
             'max_email_account' => 'Unlimited',
@@ -114,9 +116,11 @@ class HostingPlanController extends Controller
 
         // Find the hosting plan by ID
         $hostingPlan = HostingPlan::findOrFail($id);
+        $hostingPlan->update($request->all());
 
         // Update the hosting plan with the request data
         $hostingPlan->update([
+            // dd($request->all()),
             'name' => $request->name,
             'group_id' => $request->group_id,
             'type' => $request->type,

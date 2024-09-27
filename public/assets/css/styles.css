@@ -1108,7 +1108,6 @@ p {
     .img-slide {
         width: 35%;
         height: auto;
-        /* Mengatur tinggi secara otomatis berdasarkan lebar */
     }
 
     .client-review {
@@ -1153,6 +1152,10 @@ p {
         align-items: flex-start;
         /* Mengatur item dalam kolom menjadi rata kiri */
     }
+}
+
+.slider-content {
+    width: 100% !important;
 }
 
 .quote-icon {

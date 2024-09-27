@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -330,6 +330,16 @@
 
 
                                                 <div id="tasks-tab" class="tab-content">
+                                                    @if ($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                    @endif
+
                                                     <div class="columns is-justify-content-center">
                                                         <div class="column is-12-mobile is-4-tablet is-4-desktop"
                                                             style="border-right:1px solid #e5e5e5; padding-right:40px">
@@ -429,121 +439,72 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- <div class="column is-12-mobile is-4-tablet is-8-desktop"
+                                                        <div class="column is-12-mobile is-4-tablet is-8-desktop"
                                                             style="padding-left: 40px;">
                                                             <div class="columns">
                                                                 <div class="column is-6" style="padding-bottom:0px;">
                                                                     <div class="column-content">
+                                                                        <!-- Max Database -->
                                                                         <div class="field">
                                                                             <label>Max Database</label>
-                                                                            <div class="control is-inline-flex"
-                                                                                style="align-items: center; gap:10px">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_database_radio"
-                                                                                        id="max_database_unlimited"
-                                                                                        value="unlimited">
+                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_database_radio" id="max_database_unlimited" value="Unlimited">
                                                                                     <span></span> Unlimited
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_database_radio"
-                                                                                        id="max_database_limited"
-                                                                                        value="limited">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_database_radio" id="max_database_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" placeholder="0">
+                                                                                <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="field"
-                                                                            style="margin-bottom: 0.75rem;">
+                                                                        <!-- Max Bandwidth -->
+                                                                        <div class="field">
                                                                             <label>Max Bandwidth</label>
-                                                                            <div class="control is-inline-flex"
-                                                                                style="align-items: center; gap:10px">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_bandwidth_radio"
-                                                                                        id="max_bandwidth_unlimited"
-                                                                                        value="unlimited">
-                                                                                    <span></span>
-                                                                                    Unlimited
+                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_unlimited" value="Unlimited">
+                                                                                    <span></span> Unlimited
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_bandwidth_radio"
-                                                                                        id="max_bandwidth_limited"
-                                                                                        value="limited">
-                                                                                    <span></span>
-                                                                                    Limited
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_limited" value="Limited">
+                                                                                    <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" placeholder="0">
+                                                                                <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="field"
-                                                                            style="margin-bottom: 0.75rem;">
+                                                                        <!-- Max Email Account -->
+                                                                        <div class="field">
                                                                             <label>Max Email Account</label>
-                                                                            <div class="control is-inline-flex"
-                                                                                style="align-items: center; gap:10px">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_email_radio"
-                                                                                        id="max_email_unlimited"
-                                                                                        value="unlimited">
-                                                                                    <span></span>
-                                                                                    Unlimited
+                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_email_radio" id="max_email_unlimited" value="Unlimited">
+                                                                                    <span></span> Unlimited
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_email_radio"
-                                                                                        id="max_email_limited"
-                                                                                        value="limited">
-                                                                                    <span></span>
-                                                                                    Limited
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_email_radio" id="max_email_limited" value="Limited">
+                                                                                    <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" placeholder="0">
+                                                                                <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="field"
-                                                                            style="margin-bottom: 0.75rem;">
+                                                                        <!-- Max FTP Account -->
+                                                                        <div class="field">
                                                                             <label>Max FTP Account</label>
-                                                                            <div class="control is-inline-flex"
-                                                                                style="align-items: center; gap:10px">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_ftp_radio"
-                                                                                        id="max_ftp_unlimited"
-                                                                                        value="unlimited">
-                                                                                    <span></span>
-                                                                                    Unlimited
+                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_ftp_radio" id="max_ftp_unlimited" value="Unlimited">
+                                                                                    <span></span> Unlimited
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_ftp_radio"
-                                                                                        id="max_ftp_limited"
-                                                                                        value="limited">
-                                                                                    <span></span>
-                                                                                    Limited
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_ftp_radio" id="max_ftp_limited" value="Limited">
+                                                                                    <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" placeholder="0">
+                                                                                <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -551,143 +512,88 @@
 
                                                                 <div class="column is-6" style="padding-bottom:0px;">
                                                                     <div class="column-content">
-                                                                        <div class="field"
-                                                                            style="margin-bottom: 0.75rem;">
+                                                                        <!-- Max Domain -->
+                                                                        <div class="field" style="margin-bottom: 0.75rem;">
                                                                             <label>Max Domain</label>
-                                                                            <div class="control is-inline-flex"
-                                                                                style="align-items: center; gap:10px">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_domain_radio"
-                                                                                        id="max_domain_unlimited"
-                                                                                        value="unlimited">
-                                                                                    <span></span>
-                                                                                    Unlimited
+                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_domain_radio" id="max_domain_unlimited" value="Unlimited">
+                                                                                    <span></span> Unlimited
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_domain_radio"
-                                                                                        id="max_domain_limited"
-                                                                                        value="limited">
-                                                                                    <span></span>
-                                                                                    Limited
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_domain_radio" id="max_domain_limited" value="Limited">
+                                                                                    <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" placeholder="0">
+                                                                                <input class="input" id="max_domain_input" placeholder="0" name="max_domain" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="field"
-                                                                            style="margin-bottom: 0.75rem;">
+                                                                        <!-- Max Addon Domain -->
+                                                                        <div class="field" style="margin-bottom: 0.75rem;">
                                                                             <label>Max Addon Domain</label>
-                                                                            <div class="control is-inline-flex"
-                                                                                style="align-items: center; gap:10px">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_addon_domain_radio"
-                                                                                        id="max_addon_domain_unlimited"
-                                                                                        value="unlimited">
-                                                                                    <span></span>
-                                                                                    Unlimited
+                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_addon_domain_radio" id="max_addon_domain_unlimited" value="Unlimited">
+                                                                                    <span></span> Unlimited
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_addon_domain_radio"
-                                                                                        id="max_addon_domain_limited"
-                                                                                        value="limited">
-                                                                                    <span></span>
-                                                                                    Limited
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_addon_domain_radio" id="max_addon_domain_limited" value="Limited">
+                                                                                    <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" placeholder="0">
+                                                                                <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="field"
-                                                                            style="margin-bottom: 0.75rem;">
+                                                                        <!-- Max Parked Domain -->
+                                                                        <div class="field" style="margin-bottom: 0.75rem;">
                                                                             <label>Max Parked Domain</label>
-                                                                            <div class="control is-inline-flex"
-                                                                                style="align-items: center; gap:10px">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_parked_domain_radio"
-                                                                                        id="max_parked_domain_unlimited"
-                                                                                        value="unlimited">
-                                                                                    <span></span>
-                                                                                    Unlimited
+                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_parked_domain_radio" id="max_parked_domain_unlimited" value="Unlimited">
+                                                                                    <span></span> Unlimited
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio"
-                                                                                        name="max_parked_domain_radio"
-                                                                                        id="max_parked_domain_limited"
-                                                                                        value="limited">
-                                                                                    <span></span>
-                                                                                    Limited
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="max_parked_domain_radio" id="max_parked_domain_limited" value="Limited">
+                                                                                    <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" placeholder="0">
+                                                                                <input class="input" id="max_parked_domain_input" name="max_parked_domain" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="field"
-                                                                            style="margin-bottom: 0.75rem;">
+                                                                        <!-- SSH -->
+                                                                        <div class="field" style="margin-bottom: 0.75rem;">
                                                                             <label>SSH</label>
-                                                                            <div class="control"
-                                                                                style="display: flex; align-items: center; gap: 10px;">
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="ssh_radio"
-                                                                                        id="ssh_no" value="no">
-                                                                                    <span></span>
-                                                                                    No
+                                                                            <div class="control" style="display: flex; align-items: center; gap: 10px;">
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="ssh" id="ssh_no" value="No">
+                                                                                    <span></span> No
                                                                                 </label>
-                                                                                <label
-                                                                                    class="radio is-outlined is-primary p-0"
-                                                                                    style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="ssh_radio"
-                                                                                        id="ssh_yes" value="yes">
-                                                                                    <span></span>
-                                                                                    Yes
+                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                    <input type="radio" name="ssh" id="ssh_yes" value="Yes">
+                                                                                    <span></span> Yes
                                                                                 </label>
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="field">
                                                                 <label>Free Domain</label>
-                                                                <div class="control is-flex is-align-items-center is-justify-content-center"
-                                                                    style="gap:10px">
-                                                                    <label class="radio is-outlined is-primary p-0"
-                                                                        style="display: flex; align-items: center;">
-                                                                        <input type="radio" name="free_domain_radio"
-                                                                            id="free_domain_no" value="no">
-                                                                        <span></span>
-                                                                        No
+                                                                <div class="control is-flex is-align-items-center is-justify-content-center" style="gap:10px">
+                                                                    <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                        <input type="radio" name="free_domain_radio" id="free_domain_no" value="No">
+                                                                        <span></span> No
                                                                     </label>
-                                                                    <label class="radio is-outlined is-primary p-0"
-                                                                        style="display: flex; align-items: center;">
-                                                                        <input type="radio" name="free_domain_radio"
-                                                                            id="free_domain_yes" value="yes">
-                                                                        <span></span>
-                                                                        Yes
+                                                                    <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                        <input type="radio" name="free_domain_radio" id="free_domain_yes" value="Yes">
+                                                                        <span></span> Yes
                                                                     </label>
-                                                                    <input class="input">
+                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}">
                                                                 </div>
                                                             </div>
-                                                        </div> -->
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -703,80 +609,127 @@
     </div>
 
     <script>
-        // Data dari backend (contoh data dari Laravel Blade)
-        var maxDatabase = "{{ $hostingPlan->max_database }}"; // Contoh: 'unlimited' atau 'limited'
-        var maxBandwidth = "{{ $hostingPlan->max_bandwidth }}"; // Contoh: 'unlimited' atau 'limited'
-        var maxEmail = "{{ $hostingPlan->max_email_account }}"; // Contoh: 'unlimited' atau 'limited'
-        var maxFtp = "{{ $hostingPlan->max_ftp_account }}"; // Contoh: 'unlimited' atau 'limited'
-        var maxDomain = "{{ $hostingPlan->max_domain }}"; // Contoh: 'unlimited' atau 'limited'
-        var maxAddonDomain = "{{ $hostingPlan->max_addon_domain }}"; // Contoh: 'unlimited' atau 'limited'
-        var maxParkedDomain = "{{ $hostingPlan->max_parked_domain }}"; // Contoh: 'unlimited' atau 'limited'
-        var sshStatus = "{{ $hostingPlan->ssh }}"; // Contoh: 'yes' atau 'no'
-        var freeDomain = "{{ $hostingPlan->free_domain }}"; // Contoh: 'yes' atau 'no'
+        document.addEventListener('DOMContentLoaded', () => {
+            // Data dari backend
+            const hostingPlanData = {
+                maxDatabase: "{{ $hostingPlan->max_database }}",
+                maxBandwidth: "{{ $hostingPlan->max_bandwidth }}",
+                maxEmail: "{{ $hostingPlan->max_email_account }}",
+                maxFtp: "{{ $hostingPlan->max_ftp_account }}",
+                maxDomain: "{{ $hostingPlan->max_domain }}",
+                maxAddonDomain: "{{ $hostingPlan->max_addon_domain }}",
+                maxParkedDomain: "{{ $hostingPlan->max_parked_domain }}",
+                sshStatus: "{{ $hostingPlan->ssh }}",
+                freeDomain: "{{ $hostingPlan->free_domain }}"
+            };
 
-        // Aktifkan radio button untuk Max Database
-        if (maxDatabase === 'Unlimited') {
-            document.getElementById('max_database_unlimited').checked = true;
-        } else {
-            document.getElementById('max_database_limited').checked = true;
-        }
+            const setRadioButton = (name, value) => {
+                const radio = document.getElementById(`${name}_${value.toLowerCase()}`);
+                if (radio) radio.checked = true;
+            };
 
-        // Aktifkan radio button untuk Max Bandwidth
-        if (maxBandwidth === 'Unlimited') {
-            document.getElementById('max_bandwidth_unlimited').checked = true;
-        } else {
-            document.getElementById('max_bandwidth_limited').checked = true;
-        }
+            // Set radio buttons to default values
+            setRadioButton('max_database', 'Unlimited');
+            setRadioButton('max_bandwidth', 'Unlimited');
+            setRadioButton('max_email', 'Unlimited');
+            setRadioButton('max_ftp', 'Unlimited');
+            setRadioButton('max_domain', 'Unlimited');
+            setRadioButton('max_addon_domain', 'Unlimited');
+            setRadioButton('max_parked_domain', 'Unlimited');
+            setRadioButton('ssh', 'No'); // Default SSH to "No"
+            setRadioButton('free_domain', 'No');
 
-        // Aktifkan radio button untuk Max Email Account
-        if (maxEmail === 'Unlimited') {
-            document.getElementById('max_email_unlimited').checked = true;
-        } else {
-            document.getElementById('max_email_limited').checked = true;
-        }
+            const radios = document.querySelectorAll('input[type="radio"]');
+            const inputs = document.querySelectorAll('input.input');
 
-        // Aktifkan radio button untuk Max FTP Account
-        if (maxFtp === 'Unlimited') {
-            document.getElementById('max_ftp_unlimited').checked = true;
-        } else {
-            document.getElementById('max_ftp_limited').checked = true;
-        }
+            const handleInputState = () => {
+                radios.forEach(radio => {
+                    const parent = radio.closest('.control');
+                    const input = parent ? parent.querySelector('.input') : null;
 
-        // Aktifkan radio button untuk Max Domain
-        if (maxDomain === 'Unlimited') {
-            document.getElementById('max_domain_unlimited').checked = true;
-        } else {
-            document.getElementById('max_domain_limited').checked = true;
-        }
+                    if (input) {
+                        input.disabled = true; // Disable all inputs initially
 
-        // Aktifkan radio button untuk Max Addon Domain
-        if (maxAddonDomain === 'Unlimited') {
-            document.getElementById('max_addon_domain_unlimited').checked = true;
-        } else {
-            document.getElementById('max_addon_domain_limited').checked = true;
-        }
+                        if ((radio.value === 'Limited' || radio.value === 'Yes') && radio.checked) {
+                            input.disabled = false; // Enable input for "Limited" or "Yes"
+                        }
+                    }
+                });
+            };
 
-        // Aktifkan radio button untuk Max Parked Domain
-        if (maxParkedDomain === 'Unlimited') {
-            document.getElementById('max_parked_domain_unlimited').checked = true;
-        } else {
-            document.getElementById('max_parked_domain_limited').checked = true;
-        }
+            handleInputState(); // Initial state handling
 
-        // Aktifkan radio button untuk SSH
-        if (sshStatus === 'No') {
-            document.getElementById('ssh_no').checked = true;
-        } else {
-            document.getElementById('ssh_yes').checked = true;
-        }
+            radios.forEach(radio => {
+                radio.addEventListener('change', handleInputState);
+            });
 
-        if (sshStatus === 'No') {
-            document.getElementById('free_domain_no').checked = true;
-        } else {
-            document.getElementById('free_domain_yes').checked = true;
-        }
+            // Handle free domain logic
+            const freeDomainNo = document.getElementById('free_domain_no');
+            const freeDomainYes = document.getElementById('free_domain_yes');
+            const freeDomainInput = document.getElementById('free_domain_input');
 
+            const handleFreeDomainChange = () => {
+                freeDomainInput.value = freeDomainNo.checked ? 'No' : '';
+            };
 
+            freeDomainNo.addEventListener('change', handleFreeDomainChange);
+            freeDomainYes.addEventListener('change', handleFreeDomainChange);
+            handleFreeDomainChange(); // Set initial state for free domain
+
+            // Handle individual input states based on radio buttons
+            const handleInputStateWithRadio = (radioName, inputId, oldValue) => {
+                const unlimitedRadio = document.getElementById(`${radioName}_unlimited`);
+                const limitedRadio = document.getElementById(`${radioName}_limited`);
+                const inputField = document.getElementById(inputId);
+
+                const updateInputState = () => {
+                    inputField.disabled = unlimitedRadio.checked; // Disable if unlimited is checked
+                    inputField.value = unlimitedRadio.checked ? '' : oldValue; // Set value accordingly
+                };
+
+                updateInputState(); // Initial state setup
+                unlimitedRadio.addEventListener('change', updateInputState);
+                limitedRadio.addEventListener('change', updateInputState);
+            };
+
+            handleInputStateWithRadio('max_database', 'max_database_input', "{{ old('max_database', $hostingPlan->max_database) }}");
+            handleInputStateWithRadio('max_bandwidth', 'max_bandwidth_input', "{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}");
+            handleInputStateWithRadio('max_email', 'max_email_input', "{{ old('max_email_account', $hostingPlan->max_email_account) }}");
+            handleInputStateWithRadio('max_ftp', 'max_ftp_input', "{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}");
+            handleInputStateWithRadio('max_domain', 'max_domain_input', "{{ old('max_domain', $hostingPlan->max_domain) }}");
+            handleInputStateWithRadio('max_addon_domain', 'max_addon_domain_input', "{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}");
+            handleInputStateWithRadio('max_parked_domain', 'max_parked_domain_input', "{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}");
+
+            // SSH Status logic
+            const sshNo = document.getElementById('ssh_no');
+            const sshYes = document.getElementById('ssh_yes');
+
+            // Default set ke No
+            sshNo.checked = true;
+
+            // Set radio button berdasarkan data dari database
+            if (hostingPlanData.sshStatus === "Yes") {
+                sshYes.checked = true;
+            }
+
+            // Fungsi untuk menangani perubahan radio button SSH
+            const handleSSHChange = () => {
+                if (sshYes.checked) {
+                    console.log("SSH Enabled");
+                    // Lakukan aksi penyimpanan untuk SSH Yes (via form submit atau AJAX)
+                } else {
+                    console.log("SSH Disabled");
+                    // Lakukan aksi penyimpanan untuk SSH No
+                }
+            };
+
+            // Event listener untuk perubahan pada radio button SSH
+            sshNo.addEventListener('change', handleSSHChange);
+            sshYes.addEventListener('change', handleSSHChange);
+
+            // Panggil handleSSHChange untuk menyimpan status awal saat halaman di-refresh
+            handleSSHChange();
+        });
     </script>
 
     <script>

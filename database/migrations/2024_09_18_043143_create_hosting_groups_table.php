@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hosting_groups', function (Blueprint $table) {
-            $table->id();
+            $table->id('hosting_group_id');
+            $table->string('name');
             $table->timestamps();
         });
     }

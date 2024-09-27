@@ -35,8 +35,7 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 
 </head>
@@ -1164,92 +1163,79 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="column is-12-mobile is-4-tablet is-8-desktop"
-                                                    style="padding-left: 40px;">
+                                                <div class="column is-12-mobile is-4-tablet is-8-desktop" style="padding-left: 40px;">
                                                     <div class="columns">
                                                         <div class="column is-6" style="padding-bottom:0px;">
                                                             <div class="column-content">
+                                                                <!-- Max Database -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>Max Database</label>
-                                                                    <div class="control is-inline-flex"
-                                                                        style="align-items: center; gap:10px">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_database_radio">
+                                                                    <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_database_radio" value="Unlimited">
                                                                             <span></span>
                                                                             Unlimited
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_database_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_database_radio" value="Limited">
                                                                             <span></span>
                                                                             Limited
                                                                         </label>
-                                                                        <input class="input" placeholder="0">
+                                                                        <input class="input" name="max_database" placeholder="0">
                                                                     </div>
                                                                 </div>
 
+                                                                <!-- Max Bandwidth -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>Max Bandwidth</label>
-                                                                    <div class="control is-inline-flex"
-                                                                        style="align-items: center; gap:10px">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_bandwidth_radio">
+                                                                    <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_bandwidth_radio" value="Unlimited">
                                                                             <span></span>
                                                                             Unlimited
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_bandwidth_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_bandwidth_radio" value="Limited">
                                                                             <span></span>
                                                                             Limited
                                                                         </label>
-                                                                        <input class="input" placeholder="0">
+                                                                        <input class="input" name="max_bandwidth" placeholder="0">
                                                                     </div>
                                                                 </div>
 
+                                                                <!-- Max Email Account -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>Max Email Account</label>
-                                                                    <div class="control is-inline-flex"
-                                                                        style="align-items: center; gap:10px">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="max_email_radio">
+                                                                    <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_email_radio" value="Unlimited">
                                                                             <span></span>
                                                                             Unlimited
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="max_email_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_email_radio" value="Limited">
                                                                             <span></span>
                                                                             Limited
                                                                         </label>
-                                                                        <input class="input" placeholder="0">
+                                                                        <input class="input" name="max_email" placeholder="0">
                                                                     </div>
                                                                 </div>
 
+                                                                <!-- Max FTP Account -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>Max FTP Account</label>
-                                                                    <div class="control is-inline-flex"
-                                                                        style="align-items: center; gap:10px">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="max_ftp_radio">
+                                                                    <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_ftp_radio" value="Unlimited">
                                                                             <span></span>
                                                                             Unlimited
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="max_ftp_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_ftp_radio" value="Limited">
                                                                             <span></span>
                                                                             Limited
                                                                         </label>
-                                                                        <input class="input" placeholder="0">
+                                                                        <input class="input" name="max_ftp" placeholder="0">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1257,93 +1243,82 @@
 
                                                         <div class="column is-6" style="padding-bottom:0px;">
                                                             <div class="column-content">
+                                                                <!-- Max Domain -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>Max Domain</label>
-                                                                    <div class="control is-inline-flex"
-                                                                        style="align-items: center; gap:10px">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="max_domain_radio">
+                                                                    <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_domain_radio" value="Unlimited">
                                                                             <span></span>
                                                                             Unlimited
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="max_domain_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_domain_radio" value="Limited">
                                                                             <span></span>
                                                                             Limited
                                                                         </label>
-                                                                        <input class="input" placeholder="0">
+                                                                        <input class="input" name="max_domain" placeholder="0">
                                                                     </div>
                                                                 </div>
 
+                                                                <!-- Max Addon Domain -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>Max Addon Domain</label>
-                                                                    <div class="control is-inline-flex"
-                                                                        style="align-items: center; gap:10px">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_addon_domain_radio">
+                                                                    <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_addon_domain_radio" value="Unlimited">
                                                                             <span></span>
                                                                             Unlimited
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_addon_domain_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_addon_domain_radio" value="Limited">
                                                                             <span></span>
                                                                             Limited
                                                                         </label>
-                                                                        <input class="input" placeholder="0">
+                                                                        <input class="input" name="max_addon_domain" placeholder="0">
                                                                     </div>
                                                                 </div>
 
+                                                                <!-- Max Parked Domain -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>Max Parked Domain</label>
-                                                                    <div class="control is-inline-flex"
-                                                                        style="align-items: center; gap:10px">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_parked_domain_radio">
+                                                                    <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_parked_domain_radio" value="Unlimited">
                                                                             <span></span>
                                                                             Unlimited
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio"
-                                                                                name="max_parked_domain_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="max_parked_domain_radio" value="Limited">
                                                                             <span></span>
                                                                             Limited
                                                                         </label>
-                                                                        <input class="input" placeholder="0">
+                                                                        <input class="input" name="max_parked_domain" placeholder="0">
                                                                     </div>
                                                                 </div>
 
+                                                                <!-- SSH -->
                                                                 <div class="field" style="margin-bottom: 0.75rem;">
                                                                     <label>SSH</label>
-                                                                    <div class="control"
-                                                                        style="display: flex; align-items: center; gap: 10px;">
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="ssh_radio">
+                                                                    <div class="control" style="display: flex; align-items: center; gap: 10px;">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="ssh_radio" value="No">
                                                                             <span></span>
                                                                             No
                                                                         </label>
-                                                                        <label class="radio is-outlined is-primary p-0"
-                                                                            style="display: flex; align-items: center;">
-                                                                            <input type="radio" name="ssh_radio">
+                                                                        <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                            <input type="radio" name="ssh_radio" value="Yes">
                                                                             <span></span>
                                                                             Yes
                                                                         </label>
+                                                                        <input class="ssh-input input" name="ssh_input" placeholder="SSH Input" disabled>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                     </div>
 
+                                                    <!-- Free Domain -->
                                                     <div class="field">
                                                         <label>Free Domain</label>
                                                         <div class="control is-flex is-align-items-center is-justify-content-center"
@@ -1429,6 +1404,64 @@
 
 
     <script src="assets/js/syntax.js" async></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all the radio buttons and input fields
+            const radios = document.querySelectorAll('input[type="radio"]');
+            const inputs = document.querySelectorAll('input.input');
+
+            // Function to handle enabling/disabling inputs
+            const handleInputState = () => {
+                radios.forEach(radio => {
+                    const parent = radio.closest('.control');
+                    const input = parent ? parent.querySelector('.input') : null;
+
+                    if (radio.checked && radio.value === 'Unlimited' && input) {
+                        input.disabled = true; // Disable input if "Unlimited" is selected
+                    } else if (radio.checked && radio.value === 'Limited' && input) {
+                        input.disabled = false; // Enable input if "Limited" is selected
+                    }
+                });
+
+                // Handle SSH logic
+                const sshNo = document.querySelector('input[name="ssh_radio"][value="No"]');
+                const sshYes = document.querySelector('input[name="ssh_radio"][value="Yes"]');
+                const sshInput = document.querySelector('input.ssh-input');
+                if (sshNo.checked) {
+                    sshInput.disabled = true;
+                } else if (sshYes.checked) {
+                    sshInput.disabled = false;
+                }
+
+                // Handle Free Domain logic
+                const freeDomainNo = document.querySelector('input[name="free_domain_radio"][value="No"]');
+                const freeDomainYes = document.querySelector('input[name="free_domain_radio"][value="Yes"]');
+                const freeDomainInput = document.querySelector('input.free-domain-input');
+                if (freeDomainNo.checked) {
+                    freeDomainInput.disabled = true;
+                } else if (freeDomainYes.checked) {
+                    freeDomainInput.disabled = false;
+                }
+            };
+
+            // Set default radio button states on page load
+            document.querySelectorAll('input[type="radio"][value="Unlimited"]').forEach(radio => {
+                radio.checked = true;
+            });
+
+            // Set SSH and Free Domain default values to "No"
+            document.querySelector('input[name="ssh_radio"][value="No"]').checked = true;
+            document.querySelector('input[name="free_domain_radio"][value="No"]').checked = true;
+
+            // Initially handle the input state
+            handleInputState();
+
+            // Add event listeners to update input state when radio buttons are changed
+            radios.forEach(radio => {
+                radio.addEventListener('change', handleInputState);
+            });
+        });
+    </script>
     </div>
 </body>
 
