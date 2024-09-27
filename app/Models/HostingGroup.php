@@ -15,4 +15,10 @@ class HostingGroup extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function hostingPlans()
+    {
+        return $this->hasMany(HostingPlan::class, 'hosting_group_id', 'hosting_group_id');
+    }
 }
+
