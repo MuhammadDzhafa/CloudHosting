@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('hosting_plans', function (Blueprint $table) {
             $table->id('hosting_plans_id');
             $table->string('name');
-            $table->string('group_id');
+            $table->unsignedBigInteger('group_id'); 
             $table->enum('type', ['Regular Hosting', 'Custom Hosting']);
             $table->string('description');
             $table->string('RAM');
@@ -35,6 +35,10 @@ return new class extends Migration
             $table->string('ssh');
             $table->string('free_domain');
             $table->timestamps();
+
+
+            // Menambahkan foreign key constraint
+            $table->foreign('group_id')->references('hosting_group_id')->on('hosting_groups')->onDelete('cascade'); // Baris ini ditambahkan
         });
     }
 

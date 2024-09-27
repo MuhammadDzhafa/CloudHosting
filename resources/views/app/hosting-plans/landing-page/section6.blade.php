@@ -1,4 +1,4 @@
-<!-- <section class="section-frame padding-1 gap-6 md:gap-12" id="target-section">
+<section class="section-frame padding-1 gap-6 md:gap-12" id="target-section">
     <h2 class="text-3xl md:text-4xl title-section text-center">
         Cloud Hosting
     </h2>
@@ -99,8 +99,8 @@
             <div id="corporate-tab" class="tab-content">
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                        <div
-                            class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
+                    @foreach ( $hostingPlans as $hostingPlan )
+                        <div class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
                             <h5
                                 class="text-xl font-bold text-[#4A6DCB] mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">
                                 {{ $hostingPlan->name }}
