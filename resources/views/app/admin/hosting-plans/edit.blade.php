@@ -156,14 +156,13 @@
                                                                             @foreach ($hostingGroups as $group)
                                                                                 <a class="dropdown-item font-size-base"
                                                                                     data-value="Personal Cloud Hosting"
-                                                                                    onclick="updateGroup('{{ $group->name }}')">{{ $group->name }}</a>
+                                                                                    onclick="updateGroup('{{ $group->hosting_group_id }}', '{{ $group->name }}')">{{ $group->name }}</a>
                                                                             @endforeach
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input type="hidden" name="group_id"
-                                                                        id="group-id-hidden"
-                                                                        value="{{ $hostingPlan->group_id }}">
+                                                                    <input type="hidden" name="hosting_group_id" id="group-id-hidden" value="{{ $hostingGroupId }}">
+
                                                                 </div>
 
                                                                 <div class="field" style="flex-basis: 50%;">
@@ -726,10 +725,23 @@
     </script>
 
     <script>
-        function updateGroup(value) {
-            document.getElementById('selectedGroup').innerText = value;
-            document.getElementById('group-id-hidden').value = value; // Update hidden input
+        // function updateGroup(value) {
+        //     document.getElementById('selectedGroup').innerText = value;
+        //     document.getElementById('group-id-hidden').value = value; // Update hidden input
+        // }
+
+        function updateGroup(groupId, groupName) {
+            // Update the displayed group name
+            document.getElementById('selectedGroup').innerText = groupName;
+            
+            // Update the hidden input value with the selected group ID
+            document.getElementById('group-id-hidden').value = groupId;
+
+            // Optionally, you can close the dropdown after selection
+            const dropdownMenu = document.getElementById('group-dropdown-menu');
+            dropdownMenu.classList.remove('is-active'); // This line will close the dropdown if needed
         }
+
 
         function updateType(value) {
             document.getElementById('selectedType').innerText = value;
