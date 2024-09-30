@@ -9,7 +9,7 @@
         "guzzlehttp/guzzle": "^7.9",
         "intervention/image": "^3.8",
         "laravel/framework": "^11.0",
-        "laravel/socialite": "^5.15",
+        "laravel/socialite": "^5.16",
         "laravel/tinker": "^2.9",
         "twilio/sdk": "^8.3"
     },

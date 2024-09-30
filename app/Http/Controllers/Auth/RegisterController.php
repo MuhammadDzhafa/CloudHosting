@@ -27,9 +27,9 @@ class RegisterController extends Controller
     {
         try {
             $socialUser = Socialite::driver('google')->stateless()->user();
-            
+
             $userByEmail = User::where('email', $socialUser->email)->first();
-            
+
             if ($userByEmail) {
                 $userByEmail->update([
                     'google_id' => $socialUser->id,
