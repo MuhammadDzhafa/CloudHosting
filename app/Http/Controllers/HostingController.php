@@ -18,7 +18,7 @@ class HostingController extends Controller
 
         // Fetch the hosting plans data
         $hostingPlans = HostingPlan::select(
-            'hosting_plans_id', 'name', 'group_id', 'type', 'description', 
+            'hosting_plans_id', 'name', 'hosting_group_id', 'type', 'description', 
             'RAM', 'storage', 'CPU', 'max_io', 'nproc', 'entry_process', 
             'ssl', 'backup', 'max_database', 'max_bandwidth', 
             'max_email_account', 'max_ftp_account', 'max_domain', 

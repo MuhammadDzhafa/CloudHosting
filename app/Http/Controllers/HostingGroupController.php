@@ -26,7 +26,6 @@ class HostingGroupController extends Controller
 
         HostingGroup::create($request->all()); // Simpan data baru
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group created successfully.');
-        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group created successfully.');
     }
 
     public function edit($id)

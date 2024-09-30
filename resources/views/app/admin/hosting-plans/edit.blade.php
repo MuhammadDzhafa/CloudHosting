@@ -142,7 +142,7 @@
                                                                                 aria-controls="group-dropdown-menu"
                                                                                 style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
                                                                                 <span
-                                                                                    id="selectedGroup">{{ $hostingPlan->group_id }}</span>
+                                                                                    id="selectedGroup">{{ $hostingGroupName }}</span>
                                                                                 <span class="icon is-small"
                                                                                     style="min-width: 0; min-height: 0;">
                                                                                     <i class="fas fa-angle-down"
@@ -153,18 +153,11 @@
                                                                         <div class="dropdown-menu"
                                                                             id="group-dropdown-menu" role="menu">
                                                                             <div class="dropdown-content">
+                                                                            @foreach ($hostingGroups as $group)
                                                                                 <a class="dropdown-item font-size-base"
                                                                                     data-value="Personal Cloud Hosting"
-                                                                                    onclick="updateGroup('Personal Cloud Hosting')">Personal
-                                                                                    Cloud Hosting</a>
-                                                                                <a class="dropdown-item font-size-base"
-                                                                                    data-value="Corporate Cloud Hosting"
-                                                                                    onclick="updateGroup('Corporate Cloud Hosting')">Corporate
-                                                                                    Cloud Hosting</a>
-                                                                                <a class="dropdown-item font-size-base"
-                                                                                    data-value="WordPress Hosting"
-                                                                                    onclick="updateGroup('WordPress Hosting')">WordPress
-                                                                                    Hosting</a>
+                                                                                    onclick="updateGroup('{{ $group->name }}')">{{ $group->name }}</a>
+                                                                            @endforeach
                                                                             </div>
                                                                         </div>
                                                                     </div>
