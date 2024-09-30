@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         return Auth::attempt(
             $request->only('email', 'password'),
-            $request->filled('remember')
+            $request->filled('remember') // Ini sudah benar untuk menangani "Remember Me"
         );
     }
 
@@ -61,7 +61,7 @@ class LoginController extends Controller
         }
 
         throw ValidationException::withMessages([
-            'email' => [trans('auth.failed')],
+            'email' => [trans('auth.failed')], // Pesan kesalahan jika login gagal
         ]);
     }
 
@@ -74,4 +74,4 @@ class LoginController extends Controller
 
         return redirect('/')->with('status', 'You have been successfully logged out.');
     }
-}
+}   
