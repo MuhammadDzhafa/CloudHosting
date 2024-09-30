@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('hosting_group_id');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes(); // Add deleted_at column for soft deletes
         });
     }
 
