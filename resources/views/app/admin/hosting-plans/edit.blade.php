@@ -100,11 +100,12 @@
                                                         <span class="icon" style="min-width: 0px; min-height: 0px;">
                                                             <i class="lnir lnir-arrow-left rem-100"></i>
                                                         </span>
-                                                        <span>Cancel</span>
+                                                        <span>Back to Hosting Plans</span>
                                                     </a>
                                                     <button id="save-button"
                                                         class="button h-button is-primary is-raised"
-                                                        type="submit">Save</button>
+                                                        type="submit">Save Change</button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +142,7 @@
                                                                                 aria-controls="group-dropdown-menu"
                                                                                 style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
                                                                                 <span
-                                                                                    id="selectedGroup">{{ $hostingPlan->group_id }}</span>
+                                                                                    id="selectedGroup">{{ $hostingGroupName }}</span>
                                                                                 <span class="icon is-small"
                                                                                     style="min-width: 0; min-height: 0;">
                                                                                     <i class="fas fa-angle-down"
@@ -152,18 +153,11 @@
                                                                         <div class="dropdown-menu"
                                                                             id="group-dropdown-menu" role="menu">
                                                                             <div class="dropdown-content">
+                                                                            @foreach ($hostingGroups as $group)
                                                                                 <a class="dropdown-item font-size-base"
                                                                                     data-value="Personal Cloud Hosting"
-                                                                                    onclick="updateGroup('Personal Cloud Hosting')">Personal
-                                                                                    Cloud Hosting</a>
-                                                                                <a class="dropdown-item font-size-base"
-                                                                                    data-value="Corporate Cloud Hosting"
-                                                                                    onclick="updateGroup('Corporate Cloud Hosting')">Corporate
-                                                                                    Cloud Hosting</a>
-                                                                                <a class="dropdown-item font-size-base"
-                                                                                    data-value="WordPress Hosting"
-                                                                                    onclick="updateGroup('WordPress Hosting')">WordPress
-                                                                                    Hosting</a>
+                                                                                    onclick="updateGroup('{{ $group->name }}')">{{ $group->name }}</a>
+                                                                            @endforeach
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -176,7 +170,7 @@
                                                                     <label>Product Name</label>
                                                                     <input class="input" name="name"
                                                                         value="{{ $hostingPlan->name }}"
-                                                                        style="width: 100%; padding: 10px;">
+                                                                        style="width: 100%; padding: 10px;" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -223,130 +217,110 @@
                                                                     <label>Product Description</label>
                                                                     <input class="input" name="description"
                                                                         value="{{ $hostingPlan->description }}"
-                                                                        style="width: 100%; padding: 10px;">
+                                                                        style="width: 100%; padding: 10px;" required>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                {{-- <!-- <div id="projects-tab" class="tab-content">
+                                                <div id="projects-tab" class="tab-content">
                                                     <div class="table-wrapper" style="min-height:100px" data-simplebar>
                                                         <table id="users-datatable"
                                                             class="table is-datatable is-hoverable has-text-centered">
                                                             <thead>
                                                                 <tr class="color-row">
                                                                     <th></th>
-                                                                    <th class="has-text-centered">One
-                                                                        Time/Monthly</th>
+                                                                    <th class="has-text-centered">One Time/Monthly</th>
                                                                     <th class="has-text-centered">Quarterly</th>
-                                                                    <th class="has-text-centered">Semi-Annually
-                                                                    </th>
+                                                                    <th class="has-text-centered">Semi-Annually</th>
                                                                     <th class="has-text-centered">Annually</th>
-                                                                    <th class="has-text-centered">Biennially
-                                                                    </th>
-                                                                    <th class="has-text-centered">Triennially
-                                                                    </th>
+                                                                    <th class="has-text-centered">Biennially</th>
+                                                                    <th class="has-text-centered">Triennially</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Enable</th>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
-                                                                    <td><label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox">
-                                                                            <span></span>
-                                                                        </label></td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <label class="checkbox is-outlined is-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="prices[{{ $duration }}][enable]"
+                                                                                    class="toggle-checkbox"
+                                                                                    @if(isset($prices[$duration]['price']) && !empty($prices[$duration]['price']))
+                                                                                    checked @endif>
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
+                                                                    @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price</th>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][price]"
+                                                                                    class="input has-text-centered toggle-input"
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['price'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
+                                                                    @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Discount (%)</th>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input class="input has-text-centered">
-                                                                        </div>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][discount]"
+                                                                                    class="input has-text-centered toggle-discount"
+                                                                                    min="0" max="100"
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['discount'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Price After</th>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][price_after]"
+                                                                                    class="input has-text-centered toggle-price-after"
+                                                                                    required
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['price_after'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Actions</th>
+                                                                    <!-- Optional: You can add a header for clarity -->
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            @if(isset($prices[$duration]))
+                                                                                <button type="button" class="is-danger button"
+                                                                                    onclick="deletePrice({{ $prices[$duration]->price_id }})">Delete</button>
+                                                                            @else
+                                                                                <span>No Price Available</span>
+                                                                            @endif
+                                                                        </td>
+                                                                    @endforeach
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                </div>  --> --}}
+                                                </div>
+
 
                                                 <div id="tasks-tab" class="tab-content">
                                                     @if ($errors->any())
@@ -371,7 +345,7 @@
                                                                             <div
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="storage"
-                                                                                    value="{{ old('storage', $hostingPlan->storage) }}">
+                                                                                    value="{{ old('storage', $hostingPlan->storage) }}" required>
                                                                                 <p class=" ml-2">GB</p>
                                                                             </div>
                                                                         </div>
@@ -381,7 +355,7 @@
                                                                             <div
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="CPU"
-                                                                                    value="{{ old('CPU', $hostingPlan->CPU) }}">
+                                                                                    value="{{ old('CPU', $hostingPlan->CPU) }}" required>
                                                                                 <p class=" ml-2">Core</p>
                                                                             </div>
                                                                         </div>
@@ -391,7 +365,7 @@
                                                                             <div class="control">
                                                                                 <input class="input"
                                                                                     name="entry_process"
-                                                                                    value="{{ old('entry_process', $hostingPlan->entry_process) }}">
+                                                                                    value="{{ old('entry_process', $hostingPlan->entry_process) }}" required>
                                                                             </div>
                                                                         </div>
 
@@ -417,7 +391,7 @@
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="RAM"
                                                                                     value="{{ old('RAM', $hostingPlan->RAM) }}"
-                                                                                    placeholder="0">
+                                                                                    placeholder="0" required>
                                                                                 <p class=" ml-2">GB</p>
                                                                             </div>
                                                                         </div>
@@ -429,7 +403,7 @@
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="max_io"
                                                                                     value="{{ old('max_io', $hostingPlan->max_io) }}"
-                                                                                    placeholder="0">
+                                                                                    placeholder="0" required>
                                                                                 <p class=" ml-2">KB/s</p>
                                                                             </div>
                                                                         </div>
@@ -439,7 +413,7 @@
                                                                             <div class="control">
                                                                                 <input class="input" name="nproc"
                                                                                     value="{{ old('nproc', $hostingPlan->nproc) }}"
-                                                                                    placeholder="0">
+                                                                                    placeholder="0" required>
                                                                             </div>
                                                                         </div>
 
@@ -475,9 +449,7 @@
                                                                                     <input type="radio" name="max_database_radio" id="max_database_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled>
-                                                                                <!-- Tambahkan input hidden untuk menyimpan nilai max_database yang akan dikirim -->
-                                                                                <!-- <input type="hidden" id="max_database_final" name="max_database_final" value="{{ old('max_database', $hostingPlan->max_database) }}"> -->
+                                                                                <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -493,9 +465,7 @@
                                                                                     <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled>
-                                                                                <!-- Tambahkan input hidden untuk menyimpan nilai max_bandwidth yang akan dikirim -->
-                                                                                <!-- <input type="hidden" id="max_bandwidth_final" name="max_bandwidth_final" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}"> -->
+                                                                                <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -512,9 +482,7 @@
                                                                                     <input type="radio" name="max_email_radio" id="max_email_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_email_input" name="max_email_account" placeholder="0" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled>
-                                                                                <!-- Tambahkan input hidden untuk menyimpan nilai max_email_account yang akan dikirim -->
-                                                                                <!-- <input type="hidden" id="max_email_final" name="max_email_final" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}"> -->
+                                                                                <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -531,9 +499,7 @@
                                                                                     <input type="radio" name="max_ftp_radio" id="max_ftp_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_ftp_input" name="max_ftp_account" placeholder="0" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled>
-                                                                                <!-- Tambahkan input hidden untuk menyimpan nilai max_ftp_account yang akan dikirim -->
-                                                                                <!-- <input type="hidden" id="max_ftp_final" name="max_ftp_final" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}"> -->
+                                                                                <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -553,8 +519,7 @@
                                                                                     <input type="radio" name="max_domain_radio" id="max_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_domain_input" placeholder="0" name="max_domain" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled>
-                                                                                <!-- <input type="hidden" id="max_domain_final" name="max_domain_final" value="{{ old('max_domain', $hostingPlan->max_domain) }}"> -->
+                                                                                <input class="input" id="max_domain_input" placeholder="0" name="max_domain" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -570,8 +535,7 @@
                                                                                     <input type="radio" name="max_addon_domain_radio" id="max_addon_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled>
-                                                                                <!-- <input type="hidden" id="max_addon_domain_final" name="max_addon_domain_final" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}"> -->
+                                                                                <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -587,8 +551,7 @@
                                                                                     <input type="radio" name="max_parked_domain_radio" id="max_parked_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_parked_domain_input" name="max_parked_domain" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled>
-                                                                                <!-- <input type="hidden" id="max_parked_domain_final" name="max_parked_domain_final" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}"> -->
+                                                                                <input class="input" id="max_parked_domain_input" name="max_parked_domain" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -621,7 +584,7 @@
                                                                         <input type="radio" name="free_domain_radio" id="free_domain_yes" value="Yes">
                                                                         <span></span> Yes
                                                                     </label>
-                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}">
+                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}" required>
                                                                 </div>
                                                             </div>
 
@@ -852,6 +815,92 @@
         });
     </script>
 
+    <script>
+        function updateGroup(value) {
+            document.getElementById('selectedGroup').innerText = value;
+            document.getElementById('group-id-hidden').value = value; // Update hidden input
+        }
+
+        function updateType(value) {
+            document.getElementById('selectedType').innerText = value;
+            document.getElementById('type-hidden').value = value; // Update hidden input
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('.toggle-checkbox');
+            const inputs = document.querySelectorAll('.toggle-input');
+            const discounts = document.querySelectorAll('.toggle-discount');
+            const pricesAfter = document.querySelectorAll('.toggle-price-after');
+
+            // Function to toggle input disabled state based on checkbox
+            const toggleInputs = () => {
+                checkboxes.forEach((checkbox, index) => {
+                    const isChecked = checkbox.checked;
+                    inputs[index].disabled = !isChecked;
+                    discounts[index].disabled = !isChecked;
+                    pricesAfter[index].disabled = !isChecked;
+                });
+            };
+
+            // Function to calculate price after discount
+            const calculatePriceAfter = (index) => {
+                const price = parseFloat(inputs[index].value) || 0;
+                const discount = parseFloat(discounts[index].value) || 0;
+                const priceAfter = price - (price * (discount / 100));
+                pricesAfter[index].value = priceAfter;
+            };
+
+            // Initially run the toggle function on page load
+            toggleInputs();  // This makes sure inputs are enabled/disabled correctly based on initial checkbox state
+
+            // Add event listeners to all checkboxes
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.addEventListener('change', () => {
+                    toggleInputs();
+                });
+
+                // Add input event listeners for Price and Discount inputs
+                inputs[index].addEventListener('input', () => {
+                    if (checkbox.checked) {
+                        calculatePriceAfter(index);
+                    }
+                });
+                discounts[index].addEventListener('input', () => {
+                    if (checkbox.checked) {
+                        calculatePriceAfter(index);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+        function deletePrice(priceId) {
+            if (confirm("Are you sure you want to delete this price?")) {
+                fetch(`/prices/${priceId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            location.reload();
+                        } else {
+                            alert('Failed to delete the price. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the price.');
+                    });
+            }
+        }
+    </script>
 
 
 

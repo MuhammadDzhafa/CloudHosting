@@ -103,49 +103,49 @@ class TestimonialController extends Controller
     }
 
 
-    function removeBackground($imagePath) {
-        $apiKey = '6NxxF1g69decYxWFhpskVKZk'; // Ganti dengan API Key Anda
-        $url = 'https://api.remove.bg/v1.0/removebg';
+    // function removeBackground($imagePath) {
+    //     $apiKey = '6NxxF1g69decYxWFhpskVKZk'; // Ganti dengan API Key Anda
+    //     $url = 'https://api.remove.bg/v1.0/removebg';
 
-        // Siapkan cURL
-        $ch = curl_init();
+    //     // Siapkan cURL
+    //     $ch = curl_init();
 
-        // Konfigurasi cURL
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
+    //     // Konfigurasi cURL
+    //     curl_setopt($ch, CURLOPT_URL, $url);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //     curl_setopt($ch, CURLOPT_POST, true);
         
-        // Mempersiapkan file gambar untuk dikirim
-        // Pastikan untuk menggunakan CURLFile tanpa namespace
-        $postFields = [
-            'image_file' => new \CURLFile($imagePath),
-            'size' => 'auto'
-        ];
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+    //     // Mempersiapkan file gambar untuk dikirim
+    //     // Pastikan untuk menggunakan CURLFile tanpa namespace
+    //     $postFields = [
+    //         'image_file' => new \CURLFile($imagePath),
+    //         'size' => 'auto'
+    //     ];
+    //     curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
 
-        // Menambahkan header
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'X-Api-Key: ' . $apiKey,
-        ]);
+    //     // Menambahkan header
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    //         'X-Api-Key: ' . $apiKey,
+    //     ]);
 
-        // Eksekusi cURL
-        $response = curl_exec($ch);
+    //     // Eksekusi cURL
+    //     $response = curl_exec($ch);
 
-        // Cek jika ada error
-        if(curl_errno($ch)) {
-            echo 'Error:' . curl_error($ch);
-            return null;
-        }
+    //     // Cek jika ada error
+    //     if(curl_errno($ch)) {
+    //         echo 'Error:' . curl_error($ch);
+    //         return null;
+    //     }
 
-        // Tutup cURL
-        curl_close($ch);
+    //     // Tutup cURL
+    //     curl_close($ch);
 
-        // Simpan hasil gambar dengan background yang dihapus
-        $outputPath = 'output.png'; // Ganti dengan nama file output yang diinginkan
-        file_put_contents($outputPath, $response);
+    //     // Simpan hasil gambar dengan background yang dihapus
+    //     $outputPath = 'output.png'; // Ganti dengan nama file output yang diinginkan
+    //     file_put_contents($outputPath, $response);
 
-        return $outputPath;
-    }
+    //     return $outputPath;
+    // }
 
     
 

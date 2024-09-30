@@ -50,6 +50,6 @@ class HostingGroupController extends Controller
     {
         $hostingGroup = HostingGroup::findOrFail($id);
         $hostingGroup->delete(); // Hapus data
-        return redirect()->route('hosting-plans')->with('success', 'Hosting Group deleted successfully.');
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group deleted successfully.');
     }
 }
