@@ -74,13 +74,15 @@ class HostingPlanController extends Controller
     public function edit($id)
     {
         $hostingPlan = HostingPlan::findOrFail($id);
+        $hostingGroups = HostingGroup::all();
+        $hostingGroupName = $hostingPlan->hostingGroup->name;
 
         // Mengambil data harga dari tabel 'price' berdasarkan hosting_plans_id
         $prices = Price::where('hosting_plans_id', $hostingPlan->hosting_plans_id)
             ->get()
             ->keyBy('duration'); // Mengindeks data berdasarkan 'duration'
 
-        return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan, 'prices' => $prices]);
+        return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan,'hostingGroups' => $hostingGroups, 'hostingGroupName' => $hostingGroupName, 'prices' => $prices]);
 
         // $hostingPlan = HostingPlan::where('hosting_plans_id', $id)->firstOrFail();
         // return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan]);
