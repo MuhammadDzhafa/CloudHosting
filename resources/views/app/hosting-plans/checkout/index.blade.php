@@ -57,64 +57,64 @@
         <div id="form-layout-5" class="view-wrapper" data-naver-offset="150" data-menu-item="#home-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile" style="margin-left:unset; width:100%;">
 
             <div class="page-content-wrapper">
-                @include("layouts.web.partials.navbar")
+                @include("layouts.template-landing-page.web.partials.navbar")
                 <div class="page-content is-relative">
-                    
 
-                <div class="max-w-[1440px] mx-auto px-4 py-6">
-                    <div class="page-content-inner flex space-x-4">
-                        <!-- Mobile Steps -->
-                        <div class="mobile-steps flex-1">
-                            <ul class="steps has-content-centered is-thin is-vertical">
-                                <li id="mobile-step-segment-0" class="steps-segment is-active mb-4">
-                                    <span class="steps-marker w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">1</span>
-                                    <div class="steps-content ml-4">
-                                        <p class="step-number text-sm font-medium">Step 1</p>
-                                        <p class="text-purple-700 font-semibold" >Domain</p>
-                                    </div>
-                                </li>
-                                <li id="mobile-step-segment-1" class="steps-segment mb-4">
-                                    <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">2</span>
-                                    <div class="steps-content ml-4">
-                                        <p class="step-number text-sm font-medium">Step 2</p>
-                                        <p class="text-gray-500">Domain Configuration</p>
-                                    </div>
-                                </li>
-                                <li id="mobile-step-segment-2" class="steps-segment mb-4">
-                                    <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">3</span>
-                                    <div class="steps-content ml-4">
-                                        <p class="step-number text-sm font-medium">Step 3</p>
-                                        <p class="text-gray-500">Hosting</p>
-                                    </div>
-                                </li>
-                                <li id="mobile-step-segment-3" class="steps-segment mb-4">
-                                    <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">4</span>
-                                    <div class="steps-content ml-4">
-                                        <p class="step-number text-sm font-medium">Step 4</p>
-                                        <p class="text-gray-500">Addons</p>
-                                    </div>
-                                </li>
-                                <li id="mobile-step-segment-4" class="steps-segment">
-                                    <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">5</span>
-                                    <div class="steps-content ml-4">
-                                        <p class="step-number text-sm font-medium">Step 5</p>
-                                        <p class="text-gray-500">Billing Address</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <!-- Form Layout 5 -->
-                        <div class="stepper-form flex-3">
-                            <div class="form-sections" style="width: 100%; max-width: unset;">
-                                @include('app.hosting-plans.checkout.step1')
+
+                    <div class="max-w-[1440px] mx-auto px-4 py-6">
+                        <div class="page-content-inner flex space-x-4">
+                            <!-- Mobile Steps -->
+                            <div class="mobile-steps flex-1">
+                                <ul class="steps has-content-centered is-thin is-vertical">
+                                    <li id="mobile-step-segment-0" class="steps-segment is-active mb-4">
+                                        <span class="steps-marker w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">1</span>
+                                        <div class="steps-content ml-4">
+                                            <p class="step-number text-sm font-medium">Step 1</p>
+                                            <p class="text-purple-700 font-semibold">Domain</p>
+                                        </div>
+                                    </li>
+                                    <li id="mobile-step-segment-1" class="steps-segment mb-4">
+                                        <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">2</span>
+                                        <div class="steps-content ml-4">
+                                            <p class="step-number text-sm font-medium">Step 2</p>
+                                            <p class="text-gray-500">Domain Configuration</p>
+                                        </div>
+                                    </li>
+                                    <li id="mobile-step-segment-2" class="steps-segment mb-4">
+                                        <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">3</span>
+                                        <div class="steps-content ml-4">
+                                            <p class="step-number text-sm font-medium">Step 3</p>
+                                            <p class="text-gray-500">Hosting</p>
+                                        </div>
+                                    </li>
+                                    <li id="mobile-step-segment-3" class="steps-segment mb-4">
+                                        <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">4</span>
+                                        <div class="steps-content ml-4">
+                                            <p class="step-number text-sm font-medium">Step 4</p>
+                                            <p class="text-gray-500">Addons</p>
+                                        </div>
+                                    </li>
+                                    <li id="mobile-step-segment-4" class="steps-segment">
+                                        <span class="steps-marker w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">5</span>
+                                        <div class="steps-content ml-4">
+                                            <p class="step-number text-sm font-medium">Step 5</p>
+                                            <p class="text-gray-500">Billing Address</p>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                            
 
-                            <div id="form-step-1" class="form-section" style="font-family: Inter;">
-                                @include('app.hosting-plans.checkout.step2')
-                            </div>  
-                            
+                            <!-- Form Layout 5 -->
+                            <div class="stepper-form flex-3">
+                                <div class="form-sections" style="width: 100%; max-width: unset;">
+                                    @include('app.hosting-plans.checkout.step1')
+                                </div>
+
+
+                                <div id="form-step-1" class="form-section" style="font-family: Inter;">
+                                    @include('app.hosting-plans.checkout.step2')
+                                </div>
+
 
                                 <div id="form-step-2" class="form-section">
                                     @include('app.hosting-plans.checkout.step3')
@@ -123,7 +123,7 @@
                                 <div id="form-step-3" class="form-section">
                                     @include('app.hosting-plans.checkout.step4')
                                 </div>
-                                
+
 
                                 <div id="form-step-4" class="form-section">
                                     @include('app.hosting-plans.checkout.step5')
@@ -135,8 +135,8 @@
 
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
-                                        <button id="next-button" 
-                                                class="button h-button is-bold w-[102px] h-[47px] 
+                                        <button id="next-button"
+                                            class="button h-button is-bold w-[102px] h-[47px] 
                                                        px-[16px] py-[12px] gap-[8px] rounded-[8px] 
                                                        bg-[#4A6DCB] opacity-100">
                                             <span class="w-[70px] h-[23px] opacity-100 font-inter text-[16px] 
@@ -146,7 +146,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="form-stepper">
                                 <ul class="steps is-vertical is-thin is-short">
@@ -202,42 +202,42 @@
         </div>
     </div>
 
-        <!--Huro Scripts-->
-        <!--Load Mapbox-->
+    <!--Huro Scripts-->
+    <!--Load Mapbox-->
 
-        <!-- Concatenated plugins -->
-        <script src="assets/js/app.js"></script>
+    <!-- Concatenated plugins -->
+    <script src="assets/js/app.js"></script>
 
-        <!-- Huro js -->
-        <script src="assets/js/functions.js"></script>
-        <script src="assets/js/main.js" async></script>
-        <script src="assets/js/components.js" async></script>
-        <script src="assets/js/popover.js" async></script>
-        <script src="assets/js/widgets.js" async></script>
-
-
-        <!-- Additional Features -->
-        <script src="assets/js/touch.js" async></script>
-
-        <!-- Landing page js -->
-
-        <!-- Dashboards js -->
+    <!-- Huro js -->
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/js/main.js" async></script>
+    <script src="assets/js/components.js" async></script>
+    <script src="assets/js/popover.js" async></script>
+    <script src="assets/js/widgets.js" async></script>
 
 
-        <!-- Charts js -->
+    <!-- Additional Features -->
+    <script src="assets/js/touch.js" async></script>
+
+    <!-- Landing page js -->
+
+    <!-- Dashboards js -->
+
+
+    <!-- Charts js -->
 
 
 
-        <!--Forms-->
-        <script src="assets/js/forms.js" async></script>
+    <!--Forms-->
+    <script src="assets/js/forms.js" async></script>
 
-        <!--Wizard-->
+    <!--Wizard-->
 
-        <!-- Layouts js -->
+    <!-- Layouts js -->
 
-        <script src="assets/js/syntax.js" async></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
+    <script src="assets/js/syntax.js" async></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
             const slider = document.querySelector('.slider');
@@ -245,7 +245,7 @@
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const tabId = tab.getAttribute('data-tab');
-                    
+
                     // Update tabs
                     tabs.forEach(t => {
                         t.classList.remove('active');
@@ -266,7 +266,7 @@
                 });
             });
         });
-        </script>
+    </script>
     </div>
 </body>
 

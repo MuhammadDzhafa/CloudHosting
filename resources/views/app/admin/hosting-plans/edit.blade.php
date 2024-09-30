@@ -468,6 +468,7 @@
                                                                             </div>
                                                                         </div>
 
+
                                                                         <!-- Max Email Account -->
                                                                         <div class="field">
                                                                             <label>Max Email Account</label>
@@ -483,6 +484,7 @@
                                                                                 <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled required>
                                                                             </div>
                                                                         </div>
+
 
                                                                         <!-- Max FTP Account -->
                                                                         <div class="field">
@@ -660,23 +662,43 @@
             const freeDomainYes = document.getElementById('free_domain_yes');
             const freeDomainInput = document.getElementById('free_domain_input');
 
+            const setInitialFreeDomainState = () => {
+                if (hostingPlanData.freeDomain === 'No') {
+                    freeDomainNo.checked = true;
+                } else {
+                    freeDomainYes.checked = true;
+                }
+            };
+
+            setInitialFreeDomainState(); // Memanggil fungsi untuk mengatur status awal
+
             const handleFreeDomainChange = () => {
-                freeDomainInput.value = freeDomainNo.checked ? 'No' : '';
+                if (freeDomainNo.checked) {
+                    freeDomainInput.disabled = true;
+                    freeDomainInput.value = ''; // Clear input if "No" is selected
+                } else {
+                    freeDomainInput.disabled = false; // Enable input if "Yes" is selected
+                    freeDomainInput.value = freeDomainInput.value === '' ? '' : freeDomainInput.value;
+                }
             };
 
             freeDomainNo.addEventListener('change', handleFreeDomainChange);
             freeDomainYes.addEventListener('change', handleFreeDomainChange);
             handleFreeDomainChange(); // Set initial state for free domain
 
-            // Handle individual input states based on radio buttons
+            // Handle input states based on radio buttons
             const handleInputStateWithRadio = (radioName, inputId, oldValue) => {
                 const unlimitedRadio = document.getElementById(`${radioName}_unlimited`);
                 const limitedRadio = document.getElementById(`${radioName}_limited`);
                 const inputField = document.getElementById(inputId);
 
                 const updateInputState = () => {
-                    inputField.disabled = unlimitedRadio.checked; // Disable if unlimited is checked
-                    inputField.value = unlimitedRadio.checked ? '' : oldValue; // Set value accordingly
+                    inputField.disabled = unlimitedRadio.checked;
+                    if (unlimitedRadio.checked) {
+                        inputField.value = '0'; // Set displayed input value to 0
+                    } else {
+                        inputField.value = oldValue !== 'Unlimited' ? oldValue : '';
+                    }
                 };
 
                 updateInputState(); // Initial state setup
@@ -721,6 +743,74 @@
 
             // Panggil handleSSHChange untuk menyimpan status awal saat halaman di-refresh
             handleSSHChange();
+
+            // Handle form submission
+            const form = document.querySelector('form'); // Adjust the selector if needed
+            form.addEventListener('submit', (event) => {
+                const maxDatabaseUnlimited = document.getElementById('max_database_unlimited');
+                const maxDatabaseInput = document.getElementById('max_database_input');
+                const maxBandwidthUnlimited = document.getElementById('max_bandwidth_unlimited');
+                const maxBandwidthInput = document.getElementById('max_bandwidth_input');
+                const maxEmailUnlimited = document.getElementById('max_email_unlimited');
+                const maxEmailInput = document.getElementById('max_email_input');
+                const maxFtpUnlimited = document.getElementById('max_ftp_unlimited');
+                const maxFtpInput = document.getElementById('max_ftp_input');
+                const maxDomainUnlimited = document.getElementById('max_domain_unlimited');
+                const maxDomainInput = document.getElementById('max_domain_input');
+                const maxAddonUnlimited = document.getElementById('max_addon_domain_unlimited');
+                const maxAddonInput = document.getElementById('max_addon_domain_input');
+                const maxParkedUnlimited = document.getElementById('max_parked_domain_unlimited');
+                const maxParkedInput = document.getElementById('max_parked_domain_input');
+
+                // Set value for free_domain
+                const freeDomainValue = freeDomainYes.checked ? freeDomainInput.value.trim() : 'No';
+                freeDomainInput.value = freeDomainValue; // Set input value for free_domain
+
+                // Ensure that all inputs are prepared correctly
+                if (freeDomainNo.checked) {
+                    freeDomainInput.disabled = false; // Enable temporarily for form submission
+                    freeDomainInput.value = 'No';
+                } else if (freeDomainYes.checked && freeDomainInput.value.trim() === '') {
+                    freeDomainInput.value = ''; // Leave blank if input is empty
+                }
+
+                // Change displayed value to Unlimited for form submission
+                if (maxDatabaseUnlimited.checked) {
+                    maxDatabaseInput.disabled = false; // Enable the input temporarily
+                    maxDatabaseInput.value = 'Unlimited'; // Set value for database
+                }
+
+                if (maxBandwidthUnlimited.checked) {
+                    maxBandwidthInput.disabled = false; // Enable the input temporarily
+                    maxBandwidthInput.value = 'Unlimited'; // Set value for bandwidth
+                }
+
+                if (maxEmailUnlimited.checked) {
+                    maxEmailInput.disabled = false; // Enable the input temporarily
+                    maxEmailInput.value = 'Unlimited'; // Set value for email
+                }
+
+                if (maxFtpUnlimited.checked) {
+                    maxFtpInput.disabled = false; // Enable the input temporarily
+                    maxFtpInput.value = 'Unlimited'; // Set value for FTP
+                }
+
+                if (maxDomainUnlimited.checked) {
+                    maxDomainInput.disabled = false; // Enable the input temporarily
+                    maxDomainInput.value = 'Unlimited'; // Set value for domain
+                }
+
+                if (maxAddonUnlimited.checked) {
+                    maxAddonInput.disabled = false; // Enable the input temporarily
+                    maxAddonInput.value = 'Unlimited'; // Set value for addon domain
+                }
+
+                if (maxParkedUnlimited.checked) {
+                    maxParkedInput.disabled = false; // Enable the input temporarily
+                    maxParkedInput.value = 'Unlimited'; // Set value for parked domain
+                }
+            });
+
         });
     </script>
 
