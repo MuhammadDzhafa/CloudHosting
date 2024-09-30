@@ -253,7 +253,8 @@
                                         <div class="modal-card-body">
                                             <div class="inner-content">
                                                 <div class="field">
-                                                    <label class="label" style="font-weight:400;">Enter Group Name</label>
+                                                    <label class="label" style="font-weight:400;">Enter Group
+                                                        Name</label>
                                                     <div class="control">
                                                         <input type="text" class="input" name="name"
                                                             placeholder="E.g. Cloud Hosting" required>
@@ -302,6 +303,21 @@
                             </div>
                         </div>
 
+                        <div id="confirm-delete-modal" class="modal h-modal">
+                            <div class="modal-background h-modal-close"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <h3>Confirm Delete</h3>
+                                        <button class="h-modal-close ml-auto" aria-label="close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </header>
+                                    @include('app.admin.hosting-plans.delete')
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="page-content-inner">
 
                             <!-- Datatable -->
@@ -312,12 +328,12 @@
                                     <thead style="background-color:#EDE5F6;">
                                         <tr class="color-row">
                                             <th>PRODUCT NAME</th>
-                                            <th>TYPE</th>
-                                            <th>DESCRIPTION</th>
-                                            <th>STORAGE</th>
-                                            <th>CPU</th>
-                                            <th>RAM</th>
-                                            <th>ACTION</th>
+                                            <th style="text-align: center;">TYPE</th>
+                                            <th style="text-align: center;">DESCRIPTION</th>
+                                            <th style="text-align: center;">STORAGE</th>
+                                            <th style="text-align: center;">CPU</th>
+                                            <th style="text-align: center;">RAM</th>
+                                            <th style="text-align: center;">ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -332,15 +348,18 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td>
-                                                    <div class="d-flex justify-end">
+                                                <td style="text-align: center;">
+                                                    <div>
                                                         <a href="javascript:void(0);" class="edit-link"
                                                             data-id="{{ $group->hosting_group_id }}"
                                                             data-name="{{ $group->name}}">
                                                             <img src="assets/img/product/edit.svg" alt="" class="mr-3">
                                                         </a>
-
-                                                        <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                                        <a href="#"
+                                                            onclick="openDeleteModal('{{ $group->hosting_group_id }}', '{{ $group->name }}', 'group')">
+                                                            <img src="assets/img/product/trash.svg" alt="">
+                                                        </a>
+                                                        <!-- <a href=""><img src="assets/img/product/trash.svg" alt=""></a> -->
                                                     </div>
                                                 </td>
                                             </tr>
@@ -349,23 +368,24 @@
                                             @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
                                                 <tr class="is-striped-row">
                                                     <td>{{ $hostingPlan->name }}</td>
-                                                    <td>{{ $hostingPlan->description }}</td>
-                                                    <td>{{ $hostingPlan->type }}</td>
-                                                    <td>{{ $hostingPlan->storage }}</td>
-                                                    <td>{{ $hostingPlan->CPU }}</td>
-                                                    <td>{{ $hostingPlan->RAM }}</td>
-                                                    <td>
-                                                        <div class="d-flex justify-end">
+                                                    <td style="text-align: center;">{{ $hostingPlan->description }}</td>
+                                                    <td style="text-align: center;">{{ $hostingPlan->type }}</td>
+                                                    <td style="text-align: center;">{{ $hostingPlan->storage }}</td>
+                                                    <td style="text-align: center;">{{ $hostingPlan->CPU }}</td>
+                                                    <td style="text-align: center;">{{ $hostingPlan->RAM }}</td>
+                                                    <td style="text-align: center;">
+                                                        <div>
                                                             <!-- <a href=""><img src="assets/img/product/open.svg" alt=""
-                                                                            class="mr-3"></a> -->
+                                                                                                            class="mr-3"></a> -->
                                                             <a
                                                                 href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
                                                                 <img src="assets/img/product/edit.svg" alt="" class="mr-3">
                                                             </a>
-                                                            <a href="#" class="h-modal-trigger"
-                                                                onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
+                                                            <a href="#"
+                                                                onclick="openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}', 'hosting-plan')">
                                                                 <img src="assets/img/product/trash.svg" alt="">
                                                             </a>
+
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -392,21 +412,27 @@
             </div>
         </div>
 
-
         <script>
-            function openDeleteModal(id, name) {
+            function openDeleteModal(id, name, type) {
                 // Set the name in the modal
                 document.getElementById('modal-hosting-plan-name').textContent = name;
 
-                // Set the form action to the delete route
+                // Set the form action based on the type
                 const form = document.getElementById('delete-form');
-                form.action = "{{ url('hosting-plans') }}/" + id;
+                if (type === 'group') {
+                    form.action = "{{ url('hosting-groups') }}/" + id; // For group deletion
+                    document.getElementById('modal-message').innerHTML = `Are you sure you want to delete the group <strong>${name}</strong> and all related hosting plans?`;
+                } else {
+                    form.action = "{{ url('hosting-plans') }}/" + id; // For hosting plan deletion
+                    document.getElementById('modal-message').innerHTML = `Are you sure you want to delete <strong>${name}</strong>?`;
+                }
 
                 // Open the modal
                 const modal = document.getElementById('confirm-delete-modal');
                 modal.classList.add('is-active');
             }
         </script>
+
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {

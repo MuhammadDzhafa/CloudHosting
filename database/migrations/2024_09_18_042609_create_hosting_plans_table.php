@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('max_parked_domain');
             $table->string('ssh');
             $table->string('free_domain');
+            // $table->boolean('best_seller')->default(false);
             $table->timestamps();
 
 
