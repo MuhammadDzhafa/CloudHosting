@@ -24,6 +24,6 @@ class Price extends Model
 
     public function hostingPlan()
     {
-        return $this->belongsTo(HostingPlan::class, 'hosting_plans_id', 'hostingplan_id');
+        return $this->belongsTo(HostingPlan::class, 'hosting_plans_id', 'hosting_plans_id');
     }
 }

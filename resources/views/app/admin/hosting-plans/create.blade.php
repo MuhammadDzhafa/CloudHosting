@@ -88,7 +88,5 @@
     function selectType(element) {
         document.getElementById('type').value = element.getAttribute('data-value');
         document.getElementById('selectedType').innerText = element.innerText;
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        dropdownMenu.classList.remove('is-active'); // Hide the dropdown
     }
 </script>

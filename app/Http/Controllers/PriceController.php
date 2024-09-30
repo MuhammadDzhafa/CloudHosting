@@ -49,7 +49,7 @@ class PriceController extends Controller
             'price' => 'required|integer',
             'discount' => 'nullable|integer',
             'price_after' => 'required|integer',
-            'hosting_plans_id' => 'required|exists:hosting_plans,hostingplan_id',
+            'hosting_plans_id' => 'required|exists:hosting_plans,hosting_plans_id',
             'duration' => 'required|string'
         ]);
 

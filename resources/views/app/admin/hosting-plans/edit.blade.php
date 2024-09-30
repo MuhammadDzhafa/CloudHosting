@@ -177,7 +177,7 @@
                                                                     <label>Product Name</label>
                                                                     <input class="input" name="name"
                                                                         value="{{ $hostingPlan->name }}"
-                                                                        style="width: 100%; padding: 10px;">
+                                                                        style="width: 100%; padding: 10px;" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -224,7 +224,7 @@
                                                                     <label>Product Description</label>
                                                                     <input class="input" name="description"
                                                                         value="{{ $hostingPlan->description }}"
-                                                                        style="width: 100%; padding: 10px;">
+                                                                        style="width: 100%; padding: 10px;" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -352,7 +352,7 @@
                                                                             <div
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="storage"
-                                                                                    value="{{ old('storage', $hostingPlan->storage) }}">
+                                                                                    value="{{ old('storage', $hostingPlan->storage) }}" required>
                                                                                 <p class=" ml-2">GB</p>
                                                                             </div>
                                                                         </div>
@@ -362,7 +362,7 @@
                                                                             <div
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="CPU"
-                                                                                    value="{{ old('CPU', $hostingPlan->CPU) }}">
+                                                                                    value="{{ old('CPU', $hostingPlan->CPU) }}" required>
                                                                                 <p class=" ml-2">Core</p>
                                                                             </div>
                                                                         </div>
@@ -372,7 +372,7 @@
                                                                             <div class="control">
                                                                                 <input class="input"
                                                                                     name="entry_process"
-                                                                                    value="{{ old('entry_process', $hostingPlan->entry_process) }}">
+                                                                                    value="{{ old('entry_process', $hostingPlan->entry_process) }}" required>
                                                                             </div>
                                                                         </div>
 
@@ -398,7 +398,7 @@
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="RAM"
                                                                                     value="{{ old('RAM', $hostingPlan->RAM) }}"
-                                                                                    placeholder="0">
+                                                                                    placeholder="0" required>
                                                                                 <p class=" ml-2">GB</p>
                                                                             </div>
                                                                         </div>
@@ -410,7 +410,7 @@
                                                                                 class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="max_io"
                                                                                     value="{{ old('max_io', $hostingPlan->max_io) }}"
-                                                                                    placeholder="0">
+                                                                                    placeholder="0" required>
                                                                                 <p class=" ml-2">KB/s</p>
                                                                             </div>
                                                                         </div>
@@ -420,7 +420,7 @@
                                                                             <div class="control">
                                                                                 <input class="input" name="nproc"
                                                                                     value="{{ old('nproc', $hostingPlan->nproc) }}"
-                                                                                    placeholder="0">
+                                                                                    placeholder="0" required>
                                                                             </div>
                                                                         </div>
 
@@ -456,7 +456,7 @@
                                                                                     <input type="radio" name="max_database_radio" id="max_database_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled>
+                                                                                <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -472,7 +472,7 @@
                                                                                     <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled>
+                                                                                <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -488,7 +488,7 @@
                                                                                     <input type="radio" name="max_email_radio" id="max_email_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled>
+                                                                                <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -504,7 +504,7 @@
                                                                                     <input type="radio" name="max_ftp_radio" id="max_ftp_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled>
+                                                                                <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled required>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -524,7 +524,7 @@
                                                                                     <input type="radio" name="max_domain_radio" id="max_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_domain_input" placeholder="0" name="max_domain" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled>
+                                                                                <input class="input" id="max_domain_input" placeholder="0" name="max_domain" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -540,7 +540,7 @@
                                                                                     <input type="radio" name="max_addon_domain_radio" id="max_addon_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled>
+                                                                                <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -556,7 +556,7 @@
                                                                                     <input type="radio" name="max_parked_domain_radio" id="max_parked_domain_limited" value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
-                                                                                <input class="input" id="max_parked_domain_input" name="max_parked_domain" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled>
+                                                                                <input class="input" id="max_parked_domain_input" name="max_parked_domain" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled required>
                                                                             </div>
                                                                         </div>
 
@@ -589,7 +589,7 @@
                                                                         <input type="radio" name="free_domain_radio" id="free_domain_yes" value="Yes">
                                                                         <span></span> Yes
                                                                     </label>
-                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}">
+                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}" required>
                                                                 </div>
                                                             </div>
 
