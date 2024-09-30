@@ -6,7 +6,7 @@
                 <div class="column-content">
                     <div class="field">
                         <label>Product Group</label>
-                        <input type="hidden" name="group_id" id="group_id">
+                        <input type="hidden" name="hosting_group_id" id="hosting_group_id">
                         <div class="dropdown dropdown-trigger" style="width: 100%;">
                             <div class="is-trigger" style="width: 100%;">
                                 <button class="button" type="button" aria-haspopup="true"
@@ -81,7 +81,7 @@
 
 <script>
     function selectGroup(element) {
-        document.getElementById('group_id').value = element.getAttribute('data-value');
+        document.getElementById('hosting_group_id').value = element.getAttribute('data-value');
         document.getElementById('selectedGroup').innerText = element.innerText;
     }
 

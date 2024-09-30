@@ -139,7 +139,7 @@ Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restor
 Route::delete('/prices/{price}', [PriceController::class, 'destroy'])->name('price.destroy');
 
 /* Hosting Group */
-Route::get('/hosting-groups', [HostingGroupController::class, 'index'])->name('hosting-groups');
+Route::get('/hosting-groups', [HostingGroupController::class, 'index'])->name('hosting-groups.index');
 Route::get('/hosting-groups/create', [HostingGroupController::class, 'create'])->name('hosting-groups.create');
 Route::post('/hosting-groups', [HostingGroupController::class, 'store'])->name('hosting-groups.store');
 Route::get('/hosting-groups/{id}', [HostingGroupController::class, 'show'])->name('hosting-groups.show');
