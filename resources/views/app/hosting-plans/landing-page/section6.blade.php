@@ -18,12 +18,12 @@
                 <h4 class="custom-title mt-5">
                     Fulfill your needs with our
                 </h4>
-                <div class="custom-text-gradient mt-4"> <!-- Menambahkan mt-4 untuk margin-top 16px -->
+                <div class="custom-text-gradient mt-4">
                     Customized Plan
                 </div>
 
                 <div class="custom-bg">
-                    <div class="flex flex-wrap w-full ">
+                    <div class="flex flex-wrap w-full">
                         <div class="custom-col">
                             <ul class="list-none p-0">
                                 <li class="custom-text-style mt-5">
@@ -48,7 +48,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">Storage</label>
-                                    <div id="storage-price" class="custom-price">IDR 5000/mon</div>
+                                    <div id="storage-price" class="custom-price">Rp 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="storage-value" class="custom-slider-value text-center" style="width: 70px;">120 GB</div>
@@ -59,7 +59,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">RAM</label>
-                                    <div id="ram-price" class="custom-price">IDR 5000/mon</div>
+                                    <div id="ram-price" class="custom-price">Rp 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="ram-value" class="custom-slider-value text-center" style="width: 70px;">4 GB</div>
@@ -70,7 +70,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">CPU</label>
-                                    <div id="cpu-price" class="custom-price">IDR 5000/mon</div>
+                                    <div id="cpu-price" class="custom-price">Rp 5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="cpu-value" class="custom-slider-value text-center" style="width: 70px;">4 Core</div>
@@ -80,18 +80,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center w-full">
+                    <div class="flex flex-col md:flex-row items-center w-full"> <!-- flex-col untuk mobile, flex-row untuk desktop -->
                         <div class="custom-total-price">
-                            <span class="custom-dollar-sign">IDR</span>
+                            <span class="custom-dollar-sign">Rp</span>
                             <span id="total-price" class="custom-total-amount">1.99</span>
                             <span class="custom-monthly">/mon</span>
                         </div>
-                        <button class="custom-order-button">
+                        <button class="custom-order-button mt-4 md:mt-0"> <!-- Tambahkan mt-4 untuk margin-top di mobile -->
                             <span class="custom-order-text">
                                 Order Now
                             </span>
                         </button>
                     </div>
+
                     <p class="custom-note">
                         Price does not include tax.
                     </p>
@@ -123,7 +124,7 @@
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        IDR 50.000 /mon
+                                        Rp 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">
@@ -174,18 +175,15 @@
                         </div>
                         @endforeach
                         <script>
-                            // Menunggu dokumen sepenuhnya dimuat
                             document.addEventListener("DOMContentLoaded", function() {
-                                // Mengambil semua elemen hosting plan
                                 document.querySelectorAll('.hosting-plan').forEach((plan) => {
-                                    const isBestSeller = plan.dataset.bestSeller === 'yes'; // Ambil nilai dari data attribute
+                                    const isBestSeller = plan.dataset.bestSeller === 'yes';
 
                                     if (isBestSeller) {
-                                        // Tambahkan kelas CSS untuk styling
-                                        plan.classList.add('bg-gradient-custom', 'text-white'); // Tambahkan gaya latar belakang dan teks
-                                        plan.querySelector('h5').classList.add('text-white'); // Ganti warna teks judul
-                                        plan.querySelector('p.plan-description').classList.add('text-white'); // Ganti warna teks deskripsi
-                                        plan.querySelector('p.plan-price').classList.add('text-white'); // Ganti warna teks harga
+                                        plan.classList.add('bg-gradient-custom', 'text-white');
+                                        plan.querySelector('h5').classList.add('text-white');
+                                        plan.querySelector('p.plan-description').classList.add('text-white');
+                                        plan.querySelector('p.plan-price').classList.add('text-white');
                                     }
                                 });
                             });
@@ -214,7 +212,7 @@
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Base-0,#FFFFFF)] line-through">
-                                        IDR 50.000 /mon
+                                        Rp 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Brand-Tertiary-300,#D3F2FD)] ml-2"
@@ -286,7 +284,7 @@
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        IDR 50.000 /mon
+                                        Rp 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">
@@ -364,7 +362,7 @@
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        IDR 50.000 /mon
+                                        Rp 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">
@@ -436,7 +434,7 @@
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Base-0,#FFFFFF)] line-through">
-                                        IDR 50.000 /mon
+                                        Rp 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Brand-Tertiary-300,#D3F2FD)] ml-2"
@@ -508,7 +506,7 @@
                                 <div class="mt-2">
                                     <span
                                         class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center text-[color:var(--Grey-400,#989EA0)] line-through">
-                                        IDR 50.000 /mon
+                                        Rp 50.000 /mon
                                     </span>
                                     <span
                                         class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center text-[color:var(--Kazee-Primary-400,#6C88D5)] ml-2">

@@ -944,13 +944,6 @@ p {
     appearance: none;
 }
 
-.custom-total-price {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-left: 40%;
-}
-
 .custom-dollar-sign {
     color: #4A6DCB;
     font-family: Inter, sans-serif;
@@ -962,7 +955,7 @@ p {
 .custom-total-amount {
     color: #4A6DCB;
     font-family: Inter, sans-serif;
-    font-size: 41px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 49.2px;
 }
@@ -975,16 +968,6 @@ p {
     line-height: 26px;
 }
 
-.custom-order-button {
-    margin-left: auto;
-    width: 125px;
-    height: 47px;
-    padding: 12px 16px;
-    border-radius: 9999px;
-    background: radial-gradient(at top left, rgba(100, 52, 147, 0.76), rgba(74, 109, 203, 0.8), rgba(100, 210, 247, 0.78));
-    opacity: 100;
-}
-
 .custom-order-text {
     color: #F3F5FC;
     font-size: 18px;
@@ -993,17 +976,66 @@ p {
     line-height: 23.4px;
 }
 
-.custom-note {
-    max-width: 1440px;
-    height: 23px;
-    opacity: 100;
-    font-size: 16px;
-    font-weight: 400;
-    text-align: center;
-    color: #7C7C7C;
-    font-family: 'Inter', sans-serif;
-    line-height: 23.2px;
-    margin-left: 40%;
+@media (max-width: 768px) {
+    .custom-total-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+    }
+
+    .custom-order-button {
+        width: 125px;
+        height: 47px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: radial-gradient(at top left, rgba(100, 52, 147, 0.76), rgba(74, 109, 203, 0.8), rgba(100, 210, 247, 0.78));
+        opacity: 100;
+    }
+
+    .custom-note {
+        max-width: 1440px;
+        height: 23px;
+        opacity: 100;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: #7C7C7C;
+        font-family: 'Inter', sans-serif;
+        line-height: 23.2px;
+        margin-left: 20%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .custom-total-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-left: 40%;
+    }
+
+    .custom-order-button {
+        margin-left: auto;
+        width: 125px;
+        height: 47px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: radial-gradient(at top left, rgba(100, 52, 147, 0.76), rgba(74, 109, 203, 0.8), rgba(100, 210, 247, 0.78));
+        opacity: 100;
+    }
+
+    .custom-note {
+        max-width: 1440px;
+        height: 23px;
+        opacity: 100;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: #7C7C7C;
+        font-family: 'Inter', sans-serif;
+        line-height: 23.2px;
+        margin-left: 40%;
+    }
 }
 
 /* ========================================================= */
