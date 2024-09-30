@@ -73,16 +73,25 @@ class HostingPlanController extends Controller
 
     public function edit($id)
     {
+        
         $hostingPlan = HostingPlan::findOrFail($id);
         $hostingGroups = HostingGroup::all();
         $hostingGroupName = $hostingPlan->hostingGroup->name;
+        $hostingGroupId = $hostingPlan->hostingGroup->hosting_group_id;
 
         // Mengambil data harga dari tabel 'price' berdasarkan hosting_plans_id
         $prices = Price::where('hosting_plans_id', $hostingPlan->hosting_plans_id)
             ->get()
             ->keyBy('duration'); // Mengindeks data berdasarkan 'duration'
+        
+            // dd([
+            //     'hostingPlan' => $hostingPlan,
+            //     'hostingGroupId' => $hostingGroupId,
+            //     'hostingGroups' => $hostingGroups,
+            //     'prices' => $prices,
+            // ]);
 
-        return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan,'hostingGroups' => $hostingGroups, 'hostingGroupName' => $hostingGroupName, 'prices' => $prices]);
+        return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan,'hostingGroupId' => $hostingGroupId,'hostingGroups' => $hostingGroups, 'hostingGroupName' => $hostingGroupName, 'prices' => $prices]);
 
         // $hostingPlan = HostingPlan::where('hosting_plans_id', $id)->firstOrFail();
         // return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan]);
@@ -94,7 +103,7 @@ class HostingPlanController extends Controller
         // Validate the request inputs for hosting plan
         $request->validate([
             'name' => 'required|string|max:255',
-            'hosting_group_id' => 'required|integer',
+            'hosting_group_id' => 'required|exists:hosting_groups,hosting_group_id',
             'type' => 'required|string|max:50',
             'description' => 'required|string',
             'RAM' => 'required|string',
