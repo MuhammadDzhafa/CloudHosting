@@ -121,7 +121,7 @@ class HostingPlanController extends Controller
             ->get()
             ->keyBy('duration'); // Mengindeks data berdasarkan 'duration'
 
-        return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan,'hostingGroups' => $hostingGroups, 'hostingGroupName' => $hostingGroupName, 'prices' => $prices]);
+        return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan, 'hostingGroups' => $hostingGroups, 'hostingGroupName' => $hostingGroupName, 'prices' => $prices]);
 
         // $hostingPlan = HostingPlan::where('hosting_plans_id', $id)->firstOrFail();
         // return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan]);
@@ -133,7 +133,7 @@ class HostingPlanController extends Controller
         // Validate the request inputs for hosting plan
         $request->validate([
             'name' => 'required|string|max:255',
-            'group_id' => 'required|integer',
+            // 'group_id' => 'required|integer',
             'type' => 'required|string|max:50',
             'description' => 'required|string',
             'RAM' => 'required|string',
@@ -144,15 +144,15 @@ class HostingPlanController extends Controller
             'entry_process' => 'required|string',
             'ssl' => 'required|string',
             'backup' => 'required|string',
-            // 'max_database' => 'required|string',
-            // 'max_bandwidth' => 'required|string',
-            // 'max_email_account' => 'required|string',
-            // 'max_ftp_account' => 'required|string',
-            // 'max_domain' => 'required|string',
-            // 'max_addon_domain' => 'required|string',
-            // 'max_parked_domain' => 'required|string',
-            // 'ssh' => 'required|string',
-            // 'free_domain' => 'required|string',
+            'max_database' => 'required|string',
+            'max_bandwidth' => 'required|string',
+            'max_email_account' => 'required|string',
+            'max_ftp_account' => 'required|string',
+            'max_domain' => 'required|string',
+            'max_addon_domain' => 'required|string',
+            'max_parked_domain' => 'required|string',
+            'ssh' => 'required|string',
+            'free_domain' => 'required|string',
             'prices' => 'nullable|array',
             'prices.*.price' => 'nullable|integer',
             'prices.*.discount' => 'nullable|integer|min:0|max:100',
@@ -167,7 +167,7 @@ class HostingPlanController extends Controller
         $hostingPlan->update([
             // dd($request->all()),
             'name' => $request->name,
-            'group_id' => $request->group_id,
+            // 'group_id' => $request->group_id,
             'type' => $request->type,
             'description' => $request->description,
             'RAM' => $request->RAM,
@@ -178,15 +178,15 @@ class HostingPlanController extends Controller
             'entry_process' => $request->entry_process,
             'ssl' => $request->ssl,
             'backup' => $request->backup,
-            // 'max_database' => $request->max_database,
-            // 'max_bandwidth' => $request->max_bandwidth,
-            // 'max_email_account' => $request->max_email_account,
-            // 'max_ftp_account' => $request->max_ftp_account,
-            // 'max_domain' => $request->max_domain,
-            // 'max_addon_domain' => $request->max_addon_domain,
-            // 'max_parked_domain' => $request->max_parked_domain,
-            // 'ssh' => $request->ssh,
-            // 'free_domain' => $request->free_domain,
+            'max_database' => $request->max_database,
+            'max_bandwidth' => $request->max_bandwidth,
+            'max_email_account' => $request->max_email_account,
+            'max_ftp_account' => $request->max_ftp_account,
+            'max_domain' => $request->max_domain,
+            'max_addon_domain' => $request->max_addon_domain,
+            'max_parked_domain' => $request->max_parked_domain,
+            'ssh' => $request->ssh,
+            'free_domain' => $request->free_domain,
         ]);
 
         if (is_array($request->prices)) {
@@ -223,5 +223,4 @@ class HostingPlanController extends Controller
         $hostingPlan->restore();
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan restored successfully.');
     }
-
 }

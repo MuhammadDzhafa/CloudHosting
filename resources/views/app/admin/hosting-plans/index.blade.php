@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Products</title>
+    <title>Awan Hosting :: Hosting-Plans</title>
     <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
 
     <!-- Google Tag Manager -->
@@ -189,7 +189,7 @@
                         </div> --}}
 
                         <div class="title-wrap">
-                            <h1 class="title is-4">Products</h1>
+                            <h1 class="title is-4">Hosting Plans</h1>
                         </div>
 
                         <div class="toolbar ml-auto">
@@ -270,35 +270,35 @@
                     </div>
 
 
-                        <div id="create-new-product-modal" class="modal h-modal">
-                            <div class="modal-background h-modal-close"></div>
-                            <div class="modal-content">
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <h3>Create a New Product</h3>
-                                        <button class="h-modal-close ml-auto" aria-label="close">
-                                            <i data-feather="x"></i>
-                                        </button>
-                                    </header>
-                                    @include('app.admin.hosting-plans.create')
-                                </div>
+                    <div id="create-new-product-modal" class="modal h-modal">
+                        <div class="modal-background h-modal-close"></div>
+                        <div class="modal-content">
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <h3>Create a New Product</h3>
+                                    <button class="h-modal-close ml-auto" aria-label="close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </header>
+                                @include('app.admin.hosting-plans.create')
                             </div>
                         </div>
+                    </div>
 
-                        <div id="confirm-delete-modal" class="modal h-modal">
-                            <div class="modal-background h-modal-close"></div>
-                            <div class="modal-content">
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <h3>Confirm Delete</h3>
-                                        <button class="h-modal-close ml-auto" aria-label="close">
-                                            <i data-feather="x"></i>
-                                        </button>
-                                    </header>
-                                    @include('app.admin.hosting-plans.delete')
-                                </div>
+                    <div id="confirm-delete-modal" class="modal h-modal">
+                        <div class="modal-background h-modal-close"></div>
+                        <div class="modal-content">
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <h3>Confirm Delete</h3>
+                                    <button class="h-modal-close ml-auto" aria-label="close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </header>
+                                @include('app.admin.hosting-plans.delete')
                             </div>
                         </div>
+                    </div>
 
                     <div class="page-content-inner">
 
@@ -343,68 +343,68 @@
                                     @endforeach
                                     <script>
                                         document.addEventListener('DOMContentLoaded', () => {
-                                        const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
-                                        const newGroupModal = document.querySelector('#new-group-modal');
-                                        const newGroupForm = document.querySelector('#new-group-form');
-                                        const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
-                                        const modalTitle = document.querySelector('#modal-title'); // Judul modal
+                                            const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
+                                            const newGroupModal = document.querySelector('#new-group-modal');
+                                            const newGroupForm = document.querySelector('#new-group-form');
+                                            const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
+                                            const modalTitle = document.querySelector('#modal-title'); // Judul modal
 
-                                        // Fungsi untuk membuka modal dan mereset isinya
-                                        function openModal(isEdit = false, groupId = null, groupName = '') {
-                                            if (isEdit) {
-                                                modalTitle.textContent = 'Edit Group'; // Judul untuk edit
-                                                newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
-                                                newGroupForm.method = 'POST'; // Set method untuk POST
-                                                // Tambahkan input hidden untuk metode PUT
-                                                let methodField = newGroupForm.querySelector('input[name="_method"]');
-                                                if (!methodField) {
-                                                    methodField = document.createElement('input');
-                                                    methodField.type = 'hidden';
-                                                    methodField.name = '_method';
-                                                    methodField.value = 'PUT';
-                                                    newGroupForm.appendChild(methodField);
+                                            // Fungsi untuk membuka modal dan mereset isinya
+                                            function openModal(isEdit = false, groupId = null, groupName = '') {
+                                                if (isEdit) {
+                                                    modalTitle.textContent = 'Edit Group'; // Judul untuk edit
+                                                    newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
+                                                    newGroupForm.method = 'POST'; // Set method untuk POST
+                                                    // Tambahkan input hidden untuk metode PUT
+                                                    let methodField = newGroupForm.querySelector('input[name="_method"]');
+                                                    if (!methodField) {
+                                                        methodField = document.createElement('input');
+                                                        methodField.type = 'hidden';
+                                                        methodField.name = '_method';
+                                                        methodField.value = 'PUT';
+                                                        newGroupForm.appendChild(methodField);
+                                                    }
+                                                    newGroupForm.name.value = groupName; // Isi nama grup untuk edit
+                                                } else {
+                                                    resetForm(); // Reset form untuk menambah grup baru
+                                                    modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
+                                                    // methodField.innerHTML = ''; // Remove PUT metho
+                                                    newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
+                                                    delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
                                                 }
-                                                newGroupForm.name.value = groupName; // Isi nama grup untuk edit
-                                            } else {
-                                                resetForm(); // Reset form untuk menambah grup baru
-                                                modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
-                                                // methodField.innerHTML = ''; // Remove PUT metho
-                                                newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
-                                                delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
+                                                newGroupModal.classList.add('is-active'); // Buka modal
                                             }
-                                            newGroupModal.classList.add('is-active'); // Buka modal
-                                        }
 
-                                        // Handle tombol "Add New Group"
-                                        addNewGroupButton.addEventListener('click', () => {
-                                            openModal(); // Buka modal untuk menambah grup baru
-                                        });
-
-                                        // Handle edit button clicks
-                                        document.querySelectorAll('.edit-link').forEach(link => {
-                                            link.addEventListener('click', () => {
-                                                const groupId = link.getAttribute('data-id');
-                                                const groupName = link.getAttribute('data-name');
-                                                openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
+                                            // Handle tombol "Add New Group"
+                                            addNewGroupButton.addEventListener('click', () => {
+                                                openModal(); // Buka modal untuk menambah grup baru
                                             });
-                                        });
 
-                                        // Modal close handling
-                                        modalCloseButton.addEventListener('click', () => {
-                                            resetForm(); // Reset form saat modal ditutup
-                                            newGroupModal.classList.remove('is-active'); // Tutup modal
-                                        });
+                                            // Handle edit button clicks
+                                            document.querySelectorAll('.edit-link').forEach(link => {
+                                                link.addEventListener('click', () => {
+                                                    const groupId = link.getAttribute('data-id');
+                                                    const groupName = link.getAttribute('data-name');
+                                                    openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
+                                                });
+                                            });
 
-                                        // Reset form function
-                                        function resetForm() {
-                                            newGroupForm.reset(); // Bersihkan semua field di form
-                                            const methodField = newGroupForm.querySelector('input[name="_method"]');
-                                            if (methodField) {
-                                                methodField.remove(); // Hapus hidden input untuk PUT jika ada
+                                            // Modal close handling
+                                            modalCloseButton.addEventListener('click', () => {
+                                                resetForm(); // Reset form saat modal ditutup
+                                                newGroupModal.classList.remove('is-active'); // Tutup modal
+                                            });
+
+                                            // Reset form function
+                                            function resetForm() {
+                                                newGroupForm.reset(); // Bersihkan semua field di form
+                                                const methodField = newGroupForm.querySelector('input[name="_method"]');
+                                                if (methodField) {
+                                                    methodField.remove(); // Hapus hidden input untuk PUT jika ada
+                                                }
                                             }
-                                        }
-                                    });
-                                </script>
+                                        });
+                                    </script>
 
                                     @foreach($hostingPlans as $hostingPlan)
                                     <tr class="is-striped-row">
