@@ -56,9 +56,11 @@
                             <div class="dropdown-menu" id="type-dropdown-menu" role="menu">
                                 <div class="dropdown-content">
                                     <a href="#" class="dropdown-item" data-value="Regular Hosting"
-                                        onclick="selectType(this)">Regular Hosting</a>
+                                        onclick="selectType(this)">Regular Cloud Hosting</a>
+                                    <a href="#" class="dropdown-item" data-value="Regular Hosting"
+                                        onclick="selectType(this)">Regular Wordpress Hosting</a>
                                     <a href="#" class="dropdown-item" data-value="Custom Hosting"
-                                        onclick="selectType(this)">Custom Hosting</a>
+                                        onclick="selectType(this)">Custom Cloud Hosting</a>
                                 </div>
                             </div>
                         </div>

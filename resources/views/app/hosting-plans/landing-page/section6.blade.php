@@ -18,26 +18,27 @@
                 <h4 class="custom-title mt-5">
                     Fulfill your needs with our
                 </h4>
-                <div class="custom-text-gradient">
+                <div class="custom-text-gradient mt-4"> <!-- Menambahkan mt-4 untuk margin-top 16px -->
                     Customized Plan
                 </div>
+
                 <div class="custom-bg">
                     <div class="flex flex-wrap w-full ">
                         <div class="custom-col">
                             <ul class="list-none p-0">
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Domains
                                 </li>
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Bandwidth
                                 </li>
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Emails
                                 </li>
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Inodes
                                 </li>
@@ -99,7 +100,7 @@
             <div id="corporate-tab" class="tab-content">
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                    @foreach ( $hostingPlans as $hostingPlan )
+                        @foreach ( $hostingPlans as $hostingPlan )
                         <div class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
                             <h5
                                 class="text-xl font-bold text-[#4A6DCB] mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center text-[color:var(--Kazee-Primary-500,#4A6DCB)]">
@@ -135,31 +136,31 @@
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                        {{ $hostingPlan->storage }} GB SSD Storage
+                                    {{ $hostingPlan->storage }} GB SSD Storage
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                        {{ $hostingPlan->RAM }} RAM
+                                    {{ $hostingPlan->RAM }} RAM
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                        {{ $hostingPlan->CPU }} Core CPU
+                                    {{ $hostingPlan->CPU }} Core CPU
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                        {{ $hostingPlan->max_domain }} Domain
+                                    {{ $hostingPlan->max_domain }} Domain
                                 </li>
                                 <li
                                     class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left text-[color:var(--Base-900,#3D3D3D)]">
                                     <img src="/assets/img/icons/checkblack.svg" alt=""
                                         class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                        {{ $hostingPlan->ssl }} SSL
+                                    {{ $hostingPlan->ssl }} SSL
                                 </li>
                             </ul>
                             <button
@@ -171,7 +172,7 @@
                             </button>
                             <a href="#" class="block text-center text-[#4A6DCB] mt-4">More detail →</a>
                         </div>
-                    @endforeach
+                        @endforeach
                         <script>
                             // Menunggu dokumen sepenuhnya dimuat
                             document.addEventListener("DOMContentLoaded", function() {
@@ -560,4 +561,4 @@
                 </div>
             </div>
         </div>
-</section> -->
+</section>

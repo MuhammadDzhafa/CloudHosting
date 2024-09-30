@@ -134,26 +134,64 @@
                                                 <a href="javascript:void(0);" class="edit-link" data-id="{{ $testimonial->testimonial_id }}" data-domain="{{ $testimonial->domain_web }}" data-text="{{ $testimonial->testimonial_text }}" data-picture="{{ $testimonial->picture }}" data-occupation="{{ $testimonial->occupation }}" data-facebook="{{ $testimonial->facebook }}" data-instagram="{{ $testimonial->instagram }}">
                                                     <img src="assets/img/product/edit.svg" alt="" class="mr-6">
                                                 </a>
-                                                <form action="{{ route('testimonials.destroy', $testimonial->testimonial_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
+                                                <!-- <form action="{{ route('testimonials.destroy', $testimonial->testimonial_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
                                                         <img src="assets/img/product/trash.svg" alt="Delete">
                                                     </button>
-                                                </form>
+                                                </form> -->
+                                                <a href="#" class="h-modal-trigger"
+                                                    onclick="event.preventDefault(); openDeleteModal('{{ $testimonial->testimonial_id }}', '{{ $testimonial->domain_web }}')">
+                                                    <img src="assets/img/product/trash.svg" alt="">
+                                                </a>
+
                                             </td>
                                         </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div id="paging-first-datatable" class="pagination datatable-pagination">
-                                <div class="datatable-info">
-                                    <span></span>
-                                </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <script>
+                            function openDeleteModal(id, domain_web) {
+                                // Set the name in the modal
+                                document.getElementById('modal-testimonial-name').textContent = domain_web;
+
+                                // Set the form action to the delete route
+                                const form = document.getElementById('delete-form');
+                                form.action = "{{ url('testimonials') }}/" + id;
+
+                                // Open the modal
+                                const modal = document.getElementById('confirm-delete-modal');
+                                modal.classList.add('is-active');
+                            }
+                        </script>
+
+                        <div id="paging-first-datatable" class="pagination datatable-pagination">
+                            <div class="datatable-info">
+                                <span></span>
                             </div>
                         </div>
-                        @include("app.admin.testimonials.create")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal for Delete Confirmation -->
+        <div id="confirm-delete-modal" class="modal h-modal">
+                                <div class="modal-background h-modal-close"></div>
+                                <div class="modal-content">
+                                    <div class="modal-card">
+                                        <header class="modal-card-head">
+                                            <h3>Confirm Delete</h3>
+                                            <button class="h-modal-close ml-auto" aria-label="close">
+                                                <i data-feather="x"></i>
+                                            </button>
+                                        </header>
+                                        @include('app.admin.testimonials.delete')
+                                    </div>
+                                </div>
+                            </div>
+        @include("app.admin.testimonials.create")
 
                         <!-- Concatenated plugins -->
                         <script src="assets/js/app.js"></script>

@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -238,36 +238,38 @@
                     </div>
 
                     {{-- <--Modals--> --}}
-                    <div id="new-group-modal" class="modal h-modal">
-                        <div class="modal-background h-modal-close"></div>
-                        <div class="modal-content">
-                            <div class="modal-card">
-                                <header class="modal-card-head">
-                                    <h3 id="modal-title">Create a New Group</h3>
-                                    <button class="h-modal-close ml-auto" aria-label="close">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </header>
-                                <form method="POST" id="new-group-form" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="modal-card-body">
-                                        <div class="inner-content">
-                                            <div class="field">
-                                                <label class="label">Enter Group Name</label>
-                                                <div class="control">
-                                                    <input type="text" class="input" name="name" placeholder="E.g. Cloud Hosting" required>
+                        <div id="new-group-modal" class="modal h-modal">
+                            <div class="modal-background h-modal-close"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <h3 id="modal-title">Create a New Group</h3>
+                                        <button class="h-modal-close ml-auto" aria-label="close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </header>
+                                    <form method="POST" id="new-group-form" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="modal-card-body">
+                                            <div class="inner-content">
+                                                <div class="field">
+                                                    <label class="label" style="font-weight:400;">Enter Group Name</label>
+                                                    <div class="control">
+                                                        <input type="text" class="input" name="name"
+                                                            placeholder="E.g. Cloud Hosting" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-card-foot is-end">
-                                        <a class="button h-button is-rounded h-modal-close">Cancel</a>
-                                        <button type="submit" class="button h-button is-primary is-raised is-rounded">Submit</button>
-                                    </div>
-                                </form>
+                                        <div class="modal-card-foot is-centered">
+                                            <button type="button" class="button h-button h-modal-close">Cancel</button>
+                                            <button type="submit"
+                                                class="button h-button is-primary is-raised">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
                     <div id="create-new-product-modal" class="modal h-modal">
@@ -300,149 +302,92 @@
                         </div>
                     </div>
 
-                    <div class="page-content-inner">
+                        <div class="page-content-inner">
 
-                        <!-- Datatable -->
+                            <!-- Datatable -->
 
 
-                        <div class="table-wrapper" data-simplebar>
-                            <table id="users-datatable" class="table is-datatable is-hoverable">
-                                <thead>
-                                    <tr class="color-row">
-                                        <th>PRODUCT NAME</th>
-                                        <th>TYPE</th>
-                                        <th>DESCRIPTION</th>
-                                        <th>STORAGE</th>
-                                        <th>CPU</th>
-                                        <th>RAM</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($hostingGroups as $group)
-                                    <tr class="is-striped-row">
-                                        <td>
-                                            <p>{{ $group->name }}</p>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex justify-end">
-                                                <a href="javascript:void(0);" class="edit-link" data-id="{{ $group->hosting_group_id }}" data-name="{{ $group->name }}">
-                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-3">
-                                                </a>
+                            <div class="table-wrapper" data-simpleba style="min-height:auto">
+                                <table id="users-datatable" class="table is-datatable is-hoverable">
+                                    <thead style="background-color:#EDE5F6;">
+                                        <tr class="color-row">
+                                            <th>PRODUCT NAME</th>
+                                            <th>TYPE</th>
+                                            <th>DESCRIPTION</th>
+                                            <th>STORAGE</th>
+                                            <th>CPU</th>
+                                            <th>RAM</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($hostingGroups as $group)
+                                            <!-- Tampilkan nama grup -->
+                                            <tr class="is-striped-row" style="background-color:#F2F3F3;">
+                                                <td>
+                                                    <span style="font-weight: 500;">{{ $group->name }}</span>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <div class="d-flex justify-end">
+                                                        <a href="javascript:void(0);" class="edit-link"
+                                                            data-id="{{ $group->hosting_group_id }}"
+                                                            data-name="{{ $group->name}}">
+                                                            <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                                        </a>
 
-                                                <a href=""><img src="assets/img/product/trash.svg"
-                                                        alt=""></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    <script>
-                                        document.addEventListener('DOMContentLoaded', () => {
-                                            const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
-                                            const newGroupModal = document.querySelector('#new-group-modal');
-                                            const newGroupForm = document.querySelector('#new-group-form');
-                                            const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
-                                            const modalTitle = document.querySelector('#modal-title'); // Judul modal
+                                                        <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                            // Fungsi untuk membuka modal dan mereset isinya
-                                            function openModal(isEdit = false, groupId = null, groupName = '') {
-                                                if (isEdit) {
-                                                    modalTitle.textContent = 'Edit Group'; // Judul untuk edit
-                                                    newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
-                                                    newGroupForm.method = 'POST'; // Set method untuk POST
-                                                    // Tambahkan input hidden untuk metode PUT
-                                                    let methodField = newGroupForm.querySelector('input[name="_method"]');
-                                                    if (!methodField) {
-                                                        methodField = document.createElement('input');
-                                                        methodField.type = 'hidden';
-                                                        methodField.name = '_method';
-                                                        methodField.value = 'PUT';
-                                                        newGroupForm.appendChild(methodField);
-                                                    }
-                                                    newGroupForm.name.value = groupName; // Isi nama grup untuk edit
-                                                } else {
-                                                    resetForm(); // Reset form untuk menambah grup baru
-                                                    modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
-                                                    // methodField.innerHTML = ''; // Remove PUT metho
-                                                    newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
-                                                    delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
-                                                }
-                                                newGroupModal.classList.add('is-active'); // Buka modal
-                                            }
+                                            <!-- Tampilkan hosting plans yang berelasi dengan grup -->
+                                            @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
+                                                <tr class="is-striped-row">
+                                                    <td>{{ $hostingPlan->name }}</td>
+                                                    <td>{{ $hostingPlan->description }}</td>
+                                                    <td>{{ $hostingPlan->type }}</td>
+                                                    <td>{{ $hostingPlan->storage }}</td>
+                                                    <td>{{ $hostingPlan->CPU }}</td>
+                                                    <td>{{ $hostingPlan->RAM }}</td>
+                                                    <td>
+                                                        <div class="d-flex justify-end">
+                                                            <!-- <a href=""><img src="assets/img/product/open.svg" alt=""
+                                                                            class="mr-3"></a> -->
+                                                            <a
+                                                                href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
+                                                                <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                                            </a>
+                                                            <a href="#" class="h-modal-trigger"
+                                                                onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
+                                                                <img src="assets/img/product/trash.svg" alt="">
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
-                                            // Handle tombol "Add New Group"
-                                            addNewGroupButton.addEventListener('click', () => {
-                                                openModal(); // Buka modal untuk menambah grup baru
-                                            });
-
-                                            // Handle edit button clicks
-                                            document.querySelectorAll('.edit-link').forEach(link => {
-                                                link.addEventListener('click', () => {
-                                                    const groupId = link.getAttribute('data-id');
-                                                    const groupName = link.getAttribute('data-name');
-                                                    openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
-                                                });
-                                            });
-
-                                            // Modal close handling
-                                            modalCloseButton.addEventListener('click', () => {
-                                                resetForm(); // Reset form saat modal ditutup
-                                                newGroupModal.classList.remove('is-active'); // Tutup modal
-                                            });
-
-                                            // Reset form function
-                                            function resetForm() {
-                                                newGroupForm.reset(); // Bersihkan semua field di form
-                                                const methodField = newGroupForm.querySelector('input[name="_method"]');
-                                                if (methodField) {
-                                                    methodField.remove(); // Hapus hidden input untuk PUT jika ada
-                                                }
-                                            }
-                                        });
-                                    </script>
-
-                                    @foreach($hostingPlans as $hostingPlan)
-                                    <tr class="is-striped-row">
-                                        <th>
-                                            {{ $hostingPlan->name }}
-                                        </th>
-                                        <td>{{ $hostingPlan->description }}</td>
-                                        <td>{{ $hostingPlan->type }}</td>
-                                        <td>{{ $hostingPlan->storage }}</td>
-                                        <td>{{ $hostingPlan->CPU }}</td>
-                                        <td>{{ $hostingPlan->RAM }}</td>
-                                        <td>
-                                            <div class="d-flex justify-end">
-                                                <a href=""><img src="assets/img/product/open.svg" alt=""
-                                                        class="mr-3"></a>
-                                                <a
-                                                    href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
-                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-3">
-                                                </a>
-
-                                                <a href="#" class="h-modal-trigger"
-                                                    onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
-                                                    <img src="assets/img/product/trash.svg" alt="">
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div id="paging-first-datatable" class="pagination datatable-pagination">
-                            <div class="datatable-info">
-                                <span></span>
+                                            <!-- Jika tidak ada hosting plans, tampilkan pesan -->
+                                            @if($group->hostingPlans->isEmpty())
+                                                <tr>
+                                                    <td colspan="7">No hosting plans available for this group.</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
+                            <div id="paging-first-datatable" class="pagination datatable-pagination">
+                                <div class="datatable-info">
+                                    <span></span>
+                                </div>
+                            </div>
 
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -461,6 +406,71 @@
                 const modal = document.getElementById('confirm-delete-modal');
                 modal.classList.add('is-active');
             }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
+                const newGroupModal = document.querySelector('#new-group-modal');
+                const newGroupForm = document.querySelector('#new-group-form');
+                const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
+                const modalTitle = document.querySelector('#modal-title'); // Judul modal
+
+                // Fungsi untuk membuka modal dan mereset isinya
+                function openModal(isEdit = false, groupId = null, groupName = '') {
+                    if (isEdit) {
+                        modalTitle.textContent = 'Edit Group'; // Judul untuk edit
+                        newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
+                        newGroupForm.method = 'POST'; // Set method untuk POST
+                        // Tambahkan input hidden untuk metode PUT
+                        let methodField = newGroupForm.querySelector('input[name="_method"]');
+                        if (!methodField) {
+                            methodField = document.createElement('input');
+                            methodField.type = 'hidden';
+                            methodField.name = '_method';
+                            methodField.value = 'PUT';
+                            newGroupForm.appendChild(methodField);
+                        }
+                        newGroupForm.name.value = groupName; // Isi nama grup untuk edit
+                    } else {
+                        resetForm(); // Reset form untuk menambah grup baru
+                        modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
+                        // methodField.innerHTML = ''; // Remove PUT metho
+                        newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
+                        delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
+                    }
+                    newGroupModal.classList.add('is-active'); // Buka modal
+                }
+
+                // Handle tombol "Add New Group"
+                addNewGroupButton.addEventListener('click', () => {
+                    openModal(); // Buka modal untuk menambah grup baru
+                });
+
+                // Handle edit button clicks
+                document.querySelectorAll('.edit-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        const groupId = link.getAttribute('data-id');
+                        const groupName = link.getAttribute('data-name');
+                        openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
+                    });
+                });
+
+                // Modal close handling
+                modalCloseButton.addEventListener('click', () => {
+                    resetForm(); // Reset form saat modal ditutup
+                    newGroupModal.classList.remove('is-active'); // Tutup modal
+                });
+
+                // Reset form function
+                function resetForm() {
+                    newGroupForm.reset(); // Bersihkan semua field di form
+                    const methodField = newGroupForm.querySelector('input[name="_method"]');
+                    if (methodField) {
+                        methodField.remove(); // Hapus hidden input untuk PUT jika ada
+                    }
+                }
+            });
         </script>
 
         <!--Huro Scripts-->

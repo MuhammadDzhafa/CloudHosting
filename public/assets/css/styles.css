@@ -618,10 +618,17 @@ p {
     }
 
     .client-logo {
-        width: 100px;
+        width: 90px;
         /* Smaller width for small screens */
         height: auto;
         /* Smaller height for small screens */
+    }
+}
+
+@media (max-width: 1280px) {
+    .client-logo {
+        width: 180px;
+        height: auto;
     }
 }
 
