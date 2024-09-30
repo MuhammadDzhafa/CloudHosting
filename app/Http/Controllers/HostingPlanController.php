@@ -127,7 +127,6 @@ class HostingPlanController extends Controller
 
         // Update the hosting plan with the request data
         $hostingPlan->update([
-            // dd($request->all()),
             'name' => $request->name,
             'hosting_group_id' => $request->hosting_group_id,
             'type' => $request->type,
