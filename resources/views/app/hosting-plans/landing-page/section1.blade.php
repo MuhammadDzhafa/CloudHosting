@@ -26,7 +26,7 @@
                 </p>
 
                 <div class="button-container">
-                    <a class="button h-button  is-outlined bg-[#FFF] hover:bg-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] text-[#4A6DCB] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3" style="font-family: unset;">
+                    <a class="button h-button  is-outlined bg-[#FFF] hover:bg-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] text-[#4A6DCB] hover:text-[#FFF] active:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3" style="font-family: unset;">
                         <span class="btn-text explore-button" onclick="scrollToSection()">Explore Now</span>
                         <svg class="btn-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.16669 10H15.8334M10.8334 5L15.8334 10L10.8334 15" stroke="currentColor"
