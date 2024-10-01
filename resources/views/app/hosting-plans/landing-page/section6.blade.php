@@ -56,7 +56,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">Storage</label>
-                                    <div id="storage-price" class="custom-price">IDR 5000/mon</div>
+                                    <div id="storage-price" class="custom-price">Rp5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="storage-value" class="custom-slider-value text-center"
@@ -68,7 +68,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">RAM</label>
-                                    <div id="ram-price" class="custom-price">IDR 5000/mon</div>
+                                    <div id="ram-price" class="custom-price">Rp5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="ram-value" class="custom-slider-value text-center" style="width: 70px;">4
@@ -80,7 +80,7 @@
                             <div class="custom-slider-section">
                                 <div class="flex justify-between items-center mb-2">
                                     <label class="font-bold text-gray-800">CPU</label>
-                                    <div id="cpu-price" class="custom-price">IDR 5000/mon</div>
+                                    <div id="cpu-price" class="custom-price">Rp5000/mon</div>
                                 </div>
                                 <div class="flex items-center">
                                     <div id="cpu-value" class="custom-slider-value text-center" style="width: 70px;">4
@@ -93,7 +93,7 @@
                     </div>
                     <div class="flex items-center w-full">
                         <div class="custom-total-price">
-                            <span class="custom-dollar-sign">IDR</span>
+                            <span class="custom-dollar-sign">Rp</span>
                             <span id="total-price" class="custom-total-amount">1.99</span>
                             <span class="custom-monthly">/mon</span>
                         </div>
