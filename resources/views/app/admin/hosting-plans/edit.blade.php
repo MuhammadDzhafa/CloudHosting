@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>Awan Hosting :: Edit Plan</title>
-    <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
+    <link rel="icon" type="image/png" href="../../../assets/img/logos/logo/logoo.svg" />
 
     <!-- Google Tag Manager -->
     <script>
@@ -116,7 +116,7 @@
                                             <div class="tabs is-centered" style="margin-bottom:0px">
                                                 <ul>
                                                     <li data-tab="team-tab" class="is-active"><a>Product Info</a>
-</li>
+                                                    </li>
                                                     <li data-tab="projects-tab"><a>Pricing</a></li>
                                                     <li data-tab="tasks-tab"><a>Product Specifications</a></li>
                                                 </ul>
@@ -639,7 +639,7 @@
                 document.getElementById('max_ftp_unlimited').checked = true;
             }
 
-             // Check Max Domain
+            // Check Max Domain
             if (parseInt(maxDomainInput.value) > 0) {
                 document.getElementById('max_domain_limited').checked = true;
                 toggleDomainInput();
