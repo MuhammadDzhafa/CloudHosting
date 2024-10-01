@@ -198,13 +198,14 @@
                                                                             id="type-dropdown-menu" role="menu">
                                                                             <div class="dropdown-content">
                                                                                 <a class="dropdown-item font-size-base"
-                                                                                    data-value="Regular Hosting"
-                                                                                    onclick="updateType('Regular Hosting')">Regular
-                                                                                    Hosting</a>
+                                                                                    data-value="Regular Cloud Hosting"
+                                                                                    onclick="updateType('Regular Cloud Hosting')">Regular Cloud Hosting</a>
                                                                                 <a class="dropdown-item font-size-base"
-                                                                                    data-value="Custom Hosting"
-                                                                                    onclick="updateType('Custom Hosting')">Custom
-                                                                                    Hosting</a>
+                                                                                    data-value="Regular Wordpress Hosting"
+                                                                                    onclick="updateType('Regular Wordpress Hosting')">Regular Wordpress Hosting</a>
+                                                                                <a class="dropdown-item font-size-base"
+                                                                                    data-value="Custom Cloud Hosting"
+                                                                                    onclick="updateType('Custom Cloud Hosting')">Custom Cloud Hosting</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -435,69 +436,67 @@
                                                             style="padding-left: 40px;">
                                                             <div class="columns">
                                                                 <div class="column is-6" style="padding-bottom:0px;">
-                                                                    <div class="column-content">
-                                                                        <!-- Max Database -->
-                                                                        <div class="field">
-                                                                            <label>Max Database</label>
-                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_database_radio" id="max_database_unlimited" value="Unlimited">
-                                                                                    <span></span> Unlimited
-                                                                                </label>
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_database_radio" id="max_database_limited" value="Limited">
-                                                                                    <span></span> Limited
-                                                                                </label>
-                                                                                <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled required>
-                                                                            </div>
+                                                                    <!-- Max Database -->
+                                                                    <div class="field">
+                                                                        <label>Max Database</label>
+                                                                        <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_database_radio" id="max_database_unlimited" value="Unlimited" onchange="toggleDatabaseInput()">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_database_radio" id="max_database_limited" value="Limited" onchange="toggleDatabaseInput()">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled required>
                                                                         </div>
+                                                                    </div>
 
-                                                                        <!-- Max Bandwidth -->
-                                                                        <div class="field">
-                                                                            <label>Max Bandwidth</label>
-                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_unlimited" value="Unlimited">
-                                                                                    <span></span> Unlimited
-                                                                                </label>
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_limited" value="Limited">
-                                                                                    <span></span> Limited
-                                                                                </label>
-                                                                                <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled required>
-                                                                            </div>
+                                                                    <!-- Max Bandwidth -->
+                                                                    <div class="field">
+                                                                        <label>Max Bandwidth</label>
+                                                                        <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_unlimited" value="Unlimited" onchange="toggleBandwidthInput()">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_limited" value="Limited" onchange="toggleBandwidthInput()">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled required>
                                                                         </div>
+                                                                    </div>
 
-                                                                        <!-- Max Email Account -->
-                                                                        <div class="field">
-                                                                            <label>Max Email Account</label>
-                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_email_radio" id="max_email_unlimited" value="Unlimited">
-                                                                                    <span></span> Unlimited
-                                                                                </label>
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_email_radio" id="max_email_limited" value="Limited">
-                                                                                    <span></span> Limited
-                                                                                </label>
-                                                                                <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled required>
-                                                                            </div>
+                                                                    <!-- Max Email Account -->
+                                                                    <div class="field">
+                                                                        <label>Max Email Account</label>
+                                                                        <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_email_radio" id="max_email_unlimited" value="Unlimited">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_email_radio" id="max_email_limited" value="Limited">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_email_input" placeholder="0" name="max_email_account" value="{{ old('max_email_account', $hostingPlan->max_email_account) }}" disabled required>
                                                                         </div>
+                                                                    </div>
 
-                                                                        <!-- Max FTP Account -->
-                                                                        <div class="field">
-                                                                            <label>Max FTP Account</label>
-                                                                            <div class="control is-inline-flex" style="align-items: center; gap:10px">
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_ftp_radio" id="max_ftp_unlimited" value="Unlimited">
-                                                                                    <span></span> Unlimited
-                                                                                </label>
-                                                                                <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="max_ftp_radio" id="max_ftp_limited" value="Limited">
-                                                                                    <span></span> Limited
-                                                                                </label>
-                                                                                <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled required>
-                                                                            </div>
+                                                                    <!-- Max FTP Account -->
+                                                                    <div class="field">
+                                                                        <label>Max FTP Account</label>
+                                                                        <div class="control is-inline-flex" style="align-items: center; gap:10px">
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_ftp_radio" id="max_ftp_unlimited" value="Unlimited">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_ftp_radio" id="max_ftp_limited" value="Limited">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -600,6 +599,120 @@
         </div>
     </div>
 
+    <!-- JavaScript to Enable Radio Buttons Based on Input Values -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the state of the inputs based on the values
+            const maxDatabaseInput = document.getElementById('max_database_input');
+            const maxBandwidthInput = document.getElementById('max_bandwidth_input');
+            const maxEmailInput = document.getElementById('max_email_input');
+            const maxFTPInput = document.getElementById('max_ftp_input');
+            const maxDomainInput = document.getElementById('max_domain_input');
+            const maxAddonDomainInput = document.getElementById('max_addon_domain_input');
+            const maxParkedDomainInput = document.getElementById('max_parked_domain_input');
+
+            if (parseInt(maxDatabaseInput.value) > 0) {
+                document.getElementById('max_database_limited').checked = true;
+                toggleDatabaseInput();
+            } else {
+                document.getElementById('max_database_unlimited').checked = true;
+            }
+
+            if (parseInt(maxBandwidthInput.value) > 0) {
+                document.getElementById('max_bandwidth_limited').checked = true;
+                toggleBandwidthInput();
+            } else {
+                document.getElementById('max_bandwidth_unlimited').checked = true;
+            }
+
+            if (parseInt(maxEmailInput.value) > 0) {
+                document.getElementById('max_email_limited').checked = true;
+                toggleEmailInput();
+            } else {
+                document.getElementById('max_email_unlimited').checked = true;
+            }
+
+            if (parseInt(maxFTPInput.value) > 0) {
+                document.getElementById('max_ftp_limited').checked = true;
+                toggleFTPInput();
+            } else {
+                document.getElementById('max_ftp_unlimited').checked = true;
+            }
+
+             // Check Max Domain
+            if (parseInt(maxDomainInput.value) > 0) {
+                document.getElementById('max_domain_limited').checked = true;
+                toggleDomainInput();
+            } else {
+                document.getElementById('max_domain_unlimited').checked = true;
+            }
+
+            // Check Max Addon Domain
+            if (parseInt(maxAddonDomainInput.value) > 0) {
+                document.getElementById('max_addon_domain_limited').checked = true;
+                toggleAddonDomainInput();
+            } else {
+                document.getElementById('max_addon_domain_unlimited').checked = true;
+            }
+
+            // Check Max Parked Domain
+            if (parseInt(maxParkedDomainInput.value) > 0) {
+                document.getElementById('max_parked_domain_limited').checked = true;
+                toggleParkedDomainInput();
+            } else {
+                document.getElementById('max_parked_domain_unlimited').checked = true;
+            }
+        });
+
+        // Function to toggle database input based on radio selection
+        function toggleDatabaseInput() {
+            const databaseInput = document.getElementById('max_database_input');
+            const limitedRadio = document.getElementById('max_database_limited');
+            databaseInput.disabled = !limitedRadio.checked;
+        }
+
+        // Function to toggle bandwidth input based on radio selection
+        function toggleBandwidthInput() {
+            const bandwidthInput = document.getElementById('max_bandwidth_input');
+            const limitedRadio = document.getElementById('max_bandwidth_limited');
+            bandwidthInput.disabled = !limitedRadio.checked;
+        }
+
+        // Function to toggle email input based on radio selection
+        function toggleEmailInput() {
+            const emailInput = document.getElementById('max_email_input');
+            const limitedRadio = document.getElementById('max_email_limited');
+            emailInput.disabled = !limitedRadio.checked;
+        }
+
+        // Function to toggle FTP input based on radio selection
+        function toggleFTPInput() {
+            const ftpInput = document.getElementById('max_ftp_input');
+            const limitedRadio = document.getElementById('max_ftp_limited');
+            ftpInput.disabled = !limitedRadio.checked;
+        }
+        // Function to toggle domain input based on radio selection
+        function toggleDomainInput() {
+            const domainInput = document.getElementById('max_domain_input');
+            const limitedRadio = document.getElementById('max_domain_limited');
+            domainInput.disabled = !limitedRadio.checked;
+        }
+
+        // Function to toggle addon domain input based on radio selection
+        function toggleAddonDomainInput() {
+            const addonDomainInput = document.getElementById('max_addon_domain_input');
+            const limitedRadio = document.getElementById('max_addon_domain_limited');
+            addonDomainInput.disabled = !limitedRadio.checked;
+        }
+
+        // Function to toggle parked domain input based on radio selection
+        function toggleParkedDomainInput() {
+            const parkedDomainInput = document.getElementById('max_parked_domain_input');
+            const limitedRadio = document.getElementById('max_parked_domain_limited');
+            parkedDomainInput.disabled = !limitedRadio.checked;
+        }
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Data dari backend
@@ -621,15 +734,15 @@
             };
 
             // Set radio buttons to default values
-            setRadioButton('max_database', 'Unlimited');
-            setRadioButton('max_bandwidth', 'Unlimited');
-            setRadioButton('max_email', 'Unlimited');
-            setRadioButton('max_ftp', 'Unlimited');
-            setRadioButton('max_domain', 'Unlimited');
-            setRadioButton('max_addon_domain', 'Unlimited');
-            setRadioButton('max_parked_domain', 'Unlimited');
-            setRadioButton('ssh', 'No'); // Default SSH to "No"
-            setRadioButton('free_domain', 'No');
+            // setRadioButton('max_database', 'Unlimited');
+            // setRadioButton('max_bandwidth', 'Unlimited');
+            // setRadioButton('max_email', 'Unlimited');
+            // setRadioButton('max_ftp', 'Unlimited');
+            // setRadioButton('max_domain', 'Unlimited');
+            // setRadioButton('max_addon_domain', 'Unlimited');
+            // setRadioButton('max_parked_domain', 'Unlimited');
+            // setRadioButton('ssh', 'No'); // Default SSH to "No"
+            // setRadioButton('free_domain', 'No');
 
             const radios = document.querySelectorAll('input[type="radio"]');
             const inputs = document.querySelectorAll('input.input');
@@ -660,23 +773,43 @@
             const freeDomainYes = document.getElementById('free_domain_yes');
             const freeDomainInput = document.getElementById('free_domain_input');
 
+            const setInitialFreeDomainState = () => {
+                if (hostingPlanData.freeDomain === 'No') {
+                    freeDomainNo.checked = true;
+                } else {
+                    freeDomainYes.checked = true;
+                }
+            };
+
+            setInitialFreeDomainState(); // Memanggil fungsi untuk mengatur status awal
+
             const handleFreeDomainChange = () => {
-                freeDomainInput.value = freeDomainNo.checked ? 'No' : '';
+                if (freeDomainNo.checked) {
+                    freeDomainInput.disabled = true;
+                    freeDomainInput.value = ''; // Clear input if "No" is selected
+                } else {
+                    freeDomainInput.disabled = false; // Enable input if "Yes" is selected
+                    freeDomainInput.value = freeDomainInput.value === '' ? '' : freeDomainInput.value;
+                }
             };
 
             freeDomainNo.addEventListener('change', handleFreeDomainChange);
             freeDomainYes.addEventListener('change', handleFreeDomainChange);
             handleFreeDomainChange(); // Set initial state for free domain
 
-            // Handle individual input states based on radio buttons
+            // Handle input states based on radio buttons
             const handleInputStateWithRadio = (radioName, inputId, oldValue) => {
                 const unlimitedRadio = document.getElementById(`${radioName}_unlimited`);
                 const limitedRadio = document.getElementById(`${radioName}_limited`);
                 const inputField = document.getElementById(inputId);
 
                 const updateInputState = () => {
-                    inputField.disabled = unlimitedRadio.checked; // Disable if unlimited is checked
-                    inputField.value = unlimitedRadio.checked ? '' : oldValue; // Set value accordingly
+                    inputField.disabled = unlimitedRadio.checked;
+                    if (unlimitedRadio.checked) {
+                        inputField.value = '0'; // Set displayed input value to 0
+                    } else {
+                        inputField.value = oldValue !== 'Unlimited' ? oldValue : '';
+                    }
                 };
 
                 updateInputState(); // Initial state setup
@@ -721,6 +854,74 @@
 
             // Panggil handleSSHChange untuk menyimpan status awal saat halaman di-refresh
             handleSSHChange();
+
+            // Handle form submission
+            const form = document.querySelector('form'); // Adjust the selector if needed
+            form.addEventListener('submit', (event) => {
+                const maxDatabaseUnlimited = document.getElementById('max_database_unlimited');
+                const maxDatabaseInput = document.getElementById('max_database_input');
+                const maxBandwidthUnlimited = document.getElementById('max_bandwidth_unlimited');
+                const maxBandwidthInput = document.getElementById('max_bandwidth_input');
+                const maxEmailUnlimited = document.getElementById('max_email_unlimited');
+                const maxEmailInput = document.getElementById('max_email_input');
+                const maxFtpUnlimited = document.getElementById('max_ftp_unlimited');
+                const maxFtpInput = document.getElementById('max_ftp_input');
+                const maxDomainUnlimited = document.getElementById('max_domain_unlimited');
+                const maxDomainInput = document.getElementById('max_domain_input');
+                const maxAddonUnlimited = document.getElementById('max_addon_domain_unlimited');
+                const maxAddonInput = document.getElementById('max_addon_domain_input');
+                const maxParkedUnlimited = document.getElementById('max_parked_domain_unlimited');
+                const maxParkedInput = document.getElementById('max_parked_domain_input');
+
+                // Set value for free_domain
+                const freeDomainValue = freeDomainYes.checked ? freeDomainInput.value.trim() : 'No';
+                freeDomainInput.value = freeDomainValue; // Set input value for free_domain
+
+                // Ensure that all inputs are prepared correctly
+                if (freeDomainNo.checked) {
+                    freeDomainInput.disabled = false; // Enable temporarily for form submission
+                    freeDomainInput.value = 'No';
+                } else if (freeDomainYes.checked && freeDomainInput.value.trim() === '') {
+                    freeDomainInput.value = ''; // Leave blank if input is empty
+                }
+
+                // Change displayed value to Unlimited for form submission
+                if (maxDatabaseUnlimited.checked) {
+                    maxDatabaseInput.disabled = false; // Enable the input temporarily
+                    maxDatabaseInput.value = 'Unlimited'; // Set value for database
+                }
+
+                if (maxBandwidthUnlimited.checked) {
+                    maxBandwidthInput.disabled = false; // Enable the input temporarily
+                    maxBandwidthInput.value = 'Unlimited'; // Set value for bandwidth
+                }
+
+                if (maxEmailUnlimited.checked) {
+                    maxEmailInput.disabled = false; // Enable the input temporarily
+                    maxEmailInput.value = 'Unlimited'; // Set value for email
+                }
+
+                if (maxFtpUnlimited.checked) {
+                    maxFtpInput.disabled = false; // Enable the input temporarily
+                    maxFtpInput.value = 'Unlimited'; // Set value for FTP
+                }
+
+                if (maxDomainUnlimited.checked) {
+                    maxDomainInput.disabled = false; // Enable the input temporarily
+                    maxDomainInput.value = 'Unlimited'; // Set value for domain
+                }
+
+                if (maxAddonUnlimited.checked) {
+                    maxAddonInput.disabled = false; // Enable the input temporarily
+                    maxAddonInput.value = 'Unlimited'; // Set value for addon domain
+                }
+
+                if (maxParkedUnlimited.checked) {
+                    maxParkedInput.disabled = false; // Enable the input temporarily
+                    maxParkedInput.value = 'Unlimited'; // Set value for parked domain
+                }
+            });
+
         });
     </script>
 
