@@ -309,9 +309,9 @@ p {
         /* max-width: 374px; */
     }
 
-    .w-full {
+    /* .w-full {
         padding: 14px 14px;
-    }
+    } */
 
     .smartphone-image {
         display: none;
@@ -1143,6 +1143,18 @@ p {
 /*                 Section 9 - Testimoni                     */
 /* ========================================================= */
 
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.kutipan-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
 @media (max-width: 1024px) {
     .img-slide {
         width: 35%;
@@ -1154,7 +1166,84 @@ p {
     }
 }
 
+@media (min-width: 1024px) {
+    .kutipan {
+        width: 69px;
+        /* Lebar untuk tampilan mobile */
+        height: 60px;
+        /* Tinggi untuk tampilan mobile */
+    }
+
+    .testimonial {
+        width: 400px;
+        height: 388.99px;
+    }
+}
+
 @media (max-width: 768px) {
+    .kutipan {
+        width: 40px;
+        /* Lebar untuk tampilan mobile */
+        height: 41px;
+        /* Tinggi untuk tampilan mobile */
+    }
+
+    .kutipan span {
+        /* font-size: 20px; */
+        /* Sesuaikan ukuran font untuk tampilan mobile */
+        line-height: 24px;
+        /* Sesuaikan line-height untuk tampilan mobile */
+    }
+
+    .slider-item {
+        padding-bottom: 60px;
+        /* Memberikan ruang di bagian bawah agar tombol tidak terpotong */
+    }
+
+    #prev,
+    #next {
+        bottom: 20px;
+        /* Pastikan ini bukan nilai negatif agar tidak keluar dari container */
+    }
+
+    .slider-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial-container {
+        margin-top: 50px;
+        /* Gap 50px antara gambar dan teks */
+        width: 100%;
+        /* Biar teks mengambil lebar penuh di tampilan mobile */
+        margin-left: 0;
+        /* Menghilangkan margin kiri */
+    }
+
+    .relative {
+        width: 100%;
+        /* Agar gambar tetap center dan full width di mobile */
+    }
+
+    .testimonial-container {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .kutipan-container {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .kutipan {
+        margin-left: 0 !important;
+    }
+
+    .testimonial {
+        width: 246px;
+        height: 234.77px;
+    }
+
     .img-slide {
         width: 100%;
         /* Mengatur gambar agar memenuhi lebar kontainer */
@@ -1266,7 +1355,6 @@ p {
     right: 4px;
     /* Menempatkan tombol "next" tetap di kanan bawah */
 }
-
 
 /*
 ========================================================

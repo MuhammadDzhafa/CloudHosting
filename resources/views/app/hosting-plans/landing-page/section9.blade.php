@@ -48,31 +48,34 @@
         <div class="slider-content flex transition-transform duration-300 ease-in-out">
             @foreach($testimonials as $testimonial)
             <div class="slider-item flex-none w-full flex items-center justify-between bg-white">
-                <div class="relative rounded-full flex items-center w-1/2 " style="height: 100%; background: radial-gradient(circle, rgba(74, 109, 203, 1) 20%, rgba(74, 109, 203, 0) 63%); align-items: center; justify-content: center;">
-                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Satisfied Clients" class="rounded-full" style="width: 400px; height: 388.99px;">
+                <div class="relative rounded-full flex items-center w-1/2" style="height: 100%; background: radial-gradient(circle, rgba(74, 109, 203, 1) 20%, rgba(74, 109, 203, 0) 63%); align-items: center; justify-content: center;">
+                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Satisfied Clients" class="rounded-full testimonial">
                 </div>
-                <div class="text-left ml-8 w-1/2">
-                    <div class="flex items-start gap-4">
+                <div class="testimonial-container text-left ml-8 w-1/2">
+                    <div class="flex items-start gap-4 kutipan-container">
                         <!-- Div kutipan -->
-                        <div class="w-[69px] h-[60px] p-[20px] bg-[#B8C5EB] rounded-[12px] flex items-center justify-center opacity-100 mb-4">
+                        <div class="kutipan p-[20px] bg-[#B8C5EB] rounded-[12px] flex items-center justify-center opacity-100 mb-4">
                             <span class="text-[41px] leading-[49px]" style="font-family: Inter; font-weight: 700; color: #643493;">
                                 “
                             </span>
                         </div>
 
                         <!-- Teks testimonial -->
-                        <p class="font-inter text-[23px] font-normal leading-[29.9px] text-left text-black mb-12">
+                        <p class="font-inter text-[23px] font-normal leading-[29.9px] text-left text-black">
                             {{ $testimonial->testimonial_text }}
                         </p>
                     </div>
 
                     <p class="font-inter text-[18px] font-normal leading-[29.9px] text-[#465890] mb-1 mt-10">
-                        - Azhar & Ahmad | {{ $testimonial->occupation }}
+                        - Azhar | {{ $testimonial->occupation }}
                     </p>
+
                     <p class="font-inter text-[18px] font-normal leading-[29.9px] text-[#465890] mb-12">
                         {{ $testimonial->domain_web }}
                     </p>
                 </div>
+
+
 
             </div>
             @endforeach
