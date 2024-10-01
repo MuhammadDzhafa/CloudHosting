@@ -77,7 +77,7 @@ class TestimonialController extends Controller
             $file = $request->file('picture');
             // Buat nama file dengan timestamp + nama asli file
             $originalName = $request->file('picture')->getClientOriginalName();
-            $fileName = time() . '_' . $originalName;            
+            $fileName = time() . '_' . $originalName;
             // Simpan file dengan nama yang ditentukan
             // $filePath = $request->file('picture')->storeAs('testimonial_pictures', $fileName, 'public');   
             
@@ -99,10 +99,9 @@ class TestimonialController extends Controller
             $image->toPng()->save($filePath);
 
             $testimonial->picture = $fileName;
-
         } else {
             // Gunakan default picture jika tidak ada file yang diunggah
-            $testimonial->picture = 'testimonial_pictures/default_picture.png'; 
+            $testimonial->picture = 'testimonial_pictures/default_picture.png';
         }
 
         $testimonial->occupation = $request->input('occupation');
@@ -126,7 +125,7 @@ class TestimonialController extends Controller
     //     curl_setopt($ch, CURLOPT_URL, $url);
     //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     //     curl_setopt($ch, CURLOPT_POST, true);
-        
+
     //     // Mempersiapkan file gambar untuk dikirim
     //     // Pastikan untuk menggunakan CURLFile tanpa namespace
     //     $postFields = [
@@ -159,7 +158,7 @@ class TestimonialController extends Controller
     //     return $outputPath;
     // }
 
-    
+
 
     public function show(Testimonial $testimonial): View
     {
@@ -251,11 +250,11 @@ class TestimonialController extends Controller
 
             // Create new file name
             $originalName = $request->file('picture')->getClientOriginalName();
-            $fileName = time() . '_' . $originalName;            
-            
+            $fileName = time() . '_' . $originalName;
+
             // Define the file path
             $filePath = public_path("storage/testimonial_pictures/{$fileName}");
-            
+
             // Process and save the new picture
             $manager = new ImageManager(new Driver());
             $image = $manager->read($request->file('picture'));
@@ -305,8 +304,7 @@ class TestimonialController extends Controller
 
     public function section9(): View
     {
-        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web','facebook', 'instagram')->get();
+        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
         return view('app.hosting-plans.landing-page.section9', ['testimonials' => $testimonials]);
     }
-
 }

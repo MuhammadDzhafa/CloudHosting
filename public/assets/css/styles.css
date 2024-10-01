@@ -309,9 +309,9 @@ p {
         /* max-width: 374px; */
     }
 
-    .w-full {
+    /* .w-full {
         padding: 14px 14px;
-    }
+    } */
 
     .smartphone-image {
         display: none;
@@ -618,10 +618,17 @@ p {
     }
 
     .client-logo {
-        width: 100px;
+        width: 90px;
         /* Smaller width for small screens */
         height: auto;
         /* Smaller height for small screens */
+    }
+}
+
+@media (max-width: 1280px) {
+    .client-logo {
+        width: 180px;
+        height: auto;
     }
 }
 
@@ -937,13 +944,6 @@ p {
     appearance: none;
 }
 
-.custom-total-price {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-left: 40%;
-}
-
 .custom-dollar-sign {
     color: #4A6DCB;
     font-family: Inter, sans-serif;
@@ -955,7 +955,7 @@ p {
 .custom-total-amount {
     color: #4A6DCB;
     font-family: Inter, sans-serif;
-    font-size: 41px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 49.2px;
 }
@@ -968,16 +968,6 @@ p {
     line-height: 26px;
 }
 
-.custom-order-button {
-    margin-left: auto;
-    width: 125px;
-    height: 47px;
-    padding: 12px 16px;
-    border-radius: 9999px;
-    background: radial-gradient(at top left, rgba(100, 52, 147, 0.76), rgba(74, 109, 203, 0.8), rgba(100, 210, 247, 0.78));
-    opacity: 100;
-}
-
 .custom-order-text {
     color: #F3F5FC;
     font-size: 18px;
@@ -986,17 +976,66 @@ p {
     line-height: 23.4px;
 }
 
-.custom-note {
-    max-width: 1440px;
-    height: 23px;
-    opacity: 100;
-    font-size: 16px;
-    font-weight: 400;
-    text-align: center;
-    color: #7C7C7C;
-    font-family: 'Inter', sans-serif;
-    line-height: 23.2px;
-    margin-left: 40%;
+@media (max-width: 768px) {
+    .custom-total-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+    }
+
+    .custom-order-button {
+        width: 125px;
+        height: 47px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: radial-gradient(at top left, rgba(100, 52, 147, 0.76), rgba(74, 109, 203, 0.8), rgba(100, 210, 247, 0.78));
+        opacity: 100;
+    }
+
+    .custom-note {
+        max-width: 1440px;
+        height: 23px;
+        opacity: 100;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: #7C7C7C;
+        font-family: 'Inter', sans-serif;
+        line-height: 23.2px;
+        margin-left: 20%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .custom-total-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-left: 40%;
+    }
+
+    .custom-order-button {
+        margin-left: auto;
+        width: 125px;
+        height: 47px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: radial-gradient(at top left, rgba(100, 52, 147, 0.76), rgba(74, 109, 203, 0.8), rgba(100, 210, 247, 0.78));
+        opacity: 100;
+    }
+
+    .custom-note {
+        max-width: 1440px;
+        height: 23px;
+        opacity: 100;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: #7C7C7C;
+        font-family: 'Inter', sans-serif;
+        line-height: 23.2px;
+        margin-left: 40%;
+    }
 }
 
 /* ========================================================= */
@@ -1104,6 +1143,18 @@ p {
 /*                 Section 9 - Testimoni                     */
 /* ========================================================= */
 
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.kutipan-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
 @media (max-width: 1024px) {
     .img-slide {
         width: 35%;
@@ -1115,7 +1166,84 @@ p {
     }
 }
 
+@media (min-width: 1024px) {
+    .kutipan {
+        width: 69px;
+        /* Lebar untuk tampilan mobile */
+        height: 60px;
+        /* Tinggi untuk tampilan mobile */
+    }
+
+    .testimonial {
+        width: 400px;
+        height: 388.99px;
+    }
+}
+
 @media (max-width: 768px) {
+    .kutipan {
+        width: 40px;
+        /* Lebar untuk tampilan mobile */
+        height: 41px;
+        /* Tinggi untuk tampilan mobile */
+    }
+
+    .kutipan span {
+        /* font-size: 20px; */
+        /* Sesuaikan ukuran font untuk tampilan mobile */
+        line-height: 24px;
+        /* Sesuaikan line-height untuk tampilan mobile */
+    }
+
+    .slider-item {
+        padding-bottom: 60px;
+        /* Memberikan ruang di bagian bawah agar tombol tidak terpotong */
+    }
+
+    #prev,
+    #next {
+        bottom: 20px;
+        /* Pastikan ini bukan nilai negatif agar tidak keluar dari container */
+    }
+
+    .slider-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial-container {
+        margin-top: 50px;
+        /* Gap 50px antara gambar dan teks */
+        width: 100%;
+        /* Biar teks mengambil lebar penuh di tampilan mobile */
+        margin-left: 0;
+        /* Menghilangkan margin kiri */
+    }
+
+    .relative {
+        width: 100%;
+        /* Agar gambar tetap center dan full width di mobile */
+    }
+
+    .testimonial-container {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .kutipan-container {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .kutipan {
+        margin-left: 0 !important;
+    }
+
+    .testimonial {
+        width: 246px;
+        height: 234.77px;
+    }
+
     .img-slide {
         width: 100%;
         /* Mengatur gambar agar memenuhi lebar kontainer */
@@ -1227,7 +1355,6 @@ p {
     right: 4px;
     /* Menempatkan tombol "next" tetap di kanan bawah */
 }
-
 
 /*
 ========================================================
