@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('hosting_plans_id');
             $table->string('name');
             $table->unsignedBigInteger('hosting_group_id'); 
-            $table->enum('type', ['Regular Hosting', 'Custom Hosting']);
+            $table->string('type');
             $table->string('description');
             $table->string('RAM');
             $table->string('storage');
@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('max_parked_domain');
             $table->string('ssh');
             $table->string('free_domain');
+            // $table->boolean('best_seller')->default(false);
             $table->timestamps();
 
 

@@ -34,6 +34,7 @@ class HostingPlan extends Model
         'max_parked_domain',
         'ssh',
         'free_domain',
+        // 'best_seller'
     ];
 
     public function prices()

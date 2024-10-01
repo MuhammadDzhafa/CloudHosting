@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial; // Import the Testimonial model
-use App\Models\HostingPlan; // Import the Testimonial model
+use App\Models\HostingPlan; // Import the Hosting Plan model
+use App\Models\HostingGroup; // Import the Hosting Group model
 use Illuminate\View\View; // Import the View class
 
 use Illuminate\Http\Request;
@@ -16,23 +17,29 @@ class HostingController extends Controller
         // Fetch the testimonials data
         $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
 
-        // Fetch the hosting plans data
-        $hostingPlans = HostingPlan::select(
-            'hosting_plans_id', 'name', 'hosting_group_id', 'type', 'description', 
-            'RAM', 'storage', 'CPU', 'max_io', 'nproc', 'entry_process', 
-            'ssl', 'backup', 'max_database', 'max_bandwidth', 
-            'max_email_account', 'max_ftp_account', 'max_domain', 
-            'max_addon_domain', 'max_parked_domain', 'ssh', 
-            'free_domain'
-        )->get();
+        $hostingGroups = HostingGroup::all();
+        $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
 
-        // Return the landing page view with testimonials and hosting plans
+        // Define the custom order of the hosting plans
+        $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
+
+        $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
+            foreach ($hostingPlanOrder as $key => $name) {
+                // Check if the plan name contains one of the keywords
+                if (str_contains($hostingPlan->name, $name)) {
+                    return $key; // Return the index based on the keyword
+                }
+            }
+            return count($hostingPlanOrder); // Default to end of the list if no match
+        });
+
+        // Return the landing page view with testimonials and sorted hosting plans
         return view('app.hosting-plans.landing-page.index', [
             'testimonials' => $testimonials,
-            'hostingPlans' => $hostingPlans
+            'hostingPlans' => $sortedHostingPlans,
+            'hostingGroups' => $hostingGroups
         ]);
     }
-
 
     public function tampilan3()
     {

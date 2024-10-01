@@ -1,6 +1,6 @@
 <div class="modal-card-body">
-    <div class="inner-content">
-        <p>Are you sure you want to delete <strong id="modal-hosting-plan-name"></strong>?</p>
+    <div class="inner-content" style="text-align: center;">
+        <p id="modal-message">Are you sure you want to delete <strong id="modal-hosting-plan-name"></strong>?</p>
     </div>
 </div>
 <div class="modal-card-foot is-centered">

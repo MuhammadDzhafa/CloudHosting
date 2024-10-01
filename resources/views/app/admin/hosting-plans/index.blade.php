@@ -392,21 +392,27 @@
             </div>
         </div>
 
-
         <script>
-            function openDeleteModal(id, name) {
+            function openDeleteModal(id, name, type) {
                 // Set the name in the modal
                 document.getElementById('modal-hosting-plan-name').textContent = name;
 
-                // Set the form action to the delete route
+                // Set the form action based on the type
                 const form = document.getElementById('delete-form');
-                form.action = "{{ url('hosting-plans') }}/" + id;
+                if (type === 'group') {
+                    form.action = "{{ url('hosting-groups') }}/" + id; // For group deletion
+                    document.getElementById('modal-message').innerHTML = `Are you sure you want to delete the group <strong>${name}</strong> and all related hosting plans?`;
+                } else {
+                    form.action = "{{ url('hosting-plans') }}/" + id; // For hosting plan deletion
+                    document.getElementById('modal-message').innerHTML = `Are you sure you want to delete <strong>${name}</strong>?`;
+                }
 
                 // Open the modal
                 const modal = document.getElementById('confirm-delete-modal');
                 modal.classList.add('is-active');
             }
         </script>
+
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {

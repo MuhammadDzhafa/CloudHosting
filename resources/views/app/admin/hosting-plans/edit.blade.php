@@ -119,6 +119,9 @@
                                                     </li>
                                                     <li data-tab="projects-tab"><a>Pricing</a></li>
                                                     <li data-tab="tasks-tab"><a>Product Specifications</a></li>
+
+                                                    <li data-tab="custom-pricing-tab"><a>Pricing</a></li>
+                                                    <li data-tab="custom-spec-tab"><a>Product Specifications</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -587,6 +590,104 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div id="custom-pricing-tab" class="tab-content">
+                                                    <div class="table-wrapper" style="min-height:100px" data-simplebar>
+                                                        <table id="users-datatable"
+                                                            class="table is-datatable is-hoverable has-text-centered">
+                                                            <thead>
+                                                                <tr class="color-row">
+                                                                    <th></th>
+                                                                    <th class="has-text-centered">One Time/Monthly</th>
+                                                                    <th class="has-text-centered">Quarterly</th>
+                                                                    <th class="has-text-centered">Semi-Annually</th>
+                                                                    <th class="has-text-centered">Annually</th>
+                                                                    <th class="has-text-centered">Biennially</th>
+                                                                    <th class="has-text-centered">Triennially</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Enable</th>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    <td>
+                                                                        <label class="checkbox is-outlined is-primary">
+                                                                            <input type="checkbox"
+                                                                                name="prices[{{ $duration }}][enable]"
+                                                                                class="toggle-checkbox"
+                                                                                @if(isset($prices[$duration]['price']) && !empty($prices[$duration]['price']))
+                                                                                checked @endif>
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Price</th>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    <td>
+                                                                        <div class="control">
+                                                                            <input type="number"
+                                                                                name="prices[{{ $duration }}][price]"
+                                                                                class="input has-text-centered toggle-input"
+                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                disabled @endif
+                                                                                value="{{ $prices[$duration]['price'] ?? '' }}">
+                                                                        </div>
+                                                                    </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Discount (%)</th>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    <td>
+                                                                        <div class="control">
+                                                                            <input type="number"
+                                                                                name="prices[{{ $duration }}][discount]"
+                                                                                class="input has-text-centered toggle-discount"
+                                                                                min="0" max="100"
+                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                disabled @endif
+                                                                                value="{{ $prices[$duration]['discount'] ?? '' }}">
+                                                                        </div>
+                                                                    </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Price After</th>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    <td>
+                                                                        <div class="control">
+                                                                            <input type="number"
+                                                                                name="prices[{{ $duration }}][price_after]"
+                                                                                class="input has-text-centered toggle-price-after"
+                                                                                required
+                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                disabled @endif
+                                                                                value="{{ $prices[$duration]['price_after'] ?? '' }}">
+                                                                        </div>
+                                                                    </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Actions</th>
+                                                                    <!-- Optional: You can add a header for clarity -->
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    <td>
+                                                                        @if(isset($prices[$duration]))
+                                                                        <button type="button" class="is-danger button"
+                                                                            onclick="deletePrice({{ $prices[$duration]->price_id }})">Delete</button>
+                                                                        @else
+                                                                        <span>No Price Available</span>
+                                                                        @endif
+                                                                    </td>
+                                                                    @endforeach
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

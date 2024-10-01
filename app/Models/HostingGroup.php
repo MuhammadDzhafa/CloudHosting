@@ -19,7 +19,7 @@ class HostingGroup extends Model
 
     public function hostingPlans()
     {
-        return $this->hasMany(HostingPlan::class, 'hosting_group_id', 'hosting_group_id');
+        return $this->hasMany(HostingPlan::class, 'hosting_group_id');
     }
 }
 
