@@ -48,9 +48,10 @@
         <div class="slider-content flex transition-transform duration-300 ease-in-out">
             @foreach($testimonials as $testimonial)
             <div class="slider-item flex-none w-full flex items-center justify-between bg-white">
-                <div class="relative rounded-full flex items-center w-1/2" style="height: 100%; background: radial-gradient(circle, rgba(74, 109, 203, 1) 20%, rgba(74, 109, 203, 0) 63%); align-items: center; justify-content: center;">
-                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Satisfied Clients" class="rounded-full testimonial">
+                <div class="relative rounded-full flex items-center justify-center overflow-hidden" style="background: radial-gradient(circle, rgba(74, 109, 203, 1) 20%, rgba(74, 109, 203, 0) 63%);">
+                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Satisfied Clients" class="rounded-full object-cover backgroundblue">
                 </div>
+
                 <div class="testimonial-container text-left ml-8 w-1/2">
                     <div class="flex items-start gap-4 kutipan-container">
                         <!-- Div kutipan -->
@@ -61,7 +62,7 @@
                         </div>
 
                         <!-- Teks testimonial -->
-                        <p class="font-inter text-[23px] font-normal leading-[29.9px] text-left text-black">
+                        <p class="font-inter font-normal text-left text-black text-testimonial">
                             {{ $testimonial->testimonial_text }}
                         </p>
                     </div>
