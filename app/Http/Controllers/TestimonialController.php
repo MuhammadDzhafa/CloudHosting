@@ -79,8 +79,20 @@ class TestimonialController extends Controller
             $originalName = $request->file('picture')->getClientOriginalName();
             $fileName = time() . '_' . $originalName;            
             // Simpan file dengan nama yang ditentukan
-            // $filePath = $request->file('picture')->storeAs('testimonial_pictures', $fileName, 'public');            
-            $filePath = public_path("storage/testimonial_pictures/{$fileName}");
+            // $filePath = $request->file('picture')->storeAs('testimonial_pictures', $fileName, 'public');   
+            
+            // Tentukan path untuk folder penyimpanan gambar
+            $directoryPath = public_path('storage/testimonial_pictures');
+            
+            // Periksa apakah folder testimonial_pictures ada, jika tidak, buat foldernya
+            if (!is_dir($directoryPath)) {
+                mkdir($directoryPath, 0755, true);
+            }
+        
+            // Simpan file dengan nama yang ditentukan
+            $filePath = "{$directoryPath}/{$fileName}";
+            
+            // $filePath = public_path("storage/testimonial_pictures/{$fileName}");
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image = $image->cover(400, 400);
