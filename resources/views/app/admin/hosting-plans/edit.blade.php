@@ -102,12 +102,61 @@
                                                         </span>
                                                         <span>Back to Hosting Plans</span>
                                                     </a>
-                                                    <!-- <button id="save-button"
+                                                    <!-- button default
+                                                    <button id="save-button"
                                                         class="button h-button is-primary is-raised"
                                                         type="submit">Save Change</button> -->
+                                                    <!-- button savechanges
                                                     <button id="saveChanges"
                                                         class="button h-button is-primary is-raised"
-                                                        type="submit">Save Change</button>
+                                                        type="submit">Save Change</button> -->
+                                                    <a class="button h-button is-primary is-raised h-modal-trigger" id="open-modal">Save Changes</a>
+
+                                                    <!-- Modal Pertanyaan -->
+                                                    <div id="question-modal" class="modal h-modal">
+                                                        <div class="modal-background h-modal-close"></div>
+                                                        <div class="modal-content">
+                                                            <div class="modal-card">
+                                                                <div class="modal-card-body" style="border-radius: 6px 6px 0 0;">
+                                                                    <div class="inner-content">
+                                                                        <div class="section-placeholder">
+                                                                            <div class="placeholder-content">
+                                                                                <i class="fas fa-question-circle fa-3x mb-4"></i>
+                                                                                <h3 class="dark-inverted">Do you want to save the changes?</h3>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-card-foot is-centered">
+                                                                    <button class="button h-button is-primary is-raised is-rounded" id="confirm-save">Save</button>
+                                                                    <button class="button h-button is-rounded h-modal-close">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Modal "Saved!" -->
+                                                    <div id="saved-modal" class="modal h-modal">
+                                                        <div class="modal-background h-modal-close"></div>
+                                                        <div class="modal-content">
+                                                            <div class="modal-card">
+                                                                <div class="modal-card-body" style="border-radius: 6px 6px 0 0;">
+                                                                    <div class="inner-content">
+                                                                        <div class="section-placeholder">
+                                                                            <div class="placeholder-content">
+                                                                                <i class="fas fa-check-circle fa-3x"></i>
+                                                                                <h3 class="dark-inverted">Saved!</h3>
+                                                                                <p>Your changes have been saved.</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-card-foot is-centered">
+                                                                    <button class="button h-button is-primary is-raised is-rounded h-modal-close">OK</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -594,7 +643,7 @@
                                                 </div>
 
                                                 <div id="custom-pricing-tab" class="tab-content">
-                                                    <div class="columns" >
+                                                    <div class="columns">
                                                         <div class="column" style="border-right: 1px solid #ccc;">
                                                             <div class="field" style="flex-basis: 50%;">
                                                                 <label>RAM</label>
@@ -618,7 +667,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>  
+                                                            </div>
                                                             <div class="columns">
                                                                 <div class="column">
                                                                     <div class="field">
@@ -645,7 +694,7 @@
                                                                 <a href="javascript:void(0)" onclick="addTier()">+ Add Tier</a>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="column" style="border-right: 1px solid #ccc;">
                                                             <div class="field" style="flex-basis: 50%;">
                                                                 <label>CPU</label>
@@ -710,9 +759,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
+                                                            </div>
                                                         </div>
-                                                        <div class="column" >
+                                                        <div class="column">
                                                             <div class="field" style="flex-basis: 50%;">
                                                                 <label>SSD Storage</label>
                                                                 <div class="dropdown dropdown-trigger"
@@ -776,9 +825,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
+                                                            </div>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
 
@@ -1033,18 +1082,18 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        function addTier() {
-            const tierContainer = document.getElementById('tier-container');
-            if (tierContainer) {
-                // Create a new columns div
-                const newColumns = document.createElement('div');
-                newColumns.className = 'columns';
+        document.addEventListener('DOMContentLoaded', function() {
+            function addTier() {
+                const tierContainer = document.getElementById('tier-container');
+                if (tierContainer) {
+                    // Create a new columns div
+                    const newColumns = document.createElement('div');
+                    newColumns.className = 'columns';
 
-                // Create the first column
-                const firstColumn = document.createElement('div');
-                firstColumn.className = 'column';
-                firstColumn.innerHTML = `
+                    // Create the first column
+                    const firstColumn = document.createElement('div');
+                    firstColumn.className = 'column';
+                    firstColumn.innerHTML = `
                     <div class="field">
                         <label></label>
                         <div class="control is-inline-flex is-align-items-center mt-3">
@@ -1053,10 +1102,10 @@
                     </div>
                 `;
 
-                // Create the second column
-                const secondColumn = document.createElement('div');
-                secondColumn.className = 'column';
-                secondColumn.innerHTML = `
+                    // Create the second column
+                    const secondColumn = document.createElement('div');
+                    secondColumn.className = 'column';
+                    secondColumn.innerHTML = `
                     <div class="field">
                         <label></label>
                         <div class="control is-inline-flex is-align-items-center mt-3">
@@ -1065,21 +1114,20 @@
                     </div>
                 `;
 
-                // Append the columns to the newColumns div
-                newColumns.appendChild(firstColumn);
-                newColumns.appendChild(secondColumn);
+                    // Append the columns to the newColumns div
+                    newColumns.appendChild(firstColumn);
+                    newColumns.appendChild(secondColumn);
 
-                // Append the newColumns to the container
-                tierContainer.appendChild(newColumns);
-            } else {
-                console.error("Element with ID 'tier-container' not found.");
+                    // Append the newColumns to the container
+                    tierContainer.appendChild(newColumns);
+                } else {
+                    console.error("Element with ID 'tier-container' not found.");
+                }
             }
-        }
 
-        // Attach addTier function to the link
-        document.querySelector('a[href="javascript:void(0)"]').addEventListener('click', addTier);
-    });
-
+            // Attach addTier function to the link
+            document.querySelector('a[href="javascript:void(0)"]').addEventListener('click', addTier);
+        });
     </script>
 
     <!-- JavaScript to Enable Radio Buttons Based on Input Values -->
@@ -1542,6 +1590,48 @@
                 // Retain the current active tab by simply not changing the activeTab variable.
                 // The UI will stay on the same tab.
             });
+        });
+    </script>
+
+    <script>
+        // Fungsi untuk membuka modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('is-active');
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('is-active');
+        }
+
+        // Buka modal pertanyaan saat tombol "Right Actions" diklik
+        document.getElementById('open-modal').addEventListener('click', function() {
+            openModal('question-modal');
+        });
+
+        // Event Listener untuk tombol "Save"
+        document.getElementById('confirm-save').addEventListener('click', function() {
+            closeModal('question-modal'); // Tutup modal pertanyaan
+            openModal('saved-modal'); // Buka modal "Saved!"
+        });
+
+        // Tutup modal saat background atau tombol close diklik
+        document.querySelectorAll('.h-modal-close').forEach(function(closeBtn) {
+            closeBtn.addEventListener('click', function(event) {
+                event.preventDefault(); // Mencegah refresh halaman
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(function(modal) {
+                    modal.classList.remove('is-active');
+                });
+            });
+        });
+
+        // Event Listener untuk tombol "Cancel"
+        document.getElementById('cancel-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah refresh halaman
+            closeModal('question-modal'); // Tutup modal pertanyaan
         });
     </script>
 
