@@ -1,7 +1,7 @@
-@extends('layouts.web.master')
+@extends('layouts.template-landing-page.web.master')
 
-<div class="bg-white">
-    <div class="max-w-[1200px] mx-auto p-4 md:p-6">
+<div class="bg-white section-frame">
+    <div class="max-w-[1200px] mx-auto ">
         <div class="w-full h-auto p-6 md:p-[50px] bg-[#FFFFFF] border border-[#DEDEDE] rounded-[8px] shadow-sm mt-[120px] md:mt-[120px]">
             <div class="flex items-center text-blue-600 mb-6">
                 <a href="#" class="flex items-center text-center text-[14px] md:text-[16px] font-medium text-[#4A6DCB]">

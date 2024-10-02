@@ -64,6 +64,8 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
+Route::get('/faq', [HostingController::class, 'faq']);
+
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -80,8 +82,6 @@ Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name
 Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback'])->name('google.callback');
 Route::get('google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
 Route::post('google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
-
-
 Route::get('/auth/google/redirect', [RegisterController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [RegisterController::class, 'handleGoogleCallback'])->name('google.callback');
 Route::get('/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');

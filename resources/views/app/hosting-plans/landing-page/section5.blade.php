@@ -1,4 +1,4 @@
-<!-- <section class="section-frame padding-1 gap-6 md:gap-12">
+<section class="section-frame padding-1 gap-6 md:gap-12">
             <h2 class="title-section text-center">
                 Find the Perfect Solutions for You
             </h2>
@@ -34,4 +34,4 @@
     </section>
     @push('styles')
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
-    @endpush -->
+    @endpush

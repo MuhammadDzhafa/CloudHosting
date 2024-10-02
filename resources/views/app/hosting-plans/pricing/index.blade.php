@@ -1,4 +1,4 @@
-@extends('layouts.web.master')
+@extends('layouts.template-landing-page.web.master')
 
 @include('app.hosting-plans.pricing.section1')
 @include('app.hosting-plans.pricing.section2.card')
