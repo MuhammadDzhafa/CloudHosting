@@ -594,99 +594,191 @@
                                                 </div>
 
                                                 <div id="custom-pricing-tab" class="tab-content">
-                                                    <div class="table-wrapper" style="min-height:100px" data-simplebar>
-                                                        <table id="users-datatable"
-                                                            class="table is-datatable is-hoverable has-text-centered">
-                                                            <thead>
-                                                                <tr class="color-row">
-                                                                    <th></th>
-                                                                    <th class="has-text-centered">One Time/Monthly</th>
-                                                                    <th class="has-text-centered">Quarterly</th>
-                                                                    <th class="has-text-centered">Semi-Annually</th>
-                                                                    <th class="has-text-centered">Annually</th>
-                                                                    <th class="has-text-centered">Biennially</th>
-                                                                    <th class="has-text-centered">Triennially</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Enable</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                    <td>
-                                                                        <label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox"
-                                                                                name="prices[{{ $duration }}][enable]"
-                                                                                class="toggle-checkbox"
-                                                                                @if(isset($prices[$duration]['price']) && !empty($prices[$duration]['price']))
-                                                                                checked @endif>
-                                                                            <span></span>
-                                                                        </label>
-                                                                    </td>
-                                                                    @endforeach
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Price</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input type="number"
-                                                                                name="prices[{{ $duration }}][price]"
-                                                                                class="input has-text-centered toggle-input"
-                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
-                                                                                disabled @endif
-                                                                                value="{{ $prices[$duration]['price'] ?? '' }}">
+                                                    <div class="columns" >
+                                                        <div class="column" style="border-right: 1px solid #ccc;">
+                                                            <div class="field" style="flex-basis: 50%;">
+                                                                <label>RAM</label>
+                                                            </div>
+                                                            <div class="columns">
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>Amount (GB)</label>
+                                                                        <div>
+                                                                            <p class=" ml-2">1 GB</p>
                                                                         </div>
-                                                                    </td>
-                                                                    @endforeach
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Discount (%)</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input type="number"
-                                                                                name="prices[{{ $duration }}][discount]"
-                                                                                class="input has-text-centered toggle-discount"
-                                                                                min="0" max="100"
-                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
-                                                                                disabled @endif
-                                                                                value="{{ $prices[$duration]['discount'] ?? '' }}">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>Cost (USD)</label>
+                                                                        <div
+                                                                            class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" name="storage"
+                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
                                                                         </div>
-                                                                    </td>
-                                                                    @endforeach
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Price After</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input type="number"
-                                                                                name="prices[{{ $duration }}][price_after]"
-                                                                                class="input has-text-centered toggle-price-after"
-                                                                                required
-                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
-                                                                                disabled @endif
-                                                                                value="{{ $prices[$duration]['price_after'] ?? '' }}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>  
+                                                            <div class="columns">
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label></label>
+                                                                        <div
+                                                                            class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" name="storage"
+                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
                                                                         </div>
-                                                                    </td>
-                                                                    @endforeach
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Actions</th>
-                                                                    <!-- Optional: You can add a header for clarity -->
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                    <td>
-                                                                        @if(isset($prices[$duration]))
-                                                                        <button type="button" class="is-danger button"
-                                                                            onclick="deletePrice({{ $prices[$duration]->price_id }})">Delete</button>
-                                                                        @else
-                                                                        <span>No Price Available</span>
-                                                                        @endif
-                                                                    </td>
-                                                                    @endforeach
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label></label>
+                                                                        <div
+                                                                            class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" name="storage"
+                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="text-align: right;">
+                                                                <a href="javascript:void(0)" onclick="addTier()">+ Add Tier</a>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="column" style="border-right: 1px solid #ccc;">
+                                                            <div class="field" style="flex-basis: 50%;">
+                                                                <label>CPU</label>
+                                                                <div class="dropdown dropdown-trigger"
+                                                                    style="width: 100%;">
+                                                                    <div class="is-trigger" style="width: 100%;">
+                                                                        <button class="button" type="button"
+                                                                            aria-haspopup="true"
+                                                                            aria-controls="type-dropdown-menu"
+                                                                            style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                                                            <span
+                                                                                id="selectedType">{{ $hostingPlan->type }}</span>
+                                                                            <span class="icon is-small"
+                                                                                style="min-width: 0; min-height: 0;">
+                                                                                <i class="fas fa-angle-down"
+                                                                                    aria-hidden="true"></i>
+                                                                            </span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="dropdown-menu"
+                                                                        id="type-dropdown-menu" role="menu">
+                                                                        <div class="dropdown-content">
+                                                                            <a class="dropdown-item font-size-base"
+                                                                                data-value="Custom"
+                                                                                onclick="updateType('Custom')">Custom</a>
+                                                                            <a class="dropdown-item font-size-base"
+                                                                                data-value="Range"
+                                                                                onclick="updateType('Range')">Range</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="hidden" name="type" id="type-hidden"
+                                                                    value="{{ $hostingPlan->type }}">
+                                                            </div>
+                                                            <div class="field">
+                                                                <label>Cost (USD)</label>
+                                                                <div
+                                                                    class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input w-full" name="storage" style="width: 100%;"
+                                                                        value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="columns">
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>Range (Unit:GB)</label>
+                                                                        <div
+                                                                            class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" name="storage"
+                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                            <p class=" ml-2">To</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>&nbsp;</label>
+                                                                        <div
+                                                                            class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" name="storage"
+                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                        <div class="column" >
+                                                            <div class="field" style="flex-basis: 50%;">
+                                                                <label>SSD Storage</label>
+                                                                <div class="dropdown dropdown-trigger"
+                                                                    style="width: 100%;">
+                                                                    <div class="is-trigger" style="width: 100%;">
+                                                                        <button class="button" type="button"
+                                                                            aria-haspopup="true"
+                                                                            aria-controls="type-dropdown-menu"
+                                                                            style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                                                            <span
+                                                                                id="selectedType">{{ $hostingPlan->type }}</span>
+                                                                            <span class="icon is-small"
+                                                                                style="min-width: 0; min-height: 0;">
+                                                                                <i class="fas fa-angle-down"
+                                                                                    aria-hidden="true"></i>
+                                                                            </span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="dropdown-menu"
+                                                                        id="type-dropdown-menu" role="menu">
+                                                                        <div class="dropdown-content">
+                                                                            <a class="dropdown-item font-size-base"
+                                                                                data-value="Custom"
+                                                                                onclick="updateType('Custom')">Custom</a>
+                                                                            <a class="dropdown-item font-size-base"
+                                                                                data-value="Range"
+                                                                                onclick="updateType('Range')">Range</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="hidden" name="type" id="type-hidden"
+                                                                    value="{{ $hostingPlan->type }}">
+                                                            </div>
+                                                            <div class="field">
+                                                                <label>Cost (USD)</label>
+                                                                <div
+                                                                    class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input" name="storage" style="width: 100%;"
+                                                                        value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="columns">
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>Range (Unit:Core)</label>
+                                                                        <div
+                                                                            class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" name="storage"
+                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                            <p class=" ml-2">To</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>&nbsp;</label>
+                                                                        <div
+                                                                            class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" name="storage"
+                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
 
@@ -939,6 +1031,56 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        function addTier() {
+            const tierContainer = document.getElementById('tier-container');
+            if (tierContainer) {
+                // Create a new columns div
+                const newColumns = document.createElement('div');
+                newColumns.className = 'columns';
+
+                // Create the first column
+                const firstColumn = document.createElement('div');
+                firstColumn.className = 'column';
+                firstColumn.innerHTML = `
+                    <div class="field">
+                        <label></label>
+                        <div class="control is-inline-flex is-align-items-center mt-3">
+                            <input class="input" name="storage[]" value="" required>
+                        </div>
+                    </div>
+                `;
+
+                // Create the second column
+                const secondColumn = document.createElement('div');
+                secondColumn.className = 'column';
+                secondColumn.innerHTML = `
+                    <div class="field">
+                        <label></label>
+                        <div class="control is-inline-flex is-align-items-center mt-3">
+                            <input class="input" name="storage[]" value="" required>
+                        </div>
+                    </div>
+                `;
+
+                // Append the columns to the newColumns div
+                newColumns.appendChild(firstColumn);
+                newColumns.appendChild(secondColumn);
+
+                // Append the newColumns to the container
+                tierContainer.appendChild(newColumns);
+            } else {
+                console.error("Element with ID 'tier-container' not found.");
+            }
+        }
+
+        // Attach addTier function to the link
+        document.querySelector('a[href="javascript:void(0)"]').addEventListener('click', addTier);
+    });
+
+    </script>
 
     <!-- JavaScript to Enable Radio Buttons Based on Input Values -->
     <script>
