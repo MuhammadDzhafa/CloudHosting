@@ -387,7 +387,6 @@
 
                                                                 <div class="column is-6"> <!-- Kolom kedua -->
                                                                     <div class="column-content">
-
                                                                         <div class="field">
                                                                             <label>RAM</label>
                                                                             <div
@@ -594,187 +593,111 @@
                                                 <div id="custom-pricing-tab" class="tab-content">
                                                     <div class="columns" >
                                                         <div class="column" style="border-right: 1px solid #ccc;">
-                                                            <div class="field" style="flex-basis: 50%;">
-                                                                <label>RAM</label>
+                                                            <label>RAM</label>
+                                                            <div class="field">
+                                                                <label>Multiple</label>
+                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input w-full" id="multiple_ram" name="multiple_ram" style="width: 100%;" required>
+                                                                </div>
                                                             </div>
                                                             <div class="columns">
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>Amount (GB)</label>
-                                                                        <div>
-                                                                            <p class=" ml-2">1 GB</p>
+                                                                        <label>Range (Unit: GB)</label>
+                                                                        <div class="control is-inline-flex is-align-items-center p-0">
+                                                                            <input class="input" id="min_ram" name="min_ram" placeholder="0" disabled>
+                                                                            <p class="ml-2">To</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>Cost (USD)</label>
-                                                                        <div
-                                                                            class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" name="storage"
-                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>  
-                                                            <div class="columns">
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label></label>
-                                                                        <div
-                                                                            class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" name="storage"
-                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label></label>
-                                                                        <div
-                                                                            class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" name="storage"
-                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                        <label>&nbsp;</label>
+                                                                        <div class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" id="max_ram" name="max_ram" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div style="text-align: right;">
-                                                                <a href="javascript:void(0)" onclick="addTier()">+ Add Tier</a>
+                                                            <p id="ram_warning" class="help danger-text" style="display: none;">Max RAM harus kelipatan dari Multiple RAM!</p>
+                                                            <div class="field">
+                                                                <label>Cost (USD)</label>
+                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input w-full" name="cost_ram" style="width: 100%;" required>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="column" style="border-right: 1px solid #ccc;">
-                                                            <div class="field" style="flex-basis: 50%;">
-                                                                <label>CPU</label>
-                                                                <div class="dropdown dropdown-trigger"
-                                                                    style="width: 100%;">
-                                                                    <div class="is-trigger" style="width: 100%;">
-                                                                        <button class="button" type="button"
-                                                                            aria-haspopup="true"
-                                                                            aria-controls="type-dropdown-menu"
-                                                                            style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                                                                            <span
-                                                                                id="selectedType">{{ $hostingPlan->type }}</span>
-                                                                            <span class="icon is-small"
-                                                                                style="min-width: 0; min-height: 0;">
-                                                                                <i class="fas fa-angle-down"
-                                                                                    aria-hidden="true"></i>
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="dropdown-menu"
-                                                                        id="type-dropdown-menu" role="menu">
-                                                                        <div class="dropdown-content">
-                                                                            <a class="dropdown-item font-size-base"
-                                                                                data-value="Custom"
-                                                                                onclick="updateType('Custom')">Custom</a>
-                                                                            <a class="dropdown-item font-size-base"
-                                                                                data-value="Range"
-                                                                                onclick="updateType('Range')">Range</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="hidden" name="type" id="type-hidden"
-                                                                    value="{{ $hostingPlan->type }}">
-                                                            </div>
+                                                            <label>CPU</label>
                                                             <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div
-                                                                    class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="storage" style="width: 100%;"
-                                                                        value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                <label>Multiple</label>
+                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input w-full" id="multiple_cpu" name="multiple_cpu" style="width: 100%;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="columns">
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>Range (Unit:GB)</label>
-                                                                        <div
-                                                                            class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" name="storage"
-                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
-                                                                            <p class=" ml-2">To</p>
+                                                                        <label>Range (Unit: GB)</label>
+                                                                        <div class="control is-inline-flex is-align-items-center p-0">
+                                                                            <input class="input" id="min_cpu" name="min_cpu" placeholder="0" disabled>
+                                                                            <p class="ml-2">To</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="column">
                                                                     <div class="field">
                                                                         <label>&nbsp;</label>
-                                                                        <div
-                                                                            class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" name="storage"
-                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                        <div class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" id="max_cpu" name="max_cpu" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
+                                                            </div>
+                                                            <p id="cpu_warning" class="help danger-text" style="display: none;">Max CPU harus kelipatan dari Multiple CPU!</p>
+                                                            <div class="field">
+                                                                <label>Cost (USD)</label>
+                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="column" >
-                                                            <div class="field" style="flex-basis: 50%;">
-                                                                <label>SSD Storage</label>
-                                                                <div class="dropdown dropdown-trigger"
-                                                                    style="width: 100%;">
-                                                                    <div class="is-trigger" style="width: 100%;">
-                                                                        <button class="button" type="button"
-                                                                            aria-haspopup="true"
-                                                                            aria-controls="type-dropdown-menu"
-                                                                            style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                                                                            <span
-                                                                                id="selectedType">{{ $hostingPlan->type }}</span>
-                                                                            <span class="icon is-small"
-                                                                                style="min-width: 0; min-height: 0;">
-                                                                                <i class="fas fa-angle-down"
-                                                                                    aria-hidden="true"></i>
-                                                                            </span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="dropdown-menu"
-                                                                        id="type-dropdown-menu" role="menu">
-                                                                        <div class="dropdown-content">
-                                                                            <a class="dropdown-item font-size-base"
-                                                                                data-value="Custom"
-                                                                                onclick="updateType('Custom')">Custom</a>
-                                                                            <a class="dropdown-item font-size-base"
-                                                                                data-value="Range"
-                                                                                onclick="updateType('Range')">Range</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="hidden" name="type" id="type-hidden"
-                                                                    value="{{ $hostingPlan->type }}">
-                                                            </div>
+
+                                                        <div class="column" style="border-right: 1px solid #ccc;">
+                                                            <label>SSD Storage</label>
                                                             <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div
-                                                                    class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input" name="storage" style="width: 100%;"
-                                                                        value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                <label>Multiple</label>
+                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input w-full" id="multiple_ssd" name="multiple_ssd" style="width: 100%;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="columns">
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>Range (Unit:Core)</label>
-                                                                        <div
-                                                                            class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" name="storage"
-                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
-                                                                            <p class=" ml-2">To</p>
+                                                                        <label>Range (Unit: GB)</label>
+                                                                        <div class="control is-inline-flex is-align-items-center p-0">
+                                                                            <input class="input" id="min_ssd" name="min_ssd" placeholder="0" disabled>
+                                                                            <p class="ml-2">To</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="column">
                                                                     <div class="field">
                                                                         <label>&nbsp;</label>
-                                                                        <div
-                                                                            class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" name="storage"
-                                                                                value="{{ old('storage', $hostingPlan->storage) }}" required>
+                                                                        <div class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" id="max_ssd" name="max_ssd" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
+                                                            </div>
+                                                            <p id="ssd_warning" class="help danger-text" style="display: none;">Max SSD harus kelipatan dari Multiple SSD!</p>
+                                                            <div class="field">
+                                                                <label>Cost (USD)</label>
+                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
+                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         
                                                     </div>
@@ -793,9 +716,72 @@
     </div>
 
     <script>
+        document.getElementById('multiple_ram').addEventListener('input', function() {
+            var multipleRamValue = this.value;
+            document.getElementById('min_ram').value = multipleRamValue;
+        });
+        document.getElementById('multiple_cpu').addEventListener('input', function() {
+            var multipleCpuValue = this.value;
+            document.getElementById('min_cpu').value = multipleCpuValue;
+        });
+        document.getElementById('multiple_ssd').addEventListener('input', function() {
+            var multipleSsdValue = this.value;
+            document.getElementById('min_ssd').value = multipleSsdValue;
+        });
+    </script>
+    <script>
+        // Function to validate if max is a multiple of multiple
+        function validateMultiple(multipleId, maxId, warningId) {
+            var multipleValue = parseFloat(document.getElementById(multipleId).value);
+            var maxValue = parseFloat(document.getElementById(maxId).value);
+            var warningElement = document.getElementById(warningId);
+
+            // Check if both values are valid numbers and maxValue is a multiple of multipleValue
+            if (!isNaN(multipleValue) && !isNaN(maxValue) && maxValue % multipleValue !== 0) {
+                warningElement.style.display = 'block';  // Show warning
+            } else {
+                warningElement.style.display = 'none';  // Hide warning
+            }
+        }
+
+        // Add event listeners for real-time validation on max input for RAM, CPU, and SSD
+        document.getElementById('max_ram').addEventListener('input', function() {
+            validateMultiple('multiple_ram', 'max_ram', 'ram_warning');
+        });
+
+        document.getElementById('max_cpu').addEventListener('input', function() {
+            validateMultiple('multiple_cpu', 'max_cpu', 'cpu_warning');
+        });
+
+        document.getElementById('max_ssd').addEventListener('input', function() {
+            validateMultiple('multiple_ssd', 'max_ssd', 'ssd_warning');
+        });
+
+        // Add event listeners to update min values when multiple values change
+        document.getElementById('multiple_ram').addEventListener('input', function() {
+            var multipleRamValue = this.value;
+            document.getElementById('min_ram').value = multipleRamValue;
+            validateMultiple('multiple_ram', 'max_ram', 'ram_warning');  // Revalidate
+        });
+
+        document.getElementById('multiple_cpu').addEventListener('input', function() {
+            var multipleCpuValue = this.value;
+            document.getElementById('min_cpu').value = multipleCpuValue;
+            validateMultiple('multiple_cpu', 'max_cpu', 'cpu_warning');  // Revalidate
+        });
+
+        document.getElementById('multiple_ssd').addEventListener('input', function() {
+            var multipleSsdValue = this.value;
+            document.getElementById('min_ssd').value = multipleSsdValue;
+            validateMultiple('multiple_ssd', 'max_ssd', 'ssd_warning');  // Revalidate
+        });
+    </script>
+
+
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
         function addTier() {
-            const tierContainer = document.getElementById('tier-container');
+      const tierContainer = document.getElementById('tier-container');
             if (tierContainer) {
                 // Create a new columns div
                 const newColumns = document.createElement('div');
