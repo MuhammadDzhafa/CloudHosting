@@ -166,8 +166,8 @@
                                         <div class="tabs-inner">
                                             <div class="tabs is-centered" style="margin-bottom:0px">
                                                 <ul>
-                                                    <li data-tab="team-tab" class="is-active"><a>Product Info</a></li>
-                                                    
+                                                    <li data-tab="team-tab" class="is-active"><a>Product Info</a>
+                                                    </li>
                                                     <li data-tab="projects-tab"><a>Pricing</a></li>
                                                     <li data-tab="tasks-tab"><a>Product Specifications</a></li>
 
@@ -388,7 +388,8 @@
                                                     @endif
 
                                                     <div class="columns is-justify-content-center">
-                                                        <div class="column is-12-mobile is-4-tablet is-4-desktop">
+                                                        <div class="column is-12-mobile is-4-tablet is-4-desktop"
+                                                            style="border-right:1px solid #e5e5e5; padding-right:40px">
                                                             <div class="columns">
                                                                 <!-- Tambahkan wrapper untuk membuat dua kolom -->
                                                                 <div class="column is-6"> <!-- Kolom pertama -->
@@ -437,6 +438,7 @@
 
                                                                 <div class="column is-6"> <!-- Kolom kedua -->
                                                                     <div class="column-content">
+
                                                                         <div class="field">
                                                                             <label>RAM</label>
                                                                             <div
@@ -648,11 +650,6 @@
                                                                 <label>Multiple</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
                                                                     <input class="input w-full" id="multiple_ram" name="multiple_ram" style="width: 100%;" required>
-                                                            <label>RAM</label>
-                                                            <div class="field">
-                                                                <label>Multiple</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" id="multiple_ram" name="multiple_ram" style="width: 100%;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="columns">
@@ -694,10 +691,6 @@
                                                             <div class="columns">
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>Range (Unit: GB)</label>
-                                                                        <div class="control is-inline-flex is-align-items-center p-0">
-                                                                            <input class="input" id="min_ram" name="min_ram" placeholder="0" disabled>
-                                                                            <p class="ml-2">To</p>
                                                                         <label>Range (Unit: GB)</label>
                                                                         <div class="control is-inline-flex is-align-items-center p-0">
                                                                             <input class="input" id="min_cpu" name="min_cpu" placeholder="0" disabled>
@@ -709,20 +702,11 @@
                                                                     <div class="field">
                                                                         <label>&nbsp;</label>
                                                                         <div class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" id="max_ram" name="max_ram" required>
-                                                                        <label>&nbsp;</label>
-                                                                        <div class="control is-inline-flex is-align-items-center">
                                                                             <input class="input" id="max_cpu" name="max_cpu" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <p id="ram_warning" class="help danger-text" style="display: none;">Max RAM harus kelipatan dari Multiple RAM!</p>
-                                                            <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_ram" style="width: 100%;" required>
-                                                                </div>
                                                             <p id="cpu_warning" class="help danger-text" style="display: none;">Max CPU harus kelipatan dari Multiple CPU!</p>
                                                             <div class="field">
                                                                 <label>Cost (USD)</label>
@@ -732,12 +716,35 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="column" style="border-right: 1px solid #ccc;">
-                                                            <label>CPU</label>
+                                                        <div class="column">
+                                                            <label>SSD Storage</label>
                                                             <div class="field">
                                                                 <label>Multiple</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" id="multiple_cpu" name="multiple_cpu" style="width: 100%;" required>
+                                                                    <input class="input w-full" id="multiple_ssd" name="multiple_ssd" style="width: 100%;" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="columns">
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>Range (Unit: GB)</label>
+                                                                        <div class="control is-inline-flex is-align-items-center p-0">
+                                                                            <input class="input" id="min_ssd" name="min_ssd" placeholder="0" disabled>
+                                                                            <p class="ml-2">To</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label>&nbsp;</label>
+                                                                        <div class="control is-inline-flex is-align-items-center">
+                                                                            <input class="input" id="max_ssd" name="max_ssd" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p id="ssd_warning" class="help danger-text" style="display: none;">Max SSD harus kelipatan dari Multiple SSD!</p>
+                                                            <div class="field">
                                                                 <label>Cost (USD)</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
                                                                     <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
@@ -766,10 +773,6 @@
                                                                 <div class="column is-6" style="padding-bottom:0px;">
                                                                     <!-- Max Domain -->
                                                                     <div class="field">
-                                                                        <label>Range (Unit: GB)</label>
-                                                                        <div class="control is-inline-flex is-align-items-center p-0">
-                                                                            <input class="input" id="min_cpu" name="min_cpu" placeholder="0" disabled>
-                                                                            <p class="ml-2">To</p>
                                                                         <label>Max Domain</label>
                                                                         <div class="control is-flex is-align-items-center gap-2">
                                                                             <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
@@ -802,9 +805,6 @@
 
                                                                     <!-- Max Addon Domain -->
                                                                     <div class="field">
-                                                                        <label>&nbsp;</label>
-                                                                        <div class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" id="max_cpu" name="max_cpu" required>
                                                                         <label>Max Addon Domain</label>
                                                                         <div class="control is-flex is-align-items-center gap-2">
                                                                             <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
@@ -818,25 +818,6 @@
                                                                             <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled required>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <p id="cpu_warning" class="help danger-text" style="display: none;">Max CPU harus kelipatan dari Multiple CPU!</p>
-                                                            <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="column">
-                                                            <label>SSD Storage</label>
-                                                            <div class="field">
-                                                                <label>Multiple</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" id="multiple_ssd" name="multiple_ssd" style="width: 100%;" required>
-                                                                </div>
-                                                            </div>
 
                                                                     <!-- Max FTP Account -->
                                                                     <div class="field">
@@ -926,10 +907,6 @@
                                                                 <!-- First Column (I/O) -->
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>Range (Unit: GB)</label>
-                                                                        <div class="control is-inline-flex is-align-items-center p-0">
-                                                                            <input class="input" id="min_ssd" name="min_ssd" placeholder="0" disabled>
-                                                                            <p class="ml-2">To</p>
                                                                         <label for="io_input">I/O</label>
                                                                         <div class="control is-flex is-align-items-center">
                                                                             <input class="input" name="max_io"
@@ -944,9 +921,6 @@
                                                                 <!-- Second Column (Entry Process) -->
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>&nbsp;</label>
-                                                                        <div class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" id="max_ssd" name="max_ssd" required>
                                                                         <label for="entry_process_input">Entry Process</label>
                                                                         <div class="control">
                                                                             <input class="input" name="entry_process"
@@ -954,18 +928,37 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <p id="ssd_warning" class="help danger-text" style="display: none;">Max SSD harus kelipatan dari Multiple SSD!</p>
-                                                            <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
+
+                                                                <!-- Third Column (NPROC) -->
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label for="nproc_input">NPROC</label>
+                                                                        <div class="control">
+                                                                            <input class="input" name="nproc"
+                                                                                value="{{ old('nproc', $hostingPlan->nproc) }}"
+                                                                                placeholder="0" required>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
+
+
+
+                                                            <!-- Free Domain -->
+                                                            <div class="field">
+                                                                <label>Free Domain</label>
+                                                                <div class="control is-flex is-align-items-center gap-2">
+                                                                    <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                        <input type="radio" name="free_domain_radio" id="free_domain_no" value="No">
+                                                                        <span></span> Unlimited
+                                                                    </label>
+                                                                    <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                        <input type="radio" name="free_domain_radio" id="free_domain_yes" value="Yes">
+                                                                        <span></span> Limited
+                                                                    </label>
+                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}" placeholder="E.g. .net, .com" name="free_domain" disabled style="width: auto; flex-grow: 1;">
+                                                                </div>
+                                                            </div>
 
                                                             <div class="columns">
                                                                 <!-- First Column (I/O) -->
@@ -1013,13 +1006,13 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        function addTier() {
-            const tierContainer = document.getElementById('tier-container');
-            if (tierContainer) {
-                // Create a new columns div
-                const newColumns = document.createElement('div');
-                newColumns.className = 'columns';
+        document.addEventListener('DOMContentLoaded', function() {
+            function addTier() {
+                const tierContainer = document.getElementById('tier-container');
+                if (tierContainer) {
+                    // Create a new columns div
+                    const newColumns = document.createElement('div');
+                    newColumns.className = 'columns';
 
                     // Create the first column
                     const firstColumn = document.createElement('div');
@@ -1049,18 +1042,17 @@
                     newColumns.appendChild(firstColumn);
                     newColumns.appendChild(secondColumn);
 
-                // Append the newColumns to the container
-                tierContainer.appendChild(newColumns);
-            } else {
-                console.error("Element with ID 'tier-container' not found.");
+                    // Append the newColumns to the container
+                    tierContainer.appendChild(newColumns);
+                } else {
+                    console.error("Element with ID 'tier-container' not found.");
+                }
             }
-        }
 
             // Attach addTier function to the link
             document.querySelector('a[href="javascript:void(0)"]').addEventListener('click', addTier);
         });
     </script>
-
 
     <!-- JavaScript to Enable Radio Buttons Based on Input Values -->
     <script>
