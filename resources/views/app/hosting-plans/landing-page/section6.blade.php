@@ -27,26 +27,27 @@
                 <h4 class="custom-title mt-5">
                     Fulfill your needs with our
                 </h4>
-                <div class="custom-text-gradient">
+                <div class="custom-text-gradient mt-4">
                     Customized Plan
                 </div>
+
                 <div class="custom-bg">
-                    <div class="flex flex-wrap w-full ">
+                    <div class="flex flex-wrap w-full">
                         <div class="custom-col">
                             <ul class="list-none p-0">
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Domains
                                 </li>
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Bandwidth
                                 </li>
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Emails
                                 </li>
-                                <li class="custom-text-style">
+                                <li class="custom-text-style mt-5">
                                     <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
                                     Unlimited Inodes
                                 </li>
@@ -91,18 +92,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center w-full">
+                    <div class="flex flex-col md:flex-row items-center w-full"> <!-- flex-col untuk mobile, flex-row untuk desktop -->
                         <div class="custom-total-price">
                             <span class="custom-dollar-sign">Rp</span>
                             <span id="total-price" class="custom-total-amount">1.99</span>
                             <span class="custom-monthly">/mon</span>
                         </div>
-                        <button class="custom-order-button">
+                        <button class="custom-order-button mt-4 md:mt-0"> <!-- Tambahkan mt-4 untuk margin-top di mobile -->
                             <span class="custom-order-text">
                                 Order Now
                             </span>
                         </button>
                     </div>
+
                     <p class="custom-note">
                         Price does not include tax.
                     </p>
@@ -220,74 +222,3 @@
         });
     });
 </script>
-
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const hostingPlans = document.querySelectorAll('.tab-content div');
-
-        hostingPlans.forEach(function (plan) {
-            const planNameElement = plan.querySelector('h5');
-            // Ensure that we check the name contains "alto"
-            if (planNameElement && planNameElement.textContent.toLowerCase().includes('alto')) {
-                // Change title text color to white
-                planNameElement.classList.add('text-white');
-
-                // Change description color to white
-                let descriptionElement = plan.querySelector('p');
-                if (descriptionElement) {
-                    descriptionElement.classList.add('text-white'); // Add text color to description
-                }
-
-                // Find the price container and update the price text color
-                let priceContainer = plan.querySelector('.price-container');
-                if (priceContainer) {
-                    let priceElements = priceContainer.querySelectorAll('span');
-                    priceElements.forEach(function (priceElement) {
-                        priceElement.classList.add('text-white'); // Add text color to price elements
-                    });
-                }
-
-                // Change color of key features (check icon) to white
-                let keyItems = plan.querySelectorAll('li'); // Assuming features are in <li> elements
-                keyItems.forEach(item => {
-                    item.classList.add('text-white'); // Add text color to key features
-                    let img = item.querySelector('img');
-                    if (img) {
-                        img.src = '/assets/img/icons/checkwhite.svg'; // Change to white check icon
-                    }
-                });
-
-                // Change "More detail" link to white, but exclude button
-                let moreDetailLink = plan.querySelector('a:not(.button)'); // Ensure we don't select the button
-                if (moreDetailLink) {
-                    moreDetailLink.classList.add('text-white'); // Change "More detail" link color to white
-                }
-            } else {
-                // If the plan does NOT contain "alto", ensure all text remains default color
-                planNameElement.classList.remove('text-white'); // Remove any white text class
-                if (descriptionElement) {
-                    descriptionElement.classList.remove('text-white'); // Remove white from description
-                }
-                if (priceContainer) {
-                    let priceElements = priceContainer.querySelectorAll('span');
-                    priceElements.forEach(function (priceElement) {
-                        priceElement.classList.remove('text-white'); // Remove white from price elements
-                    });
-                }
-
-                keyItems.forEach(item => {
-                    item.classList.remove('text-white'); // Remove white from key features
-                    let img = item.querySelector('img');
-                    if (img) {
-                        img.src = '/assets/img/icons/checkblack.svg'; // Change back to black check icon
-                    }
-                });
-
-                // Reset "More detail" link color to default
-                if (moreDetailLink) {
-                    moreDetailLink.classList.remove('text-white'); // Reset "More detail" link color
-                }
-            }
-        });
-    });
-</script> -->

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Products</title>
+    <title>Awan Hosting :: Testimonials</title>
     <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
 
     <!-- Google Tag Manager -->
@@ -73,60 +73,60 @@
         @include('layouts.template-admin.web.partials.toolbar.activity')
         <!--Search panel-->
         <div id="search-panel" class="right-panel-wrapper is-search is-left">
-                
-        @include('layouts.template-admin.mobile.subsidebar')
 
-        <!-- Content Wrapper -->
-        <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
-            <div class="page-content-wrapper">
-                <div class="page-content is-relative">
-                    <div class="page-title has-text-centered">
-                        <div class="title-wrap">
-                            <h1 class="title is-4">Products</h1>
-                        </div>
-                        <div class="toolbar ml-auto">
-                            @include("layouts.template-admin.web.partials.toolbar.notification")
-                            @include("layouts.template-admin.web.partials.toolbar.activity-panel")
-                        </div>
-                    </div>
-                    <div class="list-flex-toolbar">
-                        <div class="control has-icon">
-                            <input class="input" placeholder="Search..." />
-                            <div class="form-icon">
-                                <i data-feather="search"></i>
+            @include('layouts.template-admin.mobile.subsidebar')
+
+            <!-- Content Wrapper -->
+            <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
+                <div class="page-content-wrapper">
+                    <div class="page-content is-relative">
+                        <div class="page-title has-text-centered">
+                            <div class="title-wrap">
+                                <h1 class="title is-4">Testimonials</h1>
+                            </div>
+                            <div class="toolbar ml-auto">
+                                @include("layouts.template-admin.web.partials.toolbar.notification")
+                                @include("layouts.template-admin.web.partials.toolbar.activity-panel")
                             </div>
                         </div>
-                        <div class="buttons">
-                            <button class="button h-button is-primary is-elevated h-modal-trigger addData" data-modal="addandedit">
-                                <span class="icon" style="min-width: unset">
-                                    <i aria-hidden="true" class="fas fa-plus"></i>
-                                </span>
-                                <span>Add New</span>
-                            </button>
+                        <div class="list-flex-toolbar">
+                            <div class="control has-icon">
+                                <input class="input" placeholder="Search..." />
+                                <div class="form-icon">
+                                    <i data-feather="search"></i>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <button class="button h-button is-primary is-elevated h-modal-trigger addData" data-modal="addandedit">
+                                    <span class="icon" style="min-width: unset">
+                                        <i aria-hidden="true" class="fas fa-plus"></i>
+                                    </span>
+                                    <span>Add New</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>       
-                    <div class="page-content-inner">
-                        <div class="table-wrapper" data-simplebar>
-                            <table id="users-datatable" class="table is-datatable is-hoverable">
-                                <thead>
-                                    <tr class="color-row">
-                                        <th>DOMAIN NAME</th>
-                                        <th style="max-width: 200px;">TESTIMONIAL</th>
-                                        <th>PICTURE</th>
-                                        <th>OCCUPATION</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($testimonials as $testimonial)
+                        <div class="page-content-inner">
+                            <div class="table-wrapper" data-simplebar>
+                                <table id="users-datatable" class="table is-datatable is-hoverable">
+                                    <thead>
+                                        <tr class="color-row">
+                                            <th>DOMAIN NAME</th>
+                                            <th style="max-width: 200px;">TESTIMONIAL</th>
+                                            <th>PICTURE</th>
+                                            <th>OCCUPATION</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($testimonials as $testimonial)
                                         <tr>
                                             <td>{{ $testimonial->domain_web }}</td>
                                             <td style="max-width: 200px;">{{ $testimonial->testimonial_text }}</td>
                                             <td>
                                                 @if ($testimonial->picture)
-                                                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Picture" style="width: 100px;">
+                                                <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Picture" style="width: 100px;">
                                                 @else
-                                                    No Image
+                                                No Image
                                                 @endif
                                             </td>
                                             <td>{{ $testimonial->occupation }}</td>
@@ -193,20 +193,20 @@
                             </div>
         @include("app.admin.testimonials.create")
 
-        <!-- Concatenated plugins -->
-        <script src="assets/js/app.js"></script>
+                        <!-- Concatenated plugins -->
+                        <script src="assets/js/app.js"></script>
 
-        <!-- Huro js -->
-        <script src="assets/js/functions.js"></script>
-        <script src="assets/js/main.js" async></script>
-        <script src="assets/js/components.js" async></script>
-        <script src="assets/js/popover.js" async></script>
-        <script src="assets/js/widgets.js" async></script>
+                        <!-- Huro js -->
+                        <script src="assets/js/functions.js"></script>
+                        <script src="assets/js/main.js" async></script>
+                        <script src="assets/js/components.js" async></script>
+                        <script src="assets/js/popover.js" async></script>
+                        <script src="assets/js/widgets.js" async></script>
 
-        <!-- Additional Features -->
-        <script src="assets/js/touch.js" async></script>
-        <script src="assets/js/syntax.js" async></script>
-    </div>
+                        <!-- Additional Features -->
+                        <script src="assets/js/touch.js" async></script>
+                        <script src="assets/js/syntax.js" async></script>
+                    </div>
 </body>
 
 </html>

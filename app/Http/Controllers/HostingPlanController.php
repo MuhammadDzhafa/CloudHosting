@@ -114,16 +114,15 @@ class HostingPlanController extends Controller
             'entry_process' => 'required|string',
             'ssl' => 'required|string',
             'backup' => 'required|string',
-            // 'max_database' => 'required|string',
-            // 'max_bandwidth' => 'required|string',
-            // 'max_email_account' => 'required|string',
-            // 'max_ftp_account' => 'required|string',
-            // 'max_domain' => 'required|string',
-            // 'max_addon_domain' => 'required|string',
-            // 'max_parked_domain' => 'required|string',
-            // 'ssh' => 'required|string',
-            // 'free_domain' => 'required|string',
-            // 'best_seller' => 'required|boolean',
+            'max_database' => 'required|string',
+            'max_bandwidth' => 'required|string',
+            'max_email_account' => 'required|string',
+            'max_ftp_account' => 'required|string',
+            'max_domain' => 'required|string',
+            'max_addon_domain' => 'required|string',
+            'max_parked_domain' => 'required|string',
+            'ssh' => 'required|string',
+            'free_domain' => 'required|string',
             'prices' => 'nullable|array',
             'prices.*.price' => 'nullable|integer',
             'prices.*.discount' => 'nullable|integer|min:0|max:100',
@@ -148,15 +147,15 @@ class HostingPlanController extends Controller
             'entry_process' => $request->entry_process,
             'ssl' => $request->ssl,
             'backup' => $request->backup,
-            // 'max_database' => $request->max_database,
-            // 'max_bandwidth' => $request->max_bandwidth,
-            // 'max_email_account' => $request->max_email_account,
-            // 'max_ftp_account' => $request->max_ftp_account,
-            // 'max_domain' => $request->max_domain,
-            // 'max_addon_domain' => $request->max_addon_domain,
-            // 'max_parked_domain' => $request->max_parked_domain,
-            // 'ssh' => $request->ssh,
-            // 'free_domain' => $request->free_domain,
+            'max_database' => $request->max_database,
+            'max_bandwidth' => $request->max_bandwidth,
+            'max_email_account' => $request->max_email_account,
+            'max_ftp_account' => $request->max_ftp_account,
+            'max_domain' => $request->max_domain,
+            'max_addon_domain' => $request->max_addon_domain,
+            'max_parked_domain' => $request->max_parked_domain,
+            'ssh' => $request->ssh,
+            'free_domain' => $request->free_domain,
         ]);
 
         if (is_array($request->prices)) {
@@ -193,5 +192,4 @@ class HostingPlanController extends Controller
         $hostingPlan->restore();
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan restored successfully.');
     }
-
 }
