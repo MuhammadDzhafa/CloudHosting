@@ -67,6 +67,29 @@
                             <a class="button h-button is-rounded h-modal-close">Cancel</a>
                             <button type="submit" class="button h-button is-primary is-raised is-rounded">Submit</button>
                         </div>
+                        <!-- Modal "Saved!" -->
+                        <div id="saved-modal" class="modal h-modal">
+                            <div class="modal-background h-modal-close"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <div class="modal-card-body" style="border-radius: 6px 6px 0 0;">
+                                        <div class="inner-content">
+                                            <div class="section-placeholder">
+                                                <div class="placeholder-content">
+                                                    <i class="fas fa-check-circle fa-3x"></i>
+                                                    <h3 class="dark-inverted">Saved!</h3>
+                                                    <p>Your changes have been saved.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-card-foot is-centered">
+                                        <button class="button h-button is-primary is-raised is-rounded h-modal-close">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -163,7 +186,7 @@
                 modal.classList.remove('is-active'); // Close modal
             }
         });
-        
+
         // Function to reset the form
         function resetForm() {
             form.reset(); // Clear all fields
@@ -178,4 +201,3 @@
         }
     });
 </script>
-
