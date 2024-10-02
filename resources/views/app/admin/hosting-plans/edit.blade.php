@@ -115,8 +115,8 @@
                                         <div class="tabs-inner">
                                             <div class="tabs is-centered" style="margin-bottom:0px">
                                                 <ul>
-                                                    <li data-tab="team-tab" class="is-active"><a>Product Info</a>
-                                                    </li>
+                                                    <li data-tab="team-tab" class="is-active"><a>Product Info</a></li>
+                                                    
                                                     <li data-tab="projects-tab"><a>Pricing</a></li>
                                                     <li data-tab="tasks-tab"><a>Product Specifications</a></li>
 
@@ -337,8 +337,7 @@
                                                     @endif
 
                                                     <div class="columns is-justify-content-center">
-                                                        <div class="column is-12-mobile is-4-tablet is-4-desktop"
-                                                            style="border-right:1px solid #e5e5e5; padding-right:40px">
+                                                        <div class="column is-12-mobile is-4-tablet is-4-desktop">
                                                             <div class="columns">
                                                                 <!-- Tambahkan wrapper untuk membuat dua kolom -->
                                                                 <div class="column is-6"> <!-- Kolom pertama -->
@@ -664,7 +663,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="column" style="border-right: 1px solid #ccc;">
+                                                        <div class="column">
                                                             <label>SSD Storage</label>
                                                             <div class="field">
                                                                 <label>Multiple</label>

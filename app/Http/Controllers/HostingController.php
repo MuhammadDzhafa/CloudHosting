@@ -71,6 +71,11 @@ class HostingController extends Controller
         return view('app.hosting-plans.pricing.index');
     }
 
+    public function faq()
+    {
+        return view('app.hosting-plans.faq.index');
+    }
+
     public function product()
     {
         return view('app.admin.products.index');
