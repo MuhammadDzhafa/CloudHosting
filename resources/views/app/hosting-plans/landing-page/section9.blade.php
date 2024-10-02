@@ -41,7 +41,7 @@
 
 
 <div class="gap-[50px] section-frame padding-1">
-    <h2 class="text-3xl md:text-4xl title-section text-center">
+    <h2 class="title-section text-center">
         Hear Directly from Our Satisfied Clients
     </h2>
     <div id="slider" class="relative w-full overflow-hidden">
