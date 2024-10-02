@@ -1,5 +1,5 @@
 {{-- <div class="section-frame padding-1 gap-6 md:gap-12">
-    <h2 class="text-3xl md:text-4xl title-section text-center">
+    <h2 class="title-section text-center">
         Wordpress Hosting
     </h2>
     

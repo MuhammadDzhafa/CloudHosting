@@ -85,4 +85,9 @@ class HostingController extends Controller
     {
         return view('app.admin.products.edit');
     }
+
+    public function about()
+    {
+        return view('app.hosting-plans.about.index');
+    }
 }

@@ -68,25 +68,18 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuItems = document.querySelectorAll('.icon-menu .menu-item');
+        const currentPath = window.location.pathname;
 
         menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                // Remove 'is-active' class from all items
-                menuItems.forEach(i => i.classList.remove('is-active'));
-
-                // Add 'is-active' class to clicked item
-                this.classList.add('is-active');
-
-                // If you want to prevent the default link behavior (optional)
-                // e.preventDefault();
+            const defaultHref = item.getAttribute('href');
+            if (currentPath.startsWith(defaultHref)) {
+                item.href = currentPath;
+                item.classList.add('is-active');
+            }
+            item.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = defaultHref;
             });
         });
-
-        // Set initial active state based on current URL (optional)
-        const currentPath = window.location.pathname;
-        const currentItem = document.querySelector(`.icon-menu a[href="${currentPath}"]`);
-        if (currentItem) {
-            currentItem.classList.add('is-active');
-        }
     });
 </script>

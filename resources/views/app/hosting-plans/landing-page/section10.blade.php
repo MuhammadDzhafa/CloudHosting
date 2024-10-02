@@ -3,7 +3,7 @@
         <div class="lifestyle-dashboard lifestyle-dashboard-v5">
             <div class="dashboard-title is-main text-center mb-12">
                 <div class="left mx-auto">
-                    <h2 class="text-3xl md:text-4xl title-section">
+                    <h2 class="title-section">
                         Articles to Read
                     </h2>                   
                 </div>

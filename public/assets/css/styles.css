@@ -1142,7 +1142,6 @@ p {
 /* ========================================================= */
 /*                 Section 9 - Testimoni                     */
 /* ========================================================= */
-
 .testimonial-container {
     display: flex;
     flex-direction: column;
@@ -1167,6 +1166,15 @@ p {
 }
 
 @media (min-width: 1024px) {
+    .text-testimonial {
+        font-size: 23px;
+    }
+
+    .backgroundblue {
+        width: 400px;
+        height: 388.99px;
+    }
+
     .kutipan {
         width: 69px;
         /* Lebar untuk tampilan mobile */
@@ -1181,6 +1189,15 @@ p {
 }
 
 @media (max-width: 768px) {
+    .text-testimonial {
+        font-size: 20px;
+    }
+
+    .backgroundblue {
+        width: 280px;
+        height: 280px;
+    }
+
     .kutipan {
         width: 40px;
         /* Lebar untuk tampilan mobile */
@@ -1241,7 +1258,7 @@ p {
 
     .testimonial {
         width: 246px;
-        height: 234.77px;
+        height: 246px;
     }
 
     .img-slide {

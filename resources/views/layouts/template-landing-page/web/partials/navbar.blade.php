@@ -40,44 +40,8 @@
                         </div>
                     </div>
                     <!-- Akhir Dropdown -->
-
-                    <a href="#"
-                        class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">Articles</a>
                     <a href="#"
                         class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">FAQ</a>
-                    <div class="relative flex items-center">
-                        <div class="language-dropdown relative">
-                            <button id="langDropdown"
-                                class="flex items-center text-[#515658] font-medium focus:outline-none">
-                                <img id="selectedFlag"
-                                    src="https://kazee.id/public/img/components/language-icon/emojione_flag-for-united-kingdom.svg"
-                                    alt="Selected Language Flag" class="lg:w-6 lg:h-6 md:w-5 md:h-5 mr-2">
-                                <span id="selectedLang"
-                                    class="mr-1 lg:text-lg md:text-base font-medium text-[#515658]">EN</span>
-                                <svg class="fill-current h-5 w-5 ml-1" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                </svg>
-                            </button>
-                            <div id="langMenu" class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg hidden">
-                                <a href="#"
-                                    class="block px-4 py-3 text-base text-gray-700 hover:bg-gray-100 flex items-center"
-                                    data-lang="id">
-                                    <img src="https://kazee.id/public/img/components/language-icon/emojione_flag-for-indonesia.svg"
-                                        alt="Indonesia Flag" class="lg:w-6 lg:h-6 md:w-5 md:h-5 mr-2">
-                                    <span class="text-base font-medium text-[#515658]">Indonesia</span>
-                                </a>
-                                <a href="#"
-                                    class="block px-4 py-3 text-base text-gray-700 hover:bg-gray-100 flex items-center"
-                                    data-lang="en">
-                                    <img src="https://kazee.id/public/img/components/language-icon/emojione_flag-for-united-kingdom.svg"
-                                        alt="English Flag" class="lg:w-6 lg:h-6 md:w-5 md:h-5 mr-2">
-                                    <span class="text-base font-medium text-[#515658]">English</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                     <img src="assets/img/icons/shop.svg" alt="Shop Icon"
                         class="lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px]">
                     <a href="/login"
