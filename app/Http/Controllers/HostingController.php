@@ -21,17 +21,21 @@ class HostingController extends Controller
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
 
         // Define the custom order of the hosting plans
-        $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
+        // $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
 
-        $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
-            foreach ($hostingPlanOrder as $key => $name) {
-                // Check if the plan name contains one of the keywords
-                if (str_contains($hostingPlan->name, $name)) {
-                    return $key; // Return the index based on the keyword
-                }
-            }
-            return count($hostingPlanOrder); // Default to end of the list if no match
+        $sortedHostingPlans = $hostingPlans->sortBy(function ($plan) {
+            return optional($plan->prices->where('duration', 'monthly')->first())->price_after;
         });
+
+        // $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
+        //     foreach ($hostingPlanOrder as $key => $name) {
+        //         // Check if the plan name contains one of the keywords
+        //         if (str_contains($hostingPlan->name, $name)) {
+        //             return $key; // Return the index based on the keyword
+        //         }
+        //     }
+        //     return count($hostingPlanOrder); // Default to end of the list if no match
+        // });
 
         // Return the landing page view with testimonials and sorted hosting plans
         return view('app.hosting-plans.landing-page.index', [

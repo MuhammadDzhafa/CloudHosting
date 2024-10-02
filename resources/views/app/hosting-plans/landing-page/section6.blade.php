@@ -115,7 +115,7 @@
                             @foreach ($hostingPlans as $hostingPlan)
                                 @if($hostingPlan->hosting_group_id === $group->hosting_group_id)
                                     <div
-                                        class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
+                                        class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 {{ str_contains(strtolower($hostingPlan->name), 'alto') ? 'bg-gradient-custom' : 'bg-white' }}">
                                         <h5
                                             class="text-xl font-bold mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center text-[#4A6DCB]">
                                             {{ $hostingPlan->name }}
@@ -183,7 +183,6 @@
         hostingPlans.forEach(function (plan) {
             const planNameElement = plan.querySelector('h5');
             if (planNameElement && planNameElement.textContent.toLowerCase().includes('alto')) {
-                plan.classList.add('bg-gradient-custom', 'text-white'); // Add background and text style
                 planNameElement.classList.add('text-white'); // Change title text color
 
                 // Change description color to white
@@ -221,3 +220,74 @@
         });
     });
 </script>
+
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const hostingPlans = document.querySelectorAll('.tab-content div');
+
+        hostingPlans.forEach(function (plan) {
+            const planNameElement = plan.querySelector('h5');
+            // Ensure that we check the name contains "alto"
+            if (planNameElement && planNameElement.textContent.toLowerCase().includes('alto')) {
+                // Change title text color to white
+                planNameElement.classList.add('text-white');
+
+                // Change description color to white
+                let descriptionElement = plan.querySelector('p');
+                if (descriptionElement) {
+                    descriptionElement.classList.add('text-white'); // Add text color to description
+                }
+
+                // Find the price container and update the price text color
+                let priceContainer = plan.querySelector('.price-container');
+                if (priceContainer) {
+                    let priceElements = priceContainer.querySelectorAll('span');
+                    priceElements.forEach(function (priceElement) {
+                        priceElement.classList.add('text-white'); // Add text color to price elements
+                    });
+                }
+
+                // Change color of key features (check icon) to white
+                let keyItems = plan.querySelectorAll('li'); // Assuming features are in <li> elements
+                keyItems.forEach(item => {
+                    item.classList.add('text-white'); // Add text color to key features
+                    let img = item.querySelector('img');
+                    if (img) {
+                        img.src = '/assets/img/icons/checkwhite.svg'; // Change to white check icon
+                    }
+                });
+
+                // Change "More detail" link to white, but exclude button
+                let moreDetailLink = plan.querySelector('a:not(.button)'); // Ensure we don't select the button
+                if (moreDetailLink) {
+                    moreDetailLink.classList.add('text-white'); // Change "More detail" link color to white
+                }
+            } else {
+                // If the plan does NOT contain "alto", ensure all text remains default color
+                planNameElement.classList.remove('text-white'); // Remove any white text class
+                if (descriptionElement) {
+                    descriptionElement.classList.remove('text-white'); // Remove white from description
+                }
+                if (priceContainer) {
+                    let priceElements = priceContainer.querySelectorAll('span');
+                    priceElements.forEach(function (priceElement) {
+                        priceElement.classList.remove('text-white'); // Remove white from price elements
+                    });
+                }
+
+                keyItems.forEach(item => {
+                    item.classList.remove('text-white'); // Remove white from key features
+                    let img = item.querySelector('img');
+                    if (img) {
+                        img.src = '/assets/img/icons/checkblack.svg'; // Change back to black check icon
+                    }
+                });
+
+                // Reset "More detail" link color to default
+                if (moreDetailLink) {
+                    moreDetailLink.classList.remove('text-white'); // Reset "More detail" link color
+                }
+            }
+        });
+    });
+</script> -->
