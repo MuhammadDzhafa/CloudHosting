@@ -65,6 +65,7 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
+Route::get('/faq', [HostingController::class, 'faq']);
 Route::get('/about', [HostingController::class, 'about']);
 // Route::get('/faq', [HostingController::class, 'faq']);
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
