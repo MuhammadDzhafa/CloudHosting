@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Storage extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'storage_id';
+    protected $fillable = [
+        'minimum',
+        'maximum',
+        'price'
+    ];
 }

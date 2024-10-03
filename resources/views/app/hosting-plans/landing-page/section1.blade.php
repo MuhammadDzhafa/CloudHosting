@@ -1,4 +1,4 @@
-<div class="section-framee padding-1">
+<div class="section-frame padding-1">
     <!-- <div class="background-container">
         <img src="/assets/img/bg/bg-pattern2.svg" alt="Background Pattern" class="background-image">
     </div> -->

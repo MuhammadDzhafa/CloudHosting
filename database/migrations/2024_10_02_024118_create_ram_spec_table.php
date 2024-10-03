@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ram_spec', function (Blueprint $table) {
-            $table->id();
+            $table->id('ram_id');
+            $table->integer('minimum');
+            $table->integer('maximum');
+            $table->integer(column: 'price');
             $table->timestamps();
         });
     }

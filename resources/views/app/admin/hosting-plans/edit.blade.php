@@ -102,10 +102,61 @@
                                                         </span>
                                                         <span>Back to Hosting Plans</span>
                                                     </a>
+                                                    <!-- button default
                                                     <button id="save-button"
                                                         class="button h-button is-primary is-raised"
-                                                        type="submit">Save Change</button>
+                                                        type="submit">Save Change</button> -->
+                                                    <!-- button savechanges
+                                                    <button id="saveChanges"
+                                                        class="button h-button is-primary is-raised"
+                                                        type="submit">Save Change</button> -->
+                                                    <a class="button h-button is-primary is-raised h-modal-trigger" id="open-modal">Save Changes</a>
 
+                                                    <!-- Modal Pertanyaan -->
+                                                    <div id="question-modal" class="modal h-modal">
+                                                        <div class="modal-background h-modal-close"></div>
+                                                        <div class="modal-content">
+                                                            <div class="modal-card">
+                                                                <div class="modal-card-body" style="border-radius: 6px 6px 0 0;">
+                                                                    <div class="inner-content">
+                                                                        <div class="section-placeholder">
+                                                                            <div class="placeholder-content">
+                                                                                <i class="fas fa-question-circle fa-3x mb-4"></i>
+                                                                                <h3 class="dark-inverted">Do you want to save the changes?</h3>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-card-foot is-centered">
+                                                                    <button class="button h-button is-primary is-raised is-rounded" id="confirm-save">Save</button>
+                                                                    <button class="button h-button is-rounded h-modal-close">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Modal "Saved!" -->
+                                                    <div id="saved-modal" class="modal h-modal">
+                                                        <div class="modal-background h-modal-close"></div>
+                                                        <div class="modal-content">
+                                                            <div class="modal-card">
+                                                                <div class="modal-card-body" style="border-radius: 6px 6px 0 0;">
+                                                                    <div class="inner-content">
+                                                                        <div class="section-placeholder">
+                                                                            <div class="placeholder-content">
+                                                                                <i class="fas fa-check-circle fa-3x"></i>
+                                                                                <h3 class="dark-inverted">Saved!</h3>
+                                                                                <p>Your changes have been saved.</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-card-foot is-centered">
+                                                                    <button class="button h-button is-primary is-raised is-rounded h-modal-close">OK</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -590,7 +641,7 @@
                                                 </div>
 
                                                 <div id="custom-pricing-tab" class="tab-content">
-                                                    <div class="columns" >
+                                                    <div class="columns">
                                                         <div class="column" style="border-right: 1px solid #ccc;">
                                                             <label>RAM</label>
                                                             <div class="field">
@@ -599,41 +650,6 @@
                                                                     <input class="input w-full" id="multiple_ram" name="multiple_ram" style="width: 100%;" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="columns">
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label>Range (Unit: GB)</label>
-                                                                        <div class="control is-inline-flex is-align-items-center p-0">
-                                                                            <input class="input" id="min_ram" name="min_ram" placeholder="0" disabled>
-                                                                            <p class="ml-2">To</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label>&nbsp;</label>
-                                                                        <div class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" id="max_ram" name="max_ram" required>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p id="ram_warning" class="help danger-text" style="display: none;">Max RAM harus kelipatan dari Multiple RAM!</p>
-                                                            <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_ram" style="width: 100%;" required>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="column" style="border-right: 1px solid #ccc;">
-                                                            <label>CPU</label>
-                                                            <div class="field">
-                                                                <label>Multiple</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" id="multiple_cpu" name="multiple_cpu" style="width: 100%;" required>
-                                                                </div>
                                                             </div>
                                                             <div class="columns">
                                                                 <div class="column">
@@ -653,18 +669,42 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <p id="cpu_warning" class="help danger-text" style="display: none;">Max CPU harus kelipatan dari Multiple CPU!</p>
-                                                            <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
-                                                                </div>
-                                                            </div>
+                                                            </div> 
                                                         </div>
-
-                                                        <div class="column">
-                                                            <label>SSD Storage</label>
+                                                        <div class="column" >
+                                                            <div class="field" style="flex-basis: 50%;">
+                                                                <label>SSD Storage</label>
+                                                                <div class="dropdown dropdown-trigger"
+                                                                    style="width: 100%;">
+                                                                    <div class="is-trigger" style="width: 100%;">
+                                                                        <button class="button" type="button"
+                                                                            aria-haspopup="true"
+                                                                            aria-controls="type-dropdown-menu"
+                                                                            style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                                                            <span
+                                                                                id="selectedType">{{ $hostingPlan->type }}</span>
+                                                                            <span class="icon is-small"
+                                                                                style="min-width: 0; min-height: 0;">
+                                                                                <i class="fas fa-angle-down"
+                                                                                    aria-hidden="true"></i>
+                                                                            </span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="dropdown-menu"
+                                                                        id="type-dropdown-menu" role="menu">
+                                                                        <div class="dropdown-content">
+                                                                            <a class="dropdown-item font-size-base"
+                                                                                data-value="Custom"
+                                                                                onclick="updateType('Custom')">Custom</a>
+                                                                            <a class="dropdown-item font-size-base"
+                                                                                data-value="Range"
+                                                                                onclick="updateType('Range')">Range</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="hidden" name="type" id="type-hidden"
+                                                                    value="{{ $hostingPlan->type }}">
+                                                            </div>
                                                             <div class="field">
                                                                 <label>Multiple</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
@@ -689,19 +729,250 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <p id="ssd_warning" class="help danger-text" style="display: none;">Max SSD harus kelipatan dari Multiple SSD!</p>
-                                                            <div class="field">
-                                                                <label>Cost (USD)</label>
-                                                                <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
-                                                                </div>
-                                                            </div>
+                                                            </div> 
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
 
+                                                <div id="custom-spec-tab" class="tab-content">
+                                                    @if ($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                    @endif
+
+                                                    <div class="columns is-justify-content-center w-full">
+                                                        <div class="column is-12-mobile is-6-tablet is-12-desktop">
+                                                            <div class="columns">
+                                                                <!-- First Column (Left Side) -->
+                                                                <div class="column is-6" style="padding-bottom:0px;">
+                                                                    <!-- Max Domain -->
+                                                                    <div class="field">
+                                                                        <label>Max Domain</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_domain_radio" id="max_domain_unlimited" value="Unlimited">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_domain_radio" id="max_domain_limited" value="Limited">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_domain_input" placeholder="0" name="max_domain" value="{{ old('max_domain', $hostingPlan->max_domain) }}" disabled required>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Max Bandwidth -->
+                                                                    <div class="field">
+                                                                        <label>Max Bandwidth</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_unlimited" value="Unlimited" onchange="toggleBandwidthInput()">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_bandwidth_radio" id="max_bandwidth_limited" value="Limited" onchange="toggleBandwidthInput()">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_bandwidth_input" name="max_bandwidth" placeholder="0" value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}" disabled required>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Max Addon Domain -->
+                                                                    <div class="field">
+                                                                        <label>Max Addon Domain</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_addon_domain_radio" id="max_addon_domain_unlimited" value="Unlimited">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_addon_domain_radio" id="max_addon_domain_limited" value="Limited">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_addon_domain_input" name="max_addon_domain" placeholder="0" value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}" disabled required>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Max FTP Account -->
+                                                                    <div class="field">
+                                                                        <label>Max FTP Account</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_ftp_radio" id="max_ftp_unlimited" value="Unlimited">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_ftp_radio" id="max_ftp_limited" value="Limited">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_ftp_input" placeholder="0" name="max_ftp_account" value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}" disabled required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Second Column (Right Side) -->
+                                                                <div class="column is-6" style="padding-bottom:0px;">
+                                                                    <!-- Max Email Account -->
+                                                                    <div class="field">
+                                                                        <label>Max Email Account</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_email_radio" id="max_email_unlimited" value="Unlimited">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_email_radio" id="max_email_limited" value="Limited">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_database_input" placeholder="0" name="max_database" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Max Database -->
+                                                                    <div class="field">
+                                                                        <label>Max Database</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_database_radio" id="max_database_unlimited" value="Unlimited" onchange="toggleDatabaseInput()">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_database_radio" id="max_database_limited" value="Limited" onchange="toggleDatabaseInput()">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_database_input" name="max_database" placeholder="0" value="{{ old('max_database', $hostingPlan->max_database) }}" disabled required>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Max Parked Domain -->
+                                                                    <div class="field">
+                                                                        <label>Max Parked Domain</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_parked_domain_radio" id="max_parked_domain_unlimited" value="Unlimited">
+                                                                                <span></span> Unlimited
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="max_parked_domain_radio" id="max_parked_domain_limited" value="Limited">
+                                                                                <span></span> Limited
+                                                                            </label>
+                                                                            <input class="input" id="max_parked_domain_input" name="max_parked_domain" placeholder="0" value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}" disabled required>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- SSH -->
+                                                                    <div class="field">
+                                                                        <label>SSH</label>
+                                                                        <div class="control is-flex is-align-items-center gap-2">
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="ssh" id="ssh_no" value="No">
+                                                                                <span></span> No
+                                                                            </label>
+                                                                            <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                                <input type="radio" name="ssh" id="ssh_yes" value="Yes">
+                                                                                <span></span> Yes
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="columns">
+                                                                <!-- First Column (I/O) -->
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label for="io_input">I/O</label>
+                                                                        <div class="control is-flex is-align-items-center">
+                                                                            <input class="input" name="max_io"
+                                                                                value="{{ old('max_io', $hostingPlan->max_io) }}"
+                                                                                placeholder="0" required>
+                                                                            <p class="ml-2">KB/s</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <!-- Second Column (Entry Process) -->
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label for="entry_process_input">Entry Process</label>
+                                                                        <div class="control">
+                                                                            <input class="input" name="entry_process"
+                                                                                value="{{ old('entry_process', $hostingPlan->entry_process) }}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Third Column (NPROC) -->
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label for="nproc_input">NPROC</label>
+                                                                        <div class="control">
+                                                                            <input class="input" name="nproc"
+                                                                                value="{{ old('nproc', $hostingPlan->nproc) }}"
+                                                                                placeholder="0" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <!-- Free Domain -->
+                                                            <div class="field">
+                                                                <label>Free Domain</label>
+                                                                <div class="control is-flex is-align-items-center gap-2">
+                                                                    <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                        <input type="radio" name="free_domain_radio" id="free_domain_no" value="No">
+                                                                        <span></span> Unlimited
+                                                                    </label>
+                                                                    <label class="radio is-outlined is-primary p-0 mr-3" style="display: flex; align-items: center;">
+                                                                        <input type="radio" name="free_domain_radio" id="free_domain_yes" value="Yes">
+                                                                        <span></span> Limited
+                                                                    </label>
+                                                                    <input class="input" id="free_domain_input" name="free_domain" value="{{ old('free_domain', $hostingPlan->free_domain) }}" placeholder="E.g. .net, .com" name="free_domain" disabled style="width: auto; flex-grow: 1;">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="columns">
+                                                                <!-- First Column (I/O) -->
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label for="io_input">SSL</label>
+                                                                        <div class="control is-flex">
+                                                                            <input class="input" type="text"
+                                                                                value="{{ old('ssl', $hostingPlan->ssl) }}"
+                                                                                disabled>
+                                                                            <input type="hidden" name="ssl"
+                                                                                value="{{ old('ssl', $hostingPlan->ssl) }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Second Column (Entry Process) -->
+                                                                <div class="column">
+                                                                    <div class="field">
+                                                                        <label for="entry_process_input">Backup</label>
+                                                                        <div class="control">
+                                                                            <input class="input" type="text"
+                                                                                value="{{ old('backup', $hostingPlan->backup) }}"
+                                                                                disabled>
+                                                                            <input type="hidden" name="backup"
+                                                                                value="{{ old('backup', $hostingPlan->backup) }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -780,16 +1051,16 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         function addTier() {
-      const tierContainer = document.getElementById('tier-container');
+            const tierContainer = document.getElementById('tier-container');
             if (tierContainer) {
                 // Create a new columns div
                 const newColumns = document.createElement('div');
                 newColumns.className = 'columns';
 
-                // Create the first column
-                const firstColumn = document.createElement('div');
-                firstColumn.className = 'column';
-                firstColumn.innerHTML = `
+                    // Create the first column
+                    const firstColumn = document.createElement('div');
+                    firstColumn.className = 'column';
+                    firstColumn.innerHTML = `
                     <div class="field">
                         <label></label>
                         <div class="control is-inline-flex is-align-items-center mt-3">
@@ -798,10 +1069,10 @@
                     </div>
                 `;
 
-                // Create the second column
-                const secondColumn = document.createElement('div');
-                secondColumn.className = 'column';
-                secondColumn.innerHTML = `
+                    // Create the second column
+                    const secondColumn = document.createElement('div');
+                    secondColumn.className = 'column';
+                    secondColumn.innerHTML = `
                     <div class="field">
                         <label></label>
                         <div class="control is-inline-flex is-align-items-center mt-3">
@@ -810,21 +1081,20 @@
                     </div>
                 `;
 
-                // Append the columns to the newColumns div
-                newColumns.appendChild(firstColumn);
-                newColumns.appendChild(secondColumn);
+                    // Append the columns to the newColumns div
+                    newColumns.appendChild(firstColumn);
+                    newColumns.appendChild(secondColumn);
 
-                // Append the newColumns to the container
-                tierContainer.appendChild(newColumns);
-            } else {
-                console.error("Element with ID 'tier-container' not found.");
+                    // Append the newColumns to the container
+                    tierContainer.appendChild(newColumns);
+                } else {
+                    console.error("Element with ID 'tier-container' not found.");
+                }
             }
-        }
 
-        // Attach addTier function to the link
-        document.querySelector('a[href="javascript:void(0)"]').addEventListener('click', addTier);
-    });
-
+            // Attach addTier function to the link
+            document.querySelector('a[href="javascript:void(0)"]').addEventListener('click', addTier);
+        });
     </script>
 
     <!-- JavaScript to Enable Radio Buttons Based on Input Values -->
@@ -1249,6 +1519,87 @@
                     });
             }
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tabs li');
+            const tabContents = document.querySelectorAll('.tab-content');
+            let activeTab = document.querySelector('.tabs li.is-active').getAttribute('data-tab'); // Default active tab
+
+            // Event listener for each tab to activate the correct tab when clicked
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const selectedTab = this.getAttribute('data-tab');
+                    setActiveTab(selectedTab);
+                });
+            });
+
+            // Function to set the active tab and show the corresponding content
+            function setActiveTab(tabId) {
+                // Remove 'is-active' class from all tabs and hide all contents
+                tabs.forEach(tab => tab.classList.remove('is-active'));
+                tabContents.forEach(content => content.style.display = 'none');
+
+                // Add 'is-active' class to the clicked tab and show the corresponding content
+                document.querySelector(`li[data-tab="${tabId}"]`).classList.add('is-active');
+                document.getElementById(tabId).style.display = 'block';
+
+                // Update the active tab in the local variable
+                activeTab = tabId;
+            }
+
+            // Simulate saving changes and retaining the active tab after saving
+            document.getElementById('saveChanges').addEventListener('click', function() {
+                // Normally, you would trigger a save action here
+                alert('Changes saved!');
+
+                // Retain the current active tab by simply not changing the activeTab variable.
+                // The UI will stay on the same tab.
+            });
+        });
+    </script>
+
+    <script>
+        // Fungsi untuk membuka modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('is-active');
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('is-active');
+        }
+
+        // Buka modal pertanyaan saat tombol "Right Actions" diklik
+        document.getElementById('open-modal').addEventListener('click', function() {
+            openModal('question-modal');
+        });
+
+        // Event Listener untuk tombol "Save"
+        document.getElementById('confirm-save').addEventListener('click', function() {
+            closeModal('question-modal'); // Tutup modal pertanyaan
+            openModal('saved-modal'); // Buka modal "Saved!"
+        });
+
+        // Tutup modal saat background atau tombol close diklik
+        document.querySelectorAll('.h-modal-close').forEach(function(closeBtn) {
+            closeBtn.addEventListener('click', function(event) {
+                event.preventDefault(); // Mencegah refresh halaman
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(function(modal) {
+                    modal.classList.remove('is-active');
+                });
+            });
+        });
+
+        // Event Listener untuk tombol "Cancel"
+        document.getElementById('cancel-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah refresh halaman
+            closeModal('question-modal'); // Tutup modal pertanyaan
+        });
     </script>
 
 
