@@ -12,6 +12,7 @@ use App\Http\Controllers\TldController;
 use App\Http\Controllers\HostingPlanController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\HostingGroupController;
+use App\Http\Controllers\FaqController;
 
 
 /* Welcome */
@@ -65,7 +66,9 @@ Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
 Route::get('/about', [HostingController::class, 'about']);
-Route::get('/faq', [HostingController::class, 'faq']);
+// Route::get('/faq', [HostingController::class, 'faq']);
+Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+
 
 
 /* Login */
@@ -127,6 +130,8 @@ Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
 Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
 Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
 Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
+Route::post('/tlds/import', [TLDController::class, 'import'])->name('tlds.import');
+
 
 /* Hosting Plan */
 Route::get('/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');

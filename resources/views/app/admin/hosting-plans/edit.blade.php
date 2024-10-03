@@ -1005,55 +1005,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            function addTier() {
-                const tierContainer = document.getElementById('tier-container');
-                if (tierContainer) {
-                    // Create a new columns div
-                    const newColumns = document.createElement('div');
-                    newColumns.className = 'columns';
-
-                    // Create the first column
-                    const firstColumn = document.createElement('div');
-                    firstColumn.className = 'column';
-                    firstColumn.innerHTML = `
-                    <div class="field">
-                        <label></label>
-                        <div class="control is-inline-flex is-align-items-center mt-3">
-                            <input class="input" name="storage[]" value="" required>
-                        </div>
-                    </div>
-                `;
-
-                    // Create the second column
-                    const secondColumn = document.createElement('div');
-                    secondColumn.className = 'column';
-                    secondColumn.innerHTML = `
-                    <div class="field">
-                        <label></label>
-                        <div class="control is-inline-flex is-align-items-center mt-3">
-                            <input class="input" name="storage[]" value="" required>
-                        </div>
-                    </div>
-                `;
-
-                    // Append the columns to the newColumns div
-                    newColumns.appendChild(firstColumn);
-                    newColumns.appendChild(secondColumn);
-
-                    // Append the newColumns to the container
-                    tierContainer.appendChild(newColumns);
-                } else {
-                    console.error("Element with ID 'tier-container' not found.");
-                }
-            }
-
-            // Attach addTier function to the link
-            document.querySelector('a[href="javascript:void(0)"]').addEventListener('click', addTier);
-        });
-    </script>
-
     <!-- JavaScript to Enable Radio Buttons Based on Input Values -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
