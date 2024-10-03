@@ -64,9 +64,9 @@ Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
 Route::get('/pricing', [HostingController::class, 'pricing']);
-Route::get('/about', [HostingController::class, 'about']);
 Route::get('/faq', [HostingController::class, 'faq']);
-
+Route::get('/about', [HostingController::class, 'about']);
+Route::get('/privacy', [HostingController::class, 'privacy']);
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

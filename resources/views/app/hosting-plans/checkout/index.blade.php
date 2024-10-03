@@ -135,15 +135,7 @@
 
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
-                                        <button id="next-button"
-                                            class="button h-button is-bold w-[102px] h-[47px] 
-                                                       px-[16px] py-[12px] gap-[8px] rounded-[8px] 
-                                                       bg-[#4A6DCB] opacity-100">
-                                            <span class="w-[70px] h-[23px] opacity-100 font-inter text-[16px] 
-                                                        font-medium leading-[23.2px] text-center text-[#F3F5FC]">
-                                                Continue
-                                            </span>
-                                        </button>
+                                        <a id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white">Continue</a>
                                     </div>
                                 </div>
 
