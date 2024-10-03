@@ -11,8 +11,6 @@ class CPU extends Model
 
     protected $primaryKey = 'cpu_id';
     protected $fillable = [
-        'minimum',
-        'maximum',
-        'price'
+        'capacity'
     ];
 }

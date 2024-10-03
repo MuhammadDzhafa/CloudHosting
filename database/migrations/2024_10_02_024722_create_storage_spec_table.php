@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('storage_spec', function (Blueprint $table) {
             $table->id(column: 'storage_id');
-            $table->integer('minimum');
-            $table->integer('maximum');
-            $table->integer(column: 'price');
+            $table->integer('capacity');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

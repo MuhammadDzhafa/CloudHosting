@@ -11,8 +11,6 @@ class Storage extends Model
 
     protected $primaryKey = 'storage_id';
     protected $fillable = [
-        'minimum',
-        'maximum',
-        'price'
+        'capacity'
     ];
 }

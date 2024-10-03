@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('cpu_spec', function (Blueprint $table) {
             $table->id('cpu_id');
-            $table->integer('minimum');
-            $table->integer('maximum');
-            $table->integer('price');
+            $table->integer('capacity');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

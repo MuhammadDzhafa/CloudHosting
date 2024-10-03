@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('ram_spec', function (Blueprint $table) {
             $table->id('ram_id');
-            $table->integer('minimum');
-            $table->integer('maximum');
-            $table->integer(column: 'price');
+            $table->integer('capacity');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

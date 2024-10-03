@@ -11,8 +11,6 @@ class RAM extends Model
 
     protected $primaryKey = 'ram_id';
     protected $fillable = [
-        'minimum',
-        'maximum',
-        'price'
+        'capacity'
     ];
 }
