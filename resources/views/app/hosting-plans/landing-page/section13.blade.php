@@ -78,7 +78,7 @@
             <a href="#">FAQ</a>
           </li>
           <li class="footer-content">
-            <a href="#">Server Status</a>
+            <a href="/server">Server Status</a>
           </li>
         </ul>
       </div>
