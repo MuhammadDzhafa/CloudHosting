@@ -70,9 +70,29 @@ class HostingController extends Controller
         return view('app.hosting-plans.server-status.invoice');
     }
 
-    public function pricing()
+    public function cloud()
     {
-        return view('app.hosting-plans.pricing.index');
+        $hostingGroups = HostingGroup::all();
+        $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
+
+        // Define the custom order of the hosting plans
+        $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
+
+        $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
+            foreach ($hostingPlanOrder as $key => $name) {
+                // Check if the plan name contains one of the keywords
+                if (str_contains($hostingPlan->name, $name)) {
+                    return $key; // Return the index based on the keyword
+                }
+            }
+            return count($hostingPlanOrder); // Default to end of the list if no match
+        });
+
+        // Return the landing page view with testimonials and sorted hosting plans
+        return view('app.hosting-plans.pricing.cloud-hosting.index', [
+            'hostingPlans' => $sortedHostingPlans,
+            'hostingGroups' => $hostingGroups
+        ]);
     }
 
     public function product()

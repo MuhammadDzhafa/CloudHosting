@@ -1,7 +1,7 @@
 <div class="section-frame padding-1 gap-[50px]">
     <h2 class="text-3xl md:text-4xl title-section text-center">
         Hear Directly from Our Satisfied Clients
-    </h2>    
+    </h2>
     <div id="slider" class="relative w-full overflow-hidden">
         <div class="slider-content flex transition-transform duration-300 ease-in-out">
             <!-- Slide 1 -->
@@ -56,10 +56,11 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Tombol Slider -->
-        <button id="prev" class="slider-button"><</button>
-        <button id="next" class="slider-button">></button>
+        <button id="prev" class="slider-button">
+            << /button>
+                <button id="next" class="slider-button">></button>
     </div>
 </div>
 
