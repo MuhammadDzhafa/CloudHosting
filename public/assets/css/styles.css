@@ -1654,3 +1654,40 @@ p {
         display: none;
     }
 } */
+
+/*
+========================================================
+                        Cloud Hosting
+=========================================================
+*/
+.title-table {
+    color: #4A6DCB !important;
+    text-transform: unset !important;
+    font-size: 18px !important;
+    line-height: 23.4px !important;
+    text-align: center !important;
+    font-weight: 600;
+}
+
+.title-rincian {
+    color: #4A6DCB !important;
+    text-transform: unset !important;
+    font-size: 18px !important;
+    line-height: 23.4px !important;
+    font-weight: 600;
+}
+
+.title-detail {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 23.4px;
+    color: #595959;
+}
+
+.text-content {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.4px;
+    text-align: center !important;
+    color: #999999;
+}

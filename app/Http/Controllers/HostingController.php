@@ -68,6 +68,8 @@ class HostingController extends Controller
 
     public function cloud()
     {
+        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
+
         $hostingGroups = HostingGroup::all();
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
 
@@ -86,6 +88,7 @@ class HostingController extends Controller
 
         // Return the landing page view with testimonials and sorted hosting plans
         return view('app.hosting-plans.pricing.cloud-hosting.index', [
+            'testimonials' => $testimonials,
             'hostingPlans' => $sortedHostingPlans,
             'hostingGroups' => $hostingGroups
         ]);
