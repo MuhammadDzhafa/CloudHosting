@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Testimonial; // Import the Testimonial model
 use App\Models\HostingPlan; // Import the Hosting Plan model
 use App\Models\HostingGroup; // Import the Hosting Group model
+use App\Models\Faq;
 use Illuminate\View\View; // Import the View class
 
 use Illuminate\Http\Request;
@@ -68,6 +69,7 @@ class HostingController extends Controller
 
     public function cloud()
     {
+        $faqs = Faq::all()->groupBy('category');
         $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
 
         $hostingGroups = HostingGroup::all();
@@ -90,7 +92,8 @@ class HostingController extends Controller
         return view('app.hosting-plans.pricing.cloud-hosting.index', [
             'testimonials' => $testimonials,
             'hostingPlans' => $sortedHostingPlans,
-            'hostingGroups' => $hostingGroups
+            'hostingGroups' => $hostingGroups,
+            'faqs' => $faqs
         ]);
     }
 
@@ -112,5 +115,10 @@ class HostingController extends Controller
     public function about()
     {
         return view('app.hosting-plans.about.index');
+    }
+
+    public function domain()
+    {
+        return view('app.hosting-plans.pricing.domain.index');
     }
 }
