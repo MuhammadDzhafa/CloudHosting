@@ -1,4 +1,4 @@
-{{-- <div class="section-frame padding-1 gap-6 md:gap-12">
+<div class="section-frame padding-1 gap-6 md:gap-12">
     <h2 class="title-section text-center">
         Wordpress Hosting
     </h2>
@@ -163,4 +163,4 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>

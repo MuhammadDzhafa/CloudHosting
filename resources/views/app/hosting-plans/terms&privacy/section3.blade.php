@@ -174,7 +174,7 @@
 
         <p class="font-inter text-[18px] font-normal leading-[23.4px] text-left text-[#000000] mb-2">
             By accessing this website and/or deciding to do business with us, all parties agree and acknowledge that we reserve the right to change this privacy policy at any time.
-        </p>
+        </p>    
     </div>
 </div>
 </div>

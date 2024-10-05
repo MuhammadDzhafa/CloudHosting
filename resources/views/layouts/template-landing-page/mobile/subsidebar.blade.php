@@ -1,58 +1,57 @@
-<div class="mobile-main-sidebar">
-    <div class="mobile-subsidebar">
-        <div class="inner">
-            <div class="sidebar-title">
-                <h3>Layouts</h3>
-            </div>
-    
-            <ul class="submenu">
-                <li>
-                    <div class="collapse-wrap">
-                        <a href="/admin-list-view-1.html" class="parent-link">Home</a>
-                    </div>
-                </li>
-                
-                <li class="has-children">
-                    <div class="collapse-wrap">
-                        <a href="javascript:void(0);" class="parent-link">Product<i
-                              data-feather="chevron-right"></i></a>
-                    </div>
-                    <ul>
-                        <li>
-                            <a class="is-submenu" href="/admin-list-flex-1.html">
-                                <i class="lnil lnil-list-alt-1"></i>
-                                <span>Domain</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="is-submenu" href="/admin-list-flex-2.html">
-                                <i class="lnil lnil-list-alt-1"></i>
-                                <span>Cloud Hosting</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="is-submenu" href="/admin-list-flex-3.html">
-                                <i class="lnil lnil-list-alt-1"></i>
-                                <span>WordPress Hosting</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="collapse-wrap">
-                        <a href="javascript:void(0);" class="parent-link">Blog</a>
-                    </div>
-                </li>
-                
-                <li>
-                    <div class="collapse-wrap">
-                        <a href="javascript:void(0);" class="parent-link">FAQ</a>
-                    </div>
-                </li>
-                
-                <li class="divider"></li>
-            </ul>
-    
-        </div>
+<div class="mobile-subsidebar mobile-main-sidebar" style="width: 100%;">
+    <div class="inner">
+
+        <ul class="submenu" style="padding: 0 40px 20px 0px;">
+            <li class="has-children">
+                <div class="collapse-wrap">
+                    <a href="javascript:void(0);" class="parent-link">Home</a>
+                </div>
+            </li>
+            <li class="has-children">
+                <div class="collapse-wrap">
+                    <a href="javascript:void(0);" class="parent-link">Products<i
+                            data-feather="chevron-right"></i></a>
+                </div>
+                <ul>
+                    <li>
+                        <a class="is-submenu" href="/admin-list-flex-1.html">
+                            <i class="lnil lnil-list-alt-1"></i>
+                            <span>Domain</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="is-submenu" href="/admin-list-flex-2.html">
+                            <i class="lnil lnil-list-alt-1"></i>
+                            <span>Cloud Hosting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="is-submenu" href="/admin-list-flex-3.html">
+                            <i class="lnil lnil-list-alt-1"></i>
+                            <span>WordPress Hosting</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="has-children">
+                <div class="collapse-wrap">
+                    <a href="javascript:void(0);" class="parent-link">FAQ</a>
+                </div>
+            </li>
+            <li class="has-children">
+                <div class="collapse-wrap">
+                    <a href="javascript:void(0);" class="parent-link">Cart</a>
+                </div>
+            </li>
+        </ul>
+        <a href="/login" class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] active:bg-[#4A6DCB] border-1 border-[#395FC6] text-[#4A6DCB] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#fff] active:border-[#4A6DCB] py-3 mb-4"
+            style="font-family: unset; width: 84%; margin-top: -60px;">
+            <span>Login</span>
+        </a>
+
+        <a class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white"
+            style="width: 84%; margin-top: -30px;">
+            Contact Us
+        </a>
     </div>
 </div>

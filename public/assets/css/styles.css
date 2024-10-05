@@ -100,6 +100,10 @@
     .section-frame {
         padding: 40px 16px;
     }
+
+    .navbar-mobile {
+        padding: 0 20px;
+    }
 }
 
 /* .p-gradient {
@@ -858,7 +862,7 @@ p {
 .custom-col {
     flex: 1;
     /* Kolom mengambil ruang yang sama */
-    min-width: 350px;
+    min-width: 300px;
     /* Lebar minimum agar kolom tidak terlalu sempit */
 }
 

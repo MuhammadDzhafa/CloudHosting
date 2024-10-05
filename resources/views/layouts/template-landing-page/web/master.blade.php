@@ -83,7 +83,7 @@
         <!-- Content Wrapper -->
         <div id="app-onboarding" class="view-wrapper is-webapp" data-page-title="@yield('title')" data-naver-offset="214" data-menu-item="#layouts-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
 
-            <div class="page-title has-text-centered is-webapp">
+            <div class="page-title has-text-centered is-webapp" style="height: unset;">
                 <div class="toolbar ml-auto">
                     @include("layouts.template-landing-page.web.partials.toolbar.mode")
                     @include("layouts.template-landing-page.web.partials.toolbar.languages")
