@@ -14,7 +14,6 @@
 @include("app.hosting-plans.landing-page.section10")
 @include("app.hosting-plans.landing-page.section11")
 @include("app.hosting-plans.landing-page.section12")
-@include("app.hosting-plans.landing-page.section13")
 
 @endsection
 
@@ -157,23 +156,23 @@
 
         const storageOptions = [{
                 value: '120 GB',
-                price: 'IDR 5.000/mon'
+                price: 'Rp5.000/mon'
             },
             {
                 value: '240 GB',
-                price: 'IDR 10.000/mon'
+                price: 'Rp10.000/mon'
             },
             {
                 value: '256 GB',
-                price: 'IDR 15.000/mon'
+                price: 'Rp15.000/mon'
             },
             {
                 value: '480 GB',
-                price: 'IDR 20.000/mon'
+                price: 'Rp20.000/mon'
             },
             {
                 value: '512 GB',
-                price: 'IDR 25.000/mon'
+                price: 'Rp25.000/mon'
             }
         ];
 

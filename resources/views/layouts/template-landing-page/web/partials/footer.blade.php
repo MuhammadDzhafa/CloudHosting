@@ -69,13 +69,13 @@
         <h4 class="footer-header">Resource</h4>
         <ul>
           <li class="footer-content">
-            <a href="#">About</a>
+            <a href="/about">About</a>
           </li>
           <li class="footer-content">
             <a href="#">Blog</a>
           </li>
           <li class="footer-content">
-            <a href="#">FAQ</a>
+            <a href="/faq">FAQ</a>
           </li>
           <li class="footer-content">
             <a href="/server">Server Status</a>
@@ -86,10 +86,10 @@
         <h4 class="footer-header">Legal</h4>
         <ul>
           <li class="footer-content">
-            <a href="#">Terms & Conditions</a>
+            <a href="/terms-and-conditions">Terms & Conditions</a>
           </li>
           <li class="footer-content">
-            <a href="#">Privacy Policy</a>
+            <a href="/privacy-policy">Privacy Policy</a>
           </li>
         </ul>
       </div>

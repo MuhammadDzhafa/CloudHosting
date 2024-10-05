@@ -97,6 +97,11 @@ class HostingController extends Controller
 
     public function privacy()
     {
-        return view('app.hosting-plans.terms&privacy.index');
+        return view('app.hosting-plans.privacy-policy.index');
+    }
+
+    public function termsConditions()
+    {
+        return view('app.hosting-plans.terms-conditions.index');
     }
 }

@@ -1,11 +1,4 @@
 <div class="tabs-wrapper section-frame padding-1" style="background: #fff;">
-    <h1 class="font-inter text-[36px] font-semibold leading-[43.2px] text-center text-[#3C476C] mb-2">
-        Privacy Policy
-    </h1>
-
-    <p class="font-inter text-[18px] font-normal leading-[23.4px] text-center text-black mb-4">
-        Effective Date: June 20, 2024
-    </p>
 
     <div class="tabs-inner">
         <div class="tabs">

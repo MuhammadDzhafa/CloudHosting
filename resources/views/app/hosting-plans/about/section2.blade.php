@@ -5,7 +5,7 @@
     <div class="flex-1 pr-6 z-10">
         <div class="mb-6">
             <div class="flex items-center mb-2">
-                <img src="assets/img/logoabout1.png" class="mr-3" alt="">
+                <img src="assets/img/logoabout1.svg" class="mr-3" alt="">
                 <h2 class="text-left text-[36px] font-semibold leading-[43.2px] text-[#3C476C]">
                     Our Vision
                 </h2>
@@ -17,7 +17,7 @@
         </div>
         <div>
             <div class="flex items-center mb-2">
-                <img src="assets/img/logoabout2.png" class="mr-3" alt="">
+                <img src="assets/img/logoabout2.svg" class="mr-3" alt="">
                 <h2 class="text-left text-[36px] font-semibold leading-[43.2px] text-[#3C476C]">Our Mission</h2>
             </div>
             <p class="text-left text-[18px] font-normal leading-[23.4px] text-[#000000]">

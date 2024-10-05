@@ -13,6 +13,8 @@ use App\Http\Controllers\HostingPlanController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\HostingGroupController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ContactUsController;
+
 
 
 /* Welcome */
@@ -69,6 +71,9 @@ Route::get('/faq', [HostingController::class, 'faq']);
 Route::get('/about', [HostingController::class, 'about']);
 // Route::get('/faq', [HostingController::class, 'faq']);
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+Route::get('/privacy-policy', [HostingController::class, 'privacy']);
+Route::get('/terms-and-conditions', [HostingController::class, 'termsConditions']);
+Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
 
 
 

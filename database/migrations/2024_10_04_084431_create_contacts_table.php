@@ -9,13 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('storage_spec', function (Blueprint $table) {
-            $table->id(column: 'storage_id');
-            $table->integer('capacity');
+        Schema::create('contact_us', function (Blueprint $table) {
+            $table->id('contact_us_id');
+            $table->string('name');
+            $table->string('email');
+            $table->text('message');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('storage_spec');
+        Schema::dropIfExists('contacts');
     }
 };

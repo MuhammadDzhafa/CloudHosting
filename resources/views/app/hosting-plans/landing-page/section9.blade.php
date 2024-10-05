@@ -75,9 +75,6 @@
                         {{ $testimonial->domain_web }}
                     </p>
                 </div>
-
-
-
             </div>
             @endforeach
         </div>
