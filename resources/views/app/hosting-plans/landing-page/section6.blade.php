@@ -126,6 +126,21 @@
                                             class="mb-2 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-500,#7C7C7C)]">
                                             {{ $hostingPlan->description }}
                                         </p>
+                <div id="{{ strtolower($group->name) }}-tab" class="tab-content">
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+                            @foreach ($hostingPlans as $hostingPlan)
+                                @if($hostingPlan->hosting_group_id === $group->hosting_group_id)
+                                    <div
+                                        class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 {{ str_contains(strtolower($hostingPlan->name), 'alto') ? 'bg-gradient-custom' : 'bg-white' }}">
+                                        <h5
+                                            class="text-xl font-bold mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center text-[#4A6DCB]">
+                                            {{ $hostingPlan->name }}
+                                        </h5>
+                                        <p
+                                            class="mb-2 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-500,#7C7C7C)]">
+                                            {{ $hostingPlan->description }}
+                                        </p>
 
                             @foreach($hostingPlan->prices as $price)
                             @if($price->duration === 'monthly')

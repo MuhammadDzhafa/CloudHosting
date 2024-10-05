@@ -15,11 +15,9 @@ class HostingPlan extends Model
     protected $fillable = [
         'name',
         'hosting_group_id', // Make sure the field name is correct
-        'type',
+        'product_type',
+        'package_type',
         'description',
-        'RAM',
-        'storage',
-        'CPU',
         'max_io',
         'nproc',
         'entry_process',
@@ -34,7 +32,7 @@ class HostingPlan extends Model
         'max_parked_domain',
         'ssh',
         'free_domain',
-        // 'best_seller'
+        'best_seller'
     ];
 
     public function prices()
@@ -46,5 +44,16 @@ class HostingPlan extends Model
     {
         return $this->belongsTo(HostingGroup::class, 'hosting_group_id', 'hosting_group_id');
     }
+
+    public function customMainSpec()
+    {
+        return $this->hasOne(CustomMainSpec::class, 'custom_main_spec_id');
+    }    
+
+    public function regularMainSpec()
+    {
+        return $this->hasOne(RegularMainSpec::class, 'regular_main_spec_id');
+    }
+
 }
 

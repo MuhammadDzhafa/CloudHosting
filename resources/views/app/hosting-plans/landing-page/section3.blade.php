@@ -4,7 +4,7 @@
         <div class="absolute "></div>
         <div class="section-frame padding-1 bg-white">
             <div class="bg-white rounded-lg">
-                <div class="relative flex items-center mb-16 text-center">
+                <div class="relative flex items-center mb-16 text-center hidden lg:block">
                     <img src="/assets/img/bg/globegradient.svg" alt="" class="absolute left-[20px] top-[-100px]">
                 </div>
                 <h2 class="text-3xl md:text-4xl title-section text-center">
@@ -83,18 +83,15 @@
                                 @foreach ($domains as $domain)
                                     <tr class="border-b border-gray-200">
                                         <td
-                                            class="py-2 px-4 text-[18px] font-normal leading-[23.4px] text-center text-[#999999]">
+                                            class="py-3 px-4 text-[18px] font-normal leading-[23.4px] text-center text-[#999999]">
                                             {{ $domain }}
                                         </td>
                                         <td
-                                            class="py-2 px-4 text-[18px] font-normal leading-[23.4px] text-center text-[#999999]">
+                                            class="py-3 px-4 text-[18px] font-normal leading-[23.4px] text-center text-[#999999]">
                                             $ 1.99
                                         </td>
-                                        <td class="py-2 px-4 flex justify-center items-center">
-                                            <button
-                                                class="w-[63px] h-[36px] px-3 py-2 gap-[4px] rounded-full bg-[#4A6DCB] text-white hover:bg-blue-700 transition duration-300">
-                                                <span class="text-[14px] font-medium leading-[20.3px]">Order</span>
-                                            </button>
+                                        <td class="py-3 px-4 flex justify-center items-center">                                            
+                                            <button class="button h-button is-primary is-elevated rounded-full">Add To Cart</button>                                         
                                         </td>
                                     </tr>
                                 @endforeach
@@ -103,52 +100,21 @@
                     </div>
                 </div>
 
-                
-
-
-                <div class="flex justify-between items-center">
-                    <div class="flex space-x-2">
-                        <span
-                            class="w-[36px] h-[36px] flex items-center justify-center text-white rounded-full font-inter text-[14px] font-regular leading-[20.3px] text-center"
-                            style="
-                            background: var(--Brand-Primary-500, #4A6DCB);
-                            box-shadow: 
-                                0px 14px 26px -12px #4A6DCB6B,
-                                0px 4px 23px 0px #0000001F,
-                                0px 8px 10px -5px #4A6DCB33;
-                        ">
-                            1
-                        </span>
-                        <span
-                            class="w-[36px] h-[36px] flex items-center justify-center rounded-full font-inter text-[14px] font-regular leading-[20.3px] text-center text-[#525252] border border-[#DEDEDE] bg-[#FFFFFF]">
-                            2
-                        </span>
-                        <span
-                            class="w-[36px] h-[36px] flex items-center justify-center rounded-full font-inter text-[14px] font-regular leading-[20.3px] text-center text-[#525252] border border-[#DEDEDE] bg-[#FFFFFF]">
-                            3
-                        </span>
-                        <span
-                            class="w-[36px] h-[36px] flex items-center justify-center rounded-full font-inter text-[14px] font-regular leading-[20.3px] text-center text-[#525252] border border-[#DEDEDE] bg-[#FFFFFF]">
-                            4
-                        </span>
-                        <span
-                            class="w-[36px] h-[36px] flex items-center justify-center rounded-full font-inter text-[14px] font-regular leading-[20.3px] text-center text-[#525252] border border-[#DEDEDE] bg-[#FFFFFF]">
-                            5
-                        </span>
-                    </div>
-
-                    <div class="flex space-x-2">
-                        <button
-                            class="w-[56px] h-[36px] px-[20px] py-[10px] gap-0 rounded-full border border-[#DEDEDE] bg-white opacity-100 flex items-center justify-center transition duration-300 hover:bg-gray-100">
-                            <img src="/assets/img/icons/arrowback.svg" alt="" class="">
-                        </button>
-                        <button
-                            class="w-[56px] h-[36px] px-[20px] py-[10px] gap-0 rounded-full border border-[#DEDEDE] bg-white opacity-100 flex items-center justify-center transition duration-300 hover:bg-gray-100">
-                            <img src="/assets/img/icons/arrowforward.svg" alt="" class="">
-                        </button>
-                    </div>
-                </div>
+                <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
+                            <a class="pagination-previous has-chevron"><i data-feather="chevron-left"></i></a>
+                            <a class="pagination-next has-chevron"><i data-feather="chevron-right"></i></a>
+                            <ul class="pagination-list">
+                                <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                                <li><span class="pagination-ellipsis">…</span></li>
+                                <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                                <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                                <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                                <li><span class="pagination-ellipsis">…</span></li>
+                                <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                            </ul>
+                        </nav>
             </div>
         </div>
     </div>
-</div> --}}
+</div>
+--}}
