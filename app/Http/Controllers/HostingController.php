@@ -113,9 +113,4 @@ class HostingController extends Controller
     {
         return view('app.hosting-plans.about.index');
     }
-
-    public function privacy()
-    {
-        return view('app.hosting-plans.terms&privacy.index');
-    }
 }

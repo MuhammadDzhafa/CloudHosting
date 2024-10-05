@@ -93,6 +93,8 @@
             </div>
 
             @yield('landing-page')
+            @yield('faq')
+
             {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
         </div>
 
