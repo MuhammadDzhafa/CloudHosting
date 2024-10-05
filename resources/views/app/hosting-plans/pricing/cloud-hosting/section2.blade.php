@@ -185,121 +185,117 @@
                 Price does not include tax.
             </p>
 
-            <div class="container">
-                <table class="table is-hoverable is-bordered" style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>Rincian</th>
-                            <th>Strato Lite</th>
-                            <th>Alto Lite</th>
-                            <th>Cirrus Lite</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>SSD Storage</td>
-                            <td>2 GB</td>
-                            <td>6 GB</td>
-                            <td>16 GB</td>
-                        </tr>
-                        <tr>
-                            <td>RAM</td>
-                            <td>512 MB</td>
-                            <td>2 GB</td>
-                            <td>4 GB</td>
-                        </tr>
-                        <tr>
-                            <td>CPU</td>
-                            <td>0.5 Core</td>
-                            <td>1 Core</td>
-                            <td>2 Core</td>
-                        </tr>
-                        <tr>
-                            <td>Domain</td>
-                            <td>1</td>
-                            <td>5</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>SSL</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                            <td>Free</td>
-                        </tr>
-                        <tr>
-                            <td>Email Account</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td>Bandwidth</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td>Database</td>
-                            <td>2</td>
-                            <td>10</td>
-                            <td>Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td>Addon/Parked</td>
-                            <td>No</td>
-                            <td>5/5</td>
-                            <td>10/10</td>
-                        </tr>
-                        <tr>
-                            <td>FTP Account</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>Web Server</td>
-                            <td>LiteSpeed</td>
-                            <td>LiteSpeed</td>
-                            <td>LiteSpeed</td>
-                        </tr>
-                        <tr>
-                            <td>Entry Process</td>
-                            <td>10</td>
-                            <td>20</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>NPROC</td>
-                            <td>160</td>
-                            <td>200</td>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <td>I/O</td>
-                            <td>10240 KB/s</td>
-                            <td>10240 KB/s</td>
-                            <td>20480 KB/s</td>
-                        </tr>
-                        <tr>
-                            <td>SSH</td>
-                            <td>Yes</td>
-                            <td>Yes</td>
-                            <td>Yes</td>
-                        </tr>
-                        <tr>
-                            <td>Backup</td>
-                            <td>Weekly</td>
-                            <td>Weekly</td>
-                            <td>Weekly</td>
-                        </tr>
-                        <tr>
-                            <td>Free Domain</td>
-                            <td>.co.id</td>
-                            <td>.co.id</td>
-                            <td>.co.id</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="container mx-auto p-5">
+                <div class="table-wrapper" data-simpleba style="min-height:auto">
+                    <table id="hosting-plans-table" class="table is-datatable is-hoverable">
+                        <thead style="background-color:#E7ECF8;">
+                            <tr class="color-row">
+                                <th class="title-rincian" style="color: #4A6DCB;">Rincian</th>
+                                <th class="title-table" style="color: #4A6DCB;">Strato</th>
+                                <th class="title-table" style="color: #4A6DCB;">Alto</th>
+                                <th class="title-table" style="color: #4A6DCB;">Cirrus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="title-detail">SSD Storage</td>
+                                <td class="text-content">40 GB</td>
+                                <td class="text-content">100 GB</td>
+                                <td class="text-content">200 GB</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">RAM</td>
+                                <td class="text-content">3 GB</td>
+                                <td class="text-content">6 GB</td>
+                                <td class="text-content">12 GB</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">CPU</td>
+                                <td class="text-content">8 Core</td>
+                                <td class="text-content">16 Core</td>
+                                <td class="text-content">24 Core</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Domain</td>
+                                <td class="text-content">1</td>
+                                <td class="text-content">5</td>
+                                <td class="text-content">10</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">SSL</td>
+                                <td class="text-content">Free</td>
+                                <td class="text-content">Free</td>
+                                <td class="text-content">Free</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Email Account</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Bandwidth</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Database</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Addon/Parked</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">FTP Account</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">SSH</td>
+                                <td class="text-content">Yes</td>
+                                <td class="text-content">Yes</td>
+                                <td class="text-content">Yes</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Backup</td>
+                                <td class="text-content">Daily & Weekly</td>
+                                <td class="text-content">Daily & Weekly</td>
+                                <td class="text-content">Daily & Weekly</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Dedicated IP Address</td>
+                                <td class="text-content">1</td>
+                                <td class="text-content">1</td>
+                                <td class="text-content">1</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Entry Process</td>
+                                <td class="text-content">100</td>
+                                <td class="text-content">150</td>
+                                <td class="text-content">200</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">NPROC</td>
+                                <td class="text-content">160</td>
+                                <td class="text-content">200</td>
+                                <td class="text-content">200</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">I/O</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -474,122 +470,122 @@
                 Price does not include tax.
             </p>
             <div class="container mx-auto p-5">
-                <h1 class="text-2xl font-bold mb-5">Package Comparison</h1>
-
-                <table class="min-w-full bg-white border border-gray-300 rounded-t-lg">
-                    <thead>
-                        <tr class="bg-gray-200 rounded-t-lg">
-                            <th class="py-2 px-4 text-left border-b border-gray-300 rounded-tl-lg">Rincian</th>
-                            <th class="py-2 px-4 text-left border-b border-gray-300">Strato Lite</th>
-                            <th class="py-2 px-4 text-left border-b border-gray-300">Alto Lite</th>
-                            <th class="py-2 px-4 text-left border-b border-gray-300 rounded-tr-lg">Cirrus Lite</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">SSD Storage</td>
-                            <td class="py-2 px-4 border-b border-gray-300">2 GB</td>
-                            <td class="py-2 px-4 border-b border-gray-300">6 GB</td>
-                            <td class="py-2 px-4 border-b border-gray-300">16 GB</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">RAM</td>
-                            <td class="py-2 px-4 border-b border-gray-300">512 MB</td>
-                            <td class="py-2 px-4 border-b border-gray-300">2 GB</td>
-                            <td class="py-2 px-4 border-b border-gray-300">4 GB</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">CPU</td>
-                            <td class="py-2 px-4 border-b border-gray-300">0.5 Core</td>
-                            <td class="py-2 px-4 border-b border-gray-300">1 Core</td>
-                            <td class="py-2 px-4 border-b border-gray-300">2 Core</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Domain</td>
-                            <td class="py-2 px-4 border-b border-gray-300">1</td>
-                            <td class="py-2 px-4 border-b border-gray-300">5</td>
-                            <td class="py-2 px-4 border-b border-gray-300">10</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">SSL</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Free</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Free</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Free</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Email Account</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Unlimited</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Unlimited</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Unlimited</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Bandwidth</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Unlimited</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Unlimited</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Unlimited</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Database</td>
-                            <td class="py-2 px-4 border-b border-gray-300">2</td>
-                            <td class="py-2 px-4 border-b border-gray-300">10</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Unlimited</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Addon/Parked</td>
-                            <td class="py-2 px-4 border-b border-gray-300">No</td>
-                            <td class="py-2 px-4 border-b border-gray-300">5/5</td>
-                            <td class="py-2 px-4 border-b border-gray-300">10/10</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">FTP Account</td>
-                            <td class="py-2 px-4 border-b border-gray-300">1</td>
-                            <td class="py-2 px-4 border-b border-gray-300">3</td>
-                            <td class="py-2 px-4 border-b border-gray-300">5</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Web Server</td>
-                            <td class="py-2 px-4 border-b border-gray-300">LiteSpeed</td>
-                            <td class="py-2 px-4 border-b border-gray-300">LiteSpeed</td>
-                            <td class="py-2 px-4 border-b border-gray-300">LiteSpeed</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Entry Process</td>
-                            <td class="py-2 px-4 border-b border-gray-300">10</td>
-                            <td class="py-2 px-4 border-b border-gray-300">20</td>
-                            <td class="py-2 px-4 border-b border-gray-300">30</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">NPROC</td>
-                            <td class="py-2 px-4 border-b border-gray-300">160</td>
-                            <td class="py-2 px-4 border-b border-gray-300">200</td>
-                            <td class="py-2 px-4 border-b border-gray-300">300</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">I/O</td>
-                            <td class="py-2 px-4 border-b border-gray-300">10240 KB/s</td>
-                            <td class="py-2 px-4 border-b border-gray-300">10240 KB/s</td>
-                            <td class="py-2 px-4 border-b border-gray-300">20480 KB/s</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">SSH</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Yes</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Yes</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Yes</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Backup</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Weekly</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Weekly</td>
-                            <td class="py-2 px-4 border-b border-gray-300">Weekly</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b border-gray-300">Free Domain</td>
-                            <td class="py-2 px-4 border-b border-gray-300">.co.id</td>
-                            <td class="py-2 px-4 border-b border-gray-300">.co.id</td>
-                            <td class="py-2 px-4 border-b border-gray-300">.co.id</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-wrapper" data-simpleba style="min-height:auto">
+                    <table id="users-datatable" class="table is-datatable is-hoverable">
+                        <thead style="background-color:#E7ECF8;">
+                            <tr class="color-row">
+                                <th class="title-rincian" style="text-align: unset;">Rincian</th>
+                                <th class="title-table">Strato Lite</th>
+                                <th class="title-table">Alto Lite</th>
+                                <th class="title-table">Cirrus Lite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="title-detail">SSD Storage</td>
+                                <td class="text-content">2 GB</td>
+                                <td class="text-content">6 GB</td>
+                                <td class="text-content">16 GB</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">RAM</td>
+                                <td class="text-content">512 MB</td>
+                                <td class="text-content">2 GB</td>
+                                <td class="text-content">4 GB</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">CPU</td>
+                                <td class="text-content">0.5 Core</td>
+                                <td class="text-content">1 Core</td>
+                                <td class="text-content">2 Core</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Domain</td>
+                                <td class="text-content">1</td>
+                                <td class="text-content">5</td>
+                                <td class="text-content">10</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">SSL</td>
+                                <td class="text-content">Free</td>
+                                <td class="text-content">Free</td>
+                                <td class="text-content">Free</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Email Account</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Bandwidth</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Database</td>
+                                <td class="text-content">2</td>
+                                <td class="text-content">10</td>
+                                <td class="text-content">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Addon/Parked</td>
+                                <td class="text-content">No</td>
+                                <td class="text-content">5/5</td>
+                                <td class="text-content">10/10</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">FTP Account</td>
+                                <td class="text-content">1</td>
+                                <td class="text-content">3</td>
+                                <td class="text-content">5</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Web Server</td>
+                                <td class="text-content">LiteSpeed</td>
+                                <td class="text-content">LiteSpeed</td>
+                                <td class="text-content">LiteSpeed</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Entry Process</td>
+                                <td class="text-content">10</td>
+                                <td class="text-content">20</td>
+                                <td class="text-content">30</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">NPROC</td>
+                                <td class="text-content">160</td>
+                                <td class="text-content">200</td>
+                                <td class="text-content">200</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">I/O</td>
+                                <td class="text-content">10240 KB/s</td>
+                                <td class="text-content">10240 KB/s</td>
+                                <td class="text-content">20480 KB/s</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">SSH</td>
+                                <td class="text-content">Yes</td>
+                                <td class="text-content">Yes</td>
+                                <td class="text-content">Yes</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Backup</td>
+                                <td class="text-content">Weekly</td>
+                                <td class="text-content">Weekly</td>
+                                <td class="text-content">Weekly</td>
+                            </tr>
+                            <tr>
+                                <td class="title-detail">Free Domain</td>
+                                <td class="text-content">.co.id</td>
+                                <td class="text-content">.co.id</td>
+                                <td class="text-content">.co.id</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

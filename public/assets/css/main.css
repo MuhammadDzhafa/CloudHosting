@@ -49774,7 +49774,7 @@ body.is-dark .flex-table-wrapper {
 }
 
 .table tbody td {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     vertical-align: middle
 }
 
@@ -50217,7 +50217,7 @@ body.is-dark .pagination.datatable-pagination ul li a {
 
 .table-wrapper .table.is-datatable th {
     padding: 16px 20px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     color: #283252;
     text-transform: uppercase;
