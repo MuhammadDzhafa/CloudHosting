@@ -1,4 +1,4 @@
-<div class="flex flex-col md:flex-row bg-gradient-custom section-frame padding-1" style="margin-top: 80px; padding: 100px 120px 0 120px; height:714px;">
+<div class="flex flex-col md:flex-row bg-gradient-custom section-frame" style="padding: 100px 120px 0 120px;">
 
     <div class="md:w-1/2 pr-8 section-frame">
         <h1 class="text-[50px] font-bold leading-[60px] text-left text-white font-inter mb-4">

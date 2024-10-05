@@ -1,12 +1,11 @@
-{{-- <div class="section-frame padding-6 bg-gradient-custom flex lg:flex-row gap-[30px]">
-
+{{-- <div class="section-frame padding-6 bg-gradient-custom flex lg:flex-row gap-[30px] relative">
     <!-- Text Container -->
     <div class="text-container gap-2">
         <p class="text-base-hero mb-0 text-white">Popular Domain</p>
         <h2 class="title-section text-white">Search Your <br />Domain Name</h2>
     </div>
 
-    <!-- Search Input and Buttonss -->
+    <!-- Search Input and Buttons -->
     <div class="flex flex-col flex-grow gap-4">
         <div class="flex justify-center flex-row gap-2">
             <div class="field flex-grow h-full mb-0">
@@ -17,14 +16,9 @@
                     </div>
                 </div>
             </div>
-
-            <button id="search-btn"
-                class="ml-4 h-[47px] w-[114px] flex items-center justify-center gap-2 rounded-full bg-[#4A6DCB] text-white hover:bg-[#4A6DCB] transition duration-300">
-                Search
-            </button>
-            <button
-                class="h-[47px] w-[124px] flex items-center justify-center gap-2 rounded-full bg-[#F3F5FC] text-[#2A4693] hover:bg-[#E2E5E9] transition duration-300">
-                <img src="/assets/img/icons/crop.svg" alt="Icon" class="w-6 h-6">
+            <button id="search-btn" class="button h-button is-primary rounded-full">Search</button>
+            <button class="button h-button rounded-full">
+                <!-- <img src="/assets/img/icons/crop.svg" alt="Icon" class="w-6 h-6"> -->
                 Transfer
             </button>
         </div>
@@ -36,10 +30,9 @@
             </div>
         </div>
 
-        <!-- Popular Domains -->
-        <div class="flex inline-flex justify-center items-center gap-[5px]">
+        <div id="domain-container" class="flex flex-wrap justify-center items-center w-full ">
             @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-                <div class="card p-[20px]">
+                <div class="card-domain popular-domain mx-auto" data-domain="{{ $domain }}">
                     <div class="card-content-product">
                         <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
                         <p class="text-center flex items-center">
@@ -50,259 +43,26 @@
                 </div>
             @endforeach
         </div>
-    </div>
-</div>
-
-<script>
-    document.getElementById('search-btn').addEventListener('click', function () {
-        const searchQuery = document.getElementById('domain-search').value;
-        const dropdownContainer = document.getElementById('dropdown-container');
-        const dropdownContent = document.getElementById('dropdown-content');
-
-        if (searchQuery) {
-            // Simulating search results - replace with actual data
-            dropdownContent.innerHTML = `
-            <div class="message is-success message-body">
-                <div class="flex flex-row">
-                    <p>
-                        <span class="font-bold">${searchQuery}.com</span>
-                        <span>is available</span>
-                    <p>
-                </div>
-            </div>
-            <div class="message message-body">
-                <p>${searchQuery}.ac.id is not available<p>
-            </div>
-            <div>
-                <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
-                <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
-                Indonesia, here are some domain name recommendations with education-related
-                TLD:</p>
-                <div class="message is-primary message-body">
-                <div class="flex flex-row">
-                    <p>
-                        <span class="font-bold">${searchQuery}.edu</span>
-                        <span>is available</span>
-                    <p>
-                </div>
-            </div>
-            
-        `;
-
-            // Apply animation class to show the dropdown
-            dropdownContainer.classList.add('show');
-        } else {
-            // Hide the container if there's no search
-            dropdownContainer.classList.remove('show');
-        }
-    });
-
-</script>
 
 
-
-
-
-
-
-
-
-
-<!-- 
-        <div class="">
-            <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
-            <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
-                Indonesia, here are some domain name recommendations with education-related
-                TLD:</p>
-            <div class="space-y-2">
-
-                <div class="flex justify-between items-center p-4 bg-[#F2F7FE] rounded-lg shadow-sm">
-                    <div>
-                        <p class="text-[#2A4693] font-semibold text-lg">polban.edu</p>
-                        <p class="text-[#2A4693]">Exclusive offer: $1.50/mon for a 2-year
-                            plan</p>
-                    </div>
-                    <button class="bg-[#2A4693] text-white px-4 py-2 rounded-full">Add to
-                        Cart</button>
-                </div>
-
-
-                <div class="flex justify-between items-center p-4 bg-[#F2F7FE] rounded-lg shadow-sm">
-                    <div>
-                        <p class="text-[#2A4693] font-semibold text-lg">pol-ban.ac.id</p>
-                        <p class="text-[#2A4693]">Exclusive offer: $1.50/mon for a 2-year
-                            plan</p>
-                    </div>
-                    <button class="bg-[#2A4693] text-white px-4 py-2 rounded-full">Add to
-                        Cart</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex justify-between items-start">
-            <div class="relative max-w-[300px]">
-
-                <h2
-                    class="text-[36px] w-[300px] font-bold leading-[43.2px] text-[#FFFFFF] font-inter absolute top-[-40px]">
-                    Search Your Domain Name
-                </h2>
-            </div>
-
-
-        </div>
-
-        <div class="text-right shift-down">
+        <div class="w-full flex justify-center lg:justify-end">
             <a href="#" id="view-price-list"
-                class="text-[#FFFFFF] font-inter text-[18px] font-semibold leading-[23.4px]">
+                class="text-[#FFFFFF] font-inter text-[18px] font-semibold no-hover inline-flex items-center">
                 View Price List
-                <svg class="w-4 h-4 inline ml-1 transform transition-transform duration-300" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                    </path>
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="transform transition-transform duration-300 ml-1">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M5.07219 7.94719C5.44645 7.57294 6.05323 7.57294 6.42748 7.94719L11.4998 13.0195L16.5722 7.94719C16.9464 7.57294 17.5532 7.57294 17.9275 7.94719C18.3017 8.32145 18.3017 8.92823 17.9275 9.30248L12.1775 15.0525C11.8032 15.4267 11.1964 15.4267 10.8222 15.0525L5.07219 9.30248C4.69794 8.92823 4.69794 8.32145 5.07219 7.94719Z"
+                        fill="white" />
                 </svg>
             </a>
         </div>
-
-        <div class="left-20 bottom-[-57px] opacity-100">
-            <img src="/assets/img/bg/globewhite.svg" alt="">
-            <img id="globe-gradient" src="/assets/img/bg/globewhite.svg" alt=""
-                class="absolute left-[43px] -top-20 hidden">
-        </div>
-
-
-
     </div>
-</div> -->
 
+    <!-- SVG positioned in the bottom left corner -->
+    <div class="absolute left-[139.5px] bottom-0 hidden lg:block">
+        <img src="/assets/img/bg/globewhite.svg" alt="" class="w-auto h-auto">
+    </div>
 
-
-
-
-
-
-<!-- 
-
-
-    <style>
-        .container-fluid {
-            width: 100%;
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        @media (max-width: 1440px) {
-            .container-fluid>div {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container-fluid>div {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-
-        #dropdown-container {
-            max-height: 300px;
-            /* Ubah sesuai dengan tinggi yang Anda inginkan */
-            overflow-y: auto;
-        }
-
-
-        /* Mengatur jarak tombol-tombol kontrol dari tepi container */
-        #dropdown-container .flex {
-            margin-right: 0.5rem;
-        }
-
-        #expandable-div {
-            transition: height 0.5s ease-in-out;
-        }
-
-        #globe-gradient {
-            position: absolute;
-            top: 108px;
-            /* Sesuaikan dengan nilai yang Anda inginkan */
-            left: 0;
-            /* Sesuaikan dengan nilai yang Anda inginkan */
-            width: 100%;
-            /* Atur lebar sesuai kebutuhan */
-            height: auto;
-            /* Atur tinggi sesuai kebutuhan */
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            transform: rotate(180deg);
-        }
-
-        .shift-down {
-            transform: translateY(400px);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .text-right {
-            position: relative;
-            top: 0;
-            /* Atur posisi awal sesuai kebutuhan */
-            transition: top 0.3s ease-in-out;
-        }
-    </style> -->
-<!-- 
-
-<script>
-    document.getElementById('search-btn').addEventListener('click', function () {
-        const searchQuery = document.getElementById('domain-search').value.trim();
-        const expandableDiv = document.getElementById('expandable-div');
-        const globeGradient = document.getElementById('globe-gradient');
-        const viewPriceList = document.getElementById('view-price-list');
-
-        if (searchQuery === 'polban.ac.id') {
-            // Show dropdown
-            document.getElementById('dropdown-container').classList.remove('hidden');
-
-            // Show globe gradient with fade-in effect
-            globeGradient.classList.remove('hidden');
-            setTimeout(() => {
-                globeGradient.style.opacity = 1;
-            }, 10); // Use a short timeout to ensure transition works
-
-            // Apply shift-down class
-            viewPriceList.classList.add('shift-down');
-        } else {
-            // Hide dropdown if the search query does not match
-            document.getElementById('dropdown-container').classList.add('hidden');
-
-            // Hide globe gradient
-            globeGradient.style.opacity = 0;
-            setTimeout(() => {
-                globeGradient.classList.add('hidden');
-            }, 500); // Match this duration with your transition time
-
-            // Remove shift-down class
-            viewPriceList.classList.remove('shift-down');
-        }
-
-        if (expandableDiv.style.height === '440px' || expandableDiv.style.height === '') {
-            expandableDiv.style.height = '750px'; // Set height ke nilai akhir yang diinginkan
-        } else {
-            expandableDiv.style.height = '440px'; // Kembali ke height awal jika sudah terbuka
-        }
-    });
-
-    asdfasdf
-</script>
-<script>
-    document.querySelector('button.ml-4').addEventListener('click', function () {
-        const domainBoxes = document.querySelectorAll('.grid.grid-cols-5 div');
-        domainBoxes.forEach(box => {
-            box.classList.toggle('shift-down');
-        });
-
-        // Tambahkan class expanded ke div absolute yang diinginkan
-        const absoluteDiv = document.querySelector('.relative .absolute');
-        absoluteDiv.classList.toggle('expanded');
-    });
-
-
-</script> --> --}}
+</div>
+ --}}

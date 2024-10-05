@@ -95,6 +95,31 @@ class HostingController extends Controller
         ]);
     }
 
+    public function wordpress()
+    {
+        $hostingGroups = HostingGroup::all();
+        $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
+
+        // Define the custom order of the hosting plans
+        $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
+
+        $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
+            foreach ($hostingPlanOrder as $key => $name) {
+                // Check if the plan name contains one of the keywords
+                if (str_contains($hostingPlan->name, $name)) {
+                    return $key; // Return the index based on the keyword
+                }
+            }
+            return count($hostingPlanOrder); // Default to end of the list if no match
+        });
+
+        // Return the landing page view with testimonials and sorted hosting plans
+        return view('app.hosting-plans.pricing.wordpress-hosting.index', [
+            'hostingPlans' => $sortedHostingPlans,
+            'hostingGroups' => $hostingGroups
+        ]);
+    }
+
     public function product()
     {
         return view('app.admin.products.index');

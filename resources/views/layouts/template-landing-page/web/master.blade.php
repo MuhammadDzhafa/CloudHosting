@@ -100,6 +100,8 @@
             @yield('about')
             @yield('privacy-policy')
             @yield('terms-and-conditions')
+            @yield('cloud-hosting')
+            @yield('wordpress-hosting')
 
             {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
         </div>
