@@ -21,7 +21,7 @@ class ContactUsController extends Controller
             'email' => 'required|email|max:255',
             'message' => 'required|string',
         ]);
-
+        
         // Simpan data ke database menggunakan model ContactUs
         ContactUs::create($validatedData);
 

@@ -52,7 +52,7 @@
 
         <div class="w-full md:w-1/2 flex-grow">
             <div class="form-card">
-                <form action="{{ route('contact-us.store') }}" method="POST">
+                <form action="/contact-us" method="POST">
                 @csrf
                     <div class="field">
                         <label>Name</label>
@@ -64,7 +64,7 @@
                     <div class="field">
                         <label>Email Address</label>
                         <div class="control">
-                            <input type="text" name="email" class="input" placeholder="" value="{{ old('Email') }}">
+                            <input type="email" name="email" class="input" placeholder="" value="{{ old('Email') }}">
                         </div>
                     </div>
 
