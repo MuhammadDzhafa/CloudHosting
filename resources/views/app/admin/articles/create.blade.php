@@ -113,3 +113,106 @@
     });
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const editLinks = document.querySelectorAll('.edit-link');
+        const addNewButton = document.querySelector('.addData'); // Button to add new article
+        const form = document.querySelector('#article-form');
+        const fileInput = document.querySelector('#image');
+        const fileNameDisplay = document.querySelector('#image-name');
+        const imagePreview = document.querySelector('#image-preview');
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0]; // Get selected file
+            if (file) {
+                fileNameDisplay.textContent = file.name; // Display file name
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result; // Show image preview
+                };
+                reader.readAsDataURL(file);
+            } else {
+                fileNameDisplay.textContent = 'Choose a file...'; // Reset if no file selected
+                imagePreview.src = ''; // Clear image preview
+            }
+        });
+
+        // Function to open modal and reset form
+        function openModal(isEdit = false) {
+            if (isEdit) {
+                document.querySelector('#modal-title').textContent = 'Edit Article';
+            } else {
+                resetForm();
+                document.querySelector('#modal-title').textContent = 'Add Article';
+            }
+            document.querySelector('#addandedit').classList.add('is-active');
+        }
+
+        // Handle add button click
+        addNewButton.addEventListener('click', () => {
+            resetForm(); // Reset the form for adding a new article
+            document.querySelector('#modal-title').textContent = 'Add Article'; // Set modal title
+            form.action = "{{ route('articles.store') }}"; // Set action for adding
+            form.method = 'POST'; // Set method to POST
+        });
+
+        // Handle edit button clicks
+        editLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const id = link.getAttribute('data-id');
+                const title = link.getAttribute('data-title');
+                const author = link.getAttribute('data-author');
+                const content = link.getAttribute('data-content');
+                const image = link.getAttribute('data-image');
+
+                // Set modal action for editing
+                form.action = `/articles/${id}`; // Set action for PUT
+                form.method = 'POST'; // Set method to POST
+
+                // Populate form fields
+                document.querySelector('#title').value = title;
+                document.querySelector('#content').value = content;
+                document.querySelector('#author').value = author;
+                document.querySelector('#image-preview').src = image ? `/storage/article_images/${image}` : '';
+                document.querySelector('#image-name').textContent = image ? image.split('/').pop() : 'Choose a file…';
+
+                // Ensure PUT method hidden input is there
+                let methodField = form.querySelector('input[name="_method"]');
+                if (!methodField) {
+                    methodField = document.createElement('input');
+                    methodField.type = 'hidden';
+                    methodField.name = '_method';
+                    methodField.value = 'PUT';
+                    form.appendChild(methodField);
+                }
+
+                // Open modal
+                openModal(true);
+            });
+        });
+
+        // Modal close handling
+        const modal = document.getElementById('addandedit');
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal || event.target.classList.contains('h-modal-close')) {
+                resetForm(); // Reset form when modal is closed
+                modal.classList.remove('is-active'); // Close modal
+            }
+        });
+
+        // Function to reset the form
+        function resetForm() {
+            form.reset(); // Clear all fields
+            document.querySelector('#image-preview').src = ''; // Clear image preview
+            document.querySelector('#image-name').textContent = 'Choose a file…'; // Reset file name display
+
+            // Remove hidden input for PUT method if it exists
+            const methodField = form.querySelector('input[name="_method"]');
+            if (methodField) {
+                methodField.remove();
+            }
+        }
+    });
+</script>
+
+
