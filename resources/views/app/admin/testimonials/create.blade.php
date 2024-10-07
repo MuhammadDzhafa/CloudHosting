@@ -63,9 +63,9 @@
                                 <input type="text" class="input" id="instagram" name="instagram">
                             </div>
                         </div>
-                        <div class="modal-card-foot is-end">
-                            <a class="button h-button is-rounded h-modal-close">Cancel</a>
-                            <button type="submit" class="button h-button is-primary is-raised is-rounded">Submit</button>
+                        <div class="modal-card-foot is-centered">
+                            <a class="button h-button h-modal-close">Cancel</a>
+                            <button type="submit" class="button h-button is-primary is-raised">Submit</button>
                         </div>
                         <!-- Modal "Saved!" -->
                         <div id="saved-modal" class="modal h-modal">

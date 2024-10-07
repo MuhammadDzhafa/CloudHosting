@@ -274,6 +274,16 @@
                                                         </label>
                                                         </div>
                                                     </div>                            
+                                                    </div>
+                                                    <div style="padding-left:310px; padding-right:310px">
+                                                        <div class="field">
+                                                        <label class="checkbox is-outlined is-primary" style="padding-left:0px; padding-right:0px">
+                                                            <input type="checkbox" name="best_seller" value="1" {{ $hostingPlan->best_seller ? 'checked' : '' }}>
+                                                            <span></span>
+                                                            Tick If Best Seller
+                                                        </label>
+                                                        </div>
+                                                    </div>                            
                                                 </div>
 
                                                 {{-- <div id="projects-tab" class="tab-content">
@@ -392,7 +402,7 @@
                                                                 <!-- Tambahkan wrapper untuk membuat dua kolom -->
                                                                 <div class="column is-6"> <!-- Kolom pertama -->
                                                                     <div class="column-content">
-                                                                        <div class="field">
+                                                                        <!-- <div class="field">
                                                                             <label>SSD Storage</label>
                                                                             <div class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="regular_main_spec[storage]" value="{{ old('regular_main_spec.storage', optional($regularSpec)->storage ?? 0) }}" required>
@@ -634,7 +644,7 @@
                                                     </div>
                                                 </div> --}}
 
-                                                <div id="custom-pricing-tab" class="tab-content">
+                                                <!-- <div id="custom-pricing-tab" class="tab-content">
                                                     <div class="columns">
                                                         <div class="column" style="border-right: 1px solid #ccc;">
                                                             <label>RAM</label>
@@ -748,7 +758,7 @@
                                                     </div>
                                                 </div> 
 
-                                                <div id="custom-spec-tab" class="tab-content">
+                                                {{-- <!-- <div id="custom-spec-tab" class="tab-content">
                                                     @if ($errors->any())
                                                     <div class="alert alert-danger">
                                                         <ul>

@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -238,38 +238,39 @@
                     </div>
 
                     {{-- <--Modals--> --}}
-                    <div id="new-group-modal" class="modal h-modal">
-                        <div class="modal-background h-modal-close"></div>
-                        <div class="modal-content">
-                            <div class="modal-card">
-                                <header class="modal-card-head">
-                                    <h3 id="modal-title">Create a New Group</h3>
-                                    <button class="h-modal-close ml-auto" aria-label="close">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </header>
-                                <form method="POST" id="new-group-form" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="modal-card-body">
-                                        <div class="inner-content">
-                                            <div class="field">
-                                                <label class="label" style="font-weight:400;">Enter Group Name</label>
-                                                <div class="control">
-                                                    <input type="text" class="input" name="name"
-                                                        placeholder="E.g. Cloud Hosting" required>
+                        <div id="new-group-modal" class="modal h-modal">
+                            <div class="modal-background h-modal-close"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <h3 id="modal-title">Create a New Group</h3>
+                                        <button class="h-modal-close ml-auto" aria-label="close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </header>
+                                    <form method="POST" id="new-group-form" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="modal-card-body">
+                                            <div class="inner-content">
+                                                <div class="field">
+                                                    <label class="label" style="font-weight:400;">Enter Group
+                                                        Name</label>
+                                                    <div class="control">
+                                                        <input type="text" class="input" name="name"
+                                                            placeholder="E.g. Cloud Hosting" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-card-foot is-centered">
-                                        <button type="button" class="button h-button h-modal-close">Cancel</button>
-                                        <button type="submit"
-                                            class="button h-button is-primary is-raised">Submit</button>
-                                    </div>
-                                </form>
+                                        <div class="modal-card-foot is-centered">
+                                            <button type="button" class="button h-button h-modal-close">Cancel</button>
+                                            <button type="submit"
+                                                class="button h-button is-primary is-raised">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
                     <div id="create-new-product-modal" class="modal h-modal">
@@ -287,63 +288,65 @@
                         </div>
                     </div>
 
-                    <div id="confirm-delete-modal" class="modal h-modal">
-                        <div class="modal-background h-modal-close"></div>
-                        <div class="modal-content">
-                            <div class="modal-card">
-                                <header class="modal-card-head">
-                                    <h3>Confirm Delete</h3>
-                                    <button class="h-modal-close ml-auto" aria-label="close">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </header>
-                                @include('app.admin.hosting-plans.delete')
+                        <div id="confirm-delete-modal" class="modal h-modal">
+                            <div class="modal-background h-modal-close"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <h3>Confirm Delete</h3>
+                                        <button class="h-modal-close ml-auto" aria-label="close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </header>
+                                    @include('app.admin.hosting-plans.delete')
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="page-content-inner">
+                        <div class="page-content-inner">
 
-                        <!-- Datatable -->
+                            <!-- Datatable -->
 
 
-                        <div class="table-wrapper" data-simpleba style="min-height:auto">
-                            <table id="users-datatable" class="table is-datatable is-hoverable">
-                                <thead style="background-color:#EDE5F6;">
-                                    <tr class="color-row">
-                                        <th>PRODUCT NAME</th>
-                                        <th>TYPE</th>
-                                        <th>DESCRIPTION</th>
-                                        <th>STORAGE</th>
-                                        <th>CPU</th>
-                                        <th>RAM</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($hostingGroups as $group)
-                                    <!-- Tampilkan nama grup -->
-                                    <tr class="is-striped-row" style="background-color:#F2F3F3;">
-                                        <td>
-                                            <span style="font-weight: 500;">{{ $group->name }}</span>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex justify-end">
-                                                <a href="javascript:void(0);" class="edit-link"
-                                                    data-id="{{ $group->hosting_group_id }}"
-                                                    data-name="{{ $group->name}}">
-                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-3">
-                                                </a>
-
-                                                <a href=""><img src="assets/img/product/trash.svg" alt=""></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                            <div class="table-wrapper" data-simpleba style="min-height:auto">
+                                <table id="users-datatable" class="table is-datatable is-hoverable">
+                                    <thead style="background-color:#EDE5F6;">
+                                        <tr class="color-row">
+                                            <th>PRODUCT NAME</th>
+                                            <th>TYPE</th>
+                                            <th>DESCRIPTION</th>
+                                            <th>STORAGE</th>
+                                            <th>CPU</th>
+                                            <th>RAM</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($hostingGroups as $group)
+                                            <!-- Tampilkan nama grup -->
+                                            <tr class="is-striped-row" style="background-color:#F2F3F3;">
+                                                <td>
+                                                    <span style="font-weight: 500;">{{ $group->name }}</span>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <div class="d-flex justify-end">
+                                                        <a href="javascript:void(0);" class="edit-link"
+                                                            data-id="{{ $group->hosting_group_id }}"
+                                                            data-name="{{ $group->name}}">
+                                                            <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                                        </a>
+                                                        <a href="#"
+                                                            onclick="openDeleteModal('{{ $group->hosting_group_id }}', '{{ $group->name }}', 'group')">
+                                                            <img src="assets/img/product/trash.svg" alt="">
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
                                     <!-- Tampilkan hosting plans yang berelasi dengan grup -->
                                     {{-- @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
@@ -397,23 +400,23 @@
                                     @endforeach
 
 
-                                    <!-- Jika tidak ada hosting plans, tampilkan pesan -->
-                                    @if($group->hostingPlans->isEmpty())
-                                    <tr>
-                                        <td colspan="7">No hosting plans available for this group.</td>
-                                    </tr>
-                                    @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div id="paging-first-datatable" class="pagination datatable-pagination">
-                            <div class="datatable-info">
-                                <span></span>
+                                            <!-- Jika tidak ada hosting plans, tampilkan pesan -->
+                                            @if($group->hostingPlans->isEmpty())
+                                                <tr>
+                                                    <td colspan="7">No hosting plans available for this group.</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
+                            <div id="paging-first-datatable" class="pagination datatable-pagination">
+                                <div class="datatable-info">
+                                    <span></span>
+                                </div>
+                            </div>
 
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>

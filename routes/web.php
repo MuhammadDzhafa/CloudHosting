@@ -13,6 +13,8 @@ use App\Http\Controllers\HostingPlanController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\HostingGroupController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ContactUsController;
+
 
 
 /* Welcome */
@@ -64,10 +66,13 @@ Route::get('/checkout', [HostingController::class, 'checkout']);
 Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
-Route::get('/pricing', [HostingController::class, 'pricing']);
-Route::get('/about', [HostingController::class, 'about']);
-// Route::get('/faq', [HostingController::class, 'faq']);
+Route::get('/cloud-hosting', [HostingController::class, 'cloud']);
+Route::get('/wordpress-hosting', [HostingController::class, 'wordpress']);
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+Route::get('/about', [HostingController::class, 'about']);
+Route::get('/privacy-policy', [HostingController::class, 'privacy']);
+Route::get('/terms-and-conditions', [HostingController::class, 'termsConditions']);
+Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
 
 
 

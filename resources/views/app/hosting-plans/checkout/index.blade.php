@@ -30,8 +30,10 @@
     <!-- End Google Tag Manager -->
 
     <!--Core CSS -->
-    <link rel="stylesheet" href="assets/css/app.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
@@ -54,15 +56,13 @@
         <div class="pageloader"></div>
         <div class="infraloader is-active"></div>
         <!-- Content Wrapper -->
-        <div id="form-layout-5" class="view-wrapper" data-naver-offset="150" data-menu-item="#home-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile" style="margin-left:unset; width:100%;">
+        <div id="form-layout-5" class="view-wrapper is-webapp" data-naver-offset="150" data-menu-item="#home-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile" style="margin-left:unset; width:100%;">
 
-            <div class="page-content-wrapper">
+            <div class="">
                 @include("layouts.template-landing-page.web.partials.navbar")
-                <div class="page-content is-relative">
-
-
-                    <div class="max-w-[1440px] mx-auto px-4 py-6">
-                        <div class="page-content-inner flex space-x-4">
+                <div class="">
+                    <div class="w-full mx-auto">
+                        <div class="section-frame padding-1 " style="width:unset; width:100%;">
                             <!-- Mobile Steps -->
                             <div class="mobile-steps flex-1">
                                 <ul class="steps has-content-centered is-thin is-vertical">
@@ -105,48 +105,30 @@
                             </div>
 
                             <!-- Form Layout 5 -->
-                            <div class="stepper-form flex-3">
-                                <div class="form-sections" style="width: 100%; max-width: unset;">
+                            <div class="stepper-form" style="max-width: unset; margin: unset; padding-top: unset;">
+                                <div class="form-sections w-full"  style="max-width:unset;">
                                     @include('app.hosting-plans.checkout.step1')
                                 </div>
-
-
                                 <div id="form-step-1" class="form-section" style="font-family: Inter;">
                                     @include('app.hosting-plans.checkout.step2')
                                 </div>
-
-
                                 <div id="form-step-2" class="form-section">
                                     @include('app.hosting-plans.checkout.step3')
                                 </div>
-
                                 <div id="form-step-3" class="form-section">
                                     @include('app.hosting-plans.checkout.step4')
                                 </div>
-
-
                                 <div id="form-step-4" class="form-section">
                                     @include('app.hosting-plans.checkout.step5')
                                 </div>
-
                                 <div id="form-step-5" class="form-section">
                                     @include('app.hosting-plans.checkout.step6')
                                 </div>
-
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
-                                        <button id="next-button"
-                                            class="button h-button is-bold w-[102px] h-[47px] 
-                                                       px-[16px] py-[12px] gap-[8px] rounded-[8px] 
-                                                       bg-[#4A6DCB] opacity-100">
-                                            <span class="w-[70px] h-[23px] opacity-100 font-inter text-[16px] 
-                                                        font-medium leading-[23.2px] text-center text-[#F3F5FC]">
-                                                Continue
-                                            </span>
-                                        </button>
+                                        <a id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white">Continue</a>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="form-stepper">
                                 <ul class="steps is-vertical is-thin is-short">

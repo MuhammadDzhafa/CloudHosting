@@ -1,61 +1,9 @@
-<div class="tabs-wrapper">
-          <div class="tabs-inner">
-              <div class="tabs">
-                  <ul>
-                      <li data-tab="team-tab3" class="is-active">
-                          <a>
-                              <i data-feather="users"></i>
-                              <span>Team</span>
-                          </a>
-                      </li>
-                      <li data-tab="projects-tab3">
-                          <a>
-                              <i data-feather="box"></i>
-                              <span>Projects</span>
-                          </a>
-                      </li>
-                      <li data-tab="tasks-tab3">
-                          <a>
-                              <i data-feather="check"></i>
-                              <span>Lo</span>
-                          </a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-          
-      
-          <div id="team-tab3" class="tab-content is-active">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid iudicant sensus? Primum quid tu dicis breve? Etiam beatissimum? Ne discipulum abducam, times. Quae diligentissime contra Aristonem dicuntur a Chryippo. Duo Reges: constructio interrete.</p>
-          </div>
-      
-          <div id="projects-tab3" class="tab-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid iudicant sensus? Primum quid tu dicis breve? Etiam beatissimum? Ne discipulum abducam, times. Quae diligentissime contra Aristonem dicuntur a Chryippo. Duo Reges: constructio interrete.</p>
-          </div>
-      
-          <div id="tasks-tab3" class="tab-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid iudicant sensus? Primum quid tu dicis breve? Etiam beatissimum? Ne discipulum abducam, times. Quae diligentissime contra Aristonem dicuntur a Chryippo. Duo Reges: constructio interrete.</p>
-          </div>
-      </div>
-
-<div class="single-accordion">
-    <div class="accordion-header">Accordion Item 1</div>
-    <div class="accordion-content">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-
-    <div class="accordion-header">Accordion Item 2</div>
-    <div class="accordion-content">Et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
-
-    <div class="accordion-header">Accordion Item 3</div>
-    <div class="accordion-content">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</div>
-</div>
-    
-<div class="single-accordion is-exclusive">
-    <div class="accordion-header">Exclusive Item 1</div>
-    <div class="accordion-content">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-
-    <div class="accordion-header">Exclusive Item 2</div>
-    <div class="accordion-content">Et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</div>
-
-    <div class="accordion-header">Exclusive Item 3</div>
-    <div class="accordion-content">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</div>
+<div class="section-frame padding-1" style="background-image: url('assets/img/bg-about.jpg'); background-size: cover; background-position: center; height:604.12px;">
+    <div class="flex flex-col items-center text-center">
+        <img src="assets/img/logos/logo/logoo.svg" alt=" Awan Hosting Logo" class="w-[200px] h-[174.12px]" style="margin-bottom: 50px;">
+        <h2 class="text-[50px] font-bold text-center text-white" style="font-family: Inter; line-height: 60px; margin-bottom:30px;">About Awan Hosting</h2>
+        <p class="text-center text-white w-[1200px]" style="font-family: Inter; font-size: 23px; font-weight: 500; line-height: 29.9px;">
+            Founded in 2024, Awan Hosting began with a simple idea: to provide technology solutions that are both powerful and easy to use. Inspired by the rapid growth of the digital world, we started our journey with the belief that every business, big or small, needs the right tools to thrive in the digital age.
+        </p>
+    </div>
 </div>

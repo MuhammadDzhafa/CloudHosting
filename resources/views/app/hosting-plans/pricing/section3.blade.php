@@ -62,7 +62,7 @@
                     <div class="flex flex-col items-center text-center space-y-4 md:space-y-6">
                         <img src="/assets/img/icons/mails.svg" alt="Unlimited Email" class="w-12 h-12">
                         <h2 class="text-[#3C476C] text-[26px] md:text-[26px] font-[600] lg:w-[306.67px] lg:h-[34px] leading-[33.8px]">
-                            Unlimited Email  
+                            Unlimited Email
                         </h2>
                         <p class="text-[#3C476C] text-[20px] font-[400] lg:w-[306.67px] leading-[26px]">
                             Empower your business with unlimited email accounts for seamless communication, no matter how big your team grows.
@@ -70,7 +70,7 @@
                     </div>
                 </div>
 
-                <!-- Card 6 -->  
+                <!-- Card 6 -->
                 <div class="flex flex-col items-center justify-center lg:w-[366.67px] h-[304px] pt-[30px] gap-[15px] rounded-lg border-[0.67px] border-solid border-[#DEDEDE] bg-white opacity-100">
                     <div class="flex flex-col items-center text-center space-y-4 md:space-y-6">
                         <img src="/assets/img/icons/cloudup.svg" alt="Automatic Backup" class="w-12 h-12">

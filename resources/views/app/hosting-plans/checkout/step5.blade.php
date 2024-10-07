@@ -1,5 +1,5 @@
-<div class="max-w-[1440px] mx-auto p-4 md:p-6">
-    <h2 class="text-[20px] font-normal leading-[26px] text-left w-full md:w-auto lg:w-full" style="background: linear-gradient(104.31deg, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; height: 26px;">
+<div class="w-full">
+    <h2 class="text-[20px] font-normal" style="background: linear-gradient(104.31deg, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; height: 26px;">
         STEP 5
     </h2>
     
@@ -9,7 +9,7 @@
     
 
     <div class="mb-8">
-        <h3 class="font-semibold text-left mt-5 w-full md:w-auto lg:w-[962.8px]" style="height: 30px; font-family: Inter; font-size: 23px; font-weight: 600; line-height: 29.9px; color: #000000;">
+        <h3 class="font-semibold text-left mt-5 w-full md:w-auto" style="height: 30px; font-family: Inter; font-size: 23px; font-weight: 600; line-height: 29.9px; color: #000000;">
             Create an Account
         </h3>
         
@@ -23,14 +23,14 @@
 
         <div class="space-y-4">
             <div>
-                <label class="block mb-1 mt-3 w-full md:w-auto lg:w-[962.8px]" style="height: 23px; font-family: Inter; font-size: 16px; font-weight: 400; line-height: 23.2px; text-align: left; color: #000000;">
+                <label class="block mb-1 mt-3 w-full md:w-auto" style="height: 23px; font-family: Inter; font-size: 16px; font-weight: 400; line-height: 23.2px; text-align: left; color: #000000;">
                     Name
                 </label>
                 
                 <input type="text" placeholder="Name" class="w-full h-[47px] p-[12px] px-[16px] border border-[#DEDEDE] rounded-[8px] opacity-100 bg-white">
             </div>
             <div>
-                <label class="block mb-3 w-full md:w-auto lg:w-[962.8px]" style="height: 23px; font-family: Inter; font-size: 16px; font-weight: 400; line-height: 23.2px; text-align: left; color: #000000;">
+                <label class="block mb-3 w-full md:w-auto" style="height: 23px; font-family: Inter; font-size: 16px; font-weight: 400; line-height: 23.2px; text-align: left; color: #000000;">
                     Email Address
                 </label>
                 
@@ -39,7 +39,7 @@
             </div>
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                 <div class="w-full md:w-1/2">
-                    <label class="w-full md:w-[471.4px] h-[23px] opacity-100 text-[16px] font-normal leading-[23.2px] text-left text-black">Password</label>
+                    <label class="w-full  opacity-100 text-[16px] font-normal leading-[23.2px] text-left text-black">Password</label>
                     
                     <div class="relative">
                         <input type="password" placeholder="Password" class="w-full h-[47px] p-[12px] px-[16px] border border-[#DEDEDE] rounded-[8px] bg-white opacity-100">
@@ -52,8 +52,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2">
-                    <label class="w-full md:w-[471.4px] h-[23px] opacity-100 text-[16px] font-normal leading-[23.2px] text-left text-black">Confirm Password</label>
+                <div class="w-full">
+                    <label class="w-full opacity-100 text-[16px] font-normal leading-[23.2px] text-left text-black">Confirm Password</label>
                     <div class="relative">
                         <input type="password" placeholder="Password" class="w-full h-[47px] p-[12px] px-[16px] border border-[#DEDEDE] rounded-[8px] bg-white opacity-100">
 
@@ -78,8 +78,8 @@
         </div>
 
         <button type="button" class="w-full mt-6 py-3 border border-custom-gray rounded-full bg-white flex items-center justify-center gap-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-custom-gray focus:ring-opacity-50 transition duration-300">
-            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-8 h-8" alt="Google logo">
-            <span class="block w-[195px] h-[26px] text-[20px] font-[500] leading-[26px] text-center text-[#45494A]">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-full h-8" alt="Google logo">
+            <span class="block w-full h-[26px] text-[20px] font-[500] leading-[26px] text-center text-[#45494A]">
                 Sign up with Google
             </span>                                                
         </button>
