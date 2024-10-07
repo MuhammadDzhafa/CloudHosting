@@ -27,10 +27,12 @@
                             <input type="text" class="input is-rounded w-full" placeholder="eg. example.com">
                         </div>
                     </div>
-                    <a class="button h-button is-primary flex items-center justify-center rounded-full px-4" style="background-color: #4A6DCB;">
-                        <img src="assets/img/icons/search.svg" alt="Icon" class="w-4 h-4 mr-2">
-                        Search
-                    </a>
+                    <button id="search-btn" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                        <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
+                        <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                            Search
+                        </span>
+                    </button>
                 </div>
 
 

@@ -102,14 +102,6 @@
                                                         </span>
                                                         <span>Back to Hosting Plans</span>
                                                     </a>
-                                                    <!-- button default
-                                                    <button id="save-button"
-                                                        class="button h-button is-primary is-raised"
-                                                        type="submit">Save Change</button> -->
-                                                    <!-- button savechanges
-                                                    <button id="saveChanges"
-                                                        class="button h-button is-primary is-raised"
-                                                        type="submit">Save Change</button> -->
                                                     <a class="button h-button is-primary is-raised h-modal-trigger" id="open-modal">Save Changes</a>
 
                                                     <!-- Modal Pertanyaan -->
@@ -166,13 +158,15 @@
                                         <div class="tabs-inner">
                                             <div class="tabs is-centered" style="margin-bottom:0px">
                                                 <ul>
-                                                    <li data-tab="team-tab" class="is-active"><a>Product Info</a>
-                                                    </li>
-                                                    <li data-tab="projects-tab"><a>Pricing</a></li>
-                                                    <li data-tab="tasks-tab"><a>Product Specifications</a></li>
-
-                                                    <li data-tab="custom-pricing-tab"><a>Pricing</a></li>
-                                                    <li data-tab="custom-spec-tab"><a>Product Specifications</a></li>
+                                                    @if ($hostingPlan->package_type === 'Custom')
+                                                        <li data-tab="team-tab" class="is-active"><a>Product Info</a></li>
+                                                        <li data-tab="custom-pricing-tab"><a>Pricing</a></li>
+                                                        <li data-tab="custom-spec-tab"><a>Product Specifications</a></li>
+                                                    @else
+                                                        <li data-tab="team-tab" class="is-active"><a>Product Info</a></li>
+                                                        <!-- <li data-tab="projects-tab"><a>Pricing</a></li>
+                                                        <li data-tab="tasks-tab"><a>Product Specifications</a></li> -->
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </div>
@@ -183,6 +177,49 @@
                                                 <div id="team-tab" class="tab-content is-active">
                                                     <div class="columns"
                                                         style="padding-left:310px; padding-right:310px">
+                                                        <div class="column is-6">
+                                                            <div class="column-content">
+                                                                <div class="field" style="flex-basis: 50%;">
+                                                                    <label>Product Type</label>
+                                                                    <div class="dropdown dropdown-trigger"
+                                                                        style="width: 100%;">
+                                                                        <div class="is-trigger" style="width: 100%;">
+                                                                            <button class="button" type="button"
+                                                                                aria-haspopup="true"
+                                                                                aria-controls="type-dropdown-menu"
+                                                                                style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                                                                <span
+                                                                                    id="selectedType">{{ $hostingPlan->product_type }}</span>
+                                                                                <span class="icon is-small"
+                                                                                    style="min-width: 0; min-height: 0;">
+                                                                                    <i class="fas fa-angle-down"
+                                                                                        aria-hidden="true"></i>
+                                                                                </span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="dropdown-menu" id="type-dropdown-menu" role="menu">
+                                                                            <div class="dropdown-content">
+                                                                                <a class="dropdown-item font-size-base"
+                                                                                data-value="Cloud Hosting"
+                                                                                onclick="updateType('Cloud Hosting')">Cloud Hosting</a>
+                                                                                <a class="dropdown-item font-size-base"
+                                                                                data-value="Regular Wordpress Hosting"
+                                                                                onclick="updateType('Wordpress Hosting')">Wordpress Hosting</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <input type="hidden" name="product_type" id="type-hidden"
+                                                                        value="{{ $hostingPlan->product_type }}">
+                                                                </div>
+
+                                                                <div class="field" style="flex-basis: 50%;">
+                                                                    <label>Product Description</label>
+                                                                    <input class="input" name="description"
+                                                                        value="{{ $hostingPlan->description }}"
+                                                                        style="width: 100%; padding: 10px;" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="column is-6">
                                                             <div class="column-content">
                                                                 <div class="field">
@@ -209,7 +246,7 @@
                                                                             <div class="dropdown-content">
                                                                                 @foreach ($hostingGroups as $group)
                                                                                 <a class="dropdown-item font-size-base"
-                                                                                    data-value="Personal Cloud Hosting"
+                                                                                    data-value={{ $group->name }}
                                                                                     onclick="updateGroup('{{ $group->hosting_group_id }}', '{{ $group->name }}')">{{ $group->name }}</a>
                                                                                 @endforeach
                                                                             </div>
@@ -227,58 +264,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="column is-6">
-                                                            <div class="column-content">
-                                                                <div class="field" style="flex-basis: 50%;">
-                                                                    <label>Product Type</label>
-                                                                    <div class="dropdown dropdown-trigger"
-                                                                        style="width: 100%;">
-                                                                        <div class="is-trigger" style="width: 100%;">
-                                                                            <button class="button" type="button"
-                                                                                aria-haspopup="true"
-                                                                                aria-controls="type-dropdown-menu"
-                                                                                style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                                                                                <span
-                                                                                    id="selectedType">{{ $hostingPlan->type }}</span>
-                                                                                <span class="icon is-small"
-                                                                                    style="min-width: 0; min-height: 0;">
-                                                                                    <i class="fas fa-angle-down"
-                                                                                        aria-hidden="true"></i>
-                                                                                </span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="dropdown-menu"
-                                                                            id="type-dropdown-menu" role="menu">
-                                                                            <div class="dropdown-content">
-                                                                                <a class="dropdown-item font-size-base"
-                                                                                    data-value="Regular Cloud Hosting"
-                                                                                    onclick="updateType('Regular Cloud Hosting')">Regular Cloud Hosting</a>
-                                                                                <a class="dropdown-item font-size-base"
-                                                                                    data-value="Regular Wordpress Hosting"
-                                                                                    onclick="updateType('Regular Wordpress Hosting')">Regular Wordpress Hosting</a>
-                                                                                <a class="dropdown-item font-size-base"
-                                                                                    data-value="Custom Cloud Hosting"
-                                                                                    onclick="updateType('Custom Cloud Hosting')">Custom Cloud Hosting</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <input type="hidden" name="type" id="type-hidden"
-                                                                        value="{{ $hostingPlan->type }}">
-                                                                </div>
-
-                                                                <div class="field" style="flex-basis: 50%;">
-                                                                    <label>Product Description</label>
-                                                                    <input class="input" name="description"
-                                                                        value="{{ $hostingPlan->description }}"
-                                                                        style="width: 100%; padding: 10px;" required>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
+                                                    <div style="padding-left:310px; padding-right:310px">
+                                                        <div class="field">
+                                                        <label class="checkbox is-outlined is-primary" style="padding-left:0px; padding-right:0px">
+                                                            <input type="checkbox" name="best_seller" value="1" {{ $hostingPlan->best_seller ? 'checked' : '' }}>
+                                                            <span></span>
+                                                            Tick If Best Seller
+                                                        </label>
+                                                        </div>
+                                                    </div>                            
                                                 </div>
 
-                                                <div id="projects-tab" class="tab-content">
+                                                {{-- <div id="projects-tab" class="tab-content">
                                                     <div class="table-wrapper" style="min-height:100px" data-simplebar>
                                                         <table id="users-datatable"
                                                             class="table is-datatable is-hoverable has-text-centered">
@@ -373,10 +371,10 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
 
-                                                <div id="tasks-tab" class="tab-content">
+                                                {{-- <div id="tasks-tab" class="tab-content">
                                                     @if ($errors->any())
                                                     <div class="alert alert-danger">
                                                         <ul>
@@ -396,23 +394,20 @@
                                                                     <div class="column-content">
                                                                         <div class="field">
                                                                             <label>SSD Storage</label>
-                                                                            <div
-                                                                                class="control is-inline-flex is-align-items-center">
-                                                                                <input class="input" name="storage"
-                                                                                    value="{{ old('storage', $hostingPlan->storage) }}" required>
-                                                                                <p class=" ml-2">GB</p>
+                                                                            <div class="control is-inline-flex is-align-items-center">
+                                                                                <input class="input" name="regular_main_spec[storage]" value="{{ old('regular_main_spec.storage', optional($regularSpec)->storage ?? 0) }}" required>
+                                                                                <p class="ml-2">GB</p>
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="field">
                                                                             <label>CPU</label>
-                                                                            <div
-                                                                                class="control is-inline-flex is-align-items-center">
-                                                                                <input class="input" name="CPU"
-                                                                                    value="{{ old('CPU', $hostingPlan->CPU) }}" required>
-                                                                                <p class=" ml-2">Core</p>
+                                                                            <div class="control is-inline-flex is-align-items-center">
+                                                                                <input class="input" name="regular_main_spec[CPU]" value="{{ old('regular_main_spec.CPU', optional($regularSpec)->CPU ?? 0) }}" required>
+                                                                                <p class="ml-2">Core</p>
                                                                             </div>
                                                                         </div>
+
 
                                                                         <div class="field">
                                                                             <label>Entry Process</label>
@@ -438,18 +433,15 @@
 
                                                                 <div class="column is-6"> <!-- Kolom kedua -->
                                                                     <div class="column-content">
-
                                                                         <div class="field">
                                                                             <label>RAM</label>
-                                                                            <div
-                                                                                class="control is-inline-flex is-align-items-center">
-                                                                                <input class="input" name="RAM"
-                                                                                    value="{{ old('RAM', $hostingPlan->RAM) }}"
+                                                                            <div class="control is-inline-flex is-align-items-center">
+                                                                                <input class="input" name="regular_main_spec[RAM]" 
+                                                                                    value="{{ old('regular_main_spec.RAM', optional($regularSpec)->RAM ?? 0) }}" 
                                                                                     placeholder="0" required>
-                                                                                <p class=" ml-2">GB</p>
+                                                                                <p class="ml-2">GB</p>
                                                                             </div>
                                                                         </div>
-
 
                                                                         <div class="field">
                                                                             <label>I/O</label>
@@ -640,7 +632,7 @@
 
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div id="custom-pricing-tab" class="tab-content">
                                                     <div class="columns">
@@ -649,7 +641,7 @@
                                                             <div class="field">
                                                                 <label>Multiple</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" id="multiple_ram" name="multiple_ram" style="width: 100%;" required>
+                                                                    <input class="input w-full" id="multiple_ram" name="custom_main_spec[multiplier_RAM]" style="width: 100%;" value="{{ old('custom_main_spec.multiplier_RAM', optional($customSpec)->multiplier_RAM ?? 0) }}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="columns">
@@ -657,7 +649,7 @@
                                                                     <div class="field">
                                                                         <label>Range (Unit: GB)</label>
                                                                         <div class="control is-inline-flex is-align-items-center p-0">
-                                                                            <input class="input" id="min_ram" name="min_ram" placeholder="0" disabled>
+                                                                            <input class="input" id="min_ram" name="custom_main_spec[min_RAM]" placeholder="0" value="{{ old('custom_main_spec.min_RAM', optional($customSpec)->min_RAM) }}" required>
                                                                             <p class="ml-2">To</p>
                                                                         </div>
                                                                     </div>
@@ -666,7 +658,7 @@
                                                                     <div class="field">
                                                                         <label>&nbsp;</label>
                                                                         <div class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" id="max_ram" name="max_ram" required>
+                                                                            <input class="input" id="max_ram" name="custom_main_spec[max_RAM]" value="{{ old('custom_main_spec.max_RAM', optional($customSpec)->max_RAM ?? 0) }}" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -675,25 +667,26 @@
                                                             <div class="field">
                                                                 <label>Cost (USD)</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_ram" style="width: 100%;" required>
+                                                                    <input class="input w-full" name="custom_main_spec[price_RAM]" value="{{ old('custom_main_spec.price_RAM', optional($customSpec)->price_RAM ?? 0) }}" style="width: 100%;" required>
                                                                 </div>
                                                             </div>
                                                         </div>
+
 
                                                         <div class="column" style="border-right: 1px solid #ccc;">
                                                             <label>CPU</label>
                                                             <div class="field">
                                                                 <label>Multiple</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" id="multiple_cpu" name="multiple_cpu" style="width: 100%;" required>
+                                                                    <input class="input w-full" id="multiple_cpu" name="custom_main_spec[multiplier_CPU]" style="width: 100%;" value="{{ old('custom_main_spec.multiplier_CPU', optional($customSpec)->multiplier_CPU ?? 0) }}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="columns">
                                                                 <div class="column">
                                                                     <div class="field">
-                                                                        <label>Range (Unit: GB)</label>
+                                                                        <label>Range (Unit: GHz)</label> <!-- Changed unit from GB to GHz for CPU -->
                                                                         <div class="control is-inline-flex is-align-items-center p-0">
-                                                                            <input class="input" id="min_cpu" name="min_cpu" placeholder="0" disabled>
+                                                                            <input class="input" id="min_cpu" name="custom_main_spec[min_CPU]" placeholder="0" value="{{ old('custom_main_spec.min_CPU', optional($customSpec)->min_CPU) }}" required>
                                                                             <p class="ml-2">To</p>
                                                                         </div>
                                                                     </div>
@@ -702,7 +695,7 @@
                                                                     <div class="field">
                                                                         <label>&nbsp;</label>
                                                                         <div class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" id="max_cpu" name="max_cpu" required>
+                                                                            <input class="input" id="max_cpu" name="custom_main_spec[max_CPU]" value="{{ old('custom_main_spec.max_CPU', optional($customSpec)->max_CPU ?? 0) }}" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -711,17 +704,18 @@
                                                             <div class="field">
                                                                 <label>Cost (USD)</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
+                                                                    <input class="input w-full" name="custom_main_spec[price_CPU]" value="{{ old('custom_main_spec.price_CPU', optional($customSpec)->price_CPU ?? 0) }}" style="width: 100%;" required>
                                                                 </div>
                                                             </div>
                                                         </div>
+
 
                                                         <div class="column">
                                                             <label>SSD Storage</label>
                                                             <div class="field">
                                                                 <label>Multiple</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" id="multiple_ssd" name="multiple_ssd" style="width: 100%;" required>
+                                                                    <input class="input w-full" id="multiple_ssd" name="custom_main_spec[multiplier_storage]" style="width: 100%;" value="{{ old('custom_main_spec.multiplier_storage', optional($customSpec)->multiplier_storage ?? 0) }}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="columns">
@@ -729,7 +723,7 @@
                                                                     <div class="field">
                                                                         <label>Range (Unit: GB)</label>
                                                                         <div class="control is-inline-flex is-align-items-center p-0">
-                                                                            <input class="input" id="min_ssd" name="min_ssd" placeholder="0" disabled>
+                                                                            <input class="input" id="min_ssd" name="custom_main_spec[min_storage]" placeholder="0" value="{{ old('custom_main_spec.min_storage', optional($customSpec)->min_storage) }}" required>
                                                                             <p class="ml-2">To</p>
                                                                         </div>
                                                                     </div>
@@ -738,7 +732,7 @@
                                                                     <div class="field">
                                                                         <label>&nbsp;</label>
                                                                         <div class="control is-inline-flex is-align-items-center">
-                                                                            <input class="input" id="max_ssd" name="max_ssd" required>
+                                                                            <input class="input" id="max_ssd" name="custom_main_spec[max_storage]" value="{{ old('custom_main_spec.max_storage', optional($customSpec)->max_storage ?? 0) }}" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -747,13 +741,12 @@
                                                             <div class="field">
                                                                 <label>Cost (USD)</label>
                                                                 <div class="control is-inline-flex is-align-items-center" style="width: 100%;">
-                                                                    <input class="input w-full" name="cost_cpu" style="width: 100%;" required>
+                                                                    <input class="input w-full" name="custom_main_spec[price_storage]" value="{{ old('custom_main_spec.price_storage', optional($customSpec)->price_storage ?? 0) }}" style="width: 100%;" required>
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
-                                                </div>
+                                                </div> 
 
                                                 <div id="custom-spec-tab" class="tab-content">
                                                     @if ($errors->any())
@@ -991,8 +984,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                </div>
+                                                </div> 
                                             </div>
                                         </div>
                                     </div>

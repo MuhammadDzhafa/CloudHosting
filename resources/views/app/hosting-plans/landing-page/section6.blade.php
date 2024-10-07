@@ -95,7 +95,7 @@
                     <div class="flex flex-col md:flex-row items-center w-full"> <!-- flex-col untuk mobile, flex-row untuk desktop -->
                         <div class="custom-total-price">
                             <span class="custom-dollar-sign">Rp</span>
-                            <span id="total-price" class="custom-total-amount">1.99</span>
+                            <span id="total-price" class="custom-total-amount">15000</span>
                             <span class="custom-monthly">/mon</span>
                         </div>
                         <button class="custom-order-button mt-4 md:mt-0"> <!-- Tambahkan mt-4 untuk margin-top di mobile -->
@@ -111,21 +111,21 @@
                 </div>
             </div>
             @foreach ($hostingGroups as $group)
-            <div id="{{ strtolower($group->name) }}-tab" class="tab-content">
-                <div class="flex justify-center">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                        @foreach ($hostingPlans as $hostingPlan)
-                        @if($hostingPlan->hosting_group_id === $group->hosting_group_id)
-                        <div
-                            class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
-                            <h5
-                                class="text-xl font-bold mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center text-[#4A6DCB]">
-                                {{ $hostingPlan->name }}
-                            </h5>
-                            <p
-                                class="mb-2 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-500,#7C7C7C)]">
-                                {{ $hostingPlan->description }}
-                            </p>
+                <div id="{{ strtolower($group->name) }}-tab" class="tab-content">
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+                            @foreach ($hostingPlans as $hostingPlan)
+                                @if($hostingPlan->hosting_group_id === $group->hosting_group_id)
+                                    <div
+                                        class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 {{ str_contains(strtolower($hostingPlan->name), 'alto') ? 'bg-gradient-custom' : 'bg-white' }}">
+                                        <h5
+                                            class="text-xl font-bold mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center text-[#4A6DCB]">
+                                            {{ $hostingPlan->name }}
+                                        </h5>
+                                        <p
+                                            class="mb-2 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center text-[color:var(--Base-500,#7C7C7C)]">
+                                            {{ $hostingPlan->description }}
+                                        </p>
 
                             @foreach($hostingPlan->prices as $price)
                             @if($price->duration === 'monthly')
@@ -185,7 +185,6 @@
         hostingPlans.forEach(function(plan) {
             const planNameElement = plan.querySelector('h5');
             if (planNameElement && planNameElement.textContent.toLowerCase().includes('alto')) {
-                plan.classList.add('bg-gradient-custom', 'text-white'); // Add background and text style
                 planNameElement.classList.add('text-white'); // Change title text color
 
                 // Change description color to white

@@ -1,11 +1,3 @@
-<!-- @foreach ($faqs as $category => $items)
-                        <li data-tab="{{ strtolower(str_replace(' ', '-', $category)) }}" class="{{ $loop->first ? 'is-active' : '' }}">
-                            <a>
-                                <i data-feather="archive"></i>
-                                <span>{{ $category }}</span>
-                            </a>
-                        </li>
-                    @endforeach -->
 @php
 $icons = [
 'Domain' => 'globe',

@@ -1,4 +1,4 @@
-<div class="section-frame padding-1" style="background: #fff;">
+<div class="section-frame padding-1" style="background: #fff; padding: 120px 100px 0 120px;">
     <div class="flex flex-wrap items-center">
         <div class="w-full lg:w-1/2">
             <h1 class="font-inter text-[50px] font-bold leading-[60px] text-gradient mb-4 text-left">
