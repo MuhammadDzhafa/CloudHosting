@@ -112,18 +112,116 @@
                     </div>
                 </div>
 
+                <div class="field dropdown-filter">
+                    @php
+                    $filters = ['View All', 'Popular', 'Country', 'City', 'Education', 'Technology', 'Health', 'Business', 'Hobby', 'Profession', 'Company'];
+                    @endphp
+                    @php
+                    $domains = [
+                    // Popular
+                    ['tld' => '.com', 'price' => 1.99, 'category' => 'Popular'],
+                    ['tld' => '.net', 'price' => 2.99, 'category' => 'Popular'],
+                    ['tld' => '.xyz', 'price' => 0.99, 'category' => 'Popular'],
+                    ['tld' => '.io', 'price' => 3.99, 'category' => 'Popular'],
+                    ['tld' => '.co', 'price' => 5.99, 'category' => 'Popular'],
+
+                    // Country
+                    ['tld' => '.co.id', 'price' => 5.99, 'category' => 'Country'],
+                    ['tld' => '.id', 'price' => 3.99, 'category' => 'Country'],
+                    ['tld' => '.us', 'price' => 2.99, 'category' => 'Country'],
+                    ['tld' => '.uk', 'price' => 3.50, 'category' => 'Country'],
+                    ['tld' => '.au', 'price' => 4.50, 'category' => 'Country'],
+
+                    // City
+                    ['tld' => '.nyc', 'price' => 9.99, 'category' => 'City'],
+                    ['tld' => '.london', 'price' => 8.99, 'category' => 'City'],
+                    ['tld' => '.paris', 'price' => 7.99, 'category' => 'City'],
+                    ['tld' => '.tokyo', 'price' => 6.99, 'category' => 'City'],
+                    ['tld' => '.berlin', 'price' => 5.99, 'category' => 'City'],
+
+                    // Education
+                    ['tld' => '.edu', 'price' => 12.99, 'category' => 'Education'],
+                    ['tld' => '.ac.id', 'price' => 6.99, 'category' => 'Education'],
+                    ['tld' => '.school', 'price' => 4.99, 'category' => 'Education'],
+                    ['tld' => '.academy', 'price' => 3.99, 'category' => 'Education'],
+                    ['tld' => '.college', 'price' => 8.50, 'category' => 'Education'],
+
+                    // Technology
+                    ['tld' => '.tech', 'price' => 6.50, 'category' => 'Technology'],
+                    ['tld' => '.ai', 'price' => 10.99, 'category' => 'Technology'],
+                    ['tld' => '.dev', 'price' => 7.99, 'category' => 'Technology'],
+                    ['tld' => '.io', 'price' => 9.99, 'category' => 'Technology'],
+                    ['tld' => '.cloud', 'price' => 4.99, 'category' => 'Technology'],
+
+                    // Health
+                    ['tld' => '.health', 'price' => 11.99, 'category' => 'Health'],
+                    ['tld' => '.clinic', 'price' => 7.99, 'category' => 'Health'],
+                    ['tld' => '.doctor', 'price' => 8.99, 'category' => 'Health'],
+                    ['tld' => '.hospital', 'price' => 6.99, 'category' => 'Health'],
+                    ['tld' => '.care', 'price' => 5.50, 'category' => 'Health'],
+
+                    // Business
+                    ['tld' => '.biz', 'price' => 1.50, 'category' => 'Business'],
+                    ['tld' => '.company', 'price' => 3.50, 'category' => 'Business'],
+                    ['tld' => '.enterprise', 'price' => 4.50, 'category' => 'Business'],
+                    ['tld' => '.solutions', 'price' => 2.99, 'category' => 'Business'],
+                    ['tld' => '.consulting', 'price' => 3.99, 'category' => 'Business'],
+
+                    // Hobby
+                    ['tld' => '.photography', 'price' => 5.99, 'category' => 'Hobby'],
+                    ['tld' => '.bike', 'price' => 3.99, 'category' => 'Hobby'],
+                    ['tld' => '.travel', 'price' => 4.50, 'category' => 'Hobby'],
+                    ['tld' => '.garden', 'price' => 3.50, 'category' => 'Hobby'],
+                    ['tld' => '.cooking', 'price' => 6.50, 'category' => 'Hobby'],
+
+                    // Profession
+                    ['tld' => '.lawyer', 'price' => 9.50, 'category' => 'Profession'],
+                    ['tld' => '.engineer', 'price' => 8.50, 'category' => 'Profession'],
+                    ['tld' => '.accountant', 'price' => 7.50, 'category' => 'Profession'],
+                    ['tld' => '.teacher', 'price' => 6.99, 'category' => 'Profession'],
+                    ['tld' => '.nurse', 'price' => 5.99, 'category' => 'Profession'],
+
+                    // Company
+                    ['tld' => '.company', 'price' => 3.50, 'category' => 'Company'],
+                    ['tld' => '.corp', 'price' => 4.99, 'category' => 'Company'],
+                    ['tld' => '.ltd', 'price' => 2.99, 'category' => 'Company'],
+                    ['tld' => '.inc', 'price' => 6.50, 'category' => 'Company'],
+                    ['tld' => '.group', 'price' => 5.99, 'category' => 'Company'],
+                    ];
+                    @endphp
+
+                    <div class="control">
+                        <div class="h-select">
+                            <div class="select-box">
+                                <span>Select Filter</span>
+                            </div>
+                            <div class="select-icon">
+                                <i data-feather="chevron-down"></i>
+                            </div>
+                            <div class="select-drop has-slimscroll-sm">
+                                <div class="drop-inner">
+                                    @foreach ($filters as $filter)
+                                    <div class="option-row">
+                                        <input type="radio" name="filter" id="filter-{{ $loop->index }}" value="{{ $filter }}" onchange="filterDomains('{{ $filter }}')">
+                                        <label for="filter-{{ $loop->index }}" class="option-meta">
+                                            <span>{{ $filter }}</span>
+                                        </label>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Tabel Domain -->
-                <div class="flex flex-col lg:flex-row md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
-                    <div class="w-full lg:w-1/4 md:w-1/3 bg-blue-50 p-4">
+                <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
+                    <div class="w-full md:w-1/4 bg-blue-50 p-4 md:block hidden">
                         <ul class="space-y-2">
-                            @php
-                            $filters = ['View All', 'Popular', 'Country', 'City', 'Education', 'Technology', 'Health', 'Business', 'Hobby', 'Profession', 'Company'];
-                            @endphp
                             @foreach ($filters as $index => $filter)
                             <li>
                                 <label class="flex items-center">
-                                    <input type="radio" name="filter" class="mr-2 text-blue-600" {{ $index === 0 ? 'checked' : '' }}>
+                                    <input type="radio" name="filter" class="mr-2 text-blue-600" {{ $index === 0 ? 'checked' : '' }} onchange="filterDomains('{{ $filter }}')">
                                     <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
                                         {{ $filter }}
                                     </span>
@@ -132,28 +230,17 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="w-full lg:w-3/4 md:w-2/3 bg-white overflow-x-auto">
+                    <div class="w-full md:w-3/4 bg-white">
                         <table class="table-auto w-full border-collapse">
                             <thead>
-                                <tr class="bg-[#E7ECF8]">
-                                    <th class="py-2 px-4 text-[18px] font-semibold leading-[23.4px] text-center text-[#4A6DCB]">TLD</th>
-                                    <th class="py-2 px-4 text-[18px] font-semibold leading-[23.4px] text-center text-[#4A6DCB]">Price</th>
-                                    <th class="py-2 px-4 text-[18px] font-semibold leading-[23.4px] text-center text-[#4A6DCB]">Order</th>
+                                <tr class="table-header">
+                                    <th class="table-cell" style="text-align: center;">TLD</th>
+                                    <th class="table-cell" style="text-align: center;">Price</th>
+                                    <th class="table-cell" style="text-align: center;">Order</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @php
-                                $domains = ['.com', '.net', '.org', '.co.id', '.ac.id'];
-                                @endphp
-                                @foreach ($domains as $domain)
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-2 px-4 text-[18px] font-normal leading-[23.4px] text-center text-[#999999]">{{ $domain }}</td>
-                                    <td class="py-2 px-4 text-[18px] font-normal leading-[23.4px] text-center text-[#999999]">$ 1.99</td>
-                                    <td class="py-2 px-4 text-center">
-                                        <a class="button h-button is-primary" style="background-color:#4A6DCB; padding:8px 12px 8px 12px; height:unset;">Order</a>
-                                    </td>
-                                </tr>
-                                @endforeach
+                            <tbody id="domain-table-body">
+
                             </tbody>
                         </table>
                     </div>
