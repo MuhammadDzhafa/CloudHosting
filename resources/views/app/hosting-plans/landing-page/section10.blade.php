@@ -3,9 +3,9 @@
         <div class="lifestyle-dashboard lifestyle-dashboard-v5">
             <div class="dashboard-title is-main text-center mb-12">
                 <div class="left mx-auto">
-                    <h2 class="title-section">
+                    <h2 class="title-section text-center">
                         Articles to Read
-                    </h2>                   
+                    </h2>           
                 </div>
             </div>                   
             <div class="media-feed">

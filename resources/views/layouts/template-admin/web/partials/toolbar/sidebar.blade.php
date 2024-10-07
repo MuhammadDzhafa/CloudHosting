@@ -61,6 +61,11 @@
                     <i class="sidebar-svg" data-feather="star"></i>
                 </a>
             </li>
+            <li>
+                <a href="/articles" id="articles" data-content="Articles" class="menu-item">
+                    <i class="sidebar-svg" data-feather="book"></i>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
