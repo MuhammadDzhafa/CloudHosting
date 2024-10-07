@@ -1,8 +1,8 @@
-<div id="form-step-0" class="form-section is-active w-full lg:w-full md:w-[90%] mx-auto px-4 lg:px-0 md:px-0">
+<div id="form-step-0" class="form-section is-active w-full" >
     <div>
         <!-- Konten Utama -->
-        <div class="flex-1 mt-4">
-            <h2 class="text-[20px] font-[400] leading-[26px] text-left w-full lg:w-full md:w-full h-[26px] opacity-100 bg-clip-text text-transparent mb-6" style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text;">
+        <div class="lex-1">
+            <h2 class="text-[20px] font-[400]">
                 STEP 1
             </h2>
             <h1 class="text-4xl font-bold leading-tight mb-6 text-transparent bg-clip-text w-full lg:w-full md:w-full h-[38px]" style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
@@ -33,82 +33,20 @@
                     </a>
                 </div>
 
-
-
                 <!-- Harga Domain -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-                    <div class="text-center bg-white p-[20px] rounded-[16px] border border-[#DEDEDE] shadow-sm" style="height: auto; gap: 10px; border: 0.67px solid #DEDEDE;">
-                        <span class="block text-[18px] font-normal leading-[23.4px] text-[#643493]">.com</span>
-                        <div class="flex justify-center items-center">
-                            <span class="text-[20px] font-semibold leading-[26px] text-center mr-1"
-                                style="width: 13px; height: 26px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                $
-                            </span>
-
-                            <span class="text-[26px] font-bold leading-[33.8px] text-center"
-                                style="width: 54px; height: 34px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                1.99
-                            </span>
-
-                        </div>
+                    <div id="domain-container" class="flex flex-wrap justify-center items-center w-full ">
+                        @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
+                            <div class="card-domain popular-domain mx-auto" data-domain="{{ $domain }}">
+                                <div class="card-content-product">
+                                    <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
+                                    <p class="text-center flex items-center">
+                                        <span class="price-currency text-[20px] font-semibold">$</span>
+                                        <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="text-center bg-white p-[20px] rounded-[16px] border border-[#DEDEDE] shadow-sm" style="width: 196.56px; height: auto; gap: 10px; border: 0.67px solid #DEDEDE;">
-                        <span class="block text-[18px] font-normal leading-[23.4px] text-[#643493]">.net</span>
-                        <div class="flex justify-center items-center">
-                            <span class="text-[20px] font-semibold leading-[26px] text-center mr-1"
-                                style="width: 13px; height: 26px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                $
-                            </span>
-
-                            <span class="text-[26px] font-bold leading-[33.8px] text-center"
-                                style="width: 54px; height: 34px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                1.99
-                            </span>
-                        </div>
-                    </div>
-                    <div class="text-center bg-white p-[20px] rounded-[16px] border border-[#DEDEDE] shadow-sm" style="width: 196.56px; height: auto; gap: 10px; border: 0.67px solid #DEDEDE;">
-                        <span class="block text-[18px] font-normal leading-[23.4px] text-[#643493]">.org</span>
-                        <div class="flex justify-center items-center">
-                            <span class="text-[20px] font-semibold leading-[26px] text-center mr-1"
-                                style="width: 13px; height: 26px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                $
-                            </span>
-
-                            <span class="text-[26px] font-bold leading-[33.8px] text-center"
-                                style="width: 54px; height: 34px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                1.99
-                            </span>
-                        </div>
-                    </div>
-                    <div class="text-center bg-white p-[20px] rounded-[16px] border border-[#DEDEDE] shadow-sm" style="width: 196.56px; height: auto; gap: 10px; border: 0.67px solid #DEDEDE;">
-                        <span class="block text-[18px] font-normal leading-[23.4px] text-[#643493]">.co.id</span>
-                        <div class="flex justify-center items-center">
-                            <span class="text-[20px] font-semibold leading-[26px] text-center mr-1"
-                                style="width: 13px; height: 26px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                $
-                            </span>
-
-                            <span class="text-[26px] font-bold leading-[33.8px] text-center"
-                                style="width: 54px; height: 34px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                1.99
-                            </span>
-                        </div>
-                    </div>
-                    <div class="text-center bg-white p-[20px] rounded-[16px] border border-[#DEDEDE] shadow-sm" style="width: 196.56px; height: auto; gap: 10px; border: 0.67px solid #DEDEDE;">
-                        <span class="block text-[18px] font-normal leading-[23.4px] text-[#643493]">.ac.id</span>
-                        <div class="flex justify-center items-center">
-                            <span class="text-[20px] font-semibold leading-[26px] text-center mr-1"
-                                style="width: 13px; height: 26px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                $
-                            </span>
-
-                            <span class="text-[26px] font-bold leading-[33.8px] text-center"
-                                style="width: 54px; height: 34px; color: transparent; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, rgba(74, 109, 203, 0.95) 70.69%, rgba(100, 210, 247, 0.95) 100%); -webkit-background-clip: text; font-family: 'Inter', sans-serif;">
-                                1.99
-                            </span>
-                        </div>
-                    </div>
-                </div>
 
 
                 <!-- Tabel Domain -->
@@ -179,3 +117,5 @@
                 </div>
             </div>
         </div>
+    </div>
+

@@ -1,4 +1,4 @@
-<div class="p-4 md:p-6 lg:p-8">
+<div class="w-full">
     <h2 class="w-full md:w-auto lg:w-full h-[26px] text-[20px] font-[400] leading-[26px] text-left mb-2" style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
         STEP 6
     </h2>                                        
@@ -10,7 +10,7 @@
     <div class="flex flex-col lg:flex-row lg:space-x-8">
         <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
             <div class="mb-8">
-                <h3 class="w-full md:w-auto lg:w-[491.4px] h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
+                <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
                     Have a Promo Code?
                 </h3>                                                    
                 <div class="flex flex-col sm:flex-row">
@@ -22,24 +22,24 @@
             </div>
 
             <div>
-                <h3 class="w-full md:w-auto lg:w-[491.4px] h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
+                <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
                     Choose Payment Method
                 </h3>                                                    
                 <div class="space-y-3">
                     <div class="flex items-center justify-between w-full h-[47px] px-[20px] rounded-[8px] bg-[#FFFFFF] border border-[#DEDEDE] opacity-100 shadow">
-                        <span class="w-full lg:w-[427.4px] h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Instant Payment</span>
+                        <span class="w-full h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Instant Payment</span>
                         <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </div>
                     <div class="flex items-center justify-between w-full h-[47px] px-[20px] rounded-[8px] bg-[#FFFFFF] border border-[#DEDEDE] opacity-100 shadow">
-                        <span class="w-full lg:w-[427.4px] h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Virtual Account</span>
+                        <span class="w-full h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Virtual Account</span>
                         <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </div>
                     <div class="flex items-center justify-between w-full h-[47px] px-[20px] rounded-[8px] bg-[#FFFFFF] border border-[#DEDEDE] opacity-100 shadow">
-                        <span class="w-full lg:w-[427.4px] h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Credit Card</span>
+                        <span class="w-full h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Credit Card</span>
                         <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>

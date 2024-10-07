@@ -56,12 +56,12 @@
         <h4 class="footer-header">Products</h4>
         <ul>
           <li class="footer-content">
-            <a href="#">Cloud Hosting</a>
+            <a href="/cloud-hosting">Cloud Hosting</a>
           <li class="footer-content">
             <a href="#">WordPress Hosting</a>
           </li>
           <li class="footer-content">
-            <a href="#">Domain</a>
+            <a href="/domain">Domain</a>
           </li>
         </ul>
       </div>

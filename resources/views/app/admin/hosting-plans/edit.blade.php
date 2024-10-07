@@ -158,14 +158,14 @@
                                         <div class="tabs-inner">
                                             <div class="tabs is-centered" style="margin-bottom:0px">
                                                 <ul>
-                                                    @if ($hostingPlan->type === 'Custom Cloud Hosting')
+                                                    @if ($hostingPlan->package_type === 'Custom')
                                                         <li data-tab="team-tab" class="is-active"><a>Product Info</a></li>
                                                         <li data-tab="custom-pricing-tab"><a>Pricing</a></li>
-                                                        <!-- <li data-tab="custom-spec-tab"><a>Product Specifications</a></li> -->
+                                                        <li data-tab="custom-spec-tab"><a>Product Specifications</a></li>
                                                     @else
                                                         <li data-tab="team-tab" class="is-active"><a>Product Info</a></li>
-                                                        <li data-tab="projects-tab"><a>Pricing</a></li>
-                                                        <li data-tab="tasks-tab"><a>Product Specifications</a></li>
+                                                        <!-- <li data-tab="projects-tab"><a>Pricing</a></li>
+                                                        <li data-tab="tasks-tab"><a>Product Specifications</a></li> -->
                                                     @endif
                                                 </ul>
                                             </div>
@@ -241,22 +241,14 @@
                                                                                 </span>
                                                                             </button>
                                                                         </div>
-                                                                        <div class="dropdown-menu" id="type-dropdown-menu" role="menu">
+                                                                        <div class="dropdown-menu"
+                                                                            id="group-dropdown-menu" role="menu">
                                                                             <div class="dropdown-content">
-                                                                                @if ($hostingPlan->type === 'Custom Cloud Hosting')
-                                                                                    <a class="dropdown-item font-size-base"
-                                                                                    data-value="Custom Cloud Hosting"
-                                                                                    onclick="updateType('Custom Cloud Hosting')" disabled>Custom Cloud Hosting</a>
-                                                                                    
-                                                                                @else
-                                                                                    <a class="dropdown-item font-size-base"
-                                                                                    data-value="Regular Cloud Hosting"
-                                                                                    onclick="updateType('Regular Cloud Hosting')"
-                                                                                    disabled>Regular Cloud Hosting</a>
-                                                                                    <a class="dropdown-item font-size-base"
-                                                                                    data-value="Regular Wordpress Hosting"
-                                                                                    onclick="updateType('Regular Wordpress Hosting')">Regular Wordpress Hosting</a>
-                                                                                @endif
+                                                                                @foreach ($hostingGroups as $group)
+                                                                                <a class="dropdown-item font-size-base"
+                                                                                    data-value={{ $group->name }}
+                                                                                    onclick="updateGroup('{{ $group->hosting_group_id }}', '{{ $group->name }}')">{{ $group->name }}</a>
+                                                                                @endforeach
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -272,6 +264,16 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div style="padding-left:310px; padding-right:310px">
+                                                        <div class="field">
+                                                        <label class="checkbox is-outlined is-primary" style="padding-left:0px; padding-right:0px">
+                                                            <input type="checkbox" name="best_seller" value="1" {{ $hostingPlan->best_seller ? 'checked' : '' }}>
+                                                            <span></span>
+                                                            Tick If Best Seller
+                                                        </label>
+                                                        </div>
+                                                    </div>                            
                                                     </div>
                                                     <div style="padding-left:310px; padding-right:310px">
                                                         <div class="field">
@@ -410,23 +412,6 @@
 
                                                                         <div class="field">
                                                                             <label>CPU</label>
-                                                                            <div
-                                                                                class="control is-inline-flex is-align-items-center">
-                                                                                <input class="input" name="CPU"
-                                                                                    value="{{ old('CPU', $hostingPlan->CPU) }}" required>
-                                                                                <p class=" ml-2">Core</p>
-                                                                            </div>
-                                                                        </div> -->
-                                                                        <div class="field">
-                                                                            <label>SSD Storage</label>
-                                                                            <div class="control is-inline-flex is-align-items-center">
-                                                                                <input class="input" name="regular_main_spec[storage]" value="{{ old('regular_main_spec.storage', optional($regularSpec)->storage ?? 0) }}" required>
-                                                                                <p class="ml-2">GB</p>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="field">
-                                                                            <label>CPU</label>
                                                                             <div class="control is-inline-flex is-align-items-center">
                                                                                 <input class="input" name="regular_main_spec[CPU]" value="{{ old('regular_main_spec.CPU', optional($regularSpec)->CPU ?? 0) }}" required>
                                                                                 <p class="ml-2">Core</p>
@@ -458,17 +443,6 @@
 
                                                                 <div class="column is-6"> <!-- Kolom kedua -->
                                                                     <div class="column-content">
-
-                                                                        <!-- <div class="field">
-                                                                            <label>RAM</label>
-                                                                            <div class="control is-inline-flex is-align-items-center">
-                                                                                <input class="input" name="regular_main_spec[RAM]" 
-                                                                                    value="{{ old('regular_main_spec.RAM', optional($regularSpec)->RAM ?? 0) }}" 
-                                                                                    placeholder="0" required>
-                                                                                <p class=" ml-2">GB</p>
-                                                                            </div>
-                                                                        </div> -->
-
                                                                         <div class="field">
                                                                             <label>RAM</label>
                                                                             <div class="control is-inline-flex is-align-items-center">
@@ -782,7 +756,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> -->
+                                                </div> 
 
                                                 {{-- <!-- <div id="custom-spec-tab" class="tab-content">
                                                     @if ($errors->any())
@@ -1020,8 +994,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                </div> --> --}}
+                                                </div> 
                                             </div>
                                         </div>
                                     </div>

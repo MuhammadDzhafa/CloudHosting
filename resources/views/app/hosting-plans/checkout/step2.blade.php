@@ -1,6 +1,5 @@
-<div class="max-w-[1440px] mx-auto p-6">
-    <h2 class="text-[20px] font-[400] leading-[26px] text-left w-full lg:w-full md:w-full h-[26px] opacity-100 bg-clip-text text-transparent mb-6"
-        style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text;">
+<div class="w-full">
+    <h2 class="text-[20px] font-[400]">
         STEP 2
     </h2>
     

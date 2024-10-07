@@ -1,11 +1,11 @@
-{{-- <div class="section-frame padding-1 gap-6 md:gap-12">
+<div class="section-frame padding-1 gap-6 md:gap-12">
     <div class="page-content-inner">
         <div class="lifestyle-dashboard lifestyle-dashboard-v5">
             <div class="dashboard-title is-main text-center mb-12">
                 <div class="left mx-auto">
-                    <h2 class="title-section">
+                    <h2 class="title-section text-center">
                         Articles to Read
-                    </h2>                   
+                    </h2>           
                 </div>
             </div>                   
             <div class="media-feed">
@@ -69,7 +69,7 @@
                                                             The best ways to do a nice team building
                                                         </h3>                                                        
                                                         <div class="media-meta">
-                                                            <img src="/assets/img/section11/orang.svg" data-demo-src=/assets/img/section11/orang.svg" alt="">
+                                                            <img class="w-[20px] w-[20px]" src="/assets/img/section11/orang.svg" data-demo-src="/assets/img/section11/orang.svg" alt="" style="min-width:unset; width:unset;">
                                                             <a class="meta-item is-hoverable">Joshua S.</a>
                                                             <span class="separator">|</span>
                                                             <a class="meta-item is-hoverable">2 comments</a>
@@ -128,4 +128,3 @@
         </div>
     </div>
 </div>
- --}}

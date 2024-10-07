@@ -1,4 +1,4 @@
-<div class="p-4 md:p-6 bg-white">
+<div class="w-full">
     <h2 class="text-[20px] font-normal leading-[26px] text-left w-full md:w-auto lg:w-full" style="background: linear-gradient(104.31deg, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; height: 26px;">
         STEP 4
     </h2>                                        

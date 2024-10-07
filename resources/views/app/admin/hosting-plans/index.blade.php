@@ -273,20 +273,20 @@
                         </div>
 
 
-                        <div id="create-new-product-modal" class="modal h-modal">
-                            <div class="modal-background h-modal-close"></div>
-                            <div class="modal-content">
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <h3>Create a New Product</h3>
-                                        <button class="h-modal-close ml-auto" aria-label="close">
-                                            <i data-feather="x"></i>
-                                        </button>
-                                    </header>
-                                    @include('app.admin.hosting-plans.create')
-                                </div>
+                    <div id="create-new-product-modal" class="modal h-modal">
+                        <div class="modal-background h-modal-close"></div>
+                        <div class="modal-content">
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <h3>Create a New Package</h3>
+                                    <button class="h-modal-close ml-auto" aria-label="close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </header>
+                                @include('app.admin.hosting-plans.create')
                             </div>
                         </div>
+                    </div>
 
                         <div id="confirm-delete-modal" class="modal h-modal">
                             <div class="modal-background h-modal-close"></div>
@@ -348,31 +348,57 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Tampilkan hosting plans yang berelasi dengan grup -->
-                                            @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
-                                                <tr class="is-striped-row">
-                                                    <td>{{ $hostingPlan->name }}</td>
-                                                    <td>{{ $hostingPlan->description }}</td>
-                                                    <td>{{ $hostingPlan->type }}</td>
-                                                    <td>{{ $hostingPlan->storage }}</td>
-                                                    <td>{{ $hostingPlan->CPU }}</td>
-                                                    <td>{{ $hostingPlan->RAM }}</td>
-                                                    <td>
-                                                        <div class="d-flex justify-end">
-                                                            <!-- <a href=""><img src="assets/img/product/open.svg" alt=""
-                                                                                    class="mr-3"></a> -->
-                                                            <a
-                                                                href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
-                                                                <img src="assets/img/product/edit.svg" alt="" class="mr-3">
-                                                            </a>
-                                                            <a href="#" class="h-modal-trigger"
-                                                                onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
-                                                                <img src="assets/img/product/trash.svg" alt="">
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                    <!-- Tampilkan hosting plans yang berelasi dengan grup -->
+                                    {{-- @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
+                                    <tr class="is-striped-row">
+                                        <td>{{ $hostingPlan->name }}</td>
+                                        <td>{{ $hostingPlan->type }}</td>
+                                        <td>{{ $hostingPlan->description }}</td>
+                                        <td>{{ $regularMainSpecs->storage }}</td>
+                                        <td>{{ $regularMainSpecs->CPU }}</td>
+                                        <td>{{ $regularMainSpecs->RAM }}</td>
+                                        <td>
+                                            <div class="d-flex justify-end">
+                                                <!-- <a href=""><img src="assets/img/product/open.svg" alt=""
+                                                                            class="mr-3"></a> -->
+                                                <a
+                                                    href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
+                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                                </a>
+                                                <a href="#" class="h-modal-trigger"
+                                                    onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
+                                                    <img src="assets/img/product/trash.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach --}}
+
+                                    @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
+                                        <tr class="is-striped-row">
+                                            <td>{{ $hostingPlan->name }}</td>
+                                            <td>{{ $hostingPlan->type }}</td>
+                                            <td>{{ $hostingPlan->description }}</td>
+                                            
+                                            <!-- Mengakses RegularMainSpec yang terkait dengan hostingPlan -->
+                                            <td>{{ optional($hostingPlan->regularMainSpec)->storage ?? '0' }}</td>
+                                            <td>{{ optional($hostingPlan->regularMainSpec)->CPU ?? '0' }}</td>
+                                            <td>{{ optional($hostingPlan->regularMainSpec)->RAM ?? '0' }}</td>
+                                            
+                                            <td>
+                                                <div class="d-flex justify-end">
+                                                    <a href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
+                                                        <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                                    </a>
+                                                    <a href="#" class="h-modal-trigger"
+                                                    onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
+                                                        <img src="assets/img/product/trash.svg" alt="">
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
 
                                             <!-- Jika tidak ada hosting plans, tampilkan pesan -->
                                             @if($group->hostingPlans->isEmpty())
