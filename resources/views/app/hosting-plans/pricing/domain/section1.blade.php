@@ -9,9 +9,12 @@
                 Find your ideal domain effortlessly with our advanced search tool and domain recommendation feature. Get personalized suggestions based on your preferences, explore available names, and secure the perfect match for your brand.
             </p>
 
-            <a class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full mr-[10px]">Check
-                <img src="assets/img/right.svg" alt="">
-            </a>
+            <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full">
+                <span>Check</span>
+                <span class="icon" style="min-width: unset">
+                    <i class="fa fa-arrow-right"></i>
+                </span>
+            </button>
         </div>
         <div class="w-full lg:w-1/2 lg:mt-0">
             <img src="/assets/img/domain/peopleok.svg" alt="Smiling man making OK sign" class="w-full">

@@ -42,8 +42,6 @@
                     <!-- Akhir Dropdown -->
                     <a href="#"
                         class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">FAQ</a>
-                    <img src="assets/img/icons/shop.svg" alt="Shop Icon"
-                        class="lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px]">
                     <a href="/login"
                         class="text-[#45494A] flex items-center whitespace-nowrap lg:w-auto lg:h-auto md:h-auto gap-0 opacity-1 font-inter font-medium lg:text-lg md:text-base text-center" style="line-height: unset;">
                         Login
