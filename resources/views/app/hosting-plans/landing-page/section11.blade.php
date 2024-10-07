@@ -52,30 +52,31 @@
 
         <div class="w-full md:w-1/2 flex-grow">
             <div class="form-card">
-                <form>
+                <form action="/contact-us" method="POST">
+                @csrf
                     <div class="field">
                         <label>Name</label>
                         <div class="control">
-                            <input type="text" class="input" placeholder="" value="{{ old('name') }}">
+                            <input type="text" name="name"  class="input" placeholder="" value="{{ old('name') }}">
                         </div>
                     </div>
 
                     <div class="field">
                         <label>Email Address</label>
                         <div class="control">
-                            <input type="text" class="input" placeholder="" value="{{ old('Email') }}">
+                            <input type="email" name="email" class="input" placeholder="" value="{{ old('Email') }}">
                         </div>
                     </div>
 
                     <div class="field">
                         <label>Your Message</label>
                         <div class="control">
-                            <textarea class="textarea" rows="4"
+                            <textarea class="textarea" rows="4" name="message"
                                 placeholder="Tell us about any details you'd like us to know..."></textarea>
                         </div>
                     </div>
 
-                    <button class="button-gradient rounded-full">Submit</button>
+                    <button type="submit" class="button-gradient rounded-full">Submit</button>
                 </form>
             </div>
         </div>

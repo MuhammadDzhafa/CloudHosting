@@ -95,7 +95,7 @@
                     <div class="flex flex-col md:flex-row items-center w-full"> <!-- flex-col untuk mobile, flex-row untuk desktop -->
                         <div class="custom-total-price">
                             <span class="custom-dollar-sign">Rp</span>
-                            <span id="total-price" class="custom-total-amount">15000</span>
+                            <span id="total-price" class="custom-total-amount"></span>
                             <span class="custom-monthly">/mon</span>
                         </div>
                         <button class="custom-order-button mt-4 md:mt-0"> <!-- Tambahkan mt-4 untuk margin-top di mobile -->

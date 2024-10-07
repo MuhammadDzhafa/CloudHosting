@@ -7,7 +7,7 @@
     </p>
 
     <div class="flex justify-center items-center gap-12">
-        <img src="/assets/img/domain/icann.svg" alt="ICANN Logo">
-        <img src="/assets/img/domain/id.svg" alt="PANDI Logo">
+        <img class="client-logo" src="/assets/img/domain/icann.svg" alt="ICANN Logo">
+        <img class="client-logo" src="/assets/img/domain/id.svg" alt="PANDI Logo">
     </div>
 </section>

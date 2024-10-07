@@ -51,10 +51,24 @@
             </div>
             @endforeach
         </div>
+
+
+        <div class="w-full flex justify-center lg:justify-end">
+            <a href="#" id="view-price-list"
+                class="text-[#FFFFFF] font-inter text-[18px] font-semibold no-hover inline-flex items-center">
+                View Price List
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="transform transition-transform duration-300 ml-1">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M5.07219 7.94719C5.44645 7.57294 6.05323 7.57294 6.42748 7.94719L11.4998 13.0195L16.5722 7.94719C16.9464 7.57294 17.5532 7.57294 17.9275 7.94719C18.3017 8.32145 18.3017 8.92823 17.9275 9.30248L12.1775 15.0525C11.8032 15.4267 11.1964 15.4267 10.8222 15.0525L5.07219 9.30248C4.69794 8.92823 4.69794 8.32145 5.07219 7.94719Z"
+                        fill="white" />
+                </svg>
+            </a>
+        </div>
     </div>
 
     <!-- SVG positioned in the bottom left corner -->
-    <div class="absolute left-[139.5px] bottom-[-3px] hidden lg:block">
+    <div class="absolute left-[139.5px] bottom-[-2px] hidden lg:block">
         <img src="/assets/img/bg/globewhite.svg" alt="" class="w-auto h-auto">
     </div>
 

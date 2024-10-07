@@ -29,7 +29,12 @@
                         </div>
                     </div>
                 </div>
-                <button id="search-btn" class="button h-button is-primary rounded-full">Search</button>
+                <button id="search-btn" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                    <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
+                    <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                        Search
+                    </span>
+                </button>
             </div>
 
             <div class="field dropdown-filter">
@@ -44,6 +49,7 @@
                 ['tld' => '.xyz', 'price' => 0.99, 'category' => 'Popular'],
                 ['tld' => '.io', 'price' => 3.99, 'category' => 'Popular'],
                 ['tld' => '.co', 'price' => 5.99, 'category' => 'Popular'],
+
 
                 // Country
                 ['tld' => '.co.id', 'price' => 5.99, 'category' => 'Country'],
@@ -135,7 +141,6 @@
             </div>
 
             <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
-                <!-- Dropdown for small screens -->
                 <div class="w-full md:w-1/4 bg-blue-50 p-4 md:block hidden">
                     <ul class="space-y-2">
                         @foreach ($filters as $index => $filter)
@@ -155,13 +160,12 @@
                     <table class="table-auto w-full border-collapse">
                         <thead>
                             <tr class="table-header">
-                                <th class="table-cell">TLD</th>
-                                <th class="table-cell">Price</th>
-                                <th class="table-cell text-center">Order</th>
+                                <th class="table-cell" style="text-align: center;">TLD</th>
+                                <th class="table-cell" style="text-align: center;">Price</th>
+                                <th class="table-cell" style="text-align: center;">Order</th>
                             </tr>
                         </thead>
                         <tbody id="domain-table-body">
-                            <!-- Table rows will be populated here by JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -204,7 +208,11 @@
                                     $ ${domain.price}
                                 </td>
                                 <td class="py-3 px-4 flex justify-center items-center">
-                                    <button class="button h-button is-primary is-elevated rounded-full">Add To Cart</button>
+                                    <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                Order
+                                            </span>
+                                        </button>
                                 </td>
                             </tr>
                         `;

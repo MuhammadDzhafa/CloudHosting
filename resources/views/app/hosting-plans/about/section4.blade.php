@@ -1,13 +1,12 @@
 <div class="section-frame padding-1" style="background: #fff;">
     <!-- Background Image Container -->
-    <!-- <div class="absolute -mx-[10%] bg-cover bg-center" style="height: 500px; width: calc(100% + 20%);">
+    <div class="absolute -mx-[10%] bg-cover bg-center" style="height: 500px; width: calc(100% + 20%);">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/img/bg/bg-pattern2.svg'); height: 500px; width: calc(100% + 20%); opacity: 0.2;"></div>
-    </div> -->
+    </div>
 
     <!-- Main Content -->
 
     <div class="flex flex-col md:flex-row w-full gap-10 z-10">
-
         <div
             class="w-full md:w-1/2 flex-grow flex flex-col gap-10 md:justify-start md:items-start justify-center items-center">
             <div class="text-container">

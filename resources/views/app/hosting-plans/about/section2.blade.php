@@ -1,7 +1,7 @@
 <div class="section-frame padding-1 bg-white rounded-lg shadow-md flex flex-col md:flex-row items-stretch">
-    <!-- <div class="absolute -mx-[10%] bg-cover bg-center" style="height: 500px; width: calc(100% + 50%);">
+    <div class="absolute -mx-[10%] bg-cover bg-center" style="height: 500px; width: calc(100% + 50%);">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/img/bg/bg-pattern2.svg'); height: 500px; width: calc(100% + 20%); opacity: 0.2;"></div>
-    </div> -->
+    </div>
     <div class="flex-1 pr-6 z-10">
         <div class="mb-6">
             <div class="flex items-center mb-2">

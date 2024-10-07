@@ -68,7 +68,7 @@
     </div>
 
     <!-- SVG positioned in the bottom left corner -->
-    <div class="absolute left-[139.5px] bottom-0 hidden lg:block">
+    <div class="absolute left-[139.5px] bottom-[-2px] hidden lg:block">
         <img src="/assets/img/bg/globewhite.svg" alt="" class="w-auto h-auto">
     </div>
 
