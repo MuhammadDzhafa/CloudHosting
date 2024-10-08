@@ -1,4 +1,4 @@
-<div class="section-frame-footer">
+<div class="section-frame-footer" style="background: #fff;">
   <footer class="w-full">
     <div class="footer-container">
       <div class="footer-column">

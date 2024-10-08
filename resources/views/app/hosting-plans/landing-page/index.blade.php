@@ -40,64 +40,64 @@
     });
 
     // Section2 JavaScript
-    // const viewPriceListLink = document.getElementById('view-price-list');
-    // const priceListSection = document.getElementById('price-list-section');
-    // if (viewPriceListLink && priceListSection) {
-    //     const arrowIcon = viewPriceListLink.querySelector('svg');
-    //     viewPriceListLink.addEventListener('click', event => {
-    //         event.preventDefault();
-    //         priceListSection.classList.toggle('active');
-    //         arrowIcon.classList.toggle('rotate-180');
-    //     });
-    // }
+    const viewPriceListLink = document.getElementById('view-price-list');
+    const priceListSection = document.getElementById('price-list-section');
+    if (viewPriceListLink && priceListSection) {
+        const arrowIcon = viewPriceListLink.querySelector('svg');
+        viewPriceListLink.addEventListener('click', event => {
+            event.preventDefault();
+            priceListSection.classList.toggle('active');
+            arrowIcon.classList.toggle('rotate-180');
+        });
+    }
 
     // // Search Domain Availability
-    // document.getElementById('search-btn').addEventListener('click', function () {
-    //         const searchQuery = document.getElementById('domain-search').value;
-    //         const dropdownContainer = document.getElementById('dropdown-container');
-    //         const dropdownContent = document.getElementById('dropdown-content');
+    document.getElementById('search-btn').addEventListener('click', function() {
+        const searchQuery = document.getElementById('domain-search').value;
+        const dropdownContainer = document.getElementById('dropdown-container');
+        const dropdownContent = document.getElementById('dropdown-content');
 
-    //         if (searchQuery) {
-    //             // Simulating search results - replace with actual data
-    //             dropdownContent.innerHTML = `
-                
-    //             <div class="message is-success flex-row flex justify-between items-center">
-    //                 <div class="message-body">
-    //                 <strong> ${searchQuery}</strong> is available
-    //                 <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-    //                 </div>
-    //                 <button class="button h-button is-success rounded-full">Add to Cart</button>
-    //             </div>
+        if (searchQuery) {
+            // Simulating search results - replace with actual data
+            dropdownContent.innerHTML = `
 
-    //             <div class="message flex-row flex justify-between items-center">
-    //                 <div class="message-body">
-    //                 <strong> ${searchQuery}</strong> is not available
-    //                 </div>
-    //                 <button class="button h-button rounded-full">WHOIS</button>
-    //             </div>
+                <div class="message is-success flex-row flex justify-between items-center">
+                    <div class="message-body">
+                    <strong> ${searchQuery}</strong> is available
+                    <br>Exclusive offer: $ 1.50/mon for a 2-year plan
+                    </div>
+                    <button class="button h-button is-success rounded-full">Add to Cart</button>
+                </div>
 
-    //             <div>
-    //                 <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
-    //                 <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
-    //                 Indonesia, here are some domain name recommendations with education-related
-    //                 TLD:</p>
-    //                 <div class="message is-primary flex-row flex justify-between items-center">
-    //                     <div class="message-body">
-    //                         <strong> ${searchQuery}.edu</strong> is available
-    //                         <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-    //                     </div>
-    //                     <button class="button h-button is-primary rounded-full">Add to Cart</button>
-    //             </div>
-                
-    //         `;
+                <div class="message flex-row flex justify-between items-center">
+                    <div class="message-body">
+                    <strong> ${searchQuery}</strong> is not available
+                    </div>
+                    <button class="button h-button rounded-full">WHOIS</button>
+                </div>
 
-    //             // Apply animation class to show the dropdown
-    //             dropdownContainer.classList.add('show');
-    //         } else {
-    //             // Hide the container if there's no search
-    //             dropdownContainer.classList.remove('show');
-    //         }
-    //     });
+                <div>
+                    <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
+                    <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
+                    Indonesia, here are some domain name recommendations with education-related
+                    TLD:</p>
+                    <div class="message is-primary flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong> ${searchQuery}.edu</strong> is available
+                            <br>Exclusive offer: $ 1.50/mon for a 2-year plan
+                        </div>
+                        <button class="button h-button is-primary rounded-full">Add to Cart</button>
+                </div>
+
+            `;
+
+            // Apply animation class to show the dropdown
+            dropdownContainer.classList.add('show');
+        } else {
+            // Hide the container if there's no search
+            dropdownContainer.classList.remove('show');
+        }
+    });
 
 
     // /* Pick TLD Card */

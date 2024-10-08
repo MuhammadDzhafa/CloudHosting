@@ -141,7 +141,13 @@ class HostingController extends Controller
 
     public function domain()
     {
-        return view('app.hosting-plans.pricing.domain.index');
+        $faqs = Faq::all()->groupBy('category');
+        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
+
+        return view('app.hosting-plans.pricing.domain.index', [
+            'testimonials' => $testimonials,
+            'faqs' => $faqs,
+        ]);
     }
 
     public function privacy()

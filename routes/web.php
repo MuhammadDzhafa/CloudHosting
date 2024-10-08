@@ -71,6 +71,7 @@ Route::get('/cloud-hosting', [HostingController::class, 'cloud']);
 Route::get('/wordpress-hosting', [HostingController::class, 'wordpress']);
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 Route::get('/about', [HostingController::class, 'about']);
+Route::get('/domain', [HostingController::class, 'domain']);
 Route::get('/privacy-policy', [HostingController::class, 'privacy']);
 Route::get('/terms-and-conditions', [HostingController::class, 'termsConditions']);
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
@@ -136,7 +137,7 @@ Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
 Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
 Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
 Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
-Route::post('/tlds/import', [TLDController::class, 'import'])->name('tlds.import');
+Route::post('/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
 
 
 /* Hosting Plan */
@@ -170,4 +171,3 @@ Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('art
 Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
 Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 Route::post('/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
-

@@ -38,11 +38,6 @@
                     <a href="javascript:void(0);" class="parent-link">FAQ</a>
                 </div>
             </li>
-            <li class="has-children">
-                <div class="collapse-wrap">
-                    <a href="javascript:void(0);" class="parent-link">Cart</a>
-                </div>
-            </li>
         </ul>
         <a href="/login" class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] active:bg-[#4A6DCB] border-1 border-[#395FC6] text-[#4A6DCB] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#fff] active:border-[#4A6DCB] py-3 mb-4"
             style="font-family: unset; width: 84%; margin-top: -60px;">

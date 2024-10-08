@@ -9,16 +9,12 @@
             </div>
             <div class="center flex-grow flex justify-center hide-on-mobile">
                 <div id="webapp-navbar-menu" class="centered-drops flex justify-end items-center space-x-10 lg:space-x-12" style="max-width: unset;">
-                    <a href="#"
-                        class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">Home</a>
-
-                    <!-- Mulai Dropdown -->
                     <div class="dropdown is-hoverable">
                         <div class="dropdown-trigger flex items-center">
                             <a href="#"
                                 class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left"
                                 aria-haspopup="true" aria-controls="dropdown-menu">
-                                Products
+                                Hosting
                             </a>
                             <svg class="fill-current h-5 w-5 ml-1" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20">
@@ -27,10 +23,7 @@
                         </div>
                         <div class="dropdown-menu" id="dropdown-menu" role="menu">
                             <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    Domain
-                                </a>
-                                <a href="#" class="dropdown-item">
+                                <a href="/cloud-hosting" class="dropdown-item">
                                     Cloud Hosting
                                 </a>
                                 <a href="#" class="dropdown-item">
@@ -39,18 +32,20 @@
                             </div>
                         </div>
                     </div>
+                    <a href="/domain"
+                        class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">Domain</a>
+
                     <!-- Akhir Dropdown -->
-                    <a href="#"
+                    <a href="/faq"
                         class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">FAQ</a>
-                    <img src="assets/img/icons/shop.svg" alt="Shop Icon"
-                        class="lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px]">
                     <a href="/login"
                         class="text-[#45494A] flex items-center whitespace-nowrap lg:w-auto lg:h-auto md:h-auto gap-0 opacity-1 font-inter font-medium lg:text-lg md:text-base text-center" style="line-height: unset;">
-                        Login
-                        <img src="assets/img/icons/login.svg" alt="Login Icon"
-                            class="ml-2 lg:w-[18px] lg:h-[18px] md:w-[16px] md:h-[16px] relative lg:top-[1.67px] md:top-[0px] lg:left-[1.67px] gap-0 opacity-1">
+                        Contact Us
                     </a>
-                    <a class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white">Contact Us</a>
+                    <a class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] text-[16px] leading-[23.2px] font-['Inter'] font-medium text-center" style="border: unset;">
+                        Login
+                        <span class="material-icons" style="color:#F3F5FC; font-size:20px">&#xea77;</span>
+                    </a>
                 </div>
 
 

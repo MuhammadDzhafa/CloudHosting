@@ -6,7 +6,7 @@
         <div class="card-container">
             <div class="card">
                 <div class="card-content-product">
-                    <img src="/assets/img/icons/shields.png" alt="" class="card-icon">
+                    <img src="/assets/img/cloudhosting/shields.svg" alt="" class="card-icon">
                     <h2 class="card-title">Advanced Security</h2>
                     <p class="content">Keep your website secure with Imunify360 and free SSL from Let's Encrypt, offering robust protection against threats.</p>
                 </div>
@@ -53,7 +53,7 @@
         <div class="card-container">
             <div class="card">
                 <div class="card-content-product">
-                    <img src="/assets/img/icons/service.png" alt="" class="card-icon">
+                    <img src="/assets/img/cloudhosting/customer.svg" alt="" class="card-icon">
                     <h2 class="card-title">24/7 Expert Support</h2>
                     <p class="content">Get assistance whenever you need it. Our dedicated support team is available around the clock to help with any issues or questions.</p>
                 </div>
