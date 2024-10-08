@@ -106,76 +106,84 @@
                             </div>
 
                             <!-- Form Layout 5 -->
-                            <div class="stepper-form" style="max-width: unset; margin: unset; padding-top: unset;">
-                                <div class="form-sections w-full"  style="max-width:unset;">
-                                    @include('app.hosting-plans.checkout.step1')
-                                </div>
-                                <div id="form-step-1" class="form-section" style="font-family: Inter;">
-                                    @include('app.hosting-plans.checkout.step2')
-                                </div>
-                                <div id="form-step-2" class="form-section">
-                                    @include('app.hosting-plans.checkout.step3')
-                                </div>
-                                <div id="form-step-3" class="form-section">
-                                    @include('app.hosting-plans.checkout.step4')
-                                </div>
-                                <div id="form-step-4" class="form-section">
-                                    @include('app.hosting-plans.checkout.step5')
-                                </div>
-                                <div id="form-step-5" class="form-section">
-                                    @include('app.hosting-plans.checkout.step6')
-                                </div>
-                                <div class="navigation-buttons">
-                                    <div class="buttons is-right">
-                                        <a id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white">Continue</a>
+                            <div class="flex min-w-full mx-auto">
+                                <div
+                                    class="stepper-form mx-10 space-x-5"
+                                    style="max-width: unset; margin: unset; padding-top: unset;">
+                                    <div class="form-sections w-full" style="max-width:unset;">
+                                        @include('app.hosting-plans.checkout.step1')
+                                    </div>
+                                    <div id="form-step-1" class="form-section" style="font-family: Inter;">
+                                        @include('app.hosting-plans.checkout.step2')
+                                    </div>
+                                    <div id="form-step-2" class="form-section">
+                                        @include('app.hosting-plans.checkout.step3')
+                                    </div>
+                                    <div id="form-step-3" class="form-section">
+                                        @include('app.hosting-plans.checkout.step4')
+                                    </div>
+                                    <div id="form-step-4" class="form-section">
+                                        @include('app.hosting-plans.checkout.step5')
+                                    </div>
+                                    <div id="form-step-5" class="form-section">
+                                        @include('app.hosting-plans.checkout.step6')
+                                    </div>
+                                    <div class="navigation-buttons">
+                                        <div class="buttons is-right">
+                                            <a
+                                                id="next-button"
+                                                class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white">
+                                                Continue
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-stepper">
-                                <ul class="steps is-vertical is-thin is-short">
-                                    <li id="step-segment-0" class="steps-segment is-active">
-                                        <a href="#" class="steps-marker"></a>
-                                        <div class="steps-content">
-                                            <p class="step-number">STEP 1</p>
-                                            <p class="step-info">Domain</p>
-                                        </div>
-                                    </li>
-                                    <li id="step-segment-1" class="steps-segment">
-                                        <a href="#" class="steps-marker"></a>
-                                        <div class="steps-content">
-                                            <p class="step-number">STEP 2</p>
-                                            <p class="step-info">Domain Information</p>
-                                        </div>
-                                    </li>
-                                    <li id="step-segment-2" class="steps-segment">
-                                        <a class="steps-marker"></a>
-                                        <div class="steps-content">
-                                            <p class="step-number">STEP 3</p>
-                                            <p class="step-info">Hosting</p>
-                                        </div>
-                                    </li>
-                                    <li id="step-segment-3" class="steps-segment">
-                                        <a class="steps-marker"></a>
-                                        <div class="steps-content">
-                                            <p class="step-number">STEP 4</p>
-                                            <p class="step-info">Addons</p>
-                                        </div>
-                                    </li>
-                                    <li id="step-segment-4" class="steps-segment">
-                                        <a class="steps-marker"></a>
-                                        <div class="steps-content">
-                                            <p class="step-number">STEP 5</p>
-                                            <p class="step-info">Billing Adress</p>
-                                        </div>
-                                    </li>
-                                    <li id="step-segment-5" class="steps-segment">
-                                        <a class="steps-marker"></a>
-                                        <div class="steps-content">
-                                            <p class="step-number">STEP 6</p>
-                                            <p class="step-info">Payment</p>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <div class="form-stepper mx-24">
+                                    <ul class="steps is-vertical is-thin is-short">
+                                        <li id="step-segment-0" class="steps-segment is-active">
+                                            <a href="#" class="steps-marker"></a>
+                                            <div class="steps-content">
+                                                <p class="step-number">STEP 1</p>
+                                                <p class="step-info">Domain</p>
+                                            </div>
+                                        </li>
+                                        <li id="step-segment-1" class="steps-segment">
+                                            <a href="#" class="steps-marker"></a>
+                                            <div class="steps-content">
+                                                <p class="step-number">STEP 2</p>
+                                                <p class="step-info">Domain Information</p>
+                                            </div>
+                                        </li>
+                                        <li id="step-segment-2" class="steps-segment">
+                                            <a class="steps-marker"></a>
+                                            <div class="steps-content">
+                                                <p class="step-number">STEP 3</p>
+                                                <p class="step-info">Hosting</p>
+                                            </div>
+                                        </li>
+                                        <li id="step-segment-3" class="steps-segment">
+                                            <a class="steps-marker"></a>
+                                            <div class="steps-content">
+                                                <p class="step-number">STEP 4</p>
+                                                <p class="step-info">Addons</p>
+                                            </div>
+                                        </li>
+                                        <li id="step-segment-4" class="steps-segment">
+                                            <a class="steps-marker"></a>
+                                            <div class="steps-content">
+                                                <p class="step-number">STEP 5</p>
+                                                <p class="step-info">Billing Adress</p>
+                                            </div>
+                                        </li>
+                                        <li id="step-segment-5" class="steps-segment">
+                                            <a class="steps-marker"></a>
+                                            <div class="steps-content">
+                                                <p class="step-number">STEP 6</p>
+                                                <p class="step-info">Payment</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 

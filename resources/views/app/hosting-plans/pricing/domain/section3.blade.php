@@ -174,6 +174,7 @@
             <script>
                 // Data domain yang tersedia
                 const domains = @json($domains);
+                console.log(domains)
                 const itemsPerPage = 5; // Jumlah domain per halaman
                 let currentPage = 1; // Halaman saat ini
 
