@@ -50,7 +50,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('articles.edit', compact('article'));
+        return view('app.admin.articles.edit', compact('article'));
     }
 
     // Memperbarui artikel di database
@@ -75,7 +75,7 @@ class ArticleController extends Controller
                 Storage::disk('public')->delete($article->image); // Hapus gambar dari storage
             }
 
-            $path = $request->file('image')->store('images', 'public'); // Simpan ke storage/app/public/images
+            $path = $request->file('image')->store('article_pictures', 'public'); // Simpan ke storage/app/public/images
             $articleData['image'] = $path; // Menyimpan path gambar
         }
 

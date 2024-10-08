@@ -1,13 +1,9 @@
 <div class="section-frame padding-1 gap-6 md:gap-12">
     <div class="page-content-inner">
-        <div class="lifestyle-dashboard lifestyle-dashboard-v5">
-            <div class="dashboard-title is-main text-center mb-12">
-                <div class="left mx-auto">
-                    <h2 class="title-section text-center">
-                        Articles to Read
-                    </h2>           
-                </div>
-            </div>                   
+        <div class="lifestyle-dashboard lifestyle-dashboard-v5 gap-6 md:gap-12">
+            <h2 class="title-section text-center">
+                Articles to Read
+            </h2>             
             <div class="media-feed">
                 <div class="feed-group">
                     <div class="group-content">

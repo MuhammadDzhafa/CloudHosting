@@ -96,14 +96,23 @@
                                 <i data-feather="search"></i>
                             </div>
                         </div>
-                        <div class="buttons">
+                        <!-- <div class="buttons">
                             <button class="button h-button is-primary is-elevated h-modal-trigger addData" data-modal="addandedit">
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
                                 <span>Add New</span>
                             </button>
+                        </div> -->
+                        <div class="buttons">
+                            <a href="{{ route('articles.create') }}" class="button h-button is-primary is-elevated">
+                                <span class="icon" style="min-width: unset;">
+                                    <i aria-hidden="true" class="fas fa-plus"></i>
+                                </span>
+                                <span>Add New</span>
+                            </a>
                         </div>
+
                     </div>
                     <div class="page-content-inner">
                         <div class="table-wrapper" data-simplebar>
@@ -125,9 +134,20 @@
                                         <td>{{ $article->author }}</td>
                                         <td>{{ $article->likes }}</td>
                                         <td>
-                                            <a href="javascript:void(0);" class="edit-link" data-id="{{ $article->article_id }}" data-title="{{ $article->title }}" data-content="{{ $article->content }}" data-author="{{ $article->author }}" data-likes="{{ $article->likes }}">
+                                            <!-- <a href="javascript:void(0);" class="edit-link" data-id="{{ $article->article_id }}" data-title="{{ $article->title }}" data-content="{{ $article->content }}" data-author="{{ $article->author }}" data-likes="{{ $article->likes }}">
                                                 <img src="assets/img/product/edit.svg" alt="Edit" class="mr-6">
-                                            </a>
+                                            </a> -->
+                                            <a href="{{ route('articles.edit', $article->article_id) }}" 
+                                                class="edit-link" 
+                                                data-id="{{ $article->article_id }}" 
+                                                data-title="{{ $article->title }}" 
+                                                data-content="{{ $article->content }}" 
+                                                data-author="{{ $article->author }}" 
+                                                data-likes="{{ $article->likes }}">
+                                                    <img src="assets/img/product/edit.svg" alt="Edit" class="mr-6">
+                                                </a>
+
+
                                             <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $article->article_id }}', '{{ $article->title }}')">
                                                 <img src="assets/img/product/trash.svg" alt="Delete">
                                             </a>
@@ -188,8 +208,6 @@
                 </div>
             </div>
         </div>
-
-        @include("app.admin.articles.create")
 
         <!-- Concatenated plugins -->
         <script src="assets/js/app.js"></script>
