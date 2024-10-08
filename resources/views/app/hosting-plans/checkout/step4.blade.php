@@ -8,7 +8,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         @foreach (['Daily Backup', 'Biennially', 'Triennialy'] as $plan)
-        <div class="w-full md:w-[308.93px] h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between">
+        <div class="w-full md:w-[280px] h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between">
             <!-- Bagian atas card -->
             <div class="flex justify-between items-center">
                 <span class="text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">

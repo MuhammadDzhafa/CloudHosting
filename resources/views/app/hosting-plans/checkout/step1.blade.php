@@ -1,7 +1,7 @@
-<div id="form-step-0" class="form-section is-active w-full">
+<div id="form-step-0" class="form-section is-active w-[800px]">
     <div>
         <!-- Konten Utama -->
-        <div class="lex-1 w-[1000px]">
+        <div class="lex-1 w-full">
             <h2 class="text-[20px] font-[400] text-left leading-[26px] mb-2 w-full lg:w-full md:w-full" style="height: 26px; gap: 0px; opacity: 1; font-family: 'Inter'; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
                 STEP 1
             </h2>
