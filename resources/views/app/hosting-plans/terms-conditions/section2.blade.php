@@ -1,4 +1,4 @@
-<div class="tabs-wrapper section-frame padding-1" style="background: #fff;">
+<div class="tabs-wrapper section-frame padding-1" style="background: #fff; padding-top:20px">
 
     <div class="account-wrapper">
         <div class="columns">
@@ -6,77 +6,66 @@
                 <div class="account-box is-navigation">
                     <div class="account-menu">
                         <a href="#definitions" class="account-menu-item text-[#3151AA] is-active">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Definitions</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#service" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Services and Products</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#activation" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Activation and Subscription</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#subscription" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Subscription Renewal</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#backup" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Data Backup and Restore</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#warranty" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Warranty</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#violations" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Violations</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#force-majeure" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Force Majeure</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#law" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Governing Law</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#affiliate" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Affiliate Program</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
                             </span>
                         </a>
                         <a href="#addendum" class="account-menu-item text-[#3151AA]">
-                            <i class="lnil lnil-crown-alt"></i>
                             <span>Addendum</span>
                             <span class="end">
                                 <i aria-hidden="true" class="fas fa-arrow-right"></i>
@@ -474,12 +463,17 @@
     const menuItems = document.querySelectorAll('.account-menu-item');
     const contentSections = document.querySelectorAll('.fieldset');
 
+    // Hide all sections initially
+    contentSections.forEach(section => section.style.display = 'none');
+
     // Set up default visible section (first one)
-    const defaultSection = document.querySelector('#definitions');
-    defaultSection.style.display = 'block';  // Ensure the first section is visible by default
+    const defaultSection = document.querySelector('.fieldset');
+    if (defaultSection) {
+        defaultSection.style.display = 'block';  // Ensure the first section is visible by default
+    }
 
     menuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
+        item.addEventListener('click', function (e) {
             e.preventDefault();
 
             // Remove active class from all menu items

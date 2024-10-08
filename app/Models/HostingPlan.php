@@ -48,7 +48,7 @@ class HostingPlan extends Model
     public function customMainSpec()
     {
         return $this->hasOne(CustomMainSpec::class, 'custom_main_spec_id');
-    }    
+    } 
 
     public function regularMainSpec()
     {
