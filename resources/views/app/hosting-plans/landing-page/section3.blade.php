@@ -201,25 +201,32 @@
 
                         // Generate rows baru untuk tabel
                         paginatedDomains.forEach(domain => {
+                            console.log(paginatedDomains)
                             const row = `
-                            <tr class="border-b border-gray-200 text-center">
-                                <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    ${domain.tld}
-                                </td>
-                                <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    $ ${domain.price}
-                                </td>
-                                <td class="py-3 px-4 flex justify-center items-center">
-                                    <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
-                                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                                Order
-                                            </span>
-                                        </button>
-                                </td>
-                            </tr>
-                        `;
+        <tr class="border-b border-gray-200 text-center">
+            <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                ${domain.tld}
+            </td>
+            <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999"]">
+                $${domain.price.toFixed(2)} <!-- Format harga dengan dua desimal -->
+            </td>
+            <td class="py-3 px-4 flex justify-center items-center">
+                <button 
+    class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" 
+    style="border: unset; padding:12px 16px;"
+    data-tld-name="${domain.tld}" 
+    data-tld-price="${domain.price}" 
+    onclick="orderTLD(this)"> <!-- Pastikan "this" dikirim -->
+    <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+        Order
+    </span>
+</button>
+            </td>
+        </tr>
+    `;
                             tableBody.innerHTML += row; // Tambahkan row ke tabel
                         });
+
                     }
 
                     // Function untuk render pagination
@@ -274,6 +281,52 @@
                     document.addEventListener('DOMContentLoaded', () => {
                         filterDomains('View All');
                     });
+
+                    function orderTLD(button) {
+                        if (!button) {
+                            console.error('Button element is null or not passed correctly.');
+                            return; // Berhenti jika button tidak ada
+                        }
+
+                        const tldName = button.getAttribute('data-tld-name');
+                        const tldPrice = button.getAttribute('data-tld-price');
+
+                        // Cek apakah atribut ada
+                        if (!tldName || !tldPrice) {
+                            console.error('Missing data attributes:', {
+                                tldName,
+                                tldPrice
+                            });
+                            return; // Berhenti jika atribut hilang
+                        }
+
+                        console.log('TLD Name:', tldName);
+                        console.log('TLD Price:', tldPrice);
+
+                        // Kirim data ke backend jika atribut lengkap
+                        fetch('/order-tld', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                },
+                                body: JSON.stringify({
+                                    tld_name: tldName,
+                                    tld_price: tldPrice
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('TLD successfully ordered!');
+                                } else {
+                                    alert('Error ordering TLD!');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                    }
                 </script>
 
                 <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>

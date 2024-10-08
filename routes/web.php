@@ -137,7 +137,7 @@ Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
 Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
 Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
 Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
-Route::post('/tlds/import', [TLDController::class, 'import'])->name('tlds.import');
+Route::post('/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
 
 
 /* Hosting Plan */
@@ -171,4 +171,3 @@ Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('art
 Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
 Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 Route::post('/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
-

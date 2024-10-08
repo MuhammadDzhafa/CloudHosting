@@ -34,13 +34,16 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
     @foreach (['Annualy', 'Biennially', 'Triennially', 'Monthly', 'Quarterly', 'Semi-annualy'] as $plan)
-    <div class="w-full md:w-[308.93px] h-[140px] p-5 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between">
+    <div class="w-full md:w-[308.93px] h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between">
         <!-- Bagian atas card -->
         <div class="flex justify-between items-center">
             <span class="text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
                 {{ $plan }}
             </span>
-            <input type="radio" name="plan" class="form-radio h-5 w-5 text-blue-600 flex-shrink-0">
+            <label class="radio is-outlined is-info flex-shrink-0">
+                <input type="radio" name="outlined_radio">
+                <span></span>
+            </label>
         </div>
         <div class="flex items-baseline">
             <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">

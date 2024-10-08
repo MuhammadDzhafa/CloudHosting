@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//import model client
+// Import model TLD
 use App\Models\TLD;
 
 use Illuminate\Http\Request;
@@ -12,41 +12,41 @@ class TLDController extends Controller
     // Menampilkan daftar TLD
     public function index()
     {
-        $tlds = Tld::all();
+        $tlds = TLD::all(); // Pastikan menggunakan huruf kapital untuk model
         return view('app.admin.tlds.index', compact('tlds'));
     }
 
     // Menampilkan form untuk menambahkan TLD baru
     public function create()
-    {   
+    {
         return view('app.admin.tlds.create');
     }
 
     // Menyimpan TLD baru ke database
     public function store(Request $request)
-    {     
-        $tlds = new Tld();
-        $tlds->tld_name = $request->input('tld_name');
-        $tlds->tld_price = $request->input('tld_price');
-        $tlds->save();
+    {
+        $tld = new TLD(); // Pastikan menggunakan huruf kapital
+        $tld->tld_name = $request->input('tld_name');
+        $tld->tld_price = $request->input('tld_price');
+        $tld->save();
 
         return redirect()->route('app.admin.tlds.index')->with('success', 'TLD created successfully.');
     }
 
     // Menampilkan detail TLD
-    public function show(Tld $tld)
+    public function show(TLD $tld) // Pastikan menggunakan huruf kapital
     {
         return view('tlds.show', compact('tld'));
     }
 
     // Menampilkan form untuk mengedit TLD
-    public function edit(Tld $tld)
+    public function edit(TLD $tld) // Pastikan menggunakan huruf kapital
     {
         return view('app.admin.tlds.edit', compact('tld'));
     }
 
     // Memperbarui TLD di database
-    public function update(Request $request, Tld $tld)
+    public function update(Request $request, TLD $tld) // Pastikan menggunakan huruf kapital
     {
         $request->validate([
             'tld_name' => 'required|string|max:255',
@@ -62,9 +62,28 @@ class TLDController extends Controller
     }
 
     // Menghapus TLD dari database
-    public function destroy(Tld $tld)
+    public function destroy(TLD $tld) // Pastikan menggunakan huruf kapital
     {
         $tld->delete();
         return redirect()->route('app.admin.tlds.index')->with('success', 'TLD deleted successfully.');
+    }
+
+    // Menangani order
+    public function order(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'tld_name' => 'required|string',
+            'tld_price' => 'required|numeric',
+        ]);
+
+        // Simpan data TLD ke dalam database
+        $tld = new TLD();
+        $tld->tld_name = $request->input('tld_name');
+        $tld->tld_price = $request->input('tld_price');
+        $tld->save();
+
+        // Kembalikan respons JSON
+        return response()->json(['success' => true, 'tld_id' => $tld->id]); // Tambahkan ID TLD yang baru disimpan
     }
 }

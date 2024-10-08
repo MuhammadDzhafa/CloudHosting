@@ -110,7 +110,7 @@
                                 <div
                                     class="stepper-form mx-10 space-x-5"
                                     style="max-width: unset; margin: unset; padding-top: unset;">
-                                    <div class="form-sections w-full" style="max-width:unset;">
+                                    <div class="form-sections w-full" style="max-width:unset; padding-right:2rem;">
                                         @include('app.hosting-plans.checkout.step1')
                                     </div>
                                     <div id="form-step-1" class="form-section" style="font-family: Inter;">

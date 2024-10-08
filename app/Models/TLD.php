@@ -14,6 +14,7 @@ class TLD extends Model
     protected $primaryKey = 'tld_id';
     protected $fillable = [
         'tld_name',
-        'tld_price'
+        'tld_price',
+        'category'
     ];
 }

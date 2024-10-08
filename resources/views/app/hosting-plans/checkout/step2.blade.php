@@ -1,5 +1,5 @@
 <div class="w-full">
-    <h2 class="text-[20px] font-[400]">
+    <h2 class="text-[20px] font-[400] text-left leading-[26px] mb-2 w-full lg:w-full md:w-full" style="height: 26px; gap: 0px; opacity: 1; font-family: 'Inter'; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
         STEP 2
     </h2>
 
@@ -62,39 +62,6 @@
                 </div>
                 <span class="text-[13px] font-[600] text-[#6C88D5]">Save 30%</span>
                 <span class="text-[11px] font-[400] text-[#989EA0] line-through">$3.99 /mon</span>
-            </div>
-        </div>
-
-        <div class="space-y-4">
-            <div class="w-full h-[47px] px-5 flex items-center justify-between bg-white border border-[#DEDEDE] rounded-lg">
-                <select id="occupation" name="occupation" class="w-full bg-transparent text-gray-500 focus:outline-none">
-                    <option selected disabled>Select Occupation</option>
-                </select>
-            </div>
-
-            <div>
-                <p class="text-[16px] font-[400] leading-[23.2px] text-left w-full h-[23px] opacity-100 text-black font-inter">Contact Type</p>
-                <div class="w-full h-[47px] px-5 flex items-center justify-between bg-white border border-[#DEDEDE] rounded-lg">
-                    <select id="contact_type" name="contact_type" class="w-full bg-transparent text-gray-500 focus:outline-none">
-                        <option selected disabled>Select Contact Type</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <p class="text-[16px] font-[400] leading-[23.2px] text-left w-full h-[23px] opacity-100 text-black font-inter">Identity Number</p>
-                <div class="w-full h-[47px] px-5 flex items-center justify-between bg-white border border-[#DEDEDE] rounded-lg">
-                    <input type="text" name="identity_number" id="identity_number" placeholder="Text" class="w-full bg-transparent text-gray-500 focus:outline-none">
-                </div>
-            </div>
-
-            <div>
-                <p class="text-[16px] font-[400] leading-[23.2px] text-left w-full h-[23px] opacity-100 text-black font-inter">Organization Type</p>
-                <div class="w-full h-[47px] px-5 flex items-center justify-between bg-white border border-[#DEDEDE] rounded-lg">
-                    <select id="organization_type" name="organization_type" class="w-full bg-transparent text-gray-500 focus:outline-none">
-                        <option selected disabled>Select Organization Type</option>
-                    </select>
-                </div>
             </div>
         </div>
     </div>

@@ -1,18 +1,18 @@
 <div class="w-full">
     <h2 class="w-full md:w-auto lg:w-full h-[26px] text-[20px] font-[400] leading-[26px] text-left mb-2" style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
         STEP 6
-    </h2>                                        
+    </h2>
     <h1 class="w-full md:w-auto lg:w-full h-[38px] text-[32px] font-[700] leading-[38.4px] text-left mb-8" style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
         Payment
     </h1>
-    
+
 
     <div class="flex flex-col lg:flex-row lg:space-x-8">
         <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
             <div class="mb-8">
                 <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
                     Have a Promo Code?
-                </h3>                                                    
+                </h3>
                 <div class="flex flex-col sm:flex-row">
                     <input type="text" placeholder="Promo Code" class="w-full sm:w-auto sm:flex-grow mb-2 sm:mb-0 sm:mr-5 h-[47px] pl-[24px] pr-[16px] rounded-full border border-[#DEDEDE] bg-white opacity-100 promo-code-input">
                     <button class="w-full sm:w-[76px] h-[47px] px-[16px] py-[12px] rounded-full bg-[#4A6DCB] opacity-100 text-white">
@@ -24,7 +24,7 @@
             <div>
                 <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
                     Choose Payment Method
-                </h3>                                                    
+                </h3>
                 <div class="space-y-3">
                     <div class="flex items-center justify-between w-full h-[47px] px-[20px] rounded-[8px] bg-[#FFFFFF] border border-[#DEDEDE] opacity-100 shadow">
                         <span class="w-full h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Instant Payment</span>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="w-full lg:w-1/2">
-            <div class="w-full h-[70px] p-[30px] pt-[0px] pb-[0px] gap-[10px] rounded-t-lg rounded-b-none opacity-100 bg-[radial-gradient(104.31%_150.2%_at_0%_22.79%,rgba(100,52,147,0.95)_23.63%,#4A6DCB_70.69%,#64D2F7_100%)] text-white">    
+            <div class="w-full h-[70px] p-[30px] pt-[0px] pb-[0px] gap-[10px] rounded-t-lg rounded-b-none opacity-100 bg-[radial-gradient(104.31%_150.2%_at_0%_22.79%,rgba(100,52,147,0.95)_23.63%,#4A6DCB_70.69%,#64D2F7_100%)] text-white">
                 <div class="flex justify-between items-center">
                     <h3 class="mt-5 w-[176px] h-[30px] opacity-100 font-inter text-[23px] font-semibold leading-[29.9px] text-left text-[#FFFFFF]">Order Summary</h3>
                     <span class="mt-4 w-[70px] h-[15px] px-[15px] gap-[7px] rounded-full opacity-100 bg-[#DEDEDE] text-center font-inter text-[11px] font-normal leading-[15.4px] text-[#525252]">
@@ -72,44 +72,34 @@
                                 Indonesia
                             </p>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="flex space-x-2 mt-4 sm:mt-0">
                         <button class="text-gray-400 hover:text-gray-600">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                            </svg>
                         </button>
                         <button class="text-gray-400 hover:text-gray-600">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
                         </button>
                     </div>
                 </div>
                 <div class="border-t pt-4">
                     <div class="flex justify-between mb-2">
-                        <span class="w-[64px] h-[23px] text-[16px] font-normal leading-[23.2px] text-center text-[#000000]">
-                            Subtotal
-                        </span>
-                        <span class="w-[52px] h-[23px] text-[16px] font-normal leading-[23.2px] text-center text-[#000000]">
-                            $14.99
-                        </span>
+                        <span class="text-gray-700">Subtotal</span>
+                        <span class="text-gray-700">Rp 10.000</span>
                     </div>
                     <div class="flex justify-between mb-2">
-                        <span class="w-[82px] h-[23px] text-[16px] font-normal leading-[23.2px] text-center text-[#000000]">
-                            VAT @ 11%
-                        </span>
-                        <span class="w-[41px] h-[23px] text-[16px] font-normal leading-[23.2px] text-center text-[#000000]">
-                            $1.65
-                        </span>
+                        <span class="text-gray-700">VAT @ 11%</span>
+                        <span class="text-gray-700">Rp 5.000</span>
                     </div>
-                    <div class="flex justify-between items-center font-bold text-lg mt-4">
-                        <span class="w-[44px] h-[23px] text-[18px] font-bold leading-[23.4px] text-center text-[#000000]">
-                            Total
-                        </span>
-                        <span class="text-blue-600 flex items-center">
-                            <span class="w-[9px] h-[20px] text-[14px] font-normal leading-[20.3px] text-center text-[#4A6DCB]">
-                                $
-                            </span>
-                            <span class="w-[88px] h-[38px] text-[32px] font-bold leading-[38.4px] text-center text-[#4A6DCB]">
-                                16.64
-                            </span>
+                    <div class="flex justify-between items-center text-lg font-bold mt-4">
+                        <span>Total</span>
+                        <span class="flex items-center text-blue-600">
+                            <span class="text-base">Rp.</span>
+                            <span class="text-2xl ml-1">15.000</span>
                         </span>
                     </div>
                 </div>

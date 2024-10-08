@@ -2,7 +2,7 @@
     <div>
         <!-- Konten Utama -->
         <div class="lex-1 w-[1000px]">
-            <h2 class="text-[20px] font-[400]">
+            <h2 class="text-[20px] font-[400] text-left leading-[26px] mb-2 w-full lg:w-full md:w-full" style="height: 26px; gap: 0px; opacity: 1; font-family: 'Inter'; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
                 STEP 1
             </h2>
             <h1 class="text-4xl font-bold leading-tight mb-6 text-transparent bg-clip-text w-full lg:w-full md:w-full h-[38px]" style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
@@ -60,7 +60,6 @@
                     ['tld' => '.xyz', 'price' => 0.99, 'category' => 'Popular'],
                     ['tld' => '.io', 'price' => 3.99, 'category' => 'Popular'],
                     ['tld' => '.co', 'price' => 5.99, 'category' => 'Popular'],
-
 
                     // Country
                     ['tld' => '.co.id', 'price' => 5.99, 'category' => 'Country'],
