@@ -18,7 +18,7 @@ class TLDController extends Controller
 
     // Menampilkan form untuk menambahkan TLD baru
     public function create()
-    {
+    {   
         return view('app.admin.tlds.create');
     }
 

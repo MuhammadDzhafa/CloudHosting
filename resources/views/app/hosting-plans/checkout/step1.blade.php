@@ -216,10 +216,10 @@
             paginatedDomains.forEach(domain => {
                 const row = `
                 <tr class="border-b border-gray-200 text-center">
-                    <td class="domain-tld py-3 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                    <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
                         ${domain.tld}
                     </td>
-                    <td class="domain-price py-3 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                    <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
                         $ ${domain.price}
                     </td>
                     <td class="py-3 px-4 flex justify-center items-center">

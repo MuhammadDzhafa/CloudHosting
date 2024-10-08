@@ -94,7 +94,13 @@
             </div>
 
             @yield('landing-page')
+            @yield('about')
             @yield('faq')
+            @yield('domain')
+            @yield('server-status')
+            @yield('privacy-policy')
+            @yield('terms-and-conditions')
+            @yield('wordpress-hosting')
 
             {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
         </div>

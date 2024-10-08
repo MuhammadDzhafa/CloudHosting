@@ -9,7 +9,7 @@
                 Find your ideal domain effortlessly with our advanced search tool and domain recommendation feature. Get personalized suggestions based on your preferences, explore available names, and secure the perfect match for your brand.
             </p>
 
-            <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full">
+            <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset;">
                 <span>Check</span>
                 <span class="icon" style="min-width: unset">
                     <i class="fa fa-arrow-right"></i>
