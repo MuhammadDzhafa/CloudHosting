@@ -129,11 +129,11 @@
                                                 </div>
                                             </div>
                                             <div class="field">
-                                                <label class="label" for="picture">Picture</label>
+                                                <label class="label" for="image">Picture</label>
                                                 <div class="control">
                                                     <div class="file has-name is-fullwidth">
-                                                        <label class="file-label" for="picture">
-                                                            <input class="file-input" type="file" id="picture" name="picture" accept="image/*">
+                                                        <label class="file-label" for="image">
+                                                            <input class="file-input" type="file" id="image" name="image" accept="image/*">
                                                             <span class="file-cta">
                                                                 <span class="file-icon">
                                                                     <i class="lnil lnil-lg lnil-cloud-upload"></i>
@@ -142,19 +142,12 @@
                                                                     Choose a file...
                                                                 </span>
                                                             </span>
-                                                            <span class="file-name light-text" id="picture-name"></span>
+                                                            <span class="file-name light-text" id="image-name"></span>
                                                         </label>
                                                     </div>
-                                                    <img id="picture-preview" src="" alt="Preview" style="max-width: 100px; margin-top: 10px; display: none;">
+                                                    <img id="image-preview" src="" alt="Preview" style="max-width: 100px; margin-top: 10px; display: none;">
                                                 </div>
                                             </div>
-
-                                            <!-- <div class="field">
-                                                <label class="label">Related Industries</label>
-                                                <div class="control">
-                                                    <input id="choices-text-remove-button" name="tag" class="input" value="example" placeholder="Enter something">
-                                                </div>
-                                            </div> -->
                                     </div>
                                 </div>
                             </form>
@@ -182,32 +175,33 @@
                         ['view', ['codeview', 'help']]
                     ]
                 });
-                document.getElementById('picture').addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                const pictureName = document.getElementById('picture-name');
-                const picturePreview = document.getElementById('picture-preview');
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const editLinks = document.querySelectorAll('.edit-link');
+                    const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
+                    const form = document.querySelector('#testimonial-form');
+                    const fileInput = document.querySelector('#image');
+                    const fileNameDisplay = document.querySelector('#image-name');
+                    const imagePreview = document.querySelector('#image-preview');
 
-                if (file) {
-                    const reader = new FileReader();
-                    
-                    // Update nama file yang dipilih
-                    pictureName.textContent = file.name;
-                    
-                    reader.onload = function(e) {
-                        // Set gambar ke src dari img
-                        picturePreview.src = e.target.result;
-                        picturePreview.style.display = 'block'; // Menampilkan gambar
-                    };
-                    
-                    reader.readAsDataURL(file); // Membaca file sebagai URL
-                } else {
-                    // Jika tidak ada file yang dipilih, sembunyikan preview
-                    pictureName.textContent = '';
-                    picturePreview.src = '';
-                    picturePreview.style.display = 'none';
-                }
-            });
-
+                    fileInput.addEventListener('change', (event) => {
+                        const file = event.target.files[0]; // Ambil file yang dipilih
+                        if (file) {
+                            fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                imagePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
+                                imagePreview.style.display = 'block'; // Tampilkan gambar
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
+                            imagePreview.src = ''; // Hapus preview gambar
+                            imagePreview.style.display = 'none'; // Sembunyikan gambar
+                        }
+                    });
+                });
             </script>
             
 

@@ -129,11 +129,11 @@
                                             </div>
                                         </div>
                                         <div class="field">
-                                            <label class="label" for="picture">Picture</label>
+                                            <label class="label" for="image">Picture</label>
                                             <div class="control">
                                                 <div class="file has-name is-fullwidth">
-                                                    <label class="file-label" for="picture">
-                                                        <input class="file-input" type="file" id="picture" name="picture" accept="image/*">
+                                                    <label class="file-label" for="image">
+                                                        <input class="file-input" type="file" id="image" name="image" accept="image/*">
                                                         <span class="file-cta">
                                                             <span class="file-icon">
                                                                 <i class="lnil lnil-lg lnil-cloud-upload"></i>
@@ -142,12 +142,12 @@
                                                                 Choose a file...
                                                             </span>
                                                         </span>
-                                                        <span class="file-name light-text" id="picture-name"></span>
+                                                        <!-- Tampilkan nama file sebelumnya jika ada -->
+                                                        <span class="file-name light-text" id="image-name">{{ old('content', $article->image ? basename($article->image) : '') }}</span>
                                                     </label>
                                                 </div>
-                                                <img id="picture-preview" src="" alt="Preview" style="max-width: 100px; margin-top: 10px; display: none;">
-                                                <!-- Use the existing picture from the article -->
-                                                <img id="existing-picture" src="{{ asset('storage/' . $article->picture) }}" alt="Existing Preview" style="max-width: 100px; margin-top: 10px; display: {{ $article->picture ? 'block' : 'none' }};">
+                                                <!-- Tampilkan gambar sebelumnya jika ada -->
+                                                <img id="image-preview" src="{{ $article->image ? asset('storage/'.$article->image) : '' }}" alt="Preview" style="max-width: 100px; margin-top: 10px; display: {{ $article->image ? 'block' : 'none' }};">
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@
             <script src="../../../assets/js/app.js"></script>
 
             <script>
-                 $('#summernote').summernote({
+                $('#summernote').summernote({
                     placeholder: 'Hello stand alone ui',
                     tabsize: 2,
                     height: 250,                 // set editor height
@@ -178,34 +178,32 @@
                         ['view', ['codeview', 'help']]
                     ]
                 });
-                // Preview new picture
-                document.getElementById('picture').addEventListener('change', function(event) {
-                    const file = event.target.files[0];
-                    const pictureName = document.getElementById('picture-name');
-                    const picturePreview = document.getElementById('picture-preview');
-                    const existingPicture = document.getElementById('existing-picture');
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const editLinks = document.querySelectorAll('.edit-link');
+                    const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
+                    const form = document.querySelector('#testimonial-form');
+                    const fileInput = document.querySelector('#image');
+                    const fileNameDisplay = document.querySelector('#image-name');
+                    const imagePreview = document.querySelector('#image-preview');
 
-                    if (file) {
-                        const reader = new FileReader();
-                        
-                        // Update selected file name
-                        pictureName.textContent = file.name;
-
-                        reader.onload = function(e) {
-                            // Set new image to src of img
-                            picturePreview.src = e.target.result;
-                            picturePreview.style.display = 'block'; // Show new image
-                            existingPicture.style.display = 'none'; // Hide existing image
-                        };
-                        
-                        reader.readAsDataURL(file); // Read file as URL
-                    } else {
-                        // If no file selected, hide preview
-                        pictureName.textContent = '';
-                        picturePreview.src = '';
-                        picturePreview.style.display = 'none';
-                        existingPicture.style.display = 'block'; // Show existing image again
-                    }
+                    fileInput.addEventListener('change', (event) => {
+                        const file = event.target.files[0]; // Ambil file yang dipilih
+                        if (file) {
+                            fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                imagePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
+                                imagePreview.style.display = 'block'; // Tampilkan gambar
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
+                            imagePreview.src = ''; // Hapus preview gambar
+                            imagePreview.style.display = 'none'; // Sembunyikan gambar
+                        }
+                    });
                 });
             </script>
             <!-- Concatenated plugins -->
