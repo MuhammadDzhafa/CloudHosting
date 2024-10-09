@@ -2,9 +2,6 @@
     <div class="absolute "></div>
     <div class="section-frame padding-1 bg-white">
         <div class="bg-white rounded-lg">
-            <div class="relative flex items-center mb-16 text-center hidden lg:block">
-                <img src="/assets/img/bg/globegradient.svg" alt="" class="absolute left-[20px] top-[-100px]">
-            </div>
             <h2 class="text-3xl md:text-4xl title-section text-center mb-16 ">
                 Domain Price List
             </h2>

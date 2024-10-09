@@ -1,4 +1,4 @@
-<div class="section-frame padding-6 bg-gradient-custom flex flex-col justify-center items-center h-[631px]">
+<div class="section-frame padding-1 bg-gradient-custom flex flex-col justify-center items-center">
     <h2 class="title-section text-center text-white mb-4">
         Find Your Perfect Domain
     </h2>
