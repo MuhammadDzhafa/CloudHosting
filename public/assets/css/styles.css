@@ -1710,22 +1710,21 @@ p {
                         Card Price
 =========================================================
 */
-.card-domain {
-    transition: border 0.3s ease;
+.card-gradient {
+    transition: border 0.1s ease;
+    border: 0.68px solid #DEDEDE;
+    background: #FFFFFF;
+    box-shadow: 0px 1.75px 4px -1px #00000024;
+    border-radius: 10px;
 }
 
-.card-domain:hover {
-    border: 1px solid transparent;
-    /* Membuat border transparan agar gradien terlihat */
+.card-gradient:hover {
+    border: 2px solid transparent;
     background-origin: border-box;
-    /* Memastikan gradien berada pada border */
     background-clip: padding-box, border-box;
-    /* Menyelaraskan gradien dengan border */
     background-image:
         linear-gradient(white, white),
-        /* Warna latar belakang normal */
         radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%);
-    /* Gradien pada border */
 }
 
 .gradient-border {

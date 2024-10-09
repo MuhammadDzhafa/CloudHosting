@@ -25,8 +25,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <!-- Card 1 -->
-            <div class="border border-gray-200 rounded-lg p-4 w-full"
-                style="border-radius: 10px; border: 0.68px solid #DEDEDE; background: #FFFFFF; box-shadow: 0px 1.75px 4px -1px #00000024;">
+            <div class="card-gradient p-4 w-full">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
                     <label class="radio is-outlined is-info inline-flex items-center">
@@ -44,8 +43,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="border border-gray-200 rounded-lg p-4 w-full"
-                style="border-radius: 10px; border: 0.68px solid #DEDEDE; background: #FFFFFF; box-shadow: 0px 1.75px 4px -1px #00000024;">
+            <div class="card-gradient p-4 w-full">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
                     <label class="inline-flex items-center">
