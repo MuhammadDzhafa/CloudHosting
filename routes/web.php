@@ -135,7 +135,7 @@ Route::get('/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index
 Route::get('/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
 Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
 Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
-Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
+Route::put('/tlds/{id}', [TLDController::class, 'update'])->name('tlds.update');
 Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
 Route::post('/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
 
@@ -150,6 +150,7 @@ Route::put('hosting-plans/{id}', [HostingPlanController::class, 'update'])->name
 Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
 Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
 Route::delete('/prices/{price}', [PriceController::class, 'destroy'])->name('price.destroy');
+
 
 /* Hosting Group */
 Route::get('/hosting-groups', [HostingGroupController::class, 'index'])->name('hosting-groups.index');

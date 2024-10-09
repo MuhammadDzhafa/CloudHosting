@@ -97,23 +97,24 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <button class="button h-button is-primary is-elevated h-modal-trigger addData" data-modal="addandedit">
-                                <span class="icon" style="min-width: unset">
+                            <a href="{{ route('articles.create') }}" class="button h-button is-primary is-elevated">
+                                <span class="icon" style="min-width: unset;">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
                                 <span>Add New</span>
-                            </button>
+                            </a>
                         </div>
+
                     </div>
                     <div class="page-content-inner">
                         <div class="table-wrapper" data-simplebar>
                             <table id="articles-datatable" class="table is-datatable is-hoverable">
-                                <thead>
+                                <thead style="background-color:#EDE5F6;">
                                     <tr class="color-row">
                                         <th>TITLE</th>
                                         <th style="max-width: 400px;">CONTENT</th>
                                         <th>AUTHOR</th>
-                                        <th>LIKES</th>
+                                        <th>IMAGE</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -123,10 +124,22 @@
                                         <td>{{ $article->title }}</td>
                                         <td style="max-width: 400px;">{{ Str::limit($article->content, 150) }}</td>
                                         <td>{{ $article->author }}</td>
-                                        <td>{{ $article->likes }}</td>
                                         <td>
-                                            <a href="javascript:void(0);" class="edit-link" data-id="{{ $article->article_id }}" data-title="{{ $article->title }}" data-content="{{ $article->content }}" data-author="{{ $article->author }}" data-likes="{{ $article->likes }}">
-                                                <img src="assets/img/product/edit.svg" alt="Edit" class="mr-6">
+                                            @if ($article->image)
+                                            <img src="{{ asset('storage/' . $article->image) }}" alt="Picture" style="width: 100px;">
+                                            @else
+                                            No Image
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('articles.edit', $article->article_id) }}" 
+                                                class="edit-link" 
+                                                data-id="{{ $article->article_id }}" 
+                                                data-title="{{ $article->title }}" 
+                                                data-content="{{ $article->content }}" 
+                                                data-author="{{ $article->author }}" 
+                                                data-likes="{{ $article->likes }}">
+                                                    <img src="assets/img/product/edit.svg" alt="Edit" class="mr-6">
                                             </a>
                                             <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $article->article_id }}', '{{ $article->title }}')">
                                                 <img src="assets/img/product/trash.svg" alt="Delete">
@@ -188,8 +201,6 @@
                 </div>
             </div>
         </div>
-
-        @include("app.admin.articles.create")
 
         <!-- Concatenated plugins -->
         <script src="assets/js/app.js"></script>

@@ -1,218 +1,224 @@
-{{-- Modals --}}
-<div id="addandedit" class="modal h-modal">
-    <div class="modal-background h-modal-close"></div>
-    <div class="modal-content">
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <h3 id="modal-title">Add Article</h3>
-                <button class="h-modal-close ml-auto" aria-label="close">
-                    <i data-feather="x"></i>
-                </button>
-            </header>
-            <div class="modal-card-body">
-                <div class="inner-content">
-                    <form id="article-form" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="article_id" id="article_id"> <!-- Hidden field for article_id -->
-                        <div class="field">
-                            <label class="label" for="title">Title</label>
-                            <div class="control">
-                                <input type="text" class="input" id="title" name="title" required>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags  -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <title>Awan Hosting :: Create Article</title>
+        <link rel="icon" type="image/png" href="../../../assets/img/logos/logo/logoo.svg" />
+
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-N8ZNRQ9');
+        </script>
+        <!-- End Google Tag Manager -->
+
+        <!--Core CSS -->
+        <link rel="stylesheet" href="../../../assets/css/app.css" />
+        <link rel="stylesheet" href="../../../assets/css/main.css" />
+        <link rel="stylesheet" href="../../../assets/css/styles.css" />
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
+            rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
+
+    </head>
+
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        <div id="huro-app" class="app-wrapper">
+            <div class="app-overlay"></div>
+            <!--Pageloader-->
+            <!-- Pageloader -->
+            <div class="pageloader"></div>
+            <div class="infraloader is-active"></div>
+            <!--Mobile navbar-->
+            @include('layouts.template-admin.mobile.navbar')
+            <!--Mobile sidebar-->
+            @include('layouts.template-admin.mobile.sidebar')
+            <!--Circular menu-->
+            <div id="circular-menu" class="circular-menu">
+
+                @include('layouts.template-admin.web.floatingbtn')
+
+                @include('layouts.template-admin.web.partials.toolbar')
+
+            </div>
+            <!--Sidebar-->
+            @include('layouts.template-admin.web.partials.toolbar.sidebar')
+
+            @include('layouts.template-admin.mobile.subsidebar')
+
+            <!-- Content Wrapper -->
+            <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu"
+                data-mobile-item="#home-sidebar-menu-mobile">
+                <div class="page-content-wrapper">
+                    <div class="page-content is-relative">
+                        <div class="page-title has-text-centered">
+                            <div class="title-wrap">
+                                <h1 class="title is-4">Products</h1>
                             </div>
                         </div>
-                        <div class="field">
-                            <label class="label" for="content">Content</label>
-                            <div class="control">
-                                <textarea class="textarea" id="content" name="content" rows="3" required></textarea>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label class="label" for="author">Author</label>
-                            <div class="control">
-                                <input type="text" class="input" id="author" name="author" required>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label class="label" for="image">Image</label>
-                            <div class="control">
-                                <div class="file has-name is-fullwidth">
-                                    <label class="file-label" for="image">
-                                        <input class="file-input" type="file" id="image" name="image">
-                                        <span class="file-cta">
-                                            <span class="file-icon">
-                                                <i class="lnil lnil-lg lnil-cloud-upload"></i>
-                                            </span>
-                                            <span class="file-label" id="image-label">Choose a file..</span>
-                                        </span>
-                                        <span class="file-name light-text" id="image-name"></span>
-                                    </label>
-                                </div>
-                                <img id="image-preview" src="" style="max-width: 100px; margin-top: 10px;">
-                            </div>
-                        </div>
-                        <div class="modal-card-foot is-centered">
-                            <a class="button h-button h-modal-close">Cancel</a>
-                            <button type="submit" class="button h-button is-primary is-raised">Submit</button>
-                        </div>
-                        <!-- Modal "Saved!" -->
-                        <div id="saved-modal" class="modal h-modal">
-                            <div class="modal-background h-modal-close"></div>
-                            <div class="modal-content">
-                                <div class="modal-card">
-                                    <div class="modal-card-body" style="border-radius: 6px 6px 0 0;">
-                                        <div class="inner-content">
-                                            <div class="section-placeholder">
-                                                <div class="placeholder-content">
-                                                    <i class="fas fa-check-circle fa-3x"></i>
-                                                    <h3 class="dark-inverted">Saved!</h3>
-                                                    <p>Your changes have been saved.</p>
+
+                        <div class="page-content-inner">
+                            <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-layout" style="max-width: none;">
+                                    <div class="form-outer">
+                                        <div class="form-header stuck-header">
+                                            <div class="form-header-inner">
+                                                <div class="left">
+                                                    <h3>Create an Article</h3>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="buttons">
+                                                        <a href="/articles" class="button h-button is-light is-dark-outlined">
+                                                            <span class="icon">
+                                                                <i class="lnir lnir-arrow-left rem-100"></i>
+                                                            </span>
+                                                            <span>Back to Article</span>
+                                                        </a>
+                                                        <button id="submit" class="button h-button is-primary is-raised">Save</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-card-foot is-centered">
-                                        <button class="button h-button is-primary is-raised is-rounded h-modal-close">OK</button>
+                                        <div class="form-body">
+                                            <div class="field">
+                                                <label class="label" for="title">Title</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" id="title" name="title">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label" for="author">Author</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" id="author" name="author">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Content</label>
+                                                <div class="control">
+                                                    <textarea id="sun-editor" name="content" placeholder="Write your text here..."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label" for="content">Content</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" id="content" name="content">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label" for="image">Picture</label>
+                                                <div class="control">
+                                                    <div class="file has-name is-fullwidth">
+                                                        <label class="file-label" for="image">
+                                                            <input class="file-input" type="file" id="image" name="image" accept="image/*">
+                                                            <span class="file-cta">
+                                                                <span class="file-icon">
+                                                                    <i class="lnil lnil-lg lnil-cloud-upload"></i>
+                                                                </span>
+                                                                <span class="file-label">
+                                                                    Choose a file...
+                                                                </span>
+                                                            </span>
+                                                            <span class="file-name light-text" id="image-name"></span>
+                                                        </label>
+                                                    </div>
+                                                    <img id="image-preview" src="" alt="Preview" style="max-width: 100px; margin-top: 10px; display: none;">
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<script>
-    // Mendapatkan elemen input file dan elemen pratinjau gambar
-    const fileInput = document.getElementById('image');
-    const imagePreview = document.getElementById('image-preview');
-    const imageName = document.getElementById('image-name');
+            <!--Huro Scripts-->
+            <!--Load Mapbox-->
+            <script>
+                $('#summernote').summernote({
+                    placeholder: 'Hello stand alone ui',
+                    tabsize: 2,
+                    height: 250,                 // set editor height
+                    minHeight: null,             // set minimum height of editor
+                    maxHeight: null,             // set maximum height of editor
+                    focus: true, 
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['codeview', 'help']]
+                    ]
+                });
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const editLinks = document.querySelectorAll('.edit-link');
+                    const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
+                    const form = document.querySelector('#testimonial-form');
+                    const fileInput = document.querySelector('#image');
+                    const fileNameDisplay = document.querySelector('#image-name');
+                    const imagePreview = document.querySelector('#image-preview');
 
-    // Menangani perubahan pada input file
-    fileInput.addEventListener('change', function() {
-        const file = this.files[0]; // Mengambil file yang diunggah
-        if (file) {
-            const reader = new FileReader(); // Membaca file
+                    fileInput.addEventListener('change', (event) => {
+                        const file = event.target.files[0]; // Ambil file yang dipilih
+                        if (file) {
+                            fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                imagePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
+                                imagePreview.style.display = 'block'; // Tampilkan gambar
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
+                            imagePreview.src = ''; // Hapus preview gambar
+                            imagePreview.style.display = 'none'; // Sembunyikan gambar
+                        }
+                    });
+                });
+            </script>
             
-            // Menampilkan nama file
-            imageName.textContent = file.name;
 
-            // Menampilkan pratinjau gambar
-            reader.addEventListener('load', function() {
-                imagePreview.setAttribute('src', this.result); // Mengatur src dari gambar pratinjau
-                imagePreview.style.display = 'block'; // Menampilkan gambar pratinjau
-            });
+            <!-- Concatenated plugins -->
+            <script src="../../../assets/js/app.js"></script>
 
-            reader.readAsDataURL(file); // Membaca file sebagai URL data
-        } else {
-            imageName.textContent = ''; // Mengosongkan nama file jika tidak ada file
-            imagePreview.setAttribute('src', ''); // Mengosongkan pratinjau gambar
-            imagePreview.style.display = 'none'; // Menyembunyikan pratinjau gambar
-        }
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const editLinks = document.querySelectorAll('.edit-link');
-        const addNewButton = document.querySelector('.addData'); // Button to add new article
-        const form = document.querySelector('#article-form');
-        const fileInput = document.querySelector('#image');
-        const fileNameDisplay = document.querySelector('#image-name');
-        const imagePreview = document.querySelector('#image-preview');
-
-        fileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0]; // Get selected file
-            if (file) {
-                fileNameDisplay.textContent = file.name; // Display file name
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result; // Show image preview
-                };
-                reader.readAsDataURL(file);
-            } else {
-                fileNameDisplay.textContent = 'Choose a file...'; // Reset if no file selected
-                imagePreview.src = ''; // Clear image preview
-            }
-        });
-
-        // Function to open modal and reset form
-        function openModal(isEdit = false) {
-            if (isEdit) {
-                document.querySelector('#modal-title').textContent = 'Edit Article';
-            } else {
-                resetForm();
-                document.querySelector('#modal-title').textContent = 'Add Article';
-            }
-            document.querySelector('#addandedit').classList.add('is-active');
-        }
-
-        // Handle add button click
-        addNewButton.addEventListener('click', () => {
-            resetForm(); // Reset the form for adding a new article
-            document.querySelector('#modal-title').textContent = 'Add Article'; // Set modal title
-            form.action = "{{ route('articles.store') }}"; // Set action for adding
-            form.method = 'POST'; // Set method to POST
-        });
-
-        // Handle edit button clicks
-        editLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const id = link.getAttribute('data-id');
-                const title = link.getAttribute('data-title');
-                const author = link.getAttribute('data-author');
-                const content = link.getAttribute('data-content');
-                const image = link.getAttribute('data-image');
-
-                // Set modal action for editing
-                form.action = `/articles/${id}`; // Set action for PUT
-                form.method = 'POST'; // Set method to POST
-
-                // Populate form fields
-                document.querySelector('#title').value = title;
-                document.querySelector('#content').value = content;
-                document.querySelector('#author').value = author;
-                document.querySelector('#image-preview').src = image ? `/storage/article_images/${image}` : '';
-                document.querySelector('#image-name').textContent = image ? image.split('/').pop() : 'Choose a file…';
-
-                // Ensure PUT method hidden input is there
-                let methodField = form.querySelector('input[name="_method"]');
-                if (!methodField) {
-                    methodField = document.createElement('input');
-                    methodField.type = 'hidden';
-                    methodField.name = '_method';
-                    methodField.value = 'PUT';
-                    form.appendChild(methodField);
-                }
-
-                // Open modal
-                openModal(true);
-            });
-        });
-
-        // Modal close handling
-        const modal = document.getElementById('addandedit');
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal || event.target.classList.contains('h-modal-close')) {
-                resetForm(); // Reset form when modal is closed
-                modal.classList.remove('is-active'); // Close modal
-            }
-        });
-
-        // Function to reset the form
-        function resetForm() {
-            form.reset(); // Clear all fields
-            document.querySelector('#image-preview').src = ''; // Clear image preview
-            document.querySelector('#image-name').textContent = 'Choose a file…'; // Reset file name display
-
-            // Remove hidden input for PUT method if it exists
-            const methodField = form.querySelector('input[name="_method"]');
-            if (methodField) {
-                methodField.remove();
-            }
-        }
-    });
-</script>
+            <!-- Huro js -->
+            <script src="../../../assets/js/functions.js"></script>
+            <script src="../../../assets/js/main.js" async></script>
+            <script src="../../../assets/js/components.js" async></script>
+            <script src="../../../assets/js/popover.js" async></script>
+            <script src="../../../assets/js/widgets.js" async></script>
 
 
+            <!-- Additional Features -->
+            <script src="assets/js/touch.js" async></script>
+            <script src="assets/js/syntax.js" async></script>
+        </div>
+    </body>
+</html>

@@ -1,32 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit TLD</title>
-    <link rel="stylesheet" href="{{ asset('path/to/your/css/styles.css') }}"> <!-- Ganti dengan path CSS Anda -->
-</head>
-<body>
-    <div class="container">
-        <h1>Edit TLD</h1>
-        <a href="/tlds" class="btn btn-secondary">Back to TLDs</a>
-        <form action="{{ route('tlds.update', $tld) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-                <label for="tld_name">TLD Name:</label>
-                <input type="text" id="tld_name" name="tld_name" value="{{ $tld->tld_name }}" required>
-            </div>
-            <div class="form-group">
-                <label for="tld_price">Price:</label>
-                <input type="number" id="tld_price" name="tld_price" value="{{ $tld->tld_price }}" step="0.01" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Update TLD</button>
-        </form>
-    </div>
-</body>
-</html> --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Edit TLD</title>
+    <title>Awan Hosting :: Edit Article</title>
     <link rel="icon" type="image/png" href="../../../assets/img/logos/logo/logoo.svg" />
 
     <!-- Google Tag Manager -->
@@ -104,28 +75,28 @@
                 <div class="page-content is-relative">
                     <div class="page-title has-text-centered">
                         <div class="title-wrap">
-                            <h1 class="title is-4">Edit TLD</h1>
+                            <h1 class="title is-4">Edit Article</h1>
                         </div>
                     </div>
 
                     <div class="page-content-inner">
-                    <form action="{{ route('tlds.update', $tld->tld_id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    <form action="{{ route('articles.update', $article->article_id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         @method('PUT')
                             <div class="form-layout" style="max-width: none;">
                                 <div class="form-outer">
                                     <div class="form-header stuck-header">
                                         <div class="form-header-inner">
                                             <div class="left">
-                                                <h3>Edit TLD</h3>
+                                                <h3>Edit Article</h3>
                                             </div>
                                             <div class="right">
                                                 <div class="buttons">
-                                                    <a href="/tlds" class="button h-button is-light is-dark-outlined">
+                                                    <a href="/articles" class="button h-button is-light is-dark-outlined">
                                                         <span class="icon">
                                                             <i class="lnir lnir-arrow-left rem-100"></i>
                                                         </span>
-                                                        <span>Back to TLD</span>
+                                                        <span>Back to Article</span>
                                                     </a>
                                                     <button id="submit" class="button h-button is-primary is-raised">Update</button>
                                                 </div>
@@ -134,21 +105,43 @@
                                     </div>
                                     <div class="form-body">
                                         <div class="field">
-                                            <label class="label" for="tld_name">Name</label>
+                                            <label class="label" for="title">Title</label>
                                             <div class="control">
-                                                <input type="text" class="input" id="tld_name" name="tld_name" value="{{ old('tld_name', $tld->tld_name) }}">
+                                                <input type="text" class="input" id="title" name="title" value="{{ old('title', $article->title) }}">
                                             </div>
                                         </div>
                                         <div class="field">
-                                            <label class="label" for="tld_price">Price</label>
+                                            <label class="label" for="author">Author</label>
                                             <div class="control">
-                                                <input type="text" class="input" id="tld_price" name="tld_price" value="{{ old('tld_price', $tld->tld_price) }}">
+                                                <input type="text" class="input" id="author" name="author" value="{{ old('author', $article->author) }}">
                                             </div>
                                         </div>
                                         <div class="field">
-                                            <label class="label" for="category">Category</label>
+                                            <label class="label">Content</label>
                                             <div class="control">
-                                                <input type="text" class="input" id="category" name="category" value="{{ old('category', $tld->category) }}">
+                                                <textarea id="sun-editor" name="content">{{ old('content', $article->content) }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label" for="image">Picture</label>
+                                            <div class="control">
+                                                <div class="file has-name is-fullwidth">
+                                                    <label class="file-label" for="image">
+                                                        <input class="file-input" type="file" id="image" name="image" accept="image/*">
+                                                        <span class="file-cta">
+                                                            <span class="file-icon">
+                                                                <i class="lnil lnil-lg lnil-cloud-upload"></i>
+                                                            </span>
+                                                            <span class="file-label">
+                                                                Choose a file...
+                                                            </span>
+                                                        </span>
+                                                        <!-- Tampilkan nama file sebelumnya jika ada -->
+                                                        <span class="file-name light-text" id="image-name">{{ old('content', $article->image ? basename($article->image) : '') }}</span>
+                                                    </label>
+                                                </div>
+                                                <!-- Tampilkan gambar sebelumnya jika ada -->
+                                                <img id="image-preview" src="{{ $article->image ? asset('storage/'.$article->image) : '' }}" alt="Preview" style="max-width: 100px; margin-top: 10px; display: {{ $article->image ? 'block' : 'none' }};">
                                             </div>
                                         </div>
                                     </div>
@@ -161,6 +154,52 @@
 
             <!-- Huro Scripts -->
             <script src="../../../assets/js/app.js"></script>
+
+            <script>
+                $('#summernote').summernote({
+                    placeholder: 'Hello stand alone ui',
+                    tabsize: 2,
+                    height: 250,                 // set editor height
+                    minHeight: null,             // set minimum height of editor
+                    maxHeight: null,             // set maximum height of editor
+                    focus: true, 
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['codeview', 'help']]
+                    ]
+                });
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const editLinks = document.querySelectorAll('.edit-link');
+                    const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
+                    const form = document.querySelector('#testimonial-form');
+                    const fileInput = document.querySelector('#image');
+                    const fileNameDisplay = document.querySelector('#image-name');
+                    const imagePreview = document.querySelector('#image-preview');
+
+                    fileInput.addEventListener('change', (event) => {
+                        const file = event.target.files[0]; // Ambil file yang dipilih
+                        if (file) {
+                            fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                imagePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
+                                imagePreview.style.display = 'block'; // Tampilkan gambar
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
+                            imagePreview.src = ''; // Hapus preview gambar
+                            imagePreview.style.display = 'none'; // Sembunyikan gambar
+                        }
+                    });
+                });
+            </script>
             <!-- Concatenated plugins -->
             <script src="../../../assets/js/app.js"></script>
 
@@ -178,4 +217,3 @@
         </div>
     </body>
 </html>
-

@@ -1,46 +1,4 @@
-<!-- <div class="section-frame padding-1 gap-6 md:gap-12">
-    <h2 class="text-3xl md:text-4xl title-section text-center">
-        Hear Directly from Our Satisfied Clients
-    </h2>    
-    </h2>    
-    <div id="slider" class="relative w-full overflow-hidden">
-        <div class="slider-content flex transition-transform duration-300 ease-in-out" style="width: 100%; width: unset;" >
-            @foreach($testimonials as $testimonial)
-            <div class="slider-item flex-none w-full flex items-center justify-between bg-white p-8">
-                <img src="{{ asset('storage/' . $testimonial->picture) }}" style="width: 100%;" alt="Client" class="rounded-full img-slide">
-                <div class="text-left ml-8">
-                    <div class="flex items-center gap-4">
-                        <div class="quote-icon">
-                            <span class="quote-text">“</span>
-                        </div>
-                        <p class="client-review">
-                            {{ $testimonial->testimonial_text }}
-                        </p>
-                    </div>
-                    <p class="client-name">
-                        - {{ $testimonial->occupation }}
-                    </p>
-                    <div class="client-socials">
-                        <a href="{{ $testimonial->facebook }}" target="_blank">Facebook</a> | 
-                        <a href="{{ $testimonial->instagram }}" target="_blank">Instagram</a>
-                     
-                        <span>Facebook: {{ $testimonial->facebook }}</span> | 
-                        <span>Instagram: {{ $testimonial->instagram }}</span>
-            
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        
-        <button id="prev" class="absolute bottom-4 right-20 w-[50px] h-[50px] bg-indigo-500 text-white p-2 rounded-full focus:outline-none">❮</button>
-        <button id="next" class="absolute bottom-4 right-4 w-[50px] h-[50px] bg-indigo-500 text-white p-2 rounded-full focus:outline-none">❯</button>
-    </div>
-</div> -->
-
-
-
-<div class="gap-[50px] section-frame padding-1">
+<div class="section-frame padding-1 gap-6 md:gap-12">
     <h2 class="title-section text-center">
         Hear Directly from Our Satisfied Clients
     </h2>
@@ -75,6 +33,9 @@
                         {{ $testimonial->domain_web }}
                     </p>
                 </div>
+
+
+
             </div>
             @endforeach
         </div>

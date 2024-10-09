@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Testimonial; // Import the Testimonial model
 use App\Models\HostingPlan; // Import the Hosting Plan model
 use App\Models\HostingGroup; // Import the Hosting Group model
+use App\Models\Article; // Import the Article model
+use App\Models\TLD; // Import the Article model
 use App\Models\Faq;
 use Illuminate\View\View; // Import the View class
 
@@ -13,38 +15,37 @@ use Illuminate\Http\Request;
 class HostingController extends Controller
 {
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        // Fetch the testimonials data
-        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
+        // Retrieve all TLDs and distinct categories for filters
+        $tlds = Tld::all(); // You can use paginate() if pagination is needed
+        $categories = Tld::select('category')->distinct()->get();
+        // dd($categories);
 
+        // Retrieve testimonials, hosting groups, articles, and hosting plans with relationships
+        $testimonials = Testimonial::all();
         $hostingGroups = HostingGroup::all();
+        $articles = Article::latest()->take(5)->get();
+        
+        // Eager load hosting plans with related groups and prices
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
 
-        // Define the custom order of the hosting plans
-        // $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
-
+        // Sort hosting plans by the 'monthly' price
         $sortedHostingPlans = $hostingPlans->sortBy(function ($plan) {
             return optional($plan->prices->where('duration', 'monthly')->first())->price_after;
         });
 
-        // $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
-        //     foreach ($hostingPlanOrder as $key => $name) {
-        //         // Check if the plan name contains one of the keywords
-        //         if (str_contains($hostingPlan->name, $name)) {
-        //             return $key; // Return the index based on the keyword
-        //         }
-        //     }
-        //     return count($hostingPlanOrder); // Default to end of the list if no match
-        // });
-
-        // Return the landing page view with testimonials and sorted hosting plans
+        // Return the view with all the necessary data
         return view('app.hosting-plans.landing-page.index', [
             'testimonials' => $testimonials,
+            'articles' => $articles,
+            'tlds' => $tlds,
+            'categories' => $categories,
             'hostingPlans' => $sortedHostingPlans,
-            'hostingGroups' => $hostingGroups
+            'hostingGroups' => $hostingGroups,
         ]);
     }
+
 
     public function tampilan3()
     {
