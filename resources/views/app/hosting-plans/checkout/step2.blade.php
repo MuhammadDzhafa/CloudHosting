@@ -8,8 +8,7 @@
         Domain Configuration
     </h1>
 
-    <div class="w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] rounded-lg bg-white border-2 border-solid shadow-lg"
-        style="border-image-source: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); border-image-slice: 1;">
+    <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div class="flex flex-col items-start mb-4 md:mb-0">
                 <h3 class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Example.id</h3>

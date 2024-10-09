@@ -8,11 +8,7 @@
         Hosting
     </h1>
 
-    <div class="bg-white rounded-[10px] p-4 md:p-[20px] mb-6 w-full lg:w-full md:w-full"
-        style="height: auto; gap: 20px; opacity: 1; background: #FFFFFF; 
-    border-radius: 10px; 
-    border: 2px solid transparent; border-image: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%) 1;
-    box-shadow: 0px 14px 26px -12px #4A6DCB33, 0px 4px 23px 0px #4A6DCB1F, 0px 8px 10px -5px #A377CF33;">
+    <div class="gradient-border rounded-[10px] p-4 md:p-[20px] mb-6 w-full lg:w-full md:w-full bg-white relative">
         <h3 class="text-[20px] font-[700] leading-[26px] text-left mb-4 w-full"
             style="height: 23px; gap: 0px; opacity: 1; font-family: 'Inter'; color: #3C476C;">
             Cloud Hosting - Alto
