@@ -27,7 +27,9 @@
                     @endforeach
                 </ul>
             </div>
-        </div>
+            <div class="column is-8">
+                <div class="account-box is-footerless">
+                    <div class="form-body">
 
         @foreach ($faqs as $category => $items)
             <div id="{{ strtolower(str_replace(' ', '-', $category)) }}" class="tab-content {{ $loop->first ? 'is-active' : '' }}" style="{{ $loop->first ? 'display: block;' : 'display: none;' }}">
@@ -46,24 +48,40 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tabs = document.querySelectorAll('.tabs li');
-        const tabContents = document.querySelectorAll('.tab-content');
+    // Select all anchors inside account-menu
+    const menuItems = document.querySelectorAll('.account-menu-item');
+    const contentSections = document.querySelectorAll('.fieldset');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                tabs.forEach(t => t.classList.remove('is-active'));
-                tabContents.forEach(content => {
-                    content.classList.remove('is-active');
-                    content.style.display = 'none';
-                });
+    // Hide all sections initially
+    contentSections.forEach(section => section.style.display = 'none');
 
-                tab.classList.add('is-active');
-                const activeTabContentId = tab.getAttribute('data-tab');
-                const activeTabContent = document.getElementById(activeTabContentId);
-                activeTabContent.classList.add('is-active');
-                activeTabContent.style.display = 'block';
-            });
+    // Set up default visible section (first one)
+    const defaultSection = document.querySelector('.fieldset');
+    if (defaultSection) {
+        defaultSection.style.display = 'block';  // Ensure the first section is visible by default
+    }
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Remove active class from all menu items
+            menuItems.forEach(link => link.classList.remove('is-active'));
+
+            // Add active class to the clicked menu item
+            this.classList.add('is-active');
+
+            // Hide all content sections
+            contentSections.forEach(section => section.style.display = 'none');
+
+            // Get the target section based on the href of the clicked anchor
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+
+            // Show the corresponding section
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
         });
     });
 </script>

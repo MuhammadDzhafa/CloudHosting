@@ -18,11 +18,11 @@ class CustomMainSpec extends Model
         'price_RAM',
         'min_storage', 
         'max_storage', 
-        'multiplier_storage', 
+        'step_storage', 
         'price_storage',
         'min_CPU', 
         'max_CPU', 
-        'step_CPU', 
+        'multiplier_CPU', 
         'price_CPU',
         'hosting_plans_id'
     ];

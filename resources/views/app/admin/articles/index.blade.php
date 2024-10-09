@@ -109,7 +109,7 @@
                     <div class="page-content-inner">
                         <div class="table-wrapper" data-simplebar>
                             <table id="articles-datatable" class="table is-datatable is-hoverable">
-                                <thead>
+                                <thead style="background-color:#EDE5F6;">
                                     <tr class="color-row">
                                         <th>TITLE</th>
                                         <th style="max-width: 400px;">CONTENT</th>

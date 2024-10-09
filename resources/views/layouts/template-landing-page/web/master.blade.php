@@ -104,6 +104,7 @@
             @yield('cloud-hosting')
 
             {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
+            @include('layouts.template-landing-page.web.partials.footer')
         </div>
 
         <!--Huro Scripts-->

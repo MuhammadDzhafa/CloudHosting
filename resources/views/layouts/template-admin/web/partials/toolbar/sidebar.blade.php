@@ -66,6 +66,11 @@
                     <i class="sidebar-svg" data-feather="book"></i>
                 </a>
             </li>
+            <li>
+                <a href="/tlds" id="tlds" data-content="Tlds" class="menu-item">
+                    <i class="sidebar-svg" data-feather="globe"></i>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

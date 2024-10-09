@@ -22,13 +22,14 @@ class CreateCustomMainSpecTable extends Migration
             $table->integer('price_RAM');
             $table->integer('min_storage');
             $table->integer('max_storage');
-            $table->integer('multiplier_storage');
+            $table->integer('step_storage');
             $table->integer('price_storage');
             $table->integer('min_CPU');
             $table->integer('max_CPU');
-            $table->integer('step_CPU');
+            $table->integer('multiplier_CPU');
             $table->integer('price_CPU');
             $table->timestamps(); // Kolom created_at dan updated_at
+            $table->softDeletes();
 
             $table->foreign('hosting_plans_id')->references('hosting_plans_id')->on('hosting_plans')->onDelete('restrict');
 

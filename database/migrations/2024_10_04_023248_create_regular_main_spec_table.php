@@ -20,6 +20,7 @@ class CreateRegularMainSpecTable extends Migration
             $table->integer('storage');
             $table->integer('CPU');
             $table->timestamps(); // Kolom created_at dan updated_at
+            $table->softDeletes();
 
             $table->foreign('hosting_plans_id')->references('hosting_plans_id')->on('hosting_plans')->onDelete('restrict');
 

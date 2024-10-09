@@ -8,8 +8,6 @@
         </p>
 
         <p class="font-inter text-[18px] font-normal leading-[23.4px] text-center text-white mb-4">
-            At Awan Hosting, we value your privacy and are committed to protecting the personal information you share
-            with us.
             By using our services, you agree to the practices described in this Privacy Policy.
         </p>
     </div>

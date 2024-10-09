@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('tld_id');
             $table->string('tld_name');
             $table->integer('tld_price');
-            $table->integer('category');
+            $table->string('category');
             $table->timestamps();
         });
     }

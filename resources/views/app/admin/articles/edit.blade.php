@@ -116,12 +116,6 @@
                                                 <input type="text" class="input" id="author" name="author" value="{{ old('author', $article->author) }}">
                                             </div>
                                         </div>
-                                        <!-- <div class="field">
-                                            <label class="label" for="content">Content</label>
-                                            <div class="control">
-                                                <input type="text" class="input" id="content" name="content" value="{{ old('content', $article->content) }}">
-                                            </div>
-                                        </div> -->
                                         <div class="field">
                                             <label class="label">Content</label>
                                             <div class="control">

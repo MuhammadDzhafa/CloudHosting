@@ -28,6 +28,8 @@ class TLDController extends Controller
         $tld = new TLD(); // Pastikan menggunakan huruf kapital
         $tld->tld_name = $request->input('tld_name');
         $tld->tld_price = $request->input('tld_price');
+        $tld->category = $request->input('category');
+
         $tld->save();
 
         return redirect()->route('app.admin.tlds.index')->with('success', 'TLD created successfully.');
@@ -42,24 +44,25 @@ class TLDController extends Controller
     // Menampilkan form untuk mengedit TLD
     public function edit(TLD $tld) // Pastikan menggunakan huruf kapital
     {
+        // Tidak perlu melakukan pencarian lagi, karena $tld sudah di-inject oleh Laravel
         return view('app.admin.tlds.edit', compact('tld'));
     }
 
     // Memperbarui TLD di database
-    public function update(Request $request, TLD $tld) // Pastikan menggunakan huruf kapital
-    {
-        $request->validate([
+    public function update(Request $request, $id) {
+        $tld = TLD::findOrFail($id);
+    
+        $validated = $request->validate([
             'tld_name' => 'required|string|max:255',
-            'tld_price' => 'required|numeric|between:0,99999999.99',
+            'tld_price' => 'required|numeric',
+            'category' => 'nullable|string|max:255',
         ]);
-
-        $tld->update([
-            'tld_name' => $request->tld_name,
-            'tld_price' => $request->tld_price,
-        ]);
-
-        return redirect()->route('app.admin.tlds.index')->with('success', 'TLD updated successfully.');
+    
+        $tld->update($validated);
+    
+        return redirect()->route('app.admin.tlds.index')->with('success', 'TLD updated successfully');
     }
+    
 
     // Menghapus TLD dari database
     public function destroy(TLD $tld) // Pastikan menggunakan huruf kapital

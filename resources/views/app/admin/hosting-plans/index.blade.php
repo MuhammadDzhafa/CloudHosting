@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -238,39 +238,38 @@
                     </div>
 
                     {{-- <--Modals--> --}}
-                        <div id="new-group-modal" class="modal h-modal">
-                            <div class="modal-background h-modal-close"></div>
-                            <div class="modal-content">
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <h3 id="modal-title">Create a New Group</h3>
-                                        <button class="h-modal-close ml-auto" aria-label="close">
-                                            <i data-feather="x"></i>
-                                        </button>
-                                    </header>
-                                    <form method="POST" id="new-group-form" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="modal-card-body">
-                                            <div class="inner-content">
-                                                <div class="field">
-                                                    <label class="label" style="font-weight:400;">Enter Group
-                                                        Name</label>
-                                                    <div class="control">
-                                                        <input type="text" class="input" name="name"
-                                                            placeholder="E.g. Cloud Hosting" required>
-                                                    </div>
+                    <div id="new-group-modal" class="modal h-modal">
+                        <div class="modal-background h-modal-close"></div>
+                        <div class="modal-content">
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <h3 id="modal-title">Create a New Group</h3>
+                                    <button class="h-modal-close ml-auto" aria-label="close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </header>
+                                <form method="POST" id="new-group-form" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-card-body">
+                                        <div class="inner-content">
+                                            <div class="field">
+                                                <label class="label" style="font-weight:400;">Enter Group Name</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" name="name"
+                                                        placeholder="E.g. Cloud Hosting" required>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-card-foot is-centered">
-                                            <button type="button" class="button h-button h-modal-close">Cancel</button>
-                                            <button type="submit"
-                                                class="button h-button is-primary is-raised">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="modal-card-foot is-centered">
+                                        <button type="button" class="button h-button h-modal-close">Cancel</button>
+                                        <button type="submit"
+                                            class="button h-button is-primary is-raised">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
 
                     <div id="create-new-product-modal" class="modal h-modal">
@@ -377,7 +376,7 @@
                                     @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
                                         <tr class="is-striped-row">
                                             <td>{{ $hostingPlan->name }}</td>
-                                            <td>{{ $hostingPlan->type }}</td>
+                                            <td>{{ $hostingPlan->package_type }}</td>
                                             <td>{{ $hostingPlan->description }}</td>
                                             
                                             <!-- Mengakses RegularMainSpec yang terkait dengan hostingPlan -->
@@ -400,23 +399,23 @@
                                     @endforeach
 
 
-                                            <!-- Jika tidak ada hosting plans, tampilkan pesan -->
-                                            @if($group->hostingPlans->isEmpty())
-                                                <tr>
-                                                    <td colspan="7">No hosting plans available for this group.</td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div id="paging-first-datatable" class="pagination datatable-pagination">
-                                <div class="datatable-info">
-                                    <span></span>
-                                </div>
-                            </div>
-
+                                    <!-- Jika tidak ada hosting plans, tampilkan pesan -->
+                                    @if($group->hostingPlans->isEmpty())
+                                    <tr>
+                                        <td colspan="7">No hosting plans available for this group.</td>
+                                    </tr>
+                                    @endif
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
+                        <div id="paging-first-datatable" class="pagination datatable-pagination">
+                            <div class="datatable-info">
+                                <span></span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
