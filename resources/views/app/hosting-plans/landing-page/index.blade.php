@@ -25,16 +25,15 @@
         let currentIndex = 0;
 
         function changeText() {
-            const animatedTextElements = document.querySelectorAll('.animated-text');
-            animatedTextElements.forEach(element => {
-                element.classList.add('changing');
-                setTimeout(() => {
-                    element.classList.remove('changing');
-                    element.textContent = words[currentIndex];
-                }, 300);
-            });
+            const animatedTextElement = document.getElementById('animated-text'); // Ubah ini
+            animatedTextElement.classList.add('changing');
+            setTimeout(() => {
+                animatedTextElement.classList.remove('changing');
+                animatedTextElement.textContent = words[currentIndex]; // Gunakan ID ini
+            }, 300);
             currentIndex = (currentIndex + 1) % words.length;
         }
+
 
         setInterval(changeText, 1800);
     });
@@ -102,32 +101,32 @@
 
     // /* Pick TLD Card */
     // // Select the input field
-    // const searchInput = document.getElementById('domain-search');
+    const searchInput = document.getElementById('domain-search');
 
-    // // Function to replace the TLD of a domain
-    // function replaceTLD(domainName, newTLD) {
-    //     // Use regex to match everything from the first dot in the last two segments
-    //     return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
-    // }
+    // Function to replace the TLD of a domain
+    function replaceTLD(domainName, newTLD) {
+        // Use regex to match everything from the first dot in the last two segments
+        return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
+    }
 
-    // // Select the container with the 'domain-container' id
-    // const domainContainer = document.getElementById('domain-container');
+    // Select the container with the 'domain-container' id
+    const domainContainer = document.getElementById('domain-container');
 
-    // // Add event listeners to each popular domain card
-    // document.querySelectorAll('.popular-domain').forEach(domainCard => {
-    //     domainCard.addEventListener('click', function () {
-    //         const selectedTLD = this.getAttribute('data-domain');  // Get the clicked TLD
-    //         const currentDomain = searchInput.value;  // Get the current input value
+    // Add event listeners to each popular domain card
+    document.querySelectorAll('.popular-domain').forEach(domainCard => {
+        domainCard.addEventListener('click', function() {
+            const selectedTLD = this.getAttribute('data-domain'); // Get the clicked TLD
+            const currentDomain = searchInput.value; // Get the current input value
 
-    //         if (currentDomain) {
-    //             // Replace the existing TLD with the selected one
-    //             searchInput.value = replaceTLD(currentDomain, selectedTLD);
-    //         } else {
-    //             // If input is empty, just set the selected TLD
-    //             searchInput.value = selectedTLD;
-    //         }
-    //     });
-    // });
+            if (currentDomain) {
+                // Replace the existing TLD with the selected one
+                searchInput.value = replaceTLD(currentDomain, selectedTLD);
+            } else {
+                // If input is empty, just set the selected TLD
+                searchInput.value = selectedTLD;
+            }
+        });
+    });
 
     /*section6 javascript*/
     const storageSlider = document.getElementById('storage-slider');

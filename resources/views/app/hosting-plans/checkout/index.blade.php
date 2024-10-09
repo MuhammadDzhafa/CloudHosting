@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
-                                        <a id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white">Continue</a>
+                                        <a id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">Continue</a>
                                     </div>
                                 </div>
                             </div>
