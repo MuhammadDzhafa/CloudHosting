@@ -3,7 +3,9 @@
 @section('landing-page')
 
 @include("app.hosting-plans.landing-page.section1")
-@include("app.hosting-plans.landing-page.section2")
+<div id="section2">
+    @include("app.hosting-plans.landing-page.section2")
+</div>
 @include("app.hosting-plans.landing-page.section3")
 @include("app.hosting-plans.landing-page.section4")
 @include("app.hosting-plans.landing-page.section5")
@@ -33,7 +35,6 @@
             }, 300);
             currentIndex = (currentIndex + 1) % words.length;
         }
-
 
         setInterval(changeText, 1800);
     });
@@ -65,7 +66,11 @@
                     <strong> ${searchQuery}</strong> is available
                     <br>Exclusive offer: $ 1.50/mon for a 2-year plan
                     </div>
-                    <button class="button h-button is-success rounded-full">Add to Cart</button>
+                    <button
+                        class="button h-button is-success rounded-full"
+                        onclick="redirectToCheckout()">
+                        Buy Now
+                    </button>
                 </div>
 
                 <div class="message flex-row flex justify-between items-center">
@@ -557,5 +562,37 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     });
+
+    /*scroll to section2 javascript*/
+    function orderTLD(button) {
+        // Dapatkan elemen Section 2
+        var section2 = document.getElementById('section2');
+
+        // Gulir ke Section 2
+        if (section2) {
+            section2.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Ambil data TLD dari atribut data-tld-name pada tombol
+        var tldName = button.getAttribute('data-tld-name');
+
+        // Masukkan data TLD ke dalam input teks
+        var domainSearchInput = document.getElementById('domain-search');
+        if (domainSearchInput) {
+            domainSearchInput.value = tldName;
+        }
+    }
+
+    function redirectToCheckout() {
+        const domainName = document.getElementById('domain-search').value;
+
+        if (domainName) {
+            window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
+        } else {
+            alert("Please enter a domain name.");
+        }
+    }
 </script>
 @endsection

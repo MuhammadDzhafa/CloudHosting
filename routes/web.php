@@ -15,6 +15,7 @@ use App\Http\Controllers\HostingGroupController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CheckoutController;
 
 
 
@@ -63,7 +64,7 @@ Route::get('/sms-sent-confirmation', function () {
 Route::get('/tampilan2', [HostingController::class, 'tampilan2']);
 Route::get('/tampilan3', [HostingController::class, 'tampilan3']);
 Route::get('/tampilan3mail', [HostingController::class, 'tampilan3mail']);
-Route::get('/checkout', [HostingController::class, 'checkout']);
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
@@ -75,7 +76,6 @@ Route::get('/domain', [HostingController::class, 'domain']);
 Route::get('/privacy-policy', [HostingController::class, 'privacy']);
 Route::get('/terms-and-conditions', [HostingController::class, 'termsConditions']);
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
-
 
 
 /* Login */

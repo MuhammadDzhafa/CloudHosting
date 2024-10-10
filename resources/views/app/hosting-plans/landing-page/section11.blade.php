@@ -19,35 +19,96 @@
 
 
             <ul class="user-list flex flex-col lg:flex-col md:flex-col gap-4 md:items-start lg:items-center">
-                <li class="flex items-center w-full">
-                    <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
-                        <img src="/assets/img/icons/email.svg" alt="Email Icon" class="w-[18px] sm:w-[24px]">
-                    </div>
-                    <div class="user-list-info ml-3 flex-grow">
-                        <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">Email</div>
-                        <div class="position"> <a href="mailto:info@kazee.id" class="text-sm">info@kazee.id</a></div>
-                    </div>
-                </li>
+                <div class="flex md:hidden">
+                    <li class="flex items-center w-full">
+                        <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
+                            <img
+                                src="/assets/img/icons/email.svg"
+                                alt="Email Icon"
+                                class="w-[18px] sm:w-[24px]">
+                        </div>
+                        <div class="user-list-info ml-3 flex-grow">
+                            <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">
+                                Email
+                            </div>
+                            <div class="position">
+                                <a href="mailto:info@kazee.id" class="text-sm">
+                                    info@kazee.id
+                                </a>
+                            </div>
+                        </div>
+                    </li>
 
-                <li class="flex items-center w-full">
-                    <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
-                        <img src="/assets/img/icons/phone-enabled.svg" alt="Phone Icon" class="w-[18px] sm:w-[24px]">
-                    </div>
-                    <div class="user-list-info ml-3 flex-grow">
-                        <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">Call</div>
-                        <div class="position text-sm">+62 811 2222 656</div>
-                    </div>
-                </li>
+                    <li class="flex items-center w-full">
+                        <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
+                            <img
+                                src="/assets/img/icons/phone-enabled.svg"
+                                alt="Phone Icon"
+                                class="w-[18px] sm:w-[24px]">
+                        </div>
+                        <div class="user-list-info ml-3 flex-grow">
+                            <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">
+                                Call
+                            </div>
+                            <div class="position text-sm">+62 811 2222 656</div>
+                        </div>
+                    </li>
+                </div>
+                <div class="hidden md:flex flex-col items-center w-full ">
+                    <li class="flex items-center w-full">
+                        <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
+                            <img
+                                src="/assets/img/icons/email.svg"
+                                alt="Email Icon"
+                                class="w-[18px] sm:w-[24px]">
+                        </div>
+                        <div class="user-list-info ml-3 flex-grow">
+                            <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">
+                                Email
+                            </div>
+                            <div class="position">
+                                {" "}
+                                <a href="mailto:info@kazee.id" class="text-sm">
+                                    info@kazee.id
+                                </a>
+                            </div>
+                        </div>
+                    </li>
 
-                <li class="flex items-center w-full">
-                    <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
-                        <img src="/assets/img/icons/location.svg" alt="Location Icon" class="w-[18px] sm:w-[24px]">
-                    </div>
-                    <div class="user-list-info ml-3 flex-grow">
-                        <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">Office</div>
-                        <div class="position text-sm">Jl. Setrasari Indah No. 4, Bandung</div>
-                    </div>
-                </li>
+                    <li class="flex items-center w-full">
+                        <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
+                            <img
+                                src="/assets/img/icons/phone-enabled.svg"
+                                alt="Phone Icon"
+                                class="w-[18px] sm:w-[24px]">
+                        </div>
+                        <div class="user-list-info ml-3 flex-grow">
+                            <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">
+                                Call
+                            </div>
+                            <div class="position text-sm">+62 811 2222 656</div>
+                        </div>
+                    </li>
+                </div>
+
+                <div class="mx-auto">
+                    <li class="flex items-center w-full">
+                        <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
+                            <img
+                                src="/assets/img/icons/location.svg"
+                                alt="Location Icon"
+                                class="w-[18px] sm:w-[24px]">
+                        </div>
+                        <div class="user-list-info ml-3 flex-grow">
+                            <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">
+                                Office
+                            </div>
+                            <div class="position text-sm">
+                                Jl. Setrasari Indah No. 4, Bandung
+                            </div>
+                        </div>
+                    </li>
+                </div>
             </ul>
         </div>
 

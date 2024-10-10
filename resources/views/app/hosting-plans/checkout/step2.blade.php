@@ -11,12 +11,7 @@
     <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div class="flex flex-col items-start mb-4 md:mb-0">
-                <h3 class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Example.id</h3>
-
-                <div class="flex items-center mt-5">
-                    <img src="/assets/img/icons/checkblack.svg" alt="Description" class="mr-2">
-                    <span class="text-[16px] font-[500] leading-[23.2px] text-left text-[#3D3D3D]">2 GB SSD Storage</span>
-                </div>
+                <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Example.id</h3>
             </div>
             <button>
                 <img src="/assets/img/icons/trash.svg" alt="" class="w-8 h-8">
@@ -29,7 +24,7 @@
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
                     <label class="radio is-outlined is-info inline-flex items-center">
-                        <input type="radio" name="outlined_radio">
+                        <input type="radio" name="outlined_radio" id="dns-radio">
                         <span></span>
                     </label>
                 </div>
@@ -48,7 +43,7 @@
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
                     <label class="inline-flex items-center">
                         <label class="radio is-outlined is-info inline-flex items-center">
-                            <input type="radio" name="outlined_radio">
+                            <input type="radio" name="outlined_radio" id="whois-radio">
                             <span></span>
                         </label>
                 </div>
