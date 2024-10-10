@@ -15,6 +15,7 @@ use App\Http\Controllers\HostingGroupController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CheckoutController;
 
 
 
@@ -63,7 +64,7 @@ Route::get('/sms-sent-confirmation', function () {
 Route::get('/tampilan2', [HostingController::class, 'tampilan2']);
 Route::get('/tampilan3', [HostingController::class, 'tampilan3']);
 Route::get('/tampilan3mail', [HostingController::class, 'tampilan3mail']);
-Route::get('/checkout', [HostingController::class, 'checkout']);
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
@@ -71,6 +72,8 @@ Route::get('/cloud-hosting', [HostingController::class, 'cloud']);
 Route::get('/wordpress-hosting', [HostingController::class, 'wordpress']);
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 Route::get('/about', [HostingController::class, 'about']);
+Route::get('/admin-dashboard', [HostingController::class, 'admin']);
+Route::get('/client-dashboard', [HostingController::class, 'client']);
 Route::get('/domain', [HostingController::class, 'domain']);
 Route::get('/privacy-policy', [HostingController::class, 'privacy']);
 Route::get('/terms-and-conditions', [HostingController::class, 'termsConditions']);
@@ -105,8 +108,8 @@ Route::get('/profile.update', function () {
     return view('layouts.auth.profile-update');
 })->name('profile.update');
 
-Route::get('/client-area/dashboard', function () {
-    return view('app.hosting-plans.client-area.dashboard-client');
+Route::get('/client-dashboard', function () {
+    return view('app.hosting-plans.dashboard.index');
 })->name('client.dashboard');
 
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');

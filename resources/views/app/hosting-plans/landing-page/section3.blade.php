@@ -44,9 +44,9 @@
                     $filters = ['View All'];
                     @endphp
                     @foreach ($categories as $category)
-                        @php
-                        $filters[] = $category->category;
-                        @endphp
+                    @php
+                    $filters[] = $category->category;
+                    @endphp
                     @endforeach
 
                     <div class="control">
@@ -270,27 +270,27 @@
 
                         // Kirim data ke backend jika atribut lengkap
                         fetch('/order-tld', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                            },
-                            body: JSON.stringify({
-                                tld_name: tldName,
-                                tld_price: tldPrice
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                },
+                                body: JSON.stringify({
+                                    tld_name: tldName,
+                                    tld_price: tldPrice
+                                })
                             })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                alert('TLD successfully ordered!');
-                            } else {
-                                alert('Error ordering TLD!');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('TLD successfully ordered!');
+                                } else {
+                                    alert('Error ordering TLD!');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
                     }
                 </script>
 
@@ -303,5 +303,3 @@
         </div>
     </div>
 </div>
-
-        

@@ -208,15 +208,9 @@
                         <h4 class="w-full sm:w-[285.4px] h-[23px] mb-3 gap-0 opacity-100 font-inter text-[16px] font-medium leading-[23.2px] text-left text-[#283252]">
                             Cloud Hosting - Strato
                         </h4>
-                        <p class="w-full sm:w-[285.4px] h-[23px] mb-1 gap-0 opacity-100 font-inter text-[16px] font-normal leading-[23.2px] text-left text-[#283252]">
+                        <p id="p-domain-display" class="w-full sm:w-[285.4px] h-[23px] mb-1 gap-0 opacity-100 font-inter text-[16px] font-normal leading-[23.2px] text-left text-[#283252]">
                             Example.id
                         </p>
-                        <div class="flex items-center gap-1">
-                            <img src="/assets/img/icons/location.svg" alt="location icon">
-                            <p class="opacity-100 font-inter text-[14px] font-normal leading-[20.3px] text-left text-[#999999]">
-                                Indonesia
-                            </p>
-                        </div>
                     </div>
                     <div class="flex space-x-2 mt-4 sm:mt-0">
                         <button class="text-gray-400 hover:text-gray-600">

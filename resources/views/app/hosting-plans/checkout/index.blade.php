@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
-                                        <a id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">Continue</a>
+                                        <button id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">Continue</button>
                                     </div>
                                 </div>
                             </div>
@@ -248,6 +248,49 @@
                     document.getElementById(`${tabId}-domain-content`).classList.remove('hidden');
                 });
             });
+        });
+
+        // Javascript scroll to Step2
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.location.pathname === '/checkout') {
+                let urlParams = new URLSearchParams(window.location.search);
+                let tldName = urlParams.get('tld_name');
+
+                if (tldName) {
+                    setTimeout(() => {
+                        const nextButton = document.getElementById('next-button');
+                        if (nextButton) {
+                            nextButton.click();
+                        } else {
+                            console.log("Next button not found.");
+                        }
+                    }, 1000);
+                }
+            }
+        });
+
+        document.getElementById('next-button').addEventListener('click', function(event) {
+            console.log("Button was clicked!");
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Ambil parameter tld_name dari URL
+            let urlParams = new URLSearchParams(window.location.search);
+            let tldName = urlParams.get('tld_name');
+
+            // Perbarui elemen <h3> jika parameter tld_name ada
+            if (tldName) {
+                const h3DomainDisplay = document.getElementById('h3-domain-display');
+                const pDomainDisplay = document.getElementById('p-domain-display');
+
+                if (h3DomainDisplay) {
+                    h3DomainDisplay.textContent = tldName;
+                }
+
+                if (pDomainDisplay) {
+                    pDomainDisplay.textContent = tldName;
+                }
+            }
         });
     </script>
     </div>

@@ -27,7 +27,6 @@
                 <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#2A4693] text-center">
                     Transfer
                 </span>
-
             </button>
         </div>
 
@@ -38,9 +37,9 @@
             </div>
         </div>
 
-        <div id="domain-container" class="flex flex-wrap justify-center items-center w-full ">
+        <div id="domain-container" class="flex justify-center items-stretch space-x-[10px] w-[850px] mb-5">
             @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-            <div class="card-domain popular-domain mx-auto" data-domain="{{ $domain }}">
+            <div class="card-gradient popular-domain w-[196.56px] p-[20px_0_0_0] rounded-[16px] border border-[#DEDEDE] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)]" data-domain="{{ $domain }}">
                 <div class="card-content-product">
                     <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
                     <p class="text-center flex items-center">
