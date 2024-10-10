@@ -26,7 +26,7 @@ $icons = [
             Frequently Asked Questions
         </h2>
         @foreach ($faqs as $category => $items)
-        @if ($category === 'Cloud Hosting') <!-- Hanya tampilkan konten Cloud Hosting -->
+        @if ($category === 'WordPress Hosting') <!-- Hanya tampilkan konten Cloud Hosting -->
         <div id="{{ strtolower(str_replace(' ', '-', $category)) }}" class="tab-content is-active"> <!-- Set is-active disini -->
             <div class="single-accordion">
                 @foreach ($items as $item)

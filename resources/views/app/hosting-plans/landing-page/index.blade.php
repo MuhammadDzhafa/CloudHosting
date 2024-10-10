@@ -3,7 +3,9 @@
 @section('landing-page')
 
 @include("app.hosting-plans.landing-page.section1")
-@include("app.hosting-plans.landing-page.section2")
+<div id="section2">
+    @include("app.hosting-plans.landing-page.section2")
+</div>
 @include("app.hosting-plans.landing-page.section3")
 @include("app.hosting-plans.landing-page.section4")
 @include("app.hosting-plans.landing-page.section5")
@@ -25,14 +27,12 @@
         let currentIndex = 0;
 
         function changeText() {
-            const animatedTextElements = document.querySelectorAll('.animated-text');
-            animatedTextElements.forEach(element => {
-                element.classList.add('changing');
-                setTimeout(() => {
-                    element.classList.remove('changing');
-                    element.textContent = words[currentIndex];
-                }, 300);
-            });
+            const animatedTextElement = document.getElementById('animated-text'); // Ubah ini
+            animatedTextElement.classList.add('changing');
+            setTimeout(() => {
+                animatedTextElement.classList.remove('changing');
+                animatedTextElement.textContent = words[currentIndex]; // Gunakan ID ini
+            }, 300);
             currentIndex = (currentIndex + 1) % words.length;
         }
 
@@ -40,94 +40,98 @@
     });
 
     // Section2 JavaScript
-    // const viewPriceListLink = document.getElementById('view-price-list');
-    // const priceListSection = document.getElementById('price-list-section');
-    // if (viewPriceListLink && priceListSection) {
-    //     const arrowIcon = viewPriceListLink.querySelector('svg');
-    //     viewPriceListLink.addEventListener('click', event => {
-    //         event.preventDefault();
-    //         priceListSection.classList.toggle('active');
-    //         arrowIcon.classList.toggle('rotate-180');
-    //     });
-    // }
+    const viewPriceListLink = document.getElementById('view-price-list');
+    const priceListSection = document.getElementById('price-list-section');
+    if (viewPriceListLink && priceListSection) {
+        const arrowIcon = viewPriceListLink.querySelector('svg');
+        viewPriceListLink.addEventListener('click', event => {
+            event.preventDefault();
+            priceListSection.classList.toggle('active');
+            arrowIcon.classList.toggle('rotate-180');
+        });
+    }
 
     // // Search Domain Availability
-    // document.getElementById('search-btn').addEventListener('click', function () {
-    //         const searchQuery = document.getElementById('domain-search').value;
-    //         const dropdownContainer = document.getElementById('dropdown-container');
-    //         const dropdownContent = document.getElementById('dropdown-content');
+    document.getElementById('search-btn').addEventListener('click', function() {
+        const searchQuery = document.getElementById('domain-search').value;
+        const dropdownContainer = document.getElementById('dropdown-container');
+        const dropdownContent = document.getElementById('dropdown-content');
 
-    //         if (searchQuery) {
-    //             // Simulating search results - replace with actual data
-    //             dropdownContent.innerHTML = `
-                
-    //             <div class="message is-success flex-row flex justify-between items-center">
-    //                 <div class="message-body">
-    //                 <strong> ${searchQuery}</strong> is available
-    //                 <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-    //                 </div>
-    //                 <button class="button h-button is-success rounded-full">Add to Cart</button>
-    //             </div>
+        if (searchQuery) {
+            // Simulating search results - replace with actual data
+            dropdownContent.innerHTML = `
 
-    //             <div class="message flex-row flex justify-between items-center">
-    //                 <div class="message-body">
-    //                 <strong> ${searchQuery}</strong> is not available
-    //                 </div>
-    //                 <button class="button h-button rounded-full">WHOIS</button>
-    //             </div>
+                <div class="message is-success flex-row flex justify-between items-center">
+                    <div class="message-body">
+                    <strong> ${searchQuery}</strong> is available
+                    <br>Exclusive offer: $ 1.50/mon for a 2-year plan
+                    </div>
+                    <button
+                        class="button h-button is-success rounded-full"
+                        onclick="redirectToCheckout()">
+                        Buy Now
+                    </button>
+                </div>
 
-    //             <div>
-    //                 <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
-    //                 <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
-    //                 Indonesia, here are some domain name recommendations with education-related
-    //                 TLD:</p>
-    //                 <div class="message is-primary flex-row flex justify-between items-center">
-    //                     <div class="message-body">
-    //                         <strong> ${searchQuery}.edu</strong> is available
-    //                         <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-    //                     </div>
-    //                     <button class="button h-button is-primary rounded-full">Add to Cart</button>
-    //             </div>
-                
-    //         `;
+                <div class="message flex-row flex justify-between items-center">
+                    <div class="message-body">
+                    <strong> ${searchQuery}</strong> is not available
+                    </div>
+                    <button class="button h-button rounded-full">WHOIS</button>
+                </div>
 
-    //             // Apply animation class to show the dropdown
-    //             dropdownContainer.classList.add('show');
-    //         } else {
-    //             // Hide the container if there's no search
-    //             dropdownContainer.classList.remove('show');
-    //         }
-    //     });
+                <div>
+                    <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
+                    <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
+                    Indonesia, here are some domain name recommendations with education-related
+                    TLD:</p>
+                    <div class="message is-primary flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong> ${searchQuery}.edu</strong> is available
+                            <br>Exclusive offer: $ 1.50/mon for a 2-year plan
+                        </div>
+                        <button class="button h-button is-primary rounded-full">Add to Cart</button>
+                </div>
+
+            `;
+
+            // Apply animation class to show the dropdown
+            dropdownContainer.classList.add('show');
+        } else {
+            // Hide the container if there's no search
+            dropdownContainer.classList.remove('show');
+        }
+    });
 
 
     // /* Pick TLD Card */
     // // Select the input field
-    // const searchInput = document.getElementById('domain-search');
+    const searchInput = document.getElementById('domain-search');
 
-    // // Function to replace the TLD of a domain
-    // function replaceTLD(domainName, newTLD) {
-    //     // Use regex to match everything from the first dot in the last two segments
-    //     return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
-    // }
+    // Function to replace the TLD of a domain
+    function replaceTLD(domainName, newTLD) {
+        // Use regex to match everything from the first dot in the last two segments
+        return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
+    }
 
-    // // Select the container with the 'domain-container' id
-    // const domainContainer = document.getElementById('domain-container');
+    // Select the container with the 'domain-container' id
+    const domainContainer = document.getElementById('domain-container');
 
-    // // Add event listeners to each popular domain card
-    // document.querySelectorAll('.popular-domain').forEach(domainCard => {
-    //     domainCard.addEventListener('click', function () {
-    //         const selectedTLD = this.getAttribute('data-domain');  // Get the clicked TLD
-    //         const currentDomain = searchInput.value;  // Get the current input value
+    // Add event listeners to each popular domain card
+    document.querySelectorAll('.popular-domain').forEach(domainCard => {
+        domainCard.addEventListener('click', function() {
+            const selectedTLD = this.getAttribute('data-domain'); // Get the clicked TLD
+            const currentDomain = searchInput.value; // Get the current input value
 
-    //         if (currentDomain) {
-    //             // Replace the existing TLD with the selected one
-    //             searchInput.value = replaceTLD(currentDomain, selectedTLD);
-    //         } else {
-    //             // If input is empty, just set the selected TLD
-    //             searchInput.value = selectedTLD;
-    //         }
-    //     });
-    // });
+            if (currentDomain) {
+                // Replace the existing TLD with the selected one
+                searchInput.value = replaceTLD(currentDomain, selectedTLD);
+            } else {
+                // If input is empty, just set the selected TLD
+                searchInput.value = selectedTLD;
+            }
+        });
+    });
 
     /*section6 javascript*/
     const storageSlider = document.getElementById('storage-slider');
@@ -558,5 +562,37 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     });
+
+    /*scroll to section2 javascript*/
+    function orderTLD(button) {
+        // Dapatkan elemen Section 2
+        var section2 = document.getElementById('section2');
+
+        // Gulir ke Section 2
+        if (section2) {
+            section2.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Ambil data TLD dari atribut data-tld-name pada tombol
+        var tldName = button.getAttribute('data-tld-name');
+
+        // Masukkan data TLD ke dalam input teks
+        var domainSearchInput = document.getElementById('domain-search');
+        if (domainSearchInput) {
+            domainSearchInput.value = tldName;
+        }
+    }
+
+    function redirectToCheckout() {
+        const domainName = document.getElementById('domain-search').value;
+
+        if (domainName) {
+            window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
+        } else {
+            alert("Please enter a domain name.");
+        }
+    }
 </script>
 @endsection

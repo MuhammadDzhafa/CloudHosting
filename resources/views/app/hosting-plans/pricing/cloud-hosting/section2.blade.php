@@ -69,7 +69,7 @@
                                 Order Now
                             </span>
                         </button>
-                        <a href="#" class="block text-center text-blue-600 mt-4">More detail →</a>
+                        <!-- <a href="#" class="block text-center text-blue-600 mt-4">More detail →</a> -->
                     </div>
                     <!-- Alto -->
                     <div class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white custom-gradient">
@@ -123,7 +123,7 @@
                                 Order Now
                             </span>
                         </button>
-                        <a href="#" class="block text-center text-[#FFFFFF] mt-4">More detail →</a>
+                        <!-- <a href="#" class="block text-center text-[#FFFFFF] mt-4">More detail →</a> -->
                     </div>
                     <!-- Cirrus -->
                     <div class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white bg-[#FFFFFF]">
@@ -177,15 +177,19 @@
                                 Order Now
                             </span>
                         </button>
-                        <a href="#" class="block text-center text-blue-600 mt-4">More detail →</a>
                     </div>
                 </div>
             </div>
+            
             <p class="text-center text-[16px] font-normal leading-[23.2px] text-[#7C7C7C] font-inter mt-8">
                 Price does not include tax.
             </p>
+            <a href="#" id="toggleDetail" class="block text-[18px] text-center text-blue-600 mt-4 flex items-center justify-center">
+                More detail
+                <i id="icon" data-feather="chevron-down" class="ml-2"></i>
+            </a>
 
-            <div class="container mx-auto p-5">
+            <div id="detailContent" class="container mx-auto p-5 hidden">
                 <div class="table-wrapper" data-simpleba style="min-height:auto">
                     <table id="hosting-plans-table" class="table is-datatable is-hoverable">
                         <thead style="background-color:#E7ECF8;">
@@ -354,7 +358,6 @@
                                 Order Now
                             </span>
                         </button>
-                        <a href="#" class="block text-center text-blue-600 mt-4">More detail →</a>
                     </div>
                     <!-- Alto -->
                     <div class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white custom-gradient">
@@ -408,7 +411,6 @@
                                 Order Now
                             </span>
                         </button>
-                        <a href="#" class="block text-center text-[#FFFFFF] mt-4">More detail →</a>
                     </div>
                     <!-- Cirrus -->
                     <div class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white bg-[#FFFFFF]">
@@ -462,14 +464,13 @@
                                 Order Now
                             </span>
                         </button>
-                        <a href="#" class="block text-center text-blue-600 mt-4">More detail →</a>
                     </div>
                 </div>
             </div>
             <p class="text-center text-[16px] font-normal leading-[23.2px] text-[#7C7C7C] font-inter mt-8">
                 Price does not include tax.
             </p>
-            <div class="container mx-auto p-5">
+            <div id="detailContentPersonal" class="container mx-auto p-5 hidden">
                 <div class="table-wrapper" data-simpleba style="min-height:auto">
                     <table id="users-datatable" class="table is-datatable is-hoverable">
                         <thead style="background-color:#E7ECF8;">
@@ -590,3 +591,29 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Event listener untuk klik pada link More detail
+    document.getElementById('toggleDetail').addEventListener('click', function(e) {
+        e.preventDefault(); // Menghindari reload halaman
+        
+        // Ambil elemen icon dan container detail
+        const icon = document.getElementById('icon');
+        const detailContent = document.getElementById('detailContent');
+        const detailContentPersonal = document.getElementById('detailContentPersonal');
+        
+        // Toggle visibility pada div
+        detailContent.classList.toggle('hidden');
+        detailContentPersonal.classList.toggle('hidden');
+
+        // Ubah icon antara chevron-down dan chevron-right
+        if (detailContent.classList.contains('hidden')) {
+            icon.setAttribute('data-feather', 'chevron-down');
+        } else {
+            icon.setAttribute('data-feather', 'chevron-right');
+        }
+
+        // Re-render feather icons untuk memperbarui tampilan ikon
+        feather.replace();
+    });
+</script>

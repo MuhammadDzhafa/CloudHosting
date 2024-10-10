@@ -41049,11 +41049,11 @@ body.is-dark .animated-checkbox .checkmark-wrap .shadow-circle {
 }
 
 .radio.is-outlined.is-info input:checked+span {
-    border-color: #039be5
+    border-color: #4A6DCB
 }
 
 .radio.is-outlined.is-info input+span:after {
-    color: #039be5
+    color: #4A6DCB
 }
 
 .radio.is-outlined.is-warning input:checked+span {
@@ -49671,7 +49671,7 @@ body.is-dark .flex-table .flex-table-item .flex-table-cell .dot-levels .dot.acti
     height: 16px;
     width: 16px;
     stroke-width: 3px;
-    stroke: #671cc9
+    stroke: #4A6DCB
 }
 
 .flex-pagination .pagination-list li .pagination-link {
@@ -49681,10 +49681,10 @@ body.is-dark .flex-table .flex-table-item .flex-table-cell .dot-levels .dot.acti
 }
 
 .flex-pagination .pagination-list li .pagination-link.is-current {
-    background: #671cc9;
-    border-color: #671cc9;
-    -webkit-box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2);
-    box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2)
+    background: #4A6DCB;
+    border-color: #4A6DCB;
+    -webkit-box-shadow: 0px 14px 26px -12px #4A6DCB6B, 0px 4px 23px 0px #0000001F, 0px 8px 10px -5px #4A6DCB33;
+    box-shadow: 0px 14px 26px -12px #4A6DCB6B, 0px 4px 23px 0px #0000001F, 0px 8px 10px -5px #4A6DCB33;
 }
 
 body.is-dark .flex-pagination .pagination-next,

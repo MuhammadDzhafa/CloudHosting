@@ -51,7 +51,15 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
 
-        return redirect()->intended('/landing-page');
+        $user = Auth::user();
+
+        if ($user->hasRole('admin')) {
+            return redirect()->intended('/admin-dashboard');
+        } elseif ($user->hasRole('client')) {
+            return redirect()->intended('/client-dashboard');
+        }
+
+        return redirect()->intended('/home'); // Default redirection if role is not set
     }
 
     protected function sendFailedLoginResponse(Request $request, $validator = null)
@@ -74,4 +82,4 @@ class LoginController extends Controller
 
         return redirect('/')->with('status', 'You have been successfully logged out.');
     }
-}   
+}

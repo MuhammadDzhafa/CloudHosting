@@ -7,7 +7,6 @@
     <!-- Main Content -->
 
     <div class="flex flex-col md:flex-row w-full gap-10 z-10">
-
         <div
             class="w-full md:w-1/2 flex-grow flex flex-col gap-10 md:justify-start md:items-start justify-center items-center">
             <div class="text-container">

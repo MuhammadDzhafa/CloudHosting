@@ -1,4 +1,4 @@
-{{-- <div class="section-frame padding-6 bg-gradient-custom flex lg:flex-row gap-[30px] relative">
+<div class="section-frame padding-6 bg-gradient-custom flex lg:flex-row gap-[30px] relative">
     <!-- Text Container -->
     <div class="text-container gap-2">
         <p class="text-base-hero mb-0 text-white">Popular Domain</p>
@@ -16,10 +16,17 @@
                     </div>
                 </div>
             </div>
-            <button id="search-btn" class="button h-button is-primary rounded-full">Search</button>
-            <button class="button h-button rounded-full">
-                <!-- <img src="/assets/img/icons/crop.svg" alt="Icon" class="w-6 h-6"> -->
-                Transfer
+            <button id="search-btn" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
+                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                    Search
+                </span>
+            </button>
+            <button class="button h-button rounded-full" style="border: unset; padding:12px 16px;">
+                <span class="material-icons mr-2" style="color:#2A4693; font-size:20px">&#xe428;</span>
+                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#2A4693] text-center">
+                    Transfer
+                </span>
             </button>
         </div>
 
@@ -30,17 +37,17 @@
             </div>
         </div>
 
-        <div id="domain-container" class="flex flex-wrap justify-center items-center w-full ">
+        <div id="domain-container" class="flex justify-center items-stretch space-x-[10px] w-[850px] mb-5">
             @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-                <div class="card-domain popular-domain mx-auto" data-domain="{{ $domain }}">
-                    <div class="card-content-product">
-                        <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
-                        <p class="text-center flex items-center">
-                            <span class="price-currency text-[20px] font-semibold">$</span>
-                            <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
-                        </p>
-                    </div>
+            <div class="card-gradient popular-domain w-[196.56px] p-[20px_0_0_0] rounded-[16px] border border-[#DEDEDE] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)]" data-domain="{{ $domain }}">
+                <div class="card-content-product">
+                    <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
+                    <p class="text-center flex items-center">
+                        <span class="price-currency text-[20px] font-semibold">$</span>
+                        <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
+                    </p>
                 </div>
+            </div>
             @endforeach
         </div>
 
@@ -60,9 +67,8 @@
     </div>
 
     <!-- SVG positioned in the bottom left corner -->
-    <div class="absolute left-[139.5px] bottom-0 hidden lg:block">
+    <div class="absolute left-[139.5px] bottom-[-2px] hidden lg:block">
         <img src="/assets/img/bg/globewhite.svg" alt="" class="w-auto h-auto">
     </div>
 
 </div>
- --}}

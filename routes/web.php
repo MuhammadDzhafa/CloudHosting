@@ -14,6 +14,8 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\HostingGroupController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CheckoutController;
 
 
 
@@ -62,7 +64,7 @@ Route::get('/sms-sent-confirmation', function () {
 Route::get('/tampilan2', [HostingController::class, 'tampilan2']);
 Route::get('/tampilan3', [HostingController::class, 'tampilan3']);
 Route::get('/tampilan3mail', [HostingController::class, 'tampilan3mail']);
-Route::get('/checkout', [HostingController::class, 'checkout']);
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
@@ -70,6 +72,9 @@ Route::get('/cloud-hosting', [HostingController::class, 'cloud']);
 Route::get('/wordpress-hosting', [HostingController::class, 'wordpress']);
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 Route::get('/about', [HostingController::class, 'about']);
+Route::get('/admin-dashboard', [HostingController::class, 'admin']);
+Route::get('/client-dashboard', [HostingController::class, 'client']);
+Route::get('/domain', [HostingController::class, 'domain']);
 Route::get('/privacy-policy', [HostingController::class, 'privacy']);
 Route::get('/terms-and-conditions', [HostingController::class, 'termsConditions']);
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
@@ -103,8 +108,8 @@ Route::get('/profile.update', function () {
     return view('layouts.auth.profile-update');
 })->name('profile.update');
 
-Route::get('/client-area/dashboard', function () {
-    return view('app.hosting-plans.client-area.dashboard-client');
+Route::get('/client-dashboard', function () {
+    return view('app.hosting-plans.dashboard.index');
 })->name('client.dashboard');
 
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
@@ -133,9 +138,9 @@ Route::get('/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index
 Route::get('/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
 Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
 Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
-Route::put('/tlds/{tld}', [TLDController::class, 'update'])->name('tlds.update');
+Route::put('/tlds/{id}', [TLDController::class, 'update'])->name('tlds.update');
 Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
-Route::post('/tlds/import', [TLDController::class, 'import'])->name('tlds.import');
+Route::post('/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
 
 
 /* Hosting Plan */
@@ -159,3 +164,14 @@ Route::get('/hosting-groups/{id}/edit', [HostingGroupController::class, 'edit'])
 Route::put('/hosting-groups/{id}', [HostingGroupController::class, 'update'])->name('hosting-groups.update');
 Route::delete('/hosting-groups/{id}', [HostingGroupController::class, 'destroy'])->name('hosting-groups.destroy');
 Route::post('/hosting-groups/{id}/restore', [HostingGroupController::class, 'restore'])->name('hosting-groups.restore');
+
+/* Article */
+/* Hosting Group */
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
+Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::post('/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');

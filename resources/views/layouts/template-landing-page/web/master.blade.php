@@ -13,14 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Google Tag Manager -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -84,8 +82,7 @@
 
 
         <!-- Content Wrapper -->
-        <div id="app-onboarding" class="view-wrapper is-webapp" data-page-title="@yield('title')"
-            data-naver-offset="214" data-menu-item="#layouts-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile" style="padding-bottom:0px">
+        <div id="app-onboarding" class="view-wrapper is-webapp" data-page-title="@yield('title')" data-naver-offset="214" data-menu-item="#layouts-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
 
             <div class="page-title has-text-centered is-webapp" style="height: unset;">
                 <div class="toolbar ml-auto">
@@ -97,14 +94,17 @@
             </div>
 
             @yield('landing-page')
-            @yield('faq')
             @yield('about')
+            @yield('faq')
+            @yield('domain')
+            @yield('server-status')
             @yield('privacy-policy')
             @yield('terms-and-conditions')
-            @yield('cloud-hosting')
             @yield('wordpress-hosting')
+            @yield('cloud-hosting')
 
             {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
+            @include('layouts.template-landing-page.web.partials.footer')
         </div>
 
         <!--Huro Scripts-->
@@ -119,7 +119,5 @@
         @yield('scripts')
     </div>
 </body>
-
-    @include("layouts.template-landing-page.web.partials.footer")
 
 </html>

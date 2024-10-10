@@ -34,7 +34,7 @@
 
 <div class="main-sidebar has-labels has-hover-labels">
     <div class="sidebar-brand">
-        <a href="/">
+        <a href="/landing-page">
             <img class="light-image" src="../../../assets/img/logos/logo/logoo.svg" alt="">
             <img class="dark-image" src="../../../assets/img/logos/logo/logoo.svg" alt="">
         </a>
@@ -59,6 +59,16 @@
             <li>
                 <a href="/testimonials" id="testimonials" data-content="Testimonials" class="menu-item">
                     <i class="sidebar-svg" data-feather="star"></i>
+                </a>
+            </li>
+            <li>
+                <a href="/articles" id="articles" data-content="Articles" class="menu-item">
+                    <i class="sidebar-svg" data-feather="book"></i>
+                </a>
+            </li>
+            <li>
+                <a href="/tlds" id="tlds" data-content="Tlds" class="menu-item">
+                    <i class="sidebar-svg" data-feather="globe"></i>
                 </a>
             </li>
         </ul>
