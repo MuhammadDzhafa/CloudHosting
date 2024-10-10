@@ -117,17 +117,16 @@
                                                 </div>
                                             </div>
                                             <div class="field">
-                                                <label class="label">Content</label>
-                                                <div class="control">
-                                                    <textarea id="sun-editor" name="content" placeholder="Write your text here..."></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="field">
                                                 <label class="label" for="content">Content</label>
-                                                <div class="control">
-                                                    <input type="text" class="input" id="content" name="content">
+                                                <div class="control w-full">
+                                                    <!-- SunEditor or Textarea to write content -->
+                                                    <!-- <textarea name="content" id="sun-editor" placeholder="Write your text here..."></textarea> -->
+                                                     <!-- SunEditor -->
+                                                    <textarea name="content" id="content" placeholder="Write your text here.."></textarea>
+
                                                 </div>
                                             </div>
+
                                             <div class="field">
                                                 <label class="label" for="image">Picture</label>
                                                 <div class="control">
@@ -158,7 +157,7 @@
 
             <!--Huro Scripts-->
             <!--Load Mapbox-->
-            <script>
+            <!-- <script>
                 $('#summernote').summernote({
                     placeholder: 'Hello stand alone ui',
                     tabsize: 2,
@@ -175,7 +174,39 @@
                         ['view', ['codeview', 'help']]
                     ]
                 });
+            </script> -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Inisialisasi SunEditor
+                    const editor = SUNEDITOR.create(document.getElementById('content'), {
+                        placeholder: 'Write your text here...',
+                        height: 250,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'italic', 'strike']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link', 'image', 'video']],
+                            ['view', ['fullscreen', 'codeview']]
+                        ]
+                    });
+
+                    // Ambil form
+                    const form = document.querySelector('form');
+
+                    // Event listener saat form disubmit
+                    form.addEventListener('submit', function(event) {
+                        // Ambil konten SunEditor
+                        const content = editor.getContents();
+
+                        // Masukkan konten ke textarea
+                        document.getElementById('content').value = content;
+
+                        // Log untuk debugging
+                        console.log("Editor Content:", content);
+                    });
+                });
             </script>
+
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     const editLinks = document.querySelectorAll('.edit-link');
@@ -202,7 +233,14 @@
                         }
                     });
                 });
+
+                $('#submit').on('click', function() {
+                    var content = $('#summernote').summernote('code');
+                    $('#sun-editor').val(content);
+                });
+
             </script>
+            
             
 
             <!-- Concatenated plugins -->

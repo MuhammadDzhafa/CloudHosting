@@ -80,9 +80,10 @@
                     </div>
 
                     <div class="page-content-inner">
-                    <form action="{{ route('articles.update', $article->article_id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
+                        <!-- Tambahkan ID pada form untuk memudahkan penanganan di JavaScript -->
+                        <form id="edit-article-form" action="{{ route('articles.update', $article->article_id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="form-layout" style="max-width: none;">
                                 <div class="form-outer">
                                     <div class="form-header stuck-header">
@@ -98,7 +99,7 @@
                                                         </span>
                                                         <span>Back to Article</span>
                                                     </a>
-                                                    <button id="submit" class="button h-button is-primary is-raised">Update</button>
+                                                    <button id="submit" type="submit" class="button h-button is-primary is-raised">Update</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,19 +108,19 @@
                                         <div class="field">
                                             <label class="label" for="title">Title</label>
                                             <div class="control">
-                                                <input type="text" class="input" id="title" name="title" value="{{ old('title', $article->title) }}">
+                                                <input type="text" class="input" id="title" name="title" value="{{ old('title', $article->title) }}" required>
                                             </div>
                                         </div>
                                         <div class="field">
                                             <label class="label" for="author">Author</label>
                                             <div class="control">
-                                                <input type="text" class="input" id="author" name="author" value="{{ old('author', $article->author) }}">
+                                                <input type="text" class="input" id="author" name="author" value="{{ old('author', $article->author) }}" required>
                                             </div>
                                         </div>
                                         <div class="field">
-                                            <label class="label">Content</label>
+                                            <label class="label" for="content">Content</label>
                                             <div class="control">
-                                                <textarea id="sun-editor" name="content">{{ old('content', $article->content) }}</textarea>
+                                                <textarea id="content" name="content">{{ old('content', $article->content) }}</textarea>
                                             </div>
                                         </div>
                                         <div class="field">
@@ -136,8 +137,8 @@
                                                                 Choose a file...
                                                             </span>
                                                         </span>
-                                                        <!-- Tampilkan nama file sebelumnya jika ada -->
-                                                        <span class="file-name light-text" id="image-name">{{ old('content', $article->image ? basename($article->image) : '') }}</span>
+                                                        <!-- Perbaiki penggunaan old() untuk field 'image' -->
+                                                        <span class="file-name light-text" id="image-name">{{ old('image', $article->image ? basename($article->image) : 'Choose a file...') }}</span>
                                                     </label>
                                                 </div>
                                                 <!-- Tampilkan gambar sebelumnya jika ada -->
@@ -146,74 +147,94 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Huro Scripts -->
-            <script src="../../../assets/js/app.js"></script>
+        <!-- Huro Scripts -->
+        <script src="../../../assets/js/app.js"></script>
 
-            <script>
-                $('#summernote').summernote({
-                    placeholder: 'Hello stand alone ui',
-                    tabsize: 2,
-                    height: 250,                 // set editor height
-                    minHeight: null,             // set minimum height of editor
-                    maxHeight: null,             // set maximum height of editor
-                    focus: true, 
+        <!-- Inisialisasi SunEditor -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Inisialisasi SunEditor dengan konten yang sudah ada
+                const editor = SUNEDITOR.create(document.getElementById('content'), {
+                    placeholder: 'Write your text here...',
+                    height: 250,
                     toolbar: [
                         ['style', ['style']],
-                        ['font', ['bold', 'underline', 'clear']],
+                        ['font', ['bold', 'underline', 'italic', 'strike']],
                         ['para', ['ul', 'ol', 'paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture', 'video']],
-                        ['view', ['codeview', 'help']]
+                        ['insert', ['link', 'image', 'video']],
+                        ['view', ['fullscreen', 'codeview']]
                     ]
                 });
-            </script>
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const editLinks = document.querySelectorAll('.edit-link');
-                    const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
-                    const form = document.querySelector('#testimonial-form');
-                    const fileInput = document.querySelector('#image');
-                    const fileNameDisplay = document.querySelector('#image-name');
-                    const imagePreview = document.querySelector('#image-preview');
 
-                    fileInput.addEventListener('change', (event) => {
-                        const file = event.target.files[0]; // Ambil file yang dipilih
-                        if (file) {
-                            fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
-                            const reader = new FileReader();
-                            reader.onload = function(e) {
-                                imagePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
-                                imagePreview.style.display = 'block'; // Tampilkan gambar
-                            };
-                            reader.readAsDataURL(file);
-                        } else {
-                            fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
-                            imagePreview.src = ''; // Hapus preview gambar
-                            imagePreview.style.display = 'none'; // Sembunyikan gambar
-                        }
-                    });
+                // Masukkan konten awal ke SunEditor
+                editor.setContents(`{!! addslashes($article->content) !!}`);
+
+                // Ambil form dengan ID yang benar
+                const form = document.getElementById('edit-article-form');
+
+                // Event listener saat form disubmit
+                form.addEventListener('submit', function(event) {
+                    // Ambil konten SunEditor
+                    const content = editor.getContents();
+
+                    // Masukkan konten ke textarea
+                    document.getElementById('content').value = content;
+
+                    // Log untuk debugging (opsional)
+                    console.log("Editor Content:", content);
                 });
-            </script>
-            <!-- Concatenated plugins -->
-            <script src="../../../assets/js/app.js"></script>
+            });
+        </script>
 
-            <!-- Huro js -->
-            <script src="../../../assets/js/functions.js"></script>
-            <script src="../../../assets/js/main.js" async></script>
-            <script src="../../../assets/js/components.js" async></script>
-            <script src="../../../assets/js/popover.js" async></script>
-            <script src="../../../assets/js/widgets.js" async></script>
+        <!-- Penanganan File Input dan Preview Gambar -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const fileInput = document.querySelector('#image');
+                const fileNameDisplay = document.querySelector('#image-name');
+                const imagePreview = document.querySelector('#image-preview');
+
+                fileInput.addEventListener('change', (event) => {
+                    const file = event.target.files[0]; // Ambil file yang dipilih
+                    if (file) {
+                        fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            imagePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
+                            imagePreview.style.display = 'block'; // Tampilkan gambar
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
+                        imagePreview.src = ''; // Hapus preview gambar
+                        imagePreview.style.display = 'none'; // Sembunyikan gambar
+                    }
+                });
+            });
+        </script>
+
+        <!-- Hapus duplikasi script app.js dan script lainnya jika tidak diperlukan -->
+        <!-- Pastikan hanya memuat script yang diperlukan sekali -->
+        <!-- Contoh: -->
+        <!-- <script src="../../../assets/js/app.js"></script> -->
+
+        <!-- Huro js -->
+        <script src="../../../assets/js/functions.js"></script>
+        <script src="../../../assets/js/main.js" async></script>
+        <script src="../../../assets/js/components.js" async></script>
+        <script src="../../../assets/js/popover.js" async></script>
+        <script src="../../../assets/js/widgets.js" async></script>
 
 
-            <!-- Additional Features -->
-            <script src="assets/js/touch.js" async></script>
-            <script src="assets/js/syntax.js" async></script>
-        </div>
-    </body>
+        <!-- Additional Features -->
+        <script src="../../../assets/js/touch.js" async></script>
+        <script src="../../../assets/js/syntax.js" async></script>
+    </div>
+</body>
 </html>

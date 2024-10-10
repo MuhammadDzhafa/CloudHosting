@@ -121,8 +121,8 @@
                                 <tbody>
                                     @foreach ($articles as $article)
                                     <tr>
-                                        <td>{{ $article->title }}</td>
-                                        <td style="max-width: 400px;">{{ Str::limit($article->content, 150) }}</td>
+                                        <td style="max-width: 200px;">{{ $article->title }}</td>
+                                        <td style="max-width: 300px;">{{ Str::limit($article->content, 150) }}</td>
                                         <td>{{ $article->author }}</td>
                                         <td>
                                             @if ($article->image)
