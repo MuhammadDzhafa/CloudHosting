@@ -12,38 +12,51 @@
     ];
 @endphp
 
-<div class="section-frame padding-1 gap-[50px]">
-    <div class="tabs-wrapper">
-        <div class="tabs-inner">
-            <div class="tabs">
-                <ul>
-                    @foreach ($faqs as $category => $items)
-                        <li data-tab="{{ strtolower(str_replace(' ', '-', $category)) }}" class="{{ $loop->first ? 'is-active' : '' }}">
-                            <a>
-                                <i data-feather="{{ $icons[$category] ?? 'default-icon' }}"></i>
+<div class="tabs-wrapper section-frame padding-1" style="background: #fff; padding-top:20px">
+
+    <div class="account-wrapper">
+        <div class="columns">
+            <div class="column is-4">
+                <div class="account-box is-navigation">
+                    <div class="account-menu">
+                        @foreach ($faqs as $category => $items)
+                            @php
+                                $icon = isset($icons[$category]) ? $icons[$category] : 'tag';
+                            @endphp
+                            <a href="#{{ strtolower(str_replace(' ', '-', $category)) }}"
+                                class="account-menu-item text-[#3151AA] {{ $loop->first ? 'is-active' : '' }}">
+                                <i data-feather="{{ $icon }}" width="16" height="16" style="margin-right:8px; color:#671cc9"></i>
                                 <span>{{ $category }}</span>
+                                <span class="end">
+                                    <i aria-hidden="true" class="fas fa-arrow-right"></i>
+                                </span>
                             </a>
-                        </li>
-                    @endforeach
-                </ul>
+                        @endforeach
+                    </div>
+                </div>
             </div>
             <div class="column is-8">
                 <div class="account-box is-footerless">
                     <div class="form-body">
 
-        @foreach ($faqs as $category => $items)
-            <div id="{{ strtolower(str_replace(' ', '-', $category)) }}" class="tab-content {{ $loop->first ? 'is-active' : '' }}" style="{{ $loop->first ? 'display: block;' : 'display: none;' }}">
-                <div class="single-accordion">
-                    @foreach ($items as $index => $item)
-                        <div class="accordion-header {{ $index === 0 ? 'is-active' : '' }}">{{ $item->question }}</div>
-                        <div class="accordion-content" style="{{ $index === 0 ? 'display: block;' : 'display: none;' }}">
-                            {{ $item->answer }}
-                        </div>
-                    @endforeach
+                        <!--Fieldset-->
+                        @foreach ($faqs as $category => $items)
+                            <div id="{{ strtolower(str_replace(' ', '-', $category)) }}" class="fieldset">
+                                <div class="fieldset-heading">
+                                    <div class="single-accordion">
+                                        @foreach ($items as $item)
+                                            <div class="accordion-header">{{ $item->question }}</div>
+                                            <div class="accordion-content">{{ $item->answer }}</div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
                 </div>
             </div>
-        @endforeach
-
+        </div>
     </div>
 </div>
 

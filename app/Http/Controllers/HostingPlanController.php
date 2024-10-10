@@ -60,7 +60,31 @@ class HostingPlanController extends Controller
             'best_seller' => false
         ]);
 
-        $hostingPlan->save();
+        // Create regular or custom spec based on package type
+        if ($request->package_type === 'Regular') {
+            RegularMainSpec::create([
+                'hosting_plans_id' => $hostingPlan->hosting_plans_id,
+                'RAM' => 0,
+                'storage' => 0,
+                'CPU' => 0,
+            ]);
+        } elseif ($request->package_type === 'Custom') {
+            CustomMainSpec::create([
+                'hosting_plans_id' => $hostingPlan->hosting_plans_id,
+                'min_RAM' => 0,
+                'max_RAM' => 0,
+                'multiplier_RAM' => 0,
+                'price_RAM' => 0,
+                'min_storage' => 0,
+                'max_storage' => 0,
+                'step_storage' => 0,
+                'price_storage' => 0,
+                'min_CPU' => 0,
+                'max_CPU' => 0,
+                'multiplier_CPU' => 0,
+                'price_CPU' => 0,
+            ]);
+        }
 
         // Redirect to the edit page of the newly created hosting plan
         return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan created successfully.');
@@ -247,9 +271,9 @@ class HostingPlanController extends Controller
             $regularSpec = RegularMainSpec::updateOrCreate(
                 ['hosting_plans_id' => $hostingPlan->hosting_plans_id],
                 [
-                    'RAM' => $request->input('regular_main_spec.RAM', 0), // Default to 0 if not set
-                    'storage' => $request->input('regular_main_spec.storage', 0), // Default to 0 if not set
-                    'CPU' => $request->input('regular_main_spec.CPU', 0), // Default to 0 if not set
+                    'RAM' => $request->input('regular_main_spec.RAM', 0),
+                    'storage' => $request->input('regular_main_spec.storage', 0),
+                    'CPU' => $request->input('regular_main_spec.CPU', 0),
                 ]
             );
         } elseif ($request->package_type === 'Custom') {
@@ -257,18 +281,18 @@ class HostingPlanController extends Controller
             $customSpec = CustomMainSpec::updateOrCreate(
                 ['hosting_plans_id' => $hostingPlan->hosting_plans_id],
                 [
-                    'min_RAM' => $request->input('custom_main_spec.min_RAM', 0), // Default to 0 if not set
-                    'max_RAM' => $request->input('custom_main_spec.max_RAM', 0), // Default to 0 if not set
-                    'multiplier_RAM' => $request->input('custom_main_spec.multiplier_RAM', 0), // Default to 0 if not set
-                    'price_RAM' => $request->input('custom_main_spec.price_RAM', 0), // Default to 0 if not set
-                    'min_storage' => $request->input('custom_main_spec.min_storage', 0), // Default to 0 if not set
-                    'max_storage' => $request->input('custom_main_spec.max_storage', 0), // Default to 0 if not set
-                    'step_storage' => $request->input('custom_main_spec.step_storage', 0), // Default to 0 if not set
-                    'price_storage' => $request->input('custom_main_spec.price_storage', 0), // Default to 0 if not set
-                    'min_CPU' => $request->input('custom_main_spec.min_CPU', 0), // Default to 0 if not set
-                    'max_CPU' => $request->input('custom_main_spec.max_CPU', 0), // Default to 0 if not set
-                    'multiplier_CPU' => $request->input('custom_main_spec.multiplier_CPU', 0), // Default to 0 if not set
-                    'price_CPU' => $request->input('custom_main_spec.price_CPU', 0), // Default to 0 if not set
+                    'min_RAM' => $request->input('custom_main_spec.min_RAM', 0),
+                    'max_RAM' => $request->input('custom_main_spec.max_RAM', 0),
+                    'multiplier_RAM' => $request->input('custom_main_spec.multiplier_RAM', 0),
+                    'price_RAM' => $request->input('custom_main_spec.price_RAM', 0),
+                    'min_storage' => $request->input('custom_main_spec.min_storage', 0),
+                    'max_storage' => $request->input('custom_main_spec.max_storage', 0),
+                    'step_storage' => $request->input('custom_main_spec.step_storage', 0),
+                    'price_storage' => $request->input('custom_main_spec.price_storage', 0),
+                    'min_CPU' => $request->input('custom_main_spec.min_CPU', 0),
+                    'max_CPU' => $request->input('custom_main_spec.max_CPU', 0),
+                    'multiplier_CPU' => $request->input('custom_main_spec.multiplier_CPU', 0),
+                    'price_CPU' => $request->input('custom_main_spec.price_CPU', 0),
                 ]
             );
         }
