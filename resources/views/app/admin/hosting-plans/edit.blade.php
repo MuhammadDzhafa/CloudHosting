@@ -1020,21 +1020,91 @@
                                                     @endif
 
                                                     <div class="columns is-justify-content-center w-full">
-                                                        <div class="column is-12-mobile is-6-tablet is-12-desktop">
+                                                        <div class="column is-12-mobile is-4-tablet is-4-desktop"
+                                                            style="border-right:1px solid #e5e5e5; padding-right:40px">
+
+                                                            <div class="field">
+                                                                <label for="io_input">I/O</label>
+                                                                <div class="control is-flex is-align-items-center">
+                                                                    <input class="input" name="custom_spec[max_io]"
+                                                                        value="{{ old('custom_spec.max_io', $hostingPlan->max_io) }}"
+                                                                        placeholder="0" required>
+                                                                    <p class="ml-2">KB/s</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="field">
+                                                                <label for="entry_process_input">Entry
+                                                                    Process</label>
+                                                                <div class="control">
+                                                                    <input class="input"
+                                                                        name="custom_spec[entry_process]"
+                                                                        value="{{ old('custom_spec.entry_process', $hostingPlan->entry_process) }}"
+                                                                        required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="field">
+                                                                <label for="nproc_input">NPROC</label>
+                                                                <div class="control">
+                                                                    <input class="input" name="custom_spec[nproc]"
+                                                                        value="{{ old('custom_spec.nproc', $hostingPlan->nproc) }}"
+                                                                        placeholder="0" required>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="columns">
+                                                                <div class="column is-6"> <!-- Kolom kedua -->
+                                                                    <div class="column-content">
+                                                                        <div class="field">
+                                                                            <label>Backup</label>
+                                                                            <div class="control">
+                                                                                <input class="input" type="text"
+                                                                                    value="{{ old('custom_spec.backup', $hostingPlan->backup) }}"
+                                                                                    disabled>
+                                                                                <input type="hidden"
+                                                                                    name="custom_spec[backup]"
+                                                                                    value="{{ old('custom_spec.backup', $hostingPlan->backup) }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="column is-6"> <!-- Kolom kedua -->
+                                                                    <div class="column-content">
+                                                                        <div class="field">
+                                                                            <label for="io_input">SSL</label>
+                                                                            <div class="control is-flex">
+                                                                                <input class="input" type="text"
+                                                                                    value="{{ old('custom_spec.ssl', $hostingPlan->ssl) }}"
+                                                                                    disabled>
+                                                                                <input type="hidden"
+                                                                                    name="custom_spec[ssl]"
+                                                                                    value="{{ old('custom_spec.ssl', $hostingPlan->ssl) }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="column is-12-mobile is-4-tablet is-8-desktop"
+                                                            style="padding-left: 40px;">
                                                             <div class="columns">
                                                                 <!-- First Column (Left Side) -->
                                                                 <div class="column is-6" style="padding-bottom:0px;">
-                                                                    <!-- Max Domain -->
+
+                                                                    <!-- Max Database -->
                                                                     <div class="field">
-                                                                        <label>Max Domain</label>
+                                                                        <label>Max Database</label>
                                                                         <div
                                                                             class="control is-flex is-align-items-center gap-2">
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_domain]"
-                                                                                    id="max_domain_unlimited_custom"
+                                                                                    name="custom_spec[max_database]"
+                                                                                    id="max_database_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1042,19 +1112,18 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_domain]"
-                                                                                    id="max_domain_limited_custom"
+                                                                                    name="custom_spec[max_database]"
+                                                                                    id="max_database_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_domain_input_custom"
-                                                                                placeholder="0"
-                                                                                name="custom_spec[max_domain]"
-                                                                                data-toggle-input
-                                                                                data-limited-id="max_domain_limited_custom"
-                                                                                data-unlimited-id="max_domain_unlimited_custom"
-                                                                                value="{{ old('custom_spec.max_domain', $hostingPlan->max_domain) }}"
+                                                                                id="max_database_custom_input"
+                                                                                name="custom_spec[max_database]"
+                                                                                placeholder="0" data-toggle-input
+                                                                                data-limited-id="max_database_limited_custom"
+                                                                                data-unlimited-id="max_database_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_database', $hostingPlan->max_database) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1093,17 +1162,17 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <!-- Max Addon Domain -->
+                                                                    <!-- Max Email Account -->
                                                                     <div class="field">
-                                                                        <label>Max Addon Domain</label>
+                                                                        <label>Max Email Account</label>
                                                                         <div
                                                                             class="control is-flex is-align-items-center gap-2">
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_addon_domain]"
-                                                                                    id="max_addon_domain_unlimited_custom"
+                                                                                    name="custom_spec[max_email_account]"
+                                                                                    id="max_email_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1111,19 +1180,20 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_addon_domain]"
-                                                                                    id="max_addon_domain_limited_custom"
+                                                                                    name="custom_spec[max_email_account]"
+                                                                                    id="max_email_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_addon_domain_input_custom"
-                                                                                name="custom_spec[max_addon_domain]"
-                                                                                placeholder="0" data-toggle-input
-                                                                                data-limited-id="max_addon_domain_limited_custom"
-                                                                                data-unlimited-id="max_addon_domain_unlimited_custom"
-                                                                                value="{{ old('custom_spec.max_addon_domain', $hostingPlan->max_addon_domain) }}"
-                                                                                disabled required>
+                                                                                id="max_email_input_custom"
+                                                                                placeholder="0"
+                                                                                name="custom_spec[max_email_account]"
+                                                                                data-toggle-input
+                                                                                data-limited-id="max_email_limited_custom"
+                                                                                data-unlimited-id="max_email_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_email_account', $hostingPlan->max_email_account) }}"
+                                                                                disabled>
                                                                         </div>
                                                                     </div>
 
@@ -1165,17 +1235,17 @@
 
                                                                 <!-- Second Column (Right Side) -->
                                                                 <div class="column is-6" style="padding-bottom:0px;">
-                                                                    <!-- Max Email Account -->
+                                                                    <!-- Max Domain -->
                                                                     <div class="field">
-                                                                        <label>Max Email Account</label>
+                                                                        <label>Max Domain</label>
                                                                         <div
                                                                             class="control is-flex is-align-items-center gap-2">
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_email_account]"
-                                                                                    id="max_email_unlimited_custom"
+                                                                                    name="custom_spec[max_domain]"
+                                                                                    id="max_domain_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1183,34 +1253,34 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_email_account]"
-                                                                                    id="max_email_limited_custom"
+                                                                                    name="custom_spec[max_domain]"
+                                                                                    id="max_domain_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_email_input_custom"
+                                                                                id="max_domain_input_custom"
                                                                                 placeholder="0"
-                                                                                name="custom_spec[max_email_account]"
+                                                                                name="custom_spec[max_domain]"
                                                                                 data-toggle-input
-                                                                                data-limited-id="max_email_limited_custom"
-                                                                                data-unlimited-id="max_email_unlimited_custom"
-                                                                                value="{{ old('custom_spec.max_email_account', $hostingPlan->max_email_account) }}"
-                                                                                disabled>
+                                                                                data-limited-id="max_domain_limited_custom"
+                                                                                data-unlimited-id="max_domain_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_domain', $hostingPlan->max_domain) }}"
+                                                                                disabled required>
                                                                         </div>
                                                                     </div>
 
-                                                                    <!-- Max Database -->
+                                                                    <!-- Max Addon Domain -->
                                                                     <div class="field">
-                                                                        <label>Max Database</label>
+                                                                        <label>Max Addon Domain</label>
                                                                         <div
                                                                             class="control is-flex is-align-items-center gap-2">
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_database]"
-                                                                                    id="max_database_unlimited_custom"
+                                                                                    name="custom_spec[max_addon_domain]"
+                                                                                    id="max_addon_domain_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1218,18 +1288,18 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="custom_spec[max_database]"
-                                                                                    id="max_database_limited_custom"
+                                                                                    name="custom_spec[max_addon_domain]"
+                                                                                    id="max_addon_domain_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_database_custom_input"
-                                                                                name="custom_spec[max_database]"
+                                                                                id="max_addon_domain_input_custom"
+                                                                                name="custom_spec[max_addon_domain]"
                                                                                 placeholder="0" data-toggle-input
-                                                                                data-limited-id="max_database_limited_custom"
-                                                                                data-unlimited-id="max_database_unlimited_custom"
-                                                                                value="{{ old('custom_spec.max_database', $hostingPlan->max_database) }}"
+                                                                                data-limited-id="max_addon_domain_limited_custom"
+                                                                                data-unlimited-id="max_addon_domain_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_addon_domain', $hostingPlan->max_addon_domain) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1294,51 +1364,6 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="columns">
-                                                                <!-- First Column (I/O) -->
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label for="io_input">I/O</label>
-                                                                        <div
-                                                                            class="control is-flex is-align-items-center">
-                                                                            <input class="input"
-                                                                                name="custom_spec[max_io]"
-                                                                                value="{{ old('custom_spec.max_io', $hostingPlan->max_io) }}"
-                                                                                placeholder="0" required>
-                                                                            <p class="ml-2">KB/s</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <!-- Second Column (Entry Process) -->
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label for="entry_process_input">Entry
-                                                                            Process</label>
-                                                                        <div class="control">
-                                                                            <input class="input"
-                                                                                name="custom_spec[entry_process]"
-                                                                                value="{{ old('custom_spec.entry_process', $hostingPlan->entry_process) }}"
-                                                                                required>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- Third Column (NPROC) -->
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label for="nproc_input">NPROC</label>
-                                                                        <div class="control">
-                                                                            <input class="input"
-                                                                                name="custom_spec[nproc]"
-                                                                                value="{{ old('custom_spec.nproc', $hostingPlan->nproc) }}"
-                                                                                placeholder="0" required>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
                                                             <!-- Free Domain -->
                                                             <div class="field">
                                                                 <label>Free Domain</label>
@@ -1365,37 +1390,6 @@
                                                                         style="width: auto; flex-grow: 1;">
                                                                 </div>
                                                             </div>
-
-                                                            <div class="columns">
-                                                                <!-- First Column (I/O) -->
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label for="io_input">SSL</label>
-                                                                        <div class="control is-flex">
-                                                                            <input class="input" type="text"
-                                                                                value="{{ old('custom_spec.ssl', $hostingPlan->ssl) }}"
-                                                                                disabled>
-                                                                            <input type="hidden" name="custom_spec[ssl]"
-                                                                                value="{{ old('custom_spec.ssl', $hostingPlan->ssl) }}">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- Second Column (Entry Process) -->
-                                                                <div class="column">
-                                                                    <div class="field">
-                                                                        <label for="entry_process_input">Backup</label>
-                                                                        <div class="control">
-                                                                            <input class="input" type="text"
-                                                                                value="{{ old('custom_spec.backup', $hostingPlan->backup) }}"
-                                                                                disabled>
-                                                                            <input type="hidden"
-                                                                                name="custom_spec[backup]"
-                                                                                value="{{ old('custom_spec.backup', $hostingPlan->backup) }}">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1404,11 +1398,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- JavaScript to Enable Radio Buttons Based on Input Values -->

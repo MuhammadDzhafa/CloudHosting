@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CustomMainSpec;
+
 use App\Models\Testimonial; // Import the Testimonial model
 use App\Models\HostingPlan; // Import the Hosting Plan model
 use App\Models\HostingGroup; // Import the Hosting Group model
-use App\Models\CustomMainSpec;
 use App\Models\Faq;
+use App\Models\CustomMainSpec;
 use Illuminate\View\View; // Import the View class
 
 use Illuminate\Http\Request;
