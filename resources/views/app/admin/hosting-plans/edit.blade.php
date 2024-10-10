@@ -169,13 +169,15 @@
                                             <div class="tabs is-centered" style="margin-bottom:0px">
                                                 <ul>
                                                     @if ($hostingPlan->package_type === 'Custom')
-                                                        <li data-tab="product-info-tab" class="is-active"><a>Product Info</a></li>
+                                                        <li data-tab="product-info-tab" class="is-active"><a>Product
+                                                                Info</a></li>
                                                         <li data-tab="custom-pricing-tab"><a>Pricing</a></li>
                                                         <li data-tab="custom-spec-tab"><a>Product Specifications</a></li>
                                                     @else
-                                                        <li data-tab="product-info-tab" class="is-active"><a>Product Info</a></li>
-                                                        <!-- <li data-tab="regular-pricing-tab"><a>Pricing</a></li>
-                                                        <li data-tab="regular-spec-tab"><a>Product Specifications</a></li> -->
+                                                        <li data-tab="product-info-tab" class="is-active"><a>Product
+                                                                Info</a></li>
+                                                        <li data-tab="regular-pricing-tab"><a>Pricing</a></li>
+                                                        <li data-tab="regular-spec-tab"><a>Product Specifications</a></li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -306,7 +308,7 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- <div id="regular-pricing-tab" class="tab-content">
+                                                <div id="regular-pricing-tab" class="tab-content">
                                                     <div class="table-wrapper" style="min-height:100px" data-simplebar>
                                                         <table id="users-datatable"
                                                             class="table is-datatable is-hoverable has-text-centered">
@@ -324,100 +326,84 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Enable</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually',
-                                                                    'annually', 'biennially', 'triennially'] as
-                                                                    $duration)
-                                                                    <td>
-                                                                        <label class="checkbox is-outlined is-primary">
-                                                                            <input type="checkbox"
-                                                                                name="prices[{{ $duration }}][enable]"
-                                                                                class="toggle-checkbox"
-                                                                                @if(isset($prices[$duration]['price'])
-                                                                                && !empty($prices[$duration]['price']))
-                                                                                checked @endif>
-                                                                            <span></span>
-                                                                        </label>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <label class="checkbox is-outlined is-primary">
+                                                                                <input type="checkbox"
+                                                                                    name="prices[{{ $duration }}][enable]"
+                                                                                    class="toggle-checkbox"
+                                                                                    @if(isset($prices[$duration]['price']) && !empty($prices[$duration]['price']))
+                                                                                    checked @endif>
+                                                                                <span></span>
+                                                                            </label>
+                                                                        </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually',
-                                                                    'annually', 'biennially', 'triennially'] as
-                                                                    $duration)
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input type="number"
-                                                                                name="prices[{{ $duration }}][price]"
-                                                                                class="input has-text-centered toggle-input"
-                                                                                @if(!isset($prices[$duration]['enable'])
-                                                                                || !$prices[$duration]['enable'])
-                                                                                disabled @endif
-                                                                                value="{{ $prices[$duration]['price'] ?? '' }}">
-                                                                        </div>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][price]"
+                                                                                    class="input has-text-centered toggle-input"
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['price'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Discount (%)</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually',
-                                                                    'annually', 'biennially', 'triennially'] as
-                                                                    $duration)
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input type="number"
-                                                                                name="prices[{{ $duration }}][discount]"
-                                                                                class="input has-text-centered toggle-discount"
-                                                                                min="0" max="100"
-                                                                                @if(!isset($prices[$duration]['enable'])
-                                                                                || !$prices[$duration]['enable'])
-                                                                                disabled @endif
-                                                                                value="{{ $prices[$duration]['discount'] ?? '' }}">
-                                                                        </div>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][discount]"
+                                                                                    class="input has-text-centered toggle-discount"
+                                                                                    min="0" max="100"
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['discount'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price After</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually',
-                                                                    'annually', 'biennially', 'triennially'] as
-                                                                    $duration)
-                                                                    <td>
-                                                                        <div class="control">
-                                                                            <input type="number"
-                                                                                name="prices[{{ $duration }}][price_after]"
-                                                                                class="input has-text-centered toggle-price-after"
-                                                                                required
-                                                                                @if(!isset($prices[$duration]['enable'])
-                                                                                || !$prices[$duration]['enable'])
-                                                                                disabled @endif
-                                                                                value="{{ $prices[$duration]['price_after'] ?? '' }}">
-                                                                        </div>
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            <div class="control">
+                                                                                <input type="number"
+                                                                                    name="prices[{{ $duration }}][price_after]"
+                                                                                    class="input has-text-centered toggle-price-after"
+                                                                                    required
+                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                    disabled @endif
+                                                                                    value="{{ $prices[$duration]['price_after'] ?? '' }}">
+                                                                            </div>
+                                                                        </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Actions</th>
-                                                                    <!-- Optional: You can add a header for clarity -->
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually',
-                                                                    'annually', 'biennially', 'triennially'] as
-                                                                    $duration)
-                                                                    <td>
-                                                                        @if(isset($prices[$duration]))
-                                                                        <button type="button" class="is-danger button"
-                                                                            onclick="deletePrice({{ $prices[$duration]->price_id }})">Delete</button>
-                                                                        @else
-                                                                        <span>No Price Available</span>
-                                                                        @endif
-                                                                    </td>
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                        <td>
+                                                                            @if(isset($prices[$duration]))
+                                                                                <button type="button" class="is-danger button"
+                                                                                    onclick="deletePrice({{ $prices[$duration]['price_id'] }})">Delete</button>
+                                                                            @else
+                                                                                <span>No Price Available</span>
+                                                                            @endif
+                                                                        </td>
                                                                     @endforeach
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                </div> --}}
+                                                </div>
 
-                                            {{-- 
                                                 <div id="regular-spec-tab" class="tab-content">
                                                     @if ($errors->any())
                                                         <div class="alert alert-danger">
@@ -465,8 +451,8 @@
                                                                             <label>Entry Process</label>
                                                                             <div class="control">
                                                                                 <input class="input"
-                                                                                    name="entry_process"
-                                                                                    value="{{ old('entry_process', $hostingPlan->entry_process) }}"
+                                                                                    name="regular_spec[entry_process]"
+                                                                                    value="{{ old('regular_spec.entry_process', $hostingPlan->entry_process) }}"
                                                                                     required>
                                                                             </div>
                                                                         </div>
@@ -475,10 +461,11 @@
                                                                             <label>SSL</label>
                                                                             <div class="control">
                                                                                 <input class="input" type="text"
-                                                                                    value="{{ old('ssl', $hostingPlan->ssl) }}"
+                                                                                    value="{{ old('regular_spec.ssl', $hostingPlan->ssl) }}"
                                                                                     disabled>
-                                                                                <input type="hidden" name="ssl"
-                                                                                    value="{{ old('ssl', $hostingPlan->ssl) }}">
+                                                                                <input type="hidden"
+                                                                                    name="regular_spec[ssl]"
+                                                                                    value="{{ old('regular_spec.ssl', $hostingPlan->ssl) }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -502,18 +489,20 @@
                                                                             <label>I/O</label>
                                                                             <div
                                                                                 class="control is-inline-flex is-align-items-center">
-                                                                                <input class="input" name="max_io"
-                                                                                    value="{{ old('max_io', $hostingPlan->max_io) }}"
+                                                                                <input class="input"
+                                                                                    name="regular_spec[max_io]"
+                                                                                    value="{{ old('regular_spec.max_io', $hostingPlan->max_io) }}"
                                                                                     placeholder="0" required>
                                                                                 <p class=" ml-2">KB/s</p>
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="field">
-                                                                            <label>NPROC</label>
+                                                                            <label for="nproc_input">NPROC</label>
                                                                             <div class="control">
-                                                                                <input class="input" name="nproc"
-                                                                                    value="{{ $hostingPlan->nproc }}"
+                                                                                <input class="input"
+                                                                                    name="regular_spec[nproc]"
+                                                                                    value="{{ old('regular_spec.nproc', $hostingPlan->nproc) }}"
                                                                                     placeholder="0" required>
                                                                             </div>
                                                                         </div>
@@ -522,10 +511,11 @@
                                                                             <label>Backup</label>
                                                                             <div class="control">
                                                                                 <input class="input" type="text"
-                                                                                    value="{{ old('backup', $hostingPlan->backup) }}"
+                                                                                    value="{{ old('regular_spec.backup', $hostingPlan->backup) }}"
                                                                                     disabled>
-                                                                                <input type="hidden" name="backup"
-                                                                                    value="{{ old('backup', $hostingPlan->backup) }}">
+                                                                                <input type="hidden"
+                                                                                    name="regular_spec[backup]"
+                                                                                    value="{{ old('regular_spec.backup', $hostingPlan->backup) }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -545,24 +535,29 @@
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_database"
-                                                                                    id="max_database_unlimited"
-                                                                                    value="Unlimited"
-                                                                                    onchange="toggleDatabaseInput()">
+                                                                                <input type="radio"
+                                                                                    name="regular_spec[max_database]"
+                                                                                    id="max_database_unlimited_regular"
+                                                                                    value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_database"
-                                                                                    id="max_database_limited"
-                                                                                    value="Limited"
-                                                                                    onchange="toggleDatabaseInput()">
+                                                                                <input type="radio"
+                                                                                    name="regular_spec[max_database]"
+                                                                                    id="max_database_limited_regular"
+                                                                                    value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
-                                                                            <input class="input" id="max_database_input"
-                                                                                name="max_database" placeholder="0"
-                                                                                value="{{ old('max_database', $hostingPlan->max_database) }}"
+                                                                            <input class="input"
+                                                                                id="max_database_input_regular"
+                                                                                name="regular_spec[max_database]"
+                                                                                placeholder="0"
+                                                                                value="{{ old('regular_spec.max_database', $hostingPlan->max_database) }}"
+                                                                                data-toggle-input
+                                                                                data-limited-id="max_database_limited_regular"
+                                                                                data-unlimited-id="max_database_unlimited_regular"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -575,25 +570,28 @@
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_bandwidth"
-                                                                                    id="max_bandwidth_unlimited"
-                                                                                    value="Unlimited"
-                                                                                    onchange="toggleBandwidthInput()">
+                                                                                <input type="radio"
+                                                                                    name="regular_spec[max_bandwidth]"
+                                                                                    id="max_bandwidth_unlimited_regular"
+                                                                                    value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_bandwidth"
-                                                                                    id="max_bandwidth_limited"
-                                                                                    value="Limited"
-                                                                                    onchange="toggleBandwidthInput()">
+                                                                                <input type="radio"
+                                                                                    name="regular_spec[max_bandwidth]"
+                                                                                    id="max_bandwidth_limited_regular"
+                                                                                    value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_bandwidth_input"
-                                                                                name="max_bandwidth" placeholder="0"
-                                                                                value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}"
+                                                                                id="max_bandwidth_input_regular"
+                                                                                name="regular_spec[max_bandwidth]"
+                                                                                placeholder="0" data-toggle-input
+                                                                                data-limited-id="max_bandwidth_limited_regular"
+                                                                                data-unlimited-id="max_bandwidth_unlimited_regular"
+                                                                                value="{{ old('regular_spec.max_bandwidth', $hostingPlan->max_bandwidth) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -607,8 +605,8 @@
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_email_account"
-                                                                                    id="max_email_unlimited"
+                                                                                    name="regular_spec[max_email_account]"
+                                                                                    id="max_email_unlimited_regular"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -616,14 +614,19 @@
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_email_account"
-                                                                                    id="max_email_limited"
+                                                                                    name="regular_spec[max_email_account]"
+                                                                                    id="max_email_limited_regular"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
-                                                                            <input class="input" id="max_email_input"
-                                                                                placeholder="0" name="max_email_account"
-                                                                                value="{{ old('max_email_account', $hostingPlan->max_email_account) }}"
+                                                                            <input class="input"
+                                                                                id="max_email_input_regular"
+                                                                                placeholder="0"
+                                                                                name="regular_spec[max_email_account]"
+                                                                                data-toggle-input
+                                                                                data-limited-id="max_email_limited_regular"
+                                                                                data-unlimited-id="max_email_unlimited_regular"
+                                                                                value="{{ old('regular_spec.max_email_account', $hostingPlan->max_email_account) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -637,8 +640,8 @@
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_ftp_account"
-                                                                                    id="max_ftp_unlimited"
+                                                                                    name="regular_spec[max_ftp_account]"
+                                                                                    id="max_ftp_unlimited_regular"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -646,14 +649,19 @@
                                                                                 class="radio is-outlined is-primary p-0"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_ftp_account"
-                                                                                    id="max_ftp_limited"
+                                                                                    name="regular_spec[max_ftp_account]"
+                                                                                    id="max_ftp_limited_regular"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
-                                                                            <input class="input" id="max_ftp_input"
-                                                                                placeholder="0" name="max_ftp_account"
-                                                                                value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}"
+                                                                            <input class="input"
+                                                                                id="max_ftp_input_regular"
+                                                                                placeholder="0"
+                                                                                name="regular_spec[max_ftp_account]"
+                                                                                data-toggle-input
+                                                                                data-limited-id="max_ftp_limited_regular"
+                                                                                data-unlimited-id="max_ftp_unlimited_regular"
+                                                                                value="{{ old('regular_spec.max_ftp_account', $hostingPlan->max_ftp_account) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -671,8 +679,8 @@
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
                                                                                     <input type="radio"
-                                                                                        name="max_domain"
-                                                                                        id="max_domain_unlimited"
+                                                                                        name="regular_spec[max_domain]"
+                                                                                        id="max_domain_unlimited_regular"
                                                                                         value="Unlimited">
                                                                                     <span></span> Unlimited
                                                                                 </label>
@@ -680,15 +688,19 @@
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
                                                                                     <input type="radio"
-                                                                                        name="max_domain"
-                                                                                        id="max_domain_limited"
+                                                                                        name="regular_spec[max_domain]"
+                                                                                        id="max_domain_limited_regular"
                                                                                         value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
                                                                                 <input class="input"
-                                                                                    id="max_domain_input"
-                                                                                    placeholder="0" name="max_domain"
-                                                                                    value="{{ old('max_domain', $hostingPlan->max_domain) }}"
+                                                                                    id="max_domain_input_regular"
+                                                                                    placeholder="0"
+                                                                                    name="regular_spec[max_domain]"
+                                                                                    data-toggle-input
+                                                                                    data-limited-id="max_domain_limited_regular"
+                                                                                    data-unlimited-id="max_domain_unlimited_regular"
+                                                                                    value="{{ old('regular_spec.max_domain', $hostingPlan->max_domain) }}"
                                                                                     disabled required>
                                                                             </div>
                                                                         </div>
@@ -703,8 +715,8 @@
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
                                                                                     <input type="radio"
-                                                                                        name="max_addon_domain"
-                                                                                        id="max_addon_domain_unlimited"
+                                                                                        name="regular_spec[max_addon_domain]"
+                                                                                        id="max_addon_domain_unlimited_regular"
                                                                                         value="Unlimited">
                                                                                     <span></span> Unlimited
                                                                                 </label>
@@ -712,16 +724,18 @@
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
                                                                                     <input type="radio"
-                                                                                        name="max_addon_domain"
-                                                                                        id="max_addon_domain_limited"
+                                                                                        name="regular_spec[max_addon_domain]"
+                                                                                        id="max_addon_domain_limited_regular"
                                                                                         value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
                                                                                 <input class="input"
-                                                                                    id="max_addon_domain_input"
-                                                                                    name="max_addon_domain"
-                                                                                    placeholder="0"
-                                                                                    value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}"
+                                                                                    id="max_addon_domain_input_regular"
+                                                                                    name="regular_spec[max_addon_domain]"
+                                                                                    placeholder="0" data-toggle-input
+                                                                                    data-limited-id="max_addon_domain_limited_regular"
+                                                                                    data-unlimited-id="max_addon_domain_unlimited_regular"
+                                                                                    value="{{ old('regular_spec.max_addon_domain', $hostingPlan->max_addon_domain) }}"
                                                                                     disabled required>
                                                                             </div>
                                                                         </div>
@@ -736,8 +750,8 @@
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
                                                                                     <input type="radio"
-                                                                                        name="max_parked_domain"
-                                                                                        id="max_parked_domain_unlimited"
+                                                                                        name="regular_spec[max_parked_domain]"
+                                                                                        id="max_parked_domain_unlimited_regular"
                                                                                         value="Unlimited">
                                                                                     <span></span> Unlimited
                                                                                 </label>
@@ -745,16 +759,18 @@
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
                                                                                     <input type="radio"
-                                                                                        name="max_parked_domain"
-                                                                                        id="max_parked_domain_limited"
+                                                                                        name="regular_spec[max_parked_domain]"
+                                                                                        id="max_parked_domain_limited_regular"
                                                                                         value="Limited">
                                                                                     <span></span> Limited
                                                                                 </label>
                                                                                 <input class="input"
-                                                                                    id="max_parked_domain_input"
-                                                                                    name="max_parked_domain"
-                                                                                    placeholder="0"
-                                                                                    value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}"
+                                                                                    id="max_parked_domain_input_regular"
+                                                                                    name="regular_spec[max_parked_domain]"
+                                                                                    placeholder="0" data-toggle-input
+                                                                                    data-limited-id="max_parked_domain_limited_regular"
+                                                                                    data-unlimited-id="max_parked_domain_unlimited_regular"
+                                                                                    value="{{ old('regular_spec.max_parked_domain', $hostingPlan->max_parked_domain) }}"
                                                                                     disabled required>
                                                                             </div>
                                                                         </div>
@@ -768,15 +784,18 @@
                                                                                 <label
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="ssh"
-                                                                                        id="ssh_no" value="No">
+                                                                                    <input type="radio"
+                                                                                        name="regular_spec[ssh]"
+                                                                                        id="ssh_no_regular" value="No">
                                                                                     <span></span> No
                                                                                 </label>
                                                                                 <label
                                                                                     class="radio is-outlined is-primary p-0"
                                                                                     style="display: flex; align-items: center;">
-                                                                                    <input type="radio" name="ssh"
-                                                                                        id="ssh_yes" value="Yes">
+                                                                                    <input type="radio"
+                                                                                        name="regular_spec[ssh]"
+                                                                                        id="ssh_yes_regular"
+                                                                                        value="Yes">
                                                                                     <span></span> Yes
                                                                                 </label>
                                                                             </div>
@@ -791,26 +810,28 @@
                                                                     style="gap:10px">
                                                                     <label class="radio is-outlined is-primary p-0"
                                                                         style="display: flex; align-items: center;">
-                                                                        <input type="radio" name="free_domain"
-                                                                            id="free_domain_no" value="No">
+                                                                        <input type="radio"
+                                                                            name="regular_spec[free_domain]"
+                                                                            id="free_domain_no_regular" value="No">
                                                                         <span></span> No
                                                                     </label>
                                                                     <label class="radio is-outlined is-primary p-0"
                                                                         style="display: flex; align-items: center;">
-                                                                        <input type="radio" name="free_domain"
-                                                                            id="free_domain_yes" value="Yes">
+                                                                        <input type="radio"
+                                                                            name="regular_spec[free_domain]"
+                                                                            id="free_domain_yes_regular" value="Yes">
                                                                         <span></span> Yes
                                                                     </label>
-                                                                    <input class="input" id="free_domain_input"
-                                                                        name="free_domain"
-                                                                        value="{{ old('free_domain', $hostingPlan->free_domain) }}"
+                                                                    <input class="input" id="free_domain_input_regular"
+                                                                        name="regular_spec[free_domain]"
+                                                                        value="{{ old('regular_spec.free_domain', $hostingPlan->free_domain) }}"
                                                                         required>
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div>
 
                                                 <div id="custom-pricing-tab" class="tab-content">
                                                     <div class="columns">
@@ -1011,22 +1032,29 @@
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_domain"
-                                                                                    id="max_domain_unlimited"
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[max_domain]"
+                                                                                    id="max_domain_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_domain"
-                                                                                    id="max_domain_limited"
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[max_domain]"
+                                                                                    id="max_domain_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
-                                                                            <input class="input" id="max_domain_input"
-                                                                                placeholder="0" name="max_domain"
-                                                                                value="{{ old('max_domain', $hostingPlan->max_domain) }}"
+                                                                            <input class="input"
+                                                                                id="max_domain_input_custom"
+                                                                                placeholder="0"
+                                                                                name="custom_spec[max_domain]"
+                                                                                data-toggle-input
+                                                                                data-limited-id="max_domain_limited_custom"
+                                                                                data-unlimited-id="max_domain_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_domain', $hostingPlan->max_domain) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1039,25 +1067,28 @@
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_bandwidth"
-                                                                                    id="max_bandwidth_unlimited"
-                                                                                    value="Unlimited"
-                                                                                    onchange="toggleBandwidthInput()">
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[max_bandwidth]"
+                                                                                    id="max_bandwidth_unlimited_custom"
+                                                                                    value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_bandwidth"
-                                                                                    id="max_bandwidth_limited"
-                                                                                    value="Limited"
-                                                                                    onchange="toggleBandwidthInput()">
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[max_bandwidth]"
+                                                                                    id="max_bandwidth_limited_custom"
+                                                                                    value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_bandwidth_input"
-                                                                                name="max_bandwidth" placeholder="0"
-                                                                                value="{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}"
+                                                                                id="max_bandwidth_input_custom"
+                                                                                name="custom_spec[max_bandwidth]"
+                                                                                placeholder="0" data-toggle-input
+                                                                                data-limited-id="max_bandwidth_limited_custom"
+                                                                                data-unlimited-id="max_bandwidth_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_bandwidth', $hostingPlan->max_bandwidth) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1071,8 +1102,8 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_addon_domain"
-                                                                                    id="max_addon_domain_unlimited"
+                                                                                    name="custom_spec[max_addon_domain]"
+                                                                                    id="max_addon_domain_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1080,15 +1111,18 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_addon_domain"
-                                                                                    id="max_addon_domain_limited"
+                                                                                    name="custom_spec[max_addon_domain]"
+                                                                                    id="max_addon_domain_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_addon_domain_input"
-                                                                                name="max_addon_domain" placeholder="0"
-                                                                                value="{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}"
+                                                                                id="max_addon_domain_input_custom"
+                                                                                name="custom_spec[max_addon_domain]"
+                                                                                placeholder="0" data-toggle-input
+                                                                                data-limited-id="max_addon_domain_limited_custom"
+                                                                                data-unlimited-id="max_addon_domain_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_addon_domain', $hostingPlan->max_addon_domain) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1102,8 +1136,8 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_ftp_account"
-                                                                                    id="max_ftp_unlimited"
+                                                                                    name="custom_spec[max_ftp_account]"
+                                                                                    id="max_ftp_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1111,14 +1145,19 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_ftp_account"
-                                                                                    id="max_ftp_limited"
+                                                                                    name="custom_spec[max_ftp_account]"
+                                                                                    id="max_ftp_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
-                                                                            <input class="input" id="max_ftp_input"
-                                                                                placeholder="0" name="max_ftp_account"
-                                                                                value="{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}"
+                                                                            <input class="input"
+                                                                                id="max_ftp_input_custom"
+                                                                                placeholder="0"
+                                                                                name="custom_spec[max_ftp_account]"
+                                                                                data-toggle-input
+                                                                                data-limited-id="max_ftp_limited_custom"
+                                                                                data-unlimited-id="max_ftp_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_ftp_account', $hostingPlan->max_ftp_account) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1135,8 +1174,8 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_email_account"
-                                                                                    id="max_email_unlimited"
+                                                                                    name="custom_spec[max_email_account]"
+                                                                                    id="max_email_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1144,14 +1183,19 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_email_account"
-                                                                                    id="max_email_limited"
+                                                                                    name="custom_spec[max_email_account]"
+                                                                                    id="max_email_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
-                                                                            <input class="input" id="max_email_input"
-                                                                                placeholder="0" name="max_email_account"
-                                                                                value="{{ old('max_email_account', $hostingPlan->max_email_account) }}"
+                                                                            <input class="input"
+                                                                                id="max_email_input_custom"
+                                                                                placeholder="0"
+                                                                                name="custom_spec[max_email_account]"
+                                                                                data-toggle-input
+                                                                                data-limited-id="max_email_limited_custom"
+                                                                                data-unlimited-id="max_email_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_email_account', $hostingPlan->max_email_account) }}"
                                                                                 disabled>
                                                                         </div>
                                                                     </div>
@@ -1164,24 +1208,28 @@
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_database"
-                                                                                    id="max_database_unlimited"
-                                                                                    value="Unlimited"
-                                                                                    onchange="toggleDatabaseInput()">
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[max_database]"
+                                                                                    id="max_database_unlimited_custom"
+                                                                                    value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="max_database"
-                                                                                    id="max_database_limited"
-                                                                                    value="Limited"
-                                                                                    onchange="toggleDatabaseInput()">
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[max_database]"
+                                                                                    id="max_database_limited_custom"
+                                                                                    value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
-                                                                            <input class="input" id="max_database_input"
-                                                                                name="max_database" placeholder="0"
-                                                                                value="{{ old('max_database', $hostingPlan->max_database) }}"
+                                                                            <input class="input"
+                                                                                id="max_database_custom_input"
+                                                                                name="custom_spec[max_database]"
+                                                                                placeholder="0" data-toggle-input
+                                                                                data-limited-id="max_database_limited_custom"
+                                                                                data-unlimited-id="max_database_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_database', $hostingPlan->max_database) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1195,8 +1243,8 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_parked_domain"
-                                                                                    id="max_parked_domain_unlimited"
+                                                                                    name="custom_spec[max_parked_domain]"
+                                                                                    id="max_parked_domain_unlimited_custom"
                                                                                     value="Unlimited">
                                                                                 <span></span> Unlimited
                                                                             </label>
@@ -1204,15 +1252,18 @@
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
                                                                                 <input type="radio"
-                                                                                    name="max_parked_domain"
-                                                                                    id="max_parked_domain_limited"
+                                                                                    name="custom_spec[max_parked_domain]"
+                                                                                    id="max_parked_domain_limited_custom"
                                                                                     value="Limited">
                                                                                 <span></span> Limited
                                                                             </label>
                                                                             <input class="input"
-                                                                                id="max_parked_domain_input"
-                                                                                name="max_parked_domain" placeholder="0"
-                                                                                value="{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}"
+                                                                                id="max_parked_domain_input_custom"
+                                                                                name="custom_spec[max_parked_domain]"
+                                                                                placeholder="0" data-toggle-input
+                                                                                data-limited-id="max_parked_domain_limited_custom"
+                                                                                data-unlimited-id="max_parked_domain_unlimited_custom"
+                                                                                value="{{ old('custom_spec.max_parked_domain', $hostingPlan->max_parked_domain) }}"
                                                                                 disabled required>
                                                                         </div>
                                                                     </div>
@@ -1225,15 +1276,17 @@
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="ssh"
-                                                                                    id="ssh_no" value="No">
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[ssh]"
+                                                                                    id="ssh_no_custom" value="No">
                                                                                 <span></span> No
                                                                             </label>
                                                                             <label
                                                                                 class="radio is-outlined is-primary p-0 mr-3"
                                                                                 style="display: flex; align-items: center;">
-                                                                                <input type="radio" name="ssh"
-                                                                                    id="ssh_yes" value="Yes">
+                                                                                <input type="radio"
+                                                                                    name="custom_spec[ssh]"
+                                                                                    id="ssh_yes_custom" value="Yes">
                                                                                 <span></span> Yes
                                                                             </label>
                                                                         </div>
@@ -1248,8 +1301,9 @@
                                                                         <label for="io_input">I/O</label>
                                                                         <div
                                                                             class="control is-flex is-align-items-center">
-                                                                            <input class="input" name="max_io"
-                                                                                value="{{ old('max_io', $hostingPlan->max_io) }}"
+                                                                            <input class="input"
+                                                                                name="custom_spec[max_io]"
+                                                                                value="{{ old('custom_spec.max_io', $hostingPlan->max_io) }}"
                                                                                 placeholder="0" required>
                                                                             <p class="ml-2">KB/s</p>
                                                                         </div>
@@ -1263,8 +1317,9 @@
                                                                         <label for="entry_process_input">Entry
                                                                             Process</label>
                                                                         <div class="control">
-                                                                            <input class="input" name="entry_process"
-                                                                                value="{{ old('entry_process', $hostingPlan->entry_process) }}"
+                                                                            <input class="input"
+                                                                                name="custom_spec[entry_process]"
+                                                                                value="{{ old('custom_spec.entry_process', $hostingPlan->entry_process) }}"
                                                                                 required>
                                                                         </div>
                                                                     </div>
@@ -1275,8 +1330,9 @@
                                                                     <div class="field">
                                                                         <label for="nproc_input">NPROC</label>
                                                                         <div class="control">
-                                                                            <input class="input" name="nproc"
-                                                                                value="{{ old('nproc', $hostingPlan->nproc) }}"
+                                                                            <input class="input"
+                                                                                name="custom_spec[nproc]"
+                                                                                value="{{ old('custom_spec.nproc', $hostingPlan->nproc) }}"
                                                                                 placeholder="0" required>
                                                                         </div>
                                                                     </div>
@@ -1290,21 +1346,23 @@
                                                                     class="control is-flex is-align-items-center gap-2">
                                                                     <label class="radio is-outlined is-primary p-0 mr-3"
                                                                         style="display: flex; align-items: center;">
-                                                                        <input type="radio" name="free_domain"
-                                                                            id="free_domain_no" value="No">
+                                                                        <input type="radio"
+                                                                            name="custom_spec[free_domain]"
+                                                                            id="free_domain_no_custom" value="No">
                                                                         <span></span> No
                                                                     </label>
                                                                     <label class="radio is-outlined is-primary p-0 mr-3"
                                                                         style="display: flex; align-items: center;">
-                                                                        <input type="radio" name="free_domain"
-                                                                            id="free_domain_yes" value="Yes">
+                                                                        <input type="radio"
+                                                                            name="custom_spec[free_domain]"
+                                                                            id="free_domain_yes_custom" value="Yes">
                                                                         <span></span> Yes
                                                                     </label>
-                                                                    <input class="input" id="free_domain_input"
-                                                                        name="free_domain"
-                                                                        value="{{ old('free_domain', $hostingPlan->free_domain) }}"
-                                                                        placeholder="E.g. .net, .com" name="free_domain"
-                                                                        disabled style="width: auto; flex-grow: 1;">
+                                                                    <input class="input" id="free_domain_input_custom"
+                                                                        name="custom_spec[free_domain]"
+                                                                        value="{{ old('custom_spec.free_domain', $hostingPlan->free_domain) }}"
+                                                                        placeholder="E.g. .net, .com" disabled
+                                                                        style="width: auto; flex-grow: 1;">
                                                                 </div>
                                                             </div>
 
@@ -1315,10 +1373,10 @@
                                                                         <label for="io_input">SSL</label>
                                                                         <div class="control is-flex">
                                                                             <input class="input" type="text"
-                                                                                value="{{ old('ssl', $hostingPlan->ssl) }}"
+                                                                                value="{{ old('custom_spec.ssl', $hostingPlan->ssl) }}"
                                                                                 disabled>
-                                                                            <input type="hidden" name="ssl"
-                                                                                value="{{ old('ssl', $hostingPlan->ssl) }}">
+                                                                            <input type="hidden" name="custom_spec[ssl]"
+                                                                                value="{{ old('custom_spec.ssl', $hostingPlan->ssl) }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1329,10 +1387,11 @@
                                                                         <label for="entry_process_input">Backup</label>
                                                                         <div class="control">
                                                                             <input class="input" type="text"
-                                                                                value="{{ old('backup', $hostingPlan->backup) }}"
+                                                                                value="{{ old('custom_spec.backup', $hostingPlan->backup) }}"
                                                                                 disabled>
-                                                                            <input type="hidden" name="backup"
-                                                                                value="{{ old('backup', $hostingPlan->backup) }}">
+                                                                            <input type="hidden"
+                                                                                name="custom_spec[backup]"
+                                                                                value="{{ old('custom_spec.backup', $hostingPlan->backup) }}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1354,121 +1413,10 @@
 
     <!-- JavaScript to Enable Radio Buttons Based on Input Values -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize the state of the inputs based on the values
-            const maxDatabaseInput = document.getElementById('max_database_input');
-            const maxBandwidthInput = document.getElementById('max_bandwidth_input');
-            const maxEmailInput = document.getElementById('max_email_input');
-            const maxFTPInput = document.getElementById('max_ftp_input');
-            const maxDomainInput = document.getElementById('max_domain_input');
-            const maxAddonDomainInput = document.getElementById('max_addon_domain_input');
-            const maxParkedDomainInput = document.getElementById('max_parked_domain_input');
-
-            if (parseInt(maxDatabaseInput.value) > 0) {
-                document.getElementById('max_database_limited').checked = true;
-                toggleDatabaseInput();
-            } else {
-                document.getElementById('max_database_unlimited').checked = true;
-            }
-
-            if (parseInt(maxBandwidthInput.value) > 0) {
-                document.getElementById('max_bandwidth_limited').checked = true;
-                toggleBandwidthInput();
-            } else {
-                document.getElementById('max_bandwidth_unlimited').checked = true;
-            }
-
-            if (parseInt(maxEmailInput.value) > 0) {
-                document.getElementById('max_email_limited').checked = true;
-                toggleEmailInput();
-            } else {
-                document.getElementById('max_email_unlimited').checked = true;
-            }
-
-            if (parseInt(maxFTPInput.value) > 0) {
-                document.getElementById('max_ftp_limited').checked = true;
-                toggleFTPInput();
-            } else {
-                document.getElementById('max_ftp_unlimited').checked = true;
-            }
-
-            // Check Max Domain
-            if (parseInt(maxDomainInput.value) > 0) {
-                document.getElementById('max_domain_limited').checked = true;
-                toggleDomainInput();
-            } else {
-                document.getElementById('max_domain_unlimited').checked = true;
-            }
-
-            // Check Max Addon Domain
-            if (parseInt(maxAddonDomainInput.value) > 0) {
-                document.getElementById('max_addon_domain_limited').checked = true;
-                toggleAddonDomainInput();
-            } else {
-                document.getElementById('max_addon_domain_unlimited').checked = true;
-            }
-
-            // Check Max Parked Domain
-            if (parseInt(maxParkedDomainInput.value) > 0) {
-                document.getElementById('max_parked_domain_limited').checked = true;
-                toggleParkedDomainInput();
-            } else {
-                document.getElementById('max_parked_domain_unlimited').checked = true;
-            }
-        });
-
-        // Function to toggle database input based on radio selection
-        function toggleDatabaseInput() {
-            const databaseInput = document.getElementById('max_database_input');
-            const limitedRadio = document.getElementById('max_database_limited');
-            databaseInput.disabled = !limitedRadio.checked;
-        }
-
-        // Function to toggle bandwidth input based on radio selection
-        function toggleBandwidthInput() {
-            const bandwidthInput = document.getElementById('max_bandwidth_input');
-            const limitedRadio = document.getElementById('max_bandwidth_limited');
-            bandwidthInput.disabled = !limitedRadio.checked;
-        }
-
-        // Function to toggle email input based on radio selection
-        function toggleEmailInput() {
-            const emailInput = document.getElementById('max_email_input');
-            const limitedRadio = document.getElementById('max_email_limited');
-            emailInput.disabled = !limitedRadio.checked;
-        }
-
-        // Function to toggle FTP input based on radio selection
-        function toggleFTPInput() {
-            const ftpInput = document.getElementById('max_ftp_input');
-            const limitedRadio = document.getElementById('max_ftp_limited');
-            ftpInput.disabled = !limitedRadio.checked;
-        }
-        // Function to toggle domain input based on radio selection
-        function toggleDomainInput() {
-            const domainInput = document.getElementById('max_domain_input');
-            const limitedRadio = document.getElementById('max_domain_limited');
-            domainInput.disabled = !limitedRadio.checked;
-        }
-
-        // Function to toggle addon domain input based on radio selection
-        function toggleAddonDomainInput() {
-            const addonDomainInput = document.getElementById('max_addon_domain_input');
-            const limitedRadio = document.getElementById('max_addon_domain_limited');
-            addonDomainInput.disabled = !limitedRadio.checked;
-        }
-
-        // Function to toggle parked domain input based on radio selection
-        function toggleParkedDomainInput() {
-            const parkedDomainInput = document.getElementById('max_parked_domain_input');
-            const limitedRadio = document.getElementById('max_parked_domain_limited');
-            parkedDomainInput.disabled = !limitedRadio.checked;
-        }
-    </script>
-
-    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Data dari backend
+            const radios = document.querySelectorAll('input[type="radio"]');
+            const inputs = document.querySelectorAll('input[data-toggle-input]');
+
             const hostingPlanData = {
                 maxDatabase: "{{ $hostingPlan->max_database }}",
                 maxBandwidth: "{{ $hostingPlan->max_bandwidth }}",
@@ -1481,201 +1429,121 @@
                 freeDomain: "{{ $hostingPlan->free_domain }}"
             };
 
-            const setRadioButton = (name, value) => {
-                const radio = document.getElementById(`${name}_${value.toLowerCase()}`);
-                if (radio) radio.checked = true;
+            // Free Domain logic
+            const freeDomainNoRegular = document.getElementById('free_domain_no_regular');
+            const freeDomainYesRegular = document.getElementById('free_domain_yes_regular');
+            const freeDomainNoCustom = document.getElementById('free_domain_no_custom');
+            const freeDomainYesCustom = document.getElementById('free_domain_yes_custom');
+            const freeDomainInputRegular = document.getElementById('free_domain_input_regular');
+            const freeDomainInputCustom = document.getElementById('free_domain_input_custom');
+
+            // Disable inputs initially
+            freeDomainInputRegular.disabled = true;
+            freeDomainInputCustom.disabled = true;
+
+            // Set the free domain radio buttons based on the data from the database
+            if (hostingPlanData.freeDomain === "No") {
+                freeDomainNoRegular.checked = true;
+                freeDomainNoCustom.checked = true;
+                freeDomainInputRegular.disabled = true;
+                freeDomainInputCustom.disabled = true;
+                freeDomainInputRegular.value = '';
+                freeDomainInputCustom.value = '';
+            } else {
+                freeDomainYesRegular.checked = true;
+                freeDomainYesCustom.checked = true;
+                freeDomainInputRegular.disabled = false;
+                freeDomainInputCustom.disabled = false;
+            }
+
+
+            // Add event listeners to Free Domain radio buttons
+            const handleFreeDomainChange = (isRegular) => {
+                if (isRegular) {
+                    freeDomainInputRegular.disabled = !freeDomainYesRegular.checked;
+                } else {
+                    freeDomainInputCustom.disabled = !freeDomainYesCustom.checked;
+                }
             };
 
-            // Set radio buttons to default values
-            // setRadioButton('max_database', 'Unlimited');
-            // setRadioButton('max_bandwidth', 'Unlimited');
-            // setRadioButton('max_email', 'Unlimited');
-            // setRadioButton('max_ftp', 'Unlimited');
-            // setRadioButton('max_domain', 'Unlimited');
-            // setRadioButton('max_addon_domain', 'Unlimited');
-            // setRadioButton('max_parked_domain', 'Unlimited');
-            // setRadioButton('ssh', 'No'); // Default SSH to "No"
-            // setRadioButton('free_domain', 'No');
+            freeDomainNoRegular.addEventListener('change', () => handleFreeDomainChange(true));
+            freeDomainYesRegular.addEventListener('change', () => handleFreeDomainChange(true));
+            freeDomainNoCustom.addEventListener('change', () => handleFreeDomainChange(false));
+            freeDomainYesCustom.addEventListener('change', () => handleFreeDomainChange(false));
 
-            const radios = document.querySelectorAll('input[type="radio"]');
-            const inputs = document.querySelectorAll('input.input');
+            // SSH Status logic
+            const sshNoRegular = document.getElementById('ssh_no_regular');
+            const sshYesRegular = document.getElementById('ssh_yes_regular');
+            const sshNoCustom = document.getElementById('ssh_no_custom');
+            const sshYesCustom = document.getElementById('ssh_yes_custom');
 
-            const handleInputState = () => {
-                radios.forEach(radio => {
-                    const parent = radio.closest('.control');
-                    const input = parent ? parent.querySelector('.input') : null;
+            // Default set to No for Regular and Custom
+            sshNoRegular.checked = true;
+            sshNoCustom.checked = true;
 
-                    if (input) {
-                        input.disabled = true; // Disable all inputs initially
+            // Set SSH radio button based on data from the database
+            if (hostingPlanData.sshStatus === "Yes") {
+                sshYesRegular.checked = true;
+                sshYesCustom.checked = true;
+            }
 
-                        if ((radio.value === 'Limited' || radio.value === 'Yes') && radio.checked) {
-                            input.disabled = false; // Enable input for "Limited" or "Yes"
-                        }
+            // Event listeners for SSH radio buttons
+            sshNoRegular.addEventListener('change', () => handleSSHChange(true));
+            sshYesRegular.addEventListener('change', () => handleSSHChange(true));
+            sshNoCustom.addEventListener('change', () => handleSSHChange(false));
+            sshYesCustom.addEventListener('change', () => handleSSHChange(false));
+
+            // Function to update input states based on radio button values
+            const updateInputState = () => {
+                inputs.forEach(input => {
+                    const limitedRadio = document.getElementById(input.getAttribute('data-limited-id'));
+                    const unlimitedRadio = document.getElementById(input.getAttribute('data-unlimited-id'));
+
+                    input.disabled = unlimitedRadio.checked;
+                });
+            };
+
+            // Function to set the correct radio button and input value on page load
+            const handleInitialData = () => {
+                inputs.forEach(input => {
+                    const valueFromDb = input.value; // The value passed from the database
+
+                    const limitedRadio = document.getElementById(input.getAttribute('data-limited-id'));
+                    const unlimitedRadio = document.getElementById(input.getAttribute('data-unlimited-id'));
+
+                    // Handle limited/unlimited logic
+                    if (valueFromDb === 'Unlimited' && unlimitedRadio) {
+                        unlimitedRadio.checked = true;
+                        input.disabled = true;
+                        input.value = ''; // Clear input field when "Unlimited"
+                    } else {
+                        limitedRadio.checked = true;
+                        input.disabled = false; // Enable input field when "Limited"
                     }
                 });
             };
 
-            handleInputState(); // Initial state handling
-
+            // Add event listener to all radio buttons to trigger input state updates
             radios.forEach(radio => {
-                radio.addEventListener('change', handleInputState);
+                radio.addEventListener('change', () => {
+                    updateInputState(); // Update limited/unlimited state
+                });
             });
 
-            // Handle free domain logic
-            const freeDomainNo = document.getElementById('free_domain_no');
-            const freeDomainYes = document.getElementById('free_domain_yes');
-            const freeDomainInput = document.getElementById('free_domain_input');
+            // Initial call to set the correct state based on database values on page load
+            handleInitialData();
+            updateInputState(); // Ensure input fields are enabled/disabled based on current selection
 
-            const setInitialFreeDomainState = () => {
-                if (hostingPlanData.freeDomain === 'No') {
-                    freeDomainNo.checked = true;
-                } else {
-                    freeDomainYes.checked = true;
-                }
-            };
+            // Call handleSSHChange for initial state
+            handleSSHChange(true);  // for Regular
+            handleSSHChange(false); // for Custom
 
-            setInitialFreeDomainState(); // Memanggil fungsi untuk mengatur status awal
-
-            const handleFreeDomainChange = () => {
-                if (freeDomainNo.checked) {
-                    freeDomainInput.disabled = true;
-                    freeDomainInput.value = ''; // Clear input if "No" is selected
-                } else {
-                    freeDomainInput.disabled = false; // Enable input if "Yes" is selected
-                    freeDomainInput.value = freeDomainInput.value === '' ? '' : freeDomainInput.value;
-                }
-            };
-
-            freeDomainNo.addEventListener('change', handleFreeDomainChange);
-            freeDomainYes.addEventListener('change', handleFreeDomainChange);
-            handleFreeDomainChange(); // Set initial state for free domain
-
-            // Handle input states based on radio buttons
-            const handleInputStateWithRadio = (radioName, inputId, oldValue) => {
-                const unlimitedRadio = document.getElementById(`${radioName}_unlimited`);
-                const limitedRadio = document.getElementById(`${radioName}_limited`);
-                const inputField = document.getElementById(inputId);
-
-                const updateInputState = () => {
-                    inputField.disabled = unlimitedRadio.checked;
-                    if (unlimitedRadio.checked) {
-                        inputField.value = '0'; // Set displayed input value to 0
-                    } else {
-                        inputField.value = oldValue !== 'Unlimited' ? oldValue : '';
-                    }
-                };
-
-                updateInputState(); // Initial state setup
-                unlimitedRadio.addEventListener('change', updateInputState);
-                limitedRadio.addEventListener('change', updateInputState);
-            };
-
-            handleInputStateWithRadio('max_database', 'max_database_input', "{{ old('max_database', $hostingPlan->max_database) }}");
-            handleInputStateWithRadio('max_bandwidth', 'max_bandwidth_input', "{{ old('max_bandwidth', $hostingPlan->max_bandwidth) }}");
-            handleInputStateWithRadio('max_email', 'max_email_input', "{{ old('max_email_account', $hostingPlan->max_email_account) }}");
-            handleInputStateWithRadio('max_ftp', 'max_ftp_input', "{{ old('max_ftp_account', $hostingPlan->max_ftp_account) }}");
-            handleInputStateWithRadio('max_domain', 'max_domain_input', "{{ old('max_domain', $hostingPlan->max_domain) }}");
-            handleInputStateWithRadio('max_addon_domain', 'max_addon_domain_input', "{{ old('max_addon_domain', $hostingPlan->max_addon_domain) }}");
-            handleInputStateWithRadio('max_parked_domain', 'max_parked_domain_input', "{{ old('max_parked_domain', $hostingPlan->max_parked_domain) }}");
-
-            // SSH Status logic
-            const sshNo = document.getElementById('ssh_no');
-            const sshYes = document.getElementById('ssh_yes');
-
-            // Default set ke No
-            sshNo.checked = true;
-
-            // Set radio button berdasarkan data dari database
-            if (hostingPlanData.sshStatus === "Yes") {
-                sshYes.checked = true;
-            }
-
-            // Fungsi untuk menangani perubahan radio button SSH
-            const handleSSHChange = () => {
-                if (sshYes.checked) {
-                    console.log("SSH Enabled");
-                    // Lakukan aksi penyimpanan untuk SSH Yes (via form submit atau AJAX)
-                } else {
-                    console.log("SSH Disabled");
-                    // Lakukan aksi penyimpanan untuk SSH No
-                }
-            };
-
-            // Event listener untuk perubahan pada radio button SSH
-            sshNo.addEventListener('change', handleSSHChange);
-            sshYes.addEventListener('change', handleSSHChange);
-
-            // Panggil handleSSHChange untuk menyimpan status awal saat halaman di-refresh
-            handleSSHChange();
-
-            // Handle form submission
-            const form = document.querySelector('form'); // Adjust the selector if needed
-            form.addEventListener('submit', (event) => {
-                const maxDatabaseUnlimited = document.getElementById('max_database_unlimited');
-                const maxDatabaseInput = document.getElementById('max_database_input');
-                const maxBandwidthUnlimited = document.getElementById('max_bandwidth_unlimited');
-                const maxBandwidthInput = document.getElementById('max_bandwidth_input');
-                const maxEmailUnlimited = document.getElementById('max_email_unlimited');
-                const maxEmailInput = document.getElementById('max_email_input');
-                const maxFtpUnlimited = document.getElementById('max_ftp_unlimited');
-                const maxFtpInput = document.getElementById('max_ftp_input');
-                const maxDomainUnlimited = document.getElementById('max_domain_unlimited');
-                const maxDomainInput = document.getElementById('max_domain_input');
-                const maxAddonUnlimited = document.getElementById('max_addon_domain_unlimited');
-                const maxAddonInput = document.getElementById('max_addon_domain_input');
-                const maxParkedUnlimited = document.getElementById('max_parked_domain_unlimited');
-                const maxParkedInput = document.getElementById('max_parked_domain_input');
-
-                // Set value for free_domain
-                const freeDomainValue = freeDomainYes.checked ? freeDomainInput.value.trim() : 'No';
-                freeDomainInput.value = freeDomainValue; // Set input value for free_domain
-
-                // Ensure that all inputs are prepared correctly
-                if (freeDomainNo.checked) {
-                    freeDomainInput.disabled = false; // Enable temporarily for form submission
-                    freeDomainInput.value = 'No';
-                } else if (freeDomainYes.checked && freeDomainInput.value.trim() === '') {
-                    freeDomainInput.value = ''; // Leave blank if input is empty
-                }
-
-                // Change displayed value to Unlimited for form submission
-                if (maxDatabaseUnlimited.checked) {
-                    maxDatabaseInput.disabled = false; // Enable the input temporarily
-                    maxDatabaseInput.value = 'Unlimited'; // Set value for database
-                }
-
-                if (maxBandwidthUnlimited.checked) {
-                    maxBandwidthInput.disabled = false; // Enable the input temporarily
-                    maxBandwidthInput.value = 'Unlimited'; // Set value for bandwidth
-                }
-
-                if (maxEmailUnlimited.checked) {
-                    maxEmailInput.disabled = false; // Enable the input temporarily
-                    maxEmailInput.value = 'Unlimited'; // Set value for email
-                }
-
-                if (maxFtpUnlimited.checked) {
-                    maxFtpInput.disabled = false; // Enable the input temporarily
-                    maxFtpInput.value = 'Unlimited'; // Set value for FTP
-                }
-
-                if (maxDomainUnlimited.checked) {
-                    maxDomainInput.disabled = false; // Enable the input temporarily
-                    maxDomainInput.value = 'Unlimited'; // Set value for domain
-                }
-
-                if (maxAddonUnlimited.checked) {
-                    maxAddonInput.disabled = false; // Enable the input temporarily
-                    maxAddonInput.value = 'Unlimited'; // Set value for addon domain
-                }
-
-                if (maxParkedUnlimited.checked) {
-                    maxParkedInput.disabled = false; // Enable the input temporarily
-                    maxParkedInput.value = 'Unlimited'; // Set value for parked domain
-                }
-            });
+            // Initial call to ensure the correct state based on the database values on page load
+            handleFreeDomainChange(true);  // for Regular
+            handleFreeDomainChange(false); // for Custom
         });
     </script>
+
 
     <script>
         // function updateGroup(value) {
@@ -1866,6 +1734,7 @@
             closeModal('question-modal'); // Tutup modal pertanyaan
         });
     </script>
+
     <script>
         document.getElementById('multiple_ram').addEventListener('input', function () {
             var multipleRamValue = this.value;
@@ -1880,6 +1749,7 @@
             document.getElementById('min_ssd').value = multipleSsdValue;
         });
     </script>
+
     <script>
         // Function to validate if max is a multiple of multiple
         function validateMultiple(multipleId, maxId, warningId) {

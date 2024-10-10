@@ -15,11 +15,6 @@ class RegularMainSpec extends Model
     // Tambahkan 'hosting_plans_id' ke fillable
     protected $fillable = ['RAM', 'storage', 'CPU', 'hosting_plans_id'];
 
-    // public function hostingPlan()
-    // {
-    //     return $this->belongsTo(HostingPlan::class, 'hosting_plans_id', 'hosting_plans_id');
-    // }
-
     public function hostingPlan()
     {
         return $this->belongsTo(HostingPlan::class, 'hosting_plans_id', 'hosting_plans_id');
