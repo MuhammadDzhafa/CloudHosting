@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use App\Models\Role; // Tambahkan penggunaan model Role
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -27,10 +28,10 @@ class RegisterController extends Controller
     {
         try {
             $socialUser = Socialite::driver('google')->stateless()->user();
-
             $userByEmail = User::where('email', $socialUser->email)->first();
 
             if ($userByEmail) {
+                // Update existing user with Google information
                 $userByEmail->update([
                     'google_id' => $socialUser->id,
                     'google_token' => $socialUser->token,
@@ -38,21 +39,25 @@ class RegisterController extends Controller
                 ]);
 
                 Auth::login($userByEmail);
-                return redirect('/landing-page');
+                return redirect('/client-dashboard'); // Redirect to client dashboard
             }
 
             $registeredUsers = User::where('google_id', $socialUser->id)->first();
 
             if (!$registeredUsers) {
+                // Create new user and assign "client" role
                 $user = User::create([
                     'google_id' => $socialUser->id,
                     'name' => $socialUser->name,
                     'email' => $socialUser->email,
-                    'password' => Hash::make(Str::random(24)),
+                    'password' => Hash::make(Str::random(24)), // Random password
                     'google_token' => $socialUser->token,
                     'google_refresh_token' => $socialUser->refreshToken,
                     'phone' => null,
                 ]);
+
+                // Assign "client" role
+                $user->roles()->attach(Role::where('name', 'client')->first());
 
                 Auth::login($user);
             } else {
@@ -60,12 +65,12 @@ class RegisterController extends Controller
             }
 
             $request->session()->put('user_email', Auth::user()->email);
-
             return redirect()->route('google.phone.form');
         } catch (\Exception $e) {
             return redirect('/login')->withErrors('Failed to register with Google. Please try again.');
         }
     }
+
 
     public function showPhoneForm()
     {
@@ -93,8 +98,10 @@ class RegisterController extends Controller
         $user->phone = $request->input('phone');
         $user->save();
 
-        return redirect()->route('profile.update');
+        // Redirect to profile update route with a delay
+        return redirect()->route('profile.update')->with('phoneSaved', true);
     }
+
 
     public function register(Request $request)
     {
@@ -121,6 +128,7 @@ class RegisterController extends Controller
             ],
             'phone' => 'required|string|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'terms' => 'required|accepted',
+            'role' => 'required|in:admin,client', // Validasi untuk role
         ], [
             'name.required' => 'Please enter your name.',
             'email.required' => 'Please enter your email address.',
@@ -135,6 +143,8 @@ class RegisterController extends Controller
             'phone.min' => 'Phone number must be at least 10 digits.',
             'terms.required' => 'You must accept the Terms and Conditions.',
             'terms.accepted' => 'You must accept the Terms and Conditions.',
+            'role.required' => 'Please select a role.',
+            'role.in' => 'The selected role is invalid.',
         ]);
 
         if ($validator->fails()) {
@@ -147,6 +157,10 @@ class RegisterController extends Controller
             'password' => Hash::make($request->input('password')),
             'phone' => $request->input('phone'),
         ]);
+
+        // Mengaitkan role ke pengguna berdasarkan input
+        $role = Role::where('name', $request->input('role'))->first();
+        $user->roles()->attach($role);
 
         $request->session()->put('user_email', $user->email);
 

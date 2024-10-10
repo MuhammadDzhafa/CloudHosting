@@ -26,7 +26,7 @@ class HostingController extends Controller
         $testimonials = Testimonial::all();
         $hostingGroups = HostingGroup::all();
         $articles = Article::latest()->take(5)->get();
-        
+
         // Eager load hosting plans with related groups and prices
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
 
@@ -170,5 +170,15 @@ class HostingController extends Controller
     public function termsConditions()
     {
         return view('app.hosting-plans.terms-conditions.index');
+    }
+
+    public function admin()
+    {
+        return view('app.admin.dashboard.index');
+    }
+
+    public function client()
+    {
+        return view('app.hosting-plans.dashboard.index');
     }
 }

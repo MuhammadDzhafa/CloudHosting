@@ -16,7 +16,7 @@
                         class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">Cloud</a>
                     <a href="/faq"
                         class="text-[#515658] font-medium lg:text-lg md:text-base leading-[23.2px] text-left">FAQ</a>
-                    <a class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] text-[16px] leading-[23.2px] font-['Inter'] font-medium text-center" style="border: unset;">
+                    <a href="/login" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] text-[16px] leading-[23.2px] font-['Inter'] font-medium text-center" style="border: unset;">
                         Login
                         <span class="material-icons" style="color:#F3F5FC; font-size:20px">&#xea77;</span>
                     </a>

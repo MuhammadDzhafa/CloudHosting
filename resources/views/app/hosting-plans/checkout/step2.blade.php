@@ -23,8 +23,8 @@
             <div class="card-gradient p-4 w-full">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
-                    <label class="radio is-outlined is-info inline-flex items-center">
-                        <input type="radio" name="outlined_radio" id="dns-radio">
+                    <label class="checkbox is-outlined is-circle is-info">
+                        <input type="checkbox">
                         <span></span>
                     </label>
                 </div>
@@ -42,8 +42,8 @@
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
                     <label class="inline-flex items-center">
-                        <label class="radio is-outlined is-info inline-flex items-center">
-                            <input type="radio" name="outlined_radio" id="whois-radio">
+                        <label class="checkbox is-outlined is-circle is-info">
+                            <input type="checkbox">
                             <span></span>
                         </label>
                 </div>
