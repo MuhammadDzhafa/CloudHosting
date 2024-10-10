@@ -13,12 +13,25 @@
                 <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
                     Have a Promo Code?
                 </h3>
-                <div class="flex flex-col sm:flex-row">
-                    <input type="text" placeholder="Promo Code" class="w-full sm:w-auto sm:flex-grow mb-2 sm:mb-0 sm:mr-5 h-[47px] pl-[24px] pr-[16px] rounded-full border border-[#DEDEDE] bg-white opacity-100 promo-code-input">
-                    <button class="w-full sm:w-[76px] h-[47px] px-[16px] py-[12px] rounded-full bg-[#4A6DCB] opacity-100 text-white">
+                <div class="flex flex-col sm:flex-row gap-2 w-full">
+                    <div class="field w-full sm:flex-grow">
+                        <div class="control">
+                            <input
+                                type="text"
+                                class="input is-rounded w-full"
+                                placeholder="Promo Code" />
+                        </div>
+                    </div>
+                    <a
+                        class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] 
+               text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] 
+               text-[16px] leading-[23.2px] font-['Inter'] font-medium 
+               text-center rounded-full sm:w-auto w-full"
+                        style="border: unset;">
                         Apply
-                    </button>
+                    </a>
                 </div>
+
             </div>
 
             <div>
@@ -26,23 +39,155 @@
                     Choose Payment Method
                 </h3>
                 <div class="space-y-3">
-                    <div class="flex items-center justify-between w-full h-[47px] px-[20px] rounded-[8px] bg-[#FFFFFF] border border-[#DEDEDE] opacity-100 shadow">
-                        <span class="w-full h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Instant Payment</span>
-                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
+                    <div class="field">
+                        <div class="control">
+                            <div class="h-select">
+                                <div class="select-box">
+                                    <span>Instant Payment</span>
+                                </div>
+                                <div class="select-icon">
+                                    <i data-feather="chevron-down"></i>
+                                </div>
+                                <div class="select-drop has-slimscroll-sm">
+                                    <div class="drop-inner">
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>PayPal</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>GoPay</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>Deadpool</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>OVO</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>DANA</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>ShopeePay</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>QRIS</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center justify-between w-full h-[47px] px-[20px] rounded-[8px] bg-[#FFFFFF] border border-[#DEDEDE] opacity-100 shadow">
-                        <span class="w-full h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Virtual Account</span>
-                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
+                    <div class="field">
+                        <div class="control">
+                            <div class="h-select">
+                                <div class="select-box">
+                                    <span>Virtual Account</span>
+                                </div>
+                                <div class="select-icon">
+                                    <i data-feather="chevron-down"></i>
+                                </div>
+                                <div class="select-drop has-slimscroll-sm">
+                                    <div class="drop-inner">
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>Mandiri</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>BRI</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>BNI</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>BCA</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>Permata</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>BSI</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center justify-between w-full h-[47px] px-[20px] rounded-[8px] bg-[#FFFFFF] border border-[#DEDEDE] opacity-100 shadow">
-                        <span class="w-full h-[14.42px] opacity-100 font-inter text-[14px] font-medium leading-[20.3px] text-left text-[#7C7C7C]">Credit Card</span>
-                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
+                    <div class="field">
+                        <div class="control">
+                            <div class="h-select">
+                                <div class="select-box">
+                                    <span>Credit Card</span>
+                                </div>
+                                <div class="select-icon">
+                                    <i data-feather="chevron-down"></i>
+                                </div>
+                                <div class="select-drop has-slimscroll-sm">
+                                    <div class="drop-inner">
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>Visa</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>MasterCard</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>JCB</span>
+                                            </div>
+                                        </div>
+                                        <div class="option-row">
+                                            <input type="radio" name="hero_select">
+                                            <div class="option-meta">
+                                                <span>American Express</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,7 +248,13 @@
                         </span>
                     </div>
                 </div>
-                <button class="mt-6 w-full h-[47px] px-[16px] py-[12px] gap-[8px] bg-[#4A6DCB] text-[#F3F5FC] rounded-[8px] flex items-center justify-center opacity-100">
+                <button
+                    class="button h-button mt-5 w-full h-[47px] px-[16px] py-[12px] gap-[8px] 
+           bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] 
+           text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] 
+           text-[16px] leading-[23.2px] font-['Inter'] font-medium 
+           text-center flex items-center justify-center opacity-100"
+                    style="border: unset;">
                     <span class="text-[16px] font-medium leading-[23.2px] text-center">
                         Checkout
                     </span>
@@ -111,6 +262,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
                 </button>
+
             </div>
         </div>
     </div>

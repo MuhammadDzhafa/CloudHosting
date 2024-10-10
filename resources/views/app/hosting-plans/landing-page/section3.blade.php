@@ -175,7 +175,7 @@
                                     ${domain.tld_name}
                                 </td>
                                 <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    $${domain.tld_price.toFixed(2)}
+                                    Rp.${domain.tld_price.toFixed(2)}
                                 </td>
                                 <td class="py-3 px-4 flex justify-center items-center">
                                     <button 

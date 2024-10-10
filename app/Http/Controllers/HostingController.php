@@ -105,7 +105,9 @@ class HostingController extends Controller
     public function wordpress()
     {
         $hostingGroups = HostingGroup::all();
+        $faqs = Faq::all()->groupBy('category');
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
+        $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
 
         // Define the custom order of the hosting plans
         $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
@@ -122,8 +124,10 @@ class HostingController extends Controller
 
         // Return the landing page view with testimonials and sorted hosting plans
         return view('app.hosting-plans.pricing.wordpress-hosting.index', [
+            'testimonials' => $testimonials,
             'hostingPlans' => $sortedHostingPlans,
-            'hostingGroups' => $hostingGroups
+            'hostingGroups' => $hostingGroups,
+            'faqs' => $faqs
         ]);
     }
 

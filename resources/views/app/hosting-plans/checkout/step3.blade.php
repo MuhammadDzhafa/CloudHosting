@@ -1,4 +1,4 @@
-<div class="w-[800px]">
+<div class="w-full">
     <h2 class="text-[20px] font-[400] text-left leading-[26px] mb-2 w-full lg:w-full md:w-full" style="height: 26px; gap: 0px; opacity: 1; font-family: 'Inter'; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
         STEP 3
     </h2>
@@ -8,11 +8,7 @@
         Hosting
     </h1>
 
-    <div class="bg-white rounded-[10px] p-4 md:p-[20px] mb-6 w-full lg:w-full md:w-full"
-        style="height: auto; gap: 20px; opacity: 1; background: #FFFFFF; 
-    border-radius: 10px; 
-    border: 2px solid transparent; border-image: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%) 1;
-    box-shadow: 0px 14px 26px -12px #4A6DCB33, 0px 4px 23px 0px #4A6DCB1F, 0px 8px 10px -5px #A377CF33;">
+    <div class="gradient-border rounded-[10px] p-4 md:p-[20px] mb-6 w-full lg:w-full md:w-full bg-white relative">
         <h3 class="text-[20px] font-[700] leading-[26px] text-left mb-4 w-full"
             style="height: 23px; gap: 0px; opacity: 1; font-family: 'Inter'; color: #3C476C;">
             Cloud Hosting - Alto
@@ -34,7 +30,7 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
     @foreach (['Annualy', 'Biennially', 'Triennially', 'Monthly', 'Quarterly', 'Semi-annualy'] as $plan)
-    <div class="w-full md:w-[280px] h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between">
+    <div class="w-full md:w-[280px] h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between card-gradient">
         <!-- Bagian atas card -->
         <div class="flex justify-between items-center">
             <span class="text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">

@@ -8,8 +8,7 @@
         Domain Configuration
     </h1>
 
-    <div class="w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] rounded-lg bg-white border-2 border-solid shadow-lg"
-        style="border-image-source: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); border-image-slice: 1;">
+    <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div class="flex flex-col items-start mb-4 md:mb-0">
                 <h3 class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Example.id</h3>
@@ -26,8 +25,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <!-- Card 1 -->
-            <div class="border border-gray-200 rounded-lg p-4 w-full"
-                style="border-radius: 10px; border: 0.68px solid #DEDEDE; background: #FFFFFF; box-shadow: 0px 1.75px 4px -1px #00000024;">
+            <div class="card-gradient p-4 w-full">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
                     <label class="radio is-outlined is-info inline-flex items-center">
@@ -45,8 +43,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="border border-gray-200 rounded-lg p-4 w-full"
-                style="border-radius: 10px; border: 0.68px solid #DEDEDE; background: #FFFFFF; box-shadow: 0px 1.75px 4px -1px #00000024;">
+            <div class="card-gradient p-4 w-full">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
                     <label class="inline-flex items-center">

@@ -24,6 +24,7 @@ class ArticleController extends Controller
     // Menyimpan artikel baru ke database
     public function store(Request $request)
     {
+        //  dd($request->all());
         // Validasi input
         $request->validate([
             'title' => 'required|max:255',

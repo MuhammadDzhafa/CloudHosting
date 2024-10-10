@@ -1,4 +1,4 @@
-<div id="form-step-0" class="form-section is-active w-[800px]">
+<div id="form-step-0" class="form-section is-active w-950px]">
     <div>
         <!-- Konten Utama -->
         <div class="lex-1 w-full">
@@ -34,9 +34,9 @@
                 </div>
 
                 <!-- Harga Domain -->
-                <div id="domain-container" class="flex justify-center items-stretch space-x-[10px] w-full mb-5">
+                <div id="domain-container" class="flex justify-center items-stretch space-x-[10px] w-[920px] mb-5">
                     @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-                    <div class="card-domain popular-domain w-[196.56px] p-[20px_0_0_0] rounded-[16px] border border-[#DEDEDE] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)]" data-domain="{{ $domain }}">
+                    <div class="card-gradient popular-domain w-[196.56px] p-[20px_0_0_0] rounded-[16px] border border-[#DEDEDE] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)]" data-domain="{{ $domain }}">
                         <div class="card-content-product">
                             <p class="text-[18px] text-[#643493] text-center">{{ $domain }}</p>
                             <p class="text-center flex items-center justify-center">

@@ -98,61 +98,133 @@
         </h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+            <!-- Company Name -->
             <div>
                 <label class="block text-base font-normal text-black mb-2">
                     Company Name (Optional)
                 </label>
-                <input type="text" placeholder="Text" class="w-full h-12 px-4 border border-[#DEDEDE] rounded-lg bg-white text-gray-500">
+                <div class="control">
+                    <input type="text" placeholder="Text" class="input h-12">
+                </div>
             </div>
+
+            <!-- Street Address -->
             <div>
                 <label class="block text-base font-normal text-black mb-2">
                     Street Address
                 </label>
-                <input type="text" placeholder="Text" class="w-full h-12 px-4 border border-[#DEDEDE] rounded-lg bg-white text-gray-500">
+                <div class="control">
+                    <input type="text" placeholder="Text" class="input h-12">
+                </div>
             </div>
+
+            <!-- Street Address 2 (Optional) -->
             <div>
                 <label class="block text-base font-normal text-black mb-2">
                     Street Address 2 (Optional)
                 </label>
-                <input type="text" placeholder="Text" class="w-full h-12 px-4 border border-[#DEDEDE] rounded-lg bg-white text-gray-500">
+                <div class="control">
+                    <input type="text" placeholder="Text" class="input h-12">
+                </div>
             </div>
+
+            <!-- City -->
             <div>
                 <label class="block text-base font-normal text-black mb-2">
                     City
                 </label>
-                <input type="text" placeholder="Text" class="w-full h-12 px-4 border border-[#DEDEDE] rounded-lg bg-white text-gray-500">
+                <div class="control">
+                    <input type="text" placeholder="Text" class="input h-12">
+                </div>
             </div>
+
+            <!-- Country -->
             <div>
-                <label class="block text-base font-normal text-black mb-2">
+                <label class="block text-base font-normal text-black mb-2 w-full">
                     Country
                 </label>
-                <select class="w-full h-12 px-4 border border-[#DEDEDE] rounded-lg bg-white text-gray-500 appearance-none">
-                    <option>Select Ocupation</option>
-                </select>
+                <div class="field">
+                    <div class="control">
+                        <div class="h-select">
+                            <div class="select-box">
+                                <span>Select a Hero</span>
+                            </div>
+                            <div class="select-icon">
+                                <i data-feather="chevron-down"></i>
+                            </div>
+                            <div class="select-drop has-slimscroll-sm">
+                                <div class="drop-inner">
+                                    <div class="option-row">
+                                        <input type="radio" name="hero_select">
+                                        <div class="option-meta">
+                                            <span>Superman</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-row">
+                                        <input type="radio" name="hero_select">
+                                        <div class="option-meta">
+                                            <span>Batman</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-row">
+                                        <input type="radio" name="hero_select">
+                                        <div class="option-meta">
+                                            <span>Deadpool</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-row">
+                                        <input type="radio" name="hero_select">
+                                        <div class="option-meta">
+                                            <span>Spawn</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-row">
+                                        <input type="radio" name="hero_select">
+                                        <div class="option-meta">
+                                            <span>Galactus</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- State and Post Code -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4">
                 <div>
                     <label class="block text-base font-normal text-black mb-2">
                         State
                     </label>
-                    <input type="text" placeholder="Text" class="w-full h-12 px-4 border border-[#DEDEDE] rounded-lg bg-white text-gray-500">
+                    <div class="control">
+                        <input type="text" placeholder="Text" class="input h-12">
+                    </div>
                 </div>
                 <div>
                     <label class="block text-base font-normal text-black mb-2">
                         Post Code
                     </label>
-                    <input type="text" placeholder="Text" class="w-full h-12 px-4 border border-[#DEDEDE] rounded-lg bg-white text-gray-500">
+                    <div class="control">
+                        <input type="text" placeholder="Text" class="input h-12">
+                    </div>
                 </div>
             </div>
+
+            <!-- Phone Number -->
             <div class="col-span-1 md:col-span-2">
-                <label class="block text-base font-normal text-black mb-2">
-                    Phone Number
-                </label>
-                <div class="flex flex-col md:flex-row">
-                    <input type="text" value="+62" class="w-full md:w-[74px] h-[42px] px-[20px] border-[1px] border-[#DEDEDE] rounded-lg md:rounded-l-lg md:rounded-r-none bg-[#F5F5F5] text-[#656565] mb-2 md:mb-0">
-                    <input type="text" placeholder="Phone Number" class="w-full md:flex-1 h-12 px-4 border border-[#DEDEDE] rounded-lg md:rounded-l-none md:border-l-0 bg-white text-gray-500">
+                <div class="field has-addons">
+                    <div class="control">
+                        <a class="button is-static">
+                            +62
+                        </a>
+                    </div>
+                    <div class="control is-expanded">
+                        <input class="input" type="text" placeholder="Your phone number">
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>

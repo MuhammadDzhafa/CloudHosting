@@ -18,33 +18,34 @@
             </div>
 
 
-            <ul class="user-list flex flex-row md:flex-col gap-4">
-                <li>
-                    <div class="h-icon bg-[#DBCAEC] is-rounded">
+            <ul class="user-list flex flex-col lg:flex-col md:flex-col gap-4 md:items-start lg:items-center">
+                <li class="flex items-center w-full">
+                    <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                         <img src="/assets/img/icons/email.svg" alt="Email Icon" class="w-[18px] sm:w-[24px]">
                     </div>
-                    <div class="user-list-info">
-                        <div class="name dark-inverted lg:text-[10px]">Email</div>
-                        <div class="position"> <a href="mailto:info@kazee.id">info@kazee.id</a></div>
+                    <div class="user-list-info ml-3 flex-grow">
+                        <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">Email</div>
+                        <div class="position"> <a href="mailto:info@kazee.id" class="text-sm">info@kazee.id</a></div>
                     </div>
                 </li>
 
-                <li>
-                    <div class="h-icon bg-[#DBCAEC] is-rounded">
+                <li class="flex items-center w-full">
+                    <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                         <img src="/assets/img/icons/phone-enabled.svg" alt="Phone Icon" class="w-[18px] sm:w-[24px]">
                     </div>
-                    <div class="user-list-info">
-                        <div class="name dark-inverted">Call</div>
-                        <div class="position">+62 811 2222 656</div>
+                    <div class="user-list-info ml-3 flex-grow">
+                        <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">Call</div>
+                        <div class="position text-sm">+62 811 2222 656</div>
                     </div>
                 </li>
-                <li>
-                    <div class="h-icon bg-[#DBCAEC] is-rounded">
+
+                <li class="flex items-center w-full">
+                    <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                         <img src="/assets/img/icons/location.svg" alt="Location Icon" class="w-[18px] sm:w-[24px]">
                     </div>
-                    <div class="user-list-info">
-                        <div class="name dark-inverted">Office</div>
-                        <div class="position">Jl. Setrasari Indah No. 4, Bandung</div>
+                    <div class="user-list-info ml-3 flex-grow">
+                        <div class="name dark-inverted lg:text-[10px] md:text-base font-semibold">Office</div>
+                        <div class="position text-sm">Jl. Setrasari Indah No. 4, Bandung</div>
                     </div>
                 </li>
             </ul>
@@ -53,11 +54,11 @@
         <div class="w-full md:w-1/2 flex-grow">
             <div class="form-card">
                 <form action="/contact-us" method="POST">
-                @csrf
+                    @csrf
                     <div class="field">
                         <label>Name</label>
                         <div class="control">
-                            <input type="text" name="name"  class="input" placeholder="" value="{{ old('name') }}">
+                            <input type="text" name="name" class="input" placeholder="" value="{{ old('name') }}">
                         </div>
                     </div>
 
