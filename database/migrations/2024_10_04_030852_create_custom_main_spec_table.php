@@ -29,9 +29,8 @@ class CreateCustomMainSpecTable extends Migration
             $table->integer('multiplier_CPU');
             $table->integer('price_CPU');
             $table->timestamps(); // Kolom created_at dan updated_at
-            $table->softDeletes();
 
-            $table->foreign('hosting_plans_id')->references('hosting_plans_id')->on('hosting_plans')->onDelete('restrict');
+            $table->foreign('hosting_plans_id')->references('hosting_plans_id')->on('hosting_plans')->onDelete('cascade');
 
         });
     }

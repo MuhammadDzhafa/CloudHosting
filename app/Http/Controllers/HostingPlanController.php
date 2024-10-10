@@ -126,6 +126,10 @@ class HostingPlanController extends Controller
                 'regular_spec.max_parked_domain' => 'required|string',
                 'regular_spec.ssh' => 'required|string',
                 'regular_spec.free_domain' => 'required|string',
+                'prices' => 'nullable|array',
+                'prices.*.price' => 'nullable|integer',
+                'prices.*.discount' => 'nullable|integer|min:0|max:100',
+                'prices.*.price_after' => 'nullable|integer',
             ]);
         } elseif ($request->package_type === 'Custom') {
             $request->validate([
@@ -146,28 +150,8 @@ class HostingPlanController extends Controller
             ]);
         }
 
-        //     'max_io' => 'required|string',
-        //     'nproc' => 'required|string',
-        //     'entry_process' => 'required|string',
-        //     'ssl' => 'required|string',
-        //     'backup' => 'required|string',
-        //     'max_database' => 'required|string',
-        //     'max_bandwidth' => 'required|string',
-        //     'max_email_account' => 'required|string',
-        //     'max_ftp_account' => 'required|string',
-        //     'max_domain' => 'required|string',
-        //     'max_addon_domain' => 'required|string',
-        //     'max_parked_domain' => 'required|string',
-        //     'ssh' => 'required|string',
-        //     'free_domain' => 'required|string',
-        // ]);
-
         if ($request->package_type === 'Regular') {
             $request->validate([
-                'prices' => 'nullable|array',
-                'prices.*.price' => 'nullable|integer',
-                'prices.*.discount' => 'nullable|integer|min:0|max:100',
-                'prices.*.price_after' => 'nullable|integer',
                 'regular_main_spec' => 'nullable|array',
                 'regular_main_spec.RAM' => 'nullable|integer',
                 'regular_main_spec.storage' => 'nullable|integer',
@@ -239,23 +223,7 @@ class HostingPlanController extends Controller
                 'ssh' => $request->input('custom_spec.ssh'),
                 'free_domain' => $request->input('custom_spec.free_domain'),
             ]);
-        }        
-
-        //     'max_io' => $request->max_io,
-        //     'nproc' => $request->nproc,
-        //     'entry_process' => $request->entry_process,
-        //     'ssl' => $request->ssl,
-        //     'backup' => $request->backup,
-        //     'max_database' => $request->max_database,
-        //     'max_bandwidth' => $request->max_bandwidth,
-        //     'max_email_account' => $request->max_email_account,
-        //     'max_ftp_account' => $request->max_ftp_account,
-        //     'max_domain' => $request->max_domain,
-        //     'max_addon_domain' => $request->max_addon_domain,
-        //     'max_parked_domain' => $request->max_parked_domain,
-        //     'ssh' => $request->ssh,
-        //     'free_domain' => $request->free_domain,
-        // ]);
+        }
 
         // Handle the prices update or create
         if (is_array($request->prices)) {
@@ -276,13 +244,12 @@ class HostingPlanController extends Controller
 
         if ($request->package_type === 'Regular') {
             // Proses untuk tipe Regular
-            // Pastikan tidak ada penyimpanan untuk custom_main_spec
             $regularSpec = RegularMainSpec::updateOrCreate(
                 ['hosting_plans_id' => $hostingPlan->hosting_plans_id],
                 [
-                    'RAM' => $request->input('regular_main_spec.RAM'),
-                    'storage' => $request->input('regular_main_spec.storage'),
-                    'CPU' => $request->input('regular_main_spec.CPU'),
+                    'RAM' => $request->input('regular_main_spec.RAM', 0), // Default to 0 if not set
+                    'storage' => $request->input('regular_main_spec.storage', 0), // Default to 0 if not set
+                    'CPU' => $request->input('regular_main_spec.CPU', 0), // Default to 0 if not set
                 ]
             );
         } elseif ($request->package_type === 'Custom') {
@@ -290,28 +257,26 @@ class HostingPlanController extends Controller
             $customSpec = CustomMainSpec::updateOrCreate(
                 ['hosting_plans_id' => $hostingPlan->hosting_plans_id],
                 [
-                    'min_RAM' => $request->input('custom_main_spec.min_RAM'),
-                    'max_RAM' => $request->input('custom_main_spec.max_RAM'),
-                    'multiplier_RAM' => $request->input('custom_main_spec.multiplier_RAM'),
-                    'price_RAM' => $request->input('custom_main_spec.price_RAM'),
-                    'min_storage' => $request->input('custom_main_spec.min_storage'),
-                    'max_storage' => $request->input('custom_main_spec.max_storage'),
-                    'step_storage' => $request->input('custom_main_spec.step_storage'),
-                    'price_storage' => $request->input('custom_main_spec.price_storage'),
-                    'min_CPU' => $request->input('custom_main_spec.min_CPU'),
-                    'max_CPU' => $request->input('custom_main_spec.max_CPU'),
-                    'multiplier_CPU' => $request->input('custom_main_spec.multiplier_CPU'),
-                    'price_CPU' => $request->input('custom_main_spec.price_CPU'),
+                    'min_RAM' => $request->input('custom_main_spec.min_RAM', 0), // Default to 0 if not set
+                    'max_RAM' => $request->input('custom_main_spec.max_RAM', 0), // Default to 0 if not set
+                    'multiplier_RAM' => $request->input('custom_main_spec.multiplier_RAM', 0), // Default to 0 if not set
+                    'price_RAM' => $request->input('custom_main_spec.price_RAM', 0), // Default to 0 if not set
+                    'min_storage' => $request->input('custom_main_spec.min_storage', 0), // Default to 0 if not set
+                    'max_storage' => $request->input('custom_main_spec.max_storage', 0), // Default to 0 if not set
+                    'step_storage' => $request->input('custom_main_spec.step_storage', 0), // Default to 0 if not set
+                    'price_storage' => $request->input('custom_main_spec.price_storage', 0), // Default to 0 if not set
+                    'min_CPU' => $request->input('custom_main_spec.min_CPU', 0), // Default to 0 if not set
+                    'max_CPU' => $request->input('custom_main_spec.max_CPU', 0), // Default to 0 if not set
+                    'multiplier_CPU' => $request->input('custom_main_spec.multiplier_CPU', 0), // Default to 0 if not set
+                    'price_CPU' => $request->input('custom_main_spec.price_CPU', 0), // Default to 0 if not set
                 ]
             );
         }
 
-        // dd($hostingPlan->package_type, $hostingPlan->nproc);
 
         // Redirect or return a response
         return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan updated successfully.');
     }
-
 
 
     public function destroy($id)
@@ -328,84 +293,3 @@ class HostingPlanController extends Controller
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan restored successfully.');
     }
 }
-
-// public function update(Request $request, $id)
-// {
-
-//     // Validate the request inputs for hosting plan
-//     $request->validate([
-//         'name' => 'required|string|max:255',
-//         'hosting_group_id' => 'required|exists:hosting_groups,hosting_group_id',
-//         'type' => 'required|string|max:50',
-//         'description' => 'required|string',
-//         'RAM' => 'required|string',
-//         'storage' => 'required|string',
-//         'CPU' => 'required|string',
-//         'max_io' => 'required|string',
-//         'nproc' => 'required|string',
-//         'entry_process' => 'required|string',
-//         'ssl' => 'required|string',
-//         'backup' => 'required|string',
-//         'max_database' => 'required|string',
-//         'max_bandwidth' => 'required|string',
-//         'max_email_account' => 'required|string',
-//         'max_ftp_account' => 'required|string',
-//         'max_domain' => 'required|string',
-//         'max_addon_domain' => 'required|string',
-//         'max_parked_domain' => 'required|string',
-//         'ssh' => 'required|string',
-//         'free_domain' => 'required|string',
-//         'prices' => 'nullable|array',
-//         'prices.*.price' => 'nullable|integer',
-//         'prices.*.discount' => 'nullable|integer|min:0|max:100',
-//         'prices.*.price_after' => 'nullable|integer',
-//         'best_seller' => 'required|string'
-//     ]);
-
-//     // Find the hosting plan by ID
-//     $hostingPlan = HostingPlan::findOrFail($id);
-//     $hostingPlan->update($request->all());
-
-//     // Update the hosting plan with the request data
-//     $hostingPlan->update([
-//         'name' => $request->name,
-//         'hosting_group_id' => $request->hosting_group_id,
-//         'type' => $request->type,
-//         'description' => $request->description,
-//         'max_io' => $request->max_io,
-//         'nproc' => $request->nproc,
-//         'entry_process' => $request->entry_process,
-//         'ssl' => $request->ssl,
-//         'backup' => $request->backup,
-//         'max_database' => $request->max_database,
-//         'max_bandwidth' => $request->max_bandwidth,
-//         'max_email_account' => $request->max_email_account,
-//         'max_ftp_account' => $request->max_ftp_account,
-//         'max_domain' => $request->max_domain,
-//         'max_addon_domain' => $request->max_addon_domain,
-//         'max_parked_domain' => $request->max_parked_domain,
-//         'ssh' => $request->ssh,
-//         'free_domain' => $request->free_domain,
-//         'best_seller' => $request->best_seller
-
-//     ]);
-
-//     if (is_array($request->prices)) {
-//         foreach ($request->prices as $duration => $priceData) {
-//             Price::updateOrCreate(
-//                 [
-//                     'hosting_plans_id' => $hostingPlan->hosting_plans_id,
-//                     'duration' => $duration,
-//                 ],
-//                 [
-//                     'price' => $priceData['price'],
-//                     'discount' => $priceData['discount'] ?? null,
-//                     'price_after' => $priceData['price_after'],
-//                 ]
-//             );
-//         }
-//     }
-
-//     // Redirect or return a response
-//     return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan created successfully.');
-// }

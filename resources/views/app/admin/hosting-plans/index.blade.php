@@ -313,11 +313,9 @@
                                     <thead style="background-color:#EDE5F6;">
                                         <tr class="color-row">
                                             <th>PRODUCT NAME</th>
-                                            <th>TYPE</th>
+                                            <th>PRODUCT TYPE</th>
+                                            <th>PACKAGE TYPE</th>
                                             <th>DESCRIPTION</th>
-                                            <th>STORAGE</th>
-                                            <th>CPU</th>
-                                            <th>RAM</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -328,8 +326,6 @@
                                                 <td>
                                                     <span style="font-weight: 500;">{{ $group->name }}</span>
                                                 </td>
-                                                <td></td>
-                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -380,13 +376,9 @@
                                             @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
                                                 <tr class="is-striped-row">
                                                     <td>{{ $hostingPlan->name }}</td>
+                                                    <td>{{ $hostingPlan->product_type }}</td>
                                                     <td>{{ $hostingPlan->package_type }}</td>
                                                     <td>{{ $hostingPlan->description }}</td>
-
-                                                    <!-- Mengakses RegularMainSpec yang terkait dengan hostingPlan -->
-                                                    <td>{{ optional($hostingPlan->regularMainSpec)->storage ?? '0' }}</td>
-                                                    <td>{{ optional($hostingPlan->regularMainSpec)->CPU ?? '0' }}</td>
-                                                    <td>{{ optional($hostingPlan->regularMainSpec)->RAM ?? '0' }}</td>
 
                                                     <td>
                                                         <div class="d-flex justify-end">
