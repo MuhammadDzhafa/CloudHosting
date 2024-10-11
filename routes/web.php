@@ -17,8 +17,6 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckoutController;
 
-
-
 /* Welcome */
 
 Route::get('/', function () {

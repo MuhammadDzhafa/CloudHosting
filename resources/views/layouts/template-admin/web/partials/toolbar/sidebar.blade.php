@@ -42,7 +42,7 @@
     <div class="sidebar-inner">
         <ul class="icon-menu">
             <li>
-                <a href="/dashboards" id="dashboards" data-content="Dashboard" class="menu-item">
+                <a href="/admin-dashboard" id="dashboards" data-content="Dashboard" class="menu-item">
                     <i class="sidebar-svg" data-feather="home"></i>
                 </a>
             </li>

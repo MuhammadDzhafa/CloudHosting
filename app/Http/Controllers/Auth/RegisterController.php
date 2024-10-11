@@ -36,10 +36,11 @@ class RegisterController extends Controller
                     'google_id' => $socialUser->id,
                     'google_token' => $socialUser->token,
                     'google_refresh_token' => $socialUser->refreshToken,
+                    'google_profile_image' => $socialUser->avatar, // Save profile image
                 ]);
 
                 Auth::login($userByEmail);
-                return redirect('/client-dashboard'); // Redirect to client dashboard
+                return redirect('/client-dashboard');
             }
 
             $registeredUsers = User::where('google_id', $socialUser->id)->first();
@@ -53,6 +54,7 @@ class RegisterController extends Controller
                     'password' => Hash::make(Str::random(24)), // Random password
                     'google_token' => $socialUser->token,
                     'google_refresh_token' => $socialUser->refreshToken,
+                    'google_profile_image' => $socialUser->avatar, // Save profile image
                     'phone' => null,
                 ]);
 
@@ -70,7 +72,6 @@ class RegisterController extends Controller
             return redirect('/login')->withErrors('Failed to register with Google. Please try again.');
         }
     }
-
 
     public function showPhoneForm()
     {

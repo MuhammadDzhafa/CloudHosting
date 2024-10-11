@@ -80,6 +80,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('status', 'You have been successfully logged out.');
+        return redirect('/login')->with('status', 'You have been successfully logged out.');
     }
 }
