@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Testimonial; // Import the Testimonial model
 use App\Models\HostingPlan; // Import the Hosting Plan model
 use App\Models\HostingGroup; // Import the Hosting Group model
+use App\Models\CustomMainSpec;
 use App\Models\Article; // Import the Article model
 use App\Models\TLD; // Import the Article model
 use App\Models\Faq;

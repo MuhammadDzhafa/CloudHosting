@@ -9,16 +9,16 @@
                     <ul>
                         <li data-tab="custom-tab" class="is-active"><a><span>Custom</span></a></li>
                         @foreach($hostingGroups as $group)
-                                                @if(
-                                                        $hostingPlans->where('hosting_group_id', $group->hosting_group_id)
-                                                            ->where('product_type', 'Cloud Hosting')
-                                                            ->where('package_type', 'Regular') // Tambahkan kondisi untuk tipe paket
-                                                            ->isNotEmpty()
-                                                    )
-                                                                        <li data-tab="{{ strtolower(str_replace(' ', '-', $group->name)) }}-tab">
-                                                                            <a><span>{{ $group->name }}</span></a>
-                                                                        </li>
-                                                @endif
+                            @if(
+                                $hostingPlans->where('hosting_group_id', $group->hosting_group_id)
+                                    ->where('product_type', 'Cloud Hosting')
+                                    ->where('package_type', 'Regular') // Tambahkan kondisi untuk tipe paket
+                                    ->isNotEmpty()
+                                )
+                                <li data-tab="{{ strtolower(str_replace(' ', '-', $group->name)) }}-tab">
+                                    <a><span>{{ $group->name }}</span></a>
+                                </li>
+                            @endif
                         @endforeach
                         <!-- @foreach($hostingGroups as $group)
                             <li data-tab="{{strtolower(str_replace(' ', '-', $group->name))}}-tab">
@@ -172,13 +172,13 @@
                                                 @endforeach
                                             </ul>
                                             <div class="button-container">
-                                                <a class="button h-button is-outlined {{ $hostingPlan->best_seller ? 'bg-white hover:bg-white text-[#4A6DCB]' : 'bg-[#FFF] hover:bg-[#4A6DCB]' }} active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"
+                                                <a class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] text-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"
                                                     style="font-family: unset; width:100%">
                                                     <span class="btn-text explore-button">Order Now</span>
                                                 </a>
                                             </div>
                                             <a href="#"
-                                                class="block text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#4A6DCB]' }} mt-4">More
+                                                class="block text-center {{ $hostingPlan->best_seller ? 'text-white hover:text-white' : 'text-[#4A6DCB] hover:text-[#4A6DCB]'  }} text-opacity-85 mt-4">More
                                                 detail →</a>
                                         </div>
                                     @endif
@@ -191,54 +191,3 @@
         </div>
     </div>
 </section>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const hostingPlans = document.querySelectorAll('.tab-content div');
-
-        hostingPlans.forEach(function (plan) {
-            // Assuming you use a data attribute or class for best_seller, e.g., data-best-seller="true"
-            const isBestSeller = plan.getAttribute('data-best-seller') === 'true';
-
-            if (isBestSeller) {
-                const planNameElement = plan.querySelector('h5');
-                if (planNameElement) {
-                    planNameElement.classList.add('text-white'); // Change title text color
-                }
-
-                // Change description color to white
-                let descriptionElement = plan.querySelector('p');
-                if (descriptionElement) {
-                    descriptionElement.classList.add('text-white'); // Add text color to description
-                }
-
-                // Find the price container and update the price text color
-                let priceContainer = plan.querySelector('.price-container');
-                if (priceContainer) {
-                    let priceElements = priceContainer.querySelectorAll('span');
-                    priceElements.forEach(function (priceElement) {
-                        priceElement.classList.add('text-white'); // Add text color to price elements
-                    });
-                }
-
-                // Change color of key features (check icon) to white
-                let keyItems = plan.querySelectorAll('li'); // Assuming features are in <li> elements
-                keyItems.forEach(item => {
-                    item.classList.add('text-white'); // Add text color to key features
-                    let img = item.querySelector('img');
-                    if (img) {
-                        img.src = '/assets/img/icons/checkwhite.svg'; // Change to white check icon
-                    }
-                });
-
-                // Change "More detail" link to white, but exclude button
-                let moreDetailLink = plan.querySelector('a:not(.button)'); // Ensure we don't select the button
-                if (moreDetailLink) {
-                    moreDetailLink.classList.add('text-white'); // Change "More detail" link color to white
-                }
-            }
-
-        });
-    });
-</script>
