@@ -451,7 +451,7 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Inter", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 }
 
 code,
@@ -12216,15 +12216,15 @@ print {
 }
 
 .is-family-primary {
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Inter", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important
 }
 
 .is-family-secondary {
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Inter", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important
 }
 
 .is-family-sans-serif {
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Inter", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important
 }
 
 .is-family-monospace {
@@ -18799,7 +18799,7 @@ print {
 
 /*! _typography.scss | Huro | Css ninja 2020-2021 */
 .title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -18824,7 +18824,7 @@ print {
 }
 
 .subtitle {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -18849,7 +18849,7 @@ print {
 }
 
 p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300;
     color: #a2a5b9
 }
@@ -18896,11 +18896,11 @@ body.is-dark a.dark-inverted-hover:hover {
 }
 
 .is-font {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .is-font-alt {
-    font-family: "Montserrat", sans-serif !important
+    font-family: "Inter", sans-serif !important
 }
 
 .is-weight-300 {
@@ -20800,7 +20800,7 @@ body.is-curved {
 
 .toolbar .toolbar-notifications .dropdown .dropdown-menu .dropdown-content .notification-list .notification-item .user-content {
     text-align: left;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .toolbar .toolbar-notifications .dropdown .dropdown-menu .dropdown-content .notification-list .notification-item .user-content .user-info {
@@ -21240,7 +21240,7 @@ body.is-dark .circular-menu .floating-btn {
 
 .mobile-navbar .navbar-brand .user-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .mobile-navbar .navbar-brand .user-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta span {
@@ -21893,7 +21893,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 }
 
 .webapp-navbar .webapp-navbar-inner .left .brand span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #999;
     letter-spacing: 1px;
@@ -21946,7 +21946,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 
 .webapp-navbar .webapp-navbar-inner .left .project-dropdown .dropdown-menu .dropdown-content .dropdown-block .meta {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .webapp-navbar .webapp-navbar-inner .left .project-dropdown .dropdown-menu .dropdown-content .dropdown-block .meta span {
@@ -22040,7 +22040,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 
 .webapp-navbar .webapp-navbar-inner .center .centered-links .centered-link span {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .65rem;
     color: #999;
     text-transform: uppercase;
@@ -22193,7 +22193,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 
 .webapp-navbar .webapp-navbar-inner .center .centered-drops .centered-drop .dropdown.has-mega-dropdown .dropdown-menu .dropdown-content .category-selector .title-wrap h4,
 .webapp-navbar .webapp-navbar-inner .center .centered-drops .centered-button .dropdown.has-mega-dropdown .dropdown-menu .dropdown-content .category-selector .title-wrap h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -22289,7 +22289,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 600;
     color: #283252;
@@ -22366,7 +22366,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 .webapp-navbar .webapp-navbar-inner .center .centered-drops .centered-button .dropdown.has-mega-dropdown .dropdown-menu .dropdown-content .dropdown-item {
     border: 1px solid transparent;
     border-radius: 10px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem
 }
 
@@ -22399,7 +22399,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 
 .webapp-navbar .webapp-navbar-inner .center .centered-drops .centered-drop .dropdown .is-trigger .button,
 .webapp-navbar .webapp-navbar-inner .center .centered-drops .centered-button .dropdown .is-trigger .button {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #283252;
     min-height: 40px;
@@ -22481,7 +22481,7 @@ body.is-dark .is-notification .navbar-dropdown .inner .notification-list li .not
 
 .webapp-navbar .webapp-navbar-inner .right .profile-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .webapp-navbar .webapp-navbar-inner .right .profile-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta span {
@@ -22958,7 +22958,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 
 .webapp-subnavbar .webapp-subnavbar-inner .tabs ul li a {
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .65rem;
     letter-spacing: 1px;
     padding: 10px 16px;
@@ -23010,7 +23010,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 }
 
 .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content-inner .center .column-heading {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .7rem;
     font-weight: 600;
     color: #283252;
@@ -23043,7 +23043,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 }
 
 .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content-inner .center .column-placeholder h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 600;
     color: #283252;
@@ -23085,7 +23085,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 }
 
 .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content-inner .center ul li a span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem
 }
 
@@ -23196,7 +23196,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 }
 
 .webapp-navbar-clean .webapp-navbar-inner .left .brand span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #999;
     letter-spacing: 1px;
@@ -23249,7 +23249,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 
 .webapp-navbar-clean .webapp-navbar-inner .left .project-dropdown .dropdown-menu .dropdown-content .dropdown-block .meta {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .webapp-navbar-clean .webapp-navbar-inner .left .project-dropdown .dropdown-menu .dropdown-content .dropdown-block .meta span {
@@ -23355,7 +23355,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 
 .webapp-navbar-clean .webapp-navbar-inner .right .profile-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .webapp-navbar-clean .webapp-navbar-inner .right .profile-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta span {
@@ -23434,7 +23434,7 @@ body.is-dark .webapp-subnavbar .webapp-subnavbar-inner .tab-content .tab-content
 .webapp-navbar-clean .webapp-navbar-lower.is-centered .center .welcome-text {
     font-size: .9rem;
     font-weight: 500;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -23641,7 +23641,7 @@ body.is-dark .webapp-navbar-clean .webapp-navbar-lower.is-centered .center .butt
     left: -29px;
     right: 0;
     margin: 0 auto;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .5rem;
     font-weight: 500;
     color: #a2a5b9;
@@ -24204,7 +24204,7 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
 }
 
 .sidebar-block .sidebar-block-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-size: 1.3rem
 }
@@ -24343,7 +24343,7 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
 }
 
 .sidebar-block .sidebar-block-inner li.has-children .collapse-wrap>a {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -24392,7 +24392,7 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
 
 .sidebar-block .sidebar-block-inner li.has-children ul li {
     height: 32px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .sidebar-block .sidebar-block-inner li.has-children ul li.is-active .is-submenu {
@@ -24408,7 +24408,7 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
     display: -ms-flexbox;
     display: flex;
     font-weight: 400;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -24428,7 +24428,7 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
 }
 
 .sidebar-block .sidebar-block-inner li.has-children ul li .is-submenu>span {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .sidebar-block .sidebar-block-inner li.has-children ul li .is-submenu svg {
@@ -24452,7 +24452,7 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
 }
 
 .sidebar-block .sidebar-block-inner li a:not(.single-link) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block;
     width: 100%;
     padding: 0 20px;
@@ -24465,14 +24465,14 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
 }
 
 .sidebar-block .sidebar-block-inner li>a {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 500;
     color: #a2a5b9
 }
 
 .sidebar-block .sidebar-block-inner .single-link {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -24631,7 +24631,7 @@ body.is-dark .main-sidebar.is-colored .profile-dropdown .dropdown-menu .dropdown
 
 .sidebar-block .profile-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .sidebar-block .profile-dropdown .dropdown-menu .dropdown-content .dropdown-head .meta span {
@@ -24959,7 +24959,7 @@ body.is-dark .sidebar-panel .inner {
 
 .sidebar-panel.is-generic .subpanel-header .project-dropdown .dropdown-menu .dropdown-content .dropdown-block .meta {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .sidebar-panel.is-generic .subpanel-header .project-dropdown .dropdown-menu .dropdown-content .dropdown-block .meta span {
@@ -24983,7 +24983,7 @@ body.is-dark .sidebar-panel .inner {
 }
 
 .sidebar-panel.is-generic .subpanel-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: 1.3rem
 }
@@ -25091,7 +25091,7 @@ body.is-dark .sidebar-panel .inner {
 }
 
 .sidebar-panel.is-generic .inner li.has-children .collapse-wrap>a {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -25123,7 +25123,7 @@ body.is-dark .sidebar-panel .inner {
 
 .sidebar-panel.is-generic .inner li.has-children ul li {
     height: 32px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .sidebar-panel.is-generic .inner li.has-children ul li.is-active .is-submenu {
@@ -25139,7 +25139,7 @@ body.is-dark .sidebar-panel .inner {
     display: -ms-flexbox;
     display: flex;
     font-weight: 400;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -25159,7 +25159,7 @@ body.is-dark .sidebar-panel .inner {
 }
 
 .sidebar-panel.is-generic .inner li.has-children ul li .is-submenu>span {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .sidebar-panel.is-generic .inner li.has-children ul li .is-submenu svg {
@@ -25183,7 +25183,7 @@ body.is-dark .sidebar-panel .inner {
 }
 
 .sidebar-panel.is-generic .inner li a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block;
     width: 100%;
     padding: 0 20px;
@@ -25196,7 +25196,7 @@ body.is-dark .sidebar-panel .inner {
 }
 
 .sidebar-panel.is-generic .inner li>a {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 500;
     color: #a2a5b9
@@ -26052,7 +26052,7 @@ body.is-dark .sidebar-panel.is-messages .start-conversation {
 }
 
 .mobile-subsidebar .inner .sidebar-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #999;
     font-weight: 500;
     font-size: 1.4rem
@@ -26623,7 +26623,7 @@ body.is-dark .mobile-subsidebar.is-messaging ul li .user-group span {
 
 .right-panel-wrapper .right-panel .right-panel-head h3 {
     color: #999;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem
 }
 
@@ -26924,13 +26924,13 @@ body.is-dark .right-panel-wrapper.is-languages .right-panel-body .languages-boxe
 
 .right-panel-wrapper.is-activity .right-panel .right-panel-body .project-card .project-inner .meta span:first-child {
     color: #283252;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600
 }
 
 .right-panel-wrapper.is-activity .right-panel .right-panel-body .project-card .project-inner .meta span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: .9rem
 }
@@ -26993,7 +26993,7 @@ body.is-dark .right-panel-wrapper.is-languages .right-panel-body .languages-boxe
 }
 
 .right-panel-wrapper.is-activity .right-panel .right-panel-body .project-card .project-foot .foot-stats span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -27070,7 +27070,7 @@ body.is-dark .right-panel-wrapper.is-languages .right-panel-body .languages-boxe
 
 .right-panel-wrapper.is-activity .right-panel .right-panel-body .icon-timeline .timeline-item .timeline-content p {
     font-size: .95rem;
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .right-panel-wrapper.is-activity .right-panel .right-panel-body .icon-timeline .timeline-item .timeline-content span {
@@ -27147,7 +27147,7 @@ body.is-dark .right-panel-wrapper.is-activity .right-panel-body .icon-timeline .
 
 .right-panel-wrapper.is-task .right-panel .right-panel-body .task-group h3 {
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     font-weight: 600;
     color: #671cc9;
@@ -27155,7 +27155,7 @@ body.is-dark .right-panel-wrapper.is-activity .right-panel-body .icon-timeline .
 }
 
 .right-panel-wrapper.is-task .right-panel .right-panel-body .task-group h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252;
@@ -27164,7 +27164,7 @@ body.is-dark .right-panel-wrapper.is-activity .right-panel-body .icon-timeline .
 
 .right-panel-wrapper.is-task .right-panel .right-panel-body .task-group h5 {
     text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     color: #a2a5b9
 }
@@ -27180,7 +27180,7 @@ body.is-dark .right-panel-wrapper.is-activity .right-panel-body .icon-timeline .
 
 .right-panel-wrapper.is-task .right-panel .right-panel-body .task-group .task-description p a {
     text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .75rem;
     color: #a2a5b9
@@ -27270,7 +27270,7 @@ body.is-dark .right-panel-wrapper.is-activity .right-panel-body .icon-timeline .
 
 .right-panel-wrapper.is-task .right-panel .right-panel-body .task-group .task-stats a {
     text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .75rem;
     color: #671cc9
@@ -27325,7 +27325,7 @@ body.is-dark .right-panel-wrapper.is-activity .right-panel-body .icon-timeline .
 }
 
 .right-panel-wrapper.is-task .right-panel .right-panel-body .task-group .task-files .file-box .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600;
     color: #283252
@@ -27454,7 +27454,7 @@ body.is-dark .right-panel-wrapper.is-task .right-panel .right-panel-body .task-g
 }
 
 .right-panel-wrapper.is-search .right-panel .right-panel-body .recent {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 30px;
     padding: 0 20px
 }
@@ -27777,7 +27777,7 @@ var {
 
 .ajs-header {
     font-weight: 600 !important;
-    font-family: "Montserrat", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     border-radius: 8px 8px 0 0 !important
 }
 
@@ -27789,7 +27789,7 @@ var {
 
 .ajs-content {
     padding: 16px 0 !important;
-    font-family: "Roboto", sans-serif !important
+    font-family: "Inter", sans-serif !important
 }
 
 .ajs-content b {
@@ -28169,7 +28169,7 @@ body .dark-image-block {
 
 /*! _buttons.scss | Huro | Css ninja 2020-2021 */
 .button {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-transition: all .3s;
     transition: all .3s
 }
@@ -28242,7 +28242,7 @@ body.is-dark .button.h-action.is-hoverable:hover {
     height: 38px;
     line-height: 1.1;
     font-size: .95rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-transition: all .3s;
     transition: all .3s
 }
@@ -28510,14 +28510,14 @@ body.is-dark .button.h-action.is-active {
 
 .media-flex .flex-meta span:first-child,
 .media-flex .flex-meta>a:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600
 }
 
 .media-flex .flex-meta span:nth-child(2),
 .media-flex .flex-meta>a:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: .9rem
 }
@@ -28577,7 +28577,7 @@ body.is-dark .button.h-action.is-active {
 
 .media-flex-center .flex-meta span:first-child,
 .media-flex-center .flex-meta>a:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #283252;
     font-weight: 600
@@ -28585,7 +28585,7 @@ body.is-dark .button.h-action.is-active {
 
 .media-flex-center .flex-meta span:nth-child(2),
 .media-flex-center .flex-meta>a:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: .9rem
 }
@@ -37607,7 +37607,7 @@ body.is-dark .l-card-advanced .avatar-stack .h-avatar .avatar.is-more .inner {
 }
 
 .card.h-card .card-header .card-header-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600
 }
 
@@ -37617,7 +37617,7 @@ body.is-dark .l-card-advanced .avatar-stack .h-avatar .avatar.is-more .inner {
 }
 
 .card.h-card .card-footer a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -37646,7 +37646,7 @@ body.is-dark .card.h-card .h-avatar .badge {
 .content ol,
 .content ul {
     color: #283252;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .content ol.is-light,
@@ -37680,7 +37680,7 @@ body.is-dark .card.h-card .h-avatar .badge {
 
 .content table th {
     color: #283252;
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .content table td {
@@ -37963,7 +37963,7 @@ body.is-dark .textarea.is-primary-focus:focus {
 }
 
 .form-fieldset .fieldset-heading h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600
 }
 
@@ -38003,7 +38003,7 @@ select:focus {
 }
 
 .field.is-horizontal .field-label .label {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9 !important;
     font-weight: 400
@@ -38021,7 +38021,7 @@ select:focus {
 
 .field.has-addons .control .select.currency-select select,
 .field.is-grouped .control .select.currency-select select {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600
 }
 
@@ -38060,7 +38060,7 @@ select:focus {
 }
 
 .field>label {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9 !important
 }
@@ -38282,7 +38282,7 @@ select:focus {
 }
 
 .control .search-results .placeholder-wrap .placeholder-content h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     padding: 0
@@ -38329,7 +38329,7 @@ select:focus {
 }
 
 .control .search-results .search-result .meta span:first-child {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: .9rem;
     color: #283252
@@ -38718,12 +38718,12 @@ body.is-dark .search-results .search-result .meta span:first-child {
 }
 
 .is-autocomplete .control .easy-autocomplete .template-wrapper .entry-text span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block
 }
 
 .is-autocomplete .control .easy-autocomplete .template-wrapper .entry-text span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 500;
     color: #283252
@@ -39361,7 +39361,7 @@ body.is-dark .filepond-square-wrap .filepond--drop-label label {
     background-color: #e8e8e8;
     border-color: #e8e8e8;
     color: #283252;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 4px 10px 5px 10px
 }
 
@@ -39487,7 +39487,7 @@ body.is-dark .choices .choices__list--dropdown .choices__item.is-highlighted {
 }
 
 .h-select .select-box span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     position: relative;
     top: 0
@@ -39649,7 +39649,7 @@ body.is-dark .h-select .select-drop .option-row input:checked+.option-meta span 
 }
 
 .is-combo .combo-label {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -40748,14 +40748,14 @@ body.is-dark .animated-checkbox .checkmark-wrap .shadow-circle {
 }
 
 .checkboxes-list .list-item .item-meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 600;
     color: #283252
 }
 
 .checkboxes-list .list-item .item-meta span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -40763,7 +40763,7 @@ body.is-dark .animated-checkbox .checkmark-wrap .shadow-circle {
 .radio,
 .checkbox {
     position: relative;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     cursor: pointer;
     padding: 1em
 }
@@ -41486,7 +41486,7 @@ body.is-dark .h-toggle .toggler .inactive {
     width: 50px;
     height: 50px;
     line-height: 50px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     opacity: 0;
     pointer-events: none;
@@ -42280,14 +42280,14 @@ body.is-dark .action-link:after {
 }
 
 .user-list .user-list-info .name {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 600;
     color: #283252
 }
 
 .user-list .user-list-info .position {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 12px;
     color: #a2a5b9
 }
@@ -42570,7 +42570,7 @@ body.is-dark .tag.is-primary.is-light {
     cursor: pointer;
     font-weight: 600;
     font-size: .95rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 1.5rem
 }
 
@@ -42599,7 +42599,7 @@ body.is-dark .tag.is-primary.is-light {
     background: #f6f7f9;
     padding: 1.5rem;
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 body.is-dark .single-accordion {
@@ -42666,7 +42666,7 @@ body.is-dark .single-accordion .accordion-content {
 }
 
 .collapse .collapse-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600;
     color: #283252
@@ -42701,7 +42701,7 @@ body.is-dark .single-accordion .accordion-content {
     display: none;
     padding: 0 20px 20px 20px;
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .collapse .collapse-content p:not(:last-child) {
@@ -42789,7 +42789,7 @@ body.is-dark .collapse .collapse-header .collapse-icon {
 }
 
 .image-accordion ul li div a h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300;
     text-overflow: clip;
     font-size: 1.4rem;
@@ -42879,7 +42879,7 @@ body.is-dark .collapse .collapse-header .collapse-icon {
 }
 
 .breadcrumb ul li a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -42921,7 +42921,7 @@ body.is-dark .breadcrumb ul li a:hover {
 }
 
 .pika-single .pika-lendar .pika-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -42934,7 +42934,7 @@ body.is-dark .breadcrumb ul li a:hover {
 
 .pika-single .pika-lendar .pika-table thead th {
     font-weight: 400;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -43231,7 +43231,7 @@ body.is-dark .datetimepicker-footer {
     padding-left: 34px;
     line-height: 2;
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-transition: backgroundImage .25s;
     transition: backgroundImage .25s
 }
@@ -43427,20 +43427,20 @@ body.is-dark .is-clock-timepicker .control .chevron {
 }
 
 .dropdown.is-spaced .dropdown-item.is-media .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600;
     color: #283252
 }
 
 .dropdown.is-spaced .dropdown-item.is-media .meta span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: .9rem
 }
 
 .dropdown .is-trigger .button {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .dropdown .is-trigger .button:focus {
@@ -43644,7 +43644,7 @@ body.is-dark .child-dropdown .inner ul li .text span:first-child {
 
 /*! _editors.scss | Huro | Css Ninja 2020-2021 */
 .note-modal .note-modal-content .note-modal-header h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem !important;
     font-weight: 500;
     color: #283252
@@ -43659,7 +43659,7 @@ body.is-dark .child-dropdown .inner ul li .text span:first-child {
 }
 
 .note-modal .note-modal-content .note-modal-body .form-group label {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #a2a5b9
@@ -43944,7 +43944,7 @@ body.is-dark .sun-editor .se-container .se-resizing-bar {
 }
 
 .h-modal .modal-content .modal-card .modal-card-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     font-size: 1rem
@@ -44319,25 +44319,25 @@ body.is-dark .message.is-danger .delete:after {
 
 /*! _charts.scss | Huro | Css Ninja 2020-2021 */
 .apexcharts-title-text {
-    font-family: "Montserrat", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
     color: #283252
 }
 
 .apexcharts-legend .apexcharts-legend-text {
-    font-family: "Roboto", sans-serif !important
+    font-family: "Inter", sans-serif !important
 }
 
 .apexcharts-xaxis .apexcharts-xaxis-texts-g .apexcharts-text,
 .apexcharts-xaxis .apexcharts-yaxis-texts-g .apexcharts-text,
 .apexcharts-yaxis .apexcharts-xaxis-texts-g .apexcharts-text,
 .apexcharts-yaxis .apexcharts-yaxis-texts-g .apexcharts-text {
-    font-family: "Roboto", sans-serif !important
+    font-family: "Inter", sans-serif !important
 }
 
 .apexcharts-datalabels-group .apexcharts-text {
-    font-family: "Roboto", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     font-weight: 600
 }
 
@@ -44415,13 +44415,13 @@ body.is-dark .apexcharts-plot-series>line {
 body.is-dark .apexcharts-text,
 body.is-dark .apexcharts-yaxis-title-text {
     fill: #aaaab3;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400
 }
 
 body.is-dark .apexcharts-data-labels text {
     fill: #fafafa;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400
 }
 
@@ -44458,7 +44458,7 @@ body.is-dark .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-mark
 }
 
 body.is-dark .apexcharts-tooltip * {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: inherit
 }
 
@@ -44489,12 +44489,12 @@ body.is-dark .apexcharts-xaxistooltip.apexcharts-xaxistooltip-top::before {
 }
 
 body.is-dark .apexcharts-xaxistooltip * {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: inherit
 }
 
 .bb-title {
-    font-family: "Montserrat", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
     color: #283252
@@ -44550,12 +44550,12 @@ body.is-dark .bb-tooltip th {
     border-color: #3b3b41 !important;
     background-color: #1e1e21 !important;
     color: #fffdfd !important;
-    font-family: "Roboto", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     font-weight: 400 !important
 }
 
 body.is-dark .bb-tooltip th span {
-    font-family: "Roboto", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     font-weight: 400 !important;
     color: #fffdfd !important
 }
@@ -44594,7 +44594,7 @@ body.is-dark .bb-tooltip .bb-tooltip-detail .bb-tooltip-value span {
 
 /*! _calendar.scss | Huro | Css Ninja 2020-2021 */
 .event-calendar {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .event-calendar .calendar-toolbar {
@@ -44921,7 +44921,7 @@ body.is-dark .bb-tooltip .bb-tooltip-detail .bb-tooltip-value span {
 }
 
 .infinite-scroll-loader .infinite-scroll-loader-inner .loader-end span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -45683,14 +45683,14 @@ body.is-dark .loads {
 }
 
 .section-placeholder .placeholder-content h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
 }
 
 .section-placeholder .placeholder-content p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     color: #a2a5b9;
     max-width: 280px;
@@ -45738,7 +45738,7 @@ body.is-dark .loads {
 .page-placeholder .placeholder-content h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -46217,7 +46217,7 @@ body.is-dark .webui-popover .loader-overlay {
 .webui-popover-profile .skill-popover-block .profile-popover-wrapper .popover-fake-avatar span,
 .webui-popover-profile .skill-popover-block .skill-popover-wrapper .popover-fake-avatar span {
     font-size: 1.1rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-transform: uppercase;
     font-weight: 500;
     color: #283252
@@ -46273,7 +46273,7 @@ body.is-dark .webui-popover .loader-overlay {
 .webui-popover-profile .skill-popover-block .skill-popover-wrapper .popover-meta span.skill-meta .username,
 .webui-popover-profile .skill-popover-block .skill-popover-wrapper .popover-meta span.skill-meta .skill-name {
     display: block;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.2;
     font-size: .9rem;
     font-weight: 600
@@ -46454,7 +46454,7 @@ body.is-dark .webui-popover-profile .profile-popover-block .popover-actions .pop
 }
 
 .webui-popover.webui-popover-default .webui-popover-content .popover-head h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .9rem;
     color: #363636;
@@ -46466,7 +46466,7 @@ body.is-dark .webui-popover-profile .profile-popover-block .popover-actions .pop
 }
 
 .webui-popover.webui-popover-default .webui-popover-content .popover-body p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -48858,7 +48858,7 @@ body.is-dark .snack .snack-text {
 }
 
 .tabs li a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     border-bottom-width: 2px;
     color: #cecece;
     border-bottom-color: transparent
@@ -49000,7 +49000,7 @@ body.is-dark .tabs li.is-active a {
 .tabs-wrapper.is-slider .tabs li a,
 .tabs-wrapper-alt.is-slider .tabs li a {
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     height: 40px;
     border-bottom: none;
     position: relative;
@@ -49108,7 +49108,7 @@ body.is-dark .tabs li.is-active a {
 .tabs-wrapper.is-triple-slider .tabs li a,
 .tabs-wrapper-alt.is-triple-slider .tabs li a {
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     height: 40px;
     border-bottom: none;
@@ -49399,7 +49399,7 @@ body.is-dark .tabs-wrapper.is-triple-slider .tabs li.is-active a {
     -ms-flex-align: center;
     align-items: center;
     padding: 0 10px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .flex-table .flex-table-item .flex-table-cell.is-grow {
@@ -49432,7 +49432,7 @@ body.is-dark .tabs-wrapper.is-triple-slider .tabs li.is-active a {
 }
 
 .flex-table .flex-table-item .flex-table-cell.is-bold>span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600
 }
@@ -49488,7 +49488,7 @@ body.is-dark .tabs-wrapper.is-triple-slider .tabs li.is-active a {
 
 .flex-table .flex-table-item .flex-table-cell.is-user>div .item-name,
 .flex-table .flex-table-item .flex-table-cell.is-media>div .item-name {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600;
     color: #363636
@@ -49598,7 +49598,7 @@ body.is-dark .tabs-wrapper.is-triple-slider .tabs li.is-active a {
     display: block !important;
     font-size: .8rem;
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .flex-table .flex-table-item .flex-table-cell .dot-levels {
@@ -49676,7 +49676,7 @@ body.is-dark .flex-table .flex-table-item .flex-table-cell .dot-levels .dot.acti
 
 .flex-pagination .pagination-list li .pagination-link {
     background: #fff;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9em
 }
 
@@ -49756,7 +49756,7 @@ body.is-dark .flex-table-wrapper {
 }
 
 .table tbody th {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -50048,7 +50048,7 @@ body.is-dark .datatable-toolbar .field .control .button:hover {
 }
 
 .pagination.datatable-pagination .datatable-info {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -50087,7 +50087,7 @@ body.is-dark .datatable-toolbar .field .control .button:hover {
 }
 
 .pagination.datatable-pagination ul li a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 500;
     color: #283252;
@@ -50301,7 +50301,7 @@ body.is-dark .pagination.datatable-pagination ul li a {
 }
 
 .table-wrapper .table.is-datatable .status span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -50324,11 +50324,11 @@ body.is-dark .pagination.datatable-pagination ul li a {
     display: block;
     font-size: .8rem;
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .table-wrapper .table.is-datatable .flex-media .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -51272,7 +51272,7 @@ body.is-dark .hint--primary.hint--right:before {
 
 .timeline-wrapper .timeline-wrapper-inner .timeline-container .timeline-item .date {
     width: 80px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-align: right
 }
 
@@ -51360,7 +51360,7 @@ body.is-dark .hint--primary.hint--right:before {
 }
 
 .timeline-wrapper .timeline-wrapper-inner .timeline-container .timeline-item .content-wrap .content-box .box-text .meta-text p span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600
 }
@@ -51656,7 +51656,7 @@ body.is-dark .circle-chart__background {
     box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, .06);
     border: 1px solid #ededed;
     border-radius: 500px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     z-index: 99;
     -webkit-transition: all .3s;
     transition: all .3s
@@ -51734,7 +51734,7 @@ body.is-dark .circle-chart__background {
 
 .landing-page-wrapper .navbar .navbar-menu .navbar-item .nav-link {
     position: relative;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9;
     text-transform: capitalize
@@ -52172,7 +52172,7 @@ body.is-dark .circle-chart__background {
 }
 
 .boxed-features .flex-card .flex-cell h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .95rem;
     color: #283252
@@ -52220,13 +52220,13 @@ body.is-dark .circle-chart__background {
 }
 
 .section .section-title h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 6px;
     font-weight: 300
 }
 
 .section .section-title h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: 1.4rem;
     font-weight: 300
@@ -52237,7 +52237,7 @@ body.is-dark .circle-chart__background {
 }
 
 .section .side-feature h2 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300
 }
 
@@ -52286,13 +52286,13 @@ body.is-dark .circle-chart__background {
 }
 
 .cta-block .head-text h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.8rem;
     color: #283252
 }
 
 .cta-block .head-text p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     color: #a2a5b9
 }
@@ -52355,14 +52355,14 @@ body.is-dark .circle-chart__background {
 }
 
 .huro-demos .demo-section .demo-section-title .title-meta h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 1.3rem;
     color: #283252
 }
 
 .huro-demos .demo-section .demo-section-title .title-meta p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     color: #a2a5b9
 }
@@ -52423,7 +52423,7 @@ body.is-dark .circle-chart__background {
     right: 10px;
     background: red;
     color: #fff;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 6px 16px;
     border-radius: 8px;
     text-transform: uppercase;
@@ -52467,7 +52467,7 @@ body.is-dark .circle-chart__background {
 
 .huro-demo-wrapper .demo-title {
     color: #fff;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
     padding-bottom: 0;
@@ -52507,7 +52507,7 @@ body.is-dark .circle-chart__background {
 }
 
 .huro-demo-wrapper .demo-link a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #fff;
     font-size: 1rem;
     margin-left: 8px
@@ -52539,14 +52539,14 @@ body.is-dark .circle-chart__background {
 }
 
 .component-features .media-flex .flex-meta h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 4px
 }
 
 .component-features .media-flex .flex-meta p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.4
 }
 
@@ -52592,7 +52592,7 @@ body.is-dark .circle-chart__background {
 }
 
 .component-box .component-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     padding-top: 6px;
     color: #a2a5b9;
@@ -52672,7 +52672,7 @@ body.is-dark .circle-chart__background {
 }
 
 .huro-footer .footer-head .head-text h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.8rem;
     color: #283252
 }
@@ -52706,7 +52706,7 @@ body.is-dark .circle-chart__background {
 }
 
 .huro-footer .footer-body .footer-column .column-header {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     text-transform: uppercase;
     color: #283252;
     font-size: 1rem;
@@ -52719,7 +52719,7 @@ body.is-dark .circle-chart__background {
 }
 
 .huro-footer .footer-body .footer-column .column-item a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -52761,7 +52761,7 @@ body.is-dark .circle-chart__background {
 }
 
 .huro-footer .footer-copyright {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     padding: 4rem 0 2rem 0
 }
@@ -53066,7 +53066,7 @@ body.is-dark .circle-chart__background {
 }
 
 .cta-wrapper .cta-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300;
     font-size: 1.5rem;
     color: #a2a5b9;
@@ -53082,7 +53082,7 @@ body.is-dark .circle-chart__background {
     align-items: center;
     margin: 10px auto;
     max-width: 200px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     border: 2px solid #d3f4ed;
     border-radius: 100px;
     background: #d3f4ed;
@@ -53100,7 +53100,7 @@ body.is-dark .circle-chart__background {
 
 .cta-wrapper .cta-title .custom-button span {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1rem;
     color: #46cbb1;
@@ -53427,7 +53427,7 @@ body.is-dark .circle-chart__background {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 30px
 }
 
@@ -53436,7 +53436,7 @@ body.is-dark .circle-chart__background {
 }
 
 .personal-dashboard.personal-dashboard-v1 .dashboard-header .start h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.3rem;
     color: #283252
@@ -53457,12 +53457,12 @@ body.is-dark .circle-chart__background {
 }
 
 .personal-dashboard.personal-dashboard-v1 .dashboard-body .dashboard-card {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .personal-dashboard.personal-dashboard-v1 .dashboard-body .dashboard-card>h4,
 .personal-dashboard.personal-dashboard-v1 .dashboard-body .dashboard-card .apexcharts-title-text {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252;
@@ -53529,7 +53529,7 @@ body.is-dark .circle-chart__background {
 }
 
 .personal-dashboard.personal-dashboard-v1 .dashboard-body .dashboard-card.is-upgrade .cta-content h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
     color: #fcfcfc;
@@ -53538,7 +53538,7 @@ body.is-dark .circle-chart__background {
 
 .personal-dashboard.personal-dashboard-v1 .dashboard-body .dashboard-card.is-upgrade .link {
     display: block;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     margin-top: .5rem
 }
@@ -53638,7 +53638,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v1 .dashboard-body .dashboar
 }
 
 .personal-dashboard.personal-dashboard-v2 .dashboard-header .cta .link {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block;
     font-weight: 500;
     margin-top: .5rem
@@ -53671,7 +53671,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v1 .dashboard-body .dashboar
 }
 
 .personal-dashboard.personal-dashboard-v2 .dashboard-card .card-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252;
@@ -53695,7 +53695,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .personal-dashboard.personal-dashboard-v3 .dashboard-card {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .personal-dashboard.personal-dashboard-v3 .dashboard-card:not(:last-child) {
@@ -53709,7 +53709,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .personal-dashboard.personal-dashboard-v3 .dashboard-card.is-welcome .welcome-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 2rem;
     color: #283252
@@ -53739,7 +53739,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .personal-dashboard.personal-dashboard-v3 .dashboard-card.is-welcome .welcome-progress .meta span:nth-child(2) {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
@@ -53792,11 +53792,11 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 
 .personal-dashboard.personal-dashboard-v3 .stats-wrapper .people .left span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .personal-dashboard.personal-dashboard-v3 .stats-wrapper .people .left span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -53902,7 +53902,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 
 /*! _finance.scss | Huro | Css ninja 2020-2021 */
 .finance-dashboard.analytics-dashboard .dashboard-tile {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .finance-dashboard.analytics-dashboard .dashboard-tile .tile-head {
@@ -53918,7 +53918,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .finance-dashboard.analytics-dashboard .dashboard-tile .tile-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600
 }
@@ -53950,7 +53950,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .finance-dashboard.analytics-dashboard .dashboard-card {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     height: 100%
 }
 
@@ -53968,7 +53968,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .finance-dashboard.analytics-dashboard .dashboard-card .card-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -53982,7 +53982,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 
 .finance-dashboard.analytics-dashboard .dashboard-card .revenue-stats .revenue-stat {
     margin-right: 30px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .finance-dashboard.analytics-dashboard .dashboard-card .revenue-stats .revenue-stat span {
@@ -54057,7 +54057,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
     -ms-flex-direction: column;
     flex-direction: column;
     height: calc(100% - 44px);
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .finance-dashboard.analytics-dashboard .dashboard-card .progress-block .value {
@@ -54194,14 +54194,14 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .finance-dashboard.stock-dashboard .stock .stock-info .stock-name {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .9rem;
     color: #283252
 }
 
 .finance-dashboard.stock-dashboard .stock .stock-info .stock-fullname {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -54240,7 +54240,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .finance-dashboard.stock-dashboard .graph>svg text {
-    font-family: Roboto;
+    font-family: Inter;
     font-weight: 700;
     font-size: 12px;
     font-style: normal
@@ -54344,7 +54344,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 .finance-dashboard.stock-dashboard .asset-category .category .asset-name {
     color: #283252;
     font-size: .9rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     -webkit-transition: color .3s;
     transition: color .3s
@@ -54364,7 +54364,7 @@ body.is-dark .personal-dashboard.personal-dashboard-v2 .home-header .cta {
 }
 
 .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -54419,7 +54419,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 30px
 }
 
@@ -54428,7 +54428,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .finance-dashboard.sales-dashboard .dashboard-header .start h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.3rem;
     color: #283252
@@ -54474,7 +54474,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .finance-dashboard.sales-dashboard .dashboard-card .card-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -54489,7 +54489,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 
 .finance-dashboard.sales-dashboard .dashboard-card .revenue-stats .revenue-stat {
     margin-right: 30px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .finance-dashboard.sales-dashboard .dashboard-card .revenue-stats .revenue-stat span {
@@ -54528,11 +54528,11 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .finance-dashboard.sales-dashboard .dashboard-card .chart-media .meta h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -54572,7 +54572,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 .finance-dashboard.sales-dashboard .dashboard-card .chart-group .group span {
     display: block;
     margin-top: -25px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     font-size: 1.2rem
@@ -54697,7 +54697,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .banking-dashboard.banking-dashboard-v1 .dashboard-card.is-credit-cards .card-block .card-block-inner .credit-card .top .card-number span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     font-weight: 500;
     color: #fcfcfc;
@@ -54711,7 +54711,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .banking-dashboard.banking-dashboard-v1 .dashboard-card.is-credit-cards .card-block .card-block-inner .credit-card .bottom {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .7rem;
     font-weight: 500;
     color: #fcfcfc
@@ -54734,7 +54734,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 
 .banking-dashboard.banking-dashboard-v1 .dashboard-card.is-credit-cards .card-block .card-block-inner .credit-card-meta span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .banking-dashboard.banking-dashboard-v1 .dashboard-card.is-credit-cards .card-block .card-block-inner .credit-card-meta span:first-child {
@@ -54795,7 +54795,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .banking-dashboard.banking-dashboard-v1 .dashboard-card.is-credit-cards .card-block .info-block-inner .info-block-line h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #283252;
     font-size: .9rem;
@@ -54866,7 +54866,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 0 4px
 }
 
@@ -54901,7 +54901,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .banking-dashboard.banking-dashboard-v1 .dashboard-card.is-transactions .transactions .media-flex-center .flex-end {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 500;
     color: #283252
@@ -54933,11 +54933,11 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-bottom: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .banking-dashboard.banking-dashboard-v1 .dashboard-card>.title-wrap h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -55011,7 +55011,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-panel .inner-box .box-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
@@ -55095,7 +55095,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     width: 240px;
     height: 144px;
     border-radius: 14px;
@@ -55186,7 +55186,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 
 .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-panel .inner-box .card-balance-wrap .card-balance-stats .card-balance-stat {
     width: 50%;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-panel .inner-box .card-balance-wrap .card-balance-stats .card-balance-stat .stat-title {
@@ -55245,7 +55245,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 
 .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-panel .inner-box .card-balance-wrap .card-balance-stats .card-balance-stat .stat-block .stat-text {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     color: #283252
@@ -55259,7 +55259,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 
 .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-panel .inner-box .monthly-summary-wrap .monthly-summary .monthly-summary-item {
     padding: 20px 0;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-panel .inner-box .monthly-summary-wrap .monthly-summary .monthly-summary-item:first-child {
@@ -55308,7 +55308,7 @@ body.is-dark .finance-dashboard.stock-dashboard .stock-card .action-bar h3 {
 }
 
 .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-panel .inner-box .transactions .media-flex-center .flex-end {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 500;
     color: #283252
@@ -55393,7 +55393,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 20px
 }
 
@@ -55441,7 +55441,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 
 .banking-dashboard.banking-dashboard-v3 .dashboard-tiles .dashboard-tile span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .banking-dashboard.banking-dashboard-v3 .dashboard-tiles .dashboard-tile span:first-child {
@@ -55484,7 +55484,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .banking-dashboard.banking-dashboard-v3 .dashboard-card .subheading-wrap .subheading {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .8rem;
     text-transform: uppercase;
@@ -55627,7 +55627,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
     border-color: #671cc9;
     padding: 30px;
     color: #fff;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2);
     box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2)
 }
@@ -55659,7 +55659,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .booking-bar-wrapper .booking-bar-info .inner .booking-bar-heading {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 1.2;
@@ -55667,7 +55667,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .booking-bar-wrapper .booking-bar-info .inner .booking-bar-sub-heading {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 1.1rem;
     color: #fff
@@ -55699,7 +55699,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .booking-bar-wrapper .booking-bar .booking-bar-inputs .input {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -55717,7 +55717,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .flights-toolbar h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -55754,7 +55754,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .flights-summary-wrapper .flight-summary .flight-price {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 2rem;
     font-weight: 700;
     color: #671cc9
@@ -55778,7 +55778,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .flights-summary-wrapper .flight-summary .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-size: .8rem;
     font-weight: 700;
@@ -55786,7 +55786,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .flights-summary-wrapper .flight-summary .meta span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: .9rem
 }
@@ -55827,12 +55827,12 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 .business-dashboard.flights-dashboard .flights .flight-card .end span {
     display: block;
     color: #283252;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .business-dashboard.flights-dashboard .flights .flight-card .start span:first-child,
 .business-dashboard.flights-dashboard .flights .flight-card .end span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -55841,7 +55841,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 .business-dashboard.flights-dashboard .flights .flight-card .start span:nth-child(3),
 .business-dashboard.flights-dashboard .flights .flight-card .end span:nth-child(2),
 .business-dashboard.flights-dashboard .flights .flight-card .end span:nth-child(3) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -55942,7 +55942,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .flights .flight-card .flight-price {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.8rem;
     font-weight: 600;
     color: #a2a5b9
@@ -55978,7 +55978,7 @@ body.is-dark .banking-dashboard.banking-dashboard-v2 .dashboard-card.is-card-pan
 }
 
 .business-dashboard.flights-dashboard .filters-card .checkboxes-list .field>h5 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .8rem;
     text-transform: uppercase;
@@ -56058,14 +56058,14 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 
 .business-dashboard.company-dashboard .company-header .header-item .item-inner span {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.6rem;
     color: #283252
 }
 
 .business-dashboard.company-dashboard .company-header .header-item .item-inner p {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem
 }
 
@@ -56096,7 +56096,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 
 .business-dashboard.company-dashboard .dashboard-card.is-company>h3 {
     color: #283252;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600
 }
@@ -56134,12 +56134,12 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 
 .business-dashboard.company-dashboard .dashboard-card.is-company .company-stats .company-stat span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .business-dashboard.company-dashboard .dashboard-card.is-company .company-stats .company-stat span:first-child {
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .75rem;
     color: #a2a5b9
 }
@@ -56175,7 +56175,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 
 .business-dashboard.company-dashboard .dashboard-card.is-base-chart .content-box .revenue-stats .revenue-stat {
     margin-right: 30px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .business-dashboard.company-dashboard .dashboard-card.is-base-chart .content-box .revenue-stats .revenue-stat span {
@@ -56184,7 +56184,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 
 .business-dashboard.company-dashboard .dashboard-card.is-base-chart .content-box .revenue-stats .revenue-stat span:first-child {
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .75rem;
     color: #a2a5b9
 }
@@ -56243,7 +56243,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 }
 
 .business-dashboard.company-dashboard .dashboard-card .card-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -56261,7 +56261,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
     border-radius: 16px;
     padding: 50px;
     background: #671cc9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2);
     box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2)
 }
@@ -56341,7 +56341,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 }
 
 .business-dashboard.hr-dashboard .block-header .left .current-user h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.8rem;
     color: #fff;
@@ -56363,7 +56363,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 }
 
 .business-dashboard.hr-dashboard .block-header .block-heading {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     color: #fff;
@@ -56371,7 +56371,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 }
 
 .business-dashboard.hr-dashboard .block-header .block-text {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #fff;
     margin-bottom: 16px
@@ -56384,7 +56384,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 
 .business-dashboard.hr-dashboard .block-header .header-meta h3 {
     color: #fcfcfc;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
     max-width: 280px
@@ -56421,7 +56421,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 }
 
 .business-dashboard.hr-dashboard .feed-settings h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
@@ -56442,7 +56442,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 }
 
 .business-dashboard.hr-dashboard .side-text h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252;
@@ -56472,7 +56472,7 @@ body.is-dark .business-dashboard.flights-dashboard .flights .flight-card .end sp
 }
 
 .business-dashboard.hr-dashboard .recent-rookies .recent-rookies-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
@@ -56522,7 +56522,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-bottom: 20px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .business-dashboard.course-dashboard .dashboard-title.is-main {
@@ -56534,7 +56534,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .business-dashboard.course-dashboard .dashboard-title h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: #283252
@@ -56554,7 +56554,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .business-dashboard.course-dashboard .course-grid .course-card h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252;
@@ -56581,7 +56581,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .business-dashboard.course-dashboard .course-grid .course-card .students .link {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #671cc9;
     margin-left: 1rem
@@ -56592,7 +56592,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .business-dashboard.course-dashboard .course-grid .course-card .attached-block>a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #671cc9;
     margin-bottom: .5rem
@@ -56610,7 +56610,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .business-dashboard.course-dashboard .course-grid .course-card .attached-block .block-stats span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -56749,7 +56749,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
     font-weight: 500;
     padding: 0 25px;
     height: 100%;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .business-dashboard.jobs-dashboard .search-menu .search-location input,
@@ -56758,7 +56758,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
     width: 100%;
     height: 100%;
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     background-color: transparent;
     border: none;
@@ -56781,7 +56781,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
     height: 55px;
     border: none;
     font-weight: 500;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     padding: 0 1rem;
     border-radius: 0 .75rem .75rem 0;
     color: #fff;
@@ -56821,7 +56821,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 
 .business-dashboard.jobs-dashboard .main-container .alert .alert-title {
     font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     margin-bottom: .75rem
@@ -56829,7 +56829,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 
 .business-dashboard.jobs-dashboard .main-container .alert .alert-subtitle {
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     margin-bottom: 1.5rem
 }
@@ -56848,7 +56848,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 
 .business-dashboard.jobs-dashboard .main-container .job-time .job-time-title {
     font-size: .95rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -56895,7 +56895,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
     background-color: #fff;
     color: #a2a5b9;
     font-size: .8rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     padding: 0 .25rem;
     border-radius: 50rem
@@ -56928,7 +56928,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .business-dashboard.jobs-dashboard .main-container .searched-bar .searched-count {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #283252
@@ -56980,7 +56980,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .business-dashboard.jobs-dashboard .main-container .job-card .job-card-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     margin-bottom: .75rem
@@ -56988,7 +56988,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 
 .business-dashboard.jobs-dashboard .main-container .job-card .job-card-subtitle {
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     line-height: 1.6em;
     margin-bottom: 1rem
@@ -57348,7 +57348,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v1 .dashboard-header-wrapper .dashboard-header .header-meta {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-left: 16px
 }
 
@@ -57359,7 +57359,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v1 .dashboard-header-wrapper .dashboard-header .header-meta .username-wrap .username h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-size: 1.2rem;
     font-weight: 700
@@ -57477,12 +57477,12 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 20px
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v1 .body-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: #283252
@@ -57498,7 +57498,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card.is-metrics,
@@ -57527,7 +57527,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .card-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -57603,7 +57603,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
 
 .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .cloud-container .cloud-element {
     font-size: 2em;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-align: center
 }
 
@@ -57806,7 +57806,7 @@ body.is-dark .business-dashboard.hr-dashboard .feed-settings .button.is-selected
     padding: 16px;
     text-align: center;
     width: 100%;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem
 }
 
@@ -57940,7 +57940,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-bottom: 20px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v2 .dashboard-title.is-main {
@@ -57952,7 +57952,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v2 .dashboard-title h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: #283252
@@ -58013,7 +58013,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 20px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     opacity: 0;
     pointer-events: none;
     z-index: 2;
@@ -58098,7 +58098,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
     padding: 10px;
     border-radius: 16px;
     background: #300d5e;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 30px
 }
 
@@ -58122,7 +58122,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 
 .lifestyle-dashboard.lifestyle-dashboard-v3 .illustration-header .header-meta h3 {
     color: #fcfcfc;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.3rem
 }
@@ -58144,13 +58144,13 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v3 .illustration-header .header-meta .summary-stats .summary-stat span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v3 .illustration-header .header-meta .summary-stats .summary-stat span:first-child {
     font-size: 1.1rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #fcfcfc
 }
 
@@ -58170,7 +58170,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v3 .health-tile {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v3 .health-tile .tile-head {
@@ -58199,7 +58199,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v3 .health-tile h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 600;
     color: #283252
@@ -58256,7 +58256,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
     padding: 10px;
     border-radius: 16px;
     background: #671cc9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2);
     box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2)
 }
@@ -58282,7 +58282,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .illustration-header-2 .header-meta h3 {
     color: #fcfcfc;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
     max-width: 280px
@@ -58325,7 +58325,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .writing-stats .writing-stat span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -58334,7 +58334,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .writing-stats .writing-stat span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.8rem;
     color: #283252
@@ -58358,7 +58358,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .featured-authors .featured-authors-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     color: #283252
@@ -58373,7 +58373,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .featured-authors .featured-authors-list .featured-authors-item .media-flex-center .flex-end span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -58397,7 +58397,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .updates .updates-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     color: #283252
@@ -58435,7 +58435,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
     display: block;
     min-width: 60px;
     text-align: right;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .8rem;
     color: #283252
@@ -58461,7 +58461,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .articles-feed .articles-feed-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     color: #283252
@@ -58527,7 +58527,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v1 .overview-card .heatmap
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v4 .articles-feed .articles-feed-list .articles-feed-list-inner .articles-feed-item .featured-content h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -58570,7 +58570,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v4 .articles-feed .article
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-bottom: 20px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v5 .dashboard-title.is-main {
@@ -58582,14 +58582,14 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v4 .articles-feed .article
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v5 .dashboard-title h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: #283252
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v5 .dashboard-title .members h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     padding: 0 .35rem;
     margin-bottom: .75rem
@@ -58626,7 +58626,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v4 .articles-feed .article
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group .group-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 500;
     color: #a2a5b9;
@@ -58720,7 +58720,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v4 .articles-feed .article
     background: #671cc9;
     -webkit-box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2);
     box-shadow: 0 14px 26px -12px rgba(103, 28, 201, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(103, 28, 201, .2);
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #fff;
     height: 2.75em;
@@ -58762,7 +58762,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v4 .articles-feed .article
 }
 
 .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group .group-content .media-feed-item .overlay-layer .overlay-content .inner-content .media-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.3rem;
     font-weight: bolder;
     line-height: 24px;
@@ -58859,7 +58859,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .live-match .head .league .left span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .live-match .head .league .left span:first-child {
@@ -58893,7 +58893,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .live-match .head .league .right .live-block span {
     display: inline-block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     margin-left: .25rem
 }
@@ -58928,7 +58928,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .live-match .match .left .team-name,
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .live-match .match .right .team-name {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500
 }
 
@@ -58946,7 +58946,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .live-match .match .center .score {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 2.25rem
 }
@@ -58956,7 +58956,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
     top: -2px;
     display: block;
     padding: 0 .5rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.75rem
 }
@@ -59000,7 +59000,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .leagues .leagues-list .league-item .meta .league-name {
     display: block;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -59008,14 +59008,14 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .leagues .leagues-list .league-item .meta .league-country {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .leagues .leagues-list .league-item .end {
     margin-left: auto;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -59029,7 +59029,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .dashboard-cta .dashboard-cta-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #fff;
@@ -59039,7 +59039,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .dashboard-cta .dashboard-cta-text {
     color: #fff;
     opacity: .9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.7;
     margin-top: 0;
     max-width: 58%;
@@ -59087,7 +59087,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .matches-card .matches-card-header .header-nav .nav-item .nav-link {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-right: 1rem;
     border-bottom: 3px solid transparent;
     padding-bottom: 1rem;
@@ -59109,7 +59109,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .matches-card .matches-card-body .table thead th {
     border: none;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     text-transform: uppercase
 }
@@ -59143,13 +59143,13 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .matches-card .matches-card-body .table tr td .match-time-row .match-time {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     margin-right: .75rem
 }
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .matches-card .matches-card-body .table tr td .match-time-row .tag {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .lifestyle-dashboard.soccer-dashboard .soccer-dashboard-inner .matches-card .matches-card-body .table tr td .match-time-row .tag svg {
@@ -59735,7 +59735,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 30px
 }
 
@@ -59744,7 +59744,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .ecommerce-dashboard.ecommerce-dashboard-v1 .dashboard-header .start h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.3rem;
     color: #283252
@@ -59765,7 +59765,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .ecommerce-dashboard.ecommerce-dashboard-v1 .dashboard-tile {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .ecommerce-dashboard.ecommerce-dashboard-v1 .dashboard-tile .tile-head {
@@ -59781,7 +59781,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .ecommerce-dashboard.ecommerce-dashboard-v1 .dashboard-tile .tile-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: 1rem;
     font-weight: 500
@@ -59822,12 +59822,12 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin: 20px 0
 }
 
 .ecommerce-dashboard.ecommerce-dashboard-v1 .table-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: #283252
@@ -59897,7 +59897,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
     padding: 10px;
     border-radius: 16px;
     background: #e9e9fd;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .food-delivery-dashboard .left .left-header .header-image {
@@ -59919,7 +59919,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .food-delivery-dashboard .left .left-header .header-meta h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.6rem
 }
@@ -59951,11 +59951,11 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
     -ms-flex-align: center;
     align-items: center;
     margin: 20px 0;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .food-delivery-dashboard .left .left-body .restaurants .restaurants-toolbar .left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-size: 1.3rem;
     font-weight: 600
@@ -60034,7 +60034,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .food-delivery-dashboard .left .left-body .food-pills .food-pills-inner .food-pill span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     padding-top: 12px;
     -webkit-transition: color .3s;
@@ -60163,7 +60163,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
     border-radius: 12px;
     background: #671cc9;
     border: 1px solid #671cc9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-align: center
 }
 
@@ -60223,12 +60223,12 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 
 .food-delivery-dashboard .left .left-body .restaurants-list .restaurants-list-item .meta-container .meta-content {
     margin-left: 8px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.3
 }
 
 .food-delivery-dashboard .left .left-body .restaurants-list .restaurants-list-item .meta-container .meta-content h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1rem;
     color: #283252
@@ -60336,7 +60336,7 @@ body.is-dark .lifestyle-dashboard.lifestyle-dashboard-v5 .media-feed .feed-group
 }
 
 .food-delivery-dashboard>.right .sticky-panel .cart-widget .cart-button .total span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin: 0
 }
 
@@ -60583,7 +60583,7 @@ body.is-dark .food-delivery-dashboard .right .cart-widget .cart-button .total sp
 }
 
 .dashboard-map-wrapper .dashboard-map-wrapper-inner .content-section .content-section-body .content-section-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     color: #a2a5b9;
     text-transform: uppercase;
@@ -60644,7 +60644,7 @@ body.is-dark .food-delivery-dashboard .right .cart-widget .cart-button .total sp
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #283252
 }
@@ -60754,11 +60754,11 @@ body.is-dark .mapboxgl-popup .mapboxgl-popup-content .mapboxgl-popup-close-butto
 }
 
 .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-title {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion-address {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--icon-search {
@@ -61100,7 +61100,7 @@ body.is-dark .card-hub .hub-body .body-inner .hub-card .hub-card-foot a {
 }
 
 .list-view-toolbar .list-info span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -61141,7 +61141,7 @@ body.is-dark .card-hub .hub-body .body-inner .hub-card .hub-card-foot a {
 }
 
 .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta-left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     font-size: 1rem;
@@ -61206,7 +61206,7 @@ body.is-dark .card-hub .hub-body .body-inner .hub-card .hub-card-foot a {
 }
 
 .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta-right .stats .stat>span {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta-right .stats .stat>span:first-child {
@@ -61218,7 +61218,7 @@ body.is-dark .card-hub .hub-body .body-inner .hub-card .hub-card-foot a {
 
 .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta-right .stats .stat>span:nth-child(2) {
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .75rem
 }
 
@@ -61252,7 +61252,7 @@ body.is-dark .card-hub .hub-body .body-inner .hub-card .hub-card-foot a {
 }
 
 .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta-right .network>span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9;
     margin-left: 6px
@@ -61313,7 +61313,7 @@ body.is-dark .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta
 }
 
 .list-view.list-view-v2 .list-view-item .list-view-item-inner .meta-left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     font-size: 1.1rem;
@@ -61353,7 +61353,7 @@ body.is-dark .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta
     -ms-flex-align: center;
     align-items: center;
     margin-top: 10px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #671cc9
 }
@@ -61383,7 +61383,7 @@ body.is-dark .list-view.list-view-v1 .list-view-item .list-view-item-inner .meta
 
 .list-view.list-view-v2 .list-view-item .list-view-item-inner .meta-left .icon-list>span span {
     font-size: .85rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -61462,7 +61462,7 @@ body.is-dark .list-view.list-view-v2 .list-view-item .list-view-item-inner .meta
 }
 
 .list-view.list-view-v3 .list-view-item .list-view-item-inner .meta-left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 500;
     font-size: 1.1rem;
@@ -61548,7 +61548,7 @@ body.is-dark .list-view.list-view-v3 .list-view-item .list-view-item-inner .meta
 }
 
 .list-view.list-view-v4 .list-view-item .list-view-item-inner .pre-meta h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-size: 1rem;
     font-weight: 600;
@@ -61579,7 +61579,7 @@ body.is-dark .list-view.list-view-v3 .list-view-item .list-view-item-inner .meta
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     font-size: .75rem;
@@ -61642,7 +61642,7 @@ body.is-dark .list-view.list-view-v3 .list-view-item .list-view-item-inner .meta
 }
 
 .list-view.list-view-v4 .list-view-item .list-view-item-inner .meta-right .network>span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9;
     margin-left: 6px
@@ -62378,7 +62378,7 @@ body.is-dark .list-view.list-view-v4 .list-view-item .list-view-item-inner .meta
 }
 
 .list-flex-toolbar .list-info span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -62458,7 +62458,7 @@ body.is-dark .list-view.list-view-v4 .list-view-item .list-view-item-inner .meta
 }
 
 .user-grid-toolbar .list-info span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -62511,7 +62511,7 @@ body.is-dark .list-view.list-view-v4 .list-view-item .list-view-item-inner .meta
 
 .user-grid.user-grid-v1 .grid-item h3,
 .user-grid.user-grid-v2 .grid-item h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
@@ -62595,7 +62595,7 @@ body.is-dark .list-view.list-view-v4 .list-view-item .list-view-item-inner .meta
 }
 
 .user-grid.user-grid-v2 .grid-item-wrap .grid-item-head .flex-head .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .95rem;
     color: #283252
@@ -62704,7 +62704,7 @@ body.is-dark .user-grid.user-grid-v2 .grid-item-wrap .grid-item-head {
 }
 
 .user-grid.user-grid-v3 .grid-item h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
@@ -62824,7 +62824,7 @@ body.is-dark .user-grid.user-grid-v2 .grid-item-wrap .grid-item-head {
 }
 
 .user-grid.user-grid-v3 .grid-item .icon-tabs-wrapper .chart-block .stats span:first-child {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.8rem;
     color: #283252;
     font-weight: 700;
@@ -62832,7 +62832,7 @@ body.is-dark .user-grid.user-grid-v2 .grid-item-wrap .grid-item-head {
 }
 
 .user-grid.user-grid-v3 .grid-item .icon-tabs-wrapper .chart-block .stats span:nth-child(2) {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -62911,7 +62911,7 @@ body.is-dark .user-grid.user-grid-v3 .grid-item .icon-tabs-wrapper .icon-tabs .i
 }
 
 .user-grid.user-grid-v4 .grid-item h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252
@@ -63018,7 +63018,7 @@ body.is-dark .user-grid.user-grid-v3 .grid-item .icon-tabs-wrapper .icon-tabs .i
 }
 
 .card-grid-toolbar .list-info span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -63104,12 +63104,12 @@ body.is-dark .user-grid.user-grid-v3 .grid-item .icon-tabs-wrapper .icon-tabs .i
 .card-grid.card-grid-v1 .card-grid-item .card-grid-item-body .left .meta span:first-child {
     font-size: 1.1rem;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
 .card-grid.card-grid-v1 .card-grid-item .card-grid-item-body .left .meta span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     color: #a2a5b9
 }
@@ -63199,7 +63199,7 @@ body.is-dark .user-grid.user-grid-v3 .grid-item .icon-tabs-wrapper .icon-tabs .i
 }
 
 .card-grid.card-grid-v1 .card-grid-item .card-grid-item-footer .left .progress-stats span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600;
     color: #283252
@@ -63288,7 +63288,7 @@ body.is-dark .card-grid.card-grid-v1 .card-grid-item .card-grid-item-footer .rig
 }
 
 .card-grid.card-grid-v2 .card-grid-item .card .card-header .card-header-title .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #283252;
     font-weight: 600
@@ -63322,7 +63322,7 @@ body.is-dark .card-grid.card-grid-v1 .card-grid-item .card-grid-item-footer .rig
 }
 
 .card-grid.card-grid-v2 .card-grid-item .card .card-content .card-content-flex .card-info h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     color: #283252;
     font-weight: 600
@@ -63341,7 +63341,7 @@ body.is-dark .card-grid.card-grid-v1 .card-grid-item .card-grid-item-footer .rig
 }
 
 .card-grid.card-grid-v2 .card-grid-item .card .card-footer a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     padding: 1rem .75rem;
     -webkit-transition: all .3s;
@@ -63419,7 +63419,7 @@ body.is-dark .card-grid.card-grid-v2 .card-grid-item .card .card-footer a:hover 
 .card-grid.card-grid-v3 .card-grid-item>h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -63498,7 +63498,7 @@ body.is-dark .card-grid.card-grid-v2 .card-grid-item .card .card-footer a:hover 
 }
 
 .card-grid.card-grid-v4 .card-grid-item .card-grid-item-content h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252;
@@ -63527,14 +63527,14 @@ body.is-dark .card-grid.card-grid-v2 .card-grid-item .card .card-footer a:hover 
 }
 
 .card-grid.card-grid-v4 .card-grid-item .card-grid-item-footer .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #283252;
     font-weight: 600
 }
 
 .card-grid.card-grid-v4 .card-grid-item .card-grid-item-footer .meta span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     color: #a2a5b9
 }
@@ -63619,7 +63619,7 @@ body.is-dark .card-grid.card-grid-v2 .card-grid-item .card .card-footer a:hover 
 }
 
 .tile-grid-toolbar .list-info span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -63678,12 +63678,12 @@ body.is-dark .card-grid.card-grid-v2 .card-grid-item .card .card-footer a:hover 
 
 .tile-grid.tile-grid-v1 .tile-grid-item .tile-grid-item-inner .meta span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .tile-grid.tile-grid-v1 .tile-grid-item .tile-grid-item-inner .meta span:first-child {
     color: #283252;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1rem
 }
@@ -63733,12 +63733,12 @@ body.is-dark .card-grid.card-grid-v2 .card-grid-item .card .card-footer a:hover 
 
 .tile-grid.tile-grid-v2 .tile-grid-item .tile-grid-item-inner .meta span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .tile-grid.tile-grid-v2 .tile-grid-item .tile-grid-item-inner .meta span:first-child {
     color: #283252;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1rem
 }
@@ -63828,8 +63828,8 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 }
 
 .tile-grid.tile-grid-v3 .tile-grid-item.is-medium .tile-grid-item-inner .meta .tile-title h3 {
-    font-family: "Roboto", sans-serif;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252;
@@ -63871,14 +63871,14 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 
 .tile-grid.tile-grid-v3 .tile-grid-item.is-medium .tile-grid-item-inner .meta .tile-meta .meta-inner span:first-child {
     color: #283252;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 600
 }
 
 .tile-grid.tile-grid-v3 .tile-grid-item.is-medium .tile-grid-item-inner .meta .tile-meta .meta-inner span:nth-child(2) {
     font-size: .8rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -63924,7 +63924,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 }
 
 .tile-grid.tile-grid-v3 .tile-grid-item.is-large .tile-grid-item-inner .meta .tile-title h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 500;
     color: #283252;
@@ -64012,7 +64012,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 }
 
 .tile-grid.tile-grid-v3 .tile-grid-item.is-wide .tile-grid-item-inner .meta .tile-title h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.3rem;
     font-weight: 500;
     color: #283252;
@@ -64111,7 +64111,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 }
 
 .tile-grid.tile-grid-v3 .tile-grid-item.is-tall .tile-grid-item-inner .meta .tile-title h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 500;
     color: #283252;
@@ -64212,7 +64212,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
     }
 
     .tile-grid.tile-grid-v3 .tile-grid-item .tile-grid-item-inner .meta .tile-title h3 {
-        font-family: "Roboto", sans-serif !important;
+        font-family: "Inter", sans-serif !important;
         font-size: 1.1rem !important;
         font-weight: 500;
         color: #283252 !important;
@@ -64312,7 +64312,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
     }
 
     .tile-grid.tile-grid-v3 .tile-grid-item .tile-grid-item-inner .meta .tile-title h3 {
-        font-family: "Roboto", sans-serif !important;
+        font-family: "Inter", sans-serif !important;
         font-size: 1.1rem !important;
         font-weight: 500;
         color: #283252 !important;
@@ -64678,7 +64678,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 
 .color-card .meta span {
     display: block;
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .color-card .meta span:first-child {
@@ -64709,7 +64709,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 .helper-table .category,
 .helper-table th {
     width: 25%;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.05rem
 }
@@ -64723,7 +64723,7 @@ body.is-dark .tile-grid.tile-grid-v2 .tile-grid-item:hover {
 }
 
 .demo-table .table th {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .9rem
 }
@@ -64971,7 +64971,7 @@ body.is-dark .hljs-string {
 
 .is-kanban-wrapper .kanban-column .column-title h3 {
     margin-bottom: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -65252,7 +65252,7 @@ body.is-dark .hljs-string {
 
 .kanban-card .card-title {
     font-size: .9rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -65486,7 +65486,7 @@ body.is-dark .kanban-column .gu-transit .card-title {
 }
 
 .all-projects .section-heading {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     text-transform: uppercase;
     color: #a2a5b9;
@@ -65530,7 +65530,7 @@ body.is-dark .kanban-column .gu-transit .card-title {
 
 .all-projects .project-grid .project-grid-item h3 {
     font-size: .95rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -65577,14 +65577,14 @@ body.is-dark .all-projects .project-grid .project-grid-item h3 {
 
 .all-projects .all-projects-header .header-item .item-inner span {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.4rem;
     color: #283252
 }
 
 .all-projects .all-projects-header .header-item .item-inner p {
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .all-projects .projects-card-grid .grid-item {
@@ -65620,13 +65620,13 @@ body.is-dark .all-projects .project-grid .project-grid-item h3 {
 
 .all-projects .projects-card-grid .grid-item .top-section .head h3 {
     font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600
 }
 
 .all-projects .projects-card-grid .grid-item .top-section .body p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -65641,7 +65641,7 @@ body.is-dark .all-projects .project-grid .project-grid-item h3 {
 }
 
 .all-projects .projects-card-grid .grid-item .bottom-section .foot-block .heading {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .75rem;
     color: #656986
 }
@@ -65747,7 +65747,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 .all-projects .illustration-header .header-stats .stats-inner .stat-item span {
     position: relative;
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 2rem;
     color: #283252;
@@ -65783,7 +65783,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 }
 
 .all-projects .illustration-header .header-stats .stats-inner .stat-item p {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -65793,7 +65793,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 }
 
 .all-projects .recent-projects .recent-heading {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -65822,7 +65822,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 }
 
 .all-projects .recent-projects .project-box h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252;
@@ -65843,7 +65843,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 }
 
 .all-projects .project-minimal-grid .grid-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: #283252;
@@ -65864,7 +65864,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 }
 
 .all-projects .project-minimal-grid .grid-header .filter>span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 600;
     color: #283252;
@@ -65917,7 +65917,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .all-projects .project-minimal-grid .grid-body .grid-item .item-head .type {
@@ -65930,7 +65930,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 .all-projects .project-minimal-grid .grid-body .grid-item .item-head .status {
     text-transform: uppercase;
     font-size: .75rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600
 }
 
@@ -65955,7 +65955,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 }
 
 .all-projects .project-minimal-grid .grid-body .grid-item .item-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
     color: #283252;
@@ -65983,7 +65983,7 @@ body.is-dark .all-projects .projects-card-grid .grid-item .bottom-section .foot-
 }
 
 .all-projects .project-minimal-grid .grid-body .grid-item .item-description .item-people .label {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-weight: 400
 }
@@ -66181,7 +66181,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .project-details-card .card-head .title-wrap h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: #283252;
@@ -66228,7 +66228,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .project-details-card .project-features .project-feature h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 600;
     color: #363636
@@ -66246,7 +66246,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .project-details-card .project-files h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .8rem;
     text-transform: uppercase;
@@ -66293,7 +66293,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .project-details-card .project-files .file-box .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 600;
     color: #283252
@@ -66322,7 +66322,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .side-card h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .8rem;
     text-transform: uppercase;
@@ -66363,7 +66363,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .task-grid .grid-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: #283252;
@@ -66383,7 +66383,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .task-grid .grid-header .filter>span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem;
     font-weight: 600;
     color: #283252;
@@ -66425,7 +66425,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 
 .project-details .project-details-inner .task-grid .task-card .title-wrap h3 {
     font-size: 1.1rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     line-height: 1.2;
@@ -66433,7 +66433,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 }
 
 .project-details .project-details-inner .task-grid .task-card .title-wrap span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -66471,7 +66471,7 @@ body.is-dark .all-projects .project-minimal-grid .grid-body .grid-item .h-avatar
 .project-details .project-details-inner .task-grid .task-card .content-wrap .left .attachments span {
     margin-left: 2px;
     font-size: .9rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -68326,7 +68326,7 @@ body.is-dark .collapsed-messaging .collapsed-conversations li .user-container .i
     background-color: transparent;
     border: none;
     color: #273346;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 15px;
     padding-left: 80px;
@@ -68416,7 +68416,7 @@ body.is-dark .collapsed-messaging .collapsed-conversations li .user-container .i
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     padding: 8px 12px;
     color: #a2a5b9
@@ -68517,11 +68517,11 @@ body.is-dark .chat-app-wrapper .chat-app-header .user-settings .user-dropdown .d
 
 .chat-app-wrapper .wrapper .conversation-area .conversation .conversation-detail {
     overflow: hidden;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .chat-app-wrapper .wrapper .conversation-area .conversation .conversation-detail .conversation-username {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 500;
     font-size: .95rem
@@ -68702,7 +68702,7 @@ body.is-dark .chat-app-wrapper .wrapper .conversation-area .conversation .conver
 
 .chat-app-wrapper .wrapper .chat-area .chat-area-header .chat-area-title {
     font-size: 1.1rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 700
 }
@@ -68734,7 +68734,7 @@ body.is-dark .chat-app-wrapper .wrapper .conversation-area .conversation .conver
     left: calc(100% + 12px);
     bottom: 0;
     font-size: 12px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #c0c7d2;
     white-space: nowrap
@@ -68767,7 +68767,7 @@ body.is-dark .chat-app-wrapper .wrapper .conversation-area .conversation .conver
     padding: 15px;
     border-radius: 20px 20px 20px 0;
     line-height: 1.5;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 500
 }
@@ -69125,14 +69125,14 @@ body.is-dark .chat-app-wrapper .wrapper .chat-area .chat-area-footer input:focus
 
 .chat-app-wrapper .wrapper .detail-area .chat-side-content .user-name {
     margin-top: 10px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: #283252
 }
 
 .chat-app-wrapper .wrapper .detail-area .chat-side-content .user-job-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -69396,7 +69396,7 @@ body.is-dark .chat-app-wrapper .wrapper .detail-area .chat-side-content .detail-
 }
 
 .modern-login .is-form .form-text h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-size: 2rem;
     color: #671cc9
@@ -69601,7 +69601,7 @@ body.is-dark .chat-app-wrapper .wrapper .detail-area .chat-side-content .detail-
 
 .modern-login .is-form .login-wrapper .button-wrap.has-help>span {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .modern-login .is-form .login-wrapper .button-wrap.has-help>span a {
@@ -69986,12 +69986,12 @@ body.is-dark .remember-toggle .toggler>span {
 }
 
 .signup-wrapper .signup-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
 .signup-wrapper .signup-subtitle {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #999;
     font-size: 1rem
 }
@@ -70209,7 +70209,7 @@ body.is-dark .remember-toggle .toggler>span {
 
 .signup-wrapper .hero .button-wrap.has-help>span {
     margin-left: 12px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .signup-wrapper .hero .button-wrap.has-help>span a {
@@ -70338,12 +70338,12 @@ body.is-dark .remember-toggle .toggler>span {
 }
 
 .signup-profile-wrapper .title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.4rem
 }
 
 .signup-profile-wrapper .subtitle {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem
 }
 
@@ -70728,7 +70728,7 @@ body.is-dark .avatar-carousel .slick-custom::after {
 
 .auth-wrapper-inner .hero .hero-body .auth-content h2 {
     font-size: 2rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1
 }
 
@@ -70740,7 +70740,7 @@ body.is-dark .avatar-carousel .slick-custom::after {
 
 .auth-wrapper-inner .hero .hero-body .auth-content a {
     font-size: .9rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #671cc9
 }
@@ -70756,7 +70756,7 @@ body.is-dark .avatar-carousel .slick-custom::after {
 }
 
 .auth-wrapper-inner .forgot-link a {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9;
     -webkit-transition: color .3s;
@@ -70778,7 +70778,7 @@ body.is-dark .avatar-carousel .slick-custom::after {
 }
 
 .auth-wrapper-inner .setting-item .setting-meta {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     margin-left: 8px
 }
@@ -70901,7 +70901,7 @@ body.is-dark .auth-wrapper-inner .forgot-link a:hover {
 
 .auth-wrapper-inner .single-form-wrap .inner-wrap .auth-head h2 {
     font-size: 2rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1
 }
 
@@ -70913,7 +70913,7 @@ body.is-dark .auth-wrapper-inner .forgot-link a:hover {
 
 .auth-wrapper-inner .single-form-wrap .inner-wrap .auth-head a {
     font-size: .9rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #671cc9
 }
@@ -71057,7 +71057,7 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
     -ms-flex-align: center;
     align-items: center;
     color: #a2a5b9;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .profile-wrapper .profile-header .profile-stats .profile-stat span {
@@ -71158,7 +71158,7 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-title h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .8rem;
     text-transform: uppercase;
@@ -71226,12 +71226,12 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .experience-wrapper .experience-item .meta>span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .experience-wrapper .experience-item .meta>span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     font-size: .85rem
@@ -71316,11 +71316,11 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .languages-wrapper .languages-item .meta>span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .languages-wrapper .languages-item .meta>span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     font-size: .9rem
@@ -71406,13 +71406,13 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .skills-wrapper .skills-item .icon-wrap .count span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: .75rem
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .skills-wrapper .skills-item .skill-info {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-left: 12px;
     line-height: 1.3
 }
@@ -71422,7 +71422,7 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .skills-wrapper .skills-item .skill-info span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     font-size: .9rem
@@ -71473,7 +71473,7 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .recommendations-wrapper .recommendations-item h3 {
     font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     margin-bottom: 8px
@@ -71490,7 +71490,7 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .recommendations-wrapper .recommendations-item .meta span:first-child {
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-size: .95rem;
     color: #671cc9
@@ -71502,7 +71502,7 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .network-notifications h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     margin-bottom: 6px
 }
@@ -71566,11 +71566,11 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .tools-wrapper .tools-item .meta>span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .tools-wrapper .tools-item .meta>span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     font-size: .9rem
@@ -71609,11 +71609,11 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .people-wrapper .people-item .meta>span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .people-wrapper .people-item .meta>span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     font-size: .9rem
@@ -71634,7 +71634,7 @@ body.is-dark .auth-wrapper-inner.is-single .single-form-wrap .inner-wrap .form-c
 
 .profile-wrapper .profile-body .profile-card .profile-card-section .section-content .more-button .button {
     min-width: 180px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-transform: uppercase;
     font-size: .8rem;
     font-weight: 500;
@@ -71778,7 +71778,7 @@ body.is-dark .profile-wrapper .profile-body .profile-card .profile-card-section 
 }
 
 .account-wrapper .account-box.is-navigation .account-menu .account-menu-item span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #283252
 }
@@ -71829,7 +71829,7 @@ body.is-dark .profile-wrapper .profile-body .profile-card .profile-card-section 
 }
 
 .account-wrapper .account-box.is-form .form-head .left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     line-height: 1.3
 }
@@ -71857,7 +71857,7 @@ body.is-dark .profile-wrapper .profile-body .profile-card .profile-card-section 
 }
 
 .account-wrapper .account-box.is-form .form-body .fieldset .fieldset-heading h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1rem
 }
@@ -71944,12 +71944,12 @@ body.is-dark .profile-wrapper .profile-body .profile-card .profile-card-section 
 }
 
 .account-wrapper .account-box.is-form .form-body .fieldset .setting-list .setting-item .meta>span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block
 }
 
 .account-wrapper .account-box.is-form .form-body .fieldset .setting-list .setting-item .meta>span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     font-size: .9rem
@@ -72142,13 +72142,13 @@ body.is-dark .account-wrapper .account-box.is-form .form-body .fieldset .setting
     display: block;
     text-transform: uppercase;
     color: #a2a5b9;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .7rem;
     letter-spacing: 1px
 }
 
 .profile-wrapper .profile-body .settings-section .settings-box h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     font-weight: 400;
     color: #a2a5b9;
@@ -72267,7 +72267,7 @@ body.is-dark .profile-wrapper .profile-body .settings-section .settings-box .ico
 }
 
 .standard-onboarding .title-wrap h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.4rem;
     color: #283252
@@ -72275,7 +72275,7 @@ body.is-dark .profile-wrapper .profile-body .settings-section .settings-box .ico
 
 .standard-onboarding .title-wrap p {
     text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem
 }
 
@@ -72305,7 +72305,7 @@ body.is-dark .profile-wrapper .profile-body .settings-section .settings-box .ico
 }
 
 .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboarding-card h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252;
@@ -72313,7 +72313,7 @@ body.is-dark .profile-wrapper .profile-body .settings-section .settings-box .ico
 }
 
 .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboarding-card p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem
 }
 
@@ -72343,7 +72343,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 }
 
 .onboarding-wrapper .title-wrap h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.4rem;
     color: #283252
@@ -72351,7 +72351,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 
 .onboarding-wrapper .title-wrap p {
     text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .85rem
 }
 
@@ -72386,7 +72386,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 }
 
 .onboarding-wrapper.onboarding-v1 .onboarding-wrap .onboarding-wrap-inner .onboarding-card .onboarding-content h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252;
@@ -72394,7 +72394,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 }
 
 .onboarding-wrapper.onboarding-v1 .onboarding-wrap .onboarding-wrap-inner .onboarding-card .onboarding-content p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem
 }
 
@@ -72444,7 +72444,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 
 .onboarding-wrapper.onboarding-v2 .onboarding-wrap .onboarding-wrap-inner .onboarding-card .onboarding-content h3,
 .onboarding-wrapper.onboarding-v4 .onboarding-wrap .onboarding-wrap-inner .onboarding-card .onboarding-content h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252;
@@ -72453,7 +72453,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 
 .onboarding-wrapper.onboarding-v2 .onboarding-wrap .onboarding-wrap-inner .onboarding-card .onboarding-content p,
 .onboarding-wrapper.onboarding-v4 .onboarding-wrap .onboarding-wrap-inner .onboarding-card .onboarding-content p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem
 }
 
@@ -72519,7 +72519,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 }
 
 .search-results-wrapper .search-results-header .search-info span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -72537,7 +72537,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 }
 
 .search-results-wrapper .search-results-body .filter-box h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     margin-bottom: 10px
@@ -72607,7 +72607,7 @@ body.is-dark .standard-onboarding .onboarding-wrap .onboarding-wrap-inner .onboa
 }
 
 .search-results-wrapper .search-results-body .search-results-group .group-header h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -72702,7 +72702,7 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 }
 
 .saas-billing-wrapper .plans-wrapper .left .inner-wrap>h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #283252;
@@ -72790,11 +72790,11 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 
 .saas-billing-wrapper .plans-wrapper .left .plans .plan .plan-inner .meta span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .saas-billing-wrapper .plans-wrapper .left .plans .plan .plan-inner .meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 600;
     color: #283252
@@ -72838,7 +72838,7 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 }
 
 .saas-billing-wrapper .plans-wrapper .right .plan-details>h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 500;
     color: #283252;
@@ -72874,7 +72874,7 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 
 .saas-billing-wrapper .plans-wrapper .right .plan-details .plan-details-inner .plan-description .right .plan-pricing {
     padding: 5px 0 10px 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.3
 }
 
@@ -72883,7 +72883,7 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
     font-size: .9rem;
     font-weight: 500;
     color: #671cc9;
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .saas-billing-wrapper .plans-wrapper .right .plan-details .plan-details-inner .plan-description .right .plan-pricing span:first-child {
@@ -72892,7 +72892,7 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 
 .saas-billing-wrapper .plans-wrapper .right .plan-details .plan-details-inner .plan-description .right .plan-pricing span b {
     font-size: 2rem;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .saas-billing-wrapper .plans-wrapper .right .plan-details .plan-details-inner .plan-description .right .plan-moto p {
@@ -72900,7 +72900,7 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 }
 
 .saas-billing-wrapper .plans-wrapper .right .plan-details .plan-details-inner .plan-summary .plan-features ul {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #283252
 }
@@ -72936,19 +72936,19 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 }
 
 .saas-billing-wrapper .billing-options-wrapper .left .option-block .block-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
 }
 
 .saas-billing-wrapper .billing-options-wrapper .left .option-block .block-header span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
 .saas-billing-wrapper .billing-options-wrapper .left .option-block .block-header a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -73027,14 +73027,14 @@ body.is-dark .search-results-wrapper .search-results-body .search-results-group 
 }
 
 .saas-billing-wrapper .billing-options-wrapper .right .payment-form .form-header h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
 }
 
 .saas-billing-wrapper .billing-options-wrapper .right .payment-form .form-header span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     cursor: pointer
 }
@@ -73520,7 +73520,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 .action-page-wrapper.action-page-v1 .wrapper-inner .action-box .box-content,
 .action-page-wrapper.action-page-v2 .wrapper-inner .action-box .box-content {
     text-align: center;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .action-page-wrapper.action-page-v1 .wrapper-inner .action-box .box-content .h-avatar,
@@ -73531,7 +73531,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 
 .action-page-wrapper.action-page-v1 .wrapper-inner .action-box .box-content h3,
 .action-page-wrapper.action-page-v2 .wrapper-inner .action-box .box-content h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     max-width: 320px;
     margin: 0 auto 16px auto
@@ -73556,7 +73556,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 
 .action-page-wrapper.action-page-v1 .wrapper-inner .action-box .box-content .sender-message h4,
 .action-page-wrapper.action-page-v2 .wrapper-inner .action-box .box-content .sender-message h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .7rem;
     font-weight: 500;
     color: #283252;
@@ -73634,12 +73634,12 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 }
 
 .action-page-wrapper.action-page-v2 .wrapper-outer .side-wrapper .side-inner .side-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 16px
 }
 
 .action-page-wrapper.action-page-v2 .wrapper-outer .side-wrapper .side-inner .side-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -73771,7 +73771,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 
 .form-layout.is-split .form-outer .form-body .form-section .left h3,
 .form-layout.is-split .form-outer .form-body .form-section .right h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .95rem;
     color: #283252;
@@ -73788,7 +73788,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
     top: 17px;
     right: -10px;
     text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #283252;
     background: #fff;
@@ -73841,7 +73841,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
     background: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 8px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .9rem;
     -webkit-transition: all .3s;
@@ -73881,7 +73881,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 }
 
 .form-layout.is-separate .form-outer .form-body .form-section .form-section-inner>h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: #283252;
@@ -73937,7 +73937,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
     border: 1px solid #e5e5e5;
     text-align: center;
     border-radius: 4px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .9rem;
     -webkit-transition: all .3s;
@@ -73946,7 +73946,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 }
 
 .form-layout.is-separate .form-outer .form-body .form-section .form-section-inner .radio-boxes .radio-box .radio-box-inner .fee {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     color: #283252;
     font-size: 2.4rem;
@@ -73961,7 +73961,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 }
 
 .form-layout.is-separate .form-outer .form-body .form-section .form-section-inner .radio-boxes .radio-box .radio-box-inner p {
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .form-layout.is-separate .form-outer .form-body .form-section .form-section-inner .control>p {
@@ -73991,7 +73991,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
     min-height: 60px;
     font-size: 1.05rem;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .form-layout.is-stacked .form-outer .form-body {
@@ -74023,7 +74023,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 }
 
 .form-layout.is-stacked .form-outer .form-body .form-section .form-section-header .left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -74143,7 +74143,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 .form-layout.is-stacked .form-outer .form-body .form-section .add-link {
     display: inline-block;
     padding: 4px 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: .9rem;
     color: #671cc9
@@ -74179,7 +74179,7 @@ body.is-dark .saas-billing-wrapper .billing-options-wrapper .right .payment-form
 }
 
 .form-layout .form-outer .form-header .left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     line-height: 1.3
@@ -74448,7 +74448,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-sections .form-section .form-section-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     margin-bottom: 1rem
@@ -74505,7 +74505,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-sections .form-section .flex-label h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #283252
 }
@@ -74541,7 +74541,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-sections .form-section .switch-segment>span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem
 }
 
@@ -74597,7 +74597,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-sections .form-section .input-button span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-left: .75rem
 }
 
@@ -74689,7 +74689,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 .stepper-form .form-sections .form-section .options .option .option-inner h4 {
     color: #283252;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .stepper-form .form-sections .form-section .options .option .option-inner p {
@@ -74717,7 +74717,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-sections .form-section .validation-box .box-content h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: .75rem
@@ -74781,7 +74781,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 
 .stepper-form .form-sections .form-section .form-section-output .output>span {
     font-weight: 500;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -74854,7 +74854,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-stepper .form-help h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem
@@ -74895,7 +74895,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-stepper .form-help .list-wrap li span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-weight: 300
 }
@@ -74909,7 +74909,7 @@ body.is-dark .form-layout .form-outer .form-body .field .control .textarea:focus
 }
 
 .stepper-form .form-stepper .step-number {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: .75rem !important
 }
@@ -75166,7 +75166,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 .confirm-account-wrapper .wrapper-inner .action-box .box-content,
 .promotion-page-wrapper .wrapper-inner .action-box .box-content {
     text-align: center;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .confirm-account-wrapper .wrapper-inner .action-box .box-content img,
@@ -75185,7 +75185,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 .confirm-account-wrapper .wrapper-inner .action-box .box-content h3,
 .promotion-page-wrapper .wrapper-inner .action-box .box-content h3 {
     font-size: 1.1rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     max-width: 320px;
     margin: 0 auto 8px auto
@@ -75244,7 +75244,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 
 .promotion-page-wrapper .wrapper-outer .wrapper-inner .action-box .price span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .promotion-page-wrapper .wrapper-outer .wrapper-inner .action-box .price span:first-child {
@@ -75276,12 +75276,12 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 }
 
 .promotion-page-wrapper .wrapper-outer .side-wrapper .side-inner .side-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 16px
 }
 
 .promotion-page-wrapper .wrapper-outer .side-wrapper .side-inner .side-title h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -75375,7 +75375,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 
 .status-page-wrapper .status-block .status-header .title {
     display: inline-block;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -75390,13 +75390,13 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     padding: 16px 40px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .status-page-wrapper .status-block .status-uptime .title {
     display: inline-block;
     font-size: 14px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 0;
     font-weight: 500;
     color: #a2a5b9
@@ -75467,7 +75467,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 }
 
 .status-page-wrapper .status-block .status-list .label {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 600;
     margin-bottom: 0;
@@ -75476,7 +75476,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 
 .status-page-wrapper .status-block .status-list p {
     font-size: .9rem;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .status-page-wrapper .status-block .status-list .amount {
@@ -75503,7 +75503,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 }
 
 .status-page-wrapper .status-block .status-list .amount span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     font-size: .85rem
@@ -75527,7 +75527,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 
 .status-page-wrapper .tweets-header .username {
     margin-left: 10px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 600;
     color: #283252
@@ -75563,7 +75563,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 }
 
 .status-page-wrapper .status-tweets .updates .update .update-content .tweet {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -75575,7 +75575,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 }
 
 .status-page-wrapper .status-footer a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #8b8ea7;
     padding: 0 10px;
     -webkit-transition: color .3s;
@@ -75589,7 +75589,7 @@ body.is-dark .stepper-form .form-stepper .steps .steps-segment::after {
 
 .status-page-wrapper .status-footer .copyright {
     margin-left: auto;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -75653,7 +75653,7 @@ body.is-dark .status-page-wrapper .status-footer a:hover {
 }
 
 .invoice-wrapper .invoice-header .left h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: #283252
@@ -75715,11 +75715,11 @@ body.is-dark .status-page-wrapper .status-footer a:hover {
 
 .invoice-wrapper .invoice-body .invoice-card .invoice-section.is-flex .meta {
     margin-left: 16px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .invoice-wrapper .invoice-body .invoice-card .invoice-section.is-flex .meta h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1
@@ -75749,7 +75749,7 @@ body.is-dark .status-page-wrapper .status-footer a:hover {
 }
 
 .invoice-wrapper .invoice-body .invoice-card .invoice-section.is-flex .end h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1
@@ -75782,14 +75782,14 @@ body.is-dark .status-page-wrapper .status-footer a:hover {
 }
 
 .invoice-wrapper .invoice-body .invoice-card .invoice-section .flex-table.sub-table .flex-table-item .table-label {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-transform: uppercase;
     font-size: .8rem;
     color: #a2a5b9
 }
 
 .invoice-wrapper .invoice-body .invoice-card .invoice-section .flex-table.sub-table .flex-table-item .table-total {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 500
 }
@@ -75855,7 +75855,7 @@ body.is-dark .invoice-wrapper .invoice-section.is-flex .end h3 {
 }
 
 .error-container .error-wrapper .error-inner .bg-number {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     position: absolute;
     top: -58px;
     left: -50px;
@@ -75883,14 +75883,14 @@ body.is-dark .invoice-wrapper .invoice-section.is-flex .end h3 {
 
 .error-container .error-wrapper .error-inner h3 {
     font-size: 1.5rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     margin-top: 10px
 }
 
 .error-container .error-wrapper .error-inner p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     margin-bottom: 16px
 }
@@ -76100,7 +76100,7 @@ body.is-dark .error-container .error-wrapper .error-inner .bg-number {
 }
 
 .widget-toolbar .right .tag {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .widget-toolbar .right .right-icon {
@@ -76143,7 +76143,7 @@ body.is-dark .error-container .error-wrapper .error-inner .bg-number {
 }
 
 .widget-toolbar h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #283252;
     font-weight: 600
@@ -76279,7 +76279,7 @@ body.is-dark .icon-toolbar-widget .icon-toolbar .toolbar-icon .inner-icon.is-act
 
 .text-widget .widget-content .hashtags {
     padding-top: 8px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .text-widget .widget-content .hashtags a {
@@ -76320,7 +76320,7 @@ body.is-dark .text-widget .hashtags a {
 
 .calendar-widget .calendar-widget-inner .calendar-square .date span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .calendar-widget .calendar-widget-inner .calendar-square .date span:first-child {
@@ -76378,7 +76378,7 @@ body.is-dark .image-widget .progress-wrap .progress {
 }
 
 .list-widget ul li a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -76399,7 +76399,7 @@ body.is-dark .list-widget ul li a:hover {
 .picker-widget .calendar {
     color: #283252;
     font-size: 12px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     width: 100%;
     margin-bottom: 5px
 }
@@ -76465,7 +76465,7 @@ body.is-dark .picker-widget .current-day {
 
 .stats-widget .stat-number span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .stats-widget .stat-number span:first-child {
@@ -76480,7 +76480,7 @@ body.is-dark .picker-widget .current-day {
 
 .stats-widget .stat-number span:nth-child(2) {
     font-size: .75rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     text-transform: uppercase;
     color: #a2a5b9
 }
@@ -76550,7 +76550,7 @@ body.is-dark .stats-widget .stat-number span:first-child {
 }
 
 .search-widget .field .topics a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: .95rem
 }
@@ -76628,7 +76628,7 @@ body.is-dark .search-widget .field .topics a:hover {
 }
 
 .icon-list-widget .icon-list .icon-list-item .item-meta span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -76675,7 +76675,7 @@ body.is-dark .icon-list-widget .icon-list .icon-list-item .icon-wrap {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .video-widget .widget-content .widget-meta>svg {
@@ -76688,7 +76688,7 @@ body.is-dark .icon-list-widget .icon-list .icon-list-item .icon-wrap {
 
 .video-widget .widget-content .widget-meta h4 {
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     line-height: 1.3;
     color: #283252
@@ -76725,7 +76725,7 @@ body.is-dark .video-widget .widget-meta h4 {
 }
 
 .inbox-widget .sender-block h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color-interpolation-filters: #283252;
     font-size: .95rem
@@ -76747,7 +76747,7 @@ body.is-dark .video-widget .widget-meta h4 {
 }
 
 .inbox-widget .sender-block .sender-block-inner .meta span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .8rem
 }
@@ -76756,7 +76756,7 @@ body.is-dark .video-widget .widget-meta h4 {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #e5e5e5;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .inbox-widget .sender-block .exerpt h5 {
@@ -76767,7 +76767,7 @@ body.is-dark .video-widget .widget-meta h4 {
     -ms-flex-align: center;
     align-items: center;
     font-size: .8rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #671cc9;
     margin-bottom: 6px
@@ -76808,7 +76808,7 @@ body.is-dark .inbox-widget .exerpt p {
 .illustration-widget.illustration-widget-v1 {
     padding: 40px 30px;
     text-align: center;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .illustration-widget.illustration-widget-v1 .img-container {
@@ -76842,7 +76842,7 @@ body.is-dark .inbox-widget .exerpt p {
 .illustration-widget.illustration-widget-v1 h3 {
     font-weight: 600;
     font-size: .95rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     margin-bottom: 4px
 }
@@ -76863,7 +76863,7 @@ body.is-dark .inbox-widget .exerpt p {
 .illustration-widget.illustration-widget-v2 h3 {
     font-weight: 600;
     font-size: .95rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -76883,7 +76883,7 @@ body.is-dark .inbox-widget .exerpt p {
 .illustration-widget.illustration-widget-v3 h3 {
     font-weight: 600;
     font-size: .95rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252
 }
 
@@ -76923,7 +76923,7 @@ body.is-dark .illustration-widget.illustration-widget-v3 h3 {
 }
 
 .creative-list-widget .creative-list .creative-list-item .meta {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #283252;
     font-weight: 500;
@@ -77063,7 +77063,7 @@ body.is-dark .social-buttons-widget .social-buttons .social-button .inner-button
 .call-widget {
     padding: 40px 30px;
     text-align: center;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .call-widget .img-container {
@@ -77089,7 +77089,7 @@ body.is-dark .social-buttons-widget .social-buttons .social-button .inner-button
 
 .call-widget h3 {
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     color: #283252;
     margin-bottom: 4px
@@ -77234,7 +77234,7 @@ body.is-dark .call-widget .actions .action:hover {
 }
 
 .avatar-list-widget .avatar-list .avatar-list-item .meta {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     color: #283252;
     font-weight: 600;
@@ -77294,11 +77294,11 @@ body.is-dark .avatar-list-widget .avatar-list .avatar-list-item .meta {
 
 .contact-widget .widget-content .right {
     width: 60%;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .contact-widget .widget-content .right>h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     margin-bottom: 4px
@@ -77394,7 +77394,7 @@ body.is-dark .contact-widget .widget-content .right .contact-info span span {
 }
 
 .followers-widget .channels .channel .channel-stats span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: block
 }
 
@@ -77428,7 +77428,7 @@ body.is-dark .followers-widget .channels .channel .channel-icon {
 
 .cart-widget .cart-items .cart-item .meta span {
     display: block;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .cart-widget .cart-items .cart-item .meta span:first-child {
@@ -77473,7 +77473,7 @@ body.is-dark .cart-widget .cart-items .cart-item .meta span:nth-child(2) {
     min-width: 140px;
     height: 32px;
     background: #eef0f7;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     border-radius: 8px
 }
 
@@ -77588,7 +77588,7 @@ body.is-dark .list-widget.tabbed-widget .widget-head .tabbed-controls .tabbed-na
     content: attr(data-content);
     position: absolute;
     left: -45px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 500
 }
@@ -77755,7 +77755,7 @@ body.is-dark .list-widget.list-widget-v1 .go-icon {
 }
 
 .list-widget.list-widget-v3 .icon-timeline .timeline-item .timeline-content p {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 500;
     color: #283252
@@ -77792,7 +77792,7 @@ body.is-dark .list-widget.list-widget-v3 .icon-timeline .timeline-item .timeline
 /*! _widgets-stats.scss | Huro | Css ninja 2020-2021 */
 .stat-widget {
     padding: 30px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .stat-widget .widget-head {
@@ -77810,7 +77810,7 @@ body.is-dark .list-widget.list-widget-v3 .icon-timeline .timeline-item .timeline
 }
 
 .stat-widget .widget-head h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -77842,7 +77842,7 @@ body.is-dark .list-widget.list-widget-v3 .icon-timeline .timeline-item .timeline
 .stat-widget.area-stats-widget .area-stats .line-stat,
 .stat-widget.area-stats-widget .area-stats .area-stat {
     margin-right: 30px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .stat-widget.line-stats-widget .line-stats .line-stat span,
@@ -77913,11 +77913,11 @@ body.is-dark .list-widget.list-widget-v3 .icon-timeline .timeline-item .timeline
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .stat-widget.flex-stat-widget .chart-media .meta h4 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -77961,7 +77961,7 @@ body.is-dark .list-widget.list-widget-v3 .icon-timeline .timeline-item .timeline
 .stat-widget.grouped-stat-widget .chart-group .group span {
     display: block;
     margin-top: -25px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #283252;
     font-weight: 600;
     font-size: 1.2rem
@@ -78031,7 +78031,7 @@ body.is-dark .list-widget.list-widget-v3 .icon-timeline .timeline-item .timeline
 }
 
 .stat-widget.followers-stat-widget-v1 .follow-block .follow-count span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.15rem;
     font-weight: 600;
     color: #283252
@@ -78113,7 +78113,7 @@ body.is-dark .stat-widget.followers-stat-widget-v1 .go-icon {
 }
 
 .stat-widget.table-widget-v1 .table tbody td .double-line span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #283252
@@ -78176,13 +78176,13 @@ body.is-dark .stat-widget.followers-stat-widget-v1 .go-icon {
     border-left: 1px solid #bfbfbf;
     padding-bottom: 6px;
     padding-top: 6px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .wizard-navigation .navbar-item.is-wizard-title .title-wrap {
     position: relative;
     display: block;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600
 }
@@ -78225,7 +78225,7 @@ body.is-dark .stat-widget.followers-stat-widget-v1 .go-icon {
 }
 
 .wizard-navigation .wizard-dropdown .dropdown-menu .dropdown-content .dropdown-item {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .wizard-navigation .is-dark-mode {
@@ -78320,14 +78320,14 @@ body.is-dark .stat-widget.followers-stat-widget-v1 .go-icon {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     padding: 8px 12px;
     color: #a2a5b9
 }
 
 .wizard-navigation .user-dropdown .dropdown-menu .dropdown-item p {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: .95rem;
     color: #283252
@@ -78475,7 +78475,7 @@ body.is-dark .wizard-buttons .button.is-light:hover {
 }
 
 .wizard-v1-wrapper .inner-wrapper .step-title h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.3rem;
     font-weight: 600;
     color: #283252;
@@ -78483,7 +78483,7 @@ body.is-dark .wizard-buttons .button.is-light:hover {
 }
 
 .wizard-v1-wrapper .inner-wrapper .step-title p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem
 }
 
@@ -78521,7 +78521,7 @@ body.is-dark .wizard-buttons .button.is-light:hover {
 }
 
 .wizard-v1-wrapper .step-content .wizard-types .wizard-card h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     color: #283252;
@@ -78531,7 +78531,7 @@ body.is-dark .wizard-buttons .button.is-light:hover {
 
 .wizard-v1-wrapper .step-content .wizard-types .wizard-card p {
     font-size: 1.1rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     text-align: center;
     max-width: 240px;
@@ -78556,7 +78556,7 @@ body.is-dark .wizard-buttons .button.is-light:hover {
     text-transform: uppercase;
     font-size: .8rem;
     font-weight: 500;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     opacity: 0;
     pointer-events: none;
@@ -78614,7 +78614,7 @@ body.is-dark .wizard-v1-wrapper .step-content .wizard-types .wizard-card:hover {
 }
 
 .wizard-v1-wrapper .step-content .project-info .project-info-head .project-info .project-name .field .control .input {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     text-align: center;
     font-size: 1.2rem;
     height: 50px;
@@ -78641,7 +78641,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-info .project-info-head .
 }
 
 .wizard-v1-wrapper .step-content .project-dates>h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     text-transform: uppercase;
     text-align: center;
@@ -78713,7 +78713,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-info .project-info-head .
     -webkit-box-shadow: none;
     box-shadow: none;
     padding-left: 4px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .wizard-v1-wrapper .step-content .project-budget {
@@ -78726,7 +78726,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-info .project-info-head .
 }
 
 .wizard-v1-wrapper .step-content .project-budget>h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     text-transform: uppercase;
     text-align: center;
@@ -78770,7 +78770,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-info .project-info-head .
     min-width: 50px;
     border: 1px solid #e5e5e5;
     border-radius: 12px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #c5c7d3;
     margin: 0 8px;
@@ -78800,7 +78800,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-info .project-info-head .
 }
 
 .wizard-v1-wrapper .step-content .project-customer>h4 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     text-transform: uppercase;
     text-align: center;
@@ -79059,7 +79059,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-budget .project-budget-in
 }
 
 .wizard-v1-wrapper .step-content .uploader .uploader-container .upload-wrapper .upload-box .uploader-label h3 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -79136,7 +79136,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-budget .project-budget-in
 }
 
 .wizard-v1-wrapper .step-content .uploader .template-list .template-list-item .preview-box .list-item-meta p {
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .wizard-v1-wrapper .step-content .uploader .template-list .template-list-item .preview-box .list-item-meta p:first-child {
@@ -79294,7 +79294,7 @@ body.is-dark .wizard-v1-wrapper .step-content .uploader .template-list .template
 }
 
 .wizard-v1-wrapper .step-content .project-team-wrapper .project-team-body .members-list .empty-wrap span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -79329,7 +79329,7 @@ body.is-dark .wizard-v1-wrapper .step-content .uploader .template-list .template
 
 .wizard-v1-wrapper .step-content .project-team-wrapper .project-team-body .members-list .invited-member .meta>span {
     display: block;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .8rem;
     text-transform: uppercase;
     color: #a2a5b9;
@@ -79337,7 +79337,7 @@ body.is-dark .wizard-v1-wrapper .step-content .uploader .template-list .template
 }
 
 .wizard-v1-wrapper .step-content .project-team-wrapper .project-team-body .members-list .invited-member .meta>p {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 0;
     font-weight: 500;
     color: #283252
@@ -79662,7 +79662,7 @@ body.is-dark .wizard-v1-wrapper .step-content .tools-wrapper .tool-card .tool-ca
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -79705,7 +79705,7 @@ body.is-dark .wizard-v1-wrapper .step-content .tools-wrapper .tool-card .tool-ca
 .wizard-v1-wrapper .step-content .project-preview-wrapper .project-preview-body .edit-box h4 {
     text-transform: uppercase;
     font-size: .8rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252;
     margin-bottom: 12px
@@ -79743,7 +79743,7 @@ body.is-dark .wizard-v1-wrapper .step-content .tools-wrapper .tool-card .tool-ca
 .wizard-v1-wrapper .step-content .project-preview-wrapper .project-preview-body .edit-box .attachments-count .inner-block .budget,
 .wizard-v1-wrapper .step-content .project-preview-wrapper .project-preview-body .edit-box .attachments-count .inner-block .attachments {
     color: #671cc9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 2rem;
     font-weight: 600;
     line-height: 1.4
@@ -79753,7 +79753,7 @@ body.is-dark .wizard-v1-wrapper .step-content .tools-wrapper .tool-card .tool-ca
 .wizard-v1-wrapper .step-content .project-preview-wrapper .project-preview-body .edit-box .estimated-due-date .inner-block .date,
 .wizard-v1-wrapper .step-content .project-preview-wrapper .project-preview-body .edit-box .attachments-count .inner-block .date {
     color: #671cc9;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.3rem;
     font-weight: 500;
     line-height: 1.4
@@ -79952,7 +79952,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     color: #283252;
@@ -80002,7 +80002,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
     border-color: #671cc9;
     color: #fcfcfc;
     font-weight: 500;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .inbox-wrapper .wrapper-inner .inbox-sidebar .sidebar-inner .inner-menu .compose-button:hover {
@@ -80016,7 +80016,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 }
 
 .inbox-wrapper .wrapper-inner .inbox-sidebar .sidebar-inner .inner-menu .inbox-menu ul li a {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -80099,7 +80099,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 }
 
 .inbox-wrapper .wrapper-inner .inbox-sidebar .sidebar-inner .scroll-menu .title-wrap h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
@@ -80214,13 +80214,13 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 }
 
 .inbox-wrapper .wrapper-inner .inbox-sidebar .sidebar-inner .scroll-menu .contact-list .contact-block .contact-meta span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     color: #283252
 }
 
 .inbox-wrapper .wrapper-inner .inbox-sidebar .sidebar-inner .scroll-menu .contact-list .contact-block .contact-meta span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #999
 }
 
@@ -80341,19 +80341,19 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 }
 
 .inbox-wrapper .wrapper-inner .inbox-messages .messages-list .inbox-message .message-meta span.name {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     color: #283252
 }
 
 .inbox-wrapper .wrapper-inner .inbox-messages .messages-list .inbox-message .message-meta span.email {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
 
 .inbox-wrapper .wrapper-inner .inbox-messages .messages-list .inbox-message .message-meta span.subject {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     white-space: nowrap;
     overflow: hidden;
@@ -80442,14 +80442,14 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 }
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .header-area .message-meta .message-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
     color: #283252
 }
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .header-area .message-meta .sender-email {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9;
     font-size: .95rem
 }
@@ -80480,7 +80480,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 }
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .header-area .attachments span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
     display: block;
     margin-left: 4px
@@ -80520,14 +80520,14 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 }
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .message-wrapper .message-inner .message-head .info span:first-child {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .95rem;
     font-weight: 600;
     color: #283252
 }
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .message-wrapper .message-inner .message-head .info span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: .9rem;
     color: #a2a5b9
 }
@@ -80544,7 +80544,7 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .message-wrapper .message-inner .mail-content {
     padding: 40px 60px 30px 60px;
-    font-family: "Roboto", sans-serif
+    font-family: "Inter", sans-serif
 }
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .message-wrapper .attachments-list {
@@ -80704,12 +80704,12 @@ body.is-dark .wizard-v1-wrapper .step-content .project-preview-wrapper .project-
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .message-wrapper .reply-box-wrap .reply-bubble .reply-as .reply-details span:first-child {
     color: #283252;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600
 }
 
 .inbox-wrapper .wrapper-inner .inbox-message-details .message-wrapper .reply-box-wrap .reply-bubble .reply-as .reply-details span:nth-child(2) {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #a2a5b9
 }
 
@@ -81019,7 +81019,7 @@ body.is-dark .inbox-action:hover svg {
     -ms-flex-align: center;
     align-items: center;
     font-size: 1rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     margin-bottom: 4px;
     padding-top: 8px;
     padding-bottom: 8px
@@ -81083,7 +81083,7 @@ body.is-dark .inbox-dropdown div>.button {
 }
 
 .compose-panel .header-area .panel-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.4rem;
     color: #283252
 }
@@ -81833,7 +81833,7 @@ body.is-dark .inbox-dropdown div>.button {
 }
 
 .pricing-wrapper {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     color: #9f9f9f;
     font-size: 15px;

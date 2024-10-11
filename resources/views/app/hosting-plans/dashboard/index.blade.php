@@ -286,11 +286,11 @@
                                                     <img src="assets/img/illustrations/dashboards/lifestyle/reading.svg" alt="">
                                                 </div>
                                                 <div class="header-meta">
-                                                    <h3>Hello, {{ Auth::user()->name }}.</h3>
+                                                    <h3 style="max-width:370px">Hello, {{ Auth::user()->name }}.</h3>
                                                     <p>Have any ideas for a new article? If not, you should definitely check the
                                                         feed for some inspiration.</p>
                                                     <button class="button h-button is-light is-outlined">
-                                                        <span class="icon is-small">
+                                                        <span class="icon is-small" style="min-width: unset; min-height:unset;">
                                                             <i data-feather="plus"></i>
                                                         </span>
                                                         <span>New Article</span>

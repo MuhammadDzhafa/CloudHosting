@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
-use App\Models\Role; // Tambahkan penggunaan model Role
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -40,33 +40,35 @@ class RegisterController extends Controller
                 ]);
 
                 Auth::login($userByEmail);
-                return redirect('/client-dashboard');
+
+                // Redirect berdasarkan role
+                if ($userByEmail->hasRole('admin')) {
+                    return redirect('/admin-dashboard');
+                } elseif ($userByEmail->hasRole('client')) {
+                    return redirect('/client-dashboard');
+                }
+
+                return redirect('/home');
             }
 
-            $registeredUsers = User::where('google_id', $socialUser->id)->first();
+            // Jika pengguna baru, buat pengguna baru dengan peran 'client'
+            $user = User::create([
+                'google_id' => $socialUser->id,
+                'name' => $socialUser->name,
+                'email' => $socialUser->email,
+                'password' => Hash::make(Str::random(24)),
+                'google_token' => $socialUser->token,
+                'google_refresh_token' => $socialUser->refreshToken,
+                'google_profile_image' => $socialUser->avatar,
+                'phone' => null,
+            ]);
 
-            if (!$registeredUsers) {
-                // Create new user and assign "client" role
-                $user = User::create([
-                    'google_id' => $socialUser->id,
-                    'name' => $socialUser->name,
-                    'email' => $socialUser->email,
-                    'password' => Hash::make(Str::random(24)), // Random password
-                    'google_token' => $socialUser->token,
-                    'google_refresh_token' => $socialUser->refreshToken,
-                    'google_profile_image' => $socialUser->avatar, // Save profile image
-                    'phone' => null,
-                ]);
+            // Assign peran client
+            $user->roles()->attach(Role::where('name', 'client')->first());
 
-                // Assign "client" role
-                $user->roles()->attach(Role::where('name', 'client')->first());
-
-                Auth::login($user);
-            } else {
-                Auth::login($registeredUsers);
-            }
-
+            Auth::login($user);
             $request->session()->put('user_email', Auth::user()->email);
+
             return redirect()->route('google.phone.form');
         } catch (\Exception $e) {
             return redirect('/login')->withErrors('Failed to register with Google. Please try again.');
@@ -99,10 +101,8 @@ class RegisterController extends Controller
         $user->phone = $request->input('phone');
         $user->save();
 
-        // Redirect to profile update route with a delay
         return redirect()->route('profile.update')->with('phoneSaved', true);
     }
-
 
     public function register(Request $request)
     {
@@ -129,7 +129,7 @@ class RegisterController extends Controller
             ],
             'phone' => 'required|string|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'terms' => 'required|accepted',
-            'role' => 'required|in:admin,client', // Validasi untuk role
+            'role' => 'required|in:admin,client',
         ], [
             'name.required' => 'Please enter your name.',
             'email.required' => 'Please enter your email address.',
@@ -159,7 +159,7 @@ class RegisterController extends Controller
             'phone' => $request->input('phone'),
         ]);
 
-        // Mengaitkan role ke pengguna berdasarkan input
+        // Assign role based on input
         $role = Role::where('name', $request->input('role'))->first();
         $user->roles()->attach($role);
 
