@@ -16,9 +16,9 @@ class CreateRegularMainSpecTable extends Migration
         Schema::create('regular_main_spec', function (Blueprint $table) {
             $table->id('regular_main_spec_id'); // ID kolom untuk primary key
             $table->unsignedBigInteger('hosting_plans_id'); // Foreign key for hosting plans
-            $table->integer('RAM');
-            $table->integer('storage');
-            $table->integer('CPU');
+            $table->integer('RAM')->default(0);;
+            $table->integer('storage')->default(0);;
+            $table->integer('CPU')->default(0);;
             $table->timestamps(); // Kolom created_at dan updated_at
 
             $table->foreign('hosting_plans_id')->references('hosting_plans_id')->on('hosting_plans')->onDelete('cascade');

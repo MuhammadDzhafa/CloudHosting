@@ -16,18 +16,18 @@ class CreateCustomMainSpecTable extends Migration
         Schema::create('custom_main_spec', function (Blueprint $table) {
             $table->id('custom_main_spec_id'); // ID kolom untuk primary key
             $table->unsignedBigInteger('hosting_plans_id'); // Foreign key for hosting plans
-            $table->integer('min_RAM');
-            $table->integer('max_RAM');
-            $table->integer('multiplier_RAM');
-            $table->integer('price_RAM');
-            $table->integer('min_storage');
-            $table->integer('max_storage');
-            $table->integer('step_storage');
-            $table->integer('price_storage');
-            $table->integer('min_CPU');
-            $table->integer('max_CPU');
-            $table->integer('multiplier_CPU');
-            $table->integer('price_CPU');
+            $table->integer('min_RAM')->default(0);;
+            $table->integer('max_RAM')->default(0);;
+            $table->integer('multiplier_RAM')->default(0);;
+            $table->integer('price_RAM')->default(0);;
+            $table->integer('min_storage')->default(0);;
+            $table->integer('max_storage')->default(0);;
+            $table->integer('step_storage')->default(0);;
+            $table->integer('price_storage')->default(0);;
+            $table->integer('min_CPU')->default(0);;
+            $table->integer('max_CPU')->default(0);;
+            $table->integer('multiplier_CPU')->default(0);;
+            $table->integer('price_CPU')->default(0);;
             $table->timestamps(); // Kolom created_at dan updated_at
 
             $table->foreign('hosting_plans_id')->references('hosting_plans_id')->on('hosting_plans')->onDelete('cascade');
