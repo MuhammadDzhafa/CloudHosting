@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Your Password</title>
+    <title>Awan Hosting :: Reset Your Password</title>
+    <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body, h2, p, button, input, i {
+        body,
+        h2,
+        p,
+        button,
+        input,
+        i {
             font-family: 'Inter', sans-serif;
         }
+
         .bg-radial-custom {
             background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%);
         }
     </style>
 </head>
+
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full border border-[#DEDEDE]">
         <div class="flex justify-center mb-6">
             <img src="assets/img/logos/logo/logoo.svg" alt="Your Image" class="w-16 h-14">
         </div>
-        
+
         <h2 class="text-2xl font-semibold leading-8 text-[#464646] text-center mb-4">Reset Your Password</h2>
         <p class="text-lg font-normal leading-6 text-[#464646] text-center mb-6">Please enter your new password</p>
         <form>
@@ -59,4 +68,5 @@
         });
     </script>
 </body>
+
 </html>

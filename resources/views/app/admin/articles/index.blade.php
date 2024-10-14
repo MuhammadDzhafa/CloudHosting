@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>Awan Hosting :: Articles</title>
-    <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->
     <script>
@@ -30,15 +30,15 @@
     <!-- End Google Tag Manager -->
 
     <!--Core CSS -->
-    <link rel="stylesheet" href="assets/css/app.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
-
 </head>
+
 
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -132,19 +132,20 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('articles.edit', $article->article_id) }}" 
-                                                class="edit-link" 
-                                                data-id="{{ $article->article_id }}" 
-                                                data-title="{{ $article->title }}" 
-                                                data-content="{{ $article->content }}" 
-                                                data-author="{{ $article->author }}" 
+                                            <a href="{{ route('articles.edit', $article->article_id) }}"
+                                                class="edit-link"
+                                                data-id="{{ $article->article_id }}"
+                                                data-title="{{ $article->title }}"
+                                                data-content="{{ $article->content }}"
+                                                data-author="{{ $article->author }}"
                                                 data-likes="{{ $article->likes }}">
-                                                    <img src="assets/img/product/edit.svg" alt="Edit" class="mr-6">
+                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="mr-6">
                                             </a>
                                             <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $article->article_id }}', '{{ $article->title }}')">
-                                                <img src="assets/img/product/trash.svg" alt="Delete">
+                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete">
                                             </a>
                                         </td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -153,14 +154,14 @@
 
                         <script>
                             function openDeleteModal(id, title) {
-                                // Set the title in the modal
+                                // Set nama artikel di modal
                                 document.getElementById('modal-article-title').textContent = title;
 
-                                // Set the form action to the delete route
+                                // Set action form ke rute hapus
                                 const form = document.getElementById('delete-form');
-                                form.action = "{{ url('articles') }}/" + id;
+                                form.action = "{{ url('admin/articles') }}/" + id; // Pastikan URL ini sesuai
 
-                                // Open the modal
+                                // Tampilkan modal
                                 const modal = document.getElementById('confirm-delete-modal');
                                 modal.classList.add('is-active');
                             }
@@ -203,18 +204,19 @@
         </div>
 
         <!-- Concatenated plugins -->
-        <script src="assets/js/app.js"></script>
+        <script src="{{ asset('assets/js/app.js') }}"></script>
 
         <!-- Huro js -->
-        <script src="assets/js/functions.js"></script>
-        <script src="assets/js/main.js" async></script>
-        <script src="assets/js/components.js" async></script>
-        <script src="assets/js/popover.js" async></script>
-        <script src="assets/js/widgets.js" async></script>
+        <script src="{{ asset('assets/js/functions.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}" async></script>
+        <script src="{{ asset('assets/js/components.js') }}" async></script>
+        <script src="{{ asset('assets/js/popover.js') }}" async></script>
+        <script src="{{ asset('assets/js/widgets.js') }}" async></script>
 
         <!-- Additional Features -->
-        <script src="assets/js/touch.js" async></script>
-        <script src="assets/js/syntax.js" async></script>
+        <script src="{{ asset('assets/js/touch.js') }}" async></script>
+        <script src="{{ asset('assets/js/syntax.js') }}" async></script>
+
     </div>
 </body>
 

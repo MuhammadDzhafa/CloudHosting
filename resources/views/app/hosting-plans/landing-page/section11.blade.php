@@ -67,7 +67,6 @@
                                 Email
                             </div>
                             <div class="position">
-                                {" "}
                                 <a href="mailto:info@kazee.id" class="text-sm">
                                     info@kazee.id
                                 </a>

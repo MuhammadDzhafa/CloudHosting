@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags  -->
     <meta charset="utf-8" />
@@ -35,7 +36,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
-          rel="stylesheet" />
+        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 
 </head>
@@ -70,7 +71,7 @@
 
         <!-- Content Wrapper -->
         <div id="app-projects" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu"
-             data-mobile-item="#home-sidebar-menu-mobile">
+            data-mobile-item="#home-sidebar-menu-mobile">
             <div class="page-content-wrapper">
                 <div class="page-content is-relative">
                     <div class="page-title has-text-centered">
@@ -237,4 +238,5 @@
         <script src="../../../assets/js/syntax.js" async></script>
     </div>
 </body>
+
 </html>

@@ -1,57 +1,13 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TLDs</title>
-    <link rel="stylesheet" href="{{ asset('path/to/your/css/styles.css') }}"> <!-- Ganti dengan path CSS Anda -->
-</head>
-
-<body>
-    <div class="container">
-        <h1>TLDs</h1>
-        <a href="/tlds/create" class="btn btn-primary">Add New TLD</a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($tlds as $tld)
-                <tr>
-                    <td>{{ $tld->tld_name }}</td>
-                    <td>Rp{{ number_format($tld->tld_price, 0, ',', '.') }}</td>
-                    <td>
-                        <a href="{{ route('tlds.edit', $tld) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('tlds.destroy', $tld) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</body>
-
-</html> --}}
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags  -->
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Articles</title>
+    <title>Awan Hosting :: Contact Us</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->
@@ -66,8 +22,7 @@
                 j = d.createElement(s),
                 dl = l != 'dataLayer' ? '&l=' + l : '';
             j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-N8ZNRQ9');
     </script>
@@ -82,7 +37,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 </head>
-
 
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -126,7 +80,7 @@
                 <div class="page-content is-relative">
                     <div class="page-title has-text-centered">
                         <div class="title-wrap">
-                            <h1 class="title is-4">TLD</h1>
+                            <h1 class="title is-4">Contact Us</h1>
                         </div>
                         <div class="toolbar ml-auto">
                             @include("layouts.template-admin.web.partials.toolbar.notification")
@@ -141,60 +95,54 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <a href="{{ route('tlds.create') }}" class="button h-button is-primary is-elevated">
+                            <a href="{{ route('contact-us.create') }}" class="button h-button is-primary is-elevated">
                                 <span class="icon" style="min-width: unset;">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
                                 <span>Add New</span>
                             </a>
                         </div>
-
                     </div>
                     <div class="page-content-inner">
                         <div class="table-wrapper" data-simplebar>
-                            <table id="articles-datatable" class="table is-datatable is-hoverable">
+                            <table id="contact-us-datatable" class="table is-datatable is-hoverable">
                                 <thead style="background-color:#EDE5F6;">
                                     <tr class="color-row">
-                                        <th>TLD NAME</th>
-                                        <th>PRICE</th>
-                                        <th>CATEGORY</th>
-                                        <th>ACTION</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Message</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tlds as $tld)
+                                    @foreach ($contacts as $contact)
                                     <tr>
-                                        <td>{{ $tld->tld_name }}</td>
-                                        <td>{{ $tld->tld_price }}</td>
-                                        <td>{{ $tld->category }}</td>
+                                        <td>{{ $contact->name }}</td>
+                                        <td>{{ $contact->email }}</td>
+                                        <td>{{ Str::limit($contact->message, 50) }}</td>
                                         <td>
-                                            <a href="{{ route('tlds.edit', $tld->tld_id) }}"
-                                                class="edit-link"
-                                                data-id="{{ $tld->tld_id }}"
-                                                data-name="{{ $tld->tld_name }}"
-                                                data-category="{{ $tld->category }}">
-                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="mr-6">
+                                            <a href="{{ route('contact-us.edit', $contact->contact_us_id) }}" class="edit-link">
+                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit">
                                             </a>
-                                            <a href="#" class="h-modal-trigger"
-                                                onclick="event.preventDefault(); openDeleteModal('{{ $tld->tld_id }}', '{{ $tld->tld_name }}')">
-                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="">
+                                            <a href="#" onclick="event.preventDefault(); openDeleteModal('{{ $contact->contact_us_id }}', '{{ $contact->name }}')">
+                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete">
                                             </a>
                                         </td>
-
                                     </tr>
                                     @endforeach
                                 </tbody>
+
                             </table>
                         </div>
 
                         <script>
-                            function openDeleteModal(id, title) {
-                                // Set the title in the modal
-                                document.getElementById('modal-tld-title').textContent = title;
+                            function openDeleteModal(id, name) {
+                                // Set the name in the modal
+                                document.getElementById('modal-contact-name').textContent = name;
 
                                 // Set the form action to the delete route
                                 const form = document.getElementById('delete-form');
-                                form.action = "{{ url('tlds') }}/" + id;
+                                form.action = "{{ url('/admin/contact-us') }}/" + id; // Tambahkan prefiks '/admin/contact-us'
 
                                 // Open the modal
                                 const modal = document.getElementById('confirm-delete-modal');
@@ -227,7 +175,7 @@
                         @csrf
                         @method('DELETE')
                         <section class="modal-card-body">
-                            <p>Are you sure you want to delete the article titled "<span id="modal-tld-title"></span>"?</p>
+                            <p>Are you sure you want to delete the contact message from "<span id="modal-contact-name"></span>"?</p>
                         </section>
                         <footer class="modal-card-foot">
                             <button type="submit" class="button is-danger">Delete</button>

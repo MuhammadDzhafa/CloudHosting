@@ -71,13 +71,11 @@ Route::get('/wordpress-hosting', [HostingController::class, 'wordpress']);
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 Route::get('/about', [HostingController::class, 'about']);
 Route::get('/admin-dashboard', [HostingController::class, 'admin']);
-Route::get('/client-dashboard', [HostingController::class, 'client']);
+Route::get('/client-dashboard', [HostingController::class, 'client'])->name('client.dashboard');
 Route::get('/domain', [HostingController::class, 'domain']);
 Route::get('/privacy-policy', [HostingController::class, 'privacy']);
 Route::get('/terms-and-conditions', [HostingController::class, 'termsConditions']);
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
-
-
 
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -106,21 +104,21 @@ Route::get('/profile.update', function () {
     return view('layouts.auth.profile-update');
 })->name('profile.update');
 
-Route::get('/client-dashboard', function () {
-    return view('app.hosting-plans.dashboard.index');
-})->name('client.dashboard');
+// Route::get('/client-dashboard', function () {
+//     return view('app.hosting-plans.dashboard.index');
+// })->name('client.dashboard');
 
 Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
 
 
 /* CRUD Testimonial */
-Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
-Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
-Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
-Route::get('/testimonials/{id}', [TestimonialController::class, 'show'])->name('testimonials.show');
-Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonials.edit');
-Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
-Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
+Route::get('/admin/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+Route::get('/admin/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
+Route::post('/admin/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
+Route::get('/admin/testimonials/{id}', [TestimonialController::class, 'show'])->name('testimonials.show');
+Route::get('/admin/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonials.edit');
+Route::put('/admin/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
+Route::delete('/admin/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
 /* Crud Clients */
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
@@ -132,25 +130,23 @@ Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
 
 /* CRUD TLD */
-Route::get('/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index');
-Route::get('/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
-Route::post('/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
-Route::get('/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
-Route::put('/tlds/{id}', [TLDController::class, 'update'])->name('tlds.update');
-Route::delete('/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
-Route::post('/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
-
+Route::get('/admin/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index');
+Route::get('/admin/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
+Route::post('/admin/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
+Route::get('/admin/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
+Route::put('/admin/tlds/{id}', [TLDController::class, 'update'])->name('tlds.update');
+Route::delete('/admin/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
+Route::post('/admin/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
 
 /* Hosting Plan */
-Route::get('/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');
-Route::get('/hosting-plans/create', [HostingPlanController::class, 'create'])->name('hosting-plans.create');
-Route::post('/hosting-plans', [HostingPlanController::class, 'store'])->name('hosting-plans.store');
-Route::get('/hosting-plans/{id}', [HostingPlanController::class, 'show'])->name('hosting-plans.show');
-Route::get('/hosting-plans/{id}/edit', [HostingPlanController::class, 'edit'])->name('hosting-plans.edit');
-Route::put('hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
-Route::delete('/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
-Route::post('hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
-Route::delete('/prices/{price}', [PriceController::class, 'destroy'])->name('price.destroy');
+Route::get('/admin/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');
+Route::get('/admin/hosting-plans/create', [HostingPlanController::class, 'create'])->name('hosting-plans.create');
+Route::post('/admin/hosting-plans', [HostingPlanController::class, 'store'])->name('hosting-plans.store');
+Route::get('/admin/hosting-plans/{id}', [HostingPlanController::class, 'show'])->name('hosting-plans.show');
+Route::get('/admin/hosting-plans/{id}/edit', [HostingPlanController::class, 'edit'])->name('hosting-plans.edit');
+Route::put('/admin/hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
+Route::delete('/admin/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
+Route::post('/admin/hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
 
 
 /* Hosting Group */
@@ -164,12 +160,31 @@ Route::delete('/hosting-groups/{id}', [HostingGroupController::class, 'destroy']
 Route::post('/hosting-groups/{id}/restore', [HostingGroupController::class, 'restore'])->name('hosting-groups.restore');
 
 /* Article */
-/* Hosting Group */
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
-Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
-Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
-Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
-Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
-Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
-Route::post('/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
+Route::get('/admin/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/admin/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+Route::post('/admin/articles', [ArticleController::class, 'store'])->name('articles.store');
+Route::get('/admin/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('/admin/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::put('/admin/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
+Route::delete('/admin/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::post('/admin/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
+/* Faqs */
+Route::get('/admin/faqs', [FaqController::class, 'faqs'])->name('faqs.index'); // Menggunakan faqs()
+Route::get('/admin/faqs/create', [FaqController::class, 'create'])->name('faqs.create');
+Route::post('/admin/faqs', [FaqController::class, 'store'])->name('faqs.store');
+Route::get('/admin/faqs/{id}', [FaqController::class, 'show'])->name('faqs.show');
+Route::get('/admin/faqs/{id}/edit', [FaqController::class, 'edit'])->name('faqs.edit');
+Route::put('/admin/faqs/{id}', [FaqController::class, 'update'])->name('faqs.update');
+Route::delete('/admin/faqs/{id}', [FaqController::class, 'destroy'])->name('faqs.destroy');
+Route::post('/admin/faqs/{id}/restore', [FaqController::class, 'restore'])->name('faqs.restore');
+
+// Rute untuk halaman FAQ publik
+Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+
+Route::get('/admin/contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
+Route::get('/admin/contact-us/create', [ContactUsController::class, 'create'])->name('contact-us.create');
+Route::post('/admin/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
+Route::get('/admin/contact-us/{id}', [ContactUsController::class, 'show'])->name('contact-us.show');
+Route::get('/admin/contact-us/{id}/edit', [ContactUsController::class, 'edit'])->name('contact-us.edit');
+Route::put('/admin/contact-us/{id}', [ContactUsController::class, 'update'])->name('contact-us.update');
+Route::delete('/admin/contact-us/{id}', [ContactUsController::class, 'destroy'])->name('contact-us.destroy');

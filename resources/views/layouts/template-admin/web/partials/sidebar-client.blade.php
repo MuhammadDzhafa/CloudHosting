@@ -47,27 +47,27 @@
                 </a>
             </li>
             <li>
-                <a href="/hosting-plans" id="hosting-plans" data-content="Hosting" class="menu-item">
+                <a href="#" id="hosting-plans" data-content="Hosting" class="menu-item">
                     <i class="sidebar-svg" data-feather="upload-cloud"></i>
                 </a>
             </li>
             <li>
-                <a href="/orders" id="orders" data-content="Domain" class="menu-item">
+                <a href="#" id="orders" data-content="Domain" class="menu-item">
                     <i class="sidebar-svg" data-feather="globe"></i>
                 </a>
             </li>
             <li>
-                <a href="/testimonials" id="testimonials" data-content="Support" class="menu-item">
+                <a href="#" id="testimonials" data-content="Support" class="menu-item">
                     <i class="sidebar-svg" data-feather="headphones"></i>
                 </a>
             </li>
             <li>
-                <a href="/articles" id="articles" data-content="Billing" class="menu-item">
+                <a href="#" id="articles" data-content="Billing" class="menu-item">
                     <i class="sidebar-svg" data-feather="feather"></i>
                 </a>
             </li>
             <li>
-                <a href="/tlds" id="tlds" data-content="Programs" class="menu-item">
+                <a href="#" id="tlds" data-content="Programs" class="menu-item">
                     <i class="sidebar-svg" data-feather="users"></i>
                 </a>
             </li>

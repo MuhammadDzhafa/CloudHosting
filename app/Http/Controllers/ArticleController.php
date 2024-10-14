@@ -28,9 +28,9 @@ class ArticleController extends Controller
         // Validasi input
         $request->validate([
             'title' => 'required|max:255',
-            'content' => 'required',
+            'content' => 'required', // Tidak ada batasan panjang
             'author' => 'required|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Validasi gambar
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
 
         // Membuat artikel baru

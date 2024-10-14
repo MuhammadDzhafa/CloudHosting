@@ -43,6 +43,7 @@ class FaqController extends Controller
         return view('faqs.edit', compact('faq'));
     }
 
+
     public function update(Request $request, $id)
     {
         // Validasi input
@@ -64,5 +65,15 @@ class FaqController extends Controller
         $faq = Faq::findOrFail($id);
         $faq->delete();
         return redirect()->route('faqs.index')->with('success', 'FAQ deleted successfully.');
+    }
+
+    public function faqs()
+    {
+        // Ambil semua FAQ dan kelompokkan berdasarkan kategori
+        $faqs = Faq::all()->groupBy('category');
+
+        // dd($faqs);
+        // Kirimkan data ke view
+        return view('app.admin.faqs.index', compact('faqs'));
     }
 }

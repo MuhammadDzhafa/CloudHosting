@@ -144,7 +144,7 @@ class HostingController extends Controller
 
     public function faq()
     {
-        return view('app.hosting-plans.faq.index');
+        return view('app.admin.faqs.index');
     }
 
     public function about()
@@ -180,6 +180,9 @@ class HostingController extends Controller
 
     public function client()
     {
-        return view('app.hosting-plans.dashboard.index');
+        $articles = Article::all();
+        // dd($articles);
+
+        return view('app.hosting-plans.dashboard.index', compact('articles'));
     }
 }

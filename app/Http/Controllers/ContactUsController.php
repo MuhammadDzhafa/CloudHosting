@@ -2,30 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactUs;
 use Illuminate\Http\Request;
+use App\Models\ContactUs; // Pastikan model ini ada
 
 class ContactUsController extends Controller
 {
-    /**
-     * Store a newly created contact message in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    // Menampilkan daftar kontak
+    public function index()
+    {
+        $contacts = ContactUs::all(); // Mengambil semua data kontak
+        return view('app.admin.contact-us.index', compact('contacts'));
+    }
+
+    // Menampilkan form untuk membuat kontak baru
+    public function create()
+    {
+        return view('app.admin.contact-us.create');
+    }
+
+    // Menyimpan kontak baru ke database
     public function store(Request $request)
     {
-        // Validasi data input
-        $validatedData = $request->validate([
+        // Validasi input
+        $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'message' => 'required|string',
         ]);
-        
-        // Simpan data ke database menggunakan model ContactUs
-        ContactUs::create($validatedData);
 
-        // Redirect atau berikan respons sukses
-        return redirect()->back()->with('success', 'Message sent successfully!');
+        // Membuat kontak baru
+        ContactUs::create($request->all());
+
+        return redirect()->route('contact-us.index')->with('success', 'Message sent successfully.');
+    }
+
+    // Menampilkan form untuk mengedit kontak
+    public function edit($id)
+    {
+        // Menggunakan contact_us_id sebagai kunci utama
+        $contact = ContactUs::findOrFail($id);
+        return view('app.admin.contact-us.edit', compact('contact')); // Mengirimkan data kontak ke view
+    }
+
+    // Memperbarui kontak di database
+    public function update(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Mengupdate kontak
+        $contact = ContactUs::findOrFail($id);
+        $contact->update($request->all());
+
+        return redirect()->route('contact-us.index')->with('success', 'Contact updated successfully.');
+    }
+
+    // Menghapus kontak
+    public function destroy($id)
+    {
+        // Menghapus kontak berdasarkan contact_us_id
+        $contact = ContactUs::findOrFail($id);
+        $contact->delete();
+
+        return redirect()->route('contact-us.index')->with('success', 'Contact deleted successfully.');
     }
 }

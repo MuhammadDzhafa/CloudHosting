@@ -17,4 +17,11 @@ class Faq extends Model
         'answer',
         'category',
     ];
+
+    // Tentukan primary key
+    protected $primaryKey = 'faq_id'; // Gunakan 'faq_id' sebagai primary key
+
+    // Jika primary key bukan tipe integer
+    public $incrementing = false; // Jika menggunakan UUID atau jenis lain
+    protected $keyType = 'int'; // Jika menggunakan integer
 }

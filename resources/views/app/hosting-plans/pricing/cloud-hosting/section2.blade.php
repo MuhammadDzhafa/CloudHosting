@@ -64,11 +64,14 @@
                                 Free SSL
                             </li>
                         </ul>
-                        <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
-                            <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
-                                Order Now
-                            </span>
-                        </button>
+                        <a href="/checkout" class="inline-block">
+                            <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
+                                <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
+                                    Order Now
+                                </span>
+                            </button>
+                        </a>
+
                         <!-- <a href="#" class="block text-center text-blue-600 mt-4">More detail →</a> -->
                     </div>
                     <!-- Alto -->
@@ -118,11 +121,14 @@
                                 Free SSL
                             </li>
                         </ul>
-                        <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
-                            <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
-                                Order Now
-                            </span>
-                        </button>
+                        <a href="/checkout" class="inline-block">
+                            <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
+                                <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
+                                    Order Now
+                                </span>
+                            </button>
+                        </a>
+
                         <!-- <a href="#" class="block text-center text-[#FFFFFF] mt-4">More detail →</a> -->
                     </div>
                     <!-- Cirrus -->
@@ -172,15 +178,18 @@
                                 Free SSL
                             </li>
                         </ul>
-                        <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
-                            <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
-                                Order Now
-                            </span>
-                        </button>
+                        <a href="/checkout" class="inline-block">
+                            <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
+                                <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
+                                    Order Now
+                                </span>
+                            </button>
+                        </a>
+
                     </div>
                 </div>
             </div>
-            
+
             <p class="text-center text-[16px] font-normal leading-[23.2px] text-[#7C7C7C] font-inter mt-8">
                 Price does not include tax.
             </p>
@@ -596,12 +605,12 @@
     // Event listener untuk klik pada link More detail
     document.getElementById('toggleDetail').addEventListener('click', function(e) {
         e.preventDefault(); // Menghindari reload halaman
-        
+
         // Ambil elemen icon dan container detail
         const icon = document.getElementById('icon');
         const detailContent = document.getElementById('detailContent');
         const detailContentPersonal = document.getElementById('detailContentPersonal');
-        
+
         // Toggle visibility pada div
         detailContent.classList.toggle('hidden');
         detailContentPersonal.classList.toggle('hidden');

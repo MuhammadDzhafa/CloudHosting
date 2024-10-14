@@ -454,49 +454,35 @@
                                         <!--List-->
                                         <div class="articles-feed-list">
                                             <div class="articles-feed-list-inner">
-                                                <!--Item-->
-                                                <a class="articles-feed-item">
+                                                @if(isset($articles) && $articles->isNotEmpty())
+                                                @foreach($articles as $article)
+                                                <div class="articles-feed-item">
                                                     <div class="featured-image">
-                                                        <img src="https://via.placeholder.com/800x600" data-demo-src="assets/img/photo/demo/38.jpg" alt="">
+                                                        <img src="{{ asset('storage/' . ($article->image ? $article->image : 'article_pictures/default.jpg')) }}" alt="{{ $article->title }}">
                                                     </div>
                                                     <div class="featured-content">
-                                                        <h4 class="dark-inverted">Learning the modern novel</h4>
-                                                        <p>Some article content and lorem ipsum sit dolor amet</p>
-
+                                                        <h4 class="dark-inverted">{{ $article->title }}</h4>
+                                                        <p class="article-content" onclick="toggleContent(this)">
+                                                            {{ Str::limit(strip_tags($article->content), 100) }}
+                                                            <span class="full-content" style="display: none;">{{ strip_tags($article->content) }}</span>
+                                                            <span class="read-more">Read more</span>
+                                                        </p>
                                                         <div class="media-flex-center">
-                                                            <div class="h-avatar is-small">
-                                                                <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                                                            </div>
-                                                            <div class="flex-meta">
-                                                                <span>Alice C.</span>
-                                                                <span>Software Engineer</span>
+                                                            <div class="flex-meta" style="margin-left: unset;">
+                                                                <span>{{ $article->author }}</span>
+                                                                <span>Author</span>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </a>
-                                                <!--Item-->
-                                                <a class="articles-feed-item">
-                                                    <div class="featured-image">
-                                                        <img src="https://via.placeholder.com/800x600" data-demo-src="assets/img/photo/demo/37.jpg" alt="">
-                                                    </div>
-                                                    <div class="featured-content">
-                                                        <h4 class="dark-inverted">5 Writing tips for you</h4>
-                                                        <p>Some article content and lorem ipsum sit dolor amet</p>
-
-                                                        <div class="media-flex-center">
-                                                            <div class="h-avatar is-small">
-                                                                <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/5.jpg" alt="">
-                                                            </div>
-                                                            <div class="flex-meta">
-                                                                <span>Mary L.</span>
-                                                                <span>Project Manager</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-
+                                                </div>
+                                                @endforeach
+                                                @else
+                                                <p>No articles available</p>
+                                                @endif
                                             </div>
                                         </div>
+
+
                                     </div>
                                 </div>
 
@@ -508,9 +494,25 @@
 
                 </div>
             </div>
-
         </div>
 
+
+        <script>
+            function toggleContent(element) {
+                var fullContent = element.querySelector('.full-content');
+                var readMore = element.querySelector('.read-more');
+
+                if (fullContent.style.display === 'none') {
+                    fullContent.style.display = 'inline';
+                    readMore.style.display = 'none';
+                    element.querySelector('text').style.display = 'none';
+                } else {
+                    fullContent.style.display = 'none';
+                    readMore.style.display = 'inline';
+                    element.querySelector('text').style.display = 'inline';
+                }
+            }
+        </script>
         <!--Huro Scripts-->
         <!--Load Mapbox-->
 

@@ -47,28 +47,38 @@
                 </a>
             </li>
             <li>
-                <a href="/hosting-plans" id="hosting-plans" data-content="Hosting Plans" class="menu-item">
+                <a href="/admin/hosting-plans" id="hosting-plans" data-content="Hosting Plans" class="menu-item">
                     <i class="sidebar-svg" data-feather="archive"></i>
                 </a>
             </li>
             <li>
-                <a href="/orders" id="orders" data-content="Orders" class="menu-item">
+                <a href="/admin/orders" id="orders" data-content="Orders" class="menu-item">
                     <i class="sidebar-svg" data-feather="shopping-cart"></i>
                 </a>
             </li>
             <li>
-                <a href="/testimonials" id="testimonials" data-content="Testimonials" class="menu-item">
+                <a href="/admin/testimonials" id="testimonials" data-content="Testimonials" class="menu-item">
                     <i class="sidebar-svg" data-feather="star"></i>
                 </a>
             </li>
             <li>
-                <a href="/articles" id="articles" data-content="Articles" class="menu-item">
+                <a href="/admin/articles" id="articles" data-content="Articles" class="menu-item">
                     <i class="sidebar-svg" data-feather="book"></i>
                 </a>
             </li>
             <li>
-                <a href="/tlds" id="tlds" data-content="Tlds" class="menu-item">
+                <a href="/admin/tlds" id="tlds" data-content="Tlds" class="menu-item">
                     <i class="sidebar-svg" data-feather="globe"></i>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/faqs" id="faqs" data-content="faqs" class="menu-item">
+                    <i class="sidebar-svg" data-feather="message-circle"></i>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/contact-us" id="contact-us" data-content="contact-us" class="menu-item">
+                    <i class="sidebar-svg" data-feather="mail"></i>
                 </a>
             </li>
         </ul>

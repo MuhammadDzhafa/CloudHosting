@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMS Sent Confirmation</title>
+    <title>Awan Hosting :: SMS Sent Confirmation</title>
+    <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <style>
-        body, h2, p, button {
+        body,
+        h2,
+        p,
+        button {
             font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
+
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-6 md:p-10 rounded-[12px] shadow-lg max-w-[560px] w-full h-auto border border-[#DEDEDE]">
         <div class="flex justify-center mb-6">
@@ -33,4 +39,5 @@
         </div>
     </div>
 </body>
+
 </html>
