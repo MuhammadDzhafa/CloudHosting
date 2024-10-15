@@ -216,13 +216,12 @@
 
                     <!-- Flex Table -->
                     <div class="flex-table">
-
-                        <div id="tld-results">
+                        <div id="tld-results" class="hidden">
                             <div class="flex flex-col items-start mb-4 md:mb-0">
                                 <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Your domain search results</h3>
                             </div>
 
-                            <!--Table items hidden by default-->
+                            <!-- Table items hidden by default -->
                             @foreach ($tlds as $tld)
                             <div class="flex-table-container tld-item hidden">
                                 <div class="flex-table-item">
@@ -239,7 +238,6 @@
                                         <span class="light-text"></span>
                                     </div>
                                     <div class="flex-table-cell" data-th="Contacts" style="padding:unset;">
-                                        <!-- Harga per tahun -->
                                         <span class="light-text">IDR {{ number_format($tld->tld_price, 0, ',', '.') }} / years</span>
                                     </div>
                                     <div class="flex-table-cell cell-end" data-th="Actions">
@@ -255,6 +253,7 @@
                                 </div>
                             </div>
                             @endforeach
+
                             <div id="transfer-form" class="flex-table-container hidden">
                                 <div class="flex-table-item flex items-center w-full" style="align-items: center;">
                                     <div class="flex flex-grow cell-start is-bold" data-th="Company">
@@ -266,7 +265,7 @@
                                     </div>
                                     <div class="flex-shrink-0 cell-end" data-th="Actions">
                                         <span class="light-text">
-                                            <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">
+                                            <button id="continue-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">
                                                 <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
                                                     Continue
                                                 </span>
@@ -274,10 +273,16 @@
                                         </span>
                                     </div>
                                 </div>
+                                <!-- Pesan sukses -->
+                                <div id="success-message" class="message is-success hidden mt-4">
+                                    <a class="delete" id="delete-message"></a>
+                                    <div class="message-body">
+                                        the domain has been successfully transferred
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -432,5 +437,16 @@
 
         document.getElementById('transfer-button').addEventListener('click', function() {
             document.getElementById('transfer-form').classList.toggle('hidden');
+        });
+
+        // Menangani klik pada tombol Continue
+        document.getElementById('continue-button').addEventListener('click', function() {
+            // Menampilkan pesan sukses
+            document.getElementById('success-message').classList.remove('hidden');
+        });
+
+        // Menangani klik pada tombol hapus pesan
+        document.getElementById('delete-message').addEventListener('click', function() {
+            document.getElementById('success-message').classList.add('hidden');
         });
     </script>

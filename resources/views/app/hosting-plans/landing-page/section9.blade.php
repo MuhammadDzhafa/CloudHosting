@@ -7,7 +7,7 @@
             @foreach($testimonials as $testimonial)
             <div class="slider-item flex-none w-full flex items-center justify-between bg-white">
                 <div class="relative rounded-full flex items-center justify-center overflow-hidden" style="background: radial-gradient(circle, rgba(74, 109, 203, 1) 20%, rgba(74, 109, 203, 0) 63%);">
-                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Satisfied Clients" class="rounded-full object-cover backgroundblue">
+                    <img src="{{ asset('storage/testimonial_pictures/' . $testimonial->picture) }}" alt="Satisfied Client" class="rounded-full object-cover backgroundblue">
                 </div>
 
                 <div class="testimonial-container text-left ml-8 w-1/2">
@@ -33,13 +33,10 @@
                         {{ $testimonial->domain_web }}
                     </p>
                 </div>
-
-
-
             </div>
             @endforeach
         </div>
-        <button id="prev" class="absolute bottom-4 right-20 w-[50px] h-[50px] bg-[#4A6DCB] text-white p-2 rounded-full focus:outline-none bg:#4A6DCB">❮</button>
-        <button id="next" class="absolute bottom-4 right-4 w-[50px] h-[50px] bg-[#4A6DCB] text-white p-2 rounded-full focus:outline-none bg:#4A6DCB">❯</button>
+        <button id="prev" class="absolute bottom-4 right-20 w-[50px] h-[50px] bg-[#4A6DCB] text-white p-2 rounded-full focus:outline-none">❮</button>
+        <button id="next" class="absolute bottom-4 right-4 w-[50px] h-[50px] bg-[#4A6DCB] text-white p-2 rounded-full focus:outline-none">❯</button>
     </div>
 </div>

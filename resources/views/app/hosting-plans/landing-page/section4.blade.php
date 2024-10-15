@@ -11,7 +11,8 @@
         'LINTASARTA.svg',
         'SBM ITB.svg',
         'BRI.svg',
-        'HINO.svg',] as $logo)
+        'HINO.svg',
+        ] as $logo)
         <div class="client-logo">
             <img src="{{ asset('assets/img/sponsor/' . $logo) }}" alt="{{ pathinfo($logo, PATHINFO_FILENAME) }}">
         </div>
