@@ -295,23 +295,23 @@
 
         const storageOptions = [{
                 value: '120 GB',
-                price: 'Rp5.000/mon'
+                price: 'IDR 5.000/mon'
             },
             {
                 value: '240 GB',
-                price: 'Rp10.000/mon'
+                price: 'IDR 10.000/mon'
             },
             {
                 value: '256 GB',
-                price: 'Rp15.000/mon'
+                price: 'IDR 15.000/mon'
             },
             {
                 value: '480 GB',
-                price: 'Rp20.000/mon'
+                price: 'IDR 20.000/mon'
             },
             {
                 value: '512 GB',
-                price: 'Rp25.000/mon'
+                price: 'IDR 25.000/mon'
             }
         ];
 

@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>Awan Hosting :: Checkout</title>
-    <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->
     <script>
@@ -41,8 +41,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -53,7 +51,6 @@
     <div id="huro-app" class="app-wrapper">
         <div class="app-overlay"></div>
         <!--Pageloader-->
-        <!-- Pageloader -->
         <div class="pageloader"></div>
         <div class="infraloader is-active"></div>
         <!-- Content Wrapper -->
@@ -165,7 +162,7 @@
                                         <a class="steps-marker"></a>
                                         <div class="steps-content">
                                             <p class="step-number">STEP 5</p>
-                                            <p class="step-info">Billing Adress</p>
+                                            <p class="step-info">Billing Address</p>
                                         </div>
                                     </li>
                                     <li id="step-segment-5" class="steps-segment">
@@ -178,7 +175,6 @@
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -189,111 +185,110 @@
     <!--Load Mapbox-->
 
     <!-- Concatenated plugins -->
-    <script src="assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     <!-- Huro js -->
-    <script src="assets/js/functions.js"></script>
-    <script src="assets/js/main.js" async></script>
-    <script src="assets/js/components.js" async></script>
-    <script src="assets/js/popover.js" async></script>
-    <script src="assets/js/widgets.js" async></script>
-
+    <script src="{{ asset('assets/js/functions.js') }}" async></script>
+    <script src="{{ asset('assets/js/main.js') }}" async></script>
+    <script src="{{ asset('assets/js/components.js') }}" async></script>
+    <script src="{{ asset('assets/js/popover.js') }}" async></script>
+    <script src="{{ asset('assets/js/widgets.js') }}" async></script>
 
     <!-- Additional Features -->
-    <script src="assets/js/touch.js" async></script>
+    <script src="{{ asset('assets/js/touch.js') }}" async></script>
 
     <!-- Landing page js -->
 
     <!-- Dashboards js -->
-
-
+    <script src="{{ asset('assets/js/syntax.js')}}" async></script>
     <!-- Charts js -->
 
-
-
     <!--Forms-->
-    <script src="assets/js/forms.js" async></script>
+    <script src="{{ asset('assets/js/forms.js') }}" async></script>
+</body>
 
-    <!--Wizard-->
+</html>
 
-    <!-- Layouts js -->
+<!--Wizard-->
 
-    <script src="assets/js/syntax.js" async></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            const slider = document.querySelector('.slider');
+<!-- Layouts js -->
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabId = tab.getAttribute('data-tab');
+<script src="assets/js/syntax.js" async></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const slider = document.querySelector('.slider');
 
-                    // Update tabs
-                    tabs.forEach(t => {
-                        t.classList.remove('active');
-                        t.classList.remove('text-white');
-                        t.classList.add('text-gray-600');
-                    });
-                    tab.classList.add('active');
-                    tab.classList.add('text-white');
-                    tab.classList.remove('text-gray-600');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
 
-                    // Move the slider
-                    const index = Array.from(tabs).indexOf(tab);
-                    slider.style.left = `calc(${index * 50}% + 4px)`;
-
-                    // Show the correct content
-                    tabContents.forEach(content => content.classList.add('hidden'));
-                    document.getElementById(`${tabId}-domain-content`).classList.remove('hidden');
+                // Update tabs
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.remove('text-white');
+                    t.classList.add('text-gray-600');
                 });
+                tab.classList.add('active');
+                tab.classList.add('text-white');
+                tab.classList.remove('text-gray-600');
+
+                // Move the slider
+                const index = Array.from(tabs).indexOf(tab);
+                slider.style.left = `calc(${index * 50}% + 4px)`;
+
+                // Show the correct content
+                tabContents.forEach(content => content.classList.add('hidden'));
+                document.getElementById(`${tabId}-domain-content`).classList.remove('hidden');
             });
         });
+    });
 
-        // Javascript scroll to Step2
-        document.addEventListener("DOMContentLoaded", function() {
-            if (window.location.pathname === '/checkout') {
-                let urlParams = new URLSearchParams(window.location.search);
-                let tldName = urlParams.get('tld_name');
-
-                if (tldName) {
-                    setTimeout(() => {
-                        const nextButton = document.getElementById('next-button');
-                        if (nextButton) {
-                            nextButton.click();
-                        } else {
-                            console.log("Next button not found.");
-                        }
-                    }, 1000);
-                }
-            }
-        });
-
-        document.getElementById('next-button').addEventListener('click', function(event) {
-            console.log("Button was clicked!");
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Ambil parameter tld_name dari URL
+    // Javascript scroll to Step2
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.pathname === '/checkout') {
             let urlParams = new URLSearchParams(window.location.search);
             let tldName = urlParams.get('tld_name');
 
-            // Perbarui elemen <h3> jika parameter tld_name ada
             if (tldName) {
-                const h3DomainDisplay = document.getElementById('h3-domain-display');
-                const pDomainDisplay = document.getElementById('p-domain-display');
-
-                if (h3DomainDisplay) {
-                    h3DomainDisplay.textContent = tldName;
-                }
-
-                if (pDomainDisplay) {
-                    pDomainDisplay.textContent = tldName;
-                }
+                setTimeout(() => {
+                    const nextButton = document.getElementById('next-button');
+                    if (nextButton) {
+                        nextButton.click();
+                    } else {
+                        console.log("Next button not found.");
+                    }
+                }, 1000);
             }
-        });
-    </script>
-    </div>
+        }
+    });
+
+    document.getElementById('next-button').addEventListener('click', function(event) {
+        console.log("Button was clicked!");
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Ambil parameter tld_name dari URL
+        let urlParams = new URLSearchParams(window.location.search);
+        let tldName = urlParams.get('tld_name');
+
+        // Perbarui elemen <h3> jika parameter tld_name ada
+        if (tldName) {
+            const h3DomainDisplay = document.getElementById('h3-domain-display');
+            const pDomainDisplay = document.getElementById('p-domain-display');
+
+            if (h3DomainDisplay) {
+                h3DomainDisplay.textContent = tldName;
+            }
+
+            if (pDomainDisplay) {
+                pDomainDisplay.textContent = tldName;
+            }
+        }
+    });
+</script>
+</div>
 </body>
 
 </html>

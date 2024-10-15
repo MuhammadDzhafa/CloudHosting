@@ -101,7 +101,7 @@
                     <div class="flex flex-col md:flex-row items-center w-full">
                         <!-- flex-col untuk mobile, flex-row untuk desktop -->
                         <div class="custom-total-price">
-                            <span class="custom-dollar-sign">Rp</span>
+                            <span class="custom-dollar-sign">IDR</span>
                             <span id="total-price" class="custom-total-amount"></span>
                             <span class="custom-monthly">/mon</span>
                         </div>

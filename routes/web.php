@@ -27,8 +27,8 @@ Route::get('/phpinfo', function () {
     return phpinfo();
 });
 
-/* Dashboard - Protected by Auth Middleware */
-Route::get('/landing-page', [HostingController::class, 'index']);
+/* Dashboard */
+Route::get('/', [HostingController::class, 'index']);
 
 // ->middleware('auth');
 

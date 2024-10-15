@@ -203,16 +203,81 @@
                     <div class="flex items-start space-x-4 mb-8">
                         <div class="field flex-1">
                             <div class="control">
-                                <input type="text" class="input is-rounded w-full" placeholder="eg. example.com">
+                                <input type="text" id="domain-search" class="input is-rounded w-full" placeholder="Type the domain name you want to transfer, for example, awanhosting.com">
                             </div>
                         </div>
-                        <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
-                            <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe428;</span>
+                        <button id="search-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                            <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
                             <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                Transfer
+                                Search
                             </span>
                         </button>
                     </div>
+
+                    <!-- Flex Table -->
+                    <div class="flex-table">
+
+                        <div id="tld-results">
+                            <div class="flex flex-col items-start mb-4 md:mb-0">
+                                <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Your domain search results</h3>
+                            </div>
+
+                            <!--Table items hidden by default-->
+                            @foreach ($tlds as $tld)
+                            <div class="flex-table-container tld-item hidden">
+                                <div class="flex-table-item">
+                                    <div class="flex-table-cell cell-start is-bold" data-th="Company">
+                                        <span class="dark-text">{{ $tld->tld_name }}</span>
+                                    </div>
+                                    <div class="flex-table-cell cell-start" data-th="Type">
+                                        <span class="light-text">{{ $tld->category }}</span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Industry">
+                                        <span class="light-text"></span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Status">
+                                        <span class="light-text"></span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Contacts" style="padding:unset;">
+                                        <!-- Harga per tahun -->
+                                        <span class="light-text">IDR {{ number_format($tld->tld_price, 0, ',', '.') }} / years</span>
+                                    </div>
+                                    <div class="flex-table-cell cell-end" data-th="Actions">
+                                        <span class="light-text">
+                                            <button id="transfer-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full" style="border: unset; padding:12px 16px;">
+                                                <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe428;</span>
+                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                    Transfer
+                                                </span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div id="transfer-form" class="flex-table-container hidden">
+                                <div class="flex-table-item flex items-center w-full" style="align-items: center;">
+                                    <div class="flex flex-grow cell-start is-bold" data-th="Company">
+                                        <div class="field w-full">
+                                            <div class="control">
+                                                <input type="text" class="input w-full rounded-full" placeholder="Enter your EPP code here">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0 cell-end" data-th="Actions">
+                                        <span class="light-text">
+                                            <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">
+                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                    Continue
+                                                </span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -320,5 +385,52 @@
         // Panggil function filterDomains dengan default "View All" saat halaman pertama kali dimuat
         document.addEventListener('DOMContentLoaded', () => {
             filterDomains('View All');
+        });
+
+        document.getElementById('search-button').addEventListener('click', function() {
+            // Ambil nilai input dari kolom pencarian
+            const searchQuery = document.getElementById('domain-search').value.toLowerCase();
+
+            // Ambil semua item TLD
+            const tldItems = document.querySelectorAll('.tld-item');
+
+            // Ambil div hasil tld
+            const tldResults = document.getElementById('tld-results');
+
+            // Sembunyikan hasil pencarian jika tidak ada input
+            if (searchQuery === "") {
+                tldResults.classList.add('hidden');
+                return;
+            }
+
+            // Flag untuk mendeteksi apakah ada hasil yang cocok
+            let hasResults = false;
+
+            // Loop melalui setiap item TLD
+            tldItems.forEach(function(item) {
+                // Ambil nama TLD dari elemen
+                const tldName = item.querySelector('.dark-text').textContent.toLowerCase();
+
+                // Cek apakah nama TLD mengandung nilai pencarian
+                if (tldName.includes(searchQuery)) {
+                    // Tampilkan item jika cocok
+                    item.classList.remove('hidden');
+                    hasResults = true;
+                } else {
+                    // Sembunyikan item jika tidak cocok
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Tampilkan div hasil hanya jika ada hasil yang cocok
+            if (hasResults) {
+                tldResults.classList.remove('hidden');
+            } else {
+                tldResults.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('transfer-button').addEventListener('click', function() {
+            document.getElementById('transfer-form').classList.toggle('hidden');
         });
     </script>

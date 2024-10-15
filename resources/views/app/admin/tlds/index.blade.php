@@ -194,11 +194,16 @@
 
                                 // Set the form action to the delete route
                                 const form = document.getElementById('delete-form');
-                                form.action = "{{ url('tlds') }}/" + id;
+                                form.action = "{{ url('/admin/tlds') }}/" + id; // Perhatikan rute yang sesuai
 
                                 // Open the modal
                                 const modal = document.getElementById('confirm-delete-modal');
                                 modal.classList.add('is-active');
+                            }
+
+                            function closeModal() {
+                                const modal = document.getElementById('confirm-delete-modal');
+                                modal.classList.remove('is-active');
                             }
                         </script>
 

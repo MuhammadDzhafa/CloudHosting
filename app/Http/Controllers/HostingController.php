@@ -53,10 +53,14 @@ class HostingController extends Controller
         return view('layouts.auth.recovery.passwordrecovery.tampilan3');
     }
 
-    public function checkout()
-    {
-        return view('app.hosting-plans.checkout.index');
-    }
+    // public function checkout()
+    // {
+    //     $tlds = TLD::all(); // Ambil semua data TLD
+    //     dd($tlds); // Debug, pastikan data muncul
+    //     return view('app.hosting-plans.checkout.step1', [
+    //         'tlds' => $tlds, // Kirim data ke view
+    //     ]);
+    // }
 
     public function server()
     {
