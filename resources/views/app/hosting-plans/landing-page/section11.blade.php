@@ -19,7 +19,7 @@
 
 
             <ul class="user-list flex flex-col lg:flex-col md:flex-col gap-4 md:items-start lg:items-center">
-                <div class="flex md:hidden">
+                <div class="flex justify-between -mx-10 md:hidden">
                     <li class="flex items-center w-full">
                         <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                             <img
@@ -113,7 +113,7 @@
 
         <div class="w-full md:w-1/2 flex-grow">
             <div class="form-card">
-                <form action="/contact-us" method="POST">
+                <form id="contactForm" action="/contact-us" method="POST">
                     @csrf
                     <div class="field">
                         <label>Name</label>
@@ -125,23 +125,48 @@
                     <div class="field">
                         <label>Email Address</label>
                         <div class="control">
-                            <input type="email" name="email" class="input" placeholder="" value="{{ old('Email') }}">
+                            <input type="email" name="email" class="input" placeholder="" value="{{ old('email') }}">
                         </div>
                     </div>
 
                     <div class="field">
                         <label>Your Message</label>
                         <div class="control">
-                            <textarea class="textarea" rows="4" name="message"
-                                placeholder="Tell us about any details you'd like us to know..."></textarea>
+                            <textarea class="textarea" rows="4" name="message" placeholder="Tell us about any details you'd like us to know..."></textarea>
                         </div>
                     </div>
 
-                    <button type="submit" class="button-gradient rounded-full">Submit</button>
+                    <button type="submit" class="button-gradient rounded-full" id="submitBtn">Submit</button>
                 </form>
             </div>
         </div>
     </div>
+    <div id="demo-right-actions-modal" class="modal h-modal">
+        <div class="modal-background h-modal-close"></div>
+        <div class="modal-content">
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <h3>Thank You for Reaching Out!</h3>
+                    <button class="h-modal-close ml-auto" aria-label="close">
+                        <i data-feather="x"></i>
+                    </button>
+                </header>
+                <div class="modal-card-body">
+                    <div class="inner-content">
+                        <div class="section-placeholder">
+                            <div class="placeholder-content">
+                                <img src="assets/img/illustmail.svg" alt="Success Icon">
+                                <h3 class="dark-inverted">Your massage has been sent.</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-card-foot is-end">
+                    <a class="button h-button is-rounded h-modal-close">Close</a>
+                    <a class="button h-button is-primary is-raised is-rounded h-modal-close">OK</a>
+                </div>
+            </div>
 
-
+        </div>
+    </div>
 </div>

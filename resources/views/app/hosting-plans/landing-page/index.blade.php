@@ -9,7 +9,9 @@
 @include("app.hosting-plans.landing-page.section3")
 @include("app.hosting-plans.landing-page.section4")
 @include("app.hosting-plans.landing-page.section5")
-@include("app.hosting-plans.landing-page.section6")
+<div id="section6">
+    @include("app.hosting-plans.landing-page.section6")
+</div>
 @include("app.hosting-plans.landing-page.section7")
 @include("app.hosting-plans.landing-page.section8")
 @include("app.hosting-plans.landing-page.section9")
@@ -21,7 +23,11 @@
 
 @section('scripts')
 <script>
-    /*section1 javascript*/
+    /*
+========================================================
+                    Section1 - Javascript
+========================================================
+*/
     document.addEventListener('DOMContentLoaded', () => {
         const words = ['Easy', 'Fast', 'Secure', 'Efficient'];
         let currentIndex = 0;
@@ -39,7 +45,18 @@
         setInterval(changeText, 1800);
     });
 
-    // Section2 JavaScript
+    /*scroll to section6 javascript*/
+    function scrollToSection() {
+        document.getElementById("section6").scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    /*
+    ========================================================
+                        Section2 - Javascript
+    ========================================================
+    */
     const viewPriceListLink = document.getElementById('view-price-list');
     const priceListSection = document.getElementById('price-list-section');
     if (viewPriceListLink && priceListSection) {
@@ -133,7 +150,47 @@
         });
     });
 
-    /*section6 javascript*/
+    /*
+    ========================================================
+                        Section3 - Javascript
+    ========================================================
+    */
+    function orderTLD(button) {
+        // Dapatkan elemen Section 2
+        var section2 = document.getElementById('section2');
+
+        // Gulir ke Section 2
+        if (section2) {
+            section2.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Ambil data TLD dari atribut data-tld-name pada tombol
+        var tldName = button.getAttribute('data-tld-name');
+
+        // Masukkan data TLD ke dalam input teks
+        var domainSearchInput = document.getElementById('domain-search');
+        if (domainSearchInput) {
+            domainSearchInput.value = tldName;
+        }
+    }
+
+    function redirectToCheckout() {
+        const domainName = document.getElementById('domain-search').value;
+
+        if (domainName) {
+            window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
+        } else {
+            alert("Please enter a domain name.");
+        }
+    }
+
+    /*
+    ========================================================
+                        Section6 - Javascript
+    ========================================================
+    */
     const storageSlider = document.getElementById('storage-slider');
     const ramSlider = document.getElementById('ram-slider');
     const cpuSlider = document.getElementById('cpu-slider');
@@ -374,7 +431,11 @@
         }
     });
 
-    /*section9 javascript*/
+    /*
+    ========================================================
+                        Section9 - Javascript
+    ========================================================
+    */
     const slider = document.querySelector('#slider');
     const sliderContent = document.querySelector('.slider-content');
     const sliderItems = document.querySelectorAll('.slider-item');
@@ -403,8 +464,50 @@
         sliderContent.style.width = `${sliderItems.length * 34}%`;
     }
 
+    /*
+    ========================================================
+                        Section11 - Javascript
+    ========================================================
+    */
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Mencegah form dikirim secara tradisional
 
-    /*section14 javascript*/
+        // Ambil data dari form
+        let formData = new FormData(this);
+
+        // Kirim form menggunakan AJAX
+        fetch("/contact-us", {
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name=_token]').value
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Tampilkan modal setelah berhasil
+                    document.getElementById('demo-right-actions-modal').classList.add('is-active');
+                } else {
+                    // Handle error, tampilkan pesan error atau lakukan sesuatu
+                    alert('Something went wrong!');
+                }
+            })
+            .catch(error => console.log('Error:', error));
+    });
+
+    // Tutup modal saat tombol "Cancel" atau ikon "x" ditekan
+    document.querySelectorAll('.h-modal-close').forEach(function(el) {
+        el.addEventListener('click', function() {
+            document.getElementById('demo-right-actions-modal').classList.remove('is-active');
+        });
+    });
+
+    /*
+    ========================================================
+                        Section14 - Javascript
+    ========================================================
+    */
     document.addEventListener('DOMContentLoaded', function() {
         const orderNowBtn = document.getElementById('orderNowBtn');
         orderNowBtn.addEventListener('click', function() {
@@ -442,7 +545,11 @@
         document.addEventListener('scroll', handleScroll);
     });
 
-    /*Ai Chat javascript*/
+    /*
+    ========================================================
+                        AI CHAT - Javascript
+    ========================================================
+    */
     document.addEventListener('DOMContentLoaded', function() {
         const chatButton = document.getElementById('ai-chat-button');
         const chatWindow = document.getElementById('ai-chat-window');
@@ -562,37 +669,5 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     });
-
-    /*scroll to section2 javascript*/
-    function orderTLD(button) {
-        // Dapatkan elemen Section 2
-        var section2 = document.getElementById('section2');
-
-        // Gulir ke Section 2
-        if (section2) {
-            section2.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
-        // Ambil data TLD dari atribut data-tld-name pada tombol
-        var tldName = button.getAttribute('data-tld-name');
-
-        // Masukkan data TLD ke dalam input teks
-        var domainSearchInput = document.getElementById('domain-search');
-        if (domainSearchInput) {
-            domainSearchInput.value = tldName;
-        }
-    }
-
-    function redirectToCheckout() {
-        const domainName = document.getElementById('domain-search').value;
-
-        if (domainName) {
-            window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
-        } else {
-            alert("Please enter a domain name.");
-        }
-    }
 </script>
 @endsection

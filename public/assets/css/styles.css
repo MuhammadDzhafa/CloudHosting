@@ -707,7 +707,8 @@ p {
     transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover, .card-domain:hover {
+.card:hover,
+.card-domain:hover {
     transform: translateY(-10px);
     border: 0.67px solid var(--Kazee-Primary-500, #4A6DCB);
     box-shadow: 0px 10px 10px -5px #00000014, 0px 20px 25px -5px #FFFFFF24;
@@ -1760,7 +1761,7 @@ p {
 /*
 ========================================================
                     Article Content
-=========================================================
+========================================================
 */
 .article-content {
     cursor: pointer;
@@ -1769,4 +1770,25 @@ p {
 .read-more {
     color: #4A6DCB;
     text-decoration: underline;
+}
+
+/* Toast Notification CSS */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    /* Hijau */
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
 }

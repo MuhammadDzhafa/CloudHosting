@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags  -->
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>Awan Hosting :: Testimonials</title>
-    <link rel="icon" type="image/png" href="assets/img/logos/logo/logoo.svg" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->
     <script>
@@ -22,24 +22,22 @@
                 j = d.createElement(s),
                 dl = l != 'dataLayer' ? '&l=' + l : '';
             j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-N8ZNRQ9');
     </script>
     <!-- End Google Tag Manager -->
 
     <!--Core CSS -->
-    <link rel="stylesheet" href="assets/css/app.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
-
 </head>
+
 
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -132,21 +130,20 @@
                                             <td>{{ $testimonial->occupation }}</td>
                                             <td>
                                                 <a href="javascript:void(0);" class="edit-link" data-id="{{ $testimonial->testimonial_id }}" data-domain="{{ $testimonial->domain_web }}" data-text="{{ $testimonial->testimonial_text }}" data-picture="{{ $testimonial->picture }}" data-occupation="{{ $testimonial->occupation }}" data-facebook="{{ $testimonial->facebook }}" data-instagram="{{ $testimonial->instagram }}">
-                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-6">
+                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="" class="mr-6">
                                                 </a>
                                                 <!-- <form action="{{ route('testimonials.destroy', $testimonial->testimonial_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                        <img src="assets/img/product/trash.svg" alt="Delete">
-                                                    </button>
-                                                </form> -->
-                                                <a href="#" class="h-modal-trigger"
-                                                    onclick="event.preventDefault(); openDeleteModal('{{ $testimonial->testimonial_id }}', '{{ $testimonial->domain_web }}')">
-                                                    <img src="assets/img/product/trash.svg" alt="">
+        @csrf
+        @method('DELETE')
+        <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+            <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete">
+        </button>
+    </form> -->
+                                                <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $testimonial->testimonial_id }}', '{{ $testimonial->domain_web }}')">
+                                                    <img src="{{ asset('assets/img/product/trash.svg') }}" alt="">
                                                 </a>
-
                                             </td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>

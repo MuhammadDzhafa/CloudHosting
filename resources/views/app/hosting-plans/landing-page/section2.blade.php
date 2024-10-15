@@ -48,15 +48,15 @@
 
                 <div id="domain-container" class="flex flex-wrap justify-center items-center gap-[5px]">
                     @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-                        <div class="card-domain popular-domain flex flex-grow" data-domain="{{ $domain }}">
-                            <div class="card-content-product">
-                                <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
-                                <p class="text-center flex items-center">
-                                    <span class="price-currency text-[20px] font-semibold">$</span>
-                                    <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
-                                </p>
-                            </div>
+                    <div class="card-domain popular-domain flex flex-grow" data-domain="{{ $domain }}">
+                        <div class="card-content-product">
+                            <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
+                            <p class="text-center flex items-center">
+                                <span class="price-currency text-[20px] font-semibold">$</span>
+                                <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
+                            </p>
                         </div>
+                    </div>
                     @endforeach
                 </div>
 

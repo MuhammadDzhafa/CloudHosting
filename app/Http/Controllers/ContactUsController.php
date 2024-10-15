@@ -30,11 +30,13 @@ class ContactUsController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Membuat kontak baru
+        // Simpan data ke database
         ContactUs::create($request->all());
 
-        return redirect()->route('contact-us.index')->with('success', 'Message sent successfully.');
+        // Return response JSON
+        return response()->json(['success' => true, 'message' => 'Message sent successfully']);
     }
+
 
     // Menampilkan form untuk mengedit kontak
     public function edit($id)
