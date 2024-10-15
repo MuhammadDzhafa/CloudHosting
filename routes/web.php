@@ -97,8 +97,6 @@ Route::get('/auth/google/callback', [RegisterController::class, 'handleGoogleCal
 Route::get('/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
 Route::post('/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
 
-/* Admin */
-Route::get('/admin/testimonial', [TestimonialController::class, 'showTestimonials'])->name('testimonials.show');
 
 Route::get('/profile.update', function () {
     return view('layouts.auth.profile-update');

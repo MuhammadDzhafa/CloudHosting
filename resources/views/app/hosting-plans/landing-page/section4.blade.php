@@ -2,16 +2,16 @@
     <h2 class="title-section text-center">Trusted by Over 100 Multinational Companies</h2>
     <div class="clients-row">
         @foreach([
-        'bankindonesia.svg',
-        'ojk.svg',
-        'samsung.svg',
+        'bank-indonesia.svg',
+        'logo-ojk.svg',
+        'logo-samsung.svg',
         'cocacola.svg',
-        'pertamina.svg',
+        'logo-pertamina.svg',
         'seagroup.svg',
         'lintasarta.svg',
         'itb.svg',
-        'bri.svg',
-        'hino.svg',
+        'logo-bri.svg',
+        'logo-hino.svg',
         ] as $logo)
         <div class="client-logo">
             <img src="{{ asset('assets/img/sponsor/' . $logo) }}" alt="{{ pathinfo($logo, PATHINFO_FILENAME) }}">

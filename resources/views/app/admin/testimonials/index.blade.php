@@ -156,7 +156,7 @@
 
                                     // Set the form action to the delete route
                                     const form = document.getElementById('delete-form');
-                                    form.action = "{{ url('testimonials') }}/" + id;
+                                    form.action = "{{ url('/admin/testimonials') }}/" + id;
 
                                     // Open the modal
                                     const modal = document.getElementById('confirm-delete-modal');
