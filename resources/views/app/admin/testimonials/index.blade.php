@@ -38,40 +38,38 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
 </head>
 
-
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8ZNRQ9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="huro-app" class="app-wrapper">
         <div class="app-overlay"></div>
         <!--Pageloader-->
-        <!-- Pageloader -->
         <div class="pageloader"></div>
         <div class="infraloader is-active"></div>
+
         <!--Mobile navbar-->
         @include('layouts.template-admin.mobile.navbar')
+
         <!--Mobile sidebar-->
         @include('layouts.template-admin.mobile.sidebar')
+
         <!--Circular menu-->
         <div id="circular-menu" class="circular-menu">
-
             @include('layouts.template-admin.web.floatingbtn')
-
             @include('layouts.template-admin.web.partials.toolbar')
-
         </div>
+
         <!--Sidebar-->
         @include('layouts.template-admin.web.partials.toolbar.sidebar')
         <!--Languages panel-->
         @include('layouts.template-admin.web.partials.toolbar.language')
         <!--Activity panel-->
         @include('layouts.template-admin.web.partials.toolbar.activity')
+
         <!--Search panel-->
         <div id="search-panel" class="right-panel-wrapper is-search is-left">
-
             @include('layouts.template-admin.mobile.subsidebar')
 
             <!-- Content Wrapper -->
@@ -132,18 +130,10 @@
                                                 <a href="javascript:void(0);" class="edit-link" data-id="{{ $testimonial->testimonial_id }}" data-domain="{{ $testimonial->domain_web }}" data-text="{{ $testimonial->testimonial_text }}" data-picture="{{ $testimonial->picture }}" data-occupation="{{ $testimonial->occupation }}" data-facebook="{{ $testimonial->facebook }}" data-instagram="{{ $testimonial->instagram }}">
                                                     <img src="{{ asset('assets/img/product/edit.svg') }}" alt="" class="mr-6">
                                                 </a>
-                                                <!-- <form action="{{ route('testimonials.destroy', $testimonial->testimonial_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
-        @csrf
-        @method('DELETE')
-        <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
-            <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete">
-        </button>
-    </form> -->
                                                 <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $testimonial->testimonial_id }}', '{{ $testimonial->domain_web }}')">
                                                     <img src="{{ asset('assets/img/product/trash.svg') }}" alt="">
                                                 </a>
                                             </td>
-
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -151,19 +141,13 @@
                             </div>
                             <script>
                                 function openDeleteModal(id, domain_web) {
-                                    // Set the name in the modal
                                     document.getElementById('modal-testimonial-name').textContent = domain_web;
-
-                                    // Set the form action to the delete route
                                     const form = document.getElementById('delete-form');
                                     form.action = "{{ url('/admin/testimonials') }}/" + id;
-
-                                    // Open the modal
                                     const modal = document.getElementById('confirm-delete-modal');
                                     modal.classList.add('is-active');
                                 }
                             </script>
-
                             <div id="paging-first-datatable" class="pagination datatable-pagination">
                                 <div class="datatable-info">
                                     <span></span>
@@ -173,6 +157,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Modal for Delete Confirmation -->
             <div id="confirm-delete-modal" class="modal h-modal">
                 <div class="modal-background h-modal-close"></div>

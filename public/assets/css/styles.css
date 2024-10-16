@@ -1792,3 +1792,14 @@ p {
     visibility: visible;
     opacity: 1;
 }
+
+/*
+========================================================
+                    Checkout
+========================================================
+*/
+@media (min-width: 1024px) { /* ukuran desktop */
+    .no-margin {
+        margin-bottom: 0 !important;
+    }
+}

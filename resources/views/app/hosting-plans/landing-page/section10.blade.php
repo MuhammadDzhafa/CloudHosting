@@ -22,7 +22,6 @@
                                                 <div class="inner-content">
                                                     <h3 class="media-title text-white text-2xl font-bold mb-4">{{ $latestArticle->title }}</h3>
                                                     <div class="media-meta flex items-center text-white">
-                                                        <img src="{{ asset('assets/img/section11/orang.svg') }}" alt="" class="w-12 h-12 rounded-full mr-2">
                                                         <a class="meta-item is-hoverable">{{ $latestArticle->author }}</a>
                                                         <span class="separator">|</span>
                                                         <a class="meta-item is-hoverable">{{ $latestArticle->comments_count ?? 0 }} likes</a>
@@ -52,7 +51,6 @@
                                                         {{ $article->title }}
                                                     </h3>
                                                     <div class="media-meta">
-                                                        <img src="{{ asset('assets/img/section11/orang.svg') }}" alt="">
                                                         <a class="meta-item is-hoverable">{{ $article->author }}</a>
                                                         <span class="separator">|</span>
                                                         <a class="meta-item is-hoverable">{{ $article->likes }} likes</a>

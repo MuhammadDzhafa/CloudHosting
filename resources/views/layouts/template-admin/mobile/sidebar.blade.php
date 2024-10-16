@@ -1,4 +1,4 @@
-<div class="mobile-main-sidebar">
+<!-- <div class="mobile-main-sidebar">
     <div class="inner">
         <ul class="icon-side-menu">
             <li>
@@ -41,4 +41,4 @@
             </li>
         </ul>
     </div>
-</div>
+</div> -->

@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="right">
                                                 <div class="buttons">
-                                                    <a href="/articles" class="button h-button is-light is-dark-outlined">
+                                                    <a href="/admin/articles" class="button h-button is-light is-dark-outlined">
                                                         <span class="icon">
                                                             <i class="lnir lnir-arrow-left rem-100"></i>
                                                         </span>

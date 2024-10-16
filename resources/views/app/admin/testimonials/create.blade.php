@@ -152,7 +152,7 @@
                 const instagram = link.getAttribute('data-instagram');
 
                 // Set modal action for editing
-                form.action = `/testimonials/${id}`; // Set action for PUT
+                form.action = "{{ url('/admin/testimonials') }}/" + id; // Set action for PUT
                 form.method = 'POST'; // Set method to POST
 
                 // Populate form fields

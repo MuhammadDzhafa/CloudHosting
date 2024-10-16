@@ -80,18 +80,18 @@ class TestimonialController extends Controller
             $fileName = time() . '_' . $originalName;
             // Simpan file dengan nama yang ditentukan
             // $filePath = $request->file('picture')->storeAs('testimonial_pictures', $fileName, 'public');   
-            
+
             // Tentukan path untuk folder penyimpanan gambar
             $directoryPath = public_path('storage/testimonial_pictures');
-            
+
             // Periksa apakah folder testimonial_pictures ada, jika tidak, buat foldernya
             if (!is_dir($directoryPath)) {
                 mkdir($directoryPath, 0755, true);
             }
-        
+
             // Simpan file dengan nama yang ditentukan
             $filePath = "{$directoryPath}/{$fileName}";
-            
+
             // $filePath = public_path("storage/testimonial_pictures/{$fileName}");
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
@@ -160,10 +160,10 @@ class TestimonialController extends Controller
 
 
 
-    public function show(Testimonial $testimonial): View
-    {
-        return view('app.admin.testimonials.show', ['testimonial' => $testimonial]);
-    }
+    // public function show(Testimonial $testimonial): View
+    // {
+    //     return view('app.admin.testimonials.show', ['testimonial' => $testimonial]);
+    // }
 
     public function edit($id): View
     {
@@ -218,8 +218,7 @@ class TestimonialController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Debugging: Check if the method is called
-        Log::info('Update method called for ID: ' . $id);
+        Log::info('Update method called for ID', ['id' => $id]);
 
         // Validate the request
         $request->validate([

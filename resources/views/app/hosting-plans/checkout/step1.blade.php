@@ -224,20 +224,20 @@
                             <!-- Table items hidden by default -->
                             @foreach ($tlds as $tld)
                             <div class="flex-table-container tld-item hidden">
-                                <div class="flex-table-item">
-                                    <div class="flex-table-cell cell-start is-bold" data-th="Company">
+                                <div class="flex-table-item mb-4 sm:mb-0">
+                                    <div class="flex-table-cell cell-start is-bold" data-th="TLD Name">
                                         <span class="dark-text">{{ $tld->tld_name }}</span>
                                     </div>
-                                    <div class="flex-table-cell cell-start" data-th="Type">
+                                    <div class="flex-table-cell cell-start" data-th="Category">
                                         <span class="light-text">{{ $tld->category }}</span>
                                     </div>
-                                    <div class="flex-table-cell" data-th="Industry">
+                                    <div class="flex-table-cell">
                                         <span class="light-text"></span>
                                     </div>
-                                    <div class="flex-table-cell" data-th="Status">
+                                    <div class="flex-table-cell">
                                         <span class="light-text"></span>
                                     </div>
-                                    <div class="flex-table-cell" data-th="Contacts" style="padding:unset;">
+                                    <div class="flex-table-cell" data-th="Price">
                                         <span class="light-text">IDR {{ number_format($tld->tld_price, 0, ',', '.') }} / years</span>
                                     </div>
                                     <div class="flex-table-cell cell-end" data-th="Actions">
@@ -263,6 +263,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="flex-shrink-0 cell-end" data-th="Actions">
                                         <span class="light-text">
                                             <button id="continue-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">

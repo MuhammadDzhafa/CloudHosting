@@ -30,7 +30,7 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'content' => 'required', // Tidak ada batasan panjang
             'author' => 'required|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
+            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar
         ]);
 
         // Membuat artikel baru
@@ -62,7 +62,7 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'author' => 'required|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
+            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar
         ]);
 
         // Mengupdate artikel

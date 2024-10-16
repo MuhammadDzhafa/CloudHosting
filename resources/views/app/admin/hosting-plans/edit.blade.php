@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="page-content-inner">
-                        <form action="/hosting-plans/{{ $hostingPlan->hosting_plans_id }}" method="POST">
+                        <form action="/admin/hosting-plans/{{ $hostingPlan->hosting_plans_id }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-layout" style="max-width: none;">
@@ -169,15 +169,15 @@
                                             <div class="tabs is-centered" style="margin-bottom:0px">
                                                 <ul>
                                                     @if ($hostingPlan->package_type === 'Custom')
-                                                        <li data-tab="product-info-tab" class="is-active"><a>Product
-                                                                Info</a></li>
-                                                        <li data-tab="custom-pricing-tab"><a>Pricing</a></li>
-                                                        <li data-tab="custom-spec-tab"><a>Product Specifications</a></li>
+                                                    <li data-tab="product-info-tab" class="is-active"><a>Product
+                                                            Info</a></li>
+                                                    <li data-tab="custom-pricing-tab"><a>Pricing</a></li>
+                                                    <li data-tab="custom-spec-tab"><a>Product Specifications</a></li>
                                                     @else
-                                                        <li data-tab="product-info-tab" class="is-active"><a>Product
-                                                                Info</a></li>
-                                                        <li data-tab="regular-pricing-tab"><a>Pricing</a></li>
-                                                        <li data-tab="regular-spec-tab"><a>Product Specifications</a></li>
+                                                    <li data-tab="product-info-tab" class="is-active"><a>Product
+                                                            Info</a></li>
+                                                    <li data-tab="regular-pricing-tab"><a>Pricing</a></li>
+                                                    <li data-tab="regular-spec-tab"><a>Product Specifications</a></li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -251,9 +251,9 @@
                                                                             id="group-dropdown-menu" role="menu">
                                                                             <div class="dropdown-content">
                                                                                 @foreach ($hostingGroups as $group)
-                                                                                    <a class="dropdown-item font-size-base"
-                                                                                        data-value={{ $group->name }}
-                                                                                        onclick="updateGroup('{{ $group->hosting_group_id }}', '{{ $group->name }}')">{{ $group->name }}</a>
+                                                                                <a class="dropdown-item font-size-base"
+                                                                                    data-value={{ $group->name }}
+                                                                                    onclick="updateGroup('{{ $group->hosting_group_id }}', '{{ $group->name }}')">{{ $group->name }}</a>
                                                                                 @endforeach
                                                                             </div>
                                                                         </div>
@@ -327,76 +327,76 @@
                                                                 <tr>
                                                                     <th>Enable</th>
                                                                     @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                        <td>
-                                                                            <label class="checkbox is-outlined is-primary">
-                                                                                <input type="checkbox"
-                                                                                    name="prices[{{ $duration }}][enable]"
-                                                                                    class="toggle-checkbox"
-                                                                                    @if(isset($prices[$duration]['price']) && !empty($prices[$duration]['price']))
-                                                                                    checked @endif>
-                                                                                <span></span>
-                                                                            </label>
-                                                                        </td>
+                                                                    <td>
+                                                                        <label class="checkbox is-outlined is-primary">
+                                                                            <input type="checkbox"
+                                                                                name="prices[{{ $duration }}][enable]"
+                                                                                class="toggle-checkbox"
+                                                                                @if(isset($prices[$duration]['price']) && !empty($prices[$duration]['price']))
+                                                                                checked @endif>
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price</th>
                                                                     @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                        <td>
-                                                                            <div class="control">
-                                                                                <input type="number"
-                                                                                    name="prices[{{ $duration }}][price]"
-                                                                                    class="input has-text-centered toggle-input"
-                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
-                                                                                    disabled @endif
-                                                                                    value="{{ $prices[$duration]['price'] ?? '' }}">
-                                                                            </div>
-                                                                        </td>
+                                                                    <td>
+                                                                        <div class="control">
+                                                                            <input type="number"
+                                                                                name="prices[{{ $duration }}][price]"
+                                                                                class="input has-text-centered toggle-input"
+                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                disabled @endif
+                                                                                value="{{ $prices[$duration]['price'] ?? '' }}">
+                                                                        </div>
+                                                                    </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Discount (%)</th>
                                                                     @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                        <td>
-                                                                            <div class="control">
-                                                                                <input type="number"
-                                                                                    name="prices[{{ $duration }}][discount]"
-                                                                                    class="input has-text-centered toggle-discount"
-                                                                                    min="0" max="100"
-                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
-                                                                                    disabled @endif
-                                                                                    value="{{ $prices[$duration]['discount'] ?? '' }}">
-                                                                            </div>
-                                                                        </td>
+                                                                    <td>
+                                                                        <div class="control">
+                                                                            <input type="number"
+                                                                                name="prices[{{ $duration }}][discount]"
+                                                                                class="input has-text-centered toggle-discount"
+                                                                                min="0" max="100"
+                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                disabled @endif
+                                                                                value="{{ $prices[$duration]['discount'] ?? '' }}">
+                                                                        </div>
+                                                                    </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price After</th>
                                                                     @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                        <td>
-                                                                            <div class="control">
-                                                                                <input type="number"
-                                                                                    name="prices[{{ $duration }}][price_after]"
-                                                                                    class="input has-text-centered toggle-price-after"
-                                                                                    required
-                                                                                    @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
-                                                                                    disabled @endif
-                                                                                    value="{{ $prices[$duration]['price_after'] ?? '' }}">
-                                                                            </div>
-                                                                        </td>
+                                                                    <td>
+                                                                        <div class="control">
+                                                                            <input type="number"
+                                                                                name="prices[{{ $duration }}][price_after]"
+                                                                                class="input has-text-centered toggle-price-after"
+                                                                                required
+                                                                                @if(!isset($prices[$duration]['enable']) || !$prices[$duration]['enable'])
+                                                                                disabled @endif
+                                                                                value="{{ $prices[$duration]['price_after'] ?? '' }}">
+                                                                        </div>
+                                                                    </td>
                                                                     @endforeach
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Actions</th>
                                                                     @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
-                                                                        <td>
-                                                                            @if(isset($prices[$duration]))
-                                                                                <button type="button" class="is-danger button"
-                                                                                    onclick="deletePrice({{ $prices[$duration]['price_id'] }})">Delete</button>
-                                                                            @else
-                                                                                <span>No Price Available</span>
-                                                                            @endif
-                                                                        </td>
+                                                                    <td>
+                                                                        @if(isset($prices[$duration]))
+                                                                        <button type="button" class="is-danger button"
+                                                                            onclick="deletePrice({{ $prices[$duration]['price_id'] }})">Delete</button>
+                                                                        @else
+                                                                        <span>No Price Available</span>
+                                                                        @endif
+                                                                    </td>
                                                                     @endforeach
                                                                 </tr>
                                                             </tbody>
@@ -406,13 +406,13 @@
 
                                                 <div id="regular-spec-tab" class="tab-content">
                                                     @if ($errors->any())
-                                                        <div class="alert alert-danger">
-                                                            <ul>
-                                                                @foreach ($errors->all() as $error)
-                                                                    <li>{{ $error }}</li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                     @endif
 
                                                     <div class="columns is-justify-content-center">
@@ -1010,13 +1010,13 @@
 
                                                 <div id="custom-spec-tab" class="tab-content">
                                                     @if ($errors->any())
-                                                        <div class="alert alert-danger">
-                                                            <ul>
-                                                                @foreach ($errors->all() as $error)
-                                                                    <li>{{ $error }}</li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                     @endif
 
                                                     <div class="columns is-justify-content-center w-full">
@@ -1530,11 +1530,11 @@
             updateInputState(); // Ensure input fields are enabled/disabled based on current selection
 
             // Call handleSSHChange for initial state
-            handleSSHChange(true);  // for Regular
+            handleSSHChange(true); // for Regular
             handleSSHChange(false); // for Custom
 
             // Initial call to ensure the correct state based on the database values on page load
-            handleFreeDomainChange(true);  // for Regular
+            handleFreeDomainChange(true); // for Regular
             handleFreeDomainChange(false); // for Custom
         });
     </script>
@@ -1566,7 +1566,7 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const checkboxes = document.querySelectorAll('.toggle-checkbox');
             const inputs = document.querySelectorAll('.toggle-input');
             const discounts = document.querySelectorAll('.toggle-discount');
@@ -1618,12 +1618,12 @@
         function deletePrice(priceId) {
             if (confirm("Are you sure you want to delete this price?")) {
                 fetch(`/prices/${priceId}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Content-Type': 'application/json',
-                    },
-                })
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Content-Type': 'application/json',
+                        },
+                    })
                     .then(response => {
                         if (response.ok) {
                             location.reload();
@@ -1640,14 +1640,14 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tabs li');
             const tabContents = document.querySelectorAll('.tab-content');
             let activeTab = document.querySelector('.tabs li.is-active').getAttribute('data-tab'); // Default active tab
 
             // Event listener for each tab to activate the correct tab when clicked
             tabs.forEach(tab => {
-                tab.addEventListener('click', function () {
+                tab.addEventListener('click', function() {
                     const selectedTab = this.getAttribute('data-tab');
                     setActiveTab(selectedTab);
                 });
@@ -1668,7 +1668,7 @@
             }
 
             // Simulate saving changes and retaining the active tab after saving
-            document.getElementById('saveChanges').addEventListener('click', function () {
+            document.getElementById('saveChanges').addEventListener('click', function() {
                 // Normally, you would trigger a save action here
                 alert('Changes saved!');
 
@@ -1692,7 +1692,7 @@
         }
 
         // Buka modal pertanyaan saat tombol "Right Actions" diklik
-        document.getElementById('open-modal').addEventListener('click', function () {
+        document.getElementById('open-modal').addEventListener('click', function() {
             openModal('question-modal');
         });
 
@@ -1702,7 +1702,7 @@
         //     openModal('saved-modal'); // Buka modal "Saved!"
         // });
 
-        document.getElementById('confirm-save').addEventListener('click', function (event) {
+        document.getElementById('confirm-save').addEventListener('click', function(event) {
             event.preventDefault(); // Cegah submit form secara langsung
 
             closeModal('question-modal'); // Tutup modal pertanyaan
@@ -1713,33 +1713,33 @@
         });
 
         // Tutup modal saat background atau tombol close diklik
-        document.querySelectorAll('.h-modal-close').forEach(function (closeBtn) {
-            closeBtn.addEventListener('click', function (event) {
+        document.querySelectorAll('.h-modal-close').forEach(function(closeBtn) {
+            closeBtn.addEventListener('click', function(event) {
                 event.preventDefault(); // Mencegah refresh halaman
                 const modals = document.querySelectorAll('.modal');
-                modals.forEach(function (modal) {
+                modals.forEach(function(modal) {
                     modal.classList.remove('is-active');
                 });
             });
         });
 
         // Event Listener untuk tombol "Cancel"
-        document.getElementById('cancel-button').addEventListener('click', function (event) {
+        document.getElementById('cancel-button').addEventListener('click', function(event) {
             event.preventDefault(); // Mencegah refresh halaman
             closeModal('question-modal'); // Tutup modal pertanyaan
         });
     </script>
 
     <script>
-        document.getElementById('multiple_ram').addEventListener('input', function () {
+        document.getElementById('multiple_ram').addEventListener('input', function() {
             var multipleRamValue = this.value;
             document.getElementById('min_ram').value = multipleRamValue;
         });
-        document.getElementById('multiple_cpu').addEventListener('input', function () {
+        document.getElementById('multiple_cpu').addEventListener('input', function() {
             var multipleCpuValue = this.value;
             document.getElementById('min_cpu').value = multipleCpuValue;
         });
-        document.getElementById('multiple_ssd').addEventListener('input', function () {
+        document.getElementById('multiple_ssd').addEventListener('input', function() {
             var multipleSsdValue = this.value;
             document.getElementById('min_ssd').value = multipleSsdValue;
         });
@@ -1761,32 +1761,32 @@
         }
 
         // Add event listeners for real-time validation on max input for RAM, CPU, and SSD
-        document.getElementById('max_ram').addEventListener('input', function () {
+        document.getElementById('max_ram').addEventListener('input', function() {
             validateMultiple('multiple_ram', 'max_ram', 'ram_warning');
         });
 
-        document.getElementById('max_cpu').addEventListener('input', function () {
+        document.getElementById('max_cpu').addEventListener('input', function() {
             validateMultiple('multiple_cpu', 'max_cpu', 'cpu_warning');
         });
 
-        document.getElementById('max_ssd').addEventListener('input', function () {
+        document.getElementById('max_ssd').addEventListener('input', function() {
             validateMultiple('multiple_ssd', 'max_ssd', 'ssd_warning');
         });
 
         // Add event listeners to update min values when multiple values change
-        document.getElementById('multiple_ram').addEventListener('input', function () {
+        document.getElementById('multiple_ram').addEventListener('input', function() {
             var multipleRamValue = this.value;
             document.getElementById('min_ram').value = multipleRamValue;
             validateMultiple('multiple_ram', 'max_ram', 'ram_warning'); // Revalidate
         });
 
-        document.getElementById('multiple_cpu').addEventListener('input', function () {
+        document.getElementById('multiple_cpu').addEventListener('input', function() {
             var multipleCpuValue = this.value;
             document.getElementById('min_cpu').value = multipleCpuValue;
             validateMultiple('multiple_cpu', 'max_cpu', 'cpu_warning'); // Revalidate
         });
 
-        document.getElementById('multiple_ssd').addEventListener('input', function () {
+        document.getElementById('multiple_ssd').addEventListener('input', function() {
             var multipleSsdValue = this.value;
             document.getElementById('min_ssd').value = multipleSsdValue;
             validateMultiple('multiple_ssd', 'max_ssd', 'ssd_warning'); // Revalidate
