@@ -216,7 +216,7 @@
     // Menangani klik pada tombol hapus pesan
     document.getElementById('delete-message').addEventListener('click', function() {
         document.getElementById('success-message').classList.add('hidden');
-    });
+    }); 
 
     function renderComponent(componentIdToShow) {
         console.log('componentIdToShow', componentIdToShow)

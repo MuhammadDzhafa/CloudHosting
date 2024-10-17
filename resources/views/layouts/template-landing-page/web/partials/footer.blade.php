@@ -1,5 +1,5 @@
 <div class="section-frame-footer" style="background: #fff;">
-  <footer class="w-full">
+  <footer class="w-full z-10">
     <div class="footer-container">
       <div class="footer-column">
         <h4 class="footer-header">Products</h4>
@@ -83,19 +83,19 @@
         <img src="assets/img/logos/logo/awanhosting.svg" alt="awanhosting" class="max-w-[191px] mx-auto">
       </div>
       <div class="flex flex-row gap-8 items-center">
-        <a href="#">
+        <a href="https://www.facebook.com/kazeeid/?utm_source=kazee_id&utm_medium=social_icon&utm_campaign=landing_page_1">
           <img src="assets/img/section13/Facebook.svg" alt="facebook">
         </a>
-        <a href="#">
+        <a href="https://www.facebook.com/kazeeid/?utm_source=kazee_id&utm_medium=social_icon&utm_campaign=landing_page_1">
           <img src="assets/img/section13/Twitter.svg" alt="twitter">
         </a>
-        <a href="#">
+        <a href="https://www.instagram.com/kazeeid/?utm_source=kazee_id&utm_medium=social_icon&utm_campaign=landing_page_1">
           <img src="assets/img/section13/Instagram.svg" alt="instagram">
         </a>
-        <a href="#">
+        <a href="https://www.youtube.com/channel/UCAjvCk1nTX5feYHp7yCbaqQ">
           <img src="assets/img/section13/YouTube.svg" alt="youtube">
         </a>
-        <a href="#">
+        <a href="https://id.linkedin.com/company/kazeeid">
           <img src="assets/img/section13/LinkedIn.svg" alt="linkedin">
         </a>
       </div>

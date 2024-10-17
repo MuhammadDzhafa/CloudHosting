@@ -1,9 +1,9 @@
 <div class="section-frame padding-1">
-    <!-- <div class="background-container">
+    <div class="background-container">
         <img src="/assets/img/bg/bg-pattern2.svg" alt="Background Pattern" class="background-image">
-    </div> -->
+    </div>
     <div>
-        <div class="flex flex-wrap items-center">
+        <div class="flex flex-wrap items-center z-10">
             <div class="w-full lg:w-1/2">
                 <h1 class="title-hero title-primary">
                     Hosting Becomes

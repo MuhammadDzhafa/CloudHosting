@@ -37,18 +37,20 @@
                     </div>
 
                     <!-- Harga Domain -->
-                    <div id="domain-container" class="flex justify-center items-stretch space-x-[10px] w-[920px] mb-5">
-                        @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-                        <div class="card-gradient popular-domain w-[196.56px] p-[20px_0_0_0] rounded-[16px] border border-[#DEDEDE] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)]" data-domain="{{ $domain }}">
-                            <div class="card-content-product">
-                                <p class="text-[18px] text-[#643493] text-center">{{ $domain }}</p>
-                                <p class="text-center flex items-center justify-center">
-                                    <span class="price-currency text-[20px] font-semibold">$</span>
-                                    <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
-                                </p>
+                    <div class="flex flex-col items-center w-full max-w-[920px] mx-auto mb-5">
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-[10px] w-full">
+                            @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
+                            <div class="card-gradient popular-domain p-[20px_0_0_0] rounded-[16px] border border-[#DEDEDE] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)]" data-domain="{{ $domain }}">
+                                <div class="card-content-product">
+                                    <p class="text-[18px] text-[#643493] text-center">{{ $domain }}</p>
+                                    <p class="text-center flex items-center justify-center">
+                                        <span class="price-currency text-[20px] font-semibold">$</span>
+                                        <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
+                                    </p>
+                                </div>
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
                     </div>
 
                     <div class="field dropdown-filter">

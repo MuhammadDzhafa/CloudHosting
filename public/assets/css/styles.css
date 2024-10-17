@@ -466,7 +466,7 @@ p {
     }
 
     .background-image {
-        height: 602px;
+        height: 650px;
         /* Height for large screens and up */
     }
 }
@@ -1798,7 +1798,9 @@ p {
                     Checkout
 ========================================================
 */
-@media (min-width: 1024px) { /* ukuran desktop */
+@media (min-width: 1024px) {
+
+    /* ukuran desktop */
     .no-margin {
         margin-bottom: 0 !important;
     }

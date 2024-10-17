@@ -2,7 +2,7 @@
     <h2 class="title-section text-center">
         Cloud Hosting
     </h2>
-    <div class="container-project">
+    <div class="container-project z-10">
         <div class="tabs-wrapper  is-triple-slider">
             <div class="tabs-inner">
                 <div class="tabs" style="max-width: unset;">

@@ -1,13 +1,62 @@
-@extends('layouts.template-landing-page.web.master')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('cloud-hosting')
-@include('app.hosting-plans.pricing.cloud-hosting.section1')
-@include('app.hosting-plans.pricing.cloud-hosting.section2')
-@include('app.hosting-plans.pricing.cloud-hosting.section3')
-@include('app.hosting-plans.pricing.cloud-hosting.section4')
-@include('app.hosting-plans.pricing.cloud-hosting.section5')
-@include('app.hosting-plans.pricing.cloud-hosting.section6')
-@endsection
+<head>
+    <!-- Required meta tags  -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>Awan Hosting :: Checkout</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N8ZNRQ9');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!--Core CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    @extends('layouts.template-landing-page.web.master')
+
+    @section('cloud-hosting')
+    @include('app.hosting-plans.pricing.cloud-hosting.section1')
+    @include('app.hosting-plans.pricing.cloud-hosting.section2')
+    @include('app.hosting-plans.pricing.cloud-hosting.section3')
+    @include('app.hosting-plans.pricing.cloud-hosting.section4')
+    @include('app.hosting-plans.pricing.cloud-hosting.section5')
+    @include('app.hosting-plans.pricing.cloud-hosting.section6')
+    @endsection
+</body>
+
+</html>
 
 <script>
     /*

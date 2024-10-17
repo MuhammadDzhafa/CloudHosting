@@ -3,7 +3,7 @@
         Wordpress Hosting
     </h2>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
             @foreach ($hostingGroups as $group)
             @foreach ($hostingPlans as $hostingPlan)

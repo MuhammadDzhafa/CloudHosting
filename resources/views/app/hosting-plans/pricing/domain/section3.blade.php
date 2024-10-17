@@ -206,11 +206,13 @@
                                     $ ${domain.price}
                                 </td>
                                 <td class="py-3 px-4 flex justify-center items-center">
-                                    <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
-                                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                                Order
-                                            </span>
-                                        </button>
+                                    <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" 
+                                            style="border: unset; padding:12px 16px;" 
+                                            onclick="window.location.href='/checkout';">
+                                        <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                            Order
+                                        </span>
+                                    </button>
                                 </td>
                             </tr>
                         `;

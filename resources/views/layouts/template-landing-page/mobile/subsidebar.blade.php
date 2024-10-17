@@ -4,9 +4,10 @@
         <ul class="submenu" style="padding: 0 40px 20px 0px;">
             <li class="has-children">
                 <div class="collapse-wrap">
-                    <a href="javascript:void(0);" class="parent-link">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
                 </div>
             </li>
+
             <li class="has-children">
                 <div class="collapse-wrap">
                     <a href="javascript:void(0);" class="parent-link">Products<i
@@ -14,19 +15,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a class="is-submenu" href="/admin-list-flex-1.html">
+                        <a href="/domain" class="is-submenu" href="/admin-list-flex-1.html">
                             <i class="lnil lnil-list-alt-1"></i>
                             <span>Domain</span>
                         </a>
                     </li>
                     <li>
-                        <a class="is-submenu" href="/admin-list-flex-2.html">
+                        <a href="/cloud-hosting" class="is-submenu" href="/admin-list-flex-2.html">
                             <i class="lnil lnil-list-alt-1"></i>
                             <span>Cloud Hosting</span>
                         </a>
                     </li>
                     <li>
-                        <a class="is-submenu" href="/admin-list-flex-3.html">
+                        <a href="/wordpress-hosting" class="is-submenu" href="/admin-list-flex-3.html">
                             <i class="lnil lnil-list-alt-1"></i>
                             <span>WordPress Hosting</span>
                         </a>
@@ -35,7 +36,7 @@
             </li>
             <li class="has-children">
                 <div class="collapse-wrap">
-                    <a href="javascript:void(0);" class="parent-link">FAQ</a>
+                    <a href="/faq">FAQ</a>
                 </div>
             </li>
         </ul>

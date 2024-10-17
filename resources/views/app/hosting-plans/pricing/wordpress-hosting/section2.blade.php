@@ -1,4 +1,4 @@
-<div class="section-frame padding-1 gap-6 md:gap-12" style="background: #fff;">
+<div class="section-frame padding-1 gap-6" style="background: #fff;">
     <h2 class="title-section text-center">
         WordPress Hosting Plans
     </h2>
@@ -62,7 +62,6 @@
                         </span>
                     </button>
                 </a>
-                <a href="#" class="block text-center text-blue-600 mt-4">More Detail</a>
             </div>
             <!-- Alto -->
             <div
@@ -122,7 +121,6 @@
                         </span>
                     </button>
                 </a>
-                <a href="#" class="block text-center text-[#FFFFFF] mt-4">More Detail</a>
             </div>
             <!-- Cirrus -->
             <div
@@ -182,15 +180,18 @@
                         </span>
                     </button>
                 </a>
-                <a href="#" class="block text-center text-blue-600 mt-4">More Detail</a>
             </div>
         </div>
     </div>
     <p class="text-center text-[16px] font-normal leading-[23.2px] text-[#7C7C7C] font-inter mt-8">
         Price does not include tax.
     </p>
+    <a href="#" id="toggleDetail" class="block text-[18px] text-center text-blue-600 mt-4 flex items-center justify-center">
+        More detail
+        <i id="icon" data-feather="chevron-down" class="ml-2"></i>
+    </a>
 
-    <div class="container mx-auto p-5">
+    <div id="detailContent" class="container mx-auto p-5 hidden">
         <div class="table-wrapper" data-simpleba style="min-height:auto">
             <table id="hosting-plans-table" class="table is-datatable is-hoverable">
                 <thead style="background-color:#E7ECF8;">
@@ -303,3 +304,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Event listener untuk klik pada link More detail
+    document.getElementById('toggleDetail').addEventListener('click', function(e) {
+        e.preventDefault(); // Menghindari reload halaman
+
+        // Ambil elemen icon dan container detail
+        const icon = document.getElementById('icon');
+        const detailContent = document.getElementById('detailContent');
+
+        // Toggle visibility pada div
+        detailContent.classList.toggle('hidden');
+
+        // Ubah icon antara chevron-down dan chevron-right
+        if (detailContent.classList.contains('hidden')) {
+            icon.setAttribute('data-feather', 'chevron-right'); // Tampilkan chevron-right jika detail tersembunyi
+        } else {
+            icon.setAttribute('data-feather', 'chevron-down'); // Tampilkan chevron-down jika detail terlihat
+        }
+
+        // Re-render feather icons untuk memperbarui tampilan ikon
+        feather.replace();
+    });
+</script>

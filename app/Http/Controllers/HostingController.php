@@ -159,11 +159,13 @@ class HostingController extends Controller
     public function domain()
     {
         $faqs = Faq::all()->groupBy('category');
+        $tlds = Tld::all();
         $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
 
         return view('app.hosting-plans.pricing.domain.index', [
             'testimonials' => $testimonials,
             'faqs' => $faqs,
+            'tlds' => $tlds,
         ]);
     }
 
