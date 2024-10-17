@@ -259,7 +259,8 @@
                                     <div class="flex flex-grow cell-start is-bold" data-th="Company">
                                         <div class="field w-full">
                                             <div class="control">
-                                                <input type="text" class="input w-full rounded-full" placeholder="Enter your EPP code here">
+                                                <input type="text" class="input w-full rounded-full mb-4 md:hidden" placeholder="Enter your EPP code here">
+                                                <input type="text" class="hidden md:block input w-full rounded-full" placeholder="Enter your EPP code here">
                                             </div>
                                         </div>
                                     </div>

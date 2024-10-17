@@ -73,12 +73,13 @@
         const searchQuery = document.getElementById('domain-search').value;
         const dropdownContainer = document.getElementById('dropdown-container');
         const dropdownContent = document.getElementById('dropdown-content');
+        const componentTransfer = document.getElementById('component-transfer');
 
         if (searchQuery) {
             // Simulating search results - replace with actual data
             dropdownContent.innerHTML = `
-
-                <div class="message is-success flex-row flex justify-between items-center">
+        <div id="component-search">
+            <div class="message is-success flex-row flex justify-between items-center">
                     <div class="message-body">
                     <strong> ${searchQuery}</strong> is available
                     <br>Exclusive offer: $ 1.50/mon for a 2-year plan
@@ -109,15 +110,28 @@
                         </div>
                         <button class="button h-button is-primary rounded-full">Add to Cart</button>
                 </div>
+        </div>
 
             `;
 
             // Apply animation class to show the dropdown
+
             dropdownContainer.classList.add('show');
+            document.getElementById('search-button').addEventListener('click', () => {
+                renderComponent('component-transfer');
+                dropdownContainer.classList.add('hidden');
+            });
+            dropdownContainer.classList.remove('hidden');
+            componentTransfer.classList.add('hidden');
+            // document.getElementById('dropdown-container').addEventListener('click', () => {
+            // componentTransfer.classList.add('hidden');
+
+            // });
         } else {
             // Hide the container if there's no search
             dropdownContainer.classList.remove('show');
         }
+
     });
 
 

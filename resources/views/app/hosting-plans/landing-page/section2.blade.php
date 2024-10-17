@@ -39,7 +39,7 @@
                     </button>
                 </div>
 
-                <div class="flex-table">
+                <div id="component-transfer" class="flex-table">
                     <div id="tld-results" class="hidden"> <!-- Tambahkan kelas hidden -->
                         <div class="flex flex-col items-center mb-4 md:mb-0 md:items-start">
                             <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-center md:text-left text-[#fff]">Your domain search results</h3>
@@ -216,5 +216,19 @@
     // Menangani klik pada tombol hapus pesan
     document.getElementById('delete-message').addEventListener('click', function() {
         document.getElementById('success-message').classList.add('hidden');
+    });
+
+    function renderComponent(componentIdToShow) {
+        console.log('componentIdToShow', componentIdToShow)
+        const component1 = document.getElementById('component-transfer');
+        const component2 = document.getElementById('component-search');
+        console.log(component1, component2)
+
+        component1.classList.add('hidden');
+        component2.classList.add('hidden');
+        document.getElementById(componentIdToShow).classList.remove('hidden');
+    }
+    document.getElementById('search-button').addEventListener('click', () => {
+        renderComponent('component-transfer');
     });
 </script>
