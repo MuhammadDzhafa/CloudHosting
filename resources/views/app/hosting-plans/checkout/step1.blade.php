@@ -37,99 +37,76 @@
                     </div>
 
                     <!-- Harga Domain -->
-                    <div class="flex flex-col items-center w-full max-w-[920px] mx-auto mb-5">
-                        <div class="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-[10px] w-full">
-                            @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-                            <div class="card-gradient popular-domain p-[20px_0_0_0] rounded-[16px] border border-[#DEDEDE] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)]" data-domain="{{ $domain }}">
-                                <div class="card-content-product">
-                                    <p class="text-[18px] text-[#643493] text-center">{{ $domain }}</p>
-                                    <p class="text-center flex items-center justify-center">
-                                        <span class="price-currency text-[20px] font-semibold">$</span>
-                                        <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
-                                    </p>
-                                </div>
-                            </div>
-                            @endforeach
+                    <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
+                        <div class="w-full md:w-1/4 bg-blue-50 p-4 md:block hidden">
+                            <ul class="space-y-2">
+                                <!-- Radio button untuk View All -->
+                                <li>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="filter" class="mr-2 text-blue-600" checked onchange="filterDomains('View All')">
+                                        <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
+                                            View All
+                                        </span>
+                                    </label>
+                                </li>
+                                @foreach ($categories as $index => $category)
+                                <li>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="filter" class="mr-2 text-blue-600" onchange="filterDomains('{{ $category->category }}')">
+                                        <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
+                                            {{ $category->category }}
+                                        </span>
+                                    </label>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="w-full md:w-3/4 bg-white">
+                            <table class="table-auto w-full border-collapse">
+                                <thead>
+                                    <tr class="table-header">
+                                        <th class="table-cell" style="text-align: center;">TLD</th>
+                                        <th class="table-cell" style="text-align: center;">Price</th>
+                                        <th class="table-cell" style="text-align: center;">Order</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="domain-table-body">
+                                    @foreach ($tlds as $tld)
+                                    <tr class="border-b border-gray-200 text-center">
+                                        <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                            {{ $tld->tld_name }}
+                                        </td>
+                                        <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                            ${{ number_format($tld->tld_price, 2) }}
+                                        </td>
+                                        <td class="py-3 px-4 flex justify-center items-center">
+                                            <button
+                                                class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
+                                                style="border: unset; padding:12px 16px;"
+                                                data-tld-name="{{ $tld->tld_name }}"
+                                                data-tld-price="{{ $tld->tld_price }}"
+                                                onclick="orderTLD(this)">
+                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                    Order
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                     <div class="field dropdown-filter">
                         @php
-                        $filters = ['View All', 'Popular', 'Country', 'City', 'Education', 'Technology', 'Health', 'Business', 'Hobby', 'Profession', 'Company'];
+                        $filters = ['View All'];
                         @endphp
+                        @foreach ($categories as $category)
                         @php
-                        $domains = [
-                        // Popular
-                        ['tld' => '.com', 'price' => 1.99, 'category' => 'Popular'],
-                        ['tld' => '.net', 'price' => 2.99, 'category' => 'Popular'],
-                        ['tld' => '.xyz', 'price' => 0.99, 'category' => 'Popular'],
-                        ['tld' => '.io', 'price' => 3.99, 'category' => 'Popular'],
-                        ['tld' => '.co', 'price' => 5.99, 'category' => 'Popular'],
-
-                        // Country
-                        ['tld' => '.co.id', 'price' => 5.99, 'category' => 'Country'],
-                        ['tld' => '.id', 'price' => 3.99, 'category' => 'Country'],
-                        ['tld' => '.us', 'price' => 2.99, 'category' => 'Country'],
-                        ['tld' => '.uk', 'price' => 3.50, 'category' => 'Country'],
-                        ['tld' => '.au', 'price' => 4.50, 'category' => 'Country'],
-
-                        // City
-                        ['tld' => '.nyc', 'price' => 9.99, 'category' => 'City'],
-                        ['tld' => '.london', 'price' => 8.99, 'category' => 'City'],
-                        ['tld' => '.paris', 'price' => 7.99, 'category' => 'City'],
-                        ['tld' => '.tokyo', 'price' => 6.99, 'category' => 'City'],
-                        ['tld' => '.berlin', 'price' => 5.99, 'category' => 'City'],
-
-                        // Education
-                        ['tld' => '.edu', 'price' => 12.99, 'category' => 'Education'],
-                        ['tld' => '.ac.id', 'price' => 6.99, 'category' => 'Education'],
-                        ['tld' => '.school', 'price' => 4.99, 'category' => 'Education'],
-                        ['tld' => '.academy', 'price' => 3.99, 'category' => 'Education'],
-                        ['tld' => '.college', 'price' => 8.50, 'category' => 'Education'],
-
-                        // Technology
-                        ['tld' => '.tech', 'price' => 6.50, 'category' => 'Technology'],
-                        ['tld' => '.ai', 'price' => 10.99, 'category' => 'Technology'],
-                        ['tld' => '.dev', 'price' => 7.99, 'category' => 'Technology'],
-                        ['tld' => '.io', 'price' => 9.99, 'category' => 'Technology'],
-                        ['tld' => '.cloud', 'price' => 4.99, 'category' => 'Technology'],
-
-                        // Health
-                        ['tld' => '.health', 'price' => 11.99, 'category' => 'Health'],
-                        ['tld' => '.clinic', 'price' => 7.99, 'category' => 'Health'],
-                        ['tld' => '.doctor', 'price' => 8.99, 'category' => 'Health'],
-                        ['tld' => '.hospital', 'price' => 6.99, 'category' => 'Health'],
-                        ['tld' => '.care', 'price' => 5.50, 'category' => 'Health'],
-
-                        // Business
-                        ['tld' => '.biz', 'price' => 1.50, 'category' => 'Business'],
-                        ['tld' => '.company', 'price' => 3.50, 'category' => 'Business'],
-                        ['tld' => '.enterprise', 'price' => 4.50, 'category' => 'Business'],
-                        ['tld' => '.solutions', 'price' => 2.99, 'category' => 'Business'],
-                        ['tld' => '.consulting', 'price' => 3.99, 'category' => 'Business'],
-
-                        // Hobby
-                        ['tld' => '.photography', 'price' => 5.99, 'category' => 'Hobby'],
-                        ['tld' => '.bike', 'price' => 3.99, 'category' => 'Hobby'],
-                        ['tld' => '.travel', 'price' => 4.50, 'category' => 'Hobby'],
-                        ['tld' => '.garden', 'price' => 3.50, 'category' => 'Hobby'],
-                        ['tld' => '.cooking', 'price' => 6.50, 'category' => 'Hobby'],
-
-                        // Profession
-                        ['tld' => '.lawyer', 'price' => 9.50, 'category' => 'Profession'],
-                        ['tld' => '.engineer', 'price' => 8.50, 'category' => 'Profession'],
-                        ['tld' => '.accountant', 'price' => 7.50, 'category' => 'Profession'],
-                        ['tld' => '.teacher', 'price' => 6.99, 'category' => 'Profession'],
-                        ['tld' => '.nurse', 'price' => 5.99, 'category' => 'Profession'],
-
-                        // Company
-                        ['tld' => '.company', 'price' => 3.50, 'category' => 'Company'],
-                        ['tld' => '.corp', 'price' => 4.99, 'category' => 'Company'],
-                        ['tld' => '.ltd', 'price' => 2.99, 'category' => 'Company'],
-                        ['tld' => '.inc', 'price' => 6.50, 'category' => 'Company'],
-                        ['tld' => '.group', 'price' => 5.99, 'category' => 'Company'],
-                        ];
+                        $filters[] = $category->category;
                         @endphp
+                        @endforeach
 
                         <div class="control">
                             <div class="h-select">
@@ -141,11 +118,17 @@
                                 </div>
                                 <div class="select-drop has-slimscroll-sm">
                                     <div class="drop-inner">
-                                        @foreach ($filters as $filter)
                                         <div class="option-row">
-                                            <input type="radio" name="filter" id="filter-{{ $loop->index }}" value="{{ $filter }}" onchange="filterDomains('{{ $filter }}')">
+                                            <input type="radio" name="filter" id="filter-all" value="View All" onchange="filterDomains('View All')">
+                                            <label for="filter-all" class="option-meta">
+                                                <span>View All</span>
+                                            </label>
+                                        </div>
+                                        @foreach ($categories as $category)
+                                        <div class="option-row">
+                                            <input type="radio" name="filter" id="filter-{{ $loop->index }}" value="{{ $category->category }}" onchange="filterDomains('{{ $category->category }}')">
                                             <label for="filter-{{ $loop->index }}" class="option-meta">
-                                                <span>{{ $filter }}</span>
+                                                <span>{{ $category->category }}</span>
                                             </label>
                                         </div>
                                         @endforeach
@@ -156,36 +139,7 @@
                     </div>
 
 
-                    <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
-                        <div class="w-full md:w-1/4 bg-blue-50 p-4 md:block hidden">
-                            <ul class="space-y-2">
-                                @foreach ($filters as $index => $filter)
-                                <li>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="filter" class="mr-2 text-blue-600" {{ $index === 0 ? 'checked' : '' }} onchange="filterDomains('{{ $filter }}')">
-                                        <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
-                                            {{ $filter }}
-                                        </span>
-                                    </label>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
 
-                        <div class="w-full md:w-3/4 bg-white">
-                            <table class="table-auto w-full border-collapse">
-                                <thead>
-                                    <tr class="table-header">
-                                        <th class="table-cell" style="text-align: center;">TLD</th>
-                                        <th class="table-cell" style="text-align: center;">Price</th>
-                                        <th class="table-cell" style="text-align: center;">Order</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="domain-table-body">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                     <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
                         <a class="pagination-previous has-chevron" onclick="handlePrevious()"><i data-feather="chevron-left"></i></a>
                         <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
@@ -293,8 +247,8 @@
     </div>
 
     <script>
-        // Data domain yang tersedia
-        domains = @json($domains);
+        // Simulasi data domain yang tersedia
+        const domains = @json($tlds); // Menyimpan semua TLD dalam array
         const itemsPerPage = 5; // Jumlah domain per halaman
         let currentPage = 1; // Halaman saat ini
 
@@ -305,39 +259,44 @@
             renderPagination(filter);
         }
 
-        // Function untuk render tabel berdasarkan filter dan halaman
+        // Function untuk merender tabel berdasarkan filter
         function renderTable(filter) {
-            const tableBody = document.getElementById('domain-table-body');
-            tableBody.innerHTML = ''; // Kosongkan tabel sebelum diisi ulang
+            const tbody = document.getElementById('domain-table-body');
+            tbody.innerHTML = ''; // Kosongkan tabel sebelum diisi ulang
 
             // Filter domain berdasarkan kategori
             const filteredDomains = filter === 'View All' ? domains : domains.filter(domain => domain.category === filter);
 
-            // Hitung index domain yang akan ditampilkan pada halaman saat ini
+            // Menghitung mulai dan akhir untuk pagination
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
-            const paginatedDomains = filteredDomains.slice(startIndex, endIndex);
 
-            // Generate rows baru untuk tabel
-            paginatedDomains.forEach(domain => {
-                const row = `
-                <tr class="border-b border-gray-200 text-center">
-                    <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                        ${domain.tld}
-                    </td>
-                    <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                        $ ${domain.price}
-                    </td>
-                    <td class="py-3 px-4 flex justify-center items-center">
-                        <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
-                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                Order
-                            </span>
-                        </button>
-                    </td>
-                </tr>
-            `;
-                tableBody.innerHTML += row; // Tambahkan row ke tabel
+            // Mengisi tabel dengan data yang difilter
+            filteredDomains.slice(startIndex, endIndex).forEach(domain => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-gray-200 text-center';
+
+                row.innerHTML = `
+                                <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                    ${domain.tld_name}
+                                </td>
+                                <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                    Rp.${domain.tld_price.toFixed(2)}
+                                </td>
+                                <td class="py-3 px-4 flex justify-center items-center">
+                                    <button 
+                                        class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" 
+                                        style="border: unset; padding:12px 16px;" 
+                                        data-tld-name="${domain.tld_name}" 
+                                        data-tld-price="${domain.tld_price}" 
+                                        onclick="orderTLD(this)">
+                                        <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                            Order
+                                        </span>
+                                    </button>
+                                </td>
+                            `;
+                tbody.appendChild(row);
             });
         }
 
@@ -354,7 +313,6 @@
 
             // Tambahkan tombol previous
             const previousButton = document.querySelector('.pagination-previous');
-            previousButton.disabled = currentPage === 1; // Nonaktifkan jika di halaman pertama
             previousButton.onclick = () => {
                 if (currentPage > 1) {
                     currentPage--;
@@ -365,7 +323,6 @@
 
             // Tambahkan tombol next
             const nextButton = document.querySelector('.pagination-next');
-            nextButton.disabled = currentPage === pageCount; // Nonaktifkan jika di halaman terakhir
             nextButton.onclick = () => {
                 if (currentPage < pageCount) {
                     currentPage++;
@@ -396,6 +353,51 @@
             filterDomains('View All');
         });
 
+        function orderTLD(button) {
+            if (!button) {
+                console.error('Button element is null or not passed correctly.');
+                return; // Berhenti jika button tidak ada
+            }
+
+            const tldName = button.getAttribute('data-tld-name');
+            const tldPrice = button.getAttribute('data-tld-price');
+
+            // Cek apakah atribut ada
+            if (!tldName || !tldPrice) {
+                console.error('Missing data attributes:', {
+                    tldName,
+                    tldPrice
+                });
+                return; // Berhenti jika atribut hilang
+            }
+
+            console.log('TLD Name:', tldName);
+            console.log('TLD Price:', tldPrice);
+
+            // Kirim data ke backend jika atribut lengkap
+            fetch('/order-tld', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        tld_name: tldName,
+                        tld_price: tldPrice
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('TLD successfully ordered!');
+                    } else {
+                        alert('Error ordering TLD!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
         document.getElementById('search-button').addEventListener('click', function() {
             // Ambil nilai input dari kolom pencarian
             const searchQuery = document.getElementById('domain-search').value.toLowerCase();

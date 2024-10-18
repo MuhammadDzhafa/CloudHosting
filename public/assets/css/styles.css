@@ -705,6 +705,7 @@ p {
     background: var(--Netral-White, #fff);
     box-sizing: border-box;
     transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    max-width: 130px;
 }
 
 .card:hover,
@@ -762,6 +763,10 @@ p {
         max-width: 320px;
         /* Restrict the max width for larger screens */
         margin-top: 10px;
+    }
+
+    .card-domain {
+        max-width: unset;
     }
 
     .card-title {

@@ -9,11 +9,12 @@
             </div>
         </div>
 
-        <div class="column is-8">
+        <div class="column is-8" style="padding: 12px 0 12px 20px;">
             <!-- Search Input and Buttons -->
             <div class="flex flex-col flex-grow gap-4">
-                <div class="flex justify-center flex-row gap-2">
-                    <div class="field flex-grow h-full mb-0">
+                <div class="flex flex-col md:flex-row justify-center gap-2">
+                    <!-- Baris Pertama: Input Pencarian -->
+                    <div class="field flex-grow h-full mb-0 md:w-[360px] lg:w-[1400px]">
                         <div class="control has-icon">
                             <input type="text" id="domain-search" class="input is-rounded search-input"
                                 placeholder="Search...">
@@ -22,22 +23,28 @@
                             </div>
                         </div>
                     </div>
-                    <button id="search-btn"
-                        class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
-                        style="border: unset; padding:12px 16px;">
-                        <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
-                        <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                            Search
-                        </span>
-                    </button>
-                    <button id="search-button" class="button h-button rounded-full" style="border: unset; padding:12px 16px;">
-                        <span class="material-icons mr-2" style="color:#2A4693; font-size:20px">&#xe428;</span>
-                        <span
-                            class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#2A4693] text-center">
-                            Transfer
-                        </span>
-                    </button>
+
+                    <!-- Baris Kedua: Tombol -->
+                    <div class="flex flex-row w-full gap-2 md:gap-2">
+                        <button id="search-btn"
+                            class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full w-1/2"
+                            style="border: unset; padding:12px 16px;">
+                            <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
+                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                Search
+                            </span>
+                        </button>
+
+                        <button id="search-button" class="button h-button rounded-full w-1/2"
+                            style="border: unset; padding:12px 16px;">
+                            <span class="material-icons mr-2" style="color:#2A4693; font-size:20px">&#xe428;</span>
+                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#2A4693] text-center">
+                                Transfer
+                            </span>
+                        </button>
+                    </div>
                 </div>
+
 
                 <div id="component-transfer" class="flex-table">
                     <div id="tld-results" class="hidden"> <!-- Tambahkan kelas hidden -->
@@ -216,7 +223,7 @@
     // Menangani klik pada tombol hapus pesan
     document.getElementById('delete-message').addEventListener('click', function() {
         document.getElementById('success-message').classList.add('hidden');
-    }); 
+    });
 
     function renderComponent(componentIdToShow) {
         console.log('componentIdToShow', componentIdToShow)

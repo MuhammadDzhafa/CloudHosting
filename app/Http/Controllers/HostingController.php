@@ -160,12 +160,14 @@ class HostingController extends Controller
     {
         $faqs = Faq::all()->groupBy('category');
         $tlds = Tld::all();
+        $categories = Tld::select('category')->distinct()->get();
         $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
 
         return view('app.hosting-plans.pricing.domain.index', [
             'testimonials' => $testimonials,
             'faqs' => $faqs,
             'tlds' => $tlds,
+            'categories' => $categories,
         ]);
     }
 

@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Awan Hosting :: Checkout</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
@@ -224,6 +225,21 @@
             return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
         }
 
+        document.getElementById('transfer-button').addEventListener('click', function() {
+            document.getElementById('transfer-form').classList.toggle('hidden');
+        });
+
+        // Menangani klik pada tombol Continue
+        document.getElementById('continue-button').addEventListener('click', function() {
+            // Menampilkan pesan sukses
+            document.getElementById('success-message').classList.remove('hidden');
+        });
+
+        // Menangani klik pada tombol hapus pesan
+        document.getElementById('delete-message').addEventListener('click', function() {
+            document.getElementById('success-message').classList.add('hidden');
+        });
+
         /*
         ========================================================
                             Section6 - Javascript
@@ -258,4 +274,86 @@
             sliderContent.style.width = `${sliderItems.length * 34}%`;
         }
     });
+
+    // Panggil function filterDomains dengan default "View All" saat halaman pertama kali dimuat    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded');
+
+        // Panggil filterDomains('View All') saat DOM loaded
+        if (typeof filterDomains === 'function') {
+            filterDomains('View All');
+        } else {
+            console.warn('filterDomains function is not defined');
+        }
+
+        function orderTLD(button) {
+            if (!button) {
+                console.error('Button element is null or not passed correctly.');
+                return;
+            }
+
+            const tldName = button.getAttribute('data-tld-name');
+            const tldPrice = button.getAttribute('data-tld-price');
+
+            if (!tldName || !tldPrice) {
+                console.error('Missing data attributes:', {
+                    tldName,
+                    tldPrice
+                });
+                return;
+            }
+
+            console.log('TLD Name:', tldName);
+            console.log('TLD Price:', tldPrice);
+
+            fetch('/order-tld', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        tld_name: tldName,
+                        tld_price: tldPrice
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('TLD successfully ordered!');
+                    } else {
+                        alert('Error ordering TLD!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+            // Tambahkan fungsionalitas untuk mengisi input pencarian
+            var searchInput = document.getElementById('domain-search');
+            if (searchInput) {
+                searchInput.value = tldName;
+                searchInput.focus();
+                searchInput.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            } else {
+                console.error('Input search tidak ditemukan');
+            }
+        }
+
+        // Menambahkan event listener ke semua tombol Order
+        var orderButtons = document.querySelectorAll('button[data-tld-name]');
+        console.log('Found', orderButtons.length, 'order buttons');
+
+        orderButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                orderTLD(this);
+            });
+        });
+    });
+
+    console.log('Script TLD order loaded');
 </script>
