@@ -26,7 +26,7 @@
                     </div>
 
                     <p class="font-inter text-[18px] font-normal leading-[29.9px] text-[#465890] mb-1 mt-10">
-                        - Azhar | {{ $testimonial->occupation }}
+                        {{ $testimonial->occupation }}
                     </p>
 
                     <p class="font-inter text-[18px] font-normal leading-[29.9px] text-[#465890] mb-12">
