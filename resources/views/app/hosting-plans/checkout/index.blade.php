@@ -129,7 +129,9 @@
                                 </div>
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
-                                        <button id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">Continue</button>
+                                        <button id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">
+                                            Continue
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -221,78 +223,139 @@
 <script src="assets/js/syntax.js" async></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Tab handling
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
         const slider = document.querySelector('.slider');
 
+        // Tab handling
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const tabId = tab.getAttribute('data-tab');
-
-                // Update tabs
                 tabs.forEach(t => {
-                    t.classList.remove('active');
-                    t.classList.remove('text-white');
+                    t.classList.remove('active', 'text-white');
                     t.classList.add('text-gray-600');
                 });
-                tab.classList.add('active');
-                tab.classList.add('text-white');
-                tab.classList.remove('text-gray-600');
-
-                // Move the slider
+                tab.classList.add('active', 'text-white');
                 const index = Array.from(tabs).indexOf(tab);
                 slider.style.left = `calc(${index * 50}% + 4px)`;
-
-                // Show the correct content
                 tabContents.forEach(content => content.classList.add('hidden'));
                 document.getElementById(`${tabId}-domain-content`).classList.remove('hidden');
             });
         });
-    });
 
-    // Javascript scroll to Step2
-    document.addEventListener("DOMContentLoaded", function() {
-        if (window.location.pathname === '/checkout') {
-            let urlParams = new URLSearchParams(window.location.search);
-            let tldName = urlParams.get('tld_name');
-
-            if (tldName) {
-                setTimeout(() => {
-                    const nextButton = document.getElementById('next-button');
-                    if (nextButton) {
-                        nextButton.click();
-                    } else {
-                        console.log("Next button not found.");
-                    }
-                }, 1000);
-            }
-        }
-    });
-
-    document.getElementById('next-button').addEventListener('click', function(event) {
-        console.log("Button was clicked!");
-    });
-
-    document.addEventListener("DOMContentLoaded", function() {
         // Ambil parameter tld_name dari URL
-        let urlParams = new URLSearchParams(window.location.search);
+        const urlParams = new URLSearchParams(window.location.search);
         let tldName = urlParams.get('tld_name');
 
-        // Perbarui elemen <h3> jika parameter tld_name ada
-        if (tldName) {
-            const h3DomainDisplay = document.getElementById('h3-domain-display');
-            const pDomainDisplay = document.getElementById('p-domain-display');
-
-            if (h3DomainDisplay) {
-                h3DomainDisplay.textContent = tldName;
-            }
-
-            if (pDomainDisplay) {
-                pDomainDisplay.textContent = tldName;
-            }
+        // Jika tld_name tidak ada di URL, ambil dari sessionStorage
+        if (!tldName) {
+            tldName = sessionStorage.getItem('tld_name');
         }
+
+        // Update elemen <h3> dengan nilai tld_name
+        const h3DomainDisplay = document.getElementById('h3-domain-display');
+        if (h3DomainDisplay && tldName) {
+            h3DomainDisplay.textContent = tldName; // Set TLD name di elemen h3
+        } else {
+            console.log("TLD Name not found in URL or session storage");
+        }
+
+        // Klik tombol "Continue" setelah sedikit delay
+        const nextButton = document.getElementById('next-button');
+        if (nextButton) {
+            setTimeout(() => {
+                nextButton.click();
+            }, 100); // Delay 100 ms
+        }
+
+        // Event listener untuk tombol Search
+        const searchButton = document.getElementById('search-btn');
+        const domainSearch = document.getElementById('domain-search');
+        const dropdownContainer = document.getElementById('dropdown-container');
+        const dropdownContent = document.getElementById('dropdown-content');
+
+        searchButton.addEventListener('click', function() {
+            const searchQuery = domainSearch.value;
+
+            if (searchQuery) {
+                dropdownContent.innerHTML = `
+                <div id="component-search">
+                    <div class="message is-success flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong id="search-tld-name">${searchQuery}</strong> is available
+                            <br>Exclusive offer: $1.50/mon for a 2-year plan
+                        </div>
+                        <button class="button h-button is-success rounded-full" onclick="handleBuyNow('${searchQuery}')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                `;
+
+                // Tampilkan dropdown
+                dropdownContainer.classList.add('show');
+                dropdownContainer.classList.remove('hidden');
+            } else {
+                dropdownContainer.classList.remove('show');
+                dropdownContainer.classList.add('hidden');
+            }
+        });
     });
+
+    function orderTLD(button) {
+        var tldName = button.getAttribute('data-tld-name');
+        var tldPrice = button.getAttribute('data-tld-price');
+
+        console.log("TLD Name:", tldName);
+        console.log("TLD Price:", tldPrice);
+
+        // Masukkan nilai tld_name ke dalam input field
+        var inputField = document.querySelector('.input');
+        if (inputField) {
+            inputField.value = tldName;
+            console.log("TLD Name set in input field:", inputField.value);
+        }
+
+        // Kirim data ke backend
+        fetch('/order-tld', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    tld_name: tldName,
+                    tld_price: tldPrice
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('TLD successfully ordered!');
+                } else {
+                    alert('Error ordering TLD!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Fungsi handleBuyNow yang hanya mengurus "Buy Now"
+    function handleBuyNow(tldName) {
+        // Set nilai TLD name ke elemen h3
+        var h3DomainDisplay = document.getElementById('h3-domain-display');
+        h3DomainDisplay.textContent = tldName;
+
+        // Klik tombol "Continue" satu kali
+        var nextButton = document.getElementById('next-button');
+        nextButton.click();
+    }
 </script>
+
+
+
 </div>
 </body>
 

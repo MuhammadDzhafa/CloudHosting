@@ -11,11 +11,13 @@
     <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div class="flex flex-col items-start mb-4 md:mb-0">
-                <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Example.id</h3>
+                <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">
+                    Example.id
+                </h3>
             </div>
-            <button>
+            <!-- <button>
                 <img src="/assets/img/icons/trash.svg" alt="" class="w-8 h-8">
-            </button>
+            </button> -->
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

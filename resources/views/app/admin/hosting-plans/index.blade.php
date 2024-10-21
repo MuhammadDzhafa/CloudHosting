@@ -374,13 +374,12 @@
 
                                         <td>
                                             <div class="d-flex justify-end">
-                                                <a
-                                                    href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
-                                                    <img src="assets/img/product/edit.svg" alt="" class="mr-3">
+                                                <a href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
+                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="" class="mr-3">
                                                 </a>
                                                 <a href="#" class="h-modal-trigger"
                                                     onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
-                                                    <img src="assets/img/product/trash.svg" alt="">
+                                                    <img src="{{ asset('assets/img/product/trash.svg') }}" alt="">
                                                 </a>
                                             </div>
                                         </td>
@@ -417,10 +416,10 @@
                 // Set the form action based on the type
                 const form = document.getElementById('delete-form');
                 if (type === 'group') {
-                    form.action = "{{ url('hosting-groups') }}/" + id; // For group deletion
+                    form.action = `{{ route('hosting-groups.destroy', '') }}/${id}`; // For group deletion
                     document.getElementById('modal-message').innerHTML = `Are you sure you want to delete the group <strong>${name}</strong> and all related hosting plans?`;
                 } else {
-                    form.action = "{{ url('hosting-plans') }}/" + id; // For hosting plan deletion
+                    form.action = `{{ route('hosting-plans.destroy', '') }}/${id}`; // For hosting plan deletion
                     document.getElementById('modal-message').innerHTML = `Are you sure you want to delete <strong>${name}</strong>?`;
                 }
 

@@ -57,118 +57,146 @@
                         Section2 - Javascript
     ========================================================
     */
-    const viewPriceListLink = document.getElementById('view-price-list');
-    const priceListSection = document.getElementById('price-list-section');
-    if (viewPriceListLink && priceListSection) {
-        const arrowIcon = viewPriceListLink.querySelector('svg');
-        viewPriceListLink.addEventListener('click', event => {
-            event.preventDefault();
-            priceListSection.classList.toggle('active');
-            arrowIcon.classList.toggle('rotate-180');
-        });
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle Price List Toggle
+        const viewPriceListLink = document.getElementById('view-price-list');
+        const priceListSection = document.getElementById('price-list-section');
+        if (viewPriceListLink && priceListSection) {
+            const arrowIcon = viewPriceListLink.querySelector('svg');
+            viewPriceListLink.addEventListener('click', event => {
+                event.preventDefault();
+                priceListSection.classList.toggle('active');
+                arrowIcon.classList.toggle('rotate-180');
+            });
+        }
 
-    // // Search Domain Availability
-    document.getElementById('search-btn').addEventListener('click', function() {
-        const searchQuery = document.getElementById('domain-search').value;
+        // Search Domain Availability
+        const searchBtn = document.getElementById('search-btn');
+        const searchButton = document.getElementById('search-button');
         const dropdownContainer = document.getElementById('dropdown-container');
         const dropdownContent = document.getElementById('dropdown-content');
         const componentTransfer = document.getElementById('component-transfer');
+        const searchInput = document.getElementById('domain-search');
+        const tldResults = document.getElementById('tld-results');
 
-        if (searchQuery) {
-            // Simulating search results - replace with actual data
-            dropdownContent.innerHTML = `
-        <div id="component-search">
-            <div class="message is-success flex-row flex justify-between items-center">
-                    <div class="message-body">
-                    <strong> ${searchQuery}</strong> is available
-                    <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-                    </div>
-                    <button
-                        class="button h-button is-success rounded-full"
-                        onclick="redirectToCheckout()">
-                        Buy Now
-                    </button>
-                </div>
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                const searchQuery = searchInput.value;
 
-                <div class="message flex-row flex justify-between items-center">
-                    <div class="message-body">
-                    <strong> ${searchQuery}</strong> is not available
-                    </div>
-                    <button class="button h-button rounded-full">WHOIS</button>
-                </div>
-
-                <div>
-                    <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
-                    <p class="text-[#FFFFFF] mb-4">For Polban, which is a vocational institution in
-                    Indonesia, here are some domain name recommendations with education-related
-                    TLD:</p>
-                    <div class="message is-primary flex-row flex justify-between items-center">
+                if (searchQuery) {
+                    dropdownContent.innerHTML = `
+                <div id="component-search">
+                    <div class="message is-success flex-row flex justify-between items-center">
                         <div class="message-body">
-                            <strong> ${searchQuery}.edu</strong> is available
-                            <br>Exclusive offer: $ 1.50/mon for a 2-year plan
+                            <strong>${searchQuery}</strong> is available
+                            <br>Exclusive offer: $1.50/mon for a 2-year plan
                         </div>
-                        <button class="button h-button is-primary rounded-full">Add to Cart</button>
+                        <button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${searchQuery}')">
+                            Buy Now
+                        </button>
+                    </div>
+                    <div class="message flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${searchQuery}</strong> is not available
+                        </div>
+                        <button class="button h-button rounded-full" id="whoisButton">WHOIS</button>
+                    </div>
                 </div>
-        </div>
-
             `;
 
-            // Apply animation class to show the dropdown
+                    // Tambahkan event listener untuk whoisButton setelah elemen dimasukkan ke DOM
+                    const whoisButton = document.getElementById('whoisButton');
+                    if (whoisButton) {
+                        whoisButton.addEventListener('click', function() {
+                            const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
+                            const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU'; // Ganti dengan API key Anda
+                            const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
 
-            dropdownContainer.classList.add('show');
-            document.getElementById('search-button').addEventListener('click', () => {
-                renderComponent('component-transfer');
-                dropdownContainer.classList.add('hidden');
+                            fetch(url)
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok');
+                                    }
+                                    return response.json();
+                                })
+                                .then(data => {
+                                    const whoisOutput = document.getElementById('whois-output'); // Ambil elemen untuk menampilkan hasil
+
+                                    if (data.WhoisRecord) {
+                                        // Tampilkan data yang diambil di elemen whois-output
+                                        whoisOutput.innerHTML = `
+                                        <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
+                                        <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
+                                        <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
+                                        <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
+                                        <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
+                                    `;
+                                    } else {
+                                        console.log('No WHOIS record found.');
+                                        whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching WHOIS data:', error);
+                                });
+                        });
+                    }
+
+                    // Tampilkan dropdown
+                    dropdownContainer.classList.add('show');
+                    dropdownContainer.classList.remove('hidden');
+                    componentTransfer.classList.add('hidden');
+                } else {
+                    dropdownContainer.classList.remove('show');
+                    dropdownContainer.classList.add('hidden');
+                }
             });
-            dropdownContainer.classList.remove('hidden');
-            componentTransfer.classList.add('hidden');
-            // document.getElementById('dropdown-container').addEventListener('click', () => {
-            // componentTransfer.classList.add('hidden');
-
-            // });
-        } else {
-            // Hide the container if there's no search
-            dropdownContainer.classList.remove('show');
         }
 
+        // Fungsi untuk mengganti domain TLD
+        function replaceTLD(domainName, newTLD) {
+            return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
+        }
+
+        // Pick TLD Card
+        document.querySelectorAll('.popular-domain').forEach(domainCard => {
+            domainCard.addEventListener('click', function() {
+                const selectedTLD = this.getAttribute('data-domain');
+                const currentDomain = searchInput.value;
+
+                if (currentDomain) {
+                    searchInput.value = replaceTLD(currentDomain, selectedTLD);
+                } else {
+                    searchInput.value = selectedTLD;
+                }
+            });
+        });
+
+        // Transfer Domain Logic
+        const transferButtons = document.querySelectorAll('.transfer-button');
+        if (transferButtons.length > 0) {
+            transferButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    document.getElementById('epp-input-container').classList.remove('hidden');
+                });
+            });
+        }
     });
 
-
-    // /* Pick TLD Card */
-    // // Select the input field
-    const searchInput = document.getElementById('domain-search');
-
-    // Function to replace the TLD of a domain
-    function replaceTLD(domainName, newTLD) {
-        // Use regex to match everything from the first dot in the last two segments
-        return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
+    // Fungsi untuk mengarahkan ke halaman checkout
+    function redirectToCheckout(domainName) {
+        if (domainName) {
+            window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
+        } else {
+            alert("Please enter a domain name.");
+        }
     }
 
-    // Select the container with the 'domain-container' id
-    const domainContainer = document.getElementById('domain-container');
-
-    // Add event listeners to each popular domain card
-    document.querySelectorAll('.popular-domain').forEach(domainCard => {
-        domainCard.addEventListener('click', function() {
-            const selectedTLD = this.getAttribute('data-domain'); // Get the clicked TLD
-            const currentDomain = searchInput.value; // Get the current input value
-
-            if (currentDomain) {
-                // Replace the existing TLD with the selected one
-                searchInput.value = replaceTLD(currentDomain, selectedTLD);
-            } else {
-                // If input is empty, just set the selected TLD
-                searchInput.value = selectedTLD;
-            }
-        });
-    });
-
     /*
-    ========================================================
-                        Section3 - Javascript
-    ========================================================
-    */
+        ========================================================
+                            Section3 - Javascript
+        ========================================================
+        */
     function orderTLD(button) {
         // Dapatkan elemen Section 2
         var section2 = document.getElementById('section2');
@@ -190,21 +218,11 @@
         }
     }
 
-    function redirectToCheckout() {
-        const domainName = document.getElementById('domain-search').value;
-
-        if (domainName) {
-            window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
-        } else {
-            alert("Please enter a domain name.");
-        }
-    }
-
     /*
-    ========================================================
-                        Section6 - Javascript
-    ========================================================
-    */
+        ========================================================
+                            Section6 - Javascript
+        ========================================================
+        */
     const storageSlider = document.getElementById('storage-slider');
     const ramSlider = document.getElementById('ram-slider');
     const cpuSlider = document.getElementById('cpu-slider');
@@ -259,7 +277,7 @@
 
     // CPU options
     const cpuOptions = [{
-            value: '4 Core',
+        value: '4 Core',
             price: 5000
         },
         {
@@ -292,158 +310,14 @@
         totalPriceElement.textContent = `${totalPrice.toLocaleString('id-ID')}`;
     }
 
-
-
     // Set event listener untuk update harga
     storageSlider.addEventListener('input', updateTotalPrice);
     ramSlider.addEventListener('input', updateTotalPrice);
     cpuSlider.addEventListener('input', updateTotalPrice);
 
-    // Set initial value
+    // Set harga awal
     updateTotalPrice();
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const storageSlider = document.getElementById('storage-slider');
-        const storageValue = document.getElementById('storage-value');
-        const storagePrice = document.getElementById('storage-price');
-
-        const storageOptions = [{
-                value: '120 GB',
-                price: 'IDR 5.000/mon'
-            },
-            {
-                value: '240 GB',
-                price: 'IDR 10.000/mon'
-            },
-            {
-                value: '256 GB',
-                price: 'IDR 15.000/mon'
-            },
-            {
-                value: '480 GB',
-                price: 'IDR 20.000/mon'
-            },
-            {
-                value: '512 GB',
-                price: 'IDR 25.000/mon'
-            }
-        ];
-
-        function updateStorage() {
-            const selectedOption = storageOptions[storageSlider.value];
-            storageValue.textContent = selectedOption.value;
-            storagePrice.textContent = selectedOption.price;
-        }
-
-        storageSlider.addEventListener('input', updateStorage);
-
-        // Set initial value
-        updateStorage();
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const ramSlider = document.getElementById('ram-slider');
-        const ramValue = document.getElementById('ram-value');
-        const ramPrice = document.getElementById('ram-price');
-
-        const ramOptions = [{
-                value: '4 GB',
-                price: 'IDR 5.000/mon'
-            },
-            {
-                value: '8 GB',
-                price: 'IDR 10.000/mon'
-            },
-            {
-                value: '16 GB',
-                price: 'IDR 15.000/mon'
-            },
-            {
-                value: '32 GB',
-                price: 'IDR 20.000/mon'
-            },
-            {
-                value: '64 GB',
-                price: 'IDR 25.000/mon'
-            }
-        ];
-
-        function updateRam() {
-            const selectedOption = ramOptions[ramSlider.value];
-            ramValue.textContent = selectedOption.value;
-            ramPrice.textContent = selectedOption.price;
-        }
-
-        ramSlider.addEventListener('input', updateRam);
-
-        // Set initial value
-        updateRam();
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const cpuSlider = document.getElementById('cpu-slider');
-        const cpuValue = document.getElementById('cpu-value');
-        const cpuPrice = document.getElementById('cpu-price');
-
-        const cpuOptions = [{
-                value: '4 Core',
-                price: 'IDR 5.000/mon'
-            },
-            {
-                value: '8 Core',
-                price: 'IDR 10.000/mon'
-            },
-            {
-                value: '12 Core',
-                price: 'IDR 15.000/mon'
-            },
-            {
-                value: '16 Core',
-                price: 'IDR 20.000/mon'
-            },
-            {
-                value: '24 Core',
-                price: 'IDR 25.000/mon'
-            }
-        ];
-
-        function updateCpu() {
-            const selectedOption = cpuOptions[cpuSlider.value];
-            cpuValue.textContent = selectedOption.value;
-            cpuPrice.textContent = selectedOption.price;
-        }
-
-        cpuSlider.addEventListener('input', updateCpu);
-
-        // Set initial value
-        updateCpu();
-    });
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-        const slider = document.querySelector('.slider');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = tab.getAttribute('data-target');
-                tabContents.forEach(content => {
-                    content.classList.toggle('is-active', content.id === target);
-                });
-                tabs.forEach(t => t.classList.remove('text-white'));
-                tab.classList.add('text-white');
-                updateSlider(tab);
-            });
-        });
-
-        function updateSlider(activeTab) {
-            const tabWidth = activeTab.offsetWidth;
-            const tabOffset = activeTab.offsetLeft;
-            slider.style.width = `${tabWidth}px`;
-            slider.style.left = `${tabOffset}px`;
-        }
-    });
 
     /*
     ========================================================

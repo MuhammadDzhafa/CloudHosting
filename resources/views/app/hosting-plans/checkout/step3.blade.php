@@ -14,12 +14,10 @@
             Cloud Hosting - Alto
         </h3>
 
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-1">
             @for ($i = 0; $i < 5; $i++)
                 <div class="flex items-center">
-                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
+                <img src="{{ asset('assets/img/icons/checklist.svg') }}" alt="Checklist Icon" class="lg:mr-1">
                 <span class="block w-[140px] h-[23px] text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
                     2 GB SSD Storage
                 </span>
@@ -29,7 +27,7 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-    @foreach (['Annualy', 'Biennially', 'Triennially', 'Monthly', 'Quarterly', 'Semi-annualy'] as $plan)
+    @foreach (['Monthly','Annualy', 'Biennially', 'Triennially', 'Quarterly'] as $plan)
     <div class="w-full md:w-[280px] h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between card-gradient">
         <!-- Bagian atas card -->
         <div class="flex justify-between items-center">

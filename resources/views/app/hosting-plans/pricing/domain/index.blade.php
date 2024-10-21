@@ -64,24 +64,74 @@
 </html>
 
 <script>
+    function redirectToCheckout() {
+        const domainName = document.getElementById('domain-search').value;
+
+        if (domainName) {
+            window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
+        } else {
+            alert("Please enter a domain name.");
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         /*
         ========================================================
                             Section1 - Javascript
         ========================================================
         */
-        const searchButton = document.getElementById('search-button');
-        const transferButtons = document.querySelectorAll('.transfer-button');
-        const continueButton = document.getElementById('continue-button');
-        const deleteMessageButton = document.getElementById('delete-message');
+        // Handle Price List Toggle
         const viewPriceListLink = document.getElementById('view-price-list');
         const priceListSection = document.getElementById('price-list-section');
+        if (viewPriceListLink && priceListSection) {
+            const arrowIcon = viewPriceListLink.querySelector('svg');
+            viewPriceListLink.addEventListener('click', event => {
+                event.preventDefault();
+                priceListSection.classList.toggle('active');
+                arrowIcon.classList.toggle('rotate-180');
+            });
+        }
+
+        // Search Domain Availability and Handle TLD Replacement
+        const searchButton = document.getElementById('search-button');
+        const searchBtn = document.getElementById('search-btn');
+        const dropdownContainer = document.getElementById('dropdown-container');
+        const dropdownContent = document.getElementById('dropdown-content');
+        const componentTransfer = document.getElementById('component-transfer');
+        const tldItems = document.querySelectorAll('.tld-item');
+        const tldResults = document.getElementById('tld-results');
+        const searchInput = document.getElementById('domain-search');
+
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                const searchQuery = searchInput.value;
+
+                if (searchQuery) {
+                    dropdownContent.innerHTML = `
+                <div id="component-search">
+                    <div class="message is-success flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${searchQuery}</strong> is available
+                            <br>Exclusive offer: $1.50/mon for a 2-year plan
+                        </div>
+                        <button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${searchQuery}')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            `;
+
+                    dropdownContainer.classList.add('show');
+                    componentTransfer.classList.add('hidden');
+                } else {
+                    dropdownContainer.classList.remove('show');
+                }
+            });
+        }
 
         if (searchButton) {
             searchButton.addEventListener('click', function() {
-                const searchQuery = document.getElementById('domain-search').value.toLowerCase();
-                const tldItems = document.querySelectorAll('.tld-item');
-                const tldResults = document.getElementById('tld-results');
+                const searchQuery = searchInput.value.toLowerCase();
                 let hasResults = false;
 
                 if (searchQuery === "") {
@@ -110,24 +160,21 @@
             });
         }
 
-        if (transferButtons.length > 0) {
-            transferButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    document.getElementById('epp-input-container').classList.remove('hidden');
-                });
-            });
-        }
+        document.querySelectorAll('.popular-domain').forEach(domainCard => {
+            domainCard.addEventListener('click', function() {
+                const selectedTLD = this.getAttribute('data-domain');
+                const currentDomain = searchInput.value;
 
-        if (continueButton) {
-            continueButton.addEventListener('click', function() {
-                document.getElementById('success-message').classList.remove('hidden');
+                if (currentDomain) {
+                    searchInput.value = replaceTLD(currentDomain, selectedTLD);
+                } else {
+                    searchInput.value = selectedTLD;
+                }
             });
-        }
+        });
 
-        if (deleteMessageButton) {
-            deleteMessageButton.addEventListener('click', function() {
-                document.getElementById('success-message').classList.add('hidden');
-            });
+        function replaceTLD(domainName, newTLD) {
+            return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
         }
 
         function renderComponent(componentIdToShow) {
@@ -141,101 +188,21 @@
             }
         }
 
-        if (viewPriceListLink && priceListSection) {
-            const arrowIcon = viewPriceListLink.querySelector('svg');
-            viewPriceListLink.addEventListener('click', event => {
-                event.preventDefault();
-                priceListSection.classList.toggle('active');
-                arrowIcon.classList.toggle('rotate-180');
-            });
-        }
-
-        // Search Domain Availability
-        const searchBtn = document.getElementById('search-btn');
-        const dropdownContainer = document.getElementById('dropdown-container');
-        const dropdownContent = document.getElementById('dropdown-content');
-        const componentTransfer = document.getElementById('component-transfer');
-
-        if (searchBtn) {
-            searchBtn.addEventListener('click', function() {
-                const searchQuery = document.getElementById('domain-search').value;
-
-                if (searchQuery) {
-                    dropdownContent.innerHTML = `
-                        <div id="component-search">
-                            <div class="message is-success flex-row flex justify-between items-center">
-                                <div class="message-body">
-                                    <strong> ${searchQuery}</strong> is available
-                                    <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-                                </div>
-                                <button class="button h-button is-success rounded-full" onclick="redirectToCheckout()">
-                                    Buy Now
-                                </button>
-                            </div>
-
-                            <div class="message flex-row flex justify-between items-center">
-                                <div class="message-body">
-                                    <strong> ${searchQuery}</strong> is not available
-                                </div>
-                                <button class="button h-button rounded-full">WHOIS</button>
-                            </div>
-
-                            <div>
-                                <p class="text-[#FFFFFF] font-semibold mb-2 text-xl">AI Recommendations ✨</p>
-                                <p class="text-[#FFFFFF] mb-4">Here are some domain name recommendations:</p>
-                                <div class="message is-primary flex-row flex justify-between items-center">
-                                    <div class="message-body">
-                                        <strong> ${searchQuery}.edu</strong> is available
-                                        <br>Exclusive offer: $ 1.50/mon for a 2-year plan
-                                    </div>
-                                    <button class="button h-button is-primary rounded-full">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-
-                    dropdownContainer.classList.add('show');
-                    componentTransfer.classList.add('hidden');
-                } else {
-                    dropdownContainer.classList.remove('show');
-                }
-            });
-        }
-
-        // Replace TLD Logic
-        const searchInput = document.getElementById('domain-search');
-        const domainContainer = document.getElementById('domain-container');
-
-        if (domainContainer) {
-            document.querySelectorAll('.popular-domain').forEach(domainCard => {
-                domainCard.addEventListener('click', function() {
-                    const selectedTLD = this.getAttribute('data-domain');
-                    const currentDomain = searchInput.value;
-
-                    if (currentDomain) {
-                        searchInput.value = replaceTLD(currentDomain, selectedTLD);
-                    } else {
-                        searchInput.value = selectedTLD;
-                    }
+        // Transfer Domain Logic
+        const transferButtons = document.querySelectorAll('.transfer-button');
+        if (transferButtons.length > 0) {
+            transferButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    document.getElementById('epp-input-container').classList.remove('hidden');
                 });
             });
         }
 
-        function replaceTLD(domainName, newTLD) {
-            return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
-        }
-
-        document.getElementById('transfer-button').addEventListener('click', function() {
-            document.getElementById('transfer-form').classList.toggle('hidden');
-        });
-
-        // Menangani klik pada tombol Continue
+        // Handle Continue Button and Success Message
         document.getElementById('continue-button').addEventListener('click', function() {
-            // Menampilkan pesan sukses
             document.getElementById('success-message').classList.remove('hidden');
         });
 
-        // Menangani klik pada tombol hapus pesan
         document.getElementById('delete-message').addEventListener('click', function() {
             document.getElementById('success-message').classList.add('hidden');
         });

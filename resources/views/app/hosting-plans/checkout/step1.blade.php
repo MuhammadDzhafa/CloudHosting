@@ -10,12 +10,13 @@
             </h1>
 
             <!-- Form Pencarian Domain -->
-            <div class="tabs-wrapper is-slider">
+            <div class="tabs-wrapper is-triple-slider">
                 <div class="tabs-inner">
                     <div class="tabs" style="max-width:unset;">
                         <ul>
                             <li data-tab="new-domain" class="is-active"><a><span>New Domain</span></a></li>
                             <li data-tab="transfer-domain"><a><span>Transfer Domain</span></a></li>
+                            <li data-tab="hosting-only"><a><span>Hosting Only</span></a></li>
                             <li class="tab-naver" style="background: #4A6DCB;"></li>
                         </ul>
                     </div>
@@ -25,10 +26,10 @@
                     <div class="flex items-start space-x-4 mb-8">
                         <div class="field flex-1">
                             <div class="control">
-                                <input type="text" class="input is-rounded w-full" placeholder="eg. example.com">
+                                <input type="text" id="domain-search" class="input is-rounded w-full" placeholder="eg. example.com">
                             </div>
                         </div>
-                        <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                        <button id="search-btn" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
                             <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
                             <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
                                 Search
@@ -36,32 +37,13 @@
                         </button>
                     </div>
 
+                    <div id="dropdown-container" class="hidden mb-4">
+                        <div id="dropdown-content"></div>
+                    </div>
+
                     <!-- Harga Domain -->
                     <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
-                        <div class="w-full md:w-1/4 bg-blue-50 p-4 md:block hidden">
-                            <ul class="space-y-2">
-                                <!-- Radio button untuk View All -->
-                                <li>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="filter" class="mr-2 text-blue-600" checked onchange="filterDomains('View All')">
-                                        <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
-                                            View All
-                                        </span>
-                                    </label>
-                                </li>
-                                @foreach ($categories as $index => $category)
-                                <li>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="filter" class="mr-2 text-blue-600" onchange="filterDomains('{{ $category->category }}')">
-                                        <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
-                                            {{ $category->category }}
-                                        </span>
-                                    </label>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="w-full md:w-3/4 bg-white">
+                        <div class="w-full bg-white">
                             <table class="table-auto w-full border-collapse">
                                 <thead>
                                     <tr class="table-header">
@@ -156,10 +138,11 @@
                 </div>
 
                 <div id="transfer-domain" class="tab-content">
+                    <h3 class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C] mb-5">Easily transfer your domain to Awan Hosting</h3>
                     <div class="flex items-start space-x-4 mb-8">
                         <div class="field flex-1">
                             <div class="control">
-                                <input type="text" id="domain-search" class="input is-rounded w-full" placeholder="Type the domain name you want to transfer, for example, awanhosting.com">
+                                <input type="text" id="domain-search" class="input is-rounded w-full" placeholder="Type in your domain name">
                             </div>
                         </div>
                         <button id="search-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
@@ -173,9 +156,10 @@
                     <!-- Flex Table -->
                     <div class="flex-table">
                         <div id="tld-results" class="hidden">
-                            <div class="flex flex-col items-start mb-4 md:mb-0">
-                                <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Your domain search results</h3>
+                            <div class="flex flex-col items-start mb-5 md:mb-0">
+                                <h3 id="h3-domain-display-2" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Your domain search results</h3>
                             </div>
+
 
                             <!-- Table items hidden by default -->
                             @foreach ($tlds as $tld)
@@ -242,6 +226,96 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="hosting-only" class="tab-content">
+                    <h3 class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C] mb-5">Order hosting without domain</h3>
+                    <div class="flex items-start space-x-4 mb-8">
+                        <div class="field flex-1">
+                            <div class="control">
+                                <input type="text" id="domain-search" class="input is-rounded w-full" placeholder="Type in your domain name">
+                            </div>
+                        </div>
+                        <button id="search-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                            <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
+                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                Search
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Flex Table -->
+                    <div class="flex-table">
+                        <div id="tld-results" class="hidden">
+                            <div class="flex flex-col items-start mb-5 md:mb-0">
+                                <h3 id="h3-domain-display-2" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Your domain search results</h3>
+                            </div>
+
+                            <!-- Table items hidden by default -->
+                            @foreach ($tlds as $tld)
+                            <div class="flex-table-container tld-item">
+                                <div class="flex-table-item mb-4 sm:mb-0">
+                                    <div class="flex-table-cell cell-start is-bold" data-th="TLD Name">
+                                        <span class="dark-text">{{ $tld->tld_name }}</span>
+                                    </div>
+                                    <div class="flex-table-cell cell-start" data-th="Category">
+                                        <span class="light-text">{{ $tld->category }}</span>
+                                    </div>
+                                    <div class="flex-table-cell">
+                                        <span class="light-text"></span>
+                                    </div>
+                                    <div class="flex-table-cell">
+                                        <span class="light-text"></span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Price">
+                                        <span class="light-text">IDR {{ number_format($tld->tld_price, 0, ',', '.') }} / years</span>
+                                    </div>
+                                    <div class="flex-table-cell cell-end" data-th="Actions">
+                                        <span class="light-text">
+                                            <button id="transfer-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full" style="border: unset; padding:12px 16px;">
+                                                <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe428;</span>
+                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                    Transfer
+                                                </span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+
+                            <div id="transfer-form" class="flex-table-container hidden">
+                                <div class="flex-table-item flex items-center w-full" style="align-items: center;">
+                                    <div class="flex flex-grow cell-start is-bold" data-th="Company">
+                                        <div class="field w-full">
+                                            <div class="control">
+                                                <input type="text" class="input w-full rounded-full mb-4 md:hidden" placeholder="Enter your EPP code here">
+                                                <input type="text" class="hidden md:block input w-full rounded-full" placeholder="Enter your EPP code here">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-shrink-0 cell-end" data-th="Actions">
+                                        <span class="light-text">
+                                            <button id="continue-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">
+                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                    Continue
+                                                </span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- Pesan sukses -->
+                                <div id="success-message" class="message is-success hidden mt-4">
+                                    <a class="delete" id="delete-message"></a>
+                                    <div class="message-body">
+                                        the domain has been successfully transferred
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -398,61 +472,82 @@
                     console.error('Error:', error);
                 });
         }
-        document.getElementById('search-button').addEventListener('click', function() {
-            // Ambil nilai input dari kolom pencarian
-            const searchQuery = document.getElementById('domain-search').value.toLowerCase();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fungsi untuk mengatur pencarian TLD
+            function setupTldSearch(containerId) {
+                const container = document.getElementById(containerId);
+                const searchButton = container.querySelector('#search-button');
+                const domainSearch = container.querySelector('#domain-search');
+                const tldResults = container.querySelector('#tld-results');
 
-            // Ambil semua item TLD
-            const tldItems = document.querySelectorAll('.tld-item');
+                searchButton.addEventListener('click', function() {
+                    const searchQuery = domainSearch.value.toLowerCase();
+                    const tldItems = tldResults.querySelectorAll('.tld-item');
 
-            // Ambil div hasil tld
-            const tldResults = document.getElementById('tld-results');
+                    if (searchQuery === "") {
+                        tldResults.classList.add('hidden');
+                        return;
+                    }
 
-            // Sembunyikan hasil pencarian jika tidak ada input
-            if (searchQuery === "") {
-                tldResults.classList.add('hidden');
-                return;
+                    let hasResults = false;
+
+                    tldItems.forEach(function(item) {
+                        const tldName = item.querySelector('.dark-text').textContent.toLowerCase();
+                        if (tldName.includes(searchQuery)) {
+                            item.classList.remove('hidden');
+                            hasResults = true;
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+
+                    tldResults.classList.toggle('hidden', !hasResults);
+
+                    // Menampilkan atau menyembunyikan pesan "No results found"
+                    let noResultsMessage = tldResults.querySelector('#no-results-message');
+                    if (!hasResults) {
+                        if (!noResultsMessage) {
+                            noResultsMessage = document.createElement('div');
+                            noResultsMessage.id = 'no-results-message';
+                            noResultsMessage.textContent = 'No matching TLD found.';
+                            noResultsMessage.className = 'mt-4 text-center text-gray-600';
+                            tldResults.appendChild(noResultsMessage);
+                        }
+                        noResultsMessage.classList.remove('hidden');
+                    } else if (noResultsMessage) {
+                        noResultsMessage.classList.add('hidden');
+                    }
+                });
             }
 
-            // Flag untuk mendeteksi apakah ada hasil yang cocok
-            let hasResults = false;
+            // Fungsi untuk mengatur tombol transfer dan form
+            function setupTransferButtons(containerId) {
+                const container = document.getElementById(containerId);
+                const transferButtons = container.querySelectorAll('#transfer-button');
+                const transferForm = container.querySelector('#transfer-form');
+                const continueButton = container.querySelector('#continue-button');
+                const successMessage = container.querySelector('#success-message');
+                const deleteMessage = container.querySelector('#delete-message');
 
-            // Loop melalui setiap item TLD
-            tldItems.forEach(function(item) {
-                // Ambil nama TLD dari elemen
-                const tldName = item.querySelector('.dark-text').textContent.toLowerCase();
+                transferButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        transferForm.classList.toggle('hidden');
+                    });
+                });
 
-                // Cek apakah nama TLD mengandung nilai pencarian
-                if (tldName.includes(searchQuery)) {
-                    // Tampilkan item jika cocok
-                    item.classList.remove('hidden');
-                    hasResults = true;
-                } else {
-                    // Sembunyikan item jika tidak cocok
-                    item.classList.add('hidden');
-                }
-            });
+                continueButton.addEventListener('click', function() {
+                    successMessage.classList.remove('hidden');
+                });
 
-            // Tampilkan div hasil hanya jika ada hasil yang cocok
-            if (hasResults) {
-                tldResults.classList.remove('hidden');
-            } else {
-                tldResults.classList.add('hidden');
+                deleteMessage.addEventListener('click', function() {
+                    successMessage.classList.add('hidden');
+                });
             }
-        });
 
-        document.getElementById('transfer-button').addEventListener('click', function() {
-            document.getElementById('transfer-form').classList.toggle('hidden');
-        });
-
-        // Menangani klik pada tombol Continue
-        document.getElementById('continue-button').addEventListener('click', function() {
-            // Menampilkan pesan sukses
-            document.getElementById('success-message').classList.remove('hidden');
-        });
-
-        // Menangani klik pada tombol hapus pesan
-        document.getElementById('delete-message').addEventListener('click', function() {
-            document.getElementById('success-message').classList.add('hidden');
+            // Mengatur fungsi untuk kedua bagian
+            setupTldSearch('transfer-domain');
+            setupTldSearch('hosting-only');
+            setupTransferButtons('transfer-domain');
+            setupTransferButtons('hosting-only');
         });
     </script>

@@ -2,11 +2,11 @@
 
     <div class=" columns">
         <div class="column is-6">
-            <h1 class="text-[50px] font-bold leading-[60px] text-left text-white font-inter mb-6">
+            <h2 class="title-section text-center text-white">
                 WordPress Hosting
-            </h1>
+            </h2>
 
-            <p class="mb-6 text-[18px] font-normal leading-[23.4px] text-left text-white font-inter">
+            <p class="text-base-hero text-primary text-white mb-3">
                 Get the best value in WordPress hosting with easy setup, fast loading times, and comprehensive support.
             </p>
 

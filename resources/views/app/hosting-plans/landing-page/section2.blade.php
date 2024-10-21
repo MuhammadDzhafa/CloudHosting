@@ -49,7 +49,7 @@
                 <div id="component-transfer" class="flex-table">
                     <div id="tld-results" class="hidden"> <!-- Tambahkan kelas hidden -->
                         <div class="flex flex-col items-center mb-4 md:mb-0 md:items-start">
-                            <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-center md:text-left text-[#fff]">Your domain search results</h3>
+                            <h3 id="h3-domain-display-1" class="text-[23px] font-[700] leading-[29.9px] text-center md:text-left text-[#fff]">Your domain search results</h3>
                         </div>
 
                         <!-- Table items hidden by default -->
@@ -122,20 +122,22 @@
                     </div>
                 </div>
 
-                <div id="domain-container" class="flex flex-wrap justify-center items-center gap-[5px]">
+                <div id="whois-output"></div> <!-- Pastikan elemen ini ada -->
+
+                <div id="domain-container">
                     @foreach(['.com', '.net', '.org', '.co.id', '.ac.id'] as $domain)
-                    <div class="card-domain popular-domain flex flex-grow" data-domain="{{ $domain }}">
+                    <div class="domain-card card-gradient popular-domain" data-domain="{{ $domain }}">
                         <div class="card-content-product">
-                            <p class="text-normal text-[18px] text-[#643493]">{{ $domain }}</p>
-                            <p class="text-center flex items-center">
-                                <span class="price-currency text-[20px] font-semibold">$</span>
-                                <span class="price-number ml-0 text-[26px] font-bold">1.99</span>
-                            </p>
+                            <p class="domain-name">{{ $domain }}</p>
+                            <div class="price-container">
+                                <span class="price-currency">Rp</span>
+                                <span class="price-number">20</span>
+                                <span class="price-currency">K</span>
+                            </div>
                         </div>
                     </div>
                     @endforeach
                 </div>
-
 
                 <div class="w-full flex justify-center lg:justify-end">
                     <a href="#" id="view-price-list"

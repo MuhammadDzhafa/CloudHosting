@@ -95,7 +95,7 @@
                                             </div>
                                             <div class="right">
                                                 <div class="buttons">
-                                                    <a href="/hosting-plans"
+                                                    <a href="/admin/hosting-plans"
                                                         class="button h-button is-light is-dark-outlined">
                                                         <span class="icon" style="min-width: 0px; min-height: 0px;">
                                                             <i class="lnir lnir-arrow-left rem-100"></i>

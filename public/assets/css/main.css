@@ -40921,11 +40921,11 @@ body.is-dark .animated-checkbox .checkmark-wrap .shadow-circle {
 }
 
 .checkbox.is-outlined.is-info input:checked+span {
-    border-color: #039be5
+    border-color: #4A6DCB
 }
 
 .checkbox.is-outlined.is-info input+span:after {
-    color: #039be5
+    color: #4A6DCB
 }
 
 .checkbox.is-outlined.is-warning input:checked+span {

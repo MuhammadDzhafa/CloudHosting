@@ -224,6 +224,123 @@
                     </div>
                 </div>
             </div>
+
+
+        </div>
+
+    </div>
+
+    <div>
+        <h3 class="text-2xl font-semibold text-black mb-3 mt-4">
+            Additional information is needed.
+        </h3>
+
+        <div class="field">
+            <div class="control">
+                <div class="h-select">
+                    <div class="select-box">
+                        <span>Operating System</span>
+                    </div>
+                    <div class="select-icon">
+                        <i data-feather="chevron-down"></i>
+                    </div>
+                    <div class="select-drop has-slimscroll-sm">
+                        <div class="drop-inner">
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>centos-6-x86</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>centos-6-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>centos-7-x86_64-minimal</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>centos-7-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>centos-8-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>ubuntu-16.04-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>ubuntu-18.04-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>ubuntu-20.04-x86_64</span>
+                                </div>
+                            </div>
+
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>debian-8.0-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>debian-9.12-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>debian-10.0-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>suse-12.3-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>suse-13.2-x86_64</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>scientific-6-x86</span>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" name="hero_select">
+                                <div class="option-meta">
+                                    <span>scientific-6-x86_64</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

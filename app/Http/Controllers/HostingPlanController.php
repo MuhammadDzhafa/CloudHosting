@@ -100,17 +100,14 @@ class HostingPlanController extends Controller
 
     public function edit($id)
     {
-
         $hostingPlan = HostingPlan::findOrFail($id);
         $hostingGroups = HostingGroup::all();
         $hostingGroupName = $hostingPlan->hostingGroup->name;
         $hostingGroupId = $hostingPlan->hostingGroup->hosting_group_id;
         $customSpec = CustomMainSpec::where('hosting_plans_id', $hostingPlan->hosting_plans_id)->first();
         $regularSpec = RegularMainSpec::where('hosting_plans_id', $hostingPlan->hosting_plans_id)->first();
-        // $regularSpec = $hostingPlan->regularMainSpec;
-        // $customSpec = $hostingPlan->customMainSpec;
+        dd($regularSpec);
 
-        // dd($customSpec);
 
         // Mengambil data harga dari tabel 'price' berdasarkan hosting_plans_id
         $prices = Price::where('hosting_plans_id', $hostingPlan->hosting_plans_id)
@@ -118,9 +115,6 @@ class HostingPlanController extends Controller
             ->keyBy('duration'); // Mengindeks data berdasarkan 'duration'
 
         return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan, 'hostingGroupId' => $hostingGroupId, 'hostingGroups' => $hostingGroups, 'hostingGroupName' => $hostingGroupName, 'prices' => $prices, 'regularSpec' => $regularSpec, 'customSpec' => $customSpec]);
-
-        // $hostingPlan = HostingPlan::where('hosting_plans_id', $id)->firstOrFail();
-        // return view('app.admin.hosting-plans.edit', ['hostingPlan' => $hostingPlan]);
     }
 
     public function update(Request $request, $id)
@@ -299,7 +293,7 @@ class HostingPlanController extends Controller
 
 
         // Redirect or return a response
-        return redirect()->route('hosting-plans.index', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan updated successfully.');
+        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan updated successfully.');
     }
 
 

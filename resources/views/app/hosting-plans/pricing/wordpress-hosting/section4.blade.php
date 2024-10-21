@@ -1,10 +1,10 @@
 <div class="font-inter" style="background: #fff;">
     <section class="section-frame padding-1">
         <div class="container mx-auto px-4 py-10">
-            <h3 class="lg:h-[43px] font-bold text-[36px] leading-[43.2px] text-center text-gray-800 mb-6">
+            <h2 class="title-section text-center mb-6">
                 Our Technology Stack
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 justify-items-center">
+            </h2>
+            <div class="grid grid-cols-2 lg:grid-cols-6 gap-12 justify-items-center">
                 <!-- Card 1 -->
                 <div id="hover-container" class="flex flex-col items-center px-[10px] py-[30px] gap-[10px] border border-gray-200 shadow-sm rounded-[50px] bg-[#EBEFF9]">
                     <img id="litespeed-img" src="/assets/img/icons/section4 price/litespeed-logo-square.png" alt="litespeed" class="w-[60px] mb-4 transition-all duration-300 ease-in-out">
@@ -21,7 +21,6 @@
                         Security, malware protection, firewall, proactive.
                     </p>
                 </div>
-
                 <!-- Card 3 -->
                 <div id="cloudlinux-container" class="flex flex-col items-center px-[10px] py-[30px] gap-[10px] border border-gray-200 shadow-sm rounded-[50px] bg-[#EBEFF9]">
                     <img id="cloudlinux-img" src="/assets/img/icons/section4 price/cloudlinux 1.png" alt="cloud linux" class="w-[60px] mb-4 transition-all duration-300 ease-in-out">
@@ -30,7 +29,6 @@
                         Isolation, resource limits, stability, multitenant.
                     </p>
                 </div>
-
                 <!-- Card 4 -->
                 <div id="cpanel-container" class="flex flex-col items-center px-[10px] py-[30px] gap-[10px] border border-gray-200 shadow-sm rounded-[50px] bg-[#EBEFF9]">
                     <img id="cpanel-img" src="/assets/img/icons/section4 price/cpanel.png" alt="cpanel" class="w-[60px] mb-4 transition-all duration-300 ease-in-out">
@@ -39,7 +37,6 @@
                         Control panel, user-friendly, hosting management.
                     </p>
                 </div>
-
                 <!-- Card 5 -->
                 <div id="whm-container" class="flex flex-col items-center px-[10px] py-[30px] gap-[10px] border border-gray-200 shadow-sm rounded-[50px] bg-[#EBEFF9]">
                     <img id="whm-img" src="/assets/img/icons/section4 price/whm.png" alt="whm" class="w-[60px] mb-4 transition-all duration-300 ease-in-out">
@@ -48,7 +45,6 @@
                         Server management, root access, hosting control.
                     </p>
                 </div>
-
                 <!-- Card 6 -->
                 <div id="softaculous-container" class="flex flex-col items-center px-[10px] py-[30px] gap-[10px] border border-gray-200 shadow-sm rounded-[50px] bg-[#EBEFF9]">
                     <img id="softaculous-img" src="/assets/img/icons/section4 price/softaculous.png" alt="softaculous" class="w-[60px] mb-4 transition-all duration-300 ease-in-out">
@@ -61,6 +57,7 @@
         </div>
     </section>
 </div>
+
 
 <script>
     const imageElement = document.getElementById('litespeed-img');

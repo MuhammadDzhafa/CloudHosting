@@ -10,6 +10,7 @@ use App\Models\CustomMainSpec;
 use App\Models\Article; // Import the Article model
 use App\Models\TLD; // Import the Article model
 use Illuminate\View\View; // Import the View class
+use App\Models\RegularMainSpec;
 
 use Illuminate\Http\Request;
 
@@ -30,6 +31,7 @@ class HostingController extends Controller
 
         // Eager load hosting plans with related groups and prices
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
+        $regularSpec = RegularMainSpec::whereIn('hosting_plans_id', $hostingPlans->pluck('hosting_plans_id'))->get()->keyBy('hosting_plans_id');
 
         // Sort hosting plans by the 'monthly' price
         $sortedHostingPlans = $hostingPlans->sortBy(function ($plan) {
@@ -44,6 +46,7 @@ class HostingController extends Controller
             'categories' => $categories,
             'hostingPlans' => $sortedHostingPlans,
             'hostingGroups' => $hostingGroups,
+            'regularSpec' => $regularSpec,
         ]);
     }
 
