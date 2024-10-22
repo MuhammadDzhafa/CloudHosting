@@ -215,6 +215,17 @@
         }
     }
 
+    function renderComponent(componentIdToShow) {
+        const component1 = document.getElementById('component-transfer');
+        const component2 = document.getElementById('component-search');
+
+        if (component1 && component2) {
+            component1.classList.add('hidden');
+            component2.classList.add('hidden');
+            document.getElementById(componentIdToShow).classList.remove('hidden');
+        }
+    }
+
     /*
         ========================================================
                             Section3 - Javascript
@@ -246,13 +257,15 @@
                             Section6 - Javascript
         ========================================================
         */
+
     const storageSlider = document.getElementById('storage-slider');
     const ramSlider = document.getElementById('ram-slider');
     const cpuSlider = document.getElementById('cpu-slider');
-
     const totalPriceElement = document.getElementById('total-price');
+    const ramValueElement = document.getElementById('ram-value');
+    const cpuValueElement = document.getElementById('cpu-value');
+    const storageValueElement = document.getElementById('storage-value');
 
-    // Storage options
     const storageOptions = [{
             value: '120 GB',
             price: 5000
@@ -275,7 +288,6 @@
         }
     ];
 
-    // RAM options
     const ramOptions = [{
             value: '4 GB',
             price: 5000
@@ -298,7 +310,6 @@
         }
     ];
 
-    // CPU options
     const cpuOptions = [{
             value: '4 Core',
             price: 5000
@@ -322,24 +333,29 @@
     ];
 
     function updateTotalPrice() {
+        // Mengambil nilai slider yang dipilih dan harga
         const selectedStorage = storageOptions[storageSlider.value].price;
         const selectedRam = ramOptions[ramSlider.value].price;
         const selectedCpu = cpuOptions[cpuSlider.value].price;
 
-        // Hitung total harga
+        // Mengupdate harga total
         const totalPrice = selectedStorage + selectedRam + selectedCpu;
-
-        // Update tampilan total harga dengan titik sebagai pemisah ribuan
         totalPriceElement.textContent = `${totalPrice.toLocaleString('id-ID')}`;
+
+        // Mengupdate nilai RAM, CPU, dan Storage yang ditampilkan
+        ramValueElement.textContent = ramOptions[ramSlider.value].value;
+        cpuValueElement.textContent = cpuOptions[cpuSlider.value].value;
+        storageValueElement.textContent = storageOptions[storageSlider.value].value;
     }
 
-    // Set event listener untuk update harga
+    // Event listener untuk memperbarui harga total dan nilai slider ketika diubah
     storageSlider.addEventListener('input', updateTotalPrice);
     ramSlider.addEventListener('input', updateTotalPrice);
     cpuSlider.addEventListener('input', updateTotalPrice);
 
-    // Set harga awal
+    // Inisialisasi nilai awal
     updateTotalPrice();
+
 
 
     /*

@@ -272,6 +272,7 @@
             }, 100); // Delay 100 ms
         }
 
+
         // Event listener untuk tombol Search
         const searchButton = document.getElementById('search-btn');
         const domainSearch = document.getElementById('domain-search');
