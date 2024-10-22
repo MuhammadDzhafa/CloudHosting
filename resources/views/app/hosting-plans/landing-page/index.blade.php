@@ -99,10 +99,33 @@
                         <div class="message-body">
                             <strong>${searchQuery}</strong> is not available
                         </div>
-                        <button class="button h-button rounded-full" id="whoisButton">WHOIS</button>
+                        <button id="whoisButton" class="button h-button rounded-full h-modal-trigger" data-modal="demo-right-actions-modal">WHOIS</button>
                     </div>
                 </div>
             `;
+
+                    const whoisButtons = document.querySelectorAll('.h-modal-trigger');
+                    whoisButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const modalId = this.getAttribute('data-modal');
+                            const modal = document.getElementById(modalId);
+                            if (modal) {
+                                modal.classList.add('is-active'); // Menampilkan modal
+                            }
+                        });
+                    });
+
+                    // Menutup modal ketika latar belakang modal atau tombol close diklik
+                    const closeModalButtons = document.querySelectorAll('.h-modal-close');
+                    closeModalButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const modal = this.closest('.modal');
+                            if (modal) {
+                                modal.classList.remove('is-active'); // Menyembunyikan modal
+                            }
+                        });
+                    });
+
 
                     // Tambahkan event listener untuk whoisButton setelah elemen dimasukkan ke DOM
                     const whoisButton = document.getElementById('whoisButton');
@@ -277,7 +300,7 @@
 
     // CPU options
     const cpuOptions = [{
-        value: '4 Core',
+            value: '4 Core',
             price: 5000
         },
         {

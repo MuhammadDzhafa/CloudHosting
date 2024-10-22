@@ -253,17 +253,20 @@
             tldName = sessionStorage.getItem('tld_name');
         }
 
-        // Update elemen <h3> dengan nilai tld_name
+        // Update elemen <h3> dengan nilai TLD
         const h3DomainDisplay = document.getElementById('h3-domain-display');
         if (h3DomainDisplay && tldName) {
-            h3DomainDisplay.textContent = tldName; // Set TLD name di elemen h3
+            // Ambil TLD dari tldName
+            const parts = tldName.split('.');
+            const tld = parts.length > 1 ? '.' + parts.pop() : '';
+
+            h3DomainDisplay.textContent = tld; // Set hanya TLD di elemen h3
         } else {
             console.log("TLD Name not found in URL or session storage");
         }
 
-        // Klik tombol "Continue" setelah sedikit delay
         const nextButton = document.getElementById('next-button');
-        if (nextButton) {
+        if (nextButton && tldName) {
             setTimeout(() => {
                 nextButton.click();
             }, 100); // Delay 100 ms
@@ -343,16 +346,24 @@
     }
 
     // Fungsi handleBuyNow yang hanya mengurus "Buy Now"
-    function handleBuyNow(tldName) {
+    function handleBuyNow(fullDomainName) {
+        // Ambil TLD dari fullDomainName
+        const parts = fullDomainName.split('.');
+        const tld = parts.length > 1 ? '.' + parts.pop() : '';
+
         // Set nilai TLD name ke elemen h3
         var h3DomainDisplay = document.getElementById('h3-domain-display');
-        h3DomainDisplay.textContent = tldName;
+        h3DomainDisplay.textContent = tld; // Hanya menampilkan TLD
 
         // Klik tombol "Continue" satu kali
         var nextButton = document.getElementById('next-button');
         nextButton.click();
     }
 </script>
+
+
+
+
 
 
 

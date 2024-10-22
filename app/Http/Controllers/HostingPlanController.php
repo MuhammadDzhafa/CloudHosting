@@ -106,8 +106,6 @@ class HostingPlanController extends Controller
         $hostingGroupId = $hostingPlan->hostingGroup->hosting_group_id;
         $customSpec = CustomMainSpec::where('hosting_plans_id', $hostingPlan->hosting_plans_id)->first();
         $regularSpec = RegularMainSpec::where('hosting_plans_id', $hostingPlan->hosting_plans_id)->first();
-        dd($regularSpec);
-
 
         // Mengambil data harga dari tabel 'price' berdasarkan hosting_plans_id
         $prices = Price::where('hosting_plans_id', $hostingPlan->hosting_plans_id)

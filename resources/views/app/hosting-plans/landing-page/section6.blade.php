@@ -161,20 +161,15 @@
                             @endif
                             @endforeach
                             <ul class="list-none mb-6">
-                                @php
-                                // Cek apakah ada RegularMainSpec untuk hosting plan ini
-                                $regularSpec = $regularSpec->get($hostingPlan->hosting_plans_id);
-                                @endphp
-
                                 @foreach(['storage' => 'GB SSD Storage', 'RAM' => 'RAM', 'CPU' => 'Core CPU', 'max_domain' => 'Domain', 'ssl' => 'SSL'] as $key => $label)
-                                <li
-                                    class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-900,#3D3D3D)]' }}">
-                                    <img src="/assets/img/icons/{{ $hostingPlan->best_seller ? 'checkwhite' : 'checkblack' }}.svg"
-                                        alt=""
-                                        class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                    {{ ($key === 'storage' || $key === 'RAM' || $key === 'CPU') && $regularSpec ? $regularSpec->$key : $hostingPlan->$key }} {{ $label }}
+                                <li class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-900,#3D3D3D)]' }}">
+                                    <img src="/assets/img/icons/{{ $hostingPlan->best_seller ? 'checkwhite' : 'checkblack' }}.svg" alt="" class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
+                                    {{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->$key : $hostingPlan->$key }} {{ $label }}
                                 </li>
                                 @endforeach
+
+
+
                             </ul>
                             <div class="button-container">
                                 <a class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] text-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"

@@ -26,38 +26,81 @@
     </div>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-    @foreach (['Monthly','Annualy', 'Biennially', 'Triennially', 'Quarterly'] as $plan)
-    <div class="w-full md:w-[280px] h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between card-gradient">
-        <!-- Bagian atas card -->
-        <div class="flex justify-between items-center">
-            <span class="text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
-                {{ $plan }}
-            </span>
-            <label class="radio is-outlined is-info flex-shrink-0">
-                <input type="radio" name="outlined_radio">
-                <span></span>
-            </label>
+{{-- Container utama --}}
+<div class="container mx-auto px-4">
+    {{-- Baris atas - 3 cards --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        @foreach(array_slice(['Monthly', 'Annualy', 'Biennially'], 0, 3) as $plan)
+        <div class="w-full h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between card-gradient">
+            <!-- Bagian atas card -->
+            <div class="flex justify-between items-center">
+                <span class="text-[16px] sm:text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
+                    {{ $plan }}
+                </span>
+                <label class="radio is-outlined is-info flex-shrink-0">
+                    <input type="radio" name="billing_period" value="{{ $plan }}" {{ $plan === 'Monthly' ? 'checked' : '' }}>
+                    <span></span>
+                </label>
+            </div>
+            <div class="flex items-baseline">
+                <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                    $
+                </span>
+                <span class="text-[28px] sm:text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
+                    1.99
+                </span>
+                <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                    /mon
+                </span>
+            </div>
+            <!-- Bagian bawah card -->
+            <div class="flex justify-between items-center">
+                <span class="line-through text-gray-400 text-[12px] sm:text-sm">$2.99 /mon</span>
+                <span class="text-[11px] sm:text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
+                    Save 30%
+                </span>
+            </div>
         </div>
-        <div class="flex items-baseline">
-            <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                $
-            </span>
-            <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                1.99
-            </span>
-            <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                /mon
-            </span>
-        </div>
-        <!-- Bagian bawah card -->
-        <div class="flex justify-between items-center">
-            <span class="line-through text-gray-400 text-sm">$2.99 /mon</span>
-            <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
-                Save 30%
-            </span>
-        </div>
+        @endforeach
     </div>
-    @endforeach
+
+    {{-- Baris bawah - 2 cards (centered) --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[600px] mx-auto">
+        @php
+        $remainingPlans = array_slice(['Monthly', 'Annualy', 'Biennially', 'Triennially', 'Quarterly'], 3);
+        @endphp
+        @foreach($remainingPlans as $plan)
+        <div class="w-full h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between card-gradient">
+            <!-- Bagian atas card -->
+            <div class="flex justify-between items-center">
+                <span class="text-[16px] sm:text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
+                    {{ $plan }}
+                </span>
+                <label class="radio is-outlined is-info flex-shrink-0">
+                    <input type="radio" name="billing_period" value="{{ $plan }}">
+                    <span></span>
+                </label>
+            </div>
+            <div class="flex items-baseline">
+                <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                    $
+                </span>
+                <span class="text-[28px] sm:text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
+                    1.99
+                </span>
+                <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                    /mon
+                </span>
+            </div>
+            <!-- Bagian bawah card -->
+            <div class="flex justify-between items-center">
+                <span class="line-through text-gray-400 text-[12px] sm:text-sm">$2.99 /mon</span>
+                <span class="text-[11px] sm:text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
+                    Save 30%
+                </span>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
 </div>

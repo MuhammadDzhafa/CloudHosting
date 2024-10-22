@@ -20,18 +20,20 @@ class HostingController extends Controller
     public function index(Request $request): View
     {
         // Retrieve all TLDs and distinct categories for filters
-        $tlds = Tld::all(); // You can use paginate() if pagination is needed
+        $tlds = Tld::all();
         $categories = Tld::select('category')->distinct()->get();
-        // dd($categories);
 
         // Retrieve testimonials, hosting groups, articles, and hosting plans with relationships
         $testimonials = Testimonial::all();
         $hostingGroups = HostingGroup::all();
         $articles = Article::latest()->take(5)->get();
 
-        // Eager load hosting plans with related groups and prices
+        // Get hosting plans with related groups and prices
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
+
+        // Retrieve regular specs associated with hosting plans
         $regularSpec = RegularMainSpec::whereIn('hosting_plans_id', $hostingPlans->pluck('hosting_plans_id'))->get()->keyBy('hosting_plans_id');
+        // dd($regularSpec);
 
         // Sort hosting plans by the 'monthly' price
         $sortedHostingPlans = $hostingPlans->sortBy(function ($plan) {
@@ -49,6 +51,7 @@ class HostingController extends Controller
             'regularSpec' => $regularSpec,
         ]);
     }
+
 
 
     public function tampilan3()
