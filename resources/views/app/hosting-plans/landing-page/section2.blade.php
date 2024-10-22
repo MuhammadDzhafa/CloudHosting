@@ -156,7 +156,7 @@
             <div class="modal-content">
                 <div class="modal-card">
                     <header class="modal-card-head">
-                        <h3>Did you know?</h3>
+                        <h3>WHOIS Search Result</h3>
                         <button class="h-modal-close ml-auto" aria-label="close">
                             <i data-feather="x"></i>
                         </button>
@@ -167,8 +167,7 @@
                         </div>
                     </div>
                     <div class="modal-card-foot is-centered">
-                        <a class="button h-button is-rounded h-modal-close">Cancel</a>
-                        <a class="button h-button is-primary is-raised is-rounded">Confirm</a>
+                        <a class="button h-button is-primary is-raised is-rounded h-modal-close">OK</a>
                     </div>
                 </div>
             </div>
