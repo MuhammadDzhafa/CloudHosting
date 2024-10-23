@@ -38,85 +38,86 @@
                 </div>
 
                 <div class="custom-bg">
-                    <div class="flex flex-wrap w-full">
-                        <div class="custom-col">
-                            <ul class="list-none p-0">
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Domains
-                                </li>
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Bandwidth
-                                </li>
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Emails
-                                </li>
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Inodes
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="custom-col custom-col-2">
-                            <div class="custom-slider-section">
-                                <div class="flex justify-between items-center mb-2">
-                                    <label class="font-bold text-gray-800">RAM</label>
-                                    <div id="ram-price" class="custom-price">Rp5000/mon</div>
-                                </div>
-                                <div class="flex items-center">
-                                    <div id="ram-value" class="custom-slider-value text-center" style="width: 75px;">4
-                                        GB</div>
-                                    <input id="ram-slider" type="range" min="0" max="4" step="1" value="0"
-                                        class="custom-slider">
-                                </div>
-                            </div>
-                            <div class="custom-slider-section">
-                                <div class="flex justify-between items-center mb-2">
-                                    <label class="font-bold text-gray-800">CPU</label>
-                                    <div id="cpu-price" class="custom-price">Rp5000/mon</div>
-                                </div>
-                                <div class="flex items-center">
-                                    <div id="cpu-value" class="custom-slider-value text-center" style="width: 75px;">4
-                                        Core</div>
-                                    <input id="cpu-slider" type="range" min="0" max="4" step="1" value="0"
-                                        class="custom-slider">
-                                </div>
-                            </div>
-                            <div class="custom-slider-section">
-                                <div class="flex justify-between items-center mb-2">
-                                    <label class="font-bold text-gray-800">Storage</label>
-                                    <div id="storage-price" class="custom-price">Rp5000/mon</div>
-                                </div>
-                                <div class="flex items-center">
-                                    <div id="storage-value" class="custom-slider-value text-center"
-                                        style="width: 75px;">120 GB</div>
-                                    <input id="storage-slider" type="range" min="0" max="4" step="1" value="0"
-                                        class="custom-slider">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row items-center w-full">
-                        <!-- flex-col untuk mobile, flex-row untuk desktop -->
-                        <div class="custom-total-price">
-                            <span class="custom-dollar-sign">IDR</span>
-                            <span id="total-price" class="custom-total-amount"></span>
-                            <span class="custom-monthly">/mon</span>
-                        </div>
-                        <a href="/checkout" class="custom-order-button mt-4 md:mt-0">
-                            <!-- Tambahkan mt-4 untuk margin-top di mobile -->
-                            <span class="custom-order-text">
-                                Order Now
-                            </span>
-                        </a>
-                    </div>
+    <div class="flex flex-wrap w-full">
+        <div class="custom-col">
+            <ul class="list-none p-0">
+                <li class="custom-text-style mt-5">
+                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                    Unlimited Domains
+                </li>
+                <li class="custom-text-style mt-5">
+                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                    Unlimited Bandwidth
+                </li>
+                <li class="custom-text-style mt-5">
+                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                    Unlimited Emails
+                </li>
+                <li class="custom-text-style mt-5">
+                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                    Unlimited Inodes
+                </li>
+            </ul>
+        </div>
 
-                    <p class="custom-note">
-                        Price does not include tax.
-                    </p>
+        <!-- Slider section for Hosting Plan Customization -->
+        <div class="custom-col custom-col-2">
+            <!-- RAM Slider -->
+            <div class="custom-slider-section">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="font-bold text-gray-800">RAM</label>
+                    <div id="ram-price" class="custom-price">Rp{{ number_format($specs->price_RAM) }}/mon</div>
                 </div>
+                <div class="flex items-center">
+                    <div id="ram-value" class="custom-slider-value text-center" style="width: 75px;">{{ $specs->min_RAM }} GB</div>
+                    <input id="ram-slider" type="range" min="{{ $specs->min_RAM }}" max="{{ $specs->max_RAM }}" step="1" value="{{ $specs->min_RAM }}" class="custom-slider">
+                </div>
+            </div>
+
+            <!-- CPU Slider -->
+            <div class="custom-slider-section">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="font-bold text-gray-800">CPU</label>
+                    <div id="cpu-price" class="custom-price">Rp{{ number_format($specs->price_CPU) }}/mon</div>
+                </div>
+                <div class="flex items-center">
+                    <div id="cpu-value" class="custom-slider-value text-center" style="width: 75px;">{{ $specs->min_CPU }} Core</div>
+                    <input id="cpu-slider" type="range" min="{{ $specs->min_CPU }}" max="{{ $specs->max_CPU }}" step="1" value="{{ $specs->min_CPU }}" class="custom-slider">
+                </div>
+            </div>
+
+            <!-- Storage Slider -->
+            <div class="custom-slider-section">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="font-bold text-gray-800">Storage</label>
+                    <div id="storage-price" class="custom-price">Rp{{ number_format($specs->price_storage) }}/mon</div>
+                </div>
+                <div class="flex items-center">
+                    <div id="storage-value" class="custom-slider-value text-center" style="width: 75px;">{{ $specs->min_storage }} GB</div>
+                    <input id="storage-slider" type="range" min="{{ $specs->min_storage }}" max="{{ $specs->max_storage }}" step="{{ $specs->step_storage }}" value="{{ $specs->min_storage }}" class="custom-slider">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center w-full">
+        <div class="custom-total-price">
+            <span class="custom-dollar-sign">IDR</span>
+            <span id="total-price" class="custom-total-amount"></span>
+            <span class="custom-monthly">/mon</span>
+        </div>
+        <a href="/checkout" class="custom-order-button mt-4 md:mt-0">
+            <span class="custom-order-text">
+                Order Now
+            </span>
+        </a>
+    </div>
+
+    <p class="custom-note">
+        Price does not include tax.
+    </p>
+</div>
+
             </div>
 
 
@@ -174,7 +175,7 @@
                             <div class="button-container">
                                 <a class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] text-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"
                                     style="font-family: unset; width:100%">
-                                    <span class="btn-text explore-button">Order Now</span>
+                                    <a href="/checkout" class="btn-text explore-button">Order Now</a>
                                 </a>
                             </div>
                             <a href="/cloud-hosting"
@@ -191,3 +192,210 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Ambil nilai dari database dengan fallback values yang aman
+window.specs = {
+    // RAM specs
+    min_RAM: {{ $specs->min_RAM ?? 4 }},
+    max_RAM: {{ $specs->max_RAM ?? 32 }},
+    // Set multiplier dari database dengan fallback ke 2
+    multiplier_RAM: {{ $specs->multiplier_RAM ?? 2 }},
+    price_RAM: {{ $specs->price_RAM ?? 0 }},
+
+    // CPU specs
+    min_CPU: {{ $specs->min_CPU ?? 1 }},
+    max_CPU: {{ $specs->max_CPU ?? 8 }},
+    // Set multiplier dari database dengan fallback ke 2
+    multiplier_CPU: {{ $specs->multiplier_CPU ?? 2 }},
+    price_CPU: {{ $specs->price_CPU ?? 0 }},
+
+    // Storage specs
+    min_storage: {{ $specs->min_storage ?? 10 }},
+    max_storage: {{ $specs->max_storage ?? 100 }},
+    // Set step dari database dengan fallback ke 10
+    step_storage: {{ $specs->step_storage ?? 10 }},
+    price_storage: {{ $specs->price_storage ?? 0 }},
+};
+
+// Debug: Log semua specs di awal
+console.log('Initial specs:', JSON.parse(JSON.stringify(window.specs)));
+
+function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function generateMultiplierValues(min, max, multiplier) {
+    // Convert string values to numbers
+    min = parseFloat(min);
+    max = parseFloat(max);
+    multiplier = parseFloat(multiplier);
+    
+    console.log(`Generating multiplier values: min=${min}, max=${max}, multiplier=${multiplier}`);
+    
+    const values = [];
+    let current = min;
+    
+    // Ensure we have at least min and max values
+    values.push(min);
+    
+    // Generate values using multiplier
+    while (current < max) {
+        current *= multiplier;
+        if (current <= max) {
+            values.push(Math.round(current));
+        }
+    }
+    
+    // Ensure max is included if not already
+    if (values[values.length - 1] !== max) {
+        values.push(max);
+    }
+    
+    // Remove duplicates and sort
+    const uniqueValues = [...new Set(values)].sort((a, b) => a - b);
+    console.log('Generated values:', uniqueValues);
+    return uniqueValues;
+}
+
+function generateStepValues(min, max, step) {
+    // Convert string values to numbers
+    min = parseFloat(min);
+    max = parseFloat(max);
+    step = parseFloat(step);
+    
+    console.log(`Generating step values: min=${min}, max=${max}, step=${step}`);
+    
+    const values = [];
+    for (let i = min; i <= max; i += step) {
+        values.push(Math.round(i));
+    }
+    
+    // Ensure max is included if not already
+    if (values[values.length - 1] !== max) {
+        values.push(max);
+    }
+    
+    console.log('Generated values:', values);
+    return values;
+}
+
+function getClosestValue(value, validValues) {
+    // Ensure we're working with numbers
+    value = parseFloat(value);
+    return validValues.reduce((prev, curr) => {
+        return Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev;
+    });
+}
+
+function calculatePrice(value, pricePerUnit, validValues) {
+    const index = validValues.indexOf(parseInt(value));
+    return index !== -1 ? pricePerUnit * (index + 1) : 0;
+}
+
+let ramValues, cpuValues, storageValues;
+
+function updateSliderValue(slider, validValues, unit) {
+    if (!slider || !validValues || !validValues.length) return null;
+    
+    const value = parseFloat(slider.value);
+    const closestValue = getClosestValue(value, validValues);
+    
+    // Update slider position
+    slider.value = closestValue;
+    
+    // Update display value
+    const valueElement = document.getElementById(slider.id.replace('-slider', '-value'));
+    if (valueElement) {
+        valueElement.textContent = `${closestValue} ${unit}`;
+    }
+    
+    return closestValue;
+}
+
+function updateTotalPrice() {
+    const ramSlider = document.getElementById('ram-slider');
+    const cpuSlider = document.getElementById('cpu-slider');
+    const storageSlider = document.getElementById('storage-slider');
+    
+    // Update each component
+    const ramValue = updateSliderValue(ramSlider, ramValues, 'GB');
+    const cpuValue = updateSliderValue(cpuSlider, cpuValues, 'Core');
+    const storageValue = updateSliderValue(storageSlider, storageValues, 'GB');
+    
+    // Calculate prices
+    const ramPrice = calculatePrice(ramValue, window.specs.price_RAM, ramValues);
+    const cpuPrice = calculatePrice(cpuValue, window.specs.price_CPU, cpuValues);
+    const storagePrice = calculatePrice(storageValue, window.specs.price_storage, storageValues);
+    
+    // Update price displays
+    document.getElementById('ram-price').textContent = `Rp${formatPrice(ramPrice)}/mon`;
+    document.getElementById('cpu-price').textContent = `Rp${formatPrice(cpuPrice)}/mon`;
+    document.getElementById('storage-price').textContent = `Rp${formatPrice(storagePrice)}/mon`;
+    
+    // Update total price
+    const totalPrice = ramPrice + cpuPrice + storagePrice;
+    document.getElementById('total-price').textContent = formatPrice(totalPrice);
+}
+
+function initializeSlider(slider, validValues) {
+    if (!slider || !validValues || !validValues.length) return;
+    
+    console.log(`Initializing ${slider.id} with values:`, validValues);
+    
+    // Configure slider
+    slider.min = Math.min(...validValues);
+    slider.max = Math.max(...validValues);
+    slider.value = validValues[0];
+    slider.step = 1; // Use 1 for smooth sliding
+    
+    // Remove existing listeners and add new one
+    const newSlider = slider.cloneNode(true);
+    slider.parentNode.replaceChild(newSlider, slider);
+    newSlider.addEventListener('input', updateTotalPrice);
+    
+    // Log initialization
+    console.log(`${slider.id} initialized with:`, {
+        min: newSlider.min,
+        max: newSlider.max,
+        initial: newSlider.value,
+        validValues: validValues
+    });
+}
+
+function initializeSliders() {
+    // Generate valid values
+    ramValues = generateMultiplierValues(
+        window.specs.min_RAM,
+        window.specs.max_RAM,
+        window.specs.multiplier_RAM
+    );
+    
+    cpuValues = generateMultiplierValues(
+        window.specs.min_CPU,
+        window.specs.max_CPU,
+        window.specs.multiplier_CPU
+    );
+    
+    storageValues = generateStepValues(
+        window.specs.min_storage,
+        window.specs.max_storage,
+        window.specs.step_storage
+    );
+    
+    // Initialize sliders
+    initializeSlider(document.getElementById('ram-slider'), ramValues);
+    initializeSlider(document.getElementById('cpu-slider'), cpuValues);
+    initializeSlider(document.getElementById('storage-slider'), storageValues);
+    
+    // Set initial prices
+    updateTotalPrice();
+}
+
+// Initialize when DOM is ready
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeSliders);
+} else {
+    initializeSliders();
+}
+</script>

@@ -104,6 +104,9 @@
             @include('layouts.template-landing-page.web.partials.footer')
         </div>
 
+        <!-- Sertakan jQuery terlebih dahulu -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <!--Huro Scripts-->
         <script src="{{ asset('assets/js/app.js') }}"></script>
         <script src="{{ asset('assets/js/functions.js') }}"></script>

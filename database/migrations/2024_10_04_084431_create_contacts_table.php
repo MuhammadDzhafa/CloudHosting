@@ -9,16 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('contact_us', function (Blueprint $table) {
-            $table->id('contact_us_id');
-            $table->string('name');
-            $table->string('email');
-            $table->text('message');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (!Schema::hasTable('contact_us')) {
+            Schema::create('contact_us', function (Blueprint $table) {
+                $table->id('contact_us_id');
+                $table->string('name');
+                $table->string('email');
+                $table->text('message');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('contacts'); // Mengubah 'contacts' menjadi 'contact_us'
     }
 };

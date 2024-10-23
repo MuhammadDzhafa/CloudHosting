@@ -34,6 +34,7 @@ class HostingController extends Controller
         // Retrieve regular specs associated with hosting plans
         $regularSpec = RegularMainSpec::whereIn('hosting_plans_id', $hostingPlans->pluck('hosting_plans_id'))->get()->keyBy('hosting_plans_id');
         // dd($regularSpec);
+        $specs = CustomMainSpec::first();
 
         // Sort hosting plans by the 'monthly' price
         $sortedHostingPlans = $hostingPlans->sortBy(function ($plan) {
@@ -49,6 +50,7 @@ class HostingController extends Controller
             'hostingPlans' => $sortedHostingPlans,
             'hostingGroups' => $hostingGroups,
             'regularSpec' => $regularSpec,
+            'specs' => $specs,
         ]);
     }
 

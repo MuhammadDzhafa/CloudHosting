@@ -124,6 +124,7 @@
                                 <div id="form-step-4" class="form-section">
                                     @include('app.hosting-plans.checkout.step5')
                                 </div>
+
                                 <div id="form-step-5" class="form-section">
                                     @include('app.hosting-plans.checkout.step6')
                                 </div>
@@ -132,6 +133,32 @@
                                         <button id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">
                                             Continue
                                         </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <a class="button h-button is-rounded h-modal-trigger" data-modal="demo-right-actions-modal" style="display: none;">Right Actions</a>
+
+                            <div id="demo-right-actions-modal" class="modal h-modal">
+                                <div class="modal-background h-modal-close"></div>
+                                <div class="modal-content">
+                                    <div class="modal-card rounded-t-lg">
+                                        <div class="modal-card-body">
+                                            <div class="inner-content">
+                                                <div class="section-placeholder">
+                                                    <div class="placeholder-content">
+                                                        <img src="assets/img/placeholders/huro-1.svg" alt="">
+                                                        <h3 class="dark-inverted">Do you want to buy hosting too?</h3>
+                                                        <p>Enjoy quality hosting services at special prices! Only during the promo period</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-card-foot is-centered">
+                                            <a class="button h-button is-rounded h-modal-close" id="buy-domain-button">Buy domain only</a>
+                                            <a class="button h-button is-primary is-raised is-rounded">Yes! I want</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
