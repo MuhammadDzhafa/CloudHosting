@@ -37,8 +37,8 @@
                     <span class="text-[16px] sm:text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
                         {{ $plan }}
                     </span>
-                    <label class="radio is-outlined is-info flex-shrink-0">
-                        <input type="radio" name="billing_period" value="{{ $plan }}" {{ $plan === 'Monthly' ? 'checked' : '' }}>
+                    <label class="checkbox is-outlined is-circle is-info">
+                        <input type="radio" name="billing_period" value="{{ $plan }}">
                         <span></span>
                     </label>
                 </div>
@@ -76,7 +76,7 @@
                     <span class="text-[16px] sm:text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
                         {{ $plan }}
                     </span>
-                    <label class="radio is-outlined is-info flex-shrink-0">
+                    <label class="checkbox is-outlined is-circle is-info">
                         <input type="radio" name="billing_period" value="{{ $plan }}">
                         <span></span>
                     </label>

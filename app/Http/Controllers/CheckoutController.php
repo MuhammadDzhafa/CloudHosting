@@ -13,12 +13,15 @@ class CheckoutController extends Controller
 {
     public function index(Request $request): View
     {
-        $tld_name = $request->query('tld_name');
+        $tld_name = $tld_name ?? $request->query('tld_name');
         $tlds = TLD::all();
         $categories = Tld::select('category')->distinct()->get();
 
         $hostingPlanId = $request->query('hosting_plan_id');
         $specs = [];
+
+        // Ambil data TLD berdasarkan tld_name
+        $selectedTld = TLD::where('tld_name', $tld_name)->first();
 
         if ($hostingPlanId) {
             // Load hosting plan with its relationships
@@ -26,7 +29,6 @@ class CheckoutController extends Controller
             $regularSpec = RegularMainSpec::where('hosting_plans_id', $hostingPlanId)->first();
 
             if ($hostingPlan && $regularSpec) {
-                // dd($regularSpec); // Uncomment ini untuk debug
                 $specs = [
                     ['value' => $regularSpec->storage . ' GB SSD Storage'],
                     ['value' => $regularSpec->RAM . ' RAM'],
@@ -34,15 +36,7 @@ class CheckoutController extends Controller
                     ['value' => ($regularSpec->max_domain == -1 ? 'Unlimited' : $regularSpec->max_domain) . ' Domain'],
                     ['value' => ($regularSpec->ssl ? 'Free SSL' : 'SSL')]
                 ];
-
-                // Debug data
-                // dd([
-                //     'hostingPlan' => $hostingPlan,
-                //     'regularSpec' => $regularSpec,
-                //     'specs' => $specs
-                // ]);
             } else {
-                // Fallback ke data hosting plan jika regular spec tidak ditemukan
                 $specs = [
                     ['value' => $hostingPlan->storage . ' GB SSD Storage'],
                     ['value' => $hostingPlan->RAM . ' RAM'],
@@ -53,7 +47,6 @@ class CheckoutController extends Controller
             }
         }
 
-        // Default specs jika tidak ada data
         if (empty($specs)) {
             $specs = [
                 ['value' => '2 GB SSD Storage'],

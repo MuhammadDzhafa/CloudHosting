@@ -1,5 +1,6 @@
 <div class="w-full">
-    <h2 class="text-[20px] font-[400] text-left leading-[26px] mb-2 w-full lg:w-full md:w-full" style="height: 26px; gap: 0px; opacity: 1; font-family: 'Inter'; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
+    <h2 class="text-[20px] font-[400] text-left leading-[26px] mb-2 w-full lg:w-full md:w-full"
+        style="height: 26px; gap: 0px; opacity: 1; font-family: 'Inter'; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
         STEP 2
     </h2>
 
@@ -15,18 +16,16 @@
                     Example.id
                 </h3>
             </div>
-            <!-- <button>
-                <img src="/assets/img/icons/trash.svg" alt="" class="w-8 h-8">
-            </button> -->
         </div>
 
+        <!-- Grid layout for DNS Management and Whois Protection -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <!-- Card 1 -->
+            <!-- DNS Management -->
             <div class="card-gradient p-4 w-full">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
                     <label class="checkbox is-outlined is-circle is-info">
-                        <input type="checkbox">
+                        <input type="checkbox" name="dns_management" value="1">
                         <span></span>
                     </label>
                 </div>
@@ -39,15 +38,14 @@
                 <span class="text-[11px] font-[400] text-[#989EA0] line-through">$3.99 /mon</span>
             </div>
 
-            <!-- Card 2 -->
+            <!-- Whois Protection -->
             <div class="card-gradient p-4 w-full">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
-                    <label class="inline-flex items-center">
-                        <label class="checkbox is-outlined is-circle is-info">
-                            <input type="checkbox">
-                            <span></span>
-                        </label>
+                    <label class="checkbox is-outlined is-circle is-info">
+                        <input type="checkbox" name="whois" value="1">
+                        <span></span>
+                    </label>
                 </div>
                 <div class="flex items-baseline mb-2">
                     <span class="text-[14px] font-[400] text-[#4A6DCB]">$</span>

@@ -186,3 +186,4 @@ Route::get('/admin/contact-us/{id}', [ContactUsController::class, 'show'])->name
 Route::get('/admin/contact-us/{id}/edit', [ContactUsController::class, 'edit'])->name('contact-us.edit');
 Route::put('/admin/contact-us/{id}', [ContactUsController::class, 'update'])->name('contact-us.update');
 Route::delete('/admin/contact-us/{id}', [ContactUsController::class, 'destroy'])->name('contact-us.destroy');
+

@@ -41,6 +41,27 @@
                         <div id="dropdown-content"></div>
                     </div>
 
+                    <div id="modal-whois" class="modal h-modal">
+                        <div class="modal-background  h-modal-close"></div>
+                        <div class="modal-content">
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <h3>WHOIS Search Result</h3>
+                                    <button class="h-modal-close ml-auto" aria-label="close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </header>
+                                <div class="modal-card-body">
+                                    <div class="inner-content">
+                                        <div id="whois-output"></div>
+                                    </div>
+                                </div>
+                                <div class="modal-card-foot is-centered">
+                                    <a class="button h-button is-primary is-raised is-rounded h-modal-close">OK</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Harga Domain -->
                     <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
                         <div class="w-full bg-white">

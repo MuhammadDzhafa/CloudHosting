@@ -321,8 +321,73 @@
                             Buy Now
                         </button>
                     </div>
+                    <div class="message flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${searchQuery}</strong> is not available
+                        </div>
+                        <button id="whoisButton" class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
+                    </div>
                 </div>
                 `;
+
+                const whoisButtons = document.querySelectorAll('.h-modal-trigger');
+                    whoisButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const modalId = this.getAttribute('data-modal');
+                            const modal = document.getElementById(modalId);
+                            if (modal) {
+                                modal.classList.add('is-active'); // Menampilkan modal
+                            }
+                        });
+                    });
+
+                    // Menutup modal ketika latar belakang modal atau tombol close diklik
+                    const closeModalButtons = document.querySelectorAll('.h-modal-close');
+                    closeModalButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const modal = this.closest('.modal');
+                            if (modal) {
+                                modal.classList.remove('is-active'); // Menyembunyikan modal
+                            }
+                        });
+                    });
+
+                const whoisButton = document.getElementById('whoisButton');
+                if (whoisButton) {
+                    whoisButton.addEventListener('click', function() {
+                        const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
+                        const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU'; // Ganti dengan API key Anda
+                        const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
+
+                        fetch(url)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                const whoisOutput = document.getElementById('whois-output'); // Ambil elemen untuk menampilkan hasil
+
+                                if (data.WhoisRecord) {
+                                    // Tampilkan data yang diambil di elemen whois-output
+                                    whoisOutput.innerHTML = `
+                                        <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
+                                        <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
+                                        <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
+                                        <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
+                                        <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
+                                    `;
+                                } else {
+                                    console.log('No WHOIS record found.');
+                                    whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching WHOIS data:', error);
+                            });
+                    });
+                }
 
                 // Tampilkan dropdown
                 dropdownContainer.classList.add('show');
