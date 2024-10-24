@@ -59,7 +59,7 @@
                                             {{ $tld->tld_name }}
                                         </td>
                                         <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                            ${{ number_format($tld->tld_price, 2) }}
+                                            Rp{{ number_format($tld->tld_price, 0, '', '.') }}
                                         </td>
                                         <td class="py-3 px-4 flex justify-center items-center">
                                             <button
@@ -355,7 +355,7 @@
                                     ${domain.tld_name}
                                 </td>
                                 <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    Rp.${domain.tld_price.toFixed(2)}
+                                    Rp${domain.tld_price.toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0})}
                                 </td>
                                 <td class="py-3 px-4 flex justify-center items-center">
                                     <button 

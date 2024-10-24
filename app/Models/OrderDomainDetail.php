@@ -26,5 +26,6 @@ class OrderDomainDetail extends Model
         'expired_date' => 'datetime',
         'price' => 'integer',
         'dns_management' => 'boolean',
+        'whois' => 'boolean'
     ];
 }

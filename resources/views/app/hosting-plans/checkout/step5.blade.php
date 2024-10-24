@@ -147,7 +147,7 @@
                     <div class="control">
                         <div class="h-select">
                             <div class="select-box">
-                                <span>Select a Hero</span>
+                                <span>Select Occupation</span>
                             </div>
                             <div class="select-icon">
                                 <i data-feather="chevron-down"></i>
