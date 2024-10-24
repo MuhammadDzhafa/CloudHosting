@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamp('expired_date')->nullable();
             $table->string('domain_name');
             $table->integer('price')->default(0);
-            $table->text('whois')->nullable();
+            $table->boolean('whois')->default(false);  // Diubah dari text menjadi boolean
             $table->timestamps();
             $table->softDeletes();
 

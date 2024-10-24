@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id('article_id'); // Primary key with the name article_id
             $table->string('title'); // Title of the article
-            $table->string('content'); // Content of the article
+            $table->text('content'); // Changed to text for longer content
             $table->string('author'); // Author's name
             $table->string('image')->nullable(); // Image field, nullable
             $table->integer('likes')->default(0); // Number of likes, default value 0
