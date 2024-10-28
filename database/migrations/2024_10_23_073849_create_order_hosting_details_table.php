@@ -1,6 +1,5 @@
 <?php
 
-// 2024_10_23_073849_create_order_hosting_details_table.php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,8 +11,8 @@ return new class extends Migration
         Schema::create('order_hosting_details', function (Blueprint $table) {
             $table->id('hosting_order_id');
 
-            // Foreign Keys
-            $table->unsignedBigInteger('order_id');
+            // Foreign Keys - Ubah tipe data order_id menjadi string
+            $table->string('order_id');  // Diubah dari unsignedBigInteger
             $table->unsignedBigInteger('domain_option_id');
 
             // Basic Information

@@ -4,28 +4,32 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class OrderDomainDetail extends Model
 {
-    use HasFactory, SoftDeletes;
+    use SoftDeletes;
 
     protected $fillable = [
-        'domain_order_id',
+        'order_id',
+        'domain_name',
         'domain_option_id',
         'dns_management',
-        'active_date',
-        'expired_date',
-        'domain_name',
+        'whois',
         'price',
-        'whois'
+        'active_date',
+        'expired_date'
     ];
 
     protected $casts = [
-        'active_date' => 'datetime',
-        'expired_date' => 'datetime',
-        'price' => 'integer',
         'dns_management' => 'boolean',
-        'whois' => 'boolean'
+        'whois' => 'boolean',
+        'price' => 'integer',
+        'active_date' => 'datetime',
+        'expired_date' => 'datetime'
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'order_id', 'order_id');
+    }
 }

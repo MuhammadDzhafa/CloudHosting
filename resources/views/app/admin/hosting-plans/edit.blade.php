@@ -320,13 +320,12 @@
                                                                     <th class="has-text-centered">Semi-Annually</th>
                                                                     <th class="has-text-centered">Annually</th>
                                                                     <th class="has-text-centered">Biennially</th>
-                                                                    <th class="has-text-centered">Triennially</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Enable</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially' ] as $duration)
                                                                     <td>
                                                                         <label class="checkbox is-outlined is-primary">
                                                                             <input type="checkbox"
@@ -341,7 +340,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially'] as $duration)
                                                                     <td>
                                                                         <div class="control">
                                                                             <input type="number"
@@ -356,7 +355,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Discount (%)</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially'] as $duration)
                                                                     <td>
                                                                         <div class="control">
                                                                             <input type="number"
@@ -372,7 +371,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Price After</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially' ] as $duration)
                                                                     <td>
                                                                         <div class="control">
                                                                             <input type="number"
@@ -388,7 +387,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Actions</th>
-                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially'] as $duration)
+                                                                    @foreach(['monthly', 'quarterly', 'semi_annually', 'annually', 'biennially' ] as $duration)
                                                                     <td>
                                                                         @if(isset($prices[$duration]))
                                                                         <button type="button" class="is-danger button"

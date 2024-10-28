@@ -187,3 +187,5 @@ Route::get('/admin/contact-us/{id}/edit', [ContactUsController::class, 'edit'])-
 Route::put('/admin/contact-us/{id}', [ContactUsController::class, 'update'])->name('contact-us.update');
 Route::delete('/admin/contact-us/{id}', [ContactUsController::class, 'destroy'])->name('contact-us.destroy');
 
+Route::post('/save-domain-details', [CheckoutController::class, 'saveDomainDetails']);
+Route::post('/save-billing-address', [CheckoutController::class, 'saveBillingAddress']);

@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $primaryKey = 'order_id';
-    
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
+        'order_id',
         'status',
         'total_price',
         'tax',
@@ -24,7 +27,7 @@ class Order extends Model
 
     public function domainDetails()
     {
-        return $this->hasMany(OrderDomainDetail::class, 'domain_order_id', 'order_id');
+        return $this->hasMany(OrderDomainDetail::class, 'order_id', 'order_id');
     }
 
     public function hostingDetails()

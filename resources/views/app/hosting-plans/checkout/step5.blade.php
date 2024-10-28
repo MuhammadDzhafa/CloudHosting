@@ -20,14 +20,13 @@
             </a>
         </p>
 
-
         <div class="space-y-2">
             <label class="block mb-1 mt-3 w-full md:w-auto" style="height: 23px; font-family: Inter; font-size: 16px; font-weight: 400; line-height: 23.2px; text-align: left; color: #000000;">
                 Name
             </label>
             <div class="field">
                 <div class="control">
-                    <input type="text" class="input" placeholder="Username">
+                    <input type="text" name="full_name" class="input" placeholder="Username" required>
                 </div>
             </div>
             <label class="block mb-1 mt-3 w-full md:w-auto" style="height: 23px; font-family: Inter; font-size: 16px; font-weight: 400; line-height: 23.2px; text-align: left; color: #000000;">
@@ -35,7 +34,7 @@
             </label>
             <div class="field">
                 <div class="control">
-                    <input type="text" class="input" placeholder="Username">
+                    <input type="email" name="email" class="input" placeholder="Email Address" required>
                 </div>
             </div>
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
@@ -104,7 +103,7 @@
                     Company Name (Optional)
                 </label>
                 <div class="control">
-                    <input type="text" placeholder="Text" class="input h-12">
+                    <input type="text" name="company_name" placeholder="Company Name" class="input h-12">
                 </div>
             </div>
 
@@ -114,7 +113,7 @@
                     Street Address
                 </label>
                 <div class="control">
-                    <input type="text" placeholder="Text" class="input h-12">
+                    <input type="text" name="street_address_1" placeholder="Street Address" class="input h-12" required>
                 </div>
             </div>
 
@@ -124,7 +123,7 @@
                     Street Address 2 (Optional)
                 </label>
                 <div class="control">
-                    <input type="text" placeholder="Text" class="input h-12">
+                    <input type="text" name="street_address_2" placeholder="Apartment, suite, etc." class="input h-12">
                 </div>
             </div>
 
@@ -134,7 +133,7 @@
                     City
                 </label>
                 <div class="control">
-                    <input type="text" placeholder="Text" class="input h-12">
+                    <input type="text" name="city" placeholder="City" class="input h-12" required>
                 </div>
             </div>
 
@@ -145,48 +144,12 @@
                 </label>
                 <div class="field">
                     <div class="control">
-                        <div class="h-select">
-                            <div class="select-box">
-                                <span>Select Occupation</span>
-                            </div>
-                            <div class="select-icon">
-                                <i data-feather="chevron-down"></i>
-                            </div>
-                            <div class="select-drop has-slimscroll-sm">
-                                <div class="drop-inner">
-                                    <div class="option-row">
-                                        <input type="radio" name="hero_select">
-                                        <div class="option-meta">
-                                            <span>Superman</span>
-                                        </div>
-                                    </div>
-                                    <div class="option-row">
-                                        <input type="radio" name="hero_select">
-                                        <div class="option-meta">
-                                            <span>Batman</span>
-                                        </div>
-                                    </div>
-                                    <div class="option-row">
-                                        <input type="radio" name="hero_select">
-                                        <div class="option-meta">
-                                            <span>Deadpool</span>
-                                        </div>
-                                    </div>
-                                    <div class="option-row">
-                                        <input type="radio" name="hero_select">
-                                        <div class="option-meta">
-                                            <span>Spawn</span>
-                                        </div>
-                                    </div>
-                                    <div class="option-row">
-                                        <input type="radio" name="hero_select">
-                                        <div class="option-meta">
-                                            <span>Galactus</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <select name="country" class="input h-12" required>
+                            <option value="">Select Country</option>
+                            <option value="ID">Indonesia</option>
+                            <option value="SG">Singapore</option>
+                            <option value="MY">Malaysia</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -198,7 +161,7 @@
                         State
                     </label>
                     <div class="control">
-                        <input type="text" placeholder="Text" class="input h-12">
+                        <input type="text" name="state" placeholder="State/Province" class="input h-12" required>
                     </div>
                 </div>
                 <div>
@@ -206,7 +169,7 @@
                         Post Code
                     </label>
                     <div class="control">
-                        <input type="text" placeholder="Text" class="input h-12">
+                        <input type="text" name="post_code" placeholder="Post Code" class="input h-12" required>
                     </div>
                 </div>
             </div>
@@ -220,127 +183,12 @@
                         </a>
                     </div>
                     <div class="control is-expanded">
-                        <input class="input" type="text" placeholder="Your phone number">
+                        <input name="phone" class="input" type="text" placeholder="Your phone number" required>
                     </div>
                 </div>
             </div>
 
 
-        </div>
-
-    </div>
-
-    <div>
-        <h3 class="text-2xl font-semibold text-black mb-3 mt-4">
-            Additional information is needed.
-        </h3>
-
-        <div class="field">
-            <div class="control">
-                <div class="h-select">
-                    <div class="select-box">
-                        <span>Operating System</span>
-                    </div>
-                    <div class="select-icon">
-                        <i data-feather="chevron-down"></i>
-                    </div>
-                    <div class="select-drop has-slimscroll-sm">
-                        <div class="drop-inner">
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>centos-6-x86</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>centos-6-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>centos-7-x86_64-minimal</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>centos-7-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>centos-8-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>ubuntu-16.04-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>ubuntu-18.04-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>ubuntu-20.04-x86_64</span>
-                                </div>
-                            </div>
-
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>debian-8.0-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>debian-9.12-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>debian-10.0-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>suse-12.3-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>suse-13.2-x86_64</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>scientific-6-x86</span>
-                                </div>
-                            </div>
-                            <div class="option-row">
-                                <input type="radio" name="hero_select">
-                                <div class="option-meta">
-                                    <span>scientific-6-x86_64</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>

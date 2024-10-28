@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Awan Hosting :: Checkout</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
@@ -128,6 +129,7 @@
                                 <div id="form-step-5" class="form-section">
                                     @include('app.hosting-plans.checkout.step6')
                                 </div>
+                                <!-- Navigation Buttons -->
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
                                         <button id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">
@@ -137,31 +139,6 @@
                                 </div>
                             </div>
 
-                            <!-- Modal -->
-                            <a class="button h-button is-rounded h-modal-trigger" data-modal="demo-right-actions-modal" style="display: none;">Right Actions</a>
-
-                            <div id="demo-right-actions-modal" class="modal h-modal">
-                                <div class="modal-background h-modal-close"></div>
-                                <div class="modal-content">
-                                    <div class="modal-card rounded-t-lg">
-                                        <div class="modal-card-body">
-                                            <div class="inner-content">
-                                                <div class="section-placeholder">
-                                                    <div class="placeholder-content">
-                                                        <img src="assets/img/placeholders/huro-1.svg" alt="">
-                                                        <h3 class="dark-inverted">Do you want to buy hosting too?</h3>
-                                                        <p>Enjoy quality hosting services at special prices! Only during the promo period</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-card-foot is-centered">
-                                            <a class="button h-button is-rounded h-modal-close" id="buy-domain-button">Buy domain only</a>
-                                            <a class="button h-button is-primary is-raised is-rounded">Yes! I want</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="form-stepper">
                                 <ul class="steps is-vertical is-thin is-short">
                                     <li id="step-segment-0" class="steps-segment is-active">
@@ -331,26 +308,26 @@
                 `;
 
                 const whoisButtons = document.querySelectorAll('.h-modal-trigger');
-                    whoisButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const modalId = this.getAttribute('data-modal');
-                            const modal = document.getElementById(modalId);
-                            if (modal) {
-                                modal.classList.add('is-active'); // Menampilkan modal
-                            }
-                        });
+                whoisButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const modalId = this.getAttribute('data-modal');
+                        const modal = document.getElementById(modalId);
+                        if (modal) {
+                            modal.classList.add('is-active'); // Menampilkan modal
+                        }
                     });
+                });
 
-                    // Menutup modal ketika latar belakang modal atau tombol close diklik
-                    const closeModalButtons = document.querySelectorAll('.h-modal-close');
-                    closeModalButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const modal = this.closest('.modal');
-                            if (modal) {
-                                modal.classList.remove('is-active'); // Menyembunyikan modal
-                            }
-                        });
+                // Menutup modal ketika latar belakang modal atau tombol close diklik
+                const closeModalButtons = document.querySelectorAll('.h-modal-close');
+                closeModalButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const modal = this.closest('.modal');
+                        if (modal) {
+                            modal.classList.remove('is-active'); // Menyembunyikan modal
+                        }
                     });
+                });
 
                 const whoisButton = document.getElementById('whoisButton');
                 if (whoisButton) {
@@ -452,6 +429,15 @@
         var nextButton = document.getElementById('next-button');
         nextButton.click();
     }
+
+    $(document).ready(function() {
+        // Setup AJAX CSRF token
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    });
 </script>
 
 

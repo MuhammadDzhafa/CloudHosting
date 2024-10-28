@@ -173,7 +173,7 @@
 
                             </ul>
                             <div class="button-container">
-                                <a href="{{ url('/checkout') }}?hosting_plan_id={{ $hostingPlan->hosting_plans_id }}"
+                                <a href="{{ url('/checkout') }}?hosting_plan_id={{ $hostingPlan->hosting_plans_id }}&product_info={{ $hostingPlan->product_type }} - {{ $hostingPlan->name }}"
                                     class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] text-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"
                                     style="font-family: unset; width:100%">
                                     <span class="btn-text explore-button">Order Now</span>
@@ -218,6 +218,7 @@
     step_storage: {{ $specs->step_storage ?? 10 }},
     price_storage: {{ $specs->price_storage ?? 0 }},
 };
+
 
     // Debug: Log semua specs di awal
     console.log('Initial specs:', JSON.parse(JSON.stringify(window.specs)));

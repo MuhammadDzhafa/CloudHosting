@@ -11,7 +11,7 @@
     <div class="gradient-border rounded-[10px] p-4 md:p-[20px] mb-6 w-full lg:w-full md:w-full bg-white relative">
         <h3 class="text-[20px] font-[700] leading-[26px] text-left mb-4 w-full"
             style="height: 23px; gap: 0px; opacity: 1; font-family: 'Inter'; color: #3C476C;">
-            Cloud Hosting - Alto
+            {{ $product_info }}
         </h3>
 
         <div class="flex flex-wrap gap-2">
@@ -30,34 +30,36 @@
     <div class="container mx-auto px-4">
         {{-- Baris atas - 3 cards --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            @foreach(array_slice(['Monthly', 'Annualy', 'Biennially'], 0, 3) as $plan)
+            @foreach($prices->take(3) as $price)
             <div class="w-full h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between card-gradient">
                 <!-- Bagian atas card -->
                 <div class="flex justify-between items-center">
                     <span class="text-[16px] sm:text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
-                        {{ $plan }}
+                        {{ ucfirst(str_replace('_', ' ', $price->duration)) }}
                     </span>
                     <label class="checkbox is-outlined is-circle is-info">
-                        <input type="radio" name="billing_period" value="{{ $plan }}">
+                        <input type="radio" name="billing_period" value="{{ $price->duration }}" {{ $loop->first ? 'checked' : '' }}>
                         <span></span>
                     </label>
                 </div>
                 <div class="flex items-baseline">
                     <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        $
+                        Rp
                     </span>
                     <span class="text-[28px] sm:text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                        1.99
+                        {{ number_format($price->price_after, 0, ',', '.') }}
                     </span>
                     <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        /mon
+                        /{{ str_replace('_', ' ', $price->duration) }}
                     </span>
                 </div>
                 <!-- Bagian bawah card -->
                 <div class="flex justify-between items-center">
-                    <span class="line-through text-gray-400 text-[12px] sm:text-sm">$2.99 /mon</span>
+                    <span class="line-through text-gray-400 text-[12px] sm:text-sm">
+                        Rp {{ number_format($price->price, 0, ',', '.') }} /{{ $price->duration }}
+                    </span>
                     <span class="text-[11px] sm:text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
-                        Save 30%
+                        Save {{ $price->discount }}%
                     </span>
                 </div>
             </div>
@@ -66,37 +68,36 @@
 
         {{-- Baris bawah - 2 cards (centered) --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[600px] mx-auto">
-            @php
-            $remainingPlans = array_slice(['Monthly', 'Annualy', 'Biennially', 'Triennially', 'Quarterly'], 3);
-            @endphp
-            @foreach($remainingPlans as $plan)
+            @foreach($prices->skip(3)->take(2) as $price)
             <div class="w-full h-[140px] p-4 rounded-[10px] border border-[#DEDEDE] bg-[#FFFFFF] shadow-[0px_1.75px_4px_-1px_#00000024] flex flex-col justify-between card-gradient">
                 <!-- Bagian atas card -->
                 <div class="flex justify-between items-center">
                     <span class="text-[16px] sm:text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
-                        {{ $plan }}
+                        {{ ucfirst(str_replace('_', ' ', $price->duration)) }}
                     </span>
                     <label class="checkbox is-outlined is-circle is-info">
-                        <input type="radio" name="billing_period" value="{{ $plan }}">
+                        <input type="radio" name="billing_period" value="{{ $price->duration }}">
                         <span></span>
                     </label>
                 </div>
                 <div class="flex items-baseline">
                     <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        $
+                        Rp
                     </span>
                     <span class="text-[28px] sm:text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                        1.99
+                        {{ number_format($price->price_after, 0, ',', '.') }}
                     </span>
                     <span class="text-[12px] sm:text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        /mon
+                        /{{ str_replace('_', ' ', $price->duration) }}
                     </span>
                 </div>
                 <!-- Bagian bawah card -->
                 <div class="flex justify-between items-center">
-                    <span class="line-through text-gray-400 text-[12px] sm:text-sm">$2.99 /mon</span>
+                    <span class="line-through text-gray-400 text-[12px] sm:text-sm">
+                        Rp {{ number_format($price->price, 0, ',', '.') }} /{{ $price->duration }}
+                    </span>
                     <span class="text-[11px] sm:text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
-                        Save 30%
+                        Save {{ $price->discount }}%
                     </span>
                 </div>
             </div>

@@ -291,7 +291,7 @@ class HostingPlanController extends Controller
 
 
         // Redirect or return a response
-        return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan updated successfully.');
+        return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan updated successfully.');
     }
 
 
