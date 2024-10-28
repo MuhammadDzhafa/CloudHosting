@@ -13,11 +13,12 @@
             style="height: 23px; gap: 0px; opacity: 1; font-family: 'Inter'; color: #3C476C;">
             {{ $product_info }}
         </h3>
-
         <div class="flex flex-wrap gap-2">
             @foreach ($specs as $spec)
             <div class="flex items-center">
-                <img src="{{ asset('assets/img/icons/checklist.svg') }}" alt="Checklist Icon" class="lg:mr-2 md:mr-0">
+                <img src="{{ asset('assets/img/icons/checklist.svg') }}"
+                    alt="Checklist Icon"
+                    class="lg:mr-2 md:mr-0">
                 <span class="block text-[16px] font-medium leading-[23.2px] text-[#3D3D3D] lg:mr-4 md:mr-0">
                     {{ $spec['value'] }}
                 </span>

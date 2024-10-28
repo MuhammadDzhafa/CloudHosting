@@ -62,6 +62,21 @@ class CheckoutController extends Controller
             }
         }
 
+        if ($request->query('plan') === 'custom' && session()->has('custom_plan')) {
+            $customPlan = session('custom_plan');
+            $specs = [
+                ['value' => $customPlan['specs']['storage'] . ' GB SSD Storage'],
+                ['value' => $customPlan['specs']['ram'] . ' GB RAM'],
+                ['value' => $customPlan['specs']['cpu'] . ' Core CPU'],
+                ['value' => 'Unlimited Domain'],
+                ['value' => 'Free SSL']
+            ];
+
+            $productInfo = 'Custom Hosting Plan';
+            $price = $customPlan['total_price'];
+            $order_id = $customPlan['order_id'];
+        }
+
         if (empty($specs)) {
             $specs = [
                 ['value' => '2 GB SSD Storage'],
@@ -80,9 +95,9 @@ class CheckoutController extends Controller
             'tlds' => $tlds,
             'categories' => $categories,
             'specs' => $specs,
-            'order_id' => $order_id,  // Tambahkan ini
-            'domain_option_id' => $domain_option_id,  // Tambahkan ini
-            'price' => $price,  // Tambahkan ini
+            'order_id' => $order_id,
+            'domain_option_id' => $domain_option_id,
+            'price' => $price,
             'selectedTld' => $selectedTld,
             'product_info' => $productInfo,
             'prices' => $prices,
@@ -95,9 +110,55 @@ class CheckoutController extends Controller
         try {
             DB::beginTransaction();
 
-            Log::info('Data yang diterima:', $request->all());
+            // Log incoming data
+            Log::info('Data domain yang diterima:', $request->all());
 
-            // Create/find a temporary billing address
+            // Validate the request
+            $validatedData = $request->validate([
+                'order_id' => 'required|string',
+                'domain_name' => 'required|string',
+                'price' => 'required|numeric',
+                'dns_management' => 'required|in:yes,no',
+                'whois' => 'required|in:yes,no',
+                'domain_option_id' => 'nullable|numeric'
+            ]);
+
+            // Check if order exists
+            $existingOrder = Order::where('order_id', $request->order_id)->first();
+
+            if ($existingOrder) {
+                // Update existing order price
+                $existingOrder->update([
+                    'total_price' => $request->price
+                ]);
+
+                // Update or create domain details
+                $domainDetail = OrderDomainDetail::updateOrCreate(
+                    ['order_id' => $request->order_id],
+                    [
+                        'domain_name' => $request->domain_name,
+                        'dns_management' => $request->dns_management === 'yes',
+                        'whois' => $request->whois === 'yes',
+                        'price' => (int)$request->price,
+                        'domain_option_id' => $request->domain_option_id,
+                        'active_date' => now(),
+                        'expired_date' => now()->addYear()
+                    ]
+                );
+
+                DB::commit();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Detail domain berhasil diperbarui',
+                    'data' => [
+                        'order' => $existingOrder->fresh(),
+                        'domain_detail' => $domainDetail
+                    ]
+                ]);
+            }
+
+            // If no existing order, create new billing address and order
             $billingAddress = BillingAddress::firstOrCreate(
                 ['email' => 'default@example.com'],
                 [
@@ -112,9 +173,7 @@ class CheckoutController extends Controller
                 ]
             );
 
-            Log::info('Alamat tagihan dibuat/ditemukan:', $billingAddress->toArray());
-
-            // Create a new order
+            // Create new order
             $order = Order::create([
                 'order_id' => $request->order_id,
                 'status' => 'pending',
@@ -124,21 +183,17 @@ class CheckoutController extends Controller
                 'billing_address_id' => $billingAddress->billing_id
             ]);
 
-            Log::info('Pesanan dibuat:', $order->toArray());
-
-            // Create a new domain detail for the order
-            $orderDomainDetail = OrderDomainDetail::create([
+            // Create new domain detail
+            $domainDetail = OrderDomainDetail::create([
                 'order_id' => $request->order_id,
                 'domain_name' => $request->domain_name,
                 'dns_management' => $request->dns_management === 'yes',
                 'whois' => $request->whois === 'yes',
                 'price' => (int)$request->price,
-                'domain_option_id' => $request->filled('domain_option_id') ? $request->domain_option_id : null,
+                'domain_option_id' => $request->domain_option_id,
                 'active_date' => now(),
                 'expired_date' => now()->addYear()
             ]);
-
-            Log::info('Detail domain dibuat:', $orderDomainDetail->toArray());
 
             DB::commit();
 
@@ -146,20 +201,27 @@ class CheckoutController extends Controller
                 'success' => true,
                 'message' => 'Detail domain berhasil disimpan',
                 'data' => [
-                    'order' => $order,
-                    'domain_detail' => $orderDomainDetail
+                    'order' => $order->fresh(),
+                    'domain_detail' => $domainDetail
                 ]
             ]);
-        } catch (\Exception $e) {
+        } catch (\Illuminate\Validation\ValidationException $e) {
             DB::rollback();
-            Log::error('Terjadi kesalahan saat menyimpan detail domain: ' . $e->getMessage());
-            Log::error('Trace stack: ' . $e->getTraceAsString());
+            Log::error('Validation error:', $e->errors());
 
             return response()->json([
                 'success' => false,
-                'message' => 'Gagal menyimpan detail domain: ' . $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine()
+                'message' => 'Data tidak valid',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Error saat menyimpan detail domain: ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal menyimpan detail domain: ' . $e->getMessage()
             ], 500);
         }
     }
@@ -207,6 +269,84 @@ class CheckoutController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Gagal menyimpan alamat penagihan: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function saveCustomPlan(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            // Generate order ID
+            $orderId = 'CUSTOM-' . uniqid();
+
+            // Check if order already exists
+            while (Order::where('order_id', $orderId)->exists()) {
+                $orderId = 'CUSTOM-' . uniqid();
+            }
+
+            // Create/find temporary billing address
+            $billingAddress = BillingAddress::firstOrCreate(
+                ['email' => 'default@example.com'],
+                [
+                    'first_name' => 'Default',
+                    'last_name' => 'User',
+                    'street_address_1' => 'Default Address',
+                    'city' => 'Default City',
+                    'state' => 'Default State',
+                    'country' => 'ID',
+                    'post_code' => '12345',
+                    'phone' => '1234567890'
+                ]
+            );
+
+            // Create order
+            $order = Order::create([
+                'order_id' => $orderId,
+                'status' => 'pending',
+                'total_price' => $request->total_price,
+                'payment_method' => 'pending',
+                'date_created' => now(),
+                'billing_address_id' => $billingAddress->billing_id
+            ]);
+
+            // Store custom plan data in session
+            session([
+                'custom_plan' => [
+                    'order_id' => $orderId,
+                    'specs' => [
+                        'ram' => $request->specs['ram'],
+                        'cpu' => $request->specs['cpu'],
+                        'storage' => $request->specs['storage']
+                    ],
+                    'details' => [
+                        'ram_price' => $request->specs['details']['ram_price'],
+                        'cpu_price' => $request->specs['details']['cpu_price'],
+                        'storage_price' => $request->specs['details']['storage_price']
+                    ],
+                    'total_price' => $request->total_price
+                ]
+            ]);
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Custom plan saved successfully',
+                'data' => [
+                    'order_id' => $orderId,
+                    'redirect_url' => url('/checkout') . '?plan=custom&order_id=' . $orderId
+                ]
+            ]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Error saving custom plan: ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to save custom plan: ' . $e->getMessage()
             ], 500);
         }
     }

@@ -59,15 +59,20 @@ $(document).ready(function () {
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
-            // Hitung total price berdasarkan pilihan
+            // Calculate total price based on selections
             let basePrice = parseFloat($('#domain_price').val() || 0);
+
+            // Add DNS management price if selected
             if ($('input[name="dns_management"]').is(':checked')) {
                 basePrice += 20000;
             }
+
+            // Add WHOIS price if selected
             if ($('input[name="whois"]').is(':checked')) {
                 basePrice += 20000;
             }
 
+            // Prepare the data
             const data = {
                 order_id: $('#order_id').val(),
                 domain_name: $('#h3-domain-display').text().trim(),
@@ -77,8 +82,17 @@ $(document).ready(function () {
                 domain_option_id: $('#domain_option_id').val() || null
             };
 
+            // Log the data being sent
             console.log('Preparing to send domain data:', data);
 
+            // Add CSRF token to request headers
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Send AJAX request
             $.ajax({
                 url: '/save-domain-details',
                 method: 'POST',
@@ -86,8 +100,9 @@ $(document).ready(function () {
                 success: function (response) {
                     console.log('Success response:', response);
                     if (response.success) {
+                        // If callback exists, execute it
                         if (typeof callback === 'function') {
-                            callback();
+                            callback(response.data);
                         }
                     } else {
                         console.error('Server returned error:', response);
@@ -154,8 +169,7 @@ $(document).ready(function () {
             console.error('Error details:', {
                 status: status,
                 error: error,
-                xhr: xhr,
-                response: xhr.responseText
+                xhr: xhr
             });
 
             let errorMessage = 'Terjadi kesalahan saat menyimpan data.';
@@ -165,11 +179,17 @@ $(document).ready(function () {
                 if (response.message) {
                     errorMessage = response.message;
                 }
-                if (response.file) {
+
+                if (response.errors) {
+                    errorMessage += '\n' + Object.values(response.errors).join('\n');
+                }
+
+                // Log the file and line if available
+                if (response.file && response.line) {
                     console.error('Error in file:', response.file, 'line:', response.line);
                 }
             } catch (e) {
-                console.error('Error parsing response:', e);
+                console.error('Error parsing error response:', e);
             }
 
             alert(errorMessage);

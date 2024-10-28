@@ -24,7 +24,7 @@
                     $
                 </span>
                 <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                    1.99
+                    20.000
                 </span>
                 <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
                     /mon

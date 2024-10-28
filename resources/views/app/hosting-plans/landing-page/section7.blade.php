@@ -11,9 +11,9 @@
             @if($hostingPlan->hosting_group_id === $group->hosting_group_id && $hostingPlan->package_type === 'Regular')
             <div
                 class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 
-                                                                                                                                                    {{ $hostingPlan->best_seller ? 'bg-gradient-custom text-white' : 'bg-white' }}">
+                                                                                        {{ $hostingPlan->best_seller ? 'bg-gradient-custom text-white' : 'bg-white' }}">
                 <h5
-                    class="text-xl font-bold mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#4A6DCB]' }}">
+                    class="text-xl font-bold mb-1 w-[240px] h-[26px] opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#4A6DCB]' }}">
                     {{ $hostingPlan->name }}
                 </h5>
                 <p
@@ -22,23 +22,23 @@
                 </p>
                 @foreach($hostingPlan->prices as $price)
                 @if($price->duration === 'monthly')
-                <div class="price-container text-center mb-4">
+                <div class="price-container text-center">
                     <span class="flex items-center justify-center">
                         <span
                             class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">Rp</span>
                         <span
-                            class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">{{ number_format($price->price_after, 0, ',', '.') }}</span>
+                            class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center mx-2 {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">{{ number_format($price->price_after, 0, ',', '.') }}</span>
                         <span
                             class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">/mon</span>
                     </span>
-                    <div class="mt-2">
-                        <span
-                            class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Grey-400,#989EA0)]' }} line-through">Rp
-                            {{ number_format($price->price, 0, ',', '.') }} /mon</span>
-                        <span
-                            class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-400,#6C88D5)]' }} ml-2">Save
-                            {{$price->discount}}%</span>
-                    </div>
+                </div>
+                <div class="mb-4 text-center">
+                    <span
+                        class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Grey-400,#989EA0)]' }} line-through">Rp
+                        {{ number_format($price->price, 0, ',', '.') }} /mon</span>
+                    <span
+                        class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-400,#6C88D5)]' }} ml-2">Save
+                        {{$price->discount}}%</span>
                 </div>
                 @endif
                 @endforeach

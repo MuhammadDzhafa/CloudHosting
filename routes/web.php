@@ -189,3 +189,5 @@ Route::delete('/admin/contact-us/{id}', [ContactUsController::class, 'destroy'])
 
 Route::post('/save-domain-details', [CheckoutController::class, 'saveDomainDetails']);
 Route::post('/save-billing-address', [CheckoutController::class, 'saveBillingAddress']);
+Route::post('/save-custom-plan', [CheckoutController::class, 'saveCustomPlan'])->name('save.custom.plan');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');

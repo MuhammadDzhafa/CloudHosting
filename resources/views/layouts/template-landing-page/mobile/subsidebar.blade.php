@@ -15,19 +15,19 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="/domain" class="is-submenu" href="/admin-list-flex-1.html">
+                        <a href="/domain" class="is-submenu">
                             <i class="lnil lnil-list-alt-1"></i>
                             <span>Domain</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/cloud-hosting" class="is-submenu" href="/admin-list-flex-2.html">
+                        <a href="/cloud-hosting" class="is-submenu">
                             <i class="lnil lnil-list-alt-1"></i>
                             <span>Cloud Hosting</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/wordpress-hosting" class="is-submenu" href="/admin-list-flex-3.html">
+                        <a href="/wordpress-hosting" class="is-submenu">
                             <i class="lnil lnil-list-alt-1"></i>
                             <span>WordPress Hosting</span>
                         </a>

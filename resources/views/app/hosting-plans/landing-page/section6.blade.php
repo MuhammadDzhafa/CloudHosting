@@ -106,11 +106,11 @@
                             <span id="total-price" class="custom-total-amount"></span>
                             <span class="custom-monthly">/mon</span>
                         </div>
-                        <a href="/checkout" class="custom-order-button mt-4 md:mt-0">
+                        <button type="button" id="custom-order-btn" class="custom-order-button mt-4 md:mt-0">
                             <span class="custom-order-text">
                                 Order Now
                             </span>
-                        </a>
+                        </button>
                     </div>
 
                     <p class="custom-note">
@@ -400,4 +400,67 @@
     } else {
         initializeSliders();
     }
+
+    // Update the event listener for custom-order-btn
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('custom-order-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Get current slider values
+        const ramValue = document.getElementById('ram-value').textContent.split(' ')[0];
+        const cpuValue = document.getElementById('cpu-value').textContent.split(' ')[0];
+        const storageValue = document.getElementById('storage-value').textContent.split(' ')[0];
+
+        // Get price values (remove 'Rp' and '/mon', then parse)
+        const ramPrice = parseInt(document.getElementById('ram-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const cpuPrice = parseInt(document.getElementById('cpu-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const storagePrice = parseInt(document.getElementById('storage-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const totalPrice = parseInt(document.getElementById('total-price').textContent.replace(',', ''));
+
+        // Setup AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/save-custom-plan', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+        // Prepare data payload
+        const data = {
+            type: 'custom',
+            specs: {
+                ram: parseInt(ramValue),
+                cpu: parseInt(cpuValue),
+                storage: parseInt(storageValue),
+                details: {
+                    ram_price: ramPrice,
+                    cpu_price: cpuPrice,
+                    storage_price: storagePrice
+                }
+            },
+            total_price: totalPrice
+        };
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Redirect to checkout page with custom plan data
+                    window.location.href = response.data.redirect_url;
+                } else {
+                    alert('Failed to process order. Please try again.');
+                }
+            } else {
+                console.error('Error:', xhr.responseText);
+                alert('An error occurred. Please try again.');
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error('Request failed');
+            alert('Network error occurred. Please try again.');
+        };
+
+        // Send the data
+        xhr.send(JSON.stringify(data));
+    });
+});
 </script>
