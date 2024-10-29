@@ -17,6 +17,7 @@ use App\Models\Price;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -325,22 +326,32 @@ class CheckoutController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
             'phone' => 'required|string',
-            // Tambahkan validasi untuk input lainnya sesuai kebutuhan
         ]);
 
-        $user = new User();
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
-        $user->password = Hash::make($validatedData['password']);
-        $user->phone = $validatedData['phone'];
-        // Set nilai untuk kolom lainnya sesuai kebutuhan
-        $user->save();
+        try {
+            DB::beginTransaction();
 
-        // Assign peran 'client' ke user yang baru terdaftar
-        $role = Role::where('name', 'client')->first();
-        $user->roles()->attach($role);
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
+                'phone' => $validatedData['phone'],
+            ]);
 
-        // Redirect atau berikan response sesuai kebutuhan
-        return redirect()->route('checkout.index')->with('success', 'Data client berhasil disimpan.');
+            $role = Role::where('name', 'client')->first();
+            if ($role) {
+                $user->roles()->attach($role);
+            }
+
+            // Login user setelah registrasi
+            Auth::login($user);
+
+            DB::commit();
+
+            return redirect('/checkout');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data');
+        }
     }
 }

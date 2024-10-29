@@ -7,83 +7,73 @@
         Billing Address
     </h1>
 
-    @auth
-    <div class="mb-8">
-        <h3 class="font-semibold text-left mt-5 w-full md:w-auto" style="height: 30px; font-family: Inter; font-size: 23px; font-weight: 600; line-height: 29.9px; color: #000000;">
-            Create an Account
-        </h3>
+    @guest
+    <div class="guest-section">
+        <div class="mb-8">
+            <h3 class="font-semibold text-left mt-5 w-full md:w-auto" style="height: 30px; font-family: Inter; font-size: 23px; font-weight: 600; line-height: 29.9px; color: #000000;">
+                Create an Account
+            </h3>
 
-        <p class="text-left w-full md:w-auto" style="font-family: Inter; font-size: 16px; font-weight: 500; line-height: 23.2px; color: #000000;">
-            Already have an account?
-            <a href="#" style="font-family: Inter; font-size: 16px; font-weight: 700; line-height: 23.2px; text-align: left; color: var(--Kazee-Secondary-400, #A377CF);">
-                Login
-            </a>
-        </p>
+            <p class="text-left w-full md:w-auto" style="font-family: Inter; font-size: 16px; font-weight: 500; line-height: 23.2px; color: #000000;">
+                Already have an account?
+                <a href="#" style="font-family: Inter; font-size: 16px; font-weight: 700; line-height: 23.2px; text-align: left; color: var(--Kazee-Secondary-400, #A377CF);">
+                    Login
+                </a>
+            </p>
 
-        <form action="{{ route('register') }}" method="POST" id="register-form">
-            @csrf
-            <div class="space-y-2">
-                <label class="block mb-1 mt-3 w-full">Name</label>
-                <input type="text" name="name" class="input" placeholder="Username" required>
+            <form action="{{ route('register') }}" method="POST" id="register-form">
+                @csrf
+                <div class="space-y-2">
+                    <label class="block mb-1 mt-3 w-full">Name</label>
+                    <input type="text" name="name" class="input" placeholder="Username" required>
 
-                <label class="block mb-1 mt-3 w-full">Email Address</label>
-                <input type="email" name="email" class="input" placeholder="Email Address" required>
+                    <label class="block mb-1 mt-3 w-full">Email Address</label>
+                    <input type="email" name="email" class="input" placeholder="Email Address" required>
 
-                <label class="block mb-1 mt-3 w-full">Phone</label>
-                <input type="text" name="phone" class="input" placeholder="Phone Number" required>
+                    <label class="block mb-1 mt-3 w-full">Phone</label>
+                    <input type="text" name="phone" class="input" placeholder="Phone Number" required>
 
-                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    <div class="w-full md:w-1/2">
-                        <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Password</label>
-                        <div class="relative">
-                            <input type="password" name="password" class="input" placeholder="Password" required>
-                            <button class="absolute inset-y-0 right-0 flex items-center px-2">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
-                            </button>
+                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="w-full md:w-1/2">
+                            <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Password</label>
+                            <div class="relative">
+                                <input type="password" name="password" class="input" placeholder="Password" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Confirm Password</label>
-                        <div class="relative">
-                            <input type="password" name="password_confirmation" class="input" placeholder="Confirm Password" required>
-                            <button class="absolute inset-y-0 right-0 flex items-center px-2">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
-                            </button>
+                        <div class="w-full md:w-1/2">
+                            <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Confirm Password</label>
+                            <div class="relative">
+                                <input type="password" name="password_confirmation" class="input" placeholder="Confirm Password" required>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <button type="submit" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white">Register</button>
-        </form>
+                <button type="submit" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white">Register</button>
+            </form>
 
-        <div class="relative my-6">
-            <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-[#DEDEDE]"></div>
+            <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-[#DEDEDE]"></div>
+                </div>
+                <div class="relative flex justify-center text-[16px]">
+                    <span class="px-2 bg-white text-[#7C7C7C]">or</span>
+                </div>
             </div>
-            <div class="relative flex justify-center text-[16px]">
-                <span class="px-2 bg-white text-[#7C7C7C]">or</span>
-            </div>
+
+            <button
+                type="button"
+                class="w-full mt-6 py-3 border border-gray-300 rounded-full bg-white flex items-center justify-center gap-4 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 transition duration-300 ease-in-out">
+                <img
+                    src="https://www.svgrepo.com/show/475656/google-color.svg"
+                    class="w-6 h-6"
+                    alt="Google logo">
+                <span class="text-[20px] font-medium text-gray-700">
+                    Sign up with Google
+                </span>
+            </button>
         </div>
-
-        <button
-            type="button"
-            class="w-full mt-6 py-3 border border-gray-300 rounded-full bg-white flex items-center justify-center gap-4 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 transition duration-300 ease-in-out">
-            <img
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                class="w-6 h-6"
-                alt="Google logo">
-            <span class="text-[20px] font-medium text-gray-700">
-                Sign up with Google
-            </span>
-        </button>
     </div>
-    @endauth
+    @endguest
 
     <div>
         <h3 class="text-2xl font-semibold text-black mb-4">
@@ -188,26 +178,21 @@
     </div>
 </div>
 
+
 <script>
     $(document).ready(function() {
         $('#register-form').on('submit', function(e) {
-            e.preventDefault(); // Menghentikan pengiriman form default
+            e.preventDefault();
 
+            var form = $(this);
             $.ajax({
                 type: 'POST',
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                success: function(response) {
-                    // Tindakan setelah berhasil
-                    alert('Registrasi berhasil!');
-                    $('#register-form')[0].reset(); // Mengosongkan form
-                    // Sembunyikan elemen jika diperlukan
-                    $('#create-account-title').hide(); // Sesuaikan ID jika perlu
-                    $('#login-prompt').hide(); // Sesuaikan ID jika perlu
-                    window.location.href = '/checkout'; // Arahkan ke halaman checkout
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function() {
+                    window.location.href = '/checkout';
                 },
-                error: function(xhr) {
-                    // Tindakan jika terjadi kesalahan
+                error: function() {
                     alert('Ada kesalahan. Silakan coba lagi.');
                 }
             });
