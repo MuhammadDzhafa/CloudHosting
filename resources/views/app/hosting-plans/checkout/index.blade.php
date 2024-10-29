@@ -132,7 +132,7 @@
                                 <!-- Navigation Buttons -->
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
-                                        <button id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width:unset;">
+                                        <button id="next-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width: unset;">
                                             Continue
                                         </button>
                                     </div>
@@ -216,6 +216,8 @@
 
     <!--Forms-->
     <script src="{{ asset('assets/js/forms.js') }}" async></script>
+    <script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}" async></script>
+
 </body>
 
 </html>

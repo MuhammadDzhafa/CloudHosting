@@ -153,152 +153,161 @@
                     </div>
                 </div> -->
 
-                <!-- Username Input -->
-                <div class="field flex flex-col gap-1">
-                    <div class="control has-icon bg-white border @error('name') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
-                        <input
-                            class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
-                            type="text"
-                            name="name"
-                            placeholder="Username"
-                            value="{{ old('name') }}">
-                        <span class="form-icon">
-                            <i data-feather="user"></i>
-                        </span>
+                <form action="{{ route('register') }}" method="POST" class="space-y-6">
+                    @csrf
+                    <!-- Username Input -->
+                    <div class="field flex flex-col gap-1">
+                        <div class="control has-icon bg-white border @error('name') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
+                            <input
+                                class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
+                                type="text"
+                                name="name"
+                                placeholder="Username"
+                                value="{{ old('name') }}">
+                            <span class="form-icon">
+                                <i data-feather="user"></i>
+                            </span>
+                        </div>
+                        @error('name')
+                        <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('name')
-                    <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
 
-                <!-- Email Input -->
-                <div class="field flex flex-col gap-1">
-                    <div class="control has-icon bg-white border @error('email') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
-                        <input
-                            class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
-                            type="email"
-                            name="email"
-                            placeholder="Email Address"
-                            value="{{ old('email') }}">
-                        <span class="form-icon">
-                            <i data-feather="mail"></i>
-                        </span>
+                    <!-- Email Input -->
+                    <div class="field flex flex-col gap-1">
+                        <div class="control has-icon bg-white border @error('email') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
+                            <input
+                                class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
+                                type="email"
+                                name="email"
+                                placeholder="Gmail Address"
+                                value="{{ old('email') }}">
+                            <span class="form-icon">
+                                <i data-feather="mail"></i>
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-500">Please use a valid Gmail address (e.g., yourname@gmail.com)</p>
+                        @error('email')
+                        <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('email')
-                    <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
 
-                <!-- Phone Input -->
-                <div class="field flex flex-col gap-1">
-                    <div class="control has-icon bg-white border @error('phone') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
-                        <div class="field has-addons w-full">
-                            <div class="control">
-                                <a class="button is-static">+62</a>
-                            </div>
-                            <div class="control is-expanded">
-                                <input
-                                    class="input bg-transparent border-none outline-none w-full text-gray-700 placeholder-gray-500"
-                                    type="tel"
-                                    name="phone"
-                                    placeholder="Your phone number"
-                                    value="{{ old('phone') }}" style="padding-left: 10px;">
+                    <!-- Phone Input -->
+                    <div class="field flex flex-col gap-1">
+                        <div class="control has-icon bg-white border @error('phone') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
+                            <div class="field has-addons w-full">
+                                <div class="control">
+                                    <a class="button is-static">+62</a>
+                                </div>
+                                <div class="control is-expanded">
+                                    <input
+                                        class="input bg-transparent border-none outline-none w-full text-gray-700 placeholder-gray-500"
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="Your phone number"
+                                        value="{{ old('phone') }}"
+                                        style="padding-left: 10px;">
+                                </div>
                             </div>
                         </div>
+                        @error('phone')
+                        <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('phone')
+
+                    <!-- Password Input -->
+                    <div class="field flex flex-col gap-1">
+                        <div class="control has-icon bg-white border @error('password') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
+                            <input
+                                class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
+                                type="password"
+                                name="password"
+                                placeholder="Password">
+                            <span class="form-icon">
+                                <i data-feather="lock"></i>
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-500">Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character.</p>
+                        @error('password')
+                        <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Confirm Password Input -->
+                    <div class="field flex flex-col gap-1">
+                        <div class="control has-icon bg-white border @error('password_confirmation') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
+                            <input
+                                class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
+                                type="password"
+                                name="password_confirmation"
+                                placeholder="Confirm Password">
+                            <span class="form-icon">
+                                <i data-feather="lock"></i>
+                            </span>
+                        </div>
+                        @error('password_confirmation')
+                        <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Hidden Role Input -->
+                    <input type="hidden" name="role" value="client">
+
+                    <!-- Terms and Conditions -->
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input type="checkbox"
+                                id="terms"
+                                name="terms"
+                                class="focus:ring-custom-purple h-4 w-4 text-custom-purple border-custom-gray rounded"
+                                {{ old('terms') ? 'checked' : '' }}>
+                        </div>
+                        <div class="ml-3 text-sm mb-5">
+                            <label for="terms" class="font-medium text-gray-700">I accept the <a href="#" class="text-gray-700 hover:underline">Terms and Conditions</a></label>
+                        </div>
+                    </div>
+                    @error('terms')
                     <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
                     @enderror
-                </div>
 
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full h-[40px] text-white text-lg font-regular rounded-full hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-custom-purple focus:ring-opacity-50 transition duration-300" style="background: radial-gradient(100% 801.55% at 1.19% 0%, rgba(100, 52, 147, 0.76) 24%, rgba(74, 109, 203, 0.8) 71%, rgba(100, 210, 247, 0.78) 100%);">
+                        Sign Up
+                    </button>
 
-                <!-- Password Input -->
-                <div class="field flex flex-col gap-1">
-                    <div class="control has-icon bg-white border @error('password') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
-                        <input
-                            class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
-                            type="password"
-                            name="password"
-                            placeholder="Password">
-                        <span class="form-icon">
-                            <i data-feather="lock"></i>
-                        </span>
+                    <div class="relative my-4">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-custom-gray"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">or</span>
+                        </div>
                     </div>
-                    @error('password')
-                    <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
 
-                <!-- Confirm Password Input -->
-                <div class="field flex flex-col gap-1">
-                    <div class="control has-icon bg-white border @error('password_confirmation') border-custom-red @else border-custom-gray @enderror rounded-lg focus-within:ring-2 focus-within:ring-custom-purple transition duration-300">
-                        <input
-                            class="input bg-transparent border-none outline-none text-gray-700 placeholder-gray-500"
-                            type="password"
-                            name="password_confirmation"
-                            placeholder="Confirm Password">
-                        <span class="form-icon">
-                            <i data-feather="lock"></i>
-                        </span>
+                    <!-- Google Sign Up -->
+                    <div>
+                        <a href="{{ route('auth.google') }}" class="flex items-center justify-center w-full h-[40px] border border-custom-gray rounded-full px-5 py-4 bg-white text-gray-800 hover:bg-gray-50 transition duration-300">
+                            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-6 h-6 mr-3" alt="Google logo">
+                            <span class="text-">Sign up with Google</span>
+                        </a>
                     </div>
-                    @error('password_confirmation')
-                    <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
 
+                    <p class="mt-6 text-center text-gray-600 text-sm">
+                        Already have an account? <a href="{{ route('login') }}" class="text-custom-purple text-sm font-medium hover:underline">Sign in</a>
+                    </p>
+                </form>
+            </div>
 
-
-                <div class="flex items-start">
-                    <div class="flex items-center h-5">
-                        <input type="checkbox" id="terms" name="terms" class="focus:ring-custom-purple h-4 w-4 text-custom-purple border-custom-gray rounded" {{ old('terms') ? 'checked' : '' }}>
-                    </div>
-                    <div class="ml-3 text-sm mb-5">
-                        <label for="terms" class="font-medium text-gray-700">I accept the <a href="#" class="text-gray-700 hover:underline">Terms and Conditions</a></label>
-                    </div>
-                </div>
-                @error('terms')
-                <p class="text-custom-red text-sm mt-1">{{ $message }}</p>
-                @enderror
-
-                <button type="submit" class="w-full h-[40px] text-white text-lg font-regular rounded-full hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-custom-purple focus:ring-opacity-50 transition duration-300" style="background: radial-gradient(100% 801.55% at 1.19% 0%, rgba(100, 52, 147, 0.76) 24%, rgba(74, 109, 203, 0.8) 71%, rgba(100, 210, 247, 0.78) 100%);">
-                    Sign Up
-                </button>
-
-                <div class="relative my-4">
-                    <div class="absolute inset-0 flex items-center">
-                        <div class="w-full border-t border-custom-gray"></div>
-                    </div>
-                    <div class="relative flex justify-center text-sm">
-                        <span class="px-2 bg-white text-gray-500">or</span>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="auth/google" class="flex items-center justify-center w-full h-[40px] border border-custom-gray rounded-full px-5 py-4 bg-white text-gray-800 hover:bg-gray-50 transition duration-300">
-                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-6 h-6 mr-3" alt="Google logo">
-                        <span class="text-">
-                            Sign up with Google
-                        </span>
-                    </a>
-                </div>
-
-
-                <p class="mt-6 text-center text-gray-600 text-sm">
-                    Already have an account? <a href="{{ route('login') }}" class="text-custom-purple text-sm font-medium hover:underline">Sign in</a>
-                </p>
-        </form>
-    </div>
-
-    <!--Huro Scripts-->
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/functions.js"></script>
-    <script src="assets/js/main.js" async></script>
-    <script src="assets/js/components.js" async></script>
-    <script src="assets/js/popover.js" async></script>
-    <script src="assets/js/widgets.js" async></script>
-    <script src="assets/js/touch.js" async></script>
-    <script src="assets/js/syntax.js" async></script>
-    @yield('scripts')
+            <!--Huro Scripts-->
+            <script src="assets/js/app.js"></script>
+            <script src="assets/js/functions.js"></script>
+            <script src="assets/js/main.js" async></script>
+            <script src="assets/js/components.js" async></script>
+            <script src="assets/js/popover.js" async></script>
+            <script src="assets/js/widgets.js" async></script>
+            <script src="assets/js/touch.js" async></script>
+            <script src="assets/js/syntax.js" async></script>
+            @yield('scripts')
 </body>
 
 </html>

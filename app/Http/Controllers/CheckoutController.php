@@ -10,10 +10,13 @@ use App\Models\HostingPlan;
 use App\Models\RegularMainSpec;
 use App\Models\OrderDomainDetail;
 use App\Models\Order;
-use App\Models\BillingAddress; // Tambahkan ini
+use App\Models\BillingAddress;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Price;
+use App\Models\User;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class CheckoutController extends Controller
 {
@@ -159,19 +162,14 @@ class CheckoutController extends Controller
             }
 
             // If no existing order, create new billing address and order
-            $billingAddress = BillingAddress::firstOrCreate(
-                ['email' => 'default@example.com'],
-                [
-                    'first_name' => 'Default',
-                    'last_name' => 'User',
-                    'street_address_1' => 'Default Address',
-                    'city' => 'Default City',
-                    'state' => 'Default State',
-                    'country' => 'ID',
-                    'post_code' => '12345',
-                    'phone' => '1234567890'
-                ]
-            );
+            $billingAddress = BillingAddress::create([
+                'street_address_1' => 'Default Address',
+                'city' => 'Default City',
+                'state' => 'Default State',
+                'country' => 'ID',
+                'post_code' => '12345',
+                'company_name' => 'Default Company'  // Optional
+            ]);
 
             // Create new order
             $order = Order::create([
@@ -205,15 +203,6 @@ class CheckoutController extends Controller
                     'domain_detail' => $domainDetail
                 ]
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            DB::rollback();
-            Log::error('Validation error:', $e->errors());
-
-            return response()->json([
-                'success' => false,
-                'message' => 'Data tidak valid',
-                'errors' => $e->errors()
-            ], 422);
         } catch (\Exception $e) {
             DB::rollback();
             Log::error('Error saat menyimpan detail domain: ' . $e->getMessage());
@@ -230,45 +219,28 @@ class CheckoutController extends Controller
     public function saveBillingAddress(Request $request)
     {
         try {
-            // Validasi request
-            $validated = $request->validate([
-                'order_id' => 'required|string|exists:orders,order_id',
-                'first_name' => 'required|string|max:255',
-                'last_name' => 'required|string|max:255',
-                'email' => 'required|email|max:255',
-                'street_address_1' => 'required|string|max:255',
-                'street_address_2' => 'nullable|string|max:255',
-                'city' => 'required|string|max:255',
-                'state' => 'required|string|max:255',
-                'country' => 'required|string|max:255',
-                'post_code' => 'required|string|max:255',
-                'phone' => 'required|string|max:255',
-                'company_name' => 'nullable|string|max:255'
+            $billingData = $request->validate([
+                'street_address_1' => 'required|string',
+                'street_address_2' => 'nullable|string',
+                'city' => 'required|string',
+                'state' => 'required|string',
+                'country' => 'required|string',
+                'post_code' => 'required|string',
+                'company_name' => 'nullable|string'
             ]);
 
-            DB::beginTransaction();
-
-            // Buat billing address baru
-            $billingAddress = BillingAddress::create($validated);
-
-            // Update order dengan billing address yang baru
-            Order::where('order_id', $request->order_id)
-                ->update(['billing_address_id' => $billingAddress->billing_id]);
-
-            DB::commit();
+            // Buat atau update billing address
+            $billingAddress = BillingAddress::create($billingData);
 
             return response()->json([
                 'success' => true,
-                'message' => 'Data alamat penagihan berhasil disimpan',
+                'message' => 'Billing address saved successfully',
                 'data' => $billingAddress
             ]);
         } catch (\Exception $e) {
-            DB::rollback();
-            Log::error('Error menyimpan alamat penagihan: ' . $e->getMessage());
-
             return response()->json([
                 'success' => false,
-                'message' => 'Gagal menyimpan alamat penagihan: ' . $e->getMessage()
+                'message' => 'Failed to save billing address: ' . $e->getMessage()
             ], 500);
         }
     }
@@ -286,20 +258,15 @@ class CheckoutController extends Controller
                 $orderId = 'CUSTOM-' . uniqid();
             }
 
-            // Create/find temporary billing address
-            $billingAddress = BillingAddress::firstOrCreate(
-                ['email' => 'default@example.com'],
-                [
-                    'first_name' => 'Default',
-                    'last_name' => 'User',
-                    'street_address_1' => 'Default Address',
-                    'city' => 'Default City',
-                    'state' => 'Default State',
-                    'country' => 'ID',
-                    'post_code' => '12345',
-                    'phone' => '1234567890'
-                ]
-            );
+            // Create temporary billing address
+            $billingAddress = BillingAddress::create([
+                'street_address_1' => 'Default Address',
+                'city' => 'Default City',
+                'state' => 'Default State',
+                'country' => 'ID',
+                'post_code' => '12345',
+                'company_name' => 'Default Company'  // Optional
+            ]);
 
             // Create order
             $order = Order::create([
@@ -349,5 +316,31 @@ class CheckoutController extends Controller
                 'message' => 'Failed to save custom plan: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    public function saveClientData(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8',
+            'phone' => 'required|string',
+            // Tambahkan validasi untuk input lainnya sesuai kebutuhan
+        ]);
+
+        $user = new User();
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->phone = $validatedData['phone'];
+        // Set nilai untuk kolom lainnya sesuai kebutuhan
+        $user->save();
+
+        // Assign peran 'client' ke user yang baru terdaftar
+        $role = Role::where('name', 'client')->first();
+        $user->roles()->attach($role);
+
+        // Redirect atau berikan response sesuai kebutuhan
+        return redirect()->route('checkout.index')->with('success', 'Data client berhasil disimpan.');
     }
 }

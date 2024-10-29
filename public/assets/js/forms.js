@@ -116,53 +116,45 @@ $(document).ready(function () {
         }
 
         // Fungsi untuk menyimpan billing address (Step 5)
-        function saveBillingAddress(callback) {
-            const fullName = $('input[name="full_name"]').val();
-            const names = fullName.split(' ');
-            const firstName = names[0];
-            const lastName = names.slice(1).join(' ') || firstName;
+function saveBillingAddress(callback) {
+    // Validasi data terlebih dahulu
+    const billingData = {
+        street_address_1: $('input[name="street_address_1"]').val(),
+        street_address_2: $('input[name="street_address_2"]').val(),
+        city: $('input[name="city"]').val(),
+        state: $('input[name="state"]').val(),
+        country: $('select[name="country"]').val(), // Ubah ini untuk ambil nilai dari select
+        company_name: $('input[name="company_name"]').val(),
+        post_code: $('input[name="post_code"]').val(),
+        billing_id: $('#billing_id').val() // Jika ada
+    };
 
-            const billingData = {
-                order_id: $('#order_id').val(),
-                first_name: firstName,
-                last_name: lastName,
-                email: $('input[name="email"]').val(),
-                company_name: $('input[name="company_name"]').val(),
-                street_address_1: $('input[name="street_address_1"]').val(),
-                street_address_2: $('input[name="street_address_2"]').val(),
-                city: $('input[name="city"]').val(),
-                state: $('input[name="state"]').val(),
-                country: $('select[name="country"]').val(),
-                post_code: $('input[name="post_code"]').val(),
-                phone: $('input[name="phone"]').val().replace(/\D/g, '')
-            };
+    console.log('Preparing to send billing data:', billingData);
 
-            console.log('Preparing to send billing data:', billingData);
-
-            $.ajax({
-                url: '/save-billing-address',
-                method: 'POST',
-                data: billingData,
-                success: function (response) {
-                    console.log('Billing address response:', response);
-                    if (response.success) {
-                        if (typeof callback === 'function') {
-                            callback();
-                        }
-                    } else {
-                        alert(response.message || 'Gagal menyimpan alamat penagihan');
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error saat menyimpan billing address:', {
-                        status: status,
-                        error: error,
-                        response: xhr.responseText
-                    });
-                    handleAjaxError(xhr, status, error);
+    $.ajax({
+        url: '/save-billing-address',
+        method: 'POST',
+        data: billingData,
+        success: function (response) {
+            console.log('Billing address response:', response);
+            if (response.success) {
+                if (typeof callback === 'function') {
+                    callback();
                 }
+            } else {
+                showNotification(response.message || 'Gagal menyimpan alamat penagihan', 'error');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error saat menyimpan billing address:', {
+                status: status,
+                error: error,
+                response: xhr.responseText
             });
+            handleAjaxError(xhr, status, error);
         }
+    });
+}
 
         // Helper function untuk handle error
         function handleAjaxError(xhr, status, error) {
@@ -290,20 +282,25 @@ $(document).ready(function () {
         // Validasi untuk step billing
         function validateBillingStep() {
             const requiredFields = [
-                'full_name',
-                'email',
                 'street_address_1',
                 'city',
+                'state',
                 'country',
-                'phone'
+                'post_code'
             ];
-
+        
             let isValid = true;
             let firstInvalidField = null;
-
+        
             requiredFields.forEach(field => {
-                const $field = $(`input[name="${field}"]`);
-                if (!$field.val().trim()) {
+                let $field;
+                if (field === 'country') {
+                    $field = $(`select[name="${field}"]`);
+                } else {
+                    $field = $(`input[name="${field}"]`);
+                }
+                
+                if (!$field.val()?.trim()) {
                     isValid = false;
                     $field.addClass('is-danger');
                     if (!firstInvalidField) {
@@ -313,7 +310,7 @@ $(document).ready(function () {
                     $field.removeClass('is-danger');
                 }
             });
-
+        
             if (!isValid) {
                 showNotification('Please fill in all required fields', 'error');
                 if (firstInvalidField) {
@@ -321,24 +318,7 @@ $(document).ready(function () {
                 }
                 return false;
             }
-
-            // Validasi format email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const email = $('input[name="email"]').val().trim();
-            if (!emailRegex.test(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                $('input[name="email"]').addClass('is-danger').focus();
-                return false;
-            }
-
-            // Validasi format nomor telepon (minimal 10 digit, hanya angka)
-            const phone = $('input[name="phone"]').val().replace(/\D/g, '');
-            if (phone.length < 10) {
-                showNotification('Phone number must be at least 10 digits', 'error');
-                $('input[name="phone"]').addClass('is-danger').focus();
-                return false;
-            }
-
+        
             return true;
         }
 

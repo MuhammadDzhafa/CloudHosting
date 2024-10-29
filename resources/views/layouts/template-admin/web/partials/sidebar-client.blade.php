@@ -75,15 +75,15 @@
         <ul class="bottom-menu">
             <li id="user-menu">
                 <div id="profile-menu" class="dropdown profile-dropdown dropdown-trigger is-spaced is-up">
-                    <img src="{{ Auth::user()->google_profile_image }}" alt="Profile Image" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150';">
+                    <img src="{{ Auth::user()->google_profile_image ?? 'https://via.placeholder.com/150x150' }}" alt="Profile Image" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150';">
                     <span class="status-indicator"></span>
 
                     <div class="dropdown-menu" role="menu">
                         <div class="dropdown-content">
                             <div class="dropdown-head">
                                 <div class="meta">
-                                    <span>{{ Auth::user()->name }}</span>
-                                    <span style="text-transform:unset;">{{ Auth::user()->email }}</span>
+                                    <span>{{ Auth::user()->name ?? 'Guest' }}</span>
+                                    <span style="text-transform:unset;">{{ Auth::user()->email ?? 'No Email' }}</span>
                                 </div>
                             </div>
                             <div class="dropdown-item is-button">
@@ -102,6 +102,7 @@
                 </div>
             </li>
         </ul>
+
     </div>
 </div>
 

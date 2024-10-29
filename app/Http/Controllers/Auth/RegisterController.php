@@ -48,7 +48,7 @@ class RegisterController extends Controller
                     return redirect('/client-dashboard');
                 }
 
-                return redirect('/home');
+                return redirect('/client-dashboard');
             }
 
             // Jika pengguna baru, buat pengguna baru dengan peran 'client'
@@ -62,6 +62,8 @@ class RegisterController extends Controller
                 'google_profile_image' => $socialUser->avatar,
                 'phone' => null,
             ]);
+
+            
 
             // Assign peran client
             $user->roles()->attach(Role::where('name', 'client')->first());

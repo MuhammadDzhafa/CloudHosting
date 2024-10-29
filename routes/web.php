@@ -10,12 +10,12 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TldController;
 use App\Http\Controllers\HostingPlanController;
-use App\Http\Controllers\PriceController;
 use App\Http\Controllers\HostingGroupController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckoutController;
+
 
 /* Welcome */
 
@@ -80,7 +80,7 @@ Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact
 /* Login */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/', [LoginController::class, 'logout'])->name('logout');
 
 /* Login with Google */
 
@@ -191,3 +191,14 @@ Route::post('/save-domain-details', [CheckoutController::class, 'saveDomainDetai
 Route::post('/save-billing-address', [CheckoutController::class, 'saveBillingAddress']);
 Route::post('/save-custom-plan', [CheckoutController::class, 'saveCustomPlan'])->name('save.custom.plan');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/checkout/process', [CheckoutController::class, 'processOrder'])->name('checkout.process');
+});
+
+Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);
+Route::get('auth/google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
+Route::post('auth/google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
+
+Route::post('/checkout/save-client-data', [CheckoutController::class, 'saveClientData'])->name('checkout.saveClientData');

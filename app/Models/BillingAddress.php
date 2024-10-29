@@ -12,16 +12,12 @@ class BillingAddress extends Model
     protected $primaryKey = 'billing_id';
 
     protected $fillable = [
-        'email',
-        'first_name',
-        'last_name',
         'street_address_1',
         'street_address_2',
         'city',
         'state',
         'country',
         'post_code',
-        'phone',
         'company_name'
     ];
 
