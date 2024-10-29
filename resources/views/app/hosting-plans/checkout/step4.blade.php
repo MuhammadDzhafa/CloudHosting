@@ -14,14 +14,14 @@
                 <span class="text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
                     {{ $plan }}
                 </span>
-                <label class="radio is-outlined is-info flex-shrink-0">
-                    <input type="radio" name="outlined_radio">
+                <label class="checkbox is-outlined is-circle is-info flex-shrink-0">
+                    <input type="checkbox">
                     <span></span>
                 </label>
             </div>
             <div class="flex items-baseline">
                 <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                    $
+                    Rp
                 </span>
                 <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
                     20.000
@@ -31,7 +31,7 @@
                 </span>
             </div>
             <div class="flex justify-between items-center">
-                <span class="line-through text-gray-400 text-sm">$2.99 /mon</span>
+                <span class="line-through text-gray-400 text-sm">Rp20.000 /mon</span>
                 <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
                     Save 30%
                 </span>
