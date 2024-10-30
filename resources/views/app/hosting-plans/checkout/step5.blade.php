@@ -31,7 +31,17 @@
                     <input type="email" name="email" class="input" placeholder="Email Address" required>
 
                     <label class="block mb-1 mt-3 w-full">Phone</label>
-                    <input type="text" name="phone" class="input" placeholder="Phone Number" required>
+                    <div class="field has-addons">
+                        <div class="control">
+                            <a class="button is-static">
+                                +62
+                            </a>
+                        </div>
+                        <div class="control is-expanded">
+                            <input type="text" name="phone" class="input" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+
 
                     <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <div class="w-full md:w-1/2">
@@ -157,22 +167,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Phone Number -->
-            <div class="col-span-1 md:col-span-2">
-                <div class="field has-addons">
-                    <div class="control">
-                        <a class="button is-static">
-                            +62
-                        </a>
-                    </div>
-                    <div class="control is-expanded">
-                        <input name="phone" class="input" type="text" placeholder="Your phone number" required>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
 
     </div>
