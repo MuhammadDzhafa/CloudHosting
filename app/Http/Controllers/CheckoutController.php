@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Price;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Addon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+
 
 class CheckoutController extends Controller
 {
@@ -41,6 +43,7 @@ class CheckoutController extends Controller
 
         $productInfo = $request->query('product_info');
         $prices = Price::where('hosting_plans_id', $hostingPlanId)->get();
+        $addons = Addon::where('status', 'active')->get();
 
         if ($hostingPlanId) {
             // Load hosting plan with its relationships
@@ -105,6 +108,7 @@ class CheckoutController extends Controller
             'selectedTld' => $selectedTld,
             'product_info' => $productInfo,
             'prices' => $prices,
+            'addons' => $addons,
         ]);
     }
 
@@ -352,6 +356,51 @@ class CheckoutController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data');
+        }
+    }
+
+    public function saveAddons(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            $orderId = $request->order_id;
+            $selectedAddons = $request->selected_addons ?? [];
+
+            // Update status semua addon untuk order ini
+            Addon::where('order_id', $orderId)->update([
+                'selected' => 'no' // Reset semua ke 'no' terlebih dahulu
+            ]);
+
+            // Update yang dipilih menjadi 'yes'
+            if (!empty($selectedAddons)) {
+                Addon::whereIn('id', $selectedAddons)
+                    ->update([
+                        'order_id' => $orderId,
+                        'selected' => 'yes'
+                    ]);
+            }
+
+            // Update total price di order jika perlu
+            $order = Order::where('order_id', $orderId)->first();
+            if ($order) {
+                $totalAddonPrice = Addon::where('order_id', $orderId)
+                    ->where('selected', 'yes')
+                    ->sum('price');
+                $order->update([
+                    'total_price' => $order->base_price + $totalAddonPrice
+                ]);
+            }
+
+            DB::commit();
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Error saving addons: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to save addons: ' . $e->getMessage()
+            ]);
         }
     }
 }

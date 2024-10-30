@@ -58,10 +58,10 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white">Register</button>
+                <button type="submit" class="button h-button w-full bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white mt-5 rounded-full">Register</button>
             </form>
 
-            <div class="relative my-6">
+            <div class="relative my-4">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-[#DEDEDE]"></div>
                 </div>
@@ -70,17 +70,14 @@
                 </div>
             </div>
 
-            <button
-                type="button"
-                class="w-full mt-6 py-3 border border-gray-300 rounded-full bg-white flex items-center justify-center gap-4 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 transition duration-300 ease-in-out">
-                <img
-                    src="https://www.svgrepo.com/show/475656/google-color.svg"
-                    class="w-6 h-6"
-                    alt="Google logo">
-                <span class="text-[20px] font-medium text-gray-700">
-                    Sign up with Google
-                </span>
-            </button>
+            <div>
+                <a href="auth/redirect" class="flex items-center justify-center w-full h-[40px] border border-custom-gray rounded-full px-5 py-4 bg-white text-gray-800 hover:bg-gray-50 transition duration-300">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-6 h-6 mr-3" alt="Google logo">
+                    <span class="text-m">
+                        Login with Google
+                    </span>
+                </a>
+            </div>
         </div>
     </div>
     @endguest

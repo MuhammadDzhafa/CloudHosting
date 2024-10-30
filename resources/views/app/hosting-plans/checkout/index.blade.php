@@ -229,12 +229,11 @@
 <script src="assets/js/syntax.js" async></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Tab handling
+        // Mengelola tab
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
         const slider = document.querySelector('.slider');
 
-        // Tab handling
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const tabId = tab.getAttribute('data-tab');
@@ -252,89 +251,88 @@
 
         // Ambil parameter tld_name dari URL
         const urlParams = new URLSearchParams(window.location.search);
-        let tldName = urlParams.get('tld_name');
+        let tldName = urlParams.get('tld_name') || sessionStorage.getItem('tld_name');
 
-        // Jika tld_name tidak ada di URL, ambil dari sessionStorage
-        if (!tldName) {
-            tldName = sessionStorage.getItem('tld_name');
-        }
-
-        // Update elemen <h3> dengan nilai TLD
+        // Update elemen <h3> dengan TLD
         const h3DomainDisplay = document.getElementById('h3-domain-display');
         if (h3DomainDisplay && tldName) {
-            // Ambil TLD dari tldName
-            const parts = tldName.split('.');
-            const tld = parts.length > 1 ? '.' + parts.pop() : '';
-
-            h3DomainDisplay.textContent = tld; // Set hanya TLD di elemen h3
+            const tld = '.' + tldName.split('.').pop();
+            h3DomainDisplay.textContent = tld;
         } else {
             console.log("TLD Name not found in URL or session storage");
         }
 
+        // Auto-klik tombol "Continue" jika tldName tersedia
         const nextButton = document.getElementById('next-button');
         if (nextButton && tldName) {
-            setTimeout(() => {
-                nextButton.click();
-            }, 100); // Delay 100 ms
+            setTimeout(() => nextButton.click(), 100);
         }
 
+        // Fungsi Search pada bagian "New Domain"
+        document.getElementById('search-btn-new').addEventListener('click', function() {
+            searchDomain('new');
+        });
 
-        // Event listener untuk tombol Search
-        const searchButton = document.getElementById('search-btn');
-        const domainSearch = document.getElementById('domain-search');
-        const dropdownContainer = document.getElementById('dropdown-container');
-        const dropdownContent = document.getElementById('dropdown-content');
+        // Fungsi Search pada bagian "Transfer Domain"
+        document.getElementById('search-btn-transfer').addEventListener('click', function() {
+            searchDomain('transfer');
+        });
 
-        searchButton.addEventListener('click', function() {
-            const searchQuery = domainSearch.value;
+        // Fungsi umum untuk pencarian domain
+        function searchDomain(type) {
+            const searchQuery = document.getElementById(`domain-search-${type}`).value;
+            const dropdownContainer = document.getElementById(`dropdown-container-${type}`);
+            const dropdownContent = document.getElementById(`dropdown-content-${type}`);
 
             if (searchQuery) {
-                dropdownContent.innerHTML = `
-                <div id="component-search">
-                    <div class="message is-success flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong id="search-tld-name">${searchQuery}</strong> is available
-                            <br>Exclusive offer: $1.50/mon for a 2-year plan
+                let dropdownHTML = '';
+
+                // Untuk pencarian "New Domain"
+                if (type === 'new') {
+                    dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-success flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${searchQuery}</strong> is available as a new domain
+                                <br>Exclusive offer: $1.50/mon for a 2-year plan
+                            </div>
+                            <button class="button h-button is-success rounded-full" data-domain-name="${searchQuery}">
+                                Buy Now
+                            </button>
                         </div>
-                        <button class="button h-button is-success rounded-full" onclick="handleBuyNow('${searchQuery}')">
-                            Buy Now
-                        </button>
-                    </div>
-                    <div class="message flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong>${searchQuery}</strong> is not available
+                        <div class="message flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong>${searchQuery}</strong> is not available
+                            </div>
+                            <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
                         </div>
-                        <button id="whoisButton" class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
-                    </div>
-                </div>
-                `;
+                    </div>`;
+                }
+                // Untuk pencarian "Transfer Domain"
+                else if (type === 'transfer') {
+                    dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-warning flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${searchQuery}</strong> is available for transfer
+                                <br>Transfer this domain at a discount!
+                            </div>
+                            <button class="button h-button is-warning rounded-full" data-domain-name="${searchQuery}" id="transfer-button-${searchQuery}">
+                                Transfer Now
+                            </button>
+                        </div>
+                    </div>`;
+                }
 
-                const whoisButtons = document.querySelectorAll('.h-modal-trigger');
-                whoisButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const modalId = this.getAttribute('data-modal');
-                        const modal = document.getElementById(modalId);
-                        if (modal) {
-                            modal.classList.add('is-active'); // Menampilkan modal
-                        }
-                    });
-                });
+                dropdownContent.innerHTML = dropdownHTML;
+                dropdownContainer.classList.remove('hidden');
 
-                // Menutup modal ketika latar belakang modal atau tombol close diklik
-                const closeModalButtons = document.querySelectorAll('.h-modal-close');
-                closeModalButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const modal = this.closest('.modal');
-                        if (modal) {
-                            modal.classList.remove('is-active'); // Menyembunyikan modal
-                        }
-                    });
-                });
+                setupWhoisModal(); // Setup modal WHOIS setelah dropdown di-update
 
-                const whoisButton = document.getElementById('whoisButton');
+                const whoisButton = dropdownContent.querySelector('.h-modal-trigger');
                 if (whoisButton) {
                     whoisButton.addEventListener('click', function() {
-                        const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
+                        const searchQuery = document.getElementById(`domain-search-${type}`).value; // Ambil nilai dari input
                         const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU'; // Ganti dengan API key Anda
                         const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
 
@@ -349,7 +347,6 @@
                                 const whoisOutput = document.getElementById('whois-output'); // Ambil elemen untuk menampilkan hasil
 
                                 if (data.WhoisRecord) {
-                                    // Tampilkan data yang diambil di elemen whois-output
                                     whoisOutput.innerHTML = `
                                         <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
                                         <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
@@ -368,79 +365,63 @@
                     });
                 }
 
-                // Tampilkan dropdown
+                // Menampilkan dropdown
                 dropdownContainer.classList.add('show');
                 dropdownContainer.classList.remove('hidden');
             } else {
                 dropdownContainer.classList.remove('show');
                 dropdownContainer.classList.add('hidden');
             }
-        });
-    });
-
-    function orderTLD(button) {
-        var tldName = button.getAttribute('data-tld-name');
-        var tldPrice = button.getAttribute('data-tld-price');
-
-        console.log("TLD Name:", tldName);
-        console.log("TLD Price:", tldPrice);
-
-        // Masukkan nilai tld_name ke dalam input field
-        var inputField = document.querySelector('.input');
-        if (inputField) {
-            inputField.value = tldName;
-            console.log("TLD Name set in input field:", inputField.value);
         }
 
-        // Kirim data ke backend
-        fetch('/order-tld', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify({
-                    tld_name: tldName,
-                    tld_price: tldPrice
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('TLD successfully ordered!');
-                } else {
-                    alert('Error ordering TLD!');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
+        // Menambahkan event listener untuk tombol "Transfer Now"
+        function setupTransferButton() {
+            const transferButtons = document.querySelectorAll('[id^="transfer-button-"]');
+            transferButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const transferForm = document.getElementById('transfer-form');
+                    transferForm.classList.remove('hidden');
+                });
             });
-    }
+        }
 
-    // Fungsi handleBuyNow yang hanya mengurus "Buy Now"
-    function handleBuyNow(fullDomainName) {
-        // Ambil TLD dari fullDomainName
-        const parts = fullDomainName.split('.');
-        const tld = parts.length > 1 ? '.' + parts.pop() : '';
+        // Mengatur modal WHOIS
+        function setupWhoisModal() {
+            document.querySelectorAll('.h-modal-trigger').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.add('is-active');
+                    }
+                });
+            });
 
-        // Set nilai TLD name ke elemen h3
-        var h3DomainDisplay = document.getElementById('h3-domain-display');
-        h3DomainDisplay.textContent = tld; // Hanya menampilkan TLD
+            document.querySelectorAll('.h-modal-close').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        modal.classList.remove('is-active');
+                    }
+                });
+            });
+        }
 
-        // Klik tombol "Continue" satu kali
-        var nextButton = document.getElementById('next-button');
-        nextButton.click();
-    }
-
-    $(document).ready(function() {
         // Setup AJAX CSRF token
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         });
+
+        // Panggil setupTransferButton untuk mengatur event listener
+        setupTransferButton();
     });
 </script>
+
+
 
 
 

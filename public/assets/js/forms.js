@@ -16,20 +16,18 @@ $(document).ready(function () {
         });
 
         // Handle main Continue button
-        // Handle main Continue button
         $("#next-button").on("click", function () {
             // Check if we're in hosting-only tab
             if ($("#hosting-only").hasClass("is-active")) {
-                // Langsung ke step 3 tanpa validasi
                 i = 1; // Set counter to 2 so next step will be 3
                 proceedToNextStep();
                 return;
             }
 
             // Regular flow for other tabs
-            if (i === 0) { // Jika berada di Step 1
+            if (i === 0) { // Step 1
                 proceedToNextStep(); // Langsung ke Step 2
-            } else if (i === 1) { // Jika berada di Step 2
+            } else if (i === 1) { // Step 2 (Domain)
                 // Validate selection between "Yes, I want" or "Domain Only"
                 if ($("input[name='domain-choice']:checked").length === 0) {
                     showNotification('Please choose an option', 'error');
@@ -48,6 +46,14 @@ $(document).ready(function () {
                         proceedToNextStep(); // Ke Step 5
                     });
                 }
+            } else if (i === 2) { // Step 3 (Addons)
+                if ($("#form-step-3").hasClass("is-active")) {
+                    saveAddon(function() {
+                        proceedToNextStep();
+                    });
+                } else {
+                    proceedToNextStep();
+                }
             } else if (i === 4) { // Step 5 (Billing Address)
                 saveBillingAddress(function () {
                     proceedToNextStep();
@@ -56,6 +62,54 @@ $(document).ready(function () {
                 proceedToNextStep(); // Untuk langkah lainnya
             }
         });
+
+        // Function untuk menyimpan addon (Step 3)
+        function saveAddon(callback) {
+            // Verifikasi bahwa kita berada di step 3
+            if (!$("#form-step-3").hasClass("is-active")) {
+                if (typeof callback === 'function') {
+                    callback();
+                }
+                return;
+            }
+
+            // Ambil data addon yang dipilih
+            const selectedAddons = [];
+            $("#form-step-3 input[type='checkbox']:checked").each(function() {
+                selectedAddons.push($(this).val());
+            });
+
+            const data = {
+                order_id: $('#order_id').val(),
+                selected_addons: selectedAddons
+            };
+
+            console.log('Preparing to send addon data:', data);
+
+            $.ajax({
+                url: '/save-addons',
+                method: 'POST',
+                data: data,
+                success: function(response) {
+                    console.log('Addon save response:', response);
+                    if (response.success) {
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    } else {
+                        showNotification(response.message || 'Failed to save addons', 'error');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error saving addons:', {
+                        status: status,
+                        error: error,
+                        response: xhr.responseText
+                    });
+                    handleAjaxError(xhr, status, error);
+                }
+            });
+        }
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
@@ -82,17 +136,8 @@ $(document).ready(function () {
                 domain_option_id: $('#domain_option_id').val() || null
             };
 
-            // Log the data being sent
             console.log('Preparing to send domain data:', data);
 
-            // Add CSRF token to request headers
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            // Send AJAX request
             $.ajax({
                 url: '/save-domain-details',
                 method: 'POST',
@@ -100,7 +145,6 @@ $(document).ready(function () {
                 success: function (response) {
                     console.log('Success response:', response);
                     if (response.success) {
-                        // If callback exists, execute it
                         if (typeof callback === 'function') {
                             callback(response.data);
                         }
@@ -116,45 +160,45 @@ $(document).ready(function () {
         }
 
         // Fungsi untuk menyimpan billing address (Step 5)
-function saveBillingAddress(callback) {
-    // Validasi data terlebih dahulu
-    const billingData = {
-        street_address_1: $('input[name="street_address_1"]').val(),
-        street_address_2: $('input[name="street_address_2"]').val(),
-        city: $('input[name="city"]').val(),
-        state: $('input[name="state"]').val(),
-        country: $('select[name="country"]').val(), // Ubah ini untuk ambil nilai dari select
-        company_name: $('input[name="company_name"]').val(),
-        post_code: $('input[name="post_code"]').val(),
-        billing_id: $('#billing_id').val() // Jika ada
-    };
+        function saveBillingAddress(callback) {
+            // Validasi data terlebih dahulu
+            const billingData = {
+                street_address_1: $('input[name="street_address_1"]').val(),
+                street_address_2: $('input[name="street_address_2"]').val(),
+                city: $('input[name="city"]').val(),
+                state: $('input[name="state"]').val(),
+                country: $('select[name="country"]').val(),
+                company_name: $('input[name="company_name"]').val(),
+                post_code: $('input[name="post_code"]').val(),
+                billing_id: $('#billing_id').val()
+            };
 
-    console.log('Preparing to send billing data:', billingData);
+            console.log('Preparing to send billing data:', billingData);
 
-    $.ajax({
-        url: '/save-billing-address',
-        method: 'POST',
-        data: billingData,
-        success: function (response) {
-            console.log('Billing address response:', response);
-            if (response.success) {
-                if (typeof callback === 'function') {
-                    callback();
+            $.ajax({
+                url: '/save-billing-address',
+                method: 'POST',
+                data: billingData,
+                success: function (response) {
+                    console.log('Billing address response:', response);
+                    if (response.success) {
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    } else {
+                        showNotification(response.message || 'Gagal menyimpan alamat penagihan', 'error');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error saat menyimpan billing address:', {
+                        status: status,
+                        error: error,
+                        response: xhr.responseText
+                    });
+                    handleAjaxError(xhr, status, error);
                 }
-            } else {
-                showNotification(response.message || 'Gagal menyimpan alamat penagihan', 'error');
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Error saat menyimpan billing address:', {
-                status: status,
-                error: error,
-                response: xhr.responseText
             });
-            handleAjaxError(xhr, status, error);
         }
-    });
-}
 
         // Helper function untuk handle error
         function handleAjaxError(xhr, status, error) {
@@ -176,7 +220,6 @@ function saveBillingAddress(callback) {
                     errorMessage += '\n' + Object.values(response.errors).join('\n');
                 }
 
-                // Log the file and line if available
                 if (response.file && response.line) {
                     console.error('Error in file:', response.file, 'line:', response.line);
                 }
@@ -184,7 +227,7 @@ function saveBillingAddress(callback) {
                 console.error('Error parsing error response:', e);
             }
 
-            alert(errorMessage);
+            showNotification(errorMessage, 'error');
         }
 
         // Function untuk menampilkan notifikasi
@@ -206,25 +249,22 @@ function saveBillingAddress(callback) {
             }, 3000);
         }
 
-
         // Handle Buy Domain Only button
         $("#buy-domain-button").on('click', function (e) {
             e.preventDefault();
             const $button = $("#next-button");
             $button.addClass("is-loading");
 
-            // Validasi domain
             if (!validateDomainStep()) {
                 $button.removeClass("is-loading");
                 return;
             }
 
             saveDomainDetails(function () {
-                i = 3; // Set counter ke 4 untuk pindah ke step 5
-                proceedToNextStep(); // Pindah ke Step 5
+                i = 3;
+                proceedToNextStep();
             });
         });
-
 
         // Handle Buy With Hosting button
         $("#buy-with-hosting").on('click', function (e) {
@@ -232,7 +272,6 @@ function saveBillingAddress(callback) {
             const $button = $("#next-button");
             $button.addClass("is-loading");
 
-            // Validasi domain
             if (!validateDomainStep()) {
                 $button.removeClass("is-loading");
                 return;
@@ -253,27 +292,32 @@ function saveBillingAddress(callback) {
             return true;
         }
 
+        // Validasi untuk step addon
+        function validateAddonStep() {
+            // Optional: uncomment if you want to make addon selection mandatory
+            /*
+            const hasSelectedAddons = $("#form-step-3 input[type='checkbox']:checked").length > 0;
+            if (!hasSelectedAddons) {
+                showNotification('Please select at least one addon', 'error');
+                return false;
+            }
+            */
+            return true;
+        }
+
         // Validasi untuk setiap step
         function validateCurrentStep() {
             switch (i) {
                 case 0: // Step 1
-                    // Add validation for step 1 if needed
                     return true;
-
                 case 1: // Step 2 (Domain)
                     return validateDomainStep();
-
-                case 2: // Step 3
-                    // Add validation for step 3 if needed
-                    return true;
-
+                case 2: // Step 3 (Addon)
+                    return validateAddonStep();
                 case 3: // Step 4
-                    // Add validation for step 4 if needed
                     return true;
-
                 case 4: // Step 5 (Billing)
                     return validateBillingStep();
-
                 default:
                     return true;
             }
@@ -330,9 +374,8 @@ function saveBillingAddress(callback) {
             setTimeout(function () {
                 $button.removeClass("is-loading");
 
-                // Hanya mengubah status aktif tanpa menyembunyikan step lainnya
                 $(".form-step").removeClass("is-active");
-                i += 1; // Increment step counter
+                i += 1;
                 $("#form-step-" + i).addClass("is-active");
 
                 // Update visual indicators
@@ -347,7 +390,7 @@ function saveBillingAddress(callback) {
             }, 800);
 
             // Update continue button text on last step
-            if (i === 5) { // Assuming 5 is the last step
+            if (i === 5) {
                 $("#next-button").text("Complete Order");
             }
         }
@@ -356,6 +399,32 @@ function saveBillingAddress(callback) {
         $('input, select').on('input change', function () {
             $(this).removeClass('is-danger');
         });
+
+        // Event handler untuk checkbox addon
+        $("#form-step-3 input[type='checkbox']").on('change', function() {
+            calculateAndUpdateTotal();
+        });
+
+        // Function untuk menghitung dan update total
+        function calculateAndUpdateTotal() {
+            let total = 0;
+            $("#form-step-3 input[type='checkbox']:checked").each(function() {
+                total += parseFloat($(this).data('price') || 0);
+            });
+            
+            // Update display total jika ada elemen dengan id total-price
+            if ($('#total-price').length) {
+                $('#total-price').text(formatPrice(total));
+            }
+        }
+
+        // Helper function untuk format harga
+        function formatPrice(price) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            }).format(price);
+        }
 
         // Inisialisasi mask untuk input telepon
         if ($.fn.mask) {
