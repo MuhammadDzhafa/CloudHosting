@@ -30,14 +30,10 @@ class CheckoutController extends Controller
 
         $hostingPlanId = $request->query('hosting_plan_id');
         $specs = [];
-
-        // Generate order_id (bisa disesuaikan dengan logika bisnis Anda)
-        $order_id = uniqid('ORD-');  // Contoh generate order_id sederhana
+        $order_id = uniqid('ORD-'); // Generate order_id
 
         // Ambil data TLD berdasarkan tld_name
         $selectedTld = TLD::where('tld_name', $tld_name)->first();
-
-        // Ambil domain_option_id dari TLD yang dipilih
         $domain_option_id = $selectedTld ? $selectedTld->id : null;
 
         $productInfo = $request->query('product_info');
@@ -45,7 +41,6 @@ class CheckoutController extends Controller
         $addons = Addon::where('order_id', null)->get();
 
         if ($hostingPlanId) {
-            // Load hosting plan with its relationships
             $hostingPlan = HostingPlan::with(['prices'])->find($hostingPlanId);
             $regularSpec = RegularMainSpec::where('hosting_plans_id', $hostingPlanId)->first();
 
@@ -83,17 +78,18 @@ class CheckoutController extends Controller
             $order_id = $customPlan['order_id'];
         }
 
+        // Set spesifikasi default jika tidak ada spesifikasi yang diatur
         if (empty($specs)) {
             $specs = [
                 ['value' => '2 GB SSD Storage'],
-                ['value' => '2 RAM'],
+                ['value' => '2 GB RAM'],
                 ['value' => '1 Core CPU'],
                 ['value' => 'Unlimited Domain'],
                 ['value' => 'Free SSL']
             ];
         }
 
-        // Hitung price berdasarkan TLD atau logika bisnis lainnya
+        // Hitung harga berdasarkan TLD atau logika lainnya
         $price = $selectedTld ? $selectedTld->price : 0;
 
         return view('app.hosting-plans.checkout.index', [
@@ -110,6 +106,7 @@ class CheckoutController extends Controller
             'addons' => $addons,
         ]);
     }
+
 
     // Tambahkan method baru untuk menyimpan detail domain
     public function saveDomainDetails(Request $request)

@@ -26,43 +26,43 @@
                                 <div class="select-drop has-slimscroll-sm">
                                     <div class="drop-inner">
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="paypal" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>PayPal</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="gopay" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>GoPay</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="deadpool" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>Deadpool</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="ovo" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>OVO</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="dana" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>DANA</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="shopeepay" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>ShopeePay</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="qris" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>QRIS</span>
                                             </div>
@@ -72,6 +72,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="field">
                         <div class="control">
                             <div class="h-select">
@@ -84,37 +85,37 @@
                                 <div class="select-drop has-slimscroll-sm">
                                     <div class="drop-inner">
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="mandiri" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>Mandiri</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="bri" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>BRI</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="bni" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>BNI</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="bca" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>BCA</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="permata" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>Permata</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="bsi" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>BSI</span>
                                             </div>
@@ -124,6 +125,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="field">
                         <div class="control">
                             <div class="h-select">
@@ -136,25 +138,25 @@
                                 <div class="select-drop has-slimscroll-sm">
                                     <div class="drop-inner">
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="visa" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>Visa</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="mastercard" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>MasterCard</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="jcb" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>JCB</span>
                                             </div>
                                         </div>
                                         <div class="option-row">
-                                            <input type="radio" name="hero_select">
+                                            <input type="radio" name="hero_select" value="amex" onclick="toggleDropdowns()">
                                             <div class="option-meta">
                                                 <span>American Express</span>
                                             </div>
@@ -181,7 +183,7 @@
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
                     <div>
                         <h4 class="w-full sm:w-[285.4px] h-[23px] mb-3 gap-0 opacity-100 font-inter text-[16px] font-medium leading-[23.2px] text-left text-[#283252]">
-                            Cloud Hosting - Strato
+                            {{ $product_info }}
                         </h4>
                         <p id="p-domain-display" class="w-full sm:w-[285.4px] h-[23px] mb-1 gap-0 opacity-100 font-inter text-[16px] font-normal leading-[23.2px] text-left text-[#283252]">
                             Example.id

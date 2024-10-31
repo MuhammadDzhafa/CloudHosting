@@ -17,7 +17,7 @@
                     <span class="text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
                         Daily Backup
                     </span>
-                    <label class="radio is-outlined is-info flex-shrink-0">
+                    <label class="checkbox is-outlined is-circle is-info flex-shrink-0">
                         <input type="checkbox"
                             name="daily_backup"
                             value="1"
@@ -51,7 +51,7 @@
                     <span class="text-[18px] font-semibold leading-[23.4px] text-[#3C476C] truncate max-w-[200px]">
                         Email Protection
                     </span>
-                    <label class="radio is-outlined is-info flex-shrink-0">
+                    <label class="checkbox is-outlined is-circle is-info flex-shrink-0">
                         <input type="checkbox"
                             name="email_protection"
                             value="1"

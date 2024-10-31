@@ -2,7 +2,7 @@
     <div class="webapp-navbar w-full" style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px)">
         <div class="webapp-navbar-inner flex items-center justify-between h-16" style="padding: 0px 120px;">
             <div class="left flex items-center flex-shrink-0 relative">
-                <a href="/landing-page" class="brand relative block">
+                <a href="/" class="brand relative block">
                     <img class="light-image w-full h-full" src="assets/img/logos/logo/awanhosting.svg" alt="Awan Hosting" />
                 </a>
             </div>

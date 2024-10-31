@@ -107,18 +107,29 @@
                 const searchQuery = searchInput.value;
 
                 if (searchQuery) {
+                    const domainParts = searchQuery.split('.'); // Pisahkan bagian-bagian domain
+                    const tld = domainParts.pop(); // Ambil TLD
+                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.'); // Gabungkan bagian domain utama
+                    const baseDomain = `${mainDomainPart}.${tld}`; // Buat nama domain yang ingin ditampilkan
+
                     dropdownContent.innerHTML = `
-                <div id="component-search">
-                    <div class="message is-success flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong>${searchQuery}</strong> is available
-                            <br>Exclusive offer: $1.50/mon for a 2-year plan
-                        </div>
-                        <button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${searchQuery}')">
-                            Buy Now
-                        </button>
+            <div id="component-search">
+                <div class="message is-success flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong>${baseDomain}</strong> is available
+                        <br>Exclusive offer: $1.50/mon for a 2-year plan
                     </div>
+                    <button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">
+                        Buy Now
+                    </button>
                 </div>
+                <div class="message flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong>${baseDomain}</strong> is not available
+                    </div>
+                    <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
+                </div>
+            </div>
             `;
 
                     dropdownContainer.classList.add('show');

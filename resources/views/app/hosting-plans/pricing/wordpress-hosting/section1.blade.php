@@ -1,12 +1,12 @@
-<div class="bg-gradient-custom section-frame padding-1">
+<div class="bg-gradient-custom section-frame padding-1 lg:h-[450px]">
 
     <div class=" columns">
         <div class="column is-6">
-            <h2 class="title-section text-center text-white">
+            <h2 class="title-section md:text-center lg:text-left text-white lg:mb-10">
                 WordPress Hosting
             </h2>
 
-            <p class="text-base-hero text-primary text-white mb-3">
+            <p class="text-base-hero text-primary text-white lg:mb-12">
                 Get the best value in WordPress hosting with easy setup, fast loading times, and comprehensive support.
             </p>
 

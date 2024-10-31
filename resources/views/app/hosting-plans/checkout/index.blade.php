@@ -216,7 +216,7 @@
 
     <!--Forms-->
     <script src="{{ asset('assets/js/forms.js') }}" async></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
 
 </html>
@@ -257,8 +257,6 @@
         if (h3DomainDisplay && tldName) {
             const tld = '.' + tldName.split('.').pop();
             h3DomainDisplay.textContent = tld;
-        } else {
-            console.log("TLD Name not found in URL or session storage");
         }
 
         // Auto-klik tombol "Continue" jika tldName tersedia
@@ -266,11 +264,30 @@
         if (nextButton && tldName) {
             setTimeout(() => {
                 if (document.getElementById('form-step-3').classList.contains('is-active')) {
-                    nextButton.click(); // Klik hanya jika form step 3 aktif
+                    nextButton.click();
                 }
             }, 100);
         }
 
+        // Event listener untuk checkout page
+        if (window.location.pathname === '/checkout') {
+            let urlParams = new URLSearchParams(window.location.search);
+            let tldName = urlParams.get('tld_name');
+
+            if (tldName) {
+                setTimeout(() => {
+                    const nextButton = document.getElementById('next-button');
+                    if (nextButton) {
+                        nextButton.click();
+                    }
+                }, 1000);
+            }
+        }
+
+        // Event listener untuk next button
+        document.getElementById('next-button').addEventListener('click', function(event) {
+            console.log("Button was clicked!");
+        });
 
         // Fungsi Search pada bagian "New Domain"
         document.getElementById('search-btn-new').addEventListener('click', function() {
@@ -290,84 +307,76 @@
 
             if (searchQuery) {
                 let dropdownHTML = '';
+                const domainParts = searchQuery.split('.'); // Pisahkan bagian-bagian domain
+                const tld = domainParts.pop(); // Ambil TLD
+                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.'); // Gabungkan bagian domain utama
+                const baseDomain = `${mainDomainPart}.${tld}`; // Buat nama domain yang ingin ditampilkan
 
                 // Untuk pencarian "New Domain"
                 if (type === 'new') {
                     dropdownHTML = `
-                    <div id="component-search">
-                        <div class="message is-success flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong id="search-tld-name">${searchQuery}</strong> is available as a new domain
-                                <br>Exclusive offer: $1.50/mon for a 2-year plan
-                            </div>
-                            <button class="button h-button is-success rounded-full" data-domain-name="${searchQuery}">
-                                Buy Now
-                            </button>
-                        </div>
-                        <div class="message flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong>${searchQuery}</strong> is not available
-                            </div>
-                            <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
-                        </div>
-                    </div>`;
+        <div id="component-search">
+            <div class="message is-success flex-row flex justify-between items-center">
+                <div class="message-body">
+                    <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
+                    <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
+                </div>
+                <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                    Buy Now
+                </button>
+            </div>
+            <div class="message flex-row flex justify-between items-center">
+                <div class="message-body">
+                    <strong>${baseDomain}</strong> is not available
+                </div>
+                <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
+            </div>
+        </div>`;
                 }
                 // Untuk pencarian "Transfer Domain"
                 else if (type === 'transfer') {
                     dropdownHTML = `
-                    <div id="component-search">
-                        <div class="message is-warning flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong id="search-tld-name">${searchQuery}</strong> is available for transfer
-                                <br>Transfer this domain at a discount!
-                            </div>
-                            <button class="button h-button is-warning rounded-full" data-domain-name="${searchQuery}" id="transfer-button-${searchQuery}">
-                                Transfer Now
-                            </button>
-                        </div>
-                    </div>`;
+        <div id="component-search">
+            <div class="message is-warning flex-row flex justify-between items-center">
+                <div class="message-body">
+                    <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                    <br>Transfer this domain at a discount!
+                </div>
+                <button class="button h-button is-warning rounded-full" data-domain-name="${baseDomain}" id="transfer-button-${baseDomain}">
+                    Transfer Now
+                </button>
+            </div>
+        </div>`;
                 }
 
                 dropdownContent.innerHTML = dropdownHTML;
                 dropdownContainer.classList.remove('hidden');
 
-                setupWhoisModal(); // Setup modal WHOIS setelah dropdown di-update
+                // Add event listener for Buy Now buttons
+                const buyNowButtons = document.querySelectorAll('.buy-now-button');
+                buyNowButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const domainName = this.getAttribute('data-domain-name');
 
-                const whoisButton = dropdownContent.querySelector('.h-modal-trigger');
-                if (whoisButton) {
-                    whoisButton.addEventListener('click', function() {
-                        const searchQuery = document.getElementById(`domain-search-${type}`).value; // Ambil nilai dari input
-                        const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU'; // Ganti dengan API key Anda
-                        const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
+                        // Update the h3 domain display
+                        const h3DomainDisplay = document.getElementById('h3-domain-display');
+                        if (h3DomainDisplay) {
+                            h3DomainDisplay.textContent = domainName;
+                        }
 
-                        fetch(url)
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Network response was not ok');
-                                }
-                                return response.json();
-                            })
-                            .then(data => {
-                                const whoisOutput = document.getElementById('whois-output'); // Ambil elemen untuk menampilkan hasil
+                        // Click the continue button
+                        const nextButton = document.getElementById('next-button');
+                        if (nextButton) {
+                            nextButton.click();
+                        }
 
-                                if (data.WhoisRecord) {
-                                    whoisOutput.innerHTML = `
-                                        <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
-                                        <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
-                                        <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
-                                        <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
-                                        <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
-                                    `;
-                                } else {
-                                    console.log('No WHOIS record found.');
-                                    whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error fetching WHOIS data:', error);
-                            });
+                        // Store domain name in session storage
+                        sessionStorage.setItem('selected_domain', domainName);
                     });
-                }
+                });
+
+                setupWhoisModal();
+                setupTransferButton();
 
                 // Menampilkan dropdown
                 dropdownContainer.classList.add('show');
@@ -398,6 +407,43 @@
                     if (modal) {
                         modal.classList.add('is-active');
                     }
+
+                    // Mencari parent element dengan id component-search
+                    const componentSearch = this.closest('#component-search');
+                    // Mengambil nama domain dari strong element di dalam message-body
+                    const domainElement = componentSearch.querySelector('#search-tld-name');
+                    const searchQuery = domainElement ? domainElement.textContent : '';
+
+                    // WHOIS API call
+                    const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU';
+                    const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
+
+                    fetch(url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            const whoisOutput = document.getElementById('whois-output');
+
+                            if (data.WhoisRecord) {
+                                whoisOutput.innerHTML = `
+                                <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
+                                <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
+                                <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
+                                <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
+                                <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
+                            `;
+                            } else {
+                                console.log('No WHOIS record found.');
+                                whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching WHOIS data:', error);
+                        });
                 });
             });
 
@@ -411,16 +457,14 @@
             });
         }
 
-        $(document).ready(function() {
+        // Setup jQuery AJAX headers
+        if (typeof $ !== 'undefined') {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        });
-
-        // Panggil setupTransferButton untuk mengatur event listener
-        setupTransferButton();
+        }
     });
 </script>
 

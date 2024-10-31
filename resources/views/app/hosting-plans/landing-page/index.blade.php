@@ -80,15 +80,29 @@
         const tldResults = document.getElementById('tld-results');
 
         if (searchBtn) {
-            searchBtn.addEventListener('click', function() {
-                const searchQuery = searchInput.value;
+    searchBtn.addEventListener('click', function() {
+        const searchQuery = searchInput.value.trim(); // Menghapus spasi di awal dan akhir
 
-                if (searchQuery) {
-                    dropdownContent.innerHTML = `
+        if (searchQuery) {
+            // Memproses searchQuery untuk menampilkan domain utama
+            const domainParts = searchQuery.split('.');
+            let displayDomain = '';
+
+            // Jika ada lebih dari satu bagian, kita ambil bagian terakhir (TLD) dan satu bagian sebelum TLD
+            if (domainParts.length > 1) {
+                // Mengabaikan www dan subdomain lainnya
+                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').slice(-2, -1)[0]; // Ambil bagian kedua dari belakang
+                const tld = domainParts.pop(); // Ambil TLD
+                displayDomain = `${mainDomainPart}.${tld}`; // Gabungkan bagian utama dengan TLD
+            } else {
+                displayDomain = searchQuery; // Jika tidak ada titik, tampilkan query itu sendiri
+            }
+
+            dropdownContent.innerHTML = `
                 <div id="component-search">
                     <div class="message is-success flex-row flex justify-between items-center">
                         <div class="message-body">
-                            <strong>${searchQuery}</strong> is available
+                            <strong>${displayDomain}</strong> is available
                             <br>Exclusive offer: $1.50/mon for a 2-year plan
                         </div>
                         <button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${searchQuery}')">
@@ -97,7 +111,7 @@
                     </div>
                     <div class="message flex-row flex justify-between items-center">
                         <div class="message-body">
-                            <strong>${searchQuery}</strong> is not available
+                            <strong>${displayDomain}</strong> is not available
                         </div>
                         <button id="whoisButton" class="button h-button rounded-full h-modal-trigger" data-modal="demo-right-actions-modal">WHOIS</button>
                     </div>
