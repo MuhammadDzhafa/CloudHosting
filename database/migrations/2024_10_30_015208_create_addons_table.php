@@ -10,19 +10,17 @@ return new class extends Migration
     {
         Schema::create('addons', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->string('price');
-            $table->enum('billing_cycle', ['monthly', 'yearly'])->default('monthly');
-            $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->string('order_id')->nullable(); // Ubah menjadi nullable()
-            $table->timestamp('created_at')->useCurrent();
+            $table->boolean('daily_backup')->default(false);
+            $table->timestamp('active_date')->nullable();
+            $table->timestamp('expired_date')->nullable();
+            $table->boolean('email_protection')->default(false);
+            $table->integer('price')->default(0);
+            $table->string('order_id')->nullable(); // Ubah ke string karena order_id adalah string
 
-            // Tambahkan foreign key jika perlu
             $table->foreign('order_id')
                 ->references('order_id')
                 ->on('orders')
-                ->onDelete('set null');
+                ->onDelete('cascade');
         });
     }
 

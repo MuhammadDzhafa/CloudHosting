@@ -216,8 +216,7 @@
 
     <!--Forms-->
     <script src="{{ asset('assets/js/forms.js') }}" async></script>
-    <script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}" async></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
@@ -265,8 +264,13 @@
         // Auto-klik tombol "Continue" jika tldName tersedia
         const nextButton = document.getElementById('next-button');
         if (nextButton && tldName) {
-            setTimeout(() => nextButton.click(), 100);
+            setTimeout(() => {
+                if (document.getElementById('form-step-3').classList.contains('is-active')) {
+                    nextButton.click(); // Klik hanya jika form step 3 aktif
+                }
+            }, 100);
         }
+
 
         // Fungsi Search pada bagian "New Domain"
         document.getElementById('search-btn-new').addEventListener('click', function() {
@@ -407,7 +411,6 @@
             });
         }
 
-        // Setup AJAX CSRF token
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {

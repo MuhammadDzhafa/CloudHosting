@@ -34,4 +34,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderHostingDetail::class, 'order_id', 'order_id');
     }
+
+    public function addons()
+    {
+        return $this->hasMany(Addon::class, 'order_id', 'order_id');
+    }
 }

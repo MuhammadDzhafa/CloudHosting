@@ -1,6 +1,8 @@
 "use strict";
 $(document).ready(function () {
     // Setup AJAX CSRF token
+    console.log('Order ID:', $('input[name="order_id"]').val());
+    console.log('CSRF token:', $('meta[name="csrf-token"]').attr('content'));
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -8,108 +10,134 @@ $(document).ready(function () {
     });
 
     if ($("#form-layout-5").length) {
-        var i = 0; // Counter untuk step
+        let i = 0; // Ganti var s menjadi let i 
+    
+        // Event handler untuk checkbox addon
+$("#form-step-3 input[type='checkbox']").on('change', function() {
+    console.log('Addon checkbox changed:', $(this).attr('name'), $(this).is(':checked'));
+    calculateAndUpdateTotal();
 
-        // Reset counter when switching tabs
-        $('.tabs li').on('click', function () {
-            i = 0; // Reset counter to 0 when switching tabs
+    if ($("#form-step-3").hasClass("is-active")) {
+        console.log("Step 3 is active, saving addons...");
+        saveAddon(function() {
+            console.log("Addon saved successfully");
         });
+    }
+});
 
-        // Handle main Continue button
-        $("#next-button").on("click", function () {
-            // Check if we're in hosting-only tab
-            if ($("#hosting-only").hasClass("is-active")) {
-                i = 1; // Set counter to 2 so next step will be 3
-                proceedToNextStep();
-                return;
-            }
-
-            // Regular flow for other tabs
-            if (i === 0) { // Step 1
-                proceedToNextStep(); // Langsung ke Step 2
-            } else if (i === 1) { // Step 2 (Domain)
-                // Validate selection between "Yes, I want" or "Domain Only"
-                if ($("input[name='domain-choice']:checked").length === 0) {
-                    showNotification('Please choose an option', 'error');
-                    return;
-                }
-                const selectedChoice = $("input[name='domain-choice']:checked").val();
-                if (selectedChoice === "buy_with_hosting") {
-                    // User chose "Yes, I want"
-                    saveDomainDetails(function () {
-                        proceedToNextStep(); // Ke Step 3
-                    });
-                } else {
-                    // User chose "Domain Only"
-                    saveDomainDetails(function () {
-                        i = 4; // Set counter ke 4 untuk pindah ke step 5
-                        proceedToNextStep(); // Ke Step 5
-                    });
-                }
-            } else if (i === 2) { // Step 3 (Addons)
-                if ($("#form-step-3").hasClass("is-active")) {
-                    saveAddon(function() {
-                        proceedToNextStep();
-                    });
-                } else {
-                    proceedToNextStep();
-                }
-            } else if (i === 4) { // Step 5 (Billing Address)
-                saveBillingAddress(function () {
-                    proceedToNextStep();
-                });
-            } else {
-                proceedToNextStep(); // Untuk langkah lainnya
-            }
-        });
-
-        // Function untuk menyimpan addon (Step 3)
+        // Setup awal fungsi saveAddon
         function saveAddon(callback) {
-            // Verifikasi bahwa kita berada di step 3
-            if (!$("#form-step-3").hasClass("is-active")) {
-                if (typeof callback === 'function') {
-                    callback();
-                }
+            // Tambahkan logging untuk debugging
+            console.log("Starting saveAddon function...");
+            
+            const data = {
+                order_id: $('input[name="order_id"]').val(),
+                daily_backup: $('input[name="daily_backup"]').is(':checked'),
+                email_protection: $('input[name="email_protection"]').is(':checked'),
+                price: calculateAddonTotalPrice()
+            };
+            
+            // Log data yang akan dikirim
+            console.log('Data yang akan dikirim:', data);
+            
+            if (!data.order_id) {
+                console.error('Order ID tidak ditemukan');
+                showNotification('Order ID diperlukan', 'error');
+                $('#next-button').removeClass('is-loading');
                 return;
             }
-
-            // Ambil data addon yang dipilih
-            const selectedAddons = [];
-            $("#form-step-3 input[type='checkbox']:checked").each(function() {
-                selectedAddons.push($(this).val());
-            });
-
-            const data = {
-                order_id: $('#order_id').val(),
-                selected_addons: selectedAddons
-            };
-
-            console.log('Preparing to send addon data:', data);
-
+        
             $.ajax({
-                url: '/save-addons',
+                url: '/save-addons',  // Pastikan URL ini sesuai dengan route
                 method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 data: data,
+                dataType: 'json',
                 success: function(response) {
-                    console.log('Addon save response:', response);
+                    console.log('Response dari server:', response);
                     if (response.success) {
+                        showNotification('Addon berhasil disimpan', 'success');
                         if (typeof callback === 'function') {
                             callback();
                         }
                     } else {
-                        showNotification(response.message || 'Failed to save addons', 'error');
+                        console.error('Gagal:', response.message);
+                        showNotification(response.message || 'Gagal menyimpan addon', 'error');
+                        $('#next-button').removeClass('is-loading');
                     }
                 },
                 error: function(xhr, status, error) {
-                    console.error('Error saving addons:', {
-                        status: status,
-                        error: error,
-                        response: xhr.responseText
+                    console.error('Error detail:', {
+                        status: xhr.status,
+                        statusText: xhr.statusText,
+                        responseText: xhr.responseText
                     });
                     handleAjaxError(xhr, status, error);
+                    $('#next-button').removeClass('is-loading');
                 }
             });
         }
+    
+        // Handle tombol continue
+        $("#next-button").on("click", function() {
+            const $button = $(this);
+            $button.addClass("is-loading");
+        
+            console.log("Current step (i):", i);
+            console.log("Form step 3 active:", $("#form-step-3").hasClass("is-active"));
+        
+            // Check if we're in hosting-only tab
+            if ($("#hosting-only").hasClass("is-active")) {
+                i = 1;
+                proceedToNextStep();
+                return;
+            }
+        
+            // Regular flow for other tabs
+            if (i === 0) {
+                proceedToNextStep();
+            } else if (i === 1) {
+                if ($("input[name='domain-choice']:checked").length === 0) {
+                    showNotification('Please choose an option', 'error');
+                    $button.removeClass("is-loading");
+                    return;
+                }
+        
+                const selectedChoice = $("input[name='domain-choice']:checked").val();
+                if (selectedChoice === "buy_with_hosting") {
+                    saveDomainDetails(function() {
+                        i = 2;
+                        proceedToNextStep();
+                    });
+                } else {
+                    saveDomainDetails(function() {
+                        i = 4;
+                        proceedToNextStep();
+                    });
+                }
+            } else if (i === 2) {
+                console.log("Inside step 3 check");
+                if ($("#form-step-3").hasClass("is-active")) {
+                    console.log("Step 3 is active, saving addons...");
+                    saveAddon(function() {
+                        console.log("Addon saved successfully");
+                        proceedToNextStep();
+                    });
+                } else {
+                    console.log("Step 3 is not active, skipping addon save");
+                    proceedToNextStep();
+                }
+            } else if (i === 4) {
+                saveBillingAddress(function() {
+                    proceedToNextStep();
+                });
+            } else {
+                proceedToNextStep();
+            }
+        });
+        
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
@@ -167,11 +195,11 @@ $(document).ready(function () {
                 street_address_2: $('input[name="street_address_2"]').val(),
                 city: $('input[name="city"]').val(),
                 state: $('input[name="state"]').val(),
-                country: $('select[name="country"]').val(),
+                country: $('input[name="country"]:checked').val(),  // Pastikan mendapatkan nilai dari radio button
                 company_name: $('input[name="company_name"]').val(),
                 post_code: $('input[name="post_code"]').val(),
                 billing_id: $('#billing_id').val()
-            };
+            };            
 
             console.log('Preparing to send billing data:', billingData);
 
@@ -332,10 +360,10 @@ $(document).ready(function () {
                 'country',
                 'post_code'
             ];
-        
+
             let isValid = true;
             let firstInvalidField = null;
-        
+
             requiredFields.forEach(field => {
                 let $field;
                 if (field === 'country') {
@@ -343,7 +371,7 @@ $(document).ready(function () {
                 } else {
                     $field = $(`input[name="${field}"]`);
                 }
-                
+
                 if (!$field.val()?.trim()) {
                     isValid = false;
                     $field.addClass('is-danger');
@@ -354,7 +382,7 @@ $(document).ready(function () {
                     $field.removeClass('is-danger');
                 }
             });
-        
+
             if (!isValid) {
                 showNotification('Please fill in all required fields', 'error');
                 if (firstInvalidField) {
@@ -362,7 +390,7 @@ $(document).ready(function () {
                 }
                 return false;
             }
-        
+
             return true;
         }
 
@@ -370,30 +398,32 @@ $(document).ready(function () {
         function proceedToNextStep() {
             const $button = $("#next-button");
             $button.addClass("is-loading");
-
-            setTimeout(function () {
+    
+            setTimeout(function() {
                 $button.removeClass("is-loading");
-
+    
                 $(".form-step").removeClass("is-active");
                 i += 1;
                 $("#form-step-" + i).addClass("is-active");
-
-                // Update visual indicators
+    
                 $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
                 $("#step-segment-" + i).addClass("is-active");
                 $("#mobile-step-segment-" + i).addClass("is-active");
-
-                // Scroll ke step yang aktif
+    
                 $("html, body").animate({
                     scrollTop: $("#form-step-" + i).offset().top
                 }, 500);
+    
+                if (i === 5) {
+                    $("#next-button").text("Complete Order");
+                }
             }, 800);
-
-            // Update continue button text on last step
-            if (i === 5) {
-                $("#next-button").text("Complete Order");
-            }
         }
+    
+        // Reset counter saat ganti tab
+        $('.tabs li').on('click', function() {
+            i = 0;
+        });
 
         // Event handler untuk input fields
         $('input, select').on('input change', function () {
@@ -432,5 +462,17 @@ $(document).ready(function () {
                 placeholder: "____-____-_____"
             });
         }
+    }
+    
+    // Helper function untuk menghitung total harga addon
+    function calculateAddonTotalPrice() {
+        let total = 0;
+        if ($('#form-step-3 input[name="daily_backup"]').is(':checked')) {
+            total += 20000;
+        }
+        if ($('#form-step-3 input[name="email_protection"]').is(':checked')) {
+            total += 20000;
+        }
+        return total;
     }
 });

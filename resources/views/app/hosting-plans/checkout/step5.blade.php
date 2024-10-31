@@ -135,12 +135,36 @@
                 </label>
                 <div class="field">
                     <div class="control">
-                        <select name="country" class="input h-12" required>
-                            <option value="">Select Country</option>
-                            <option value="ID">Indonesia</option>
-                            <option value="SG">Singapore</option>
-                            <option value="MY">Malaysia</option>
-                        </select>
+                        <div class="h-select">
+                            <div class="select-box">
+                                <span>Select Country</span>
+                            </div>
+                            <div class="select-icon">
+                                <i data-feather="chevron-down"></i>
+                            </div>
+                            <div class="select-drop has-slimscroll-sm">
+                                <div class="drop-inner">
+                                    <div class="option-row">
+                                        <input type="radio" name="country" value="ID">
+                                        <div class="option-meta">
+                                            <span>Indonesia</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-row">
+                                        <input type="radio" name="country" value="SG">
+                                        <div class="option-meta">
+                                            <span>Singapore</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-row">
+                                        <input type="radio" name="country" value="MY">
+                                        <div class="option-meta">
+                                            <span>Malaysia</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

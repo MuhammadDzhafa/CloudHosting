@@ -32,13 +32,23 @@
                         <span></span>
                     </label>
                 </div>
-                <div class="flex items-baseline mb-2">
-                    <span class="text-[14px] font-[400] text-[#4A6DCB]">Rp</span>
-                    <span class="text-[32px] font-[700] text-[#4A6DCB]">20.000</span>
-                    <span class="text-[14px] font-[400] text-[#4A6DCB]">/mon</span>
+                <div class="flex items-baseline">
+                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                        Rp
+                    </span>
+                    <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
+                        20.000
+                    </span>
+                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                        /mon
+                    </span>
                 </div>
-                <span class="text-[13px] font-[600] text-[#6C88D5]">Save 30%</span>
-                <span class="text-[11px] font-[400] text-[#989EA0] line-through">$3.99 /mon</span>
+                <div class="flex justify-between items-center">
+                    <span class="line-through text-gray-400 text-sm">Rp 28.000 /mon</span>
+                    <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
+                        Save 30%
+                    </span>
+                </div>
             </div>
 
             <!-- Whois Protection Card -->
@@ -50,13 +60,23 @@
                         <span></span>
                     </label>
                 </div>
-                <div class="flex items-baseline mb-2">
-                    <span class="text-[14px] font-[400] text-[#4A6DCB]">Rp</span>
-                    <span class="text-[32px] font-[700] text-[#4A6DCB]">20.000</span>
-                    <span class="text-[14px] font-[400] text-[#4A6DCB]">/mon</span>
+                <div class="flex items-baseline">
+                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                        Rp
+                    </span>
+                    <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
+                        20.000
+                    </span>
+                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                        /mon
+                    </span>
                 </div>
-                <span class="text-[13px] font-[600] text-[#6C88D5]">Save 30%</span>
-                <span class="text-[11px] font-[400] text-[#989EA0] line-through">$3.99 /mon</span>
+                <div class="flex justify-between items-center">
+                    <span class="line-through text-gray-400 text-sm">Rp 28.000 /mon</span>
+                    <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
+                        Save 30%
+                    </span>
+                </div>
             </div>
         </div>
 

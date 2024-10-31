@@ -201,5 +201,4 @@ Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCall
 Route::get('auth/google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
 Route::post('auth/google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
 Route::post('/checkout', [CheckoutController::class, 'saveClientData'])->name('register');
-Route::post('/checkout/save-addons', [CheckoutController::class, 'saveAddons'])->name('checkout.save-addons');
-Route::post('/save-addons', [CheckoutController::class, 'saveAddons'])->name('save-addons');
+Route::post('/save-addons', [CheckoutController::class, 'saveAddons'])->name('addons.save');

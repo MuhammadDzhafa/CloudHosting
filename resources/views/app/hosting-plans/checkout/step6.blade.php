@@ -9,31 +9,6 @@
 
     <div class="flex flex-col lg:flex-row lg:space-x-8">
         <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
-            <div class="mb-8">
-                <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
-                    Have a Promo Code?
-                </h3>
-                <div class="flex flex-col sm:flex-row gap-2 w-full">
-                    <div class="field w-full sm:flex-grow">
-                        <div class="control">
-                            <input
-                                type="text"
-                                class="input is-rounded w-full"
-                                placeholder="Promo Code" />
-                        </div>
-                    </div>
-                    <a
-                        class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] 
-               text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] 
-               text-[16px] leading-[23.2px] font-['Inter'] font-medium 
-               text-center rounded-full sm:w-auto w-full"
-                        style="border: unset;">
-                        Apply
-                    </a>
-                </div>
-
-            </div>
-
             <div>
                 <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
                     Choose Payment Method

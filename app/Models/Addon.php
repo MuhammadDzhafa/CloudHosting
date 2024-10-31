@@ -10,24 +10,26 @@ class Addon extends Model
     use HasFactory;
 
     public $timestamps = false;
-
     protected $table = 'addons';
 
     protected $fillable = [
-        'name',
-        'description',
+        'daily_backup',
+        'active_date',
+        'expired_date',
+        'email_protection',
         'price',
-        'billing_cycle',
-        'status',
-        'order_id'  // Tambahkan order_id ke fillable
+        'order_id'
     ];
 
-    protected $attributes = [
-        'billing_cycle' => 'monthly',
-        'status' => 'active'
+    protected $casts = [
+        'daily_backup' => 'boolean',
+        'email_protection' => 'boolean',
+        'price' => 'integer',
+        'active_date' => 'timestamp',
+        'expired_date' => 'timestamp'
     ];
 
-    // Relasi ke model Order
+    // Ubah relasi ke Order
     public function order()
     {
         return $this->belongsTo(Order::class, 'order_id', 'order_id');

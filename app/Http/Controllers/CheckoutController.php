@@ -20,7 +20,6 @@ use App\Models\Addon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-
 class CheckoutController extends Controller
 {
     public function index(Request $request): View
@@ -43,7 +42,7 @@ class CheckoutController extends Controller
 
         $productInfo = $request->query('product_info');
         $prices = Price::where('hosting_plans_id', $hostingPlanId)->get();
-        $addons = Addon::where('status', 'active')->get();
+        $addons = Addon::where('order_id', null)->get();
 
         if ($hostingPlanId) {
             // Load hosting plan with its relationships
@@ -361,46 +360,56 @@ class CheckoutController extends Controller
 
     public function saveAddons(Request $request)
     {
+        Log::info('Received addon request:', [
+            'all_data' => $request->all(),
+            'order_id' => $request->input('order_id'),
+            'daily_backup' => $request->input('daily_backup'),
+            'email_protection' => $request->input('email_protection'),
+            'price' => $request->input('price'),
+        ]);
+
         try {
             DB::beginTransaction();
 
-            $orderId = $request->order_id;
-            $selectedAddons = $request->selected_addons ?? [];
-
-            // Update status semua addon untuk order ini
-            Addon::where('order_id', $orderId)->update([
-                'selected' => 'no' // Reset semua ke 'no' terlebih dahulu
-            ]);
-
-            // Update yang dipilih menjadi 'yes'
-            if (!empty($selectedAddons)) {
-                Addon::whereIn('id', $selectedAddons)
-                    ->update([
-                        'order_id' => $orderId,
-                        'selected' => 'yes'
-                    ]);
+            // Validasi apakah order ada
+            $order = Order::where('order_id', $request->input('order_id'))->first();
+            if (!$order) {
+                Log::error('Order not found:', ['order_id' => $request->input('order_id')]);
+                throw new \Exception('Order not found');
             }
 
-            // Update total price di order jika perlu
-            $order = Order::where('order_id', $orderId)->first();
-            if ($order) {
-                $totalAddonPrice = Addon::where('order_id', $orderId)
-                    ->where('selected', 'yes')
-                    ->sum('price');
-                $order->update([
-                    'total_price' => $order->base_price + $totalAddonPrice
-                ]);
-            }
+            // Update atau buat addon
+            $addon = Addon::updateOrCreate(
+                ['order_id' => $request->input('order_id')],
+                [
+                    'daily_backup' => $request->boolean('daily_backup'),
+                    'email_protection' => $request->boolean('email_protection'),
+                    'price' => $request->input('price', 0),
+                    'active_date' => now(),
+                    'expired_date' => now()->addYear()
+                ]
+            );
 
             DB::commit();
-            return response()->json(['success' => true]);
+
+            Log::info('Addon saved successfully:', ['addon' => $addon->toArray()]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Addons saved successfully',
+                'data' => $addon
+            ]);
         } catch (\Exception $e) {
-            DB::rollback();
-            Log::error('Error saving addons: ' . $e->getMessage());
+            DB::rollBack();
+            Log::error('Failed to save addon:', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to save addons: ' . $e->getMessage()
-            ]);
+                'message' => 'Failed to save addons'
+            ], 500);
         }
     }
 }
