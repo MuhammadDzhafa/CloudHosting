@@ -218,19 +218,24 @@
                 </div>
 
                 <div id="hosting-only" class="tab-content">
-                    <h3 class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C] mb-5">Order hosting without domain</h3>
+                    <h3 class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C] mb-5">
+                        Get your domain with Hosting Only
+                    </h3>
                     <div class="flex items-start space-x-4 mb-8">
                         <div class="field flex-1">
                             <div class="control">
-                                <input type="text" id="domain-search" class="input is-rounded w-full" placeholder="Type in your domain name">
+                                <input type="text" id="domain-search-hosting-only" class="input is-rounded w-full" placeholder="Type in your domain name">
                             </div>
                         </div>
-                        <button id="search-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                        <button id="search-btn-hosting" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
                             <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
                             <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
                                 Search
                             </span>
                         </button>
+                    </div>
+                    <div id="dropdown-container-hosting-only" class="hidden mb-4">
+                        <div id="dropdown-content-hosting-only"></div>
                     </div>
 
                     <!-- Flex Table -->

@@ -302,81 +302,110 @@
             searchDomain('transfer');
         });
 
+        document.getElementById("search-btn-hosting").addEventListener("click", function() {
+            searchDomain('hosting-only');
+        });
+
         // Fungsi umum untuk pencarian domain
         function searchDomain(type) {
-            const searchQuery = document.getElementById(`domain-search-${type}`).value;
-            const dropdownContainer = document.getElementById(`dropdown-container-${type}`);
-            const dropdownContent = document.getElementById(`dropdown-content-${type}`);
+            console.log('searchDomain called with type:', type);
+            const searchInput = document.getElementById(`domain-search-${type}`);
+            if (searchInput) {
+                const searchQuery = searchInput.value;
+                console.log('searchQuery:', searchQuery);
+                const dropdownContainer = document.getElementById(`dropdown-container-${type}`);
+                const dropdownContent = document.getElementById(`dropdown-content-${type}`);
+                const h3DomainDisplay = document.getElementById("h3-domain-display");
+                const pDomainDisplay = document.getElementById("p-domain-display");
+                const nextButton = document.getElementById("next-button");
 
-            if (searchQuery) {
-                let dropdownHTML = '';
-                const domainParts = searchQuery.split('.');
-                const tld = domainParts.pop();
-                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
-                const baseDomain = `${mainDomainPart}.${tld}`;
+                if (searchQuery) {
+                    let dropdownHTML = '';
+                    const domainParts = searchQuery.split('.');
+                    const tld = domainParts.pop();
+                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+                    const baseDomain = `${mainDomainPart}.${tld}`;
 
-                // Untuk pencarian "New Domain"
-                if (type === 'new') {
-                    dropdownHTML = `
-        <div id="component-search">
-            <div class="message is-success flex-row flex justify-between items-center">
-                <div class="message-body">
-                    <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
-                    <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
-                </div>
-                <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
-                    Buy Now
-                </button>
-            </div>
-            <div class="message flex-row flex justify-between items-center">
-                <div class="message-body">
-                    <strong>${baseDomain}</strong> is not available
-                </div>
-                <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
-            </div>
-        </div>`;
-                }
-                // Untuk pencarian "Transfer Domain"
-                else if (type === 'transfer') {
-                    dropdownHTML = `
-        <div id="component-search">
-            <div class="message is-warning flex-row flex justify-between items-center">
-                <div class="message-body">
-                    <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                    <br>Transfer this domain at a discount!
-                </div>
-                <button class="button h-button is-warning rounded-full" data-domain-name="${baseDomain}" id="transfer-button-${baseDomain}">
-                    Transfer Now
-                </button>
-            </div>
-        </div>`;
-                }
+                    // Untuk pencarian "New Domain"
+                    if (type === 'new') {
+                        dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-success flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
+                                <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
+                            </div>
+                            <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                                Buy Now
+                            </button>
+                        </div>
+                        <div class="message flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong>${baseDomain}</strong> is not available
+                            </div>
+                            <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
+                        </div>
+                    </div>`;
+                    }
+                    // Untuk pencarian "Transfer Domain"
+                    else if (type === 'transfer') {
+                        dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-warning flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                                <br>Transfer this domain at a discount!
+                            </div>
+                            <button class="button h-button is-warning rounded-full" data-domain-name="${baseDomain}" id="transfer-button-${baseDomain}">
+                                Transfer Now
+                            </button>
+                        </div>
+                    </div>`;
+                    }
+                    // Untuk pencarian "Hosting Only"
+                    else if (type === 'hosting-only') {
+                        dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-info flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${baseDomain}</strong> is available for Hosting Only
+                                <br>Get this domain with your hosting plan!
+                            </div>
+                            <button class="button h-button is-info rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>`;
+                    }
 
-                dropdownContent.innerHTML = dropdownHTML;
-                dropdownContainer.classList.remove('hidden');
+                    dropdownContent.innerHTML = dropdownHTML;
+                    dropdownContainer.classList.remove('hidden');
 
-                const buyNowButtons = document.querySelectorAll('.buy-now-button');
-                buyNowButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const domainName = this.getAttribute('data-domain-name');
-                        h3DomainDisplay.textContent = domainName;
-                        pDomainDisplay.textContent = domainName;
+                    const buyNowButtons = document.querySelectorAll('.buy-now-button');
+                    buyNowButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const domainName = this.getAttribute('data-domain-name');
+                            h3DomainDisplay.textContent = domainName;
+                            pDomainDisplay.textContent = domainName;
 
-                        if (nextButton) {
-                            nextButton.click();
-                        }
+                            if (nextButton) {
+                                nextButton.click();
+                            }
 
-                        sessionStorage.setItem('selected_domain', domainName);
+                            sessionStorage.setItem('selected_domain', domainName);
+                        });
                     });
-                });
 
-                setupWhoisModal();
-                setupTransferButton();
-                dropdownContainer.classList.add('show');
-                dropdownContainer.classList.remove('hidden');
+                    setupWhoisModal();
+                    setupTransferButton();
+                    dropdownContainer.classList.add('show');
+                    dropdownContainer.classList.remove('hidden');
+                } else {
+                    dropdownContainer.classList.remove('show');
+                    dropdownContainer.classList.add('hidden');
+                }
             } else {
-                dropdownContainer.classList.remove('show');
-                dropdownContainer.classList.add('hidden');
+                console.error(`Element with ID 'domain-search-${type}' not found.`);
             }
         }
 
