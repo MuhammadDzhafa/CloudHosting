@@ -351,14 +351,14 @@
                     else if (type === 'transfer') {
                         dropdownHTML = `
                     <div id="component-search">
-                        <div class="message is-warning flex-row flex justify-between items-center">
+                        <div class="message is-success flex-row flex justify-between items-center">
                             <div class="message-body">
                                 <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
                                 <br>Transfer this domain at a discount!
                             </div>
-                            <button class="button h-button is-warning rounded-full" data-domain-name="${baseDomain}" id="transfer-button-${baseDomain}">
-                                Transfer Now
-                            </button>
+                            <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
+    Transfer Now
+</button>
                         </div>
                     </div>`;
                     }
@@ -366,12 +366,12 @@
                     else if (type === 'hosting-only') {
                         dropdownHTML = `
                     <div id="component-search">
-                        <div class="message is-info flex-row flex justify-between items-center">
+                        <div class="message is-success flex-row flex justify-between items-center">
                             <div class="message-body">
                                 <strong id="search-tld-name">${baseDomain}</strong> is available for Hosting Only
                                 <br>Get this domain with your hosting plan!
                             </div>
-                            <button class="button h-button is-info rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                            <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
                                 Buy Now
                             </button>
                         </div>
@@ -410,13 +410,75 @@
         }
 
         function setupTransferButton() {
-            const transferButtons = document.querySelectorAll('[id^="transfer-button-"]');
+            const transferButtons = document.querySelectorAll('.button.h-button.is-success');
+            const transferForm = document.getElementById('transfer-form');
+            const continueButton = document.querySelector('#continue-button');
+            const successMessage = document.querySelector('#success-message');
+            const deleteMessage = document.querySelector('#delete-message');
+            const eppInputs = document.querySelectorAll('input[type="text"]');
+
             transferButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const transferForm = document.getElementById('transfer-form');
-                    transferForm.classList.remove('hidden');
+                    console.log('Transfer button clicked');
+
+                    if (transferForm) {
+                        console.log('Showing transfer form');
+                        transferForm.classList.remove('hidden');
+
+                        // Fokus ke input EPP yang sesuai berdasarkan viewport
+                        const visibleInput = window.innerWidth < 768 ?
+                            eppInputs[0] : eppInputs[1];
+                        visibleInput.focus();
+                    } else {
+                        console.error('Transfer form not found');
+                    }
                 });
             });
+
+            // Sinkronkan nilai input mobile dan desktop
+            if (eppInputs.length > 0) {
+                eppInputs.forEach(input => {
+                    input.addEventListener('input', function(e) {
+                        eppInputs.forEach(otherInput => {
+                            if (otherInput !== e.target) {
+                                otherInput.value = e.target.value;
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Handle continue button
+            if (continueButton) {
+                continueButton.addEventListener('click', function() {
+                    const eppCode = eppInputs[0].value.trim();
+
+                    if (eppCode === '') {
+                        alert('Please enter your EPP code');
+                        return;
+                    }
+
+                    // Di sini Anda bisa menambahkan validasi EPP code
+                    // dan logika untuk memproses transfer domain
+
+                    // Tampilkan pesan sukses
+                    if (successMessage) {
+                        successMessage.classList.remove('hidden');
+                    }
+
+                    // Reset form
+                    eppInputs.forEach(input => {
+                        input.value = '';
+                    });
+                });
+            }
+
+            // Handle close message button
+            if (deleteMessage) {
+                deleteMessage.addEventListener('click', function() {
+                    successMessage.classList.add('hidden');
+                });
+            }
         }
 
         function setupWhoisModal() {
@@ -444,38 +506,39 @@
 
                             if (data.WhoisRecord) {
                                 whoisOutput.innerHTML = `
-                                <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
-                                <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
-                                <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
-                                <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
-                                <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>`;
+                            <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
+                            <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
+                            <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
+                            <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
+                            <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>`;
                             } else {
-                                whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
+                                whoisOutput.textContent = 'WHOIS data not available for this domain.';
                             }
                         })
-                        .catch(error => console.error('Error fetching WHOIS data:', error));
+                        .catch(error => {
+                            console.error('Error fetching WHOIS data:', error);
+                            const whoisOutput = document.getElementById('whois-output');
+                            whoisOutput.textContent = 'WHOIS data not available.';
+                        });
                 });
             });
 
-            document.querySelectorAll('.h-modal-close').forEach(button => {
-                button.addEventListener('click', function() {
-                    const modal = this.closest('.modal');
-                    if (modal) {
-                        modal.classList.remove('is-active');
-                    }
+            document.querySelectorAll('.h-modal-close').forEach(closeButton => {
+                closeButton.addEventListener('click', function() {
+                    this.closest('.modal').classList.remove('is-active');
                 });
             });
         }
 
-        if (typeof $ !== 'undefined') {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        }
+        // Setup CSRF token untuk AJAX (jika menggunakan jQuery)
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     });
 </script>
+
 
 
 

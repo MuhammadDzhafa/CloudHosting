@@ -183,34 +183,33 @@
                             <div class="flex flex-col items-start mb-5 md:mb-0">
                                 <h3 id="h3-domain-display-2" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">Your domain search results</h3>
                             </div>
+                        </div>
 
-                            <!-- Table items hidden by default -->
-                            <div id="transfer-form" class="flex-table-container hidden">
-                                <div class="flex-table-item flex items-center w-full" style="align-items: center;">
-                                    <div class="flex flex-grow cell-start is-bold" data-th="Company">
-                                        <div class="field w-full">
-                                            <div class="control">
-                                                <input type="text" class="input w-full rounded-full mb-4 md:hidden" placeholder="Enter your EPP code here">
-                                                <input type="text" class="hidden md:block input w-full rounded-full" placeholder="Enter your EPP code here">
-                                            </div>
+                        <!-- Table items hidden by default -->
+                        <div id="transfer-form" class="flex-table-container hidden">
+                            <div class="flex-table-item flex items-center w-full" style="align-items: center;">
+                                <div class="flex flex-grow cell-start is-bold" data-th="Company">
+                                    <div class="field w-full">
+                                        <div class="control">
+                                            <input type="text" class="input w-full rounded-full mb-4 md:hidden" placeholder="Enter your EPP code here">
+                                            <input type="text" class="hidden md:block input w-full rounded-full" placeholder="Enter your EPP code here">
                                         </div>
                                     </div>
-                                    <div class="flex-shrink-0 cell-end" data-th="Actions">
-                                        <span class="light-text">
-                                            <button id="continue-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">
-                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                                    Continue
-                                                </span>
-                                            </button>
-                                        </span>
-                                    </div>
                                 </div>
-                                <!-- Pesan sukses -->
-                                <div id="success-message" class="message is-success hidden mt-4">
-                                    <a class="delete" id="delete-message"></a>
-                                    <div class="message-body">
-                                        The domain has been successfully transferred.
-                                    </div>
+                                <div class="flex-shrink-0 cell-end" data-th="Actions">
+                                    <span class="light-text">
+                                        <button id="continue-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">
+                                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                Continue
+                                            </span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="success-message" class="message is-success hidden mt-4">
+                                <a class="delete" id="delete-message"></a>
+                                <div class="message-body">
+                                    The domain has been successfully transferred.
                                 </div>
                             </div>
                         </div>
@@ -288,7 +287,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="flex-shrink-0 cell-end" data-th="Actions">
                                         <span class="light-text">
                                             <button id="continue-button" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full py-3 px-4 ml-2">
@@ -299,11 +297,10 @@
                                         </span>
                                     </div>
                                 </div>
-                                <!-- Pesan sukses -->
                                 <div id="success-message" class="message is-success hidden mt-4">
                                     <a class="delete" id="delete-message"></a>
                                     <div class="message-body">
-                                        the domain has been successfully transferred
+                                        The domain has been successfully transferred.
                                     </div>
                                 </div>
                             </div>
