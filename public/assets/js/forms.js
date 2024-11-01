@@ -81,62 +81,67 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
         }
     
         // Handle tombol continue
-        $("#next-button").on("click", function() {
-            const $button = $(this);
-            $button.addClass("is-loading");
-        
-            console.log("Current step (i):", i);
-            console.log("Form step 3 active:", $("#form-step-3").hasClass("is-active"));
-        
-            // Check if we're in hosting-only tab
-            if ($("#hosting-only").hasClass("is-active")) {
-                i = 1;
+$("#next-button").on("click", function() {
+    const $button = $(this);
+    $button.addClass("is-loading");
+
+    console.log("Current step (i):", i);
+    console.log("Form step 3 active:", $("#form-step-3").hasClass("is-active"));
+
+    // Check if we're in hosting-only tab
+    if ($("#hosting-only").hasClass("is-active")) {
+        if (i === 0) {
+            i = 2;  // Langsung ke step 2 untuk hosting-only
+            proceedToNextStep();
+            return;
+        }
+        i += 1;  // Increment untuk step selanjutnya
+        proceedToNextStep();
+        return;
+    }
+
+    // Regular flow for other tabs
+    if (i === 0) {
+        proceedToNextStep();
+    } else if (i === 1) {
+        if ($("input[name='domain-choice']:checked").length === 0) {
+            showNotification('Please choose an option', 'error');
+            $button.removeClass("is-loading");
+            return;
+        }
+
+        const selectedChoice = $("input[name='domain-choice']:checked").val();
+        if (selectedChoice === "buy_with_hosting") {
+            saveDomainDetails(function() {
+                i = 2;
                 proceedToNextStep();
-                return;
-            }
-        
-            // Regular flow for other tabs
-            if (i === 0) {
+            });
+        } else {
+            saveDomainDetails(function() {
+                i = 4;
                 proceedToNextStep();
-            } else if (i === 1) {
-                if ($("input[name='domain-choice']:checked").length === 0) {
-                    showNotification('Please choose an option', 'error');
-                    $button.removeClass("is-loading");
-                    return;
-                }
-        
-                const selectedChoice = $("input[name='domain-choice']:checked").val();
-                if (selectedChoice === "buy_with_hosting") {
-                    saveDomainDetails(function() {
-                        i = 2;
-                        proceedToNextStep();
-                    });
-                } else {
-                    saveDomainDetails(function() {
-                        i = 4;
-                        proceedToNextStep();
-                    });
-                }
-            } else if (i === 2) {
-                console.log("Inside step 3 check");
-                if ($("#form-step-3").hasClass("is-active")) {
-                    console.log("Step 3 is active, saving addons...");
-                    saveAddon(function() {
-                        console.log("Addon saved successfully");
-                        proceedToNextStep();
-                    });
-                } else {
-                    console.log("Step 3 is not active, skipping addon save");
-                    proceedToNextStep();
-                }
-            } else if (i === 4) {
-                saveBillingAddress(function() {
-                    proceedToNextStep();
-                });
-            } else {
+            });
+        }
+    } else if (i === 2) {
+        console.log("Inside step 3 check");
+        if ($("#form-step-3").hasClass("is-active")) {
+            console.log("Step 3 is active, saving addons...");
+            saveAddon(function() {
+                console.log("Addon saved successfully");
                 proceedToNextStep();
-            }
+            });
+        } else {
+            console.log("Step 3 is not active, skipping addon save");
+            proceedToNextStep();
+        }
+    } else if (i === 4) {
+        saveBillingAddress(function() {
+            proceedToNextStep();
         });
+    } else {
+        proceedToNextStep();
+    }
+});
         
 
         // Fungsi untuk menyimpan detail domain (Step 2)
@@ -394,32 +399,33 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
             return true;
         }
 
-        // Function untuk melanjutkan ke step berikutnya
         function proceedToNextStep() {
             const $button = $("#next-button");
             $button.addClass("is-loading");
-    
+        
             setTimeout(function() {
                 $button.removeClass("is-loading");
-    
+        
                 $(".form-step").removeClass("is-active");
-                i += 1;
+                if (!$("#hosting-only").hasClass("is-active")) {
+                    i += 1;  // Increment i hanya untuk non-hosting-only tabs
+                }
                 $("#form-step-" + i).addClass("is-active");
-    
+        
                 $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
                 $("#step-segment-" + i).addClass("is-active");
                 $("#mobile-step-segment-" + i).addClass("is-active");
-    
+        
                 $("html, body").animate({
                     scrollTop: $("#form-step-" + i).offset().top
                 }, 500);
-    
+        
                 if (i === 5) {
                     $("#next-button").text("Complete Order");
                 }
             }, 800);
         }
-    
+        
         // Reset counter saat ganti tab
         $('.tabs li').on('click', function() {
             i = 0;

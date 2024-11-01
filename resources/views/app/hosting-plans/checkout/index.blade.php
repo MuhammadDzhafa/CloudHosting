@@ -252,11 +252,15 @@
         const urlParams = new URLSearchParams(window.location.search);
         let tldName = urlParams.get('tld_name') || sessionStorage.getItem('tld_name');
 
-        // Update elemen <h3> dengan TLD
+        // Update elemen <h3> dan <p> dengan nama domain utama + TLD
         const h3DomainDisplay = document.getElementById('h3-domain-display');
-        if (h3DomainDisplay && tldName) {
-            const tld = '.' + tldName.split('.').pop();
-            h3DomainDisplay.textContent = tld;
+        const pDomainDisplay = document.getElementById('p-domain-display');
+
+        if (h3DomainDisplay && pDomainDisplay && tldName) {
+            // Hapus "www" jika ada, lalu tampilkan nama domain utama + TLD
+            const cleanedDomain = tldName.replace(/^www\./, '');
+            h3DomainDisplay.textContent = cleanedDomain;
+            pDomainDisplay.textContent = cleanedDomain;
         }
 
         // Auto-klik tombol "Continue" jika tldName tersedia
@@ -269,14 +273,13 @@
             }, 100);
         }
 
-        // Event listener untuk checkout page
+        // Event listener untuk halaman checkout
         if (window.location.pathname === '/checkout') {
             let urlParams = new URLSearchParams(window.location.search);
             let tldName = urlParams.get('tld_name');
 
             if (tldName) {
                 setTimeout(() => {
-                    const nextButton = document.getElementById('next-button');
                     if (nextButton) {
                         nextButton.click();
                     }
@@ -284,8 +287,8 @@
             }
         }
 
-        // Event listener untuk next button
-        document.getElementById('next-button').addEventListener('click', function(event) {
+        // Event listener untuk tombol "Continue"
+        nextButton.addEventListener('click', function(event) {
             console.log("Button was clicked!");
         });
 
@@ -307,10 +310,10 @@
 
             if (searchQuery) {
                 let dropdownHTML = '';
-                const domainParts = searchQuery.split('.'); // Pisahkan bagian-bagian domain
-                const tld = domainParts.pop(); // Ambil TLD
-                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.'); // Gabungkan bagian domain utama
-                const baseDomain = `${mainDomainPart}.${tld}`; // Buat nama domain yang ingin ditampilkan
+                const domainParts = searchQuery.split('.');
+                const tld = domainParts.pop();
+                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+                const baseDomain = `${mainDomainPart}.${tld}`;
 
                 // Untuk pencarian "New Domain"
                 if (type === 'new') {
@@ -352,33 +355,23 @@
                 dropdownContent.innerHTML = dropdownHTML;
                 dropdownContainer.classList.remove('hidden');
 
-                // Add event listener for Buy Now buttons
                 const buyNowButtons = document.querySelectorAll('.buy-now-button');
                 buyNowButtons.forEach(button => {
                     button.addEventListener('click', function() {
                         const domainName = this.getAttribute('data-domain-name');
+                        h3DomainDisplay.textContent = domainName;
+                        pDomainDisplay.textContent = domainName;
 
-                        // Update the h3 domain display
-                        const h3DomainDisplay = document.getElementById('h3-domain-display');
-                        if (h3DomainDisplay) {
-                            h3DomainDisplay.textContent = domainName;
-                        }
-
-                        // Click the continue button
-                        const nextButton = document.getElementById('next-button');
                         if (nextButton) {
                             nextButton.click();
                         }
 
-                        // Store domain name in session storage
                         sessionStorage.setItem('selected_domain', domainName);
                     });
                 });
 
                 setupWhoisModal();
                 setupTransferButton();
-
-                // Menampilkan dropdown
                 dropdownContainer.classList.add('show');
                 dropdownContainer.classList.remove('hidden');
             } else {
@@ -387,7 +380,6 @@
             }
         }
 
-        // Menambahkan event listener untuk tombol "Transfer Now"
         function setupTransferButton() {
             const transferButtons = document.querySelectorAll('[id^="transfer-button-"]');
             transferButtons.forEach(button => {
@@ -398,7 +390,6 @@
             });
         }
 
-        // Mengatur modal WHOIS
         function setupWhoisModal() {
             document.querySelectorAll('.h-modal-trigger').forEach(button => {
                 button.addEventListener('click', function() {
@@ -407,22 +398,16 @@
                     if (modal) {
                         modal.classList.add('is-active');
                     }
-
-                    // Mencari parent element dengan id component-search
                     const componentSearch = this.closest('#component-search');
-                    // Mengambil nama domain dari strong element di dalam message-body
                     const domainElement = componentSearch.querySelector('#search-tld-name');
                     const searchQuery = domainElement ? domainElement.textContent : '';
 
-                    // WHOIS API call
                     const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU';
                     const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
 
                     fetch(url)
                         .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
+                            if (!response.ok) throw new Error('Network response was not ok');
                             return response.json();
                         })
                         .then(data => {
@@ -434,16 +419,12 @@
                                 <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
                                 <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
                                 <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
-                                <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
-                            `;
+                                <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>`;
                             } else {
-                                console.log('No WHOIS record found.');
                                 whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
                             }
                         })
-                        .catch(error => {
-                            console.error('Error fetching WHOIS data:', error);
-                        });
+                        .catch(error => console.error('Error fetching WHOIS data:', error));
                 });
             });
 
@@ -457,7 +438,6 @@
             });
         }
 
-        // Setup jQuery AJAX headers
         if (typeof $ !== 'undefined') {
             $.ajaxSetup({
                 headers: {
@@ -467,6 +447,7 @@
         }
     });
 </script>
+
 
 
 

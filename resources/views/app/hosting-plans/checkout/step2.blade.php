@@ -95,18 +95,22 @@
 </div>
 
 <div class="w-full mt-8">
-    <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
-        <h1 class="text-3xl font-bold mb-2 text-transparent bg-clip-text w-full lg:w-full md:w-full"
-            style="font-size: 32px; font-weight: 700; line-height: 38.4px; text-align: left; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    <div class="gradient-border w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative rounded-lg">
+        <h1 class="text-2xl md:text-3xl font-bold mb-2 text-transparent bg-clip-text text-left"
+            style="font-weight: 700; line-height: 1.2; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.95) 23.63%, #4A6DCB 70.69%, #64D2F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             Do you want to buy hosting too?
         </h1>
-        <h2 class="text-[20px] font-[400] text-left leading-[26px] w-full lg:w-full md:w-full mb-4"
-            style="height: 26px; gap: 0px; opacity: 1; font-family: 'Inter'; background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
+        <h2 class="text-base md:text-lg font-normal text-left leading-6 mb-4 text-transparent bg-clip-text"
+            style="background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%); -webkit-background-clip: text; color: transparent;">
             Enjoy quality hosting services at special prices! Only during the promo period
         </h2>
-        <div class="flex gap-4">
-            <button id="buy-domain-button" class="button h-button is-rounded">Buy domain only</button>
-            <button id="buy-with-hosting" class="button h-button is-primary is-raised is-rounded">Yes! I want</button>
+        <div class="flex flex-col md:flex-row gap-4">
+            <button id="buy-domain-button" class="button h-button is-rounded w-full md:w-auto">
+                Buy domain only
+            </button>
+            <button id="buy-with-hosting" class="button h-button is-primary is-raised is-rounded w-full md:w-auto">
+                Yes! I want
+            </button>
         </div>
     </div>
 </div>
