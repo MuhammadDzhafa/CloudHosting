@@ -58,9 +58,30 @@
     ========================================================
     */
     document.addEventListener('DOMContentLoaded', function() {
+        if (window.location.pathname === '/checkout') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const domainName = urlParams.get('tld_name');
+
+            if (domainName) {
+                // Update the domain display
+                const h3DomainDisplay = document.getElementById('h3-domain-display');
+                if (h3DomainDisplay) {
+                    h3DomainDisplay.textContent = domainName;
+                }
+
+                // Automatically click the continue button once
+                const continueButton = document.getElementById('next-button');
+                if (continueButton && !sessionStorage.getItem('continueClicked')) {
+                    continueButton.click();
+                    sessionStorage.setItem('continueClicked', 'true');
+                }
+            }
+        }
+
         // Handle Price List Toggle
         const viewPriceListLink = document.getElementById('view-price-list');
         const priceListSection = document.getElementById('price-list-section');
+
         if (viewPriceListLink && priceListSection) {
             const arrowIcon = viewPriceListLink.querySelector('svg');
             viewPriceListLink.addEventListener('click', event => {
@@ -70,7 +91,7 @@
             });
         }
 
-        // Search Domain Availability
+        // Get DOM elements
         const searchBtn = document.getElementById('search-btn');
         const searchButton = document.getElementById('search-button');
         const dropdownContainer = document.getElementById('dropdown-container');
@@ -79,164 +100,250 @@
         const searchInput = document.getElementById('domain-search');
         const tldResults = document.getElementById('tld-results');
 
-        if (searchBtn) {
-    searchBtn.addEventListener('click', function() {
-        const searchQuery = searchInput.value.trim(); // Menghapus spasi di awal dan akhir
-
-        if (searchQuery) {
-            // Memproses searchQuery untuk menampilkan domain utama
-            const domainParts = searchQuery.split('.');
-            let displayDomain = '';
-
-            // Jika ada lebih dari satu bagian, kita ambil bagian terakhir (TLD) dan satu bagian sebelum TLD
-            if (domainParts.length > 1) {
-                // Mengabaikan www dan subdomain lainnya
-                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').slice(-2, -1)[0]; // Ambil bagian kedua dari belakang
-                const tld = domainParts.pop(); // Ambil TLD
-                displayDomain = `${mainDomainPart}.${tld}`; // Gabungkan bagian utama dengan TLD
-            } else {
-                displayDomain = searchQuery; // Jika tidak ada titik, tampilkan query itu sendiri
-            }
-
-            dropdownContent.innerHTML = `
-                <div id="component-search">
-                    <div class="message is-success flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong>${displayDomain}</strong> is available
-                            <br>Exclusive offer: $1.50/mon for a 2-year plan
-                        </div>
-                        <button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${searchQuery}')">
-                            Buy Now
-                        </button>
-                    </div>
-                    <div class="message flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong>${displayDomain}</strong> is not available
-                        </div>
-                        <button id="whoisButton" class="button h-button rounded-full h-modal-trigger" data-modal="demo-right-actions-modal">WHOIS</button>
-                    </div>
-                </div>
-            `;
-
-                    const whoisButtons = document.querySelectorAll('.h-modal-trigger');
-                    whoisButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const modalId = this.getAttribute('data-modal');
-                            const modal = document.getElementById(modalId);
-                            if (modal) {
-                                modal.classList.add('is-active'); // Menampilkan modal
-                            }
-                        });
-                    });
-
-                    // Menutup modal ketika latar belakang modal atau tombol close diklik
-                    const closeModalButtons = document.querySelectorAll('.h-modal-close');
-                    closeModalButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const modal = this.closest('.modal');
-                            if (modal) {
-                                modal.classList.remove('is-active'); // Menyembunyikan modal
-                            }
-                        });
-                    });
-
-
-                    // Tambahkan event listener untuk whoisButton setelah elemen dimasukkan ke DOM
-                    const whoisButton = document.getElementById('whoisButton');
-                    if (whoisButton) {
-                        whoisButton.addEventListener('click', function() {
-                            const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
-                            const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU'; // Ganti dengan API key Anda
-                            const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
-
-                            fetch(url)
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok');
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    const whoisOutput = document.getElementById('whois-output'); // Ambil elemen untuk menampilkan hasil
-
-                                    if (data.WhoisRecord) {
-                                        // Tampilkan data yang diambil di elemen whois-output
-                                        whoisOutput.innerHTML = `
-                                        <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
-                                        <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
-                                        <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
-                                        <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
-                                        <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
-                                    `;
-                                    } else {
-                                        console.log('No WHOIS record found.');
-                                        whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching WHOIS data:', error);
-                                });
-                        });
-                    }
-
-                    // Tampilkan dropdown
-                    dropdownContainer.classList.add('show');
-                    dropdownContainer.classList.remove('hidden');
-                    componentTransfer.classList.add('hidden');
-                } else {
-                    dropdownContainer.classList.remove('show');
-                    dropdownContainer.classList.add('hidden');
-                }
+        // Event listeners for search buttons
+        if (searchButton) {
+            searchButton.addEventListener('click', function() {
+                searchDomain('transfer');
             });
         }
 
-        // Fungsi untuk mengganti domain TLD
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                searchDomain('new');
+            });
+        }
+
+        // General function for domain search
+        function searchDomain(type) {
+            console.log('searchDomain called with type:', type);
+
+            if (!searchInput) {
+                console.error('Domain search input field not found');
+                return;
+            }
+
+            const searchQuery = searchInput.value.trim();
+            console.log('searchQuery:', searchQuery);
+
+            if (!dropdownContainer || !dropdownContent) {
+                console.error('Dropdown container or content elements not found');
+                return;
+            }
+
+            if (!searchQuery) {
+                dropdownContainer.classList.remove('show');
+                dropdownContainer.classList.add('hidden');
+                return;
+            }
+
+            // Generate dropdown content based on type
+            const domainParts = searchQuery.split('.');
+            const tld = domainParts.pop() || '';
+            const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+            const baseDomain = mainDomainPart && tld ? `${mainDomainPart}.${tld}` : searchQuery;
+
+            let dropdownHTML = '';
+
+            if (type === 'transfer') {
+                dropdownHTML = `
+            <div id="component-search">
+                <div class="message is-success flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                        <br>Transfer this domain at a discount!
+                    </div>
+                    <button class="button h-button is-success rounded-full transfer-button" id="transfer-button" data-domain-name="${baseDomain}">
+                        Transfer Now
+                    </button>
+                </div>
+            </div>`;
+            } else if (type === 'new') {
+                dropdownHTML = `
+            <div id="component-search">
+                <div class="message is-success flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
+                        <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
+                    </div>
+                    <button class="button h-button is-success rounded-full" onclick="window.redirectToCheckout('${searchQuery}')">
+                        Buy Now
+                    </button>
+                </div>
+                <div class="message flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong>${baseDomain}</strong> is not available
+                    </div>
+                    <button class="button h-button rounded-full h-modal-trigger" data-modal="demo-right-actions-modal">WHOIS</button>
+                </div>
+            </div>`;
+            }
+
+            // Update dropdown content and display
+            dropdownContent.innerHTML = dropdownHTML;
+            dropdownContainer.classList.remove('hidden');
+            dropdownContainer.classList.add('show');
+
+            // Setup event handlers
+            type === 'transfer' ? setupTransferButton() : setupBuyNowButton();
+
+            // Setup WHOIS modal
+            setupWhoisModal();
+        }
+
+        // Helper function to setup transfer button
+        function setupTransferButton() {
+            const transferButton = document.getElementById('transfer-button');
+            if (transferButton) {
+                console.log('Transfer button setup complete');
+                transferButton.addEventListener('click', function() {
+                    const domainName = this.getAttribute('data-domain-name');
+                    handleDomainSelection(domainName);
+                    document.getElementById('epp-input-container')?.classList.remove('hidden');
+                    console.log('EPP input container displayed'); // Debugging log
+                });
+            }
+        }
+
+        // Helper function to setup buy now button
+        function setupBuyNowButton() {
+            const buyNowButtons = document.querySelectorAll('.buy-now-button');
+            buyNowButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const domainName = this.getAttribute('data-domain-name');
+                    handleDomainSelection(domainName);
+                });
+            });
+        }
+
+        function setupWhoisModal() {
+            const whoisButtons = document.querySelectorAll('.h-modal-trigger[data-modal="demo-right-actions-modal"]');
+            whoisButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = document.getElementById('demo-right-actions-modal');
+                    if (modal) {
+                        modal.classList.add('is-active'); // Tampilkan modal
+                        // Panggil fungsi untuk mendapatkan WHOIS data
+                        fetchWhoisData();
+                    }
+                });
+            });
+
+            // Menutup modal saat latar belakang atau tombol close diklik
+            const closeModalButtons = document.querySelectorAll('.h-modal-close');
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = button.closest('.modal');
+                    if (modal) {
+                        modal.classList.remove('is-active'); // Hapus kelas untuk menyembunyikan modal
+                    }
+                });
+            });
+        }
+
+        // Function to fetch WHOIS data
+        function fetchWhoisData() {
+            const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
+            const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU'; // Ganti dengan API key Anda
+            const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const whoisOutput = document.getElementById('whois-output'); // Ambil elemen untuk menampilkan hasil
+
+                    if (data.WhoisRecord) {
+                        // Tampilkan data yang diambil di elemen whois-output
+                        whoisOutput.innerHTML = `
+                <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
+                <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
+                <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
+                <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
+                <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
+            `;
+                    } else {
+                        console.log('No WHOIS record found.');
+                        whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching WHOIS data:', error);
+                });
+        }
+
+        // Function to handle domain selection
+        function handleDomainSelection(domainName) {
+            console.log('Domain selected:', domainName); // Debugging log
+            searchInput.value = domainName; // Contoh: Setel input pencarian ke domain yang dipilih
+        }
+
+        // Function to replace TLD
         function replaceTLD(domainName, newTLD) {
             return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
         }
 
         // Pick TLD Card
         document.querySelectorAll('.popular-domain').forEach(domainCard => {
-            domainCard.addEventListener('click', function() {
-                const selectedTLD = this.getAttribute('data-domain');
-                const currentDomain = searchInput.value;
-
-                if (currentDomain) {
-                    searchInput.value = replaceTLD(currentDomain, selectedTLD);
-                } else {
-                    searchInput.value = selectedTLD;
-                }
+            domainCard.addEventListener('click', () => {
+                const domainName = domainCard.getAttribute('data-domain-name');
+                handleDomainSelection(domainName);
+                dropdownContainer.classList.remove('show');
+                dropdownContainer.classList.add('hidden');
+                const nextStepId = 'form-step-2'; // Ubah ID sesuai langkah berikutnya
+                renderComponent(nextStepId);
             });
         });
 
-        // Transfer Domain Logic
-        const transferButtons = document.querySelectorAll('.transfer-button');
-        if (transferButtons.length > 0) {
-            transferButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    document.getElementById('epp-input-container').classList.remove('hidden');
-                });
+        // Dapatkan tombol continue
+        const continueButton = document.getElementById('continue-button');
+
+        // Tambahkan event listener untuk tombol continue
+        if (continueButton) {
+            continueButton.addEventListener('click', function() {
+                // Menghapus kelas 'hidden' dari komponen transfer
+                if (componentTransfer) {
+                    componentTransfer.classList.remove('hidden');
+                    console.log('Component transfer displayed'); // Debugging log
+                }
+                // Tampilkan pesan sukses
+                showSuccessMessage();
+            });
+        }
+
+        // Function to show success message
+        function showSuccessMessage() {
+            const successMessage = document.createElement('div');
+            successMessage.className = 'message is-success';
+            successMessage.innerHTML = '<div class="message-body">Domain transfer initiated successfully!</div>';
+            componentTransfer.appendChild(successMessage);
+        }
+
+        // Fungsi untuk merender komponen
+        function renderComponent(componentId) {
+            const steps = document.querySelectorAll('.form-step');
+            steps.forEach(step => {
+                if (step.id === componentId) {
+                    step.classList.remove('hidden');
+                    console.log('Step rendered:', componentId); // Debugging log
+                } else {
+                    step.classList.add('hidden');
+                }
             });
         }
     });
 
-    // Fungsi untuk mengarahkan ke halaman checkout
     function redirectToCheckout(domainName) {
         if (domainName) {
+            // Clear the previous continue click state
+            sessionStorage.removeItem('continueClicked');
+            // Redirect to checkout with the domain name
             window.location.href = `/checkout?tld_name=${encodeURIComponent(domainName)}`;
         } else {
             alert("Please enter a domain name.");
-        }
-    }
-
-    function renderComponent(componentIdToShow) {
-        const component1 = document.getElementById('component-transfer');
-        const component2 = document.getElementById('component-search');
-
-        if (component1 && component2) {
-            component1.classList.add('hidden');
-            component2.classList.add('hidden');
-            document.getElementById(componentIdToShow).classList.remove('hidden');
         }
     }
 
