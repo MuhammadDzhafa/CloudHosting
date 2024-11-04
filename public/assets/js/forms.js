@@ -482,3 +482,191 @@ $("#next-button").on("click", function() {
         return total;
     }
 });
+
+/* ========================================================= */
+/*                      Perhitungan                          */
+/* ========================================================= */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get price data from session storage or initialize new empty object
+    let orderData = {
+        addons: {
+            daily_backup: false,
+            email_protection: false
+        }
+    };
+
+    // Try to get existing data from session storage
+    const existingData = sessionStorage.getItem('orderData');
+    if (existingData) {
+        const parsedData = JSON.parse(existingData);
+        // Ensure addons object exists with default false values
+        orderData = {
+            ...parsedData,
+            addons: {
+                daily_backup: false,
+                email_protection: false,
+                ...parsedData.addons
+            }
+        };
+    }
+    
+    // Constants for prices - setiap opsi Rp 20.000
+    const PRICE_CONFIG = {
+        dns_management: 20000,
+        whois: 20000,
+        daily_backup: 20000,
+        email_protection: 20000
+    };
+    
+    const VAT_RATE = 0.11;
+
+    // Reset all checkboxes to unchecked state initially
+    function resetCheckboxes() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
+        // Reset orderData
+        orderData = {
+            ...orderData,
+            dns_management: false,
+            whois: false,
+            addons: {
+                daily_backup: false,
+                email_protection: false
+            }
+        };
+
+        // Update session storage
+        sessionStorage.setItem('orderData', JSON.stringify(orderData));
+    }
+
+    function hasSelectedOptions() {
+        return orderData.dns_management || 
+               orderData.whois || 
+               orderData.addons?.daily_backup || 
+               orderData.addons?.email_protection;
+    }
+
+    function calculateTotalPrice() {
+        let subtotal = 0;
+        let selectedOptions = [];
+
+        if (orderData.dns_management) {
+            subtotal += PRICE_CONFIG.dns_management;
+            selectedOptions.push('DNS Management');
+        }
+        if (orderData.whois) {
+            subtotal += PRICE_CONFIG.whois;
+            selectedOptions.push('WHOIS Protection');
+        }
+        if (orderData.addons?.daily_backup) {
+            subtotal += PRICE_CONFIG.daily_backup;
+            selectedOptions.push('Daily Backup');
+        }
+        if (orderData.addons?.email_protection) {
+            subtotal += PRICE_CONFIG.email_protection;
+            selectedOptions.push('Email Protection');
+        }
+
+        console.log('Selected Options:', selectedOptions);
+        console.log('Price Breakdown:', {
+            dns_management: orderData.dns_management ? PRICE_CONFIG.dns_management : 0,
+            whois: orderData.whois ? PRICE_CONFIG.whois : 0,
+            daily_backup: orderData.addons?.daily_backup ? PRICE_CONFIG.daily_backup : 0,
+            email_protection: orderData.addons?.email_protection ? PRICE_CONFIG.email_protection : 0,
+            total_selected_options: selectedOptions.length,
+            subtotal: subtotal
+        });
+
+        return subtotal;
+    }
+
+    function updateOrderSummary() {
+        const subtotal = calculateTotalPrice();
+        const vat = Math.round(subtotal * VAT_RATE);
+        const total = subtotal + vat;
+
+        const formatter = new Intl.NumberFormat('id-ID', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+
+        const subtotalElement = document.querySelector('.flex.justify-between.mb-2:first-child .text-gray-700:last-child');
+        const vatElement = document.querySelector('.flex.justify-between.mb-2:nth-child(2) .text-gray-700:last-child');
+        const totalAmountElement = document.querySelector('.text-blue-600 .text-2xl');
+
+        if (hasSelectedOptions()) {
+            if (subtotalElement) {
+                subtotalElement.textContent = `Rp ${formatter.format(subtotal)}`;
+            }
+            if (vatElement) {
+                vatElement.textContent = `Rp ${formatter.format(vat)}`;
+            }
+            if (totalAmountElement) {
+                totalAmountElement.textContent = formatter.format(total);
+            }
+        } else {
+            if (subtotalElement) {
+                subtotalElement.textContent = 'Rp 0';
+            }
+            if (vatElement) {
+                vatElement.textContent = 'Rp 0';
+            }
+            if (totalAmountElement) {
+                totalAmountElement.textContent = '0';
+            }
+        }
+    }
+
+    function handleCheckboxChange() {
+        // Domain option checkboxes
+        const dnsCheckbox = document.querySelector('input[name="dns_management"]');
+        const whoisCheckbox = document.querySelector('input[name="whois"]');
+        
+        if (dnsCheckbox) {
+            dnsCheckbox.addEventListener('change', function() {
+                orderData.dns_management = this.checked;
+                sessionStorage.setItem('orderData', JSON.stringify(orderData));
+                updateOrderSummary();
+            });
+        }
+        
+        if (whoisCheckbox) {
+            whoisCheckbox.addEventListener('change', function() {
+                orderData.whois = this.checked;
+                sessionStorage.setItem('orderData', JSON.stringify(orderData));
+                updateOrderSummary();
+            });
+        }
+
+        // Addon checkboxes
+        const backupCheckbox = document.querySelector('input[name="daily_backup"]');
+        const emailProtectionCheckbox = document.querySelector('input[name="email_protection"]');
+        
+        if (backupCheckbox) {
+            backupCheckbox.addEventListener('change', function() {
+                orderData.addons = orderData.addons || {};
+                orderData.addons.daily_backup = this.checked;
+                sessionStorage.setItem('orderData', JSON.stringify(orderData));
+                updateOrderSummary();
+            });
+        }
+        
+        if (emailProtectionCheckbox) {
+            emailProtectionCheckbox.addEventListener('change', function() {
+                orderData.addons = orderData.addons || {};
+                orderData.addons.email_protection = this.checked;
+                sessionStorage.setItem('orderData', JSON.stringify(orderData));
+                updateOrderSummary();
+            });
+        }
+    }
+
+    // Initialize
+    resetCheckboxes();  // Reset semua checkbox saat halaman dimuat
+    handleCheckboxChange();
+    updateOrderSummary();
+});
