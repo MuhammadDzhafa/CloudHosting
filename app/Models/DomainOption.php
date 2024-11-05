@@ -13,35 +13,14 @@ class DomainOption extends Model
     protected $primaryKey = 'domain_option_id';
 
     protected $fillable = [
-        'domain_order_type'
-    ];
-}
-
-// app/Models/Order.php
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Order extends Model
-{
-    use HasFactory, SoftDeletes;
-
-    protected $primaryKey = 'order_id';
-
-    protected $fillable = [
-        'status',
-        'total_price',
-        'tax',
-        'payment_method',
-        'date_created',
-        'billing_address_id'
+        'domain_order_type',
     ];
 
-    protected $casts = [
-        'date_created' => 'datetime',
-        'total_price' => 'integer',
-        'tax' => 'integer',
-    ];
+    /**
+     * Get the hosting details associated with the domain option.
+     */
+    public function hostingDetails()
+    {
+        return $this->hasMany(OrderHostingDetail::class, 'domain_option_id', 'domain_option_id');
+    }
 }

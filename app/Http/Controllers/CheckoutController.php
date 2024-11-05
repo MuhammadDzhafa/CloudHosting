@@ -38,7 +38,7 @@ class CheckoutController extends Controller
 
         $productInfo = $request->query('product_info');
         $prices = Price::where('hosting_plans_id', $hostingPlanId)->get();
-        $addons = Addon::where('order_id', null)->get();
+        $addons = Addon::where('domain_order_id', null)->get();
 
         if ($hostingPlanId) {
             $hostingPlan = HostingPlan::with(['prices'])->find($hostingPlanId);
@@ -127,6 +127,9 @@ class CheckoutController extends Controller
                 'domain_option_id' => 'nullable|numeric'
             ]);
 
+            // Dapatkan user_id jika ada
+            $userId = auth()->id(); // Ini bisa null jika pengguna tidak terautentikasi
+
             // Check if order exists
             $existingOrder = Order::where('order_id', $request->order_id)->first();
 
@@ -162,27 +165,24 @@ class CheckoutController extends Controller
                 ]);
             }
 
-            // If no existing order, create new billing address and order
-            $billingAddress = BillingAddress::create([
-                'street_address_1' => 'Default Address',
-                'city' => 'Default City',
-                'state' => 'Default State',
-                'country' => 'ID',
-                'post_code' => '12345',
-                'company_name' => 'Default Company'  // Optional
-            ]);
-
-            // Create new order
-            $order = Order::create([
+            $orderData = [
                 'order_id' => $request->order_id,
                 'status' => 'pending',
                 'total_price' => (int)$request->price,
                 'payment_method' => 'pending',
                 'date_created' => now(),
-                'billing_address_id' => $billingAddress->billing_id
-            ]);
+            ];
 
-            // Create new domain detail
+            // Hanya masukkan user_id jika ada
+            if ($userId) {
+                $orderData['user_id'] = $userId; // Ini akan menambahkan user_id jika pengguna terautentikasi
+            }
+
+            // Buat order baru
+            $order = Order::create($orderData);
+
+
+            // Buat detail domain baru
             $domainDetail = OrderDomainDetail::create([
                 'order_id' => $request->order_id,
                 'domain_name' => $request->domain_name,
@@ -216,35 +216,76 @@ class CheckoutController extends Controller
         }
     }
 
+
+
     // Method baru untuk update billing address nanti di step 5
     public function saveBillingAddress(Request $request)
-    {
-        try {
-            $billingData = $request->validate([
-                'street_address_1' => 'required|string',
-                'street_address_2' => 'nullable|string',
-                'city' => 'required|string',
-                'state' => 'required|string',
-                'country' => 'required|string',
-                'post_code' => 'required|string',
-                'company_name' => 'nullable|string'
-            ]);
+{
+    try {
+        // Log request untuk debugging
+        Log::info('Received billing address request:', [
+            'data' => $request->all()
+        ]);
 
-            // Buat atau update billing address
-            $billingAddress = BillingAddress::create($billingData);
+        // Tambahkan user_id ke request
+        $request->merge(['user_id' => auth()->id()]);
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Billing address saved successfully',
-                'data' => $billingAddress
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to save billing address: ' . $e->getMessage()
-            ], 500);
-        }
+        // Validasi input
+        $billingData = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'street_address_1' => 'required|string|max:255',
+            'street_address_2' => 'nullable|string|max:255',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'country' => 'required|string',
+            'post_code' => 'required|string|max:20',
+            'company_name' => 'nullable|string|max:255'
+        ]);
+
+        DB::beginTransaction();
+
+        // Gunakan updateOrCreate untuk menghindari duplikasi
+        $billingAddress = BillingAddress::updateOrCreate(
+            ['user_id' => auth()->id()], // Kondisi pencarian
+            $billingData // Data yang akan di-update atau create
+        );
+
+        DB::commit();
+
+        Log::info('Billing address saved successfully:', [
+            'billing_address' => $billingAddress->toArray()
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Billing address saved successfully',
+            'data' => $billingAddress
+        ]);
+
+    } catch (ValidationException $e) {
+        DB::rollBack();
+        Log::error('Validation failed:', [
+            'errors' => $e->errors()
+        ]);
+        return response()->json([
+            'success' => false,
+            'message' => 'Validation failed',
+            'errors' => $e->errors()
+        ], 422);
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        Log::error('Failed to save billing address:', [
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to save billing address: ' . $e->getMessage()
+        ], 500);
     }
+}
 
     public function saveCustomPlan(Request $request)
     {
@@ -357,30 +398,29 @@ class CheckoutController extends Controller
 
     public function saveAddons(Request $request)
     {
-        Log::info('Received addon request:', [
-            'all_data' => $request->all(),
-            'order_id' => $request->input('order_id'),
-            'daily_backup' => $request->input('daily_backup'),
-            'email_protection' => $request->input('email_protection'),
-            'price' => $request->input('price'),
+        // Log request data sebelum validasi
+        Log::info('Raw addon request:', [
+            'data' => $request->all()
+        ]);
+
+        // Validasi input dengan aturan yang lebih spesifik
+        $validated = $request->validate([
+            'order_id' => 'required|string',
+            'daily_backup' => 'required|in:0,1,true,false',  // Terima berbagai format boolean
+            'email_protection' => 'required|in:0,1,true,false',  // Terima berbagai format boolean
+            'price' => 'required|integer|min:0',
+            'domain_order_id' => 'nullable|string|exists:order_domain_details,domain_order_id',
         ]);
 
         try {
             DB::beginTransaction();
 
-            // Validasi apakah order ada
-            $order = Order::where('order_id', $request->input('order_id'))->first();
-            if (!$order) {
-                Log::error('Order not found:', ['order_id' => $request->input('order_id')]);
-                throw new \Exception('Order not found');
-            }
-
-            // Update atau buat addon
+            // Konversi nilai boolean secara eksplisit
             $addon = Addon::updateOrCreate(
-                ['order_id' => $request->input('order_id')],
+                ['domain_order_id' => $request->input('domain_order_id')],
                 [
-                    'daily_backup' => $request->boolean('daily_backup'),
-                    'email_protection' => $request->boolean('email_protection'),
+                    'daily_backup' => filter_var($request->input('daily_backup'), FILTER_VALIDATE_BOOLEAN),
+                    'email_protection' => filter_var($request->input('email_protection'), FILTER_VALIDATE_BOOLEAN),
                     'price' => $request->input('price', 0),
                     'active_date' => now(),
                     'expired_date' => now()->addYear()
@@ -405,7 +445,7 @@ class CheckoutController extends Controller
 
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to save addons'
+                'message' => 'Failed to save addons: ' . $e->getMessage()
             ], 500);
         }
     }

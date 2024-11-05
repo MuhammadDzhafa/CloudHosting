@@ -1,5 +1,5 @@
 <?php
-// 2024_10_23_073846_create_domain_options_table.php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

@@ -14,27 +14,24 @@ class Order extends Model
         'order_id',
         'status',
         'total_price',
-        'tax',
         'payment_method',
         'date_created',
-        'billing_address_id'
+        'user_id'  // Sesuai relasi "Made by" dengan users
     ];
 
-    public function billingAddress()
+    // Relasi "Made by" dengan User (N:1)
+    public function user()
     {
-        return $this->belongsTo(BillingAddress::class, 'billing_address_id', 'billing_id');
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
-    public function domainDetails()
+    // Relasi "Contains" dengan Order_Domain_Detail (1:1)
+    public function domainDetail()
     {
-        return $this->hasMany(OrderDomainDetail::class, 'order_id', 'order_id');
+        return $this->hasOne(OrderDomainDetail::class, 'order_id', 'order_id');
     }
 
-    public function hostingDetails()
-    {
-        return $this->hasMany(OrderHostingDetail::class, 'order_id', 'order_id');
-    }
-
+    // Relasi "Includes" dengan add-ons
     public function addons()
     {
         return $this->hasMany(Addon::class, 'order_id', 'order_id');

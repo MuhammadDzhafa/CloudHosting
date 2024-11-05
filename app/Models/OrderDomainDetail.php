@@ -12,22 +12,22 @@ class OrderDomainDetail extends Model
     protected $fillable = [
         'order_id',
         'domain_name',
-        'domain_option_id',
-        'dns_management',
         'whois',
+        'dns_management',
         'price',
-        'active_date',
+        'active_date', 
         'expired_date'
     ];
 
     protected $casts = [
-        'dns_management' => 'boolean',
-        'whois' => 'boolean',
-        'price' => 'integer',
         'active_date' => 'datetime',
-        'expired_date' => 'datetime'
+        'expired_date' => 'datetime',
+        'price' => 'integer',
+        'whois' => 'boolean',
+        'dns_management' => 'boolean'
     ];
 
+    // Relasi ke Order (1:1)
     public function order()
     {
         return $this->belongsTo(Order::class, 'order_id', 'order_id');

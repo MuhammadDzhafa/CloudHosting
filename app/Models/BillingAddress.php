@@ -12,6 +12,7 @@ class BillingAddress extends Model
     protected $primaryKey = 'billing_id';
 
     protected $fillable = [
+        'user_id',
         'street_address_1',
         'street_address_2',
         'city',
@@ -23,8 +24,9 @@ class BillingAddress extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function orders()
+    // Perbaiki relasi dengan User
+    public function user()
     {
-        return $this->hasMany(Order::class, 'billing_address_id', 'billing_id');
+        return $this->belongsTo(User::class); // Sesuaikan dengan kolom id di users
     }
 }

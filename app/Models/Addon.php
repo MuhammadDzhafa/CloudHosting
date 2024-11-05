@@ -18,7 +18,7 @@ class Addon extends Model
         'expired_date',
         'email_protection',
         'price',
-        'order_id'
+        'domain_order_id'
     ];
 
     protected $casts = [
@@ -29,9 +29,9 @@ class Addon extends Model
         'expired_date' => 'timestamp'
     ];
 
-    // Ubah relasi ke Order
-    public function order()
+    // Relasi ke OrderDomainDetail
+    public function orderDomainDetail()
     {
-        return $this->belongsTo(Order::class, 'order_id', 'order_id');
+        return $this->belongsTo(OrderDomainDetail::class, 'domain_order_id', 'domain_order_id');
     }
 }

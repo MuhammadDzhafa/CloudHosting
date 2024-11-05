@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('order_hosting_details', function (Blueprint $table) {
             $table->id('hosting_order_id');
 
-            // Foreign Keys - Ubah tipe data order_id menjadi string
-            $table->string('order_id');  // Diubah dari unsignedBigInteger
+            // Foreign Keys
+            $table->string('order_id');  // Sesuaikan tipe data
             $table->unsignedBigInteger('domain_option_id');
 
             // Basic Information

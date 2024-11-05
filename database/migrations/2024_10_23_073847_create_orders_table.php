@@ -1,6 +1,5 @@
 <?php
 
-// 2024_10_23_073847_create_orders_table.php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,20 +9,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->string('order_id')->nullable(false)->primary();
+            $table->string('order_id')->primary();
+            $table->unsignedBigInteger('user_id')->nullable(); // Memperbolehkan user_id bernilai NULL
             $table->string('status');
             $table->integer('total_price')->default(0);
-            $table->integer('tax')->default(0);
             $table->string('payment_method');
             $table->timestamp('date_created');
-            $table->unsignedBigInteger('billing_address_id');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('billing_address_id')
-                ->references('billing_id')
-                ->on('billing_addresses')
-                ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

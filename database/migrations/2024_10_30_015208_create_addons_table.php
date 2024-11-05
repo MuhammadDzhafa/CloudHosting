@@ -15,11 +15,12 @@ return new class extends Migration
             $table->timestamp('expired_date')->nullable();
             $table->boolean('email_protection')->default(false);
             $table->integer('price')->default(0);
-            $table->string('order_id')->nullable(); // Ubah ke string karena order_id adalah string
+            $table->unsignedBigInteger('domain_order_id')->nullable();
 
-            $table->foreign('order_id')
-                ->references('order_id')
-                ->on('orders')
+            // Foreign key ke order_domain_details
+            $table->foreign('domain_order_id')
+                ->references('domain_order_id')
+                ->on('order_domain_details')
                 ->onDelete('cascade');
         });
     }
