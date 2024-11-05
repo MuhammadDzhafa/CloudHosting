@@ -9,168 +9,126 @@
 
     <div class="flex flex-col lg:flex-row lg:space-x-8">
         <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
-            <div>
-                <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
-                    Choose Payment Method
-                </h3>
-                <div class="space-y-3">
-                    <div class="field">
-                        <div class="control">
-                            <div class="h-select">
-                                <div class="select-box">
-                                    <span>Instant Payment</span>
+            <div class="page-content-inner">
+                <div class="flex-list-wrapper">
+                    <!-- Header -->
+                    <div class="flex-table-header">
+                        <div class="container">
+                            <h3 class="w-full md:w-auto h-[30px] text-[23px] font-[600] leading-[29.9px] text-left mb-4" style="color: #000000;">
+                                Choose Payment Method
+                            </h3>
+                        </div>
+                    </div>
+
+                    @php
+                    $instantPaymentLogos = [
+                    'Paypal' => asset('assets/img/paymentlogo/paypal.svg'),
+                    'Gopay' => asset('assets/img/paymentlogo/gopay.svg'),
+                    'DANA' => asset('assets/img/paymentlogo/dana.svg'),
+                    'ShopeePay' => asset('assets/img/paymentlogo/shopeepay.svg'),
+                    'QRIS' => asset('assets/img/paymentlogo/qris.svg'),
+                    'OVO' => asset('assets/img/paymentlogo/ovo.svg'),
+                    ];
+
+                    $bankLogos = [
+                    'Mandiri' => asset('assets/img/paymentlogo/mandiri.svg'),
+                    'BRI' => asset('assets/img/paymentlogo/bri.svg'),
+                    'BNI' => asset('assets/img/paymentlogo/bni.svg'),
+                    'BCA' => asset('assets/img/paymentlogo/bca.svg'),
+                    'Permata' => asset('assets/img/paymentlogo/permata.svg'),
+                    'BSI' => asset('assets/img/paymentlogo/bsi.svg'),
+                    ];
+
+                    $cardLogos = [
+                    'Visa' => asset('assets/img/paymentlogo/visa.svg'),
+                    'MasterCard' => asset('assets/img/paymentlogo/mastercard.svg'),
+                    'JCB' => asset('assets/img/paymentlogo/jcb.svg'),
+                    'American Express' => asset('assets/img/paymentlogo/americanexpress.svg'),
+                    ];
+                    @endphp
+
+                    <div class="page-content-inner">
+                        <div class="card-gradient p-5">
+                            <div class="card-body">
+
+                                <!-- Instant Payment Section -->
+                                <div class="mb-6">
+                                    <div class="mb-3">
+                                        <h3 class="title is-6 dark-inverted flex items-center">
+                                            <i class="iconify me-2" data-icon="ph:wallet-duotone"></i>
+                                            Instant Payment
+                                        </h3>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        @foreach($instantPaymentLogos as $method => $logo)
+                                        <label class="relative cursor-pointer group">
+                                            <input type="radio" name="payment_method" value="{{ strtolower($method) }}" class="sr-only peer">
+                                            <div class="flex flex-col items-center p-4 bg-white border border-gray-200 rounded-lg transition-all duration-200 hover:border-blue-500 peer-checked:bg-blue-50 peer-checked:border-blue-500">
+                                                <div class="h-12 w-32 mb-2 flex items-center justify-center">
+                                                    <img src="{{ $logo }}" alt="{{ $method }}" class="h-8 object-contain">
+                                                </div>
+                                                <span class="font-medium text-center text-gray-800">{{ $method }}</span>
+                                            </div>
+                                        </label>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="select-icon">
-                                    <i data-feather="chevron-down"></i>
+
+                                <!-- Virtual Account Section -->
+                                <div class="mb-6">
+                                    <div class="mb-3">
+                                        <h3 class="title is-6 dark-inverted flex items-center">
+                                            <i class="iconify me-2" data-icon="ph:bank-duotone"></i>
+                                            Virtual Account
+                                        </h3>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        @foreach($bankLogos as $bank => $logo)
+                                        <label class="relative cursor-pointer group">
+                                            <input type="radio" name="payment_method" value="{{ strtolower($bank) }}_va" class="sr-only peer">
+                                            <div class="flex flex-col items-center p-4 bg-white border border-gray-200 rounded-lg transition-all duration-200 hover:border-blue-500 peer-checked:bg-blue-50 peer-checked:border-blue-500">
+                                                <div class="h-12 w-32 mb-2 flex items-center justify-center">
+                                                    <img src="{{ $logo }}" alt="{{ $bank }}" class="h-8 object-contain">
+                                                </div>
+                                                <span class="font-medium text-center text-gray-800">{{ $bank }}</span>
+                                            </div>
+                                        </label>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="select-drop has-slimscroll-sm">
-                                    <div class="drop-inner">
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="paypal" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>PayPal</span>
+
+                                <!-- Credit Card Section -->
+                                <div class="mb-6">
+                                    <div class="mb-3">
+                                        <h3 class="title is-6 dark-inverted flex items-center">
+                                            <i class="iconify me-2" data-icon="ph:credit-card-duotone"></i>
+                                            Credit Card
+                                        </h3>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        @foreach($cardLogos as $card => $logo)
+                                        <label class="relative cursor-pointer group">
+                                            <input type="radio" name="payment_method" value="{{ strtolower(str_replace(' ', '_', $card)) }}" class="sr-only peer">
+                                            <div class="flex flex-col items-center p-4 bg-white border border-gray-200 rounded-lg transition-all duration-200 hover:border-blue-500 peer-checked:bg-blue-50 peer-checked:border-blue-500">
+                                                <div class="h-12 w-32 mb-2 flex items-center justify-center">
+                                                    <img src="{{ $logo }}" alt="{{ $card }}" class="h-8 object-contain">
+                                                </div>
+                                                <span class="font-medium text-center text-gray-800">{{ $card }}</span>
                                             </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="gopay" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>GoPay</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="deadpool" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>Deadpool</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="ovo" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>OVO</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="dana" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>DANA</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="shopeepay" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>ShopeePay</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="qris" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>QRIS</span>
-                                            </div>
-                                        </div>
+                                        </label>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <div class="h-select">
-                                <div class="select-box">
-                                    <span>Virtual Account</span>
-                                </div>
-                                <div class="select-icon">
-                                    <i data-feather="chevron-down"></i>
-                                </div>
-                                <div class="select-drop has-slimscroll-sm">
-                                    <div class="drop-inner">
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="mandiri" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>Mandiri</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="bri" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>BRI</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="bni" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>BNI</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="bca" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>BCA</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="permata" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>Permata</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="bsi" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>BSI</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <div class="h-select">
-                                <div class="select-box">
-                                    <span>Credit Card</span>
-                                </div>
-                                <div class="select-icon">
-                                    <i data-feather="chevron-down"></i>
-                                </div>
-                                <div class="select-drop has-slimscroll-sm">
-                                    <div class="drop-inner">
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="visa" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>Visa</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="mastercard" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>MasterCard</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="jcb" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>JCB</span>
-                                            </div>
-                                        </div>
-                                        <div class="option-row">
-                                            <input type="radio" name="hero_select" value="amex" onclick="toggleDropdowns()">
-                                            <div class="option-meta">
-                                                <span>American Express</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="w-full lg:w-1/2">
+        <div class="w-full lg:w-1/2 lg:mt-[90px]">
             <div class="w-full h-[70px] p-[30px] pt-[0px] pb-[0px] gap-[10px] rounded-t-lg rounded-b-none opacity-100 bg-[radial-gradient(104.31%_150.2%_at_0%_22.79%,rgba(100,52,147,0.95)_23.63%,#4A6DCB_70.69%,#64D2F7_100%)] text-white">
                 <div class="flex justify-between items-center">
                     <h3 class="mt-5 w-[176px] h-[30px] opacity-100 font-inter text-[23px] font-semibold leading-[29.9px] text-left text-[#FFFFFF]">Order Summary</h3>
