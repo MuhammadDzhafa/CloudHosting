@@ -21,7 +21,10 @@ return new class extends Migration
             $table->string('occupation');
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
-            $table->timestamps();
+
+            // Menambahkan kolom created_at, updated_at, dan deleted_at
+            $table->timestamps();  // created_at, updated_at
+            $table->softDeletes(); // deleted_at
         });
     }
 

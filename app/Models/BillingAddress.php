@@ -12,7 +12,6 @@ class BillingAddress extends Model
     protected $primaryKey = 'billing_id';
 
     protected $fillable = [
-        'user_id',
         'street_address_1',
         'street_address_2',
         'city',

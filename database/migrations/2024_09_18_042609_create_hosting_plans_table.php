@@ -35,10 +35,8 @@ return new class extends Migration
             $table->boolean('best_seller')->default(false);
             $table->timestamps();
 
-
             // Menambahkan foreign key constraint
             $table->foreign('hosting_group_id')->references('hosting_group_id')->on('hosting_groups')->onDelete('restrict'); // Baris ini ditambahkan
-            
         });
     }
 

@@ -9,6 +9,7 @@ use App\Models\TLD;
 use App\Models\HostingPlan;
 use App\Models\RegularMainSpec;
 use App\Models\OrderDomainDetail;
+use App\Models\OrderHostingDetail;
 use App\Models\Order;
 use App\Models\BillingAddress;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,8 @@ class CheckoutController extends Controller
         $productInfo = $request->query('product_info');
         $prices = Price::where('hosting_plans_id', $hostingPlanId)->get();
         $addons = Addon::where('domain_order_id', null)->get();
+        $order = Order::with('user', 'hosting')->get();
+        $hosting = OrderHostingDetail::with('order')->get();
 
         if ($hostingPlanId) {
             $hostingPlan = HostingPlan::with(['prices'])->find($hostingPlanId);
@@ -47,18 +50,18 @@ class CheckoutController extends Controller
             if ($hostingPlan && $regularSpec) {
                 $specs = [
                     ['value' => $regularSpec->storage . ' GB SSD Storage'],
-                    ['value' => $regularSpec->RAM . ' RAM'],
+                    ['value' => $regularSpec->RAM . ' GB RAM'],
                     ['value' => $regularSpec->CPU . ' Core CPU'],
-                    ['value' => ($regularSpec->max_domain == -1 ? 'Unlimited' : $regularSpec->max_domain) . ' Domain'],
-                    ['value' => ($regularSpec->ssl ? 'Free SSL' : 'SSL')]
+                    ['value' => 'Unlimited Domain'],
+                    ['value' => 'Free SSL']
                 ];
             } else {
                 $specs = [
                     ['value' => $hostingPlan->storage . ' GB SSD Storage'],
-                    ['value' => $hostingPlan->RAM . ' RAM'],
+                    ['value' => $hostingPlan->RAM . ' GB RAM'],
                     ['value' => $hostingPlan->CPU . ' Core CPU'],
-                    ['value' => ($hostingPlan->max_domain == -1 ? 'Unlimited' : $hostingPlan->max_domain) . ' Domain'],
-                    ['value' => ($hostingPlan->ssl ? 'Free SSL' : 'SSL')]
+                    ['value' => 'Unlimited Domain'],
+                    ['value' => 'Free SSL']
                 ];
             }
         }
@@ -104,9 +107,10 @@ class CheckoutController extends Controller
             'product_info' => $productInfo,
             'prices' => $prices,
             'addons' => $addons,
+            'order' => $order,
+            'hosting' => $hosting,
         ]);
     }
-
 
     // Tambahkan method baru untuk menyimpan detail domain
     public function saveDomainDetails(Request $request)
@@ -220,72 +224,52 @@ class CheckoutController extends Controller
 
     // Method baru untuk update billing address nanti di step 5
     public function saveBillingAddress(Request $request)
-{
-    try {
-        // Log request untuk debugging
-        Log::info('Received billing address request:', [
-            'data' => $request->all()
-        ]);
+    {
+        try {
+            Log::info('Received billing address request:', [
+                'data' => $request->all()
+            ]);
 
-        // Tambahkan user_id ke request
-        $request->merge(['user_id' => auth()->id()]);
+            // Validasi data tanpa menggunakan user_id
+            $billingData = $request->validate([
+                'street_address_1' => 'required|string|max:255',
+                'street_address_2' => 'nullable|string|max:255',
+                'city' => 'required|string|max:100',
+                'state' => 'required|string|max:100',
+                'country' => 'required|string',
+                'post_code' => 'required|string|max:20',
+                'company_name' => 'nullable|string|max:255'
+            ]);
 
-        // Validasi input
-        $billingData = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'street_address_1' => 'required|string|max:255',
-            'street_address_2' => 'nullable|string|max:255',
-            'city' => 'required|string|max:100',
-            'state' => 'required|string|max:100',
-            'country' => 'required|string',
-            'post_code' => 'required|string|max:20',
-            'company_name' => 'nullable|string|max:255'
-        ]);
+            DB::beginTransaction();
 
-        DB::beginTransaction();
+            // Simpan alamat penagihan tanpa user_id
+            $billingAddress = BillingAddress::create($billingData);
 
-        // Gunakan updateOrCreate untuk menghindari duplikasi
-        $billingAddress = BillingAddress::updateOrCreate(
-            ['user_id' => auth()->id()], // Kondisi pencarian
-            $billingData // Data yang akan di-update atau create
-        );
+            DB::commit();
 
-        DB::commit();
-
-        Log::info('Billing address saved successfully:', [
-            'billing_address' => $billingAddress->toArray()
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Billing address saved successfully',
-            'data' => $billingAddress
-        ]);
-
-    } catch (ValidationException $e) {
-        DB::rollBack();
-        Log::error('Validation failed:', [
-            'errors' => $e->errors()
-        ]);
-        return response()->json([
-            'success' => false,
-            'message' => 'Validation failed',
-            'errors' => $e->errors()
-        ], 422);
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        Log::error('Failed to save billing address:', [
-            'error' => $e->getMessage(),
-            'trace' => $e->getTraceAsString()
-        ]);
-
-        return response()->json([
-            'success' => false,
-            'message' => 'Failed to save billing address: ' . $e->getMessage()
-        ], 500);
+            return response()->json([
+                'success' => true,
+                'message' => 'Billing address saved successfully',
+                'data' => $billingAddress
+            ]);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to save billing address: ' . $e->getMessage()
+            ], 500);
+        }
     }
-}
+
+
 
     public function saveCustomPlan(Request $request)
     {

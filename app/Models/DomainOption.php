@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DomainOption extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes; // Menggunakan SoftDeletes trait
 
-    protected $primaryKey = 'domain_option_id';
+    protected $primaryKey = 'domain_option_id'; // Menentukan primary key
 
     protected $fillable = [
-        'domain_order_type',
+        'domain_order_type', // Kolom yang dapat diisi
     ];
 
     /**

@@ -23,3 +23,4 @@ class HostingGroup extends Model
     }
 }
 
+

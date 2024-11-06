@@ -18,13 +18,14 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); // Includes created_at and updated_at as timestamp
+            $table->softDeletes(); // Adds deleted_at as timestamp
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at')->nullable(); // Ensures created_at is timestamp
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -34,6 +35,8 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+            $table->timestamps(); // Adds created_at and updated_at as timestamp
+            $table->softDeletes(); // Adds deleted_at as timestamp
         });
     }
 

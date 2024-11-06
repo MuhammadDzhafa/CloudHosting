@@ -10,7 +10,7 @@ class OrderHostingDetail extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'hosting_order_id';
+    protected $primaryKey = 'hosting_order_id';  // Menetapkan primary key
 
     protected $fillable = [
         'order_id',
@@ -57,26 +57,41 @@ class OrderHostingDetail extends Model
         'periode' => 'integer',
     ];
 
+    /**
+     * Format harga menjadi format Rupiah.
+     */
     public function getFormattedPriceAttribute(): string
     {
         return 'Rp ' . number_format($this->price, 0, '', '.');
     }
 
+    /**
+     * Format tanggal aktif menjadi format 'd F Y'.
+     */
     public function getFormattedActiveDateAttribute(): string
     {
         return $this->active_date->format('d F Y');
     }
 
+    /**
+     * Format tanggal kadaluarsa menjadi format 'd F Y'.
+     */
     public function getFormattedExpiredDateAttribute(): string
     {
         return $this->expired_date->format('d F Y');
     }
 
+    /**
+     * Relasi ke Order (One to Many).
+     */
     public function order()
     {
         return $this->belongsTo(Order::class, 'order_id', 'order_id');
     }
 
+    /**
+     * Relasi ke DomainOption (One to Many).
+     */
     public function domainOption()
     {
         return $this->belongsTo(DomainOption::class, 'domain_option_id', 'domain_option_id');

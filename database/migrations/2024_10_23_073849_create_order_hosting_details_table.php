@@ -12,56 +12,57 @@ return new class extends Migration
             $table->id('hosting_order_id');
 
             // Foreign Keys
-            $table->string('order_id');  // Sesuaikan tipe data
-            $table->unsignedBigInteger('domain_option_id');
+            $table->string('order_id');  // Tipe data disesuaikan dengan kolom pada tabel orders
+            $table->unsignedBigInteger('domain_option_id');  // Menghubungkan ke domain_options
 
-            // Basic Information
-            $table->string('name', 100);
-            $table->string('domain_name');
-            $table->string('product_type', 50);
+            // Informasi Dasar
+            $table->string('name', 100);  // Nama produk
+            $table->string('domain_name');  // Nama domain terkait
+            $table->string('product_type', 50);  // Jenis produk hosting (misalnya, shared, VPS)
 
-            // Resource Specifications
-            $table->integer('RAM')->comment('in GB');
-            $table->integer('CPU')->comment('number of cores');
-            $table->integer('storage')->comment('in GB');
-            $table->integer('max_bandwidth')->comment('in GB/TB');
+            // Spesifikasi Sumber Daya
+            $table->integer('RAM')->comment('in GB');  // Jumlah RAM dalam GB
+            $table->integer('CPU')->comment('number of cores');  // Jumlah core CPU
+            $table->integer('storage')->comment('in GB');  // Kapasitas penyimpanan dalam GB
+            $table->integer('max_bandwidth')->comment('in GB/TB');  // Batas bandwidth
 
-            // Domain Related Limits
-            $table->integer('max_domain');
-            $table->integer('max_addon_domain');
-            $table->integer('max_parked_domain');
+            // Batasan Terkait Domain
+            $table->integer('max_domain');  // Jumlah domain yang dapat dihosting
+            $table->integer('max_addon_domain');  // Jumlah addon domain yang dapat dihosting
+            $table->integer('max_parked_domain');  // Jumlah parked domain yang dapat dihosting
 
-            // Other Resource Limits
-            $table->integer('max_email_account');
-            $table->integer('max_database');
-            $table->integer('max_io')->comment('IO usage limit');
-            $table->integer('nproc')->comment('Number of processes allowed');
-            $table->integer('entry_process')->comment('Entry processes limit');
+            // Batasan Sumber Daya Lainnya
+            $table->integer('max_email_account');  // Jumlah akun email yang dapat dibuat
+            $table->integer('max_database');  // Jumlah database yang dapat dibuat
+            $table->integer('max_io')->comment('IO usage limit');  // Batas penggunaan I/O
+            $table->integer('nproc')->comment('Number of processes allowed');  // Jumlah proses yang diizinkan
+            $table->integer('entry_process')->comment('Entry processes limit');  // Batas entry processes
 
-            // Features
-            $table->string('backup')->default('')->comment('Backup feature status');
-            $table->string('ssl')->default('')->comment('SSL feature status');
+            // Fitur
+            $table->string('backup')->default('')->comment('Backup feature status');  // Status fitur backup
+            $table->string('ssl')->default('')->comment('SSL feature status');  // Status fitur SSL
 
-            // Dates and Period
-            $table->date('active_date');
-            $table->date('expired_date');
-            $table->integer('periode')->comment('in months');
+            // Tanggal dan Periode
+            $table->date('active_date');  // Tanggal aktif hosting
+            $table->date('expired_date');  // Tanggal kedaluwarsa hosting
+            $table->integer('periode')->comment('in months');  // Periode dalam bulan
 
-            // Pricing
-            $table->integer('price')->default(0);
+            // Penentuan Harga
+            $table->integer('price')->default(0);  // Harga hosting dalam satuan integer
 
             $table->timestamps();
             $table->softDeletes();
 
-            // Foreign Key Constraints
+            // Menambahkan Foreign Key Constraints
             $table->foreign('order_id')
                 ->references('order_id')
                 ->on('orders')
-                ->onDelete('cascade');
+                ->onDelete('cascade');  // Menghapus hosting detail saat order dihapus
+
             $table->foreign('domain_option_id')
                 ->references('domain_option_id')
                 ->on('domain_options')
-                ->onDelete('cascade');
+                ->onDelete('cascade');  // Menghapus hosting detail saat domain option dihapus
         });
     }
 

@@ -18,7 +18,7 @@ class Addon extends Model
         'expired_date',
         'email_protection',
         'price',
-        'domain_order_id'
+        'domain_order_id',
     ];
 
     protected $casts = [
@@ -26,7 +26,7 @@ class Addon extends Model
         'email_protection' => 'boolean',
         'price' => 'integer',
         'active_date' => 'timestamp',
-        'expired_date' => 'timestamp'
+        'expired_date' => 'timestamp',
     ];
 
     // Relasi ke OrderDomainDetail

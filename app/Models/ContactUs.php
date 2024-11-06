@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;  // Import SoftDeletes trait
 
 class ContactUs extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;  // Tambahkan SoftDeletes untuk mendukung soft deletes
 
     protected $fillable = ['name', 'email', 'message'];
 

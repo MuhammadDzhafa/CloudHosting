@@ -14,7 +14,7 @@ class HostingPlan extends Model
 
     protected $fillable = [
         'name',
-        'hosting_group_id', // Make sure the field name is correct
+        'hosting_group_id', // Pastikan nama fieldnya sudah benar
         'product_type',
         'package_type',
         'description',
@@ -35,21 +35,25 @@ class HostingPlan extends Model
         'best_seller'
     ];
 
+    // Relasi ke model Price
     public function prices()
     {
         return $this->hasMany(Price::class, 'hosting_plans_id');
     }
 
+    // Relasi ke model HostingGroup
     public function hostingGroup()
     {
         return $this->belongsTo(HostingGroup::class, 'hosting_group_id', 'hosting_group_id');
     }
 
+    // Relasi ke model CustomMainSpec
     public function customMainSpec()
     {
         return $this->hasOne(CustomMainSpec::class, 'custom_main_spec_id');
     }
 
+    // Relasi ke model RegularMainSpec
     public function regularMainSpec()
     {
         return $this->hasOne(RegularMainSpec::class, 'regular_main_spec_id');

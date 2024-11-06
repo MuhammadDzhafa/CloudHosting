@@ -10,15 +10,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->string('order_id')->primary();
-            $table->unsignedBigInteger('user_id')->nullable(); // Memperbolehkan user_id bernilai NULL
             $table->string('status');
             $table->integer('total_price')->default(0);
             $table->string('payment_method');
             $table->timestamp('date_created');
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

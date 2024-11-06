@@ -9,12 +9,13 @@ class TLD extends Model
 {
     use HasFactory;
 
-    protected $table = 'tld';
+    protected $table = 'tld'; // Nama tabel yang digunakan oleh model
 
-    protected $primaryKey = 'tld_id';
+    protected $primaryKey = 'tld_id'; // Menyatakan bahwa `tld_id` adalah primary key
+
     protected $fillable = [
-        'tld_name',
-        'tld_price',
-        'category'
+        'tld_name', // Nama TLD
+        'tld_price', // Harga TLD
+        'category'   // Kategori TLD
     ];
 }

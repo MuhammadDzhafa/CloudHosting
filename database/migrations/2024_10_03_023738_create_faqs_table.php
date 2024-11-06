@@ -12,11 +12,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('faqs', function (Blueprint $table) {
-            $table->id('faq_id');
-            $table->string('question');
-            $table->text('answer');
-            $table->string(column: 'category');
-            $table->timestamps();
+            $table->id('faq_id'); // Primary key
+            $table->string('question'); // Kolom untuk pertanyaan
+            $table->text('answer'); // Kolom untuk jawaban
+            $table->string('category'); // Kolom untuk kategori FAQ
+            $table->timestamps(); // Kolom created_at dan updated_at
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('faqs');
+        Schema::dropIfExists('faqs'); // Menghapus tabel jika rollback
     }
 };

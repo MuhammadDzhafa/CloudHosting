@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CustomMainSpec extends Model
 {
-    use HasFactory;
+    use SoftDeletes, HasFactory;
+
     protected $table = 'custom_main_spec';
     protected $primaryKey = 'custom_main_spec_id'; // Pastikan ini sesuai dengan skema database
 
@@ -31,5 +33,4 @@ class CustomMainSpec extends Model
     {
         return $this->belongsTo(HostingPlan::class, 'hosting_plans_id', 'hosting_plans_id');
     }
-
 }

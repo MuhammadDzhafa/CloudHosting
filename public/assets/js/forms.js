@@ -199,7 +199,6 @@ $("#next-button").on("click", function() {
 
         // Fungsi untuk menyimpan billing address (Step 5)
         function saveBillingAddress(callback) {
-            // Validasi data terlebih dahulu
             const billingData = {
                 street_address_1: $('input[name="street_address_1"]').val(),
                 street_address_2: $('input[name="street_address_2"]').val(),
@@ -208,9 +207,8 @@ $("#next-button").on("click", function() {
                 country: $('input[name="country"]:checked').val(),
                 company_name: $('input[name="company_name"]').val(),
                 post_code: $('input[name="post_code"]').val()
-            };            
+            };
         
-            // Validasi data sebelum dikirim
             if (!billingData.street_address_1) {
                 showNotification('Alamat harus diisi', 'error');
                 return;
@@ -225,7 +223,7 @@ $("#next-button").on("click", function() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     'Accept': 'application/json'
                 },
-                data: billingData,
+                data: billingData, // Send only the necessary billing data
                 dataType: 'json',
                 success: function(response) {
                     console.log('Billing address response:', response);
@@ -239,27 +237,17 @@ $("#next-button").on("click", function() {
                     }
                 },
                 error: function(xhr, status, error) {
-                    console.error('Error saat menyimpan billing address:', {
-                        status: status,
-                        error: error,
-                        response: xhr.responseText
-                    });
-                    
                     if (xhr.status === 422) {
-                        // Validation error
-                        try {
-                            const response = JSON.parse(xhr.responseText);
-                            const messages = Object.values(response.errors).flat();
-                            showNotification(messages.join('\n'), 'error');
-                        } catch (e) {
-                            handleAjaxError(xhr, status, error);
-                        }
+                        const response = JSON.parse(xhr.responseText);
+                        const messages = Object.values(response.errors).flat();
+                        showNotification(messages.join('\n'), 'error');
                     } else {
                         handleAjaxError(xhr, status, error);
                     }
                 }
             });
         }
+        
 
         // Helper function untuk handle error
         function handleAjaxError(xhr, status, error) {

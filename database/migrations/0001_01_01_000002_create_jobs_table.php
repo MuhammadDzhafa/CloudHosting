@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Membuat tabel jobs
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('queue')->index();
@@ -18,9 +19,10 @@ return new class extends Migration
             $table->unsignedTinyInteger('attempts');
             $table->unsignedInteger('reserved_at')->nullable();
             $table->unsignedInteger('available_at');
-            $table->unsignedInteger('created_at');
+            $table->timestamps(); // Menambahkan created_at dan updated_at
         });
 
+        // Membuat tabel job_batches
         Schema::create('job_batches', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('name');
@@ -30,10 +32,10 @@ return new class extends Migration
             $table->longText('failed_job_ids');
             $table->mediumText('options')->nullable();
             $table->integer('cancelled_at')->nullable();
-            $table->integer('created_at');
-            $table->integer('finished_at')->nullable();
+            $table->timestamps(); // Menambahkan created_at dan updated_at
         });
 
+        // Membuat tabel failed_jobs
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
@@ -42,6 +44,7 @@ return new class extends Migration
             $table->longText('payload');
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
+            $table->timestamps(); // Menambahkan created_at dan updated_at
         });
     }
 

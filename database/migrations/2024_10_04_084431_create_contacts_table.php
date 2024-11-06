@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->string('email');
                 $table->text('message');
                 $table->timestamps();
-                $table->softDeletes();
+                $table->softDeletes();  // Menambahkan kolom deleted_at untuk soft deletes
             });
         }
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts'); // Mengubah 'contacts' menjadi 'contact_us'
+        Schema::dropIfExists('contact_us');  // Pastikan nama tabelnya benar
     }
 };

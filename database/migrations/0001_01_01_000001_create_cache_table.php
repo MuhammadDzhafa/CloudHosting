@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Membuat tabel cache
         Schema::create('cache', function (Blueprint $table) {
             $table->string('key')->primary();
             $table->mediumText('value');
             $table->integer('expiration');
+            $table->timestamps(); // Menambahkan kolom created_at dan updated_at
         });
 
+        // Membuat tabel cache_locks
         Schema::create('cache_locks', function (Blueprint $table) {
             $table->string('key')->primary();
             $table->string('owner');
             $table->integer('expiration');
+            $table->timestamps(); // Menambahkan kolom created_at dan updated_at
         });
     }
 

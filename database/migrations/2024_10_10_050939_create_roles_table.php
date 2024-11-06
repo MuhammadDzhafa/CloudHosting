@@ -12,6 +12,7 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->timestamps();
+            $table->softDeletes();  // Menambahkan kolom deleted_at untuk soft deletes
         });
 
         Schema::create('role_user', function (Blueprint $table) {

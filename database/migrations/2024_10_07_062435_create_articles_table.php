@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('image')->nullable(); // Image field, nullable
             $table->integer('likes')->default(0); // Number of likes, default value 0
             $table->timestamps(); // Created_at and Updated_at timestamps
+            $table->softDeletes();  // Add softDeletes for deleted_at column
         });
     }
 

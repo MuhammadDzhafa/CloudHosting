@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tld', function (Blueprint $table) {
-            $table->id('tld_id');
-            $table->string('tld_name');
-            $table->integer('tld_price');
-            $table->string('category');
-            $table->timestamps();
+            $table->id('tld_id'); // Primary key
+            $table->string('tld_name'); // Nama TLD
+            $table->integer('tld_price'); // Harga TLD
+            $table->string('category'); // Kategori TLD
+            $table->timestamps(); // Kolom created_at dan updated_at
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tld');
+        Schema::dropIfExists('tld'); // Menghapus tabel jika rollback
     }
 };

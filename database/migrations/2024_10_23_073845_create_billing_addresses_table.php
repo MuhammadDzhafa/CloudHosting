@@ -11,9 +11,6 @@ return new class extends Migration
     {
         Schema::create('billing_addresses', function (Blueprint $table) {
             $table->id('billing_id');
-            $table->foreignId('user_id')  // Gunakan foreignId() untuk konsistensi dengan tabel users
-                  ->constrained('users')   // Referensi ke tabel users
-                  ->onDelete('cascade');   // Hapus billing address jika user dihapus
             $table->string('street_address_1');
             $table->string('street_address_2')->nullable();
             $table->string('city');

@@ -22,6 +22,7 @@ class Price extends Model
         'duration'
     ];
 
+    // Relasi ke model HostingPlan
     public function hostingPlan()
     {
         return $this->belongsTo(HostingPlan::class, 'hosting_plans_id', 'hosting_plans_id');

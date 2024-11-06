@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes; // Import SoftDeletes
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes; // Tambahkan SoftDeletes
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +25,6 @@ class User extends Authenticatable
         'google_refresh_token',
         'google_profile_image',
     ];
-
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,6 +44,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'google_token' => 'encrypted', // Encrypt token data for security
+        'google_refresh_token' => 'encrypted', // Encrypt refresh token data for security
     ];
 
     public function roles()

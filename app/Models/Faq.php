@@ -9,7 +9,7 @@ class Faq extends Model
 {
     use HasFactory;
 
-    protected $table = 'faqs';
+    protected $table = 'faqs'; // Nama tabel yang digunakan oleh model
 
     // Tentukan atribut yang dapat diisi
     protected $fillable = [
