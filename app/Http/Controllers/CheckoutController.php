@@ -437,12 +437,68 @@ class CheckoutController extends Controller
         }
     }
 
+    // OrderHostingDetailController.php
     public function storeOrderHostingDetail(Request $request)
-    {
-        try {
-            DB::beginTransaction();
+{
+    try {
+        DB::beginTransaction();
 
-            // Validate the request
+        // Jika product_type adalah 'Hosting Only', gunakan validasi dan logika yang berbeda
+        if ($request->product_type === 'Hosting Only') {
+            // Validasi minimal untuk Hosting Only
+            $request->validate([
+                'order_id' => 'required|string',
+                'status' => 'required|string',
+                'payment_method' => 'required|string',
+                'date_created' => 'required',
+                'hosting_plans_id' => 'required',
+                'name' => 'required',
+                'domain_name' => 'required',
+                'product_type' => 'required',
+                'package_type' => 'required'
+            ]);
+
+            // Cek apakah order sudah ada
+            $order = Order::firstOrCreate(
+                ['order_id' => $request->order_id],
+                [
+                    'status' => $request->status,
+                    'payment_method' => $request->payment_method,
+                    'date_created' => $request->date_created,
+                ]
+            );
+
+            // Simpan data default untuk Hosting Only
+            $orderHostingDetail = OrderHostingDetail::create([
+                'order_id' => $request->order_id,
+                'hosting_plans_id' => $request->hosting_plans_id,
+                'name' => $request->name,
+                'domain_name' => $request->domain_name,
+                'product_type' => $request->product_type,
+                'package_type' => $request->package_type,
+                'max_io' => $request->max_io ?? 0,
+                'nproc' => $request->nproc ?? 0,
+                'entry_process' => $request->entry_process ?? 0,
+                'ssl' => $request->ssl ?? 'No',
+                'ram' => $request->ram ?? 0,
+                'cpu' => $request->cpu ?? 0,
+                'storage' => $request->storage ?? 0,
+                'backup' => $request->backup ?? 'No',
+                'max_database' => $request->max_database ?? '0',
+                'max_bandwidth' => $request->max_bandwidth ?? '0',
+                'max_email_account' => $request->max_email_account ?? '0',
+                'max_domain' => $request->max_domain ?? '0',
+                'max_addon_domain' => $request->max_addon_domain ?? '0',
+                'max_parked_domain' => $request->max_parked_domain ?? '0',
+                'ssh' => $request->ssh ?? 'No',
+                'free_domain' => $request->free_domain ?? 'No',
+                'active_date' => $request->active_date,
+                'expired_date' => $request->expired_date,
+                'periode' => $request->periode ?? 'monthly',
+                'price' => $request->price ?? 0
+            ]);
+        } else {
+            // Gunakan validasi dan logika yang sudah ada untuk tab lainnya
             $validated = $request->validate([
                 'order_id' => 'required|string',
                 'hosting_plans_id' => 'required|exists:hosting_plans,hosting_plans_id',
@@ -468,14 +524,22 @@ class CheckoutController extends Controller
                 'free_domain' => 'required|string',
                 'active_date' => 'required|date',
                 'expired_date' => 'required|date|after:active_date',
-                'periode' => 'required|string|in:monthly,quarterly,semi_annually,annually,biennially', // Ubah ini
+                'periode' => 'required|string|in:monthly,quarterly,semi_annually,annually,biennially',
                 'price' => 'required|integer'
             ]);
 
-            // Get hosting plan data
             $hostingPlan = HostingPlan::findOrFail($validated['hosting_plans_id']);
 
-            // Create order hosting detail
+            // Pastikan order sudah ada
+            $order = Order::firstOrCreate(
+                ['order_id' => $validated['order_id']],
+                [
+                    'status' => 'pending', // Anda mungkin perlu menyesuaikan ini
+                    'payment_method' => 'pending', // Anda mungkin perlu menyesuaikan ini
+                    'date_created' => now(),
+                ]
+            );
+
             $orderHostingDetail = OrderHostingDetail::create([
                 'order_id' => $validated['order_id'],
                 'hosting_plans_id' => $validated['hosting_plans_id'],
@@ -504,27 +568,28 @@ class CheckoutController extends Controller
                 'periode' => $validated['periode'],
                 'price' => $validated['price']
             ]);
-
-            DB::commit();
-
-            return response()->json([
-                'message' => 'Data hosting berhasil disimpan!',
-                'data' => $orderHostingDetail
-            ], 200);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            DB::rollBack();
-            return response()->json([
-                'message' => 'Validasi gagal',
-                'errors' => $e->errors()
-            ], 422);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'message' => 'Terjadi kesalahan saat menyimpan data',
-                'error' => $e->getMessage()
-            ], 500);
         }
+
+        DB::commit();
+
+        return response()->json([
+            'message' => 'Data hosting berhasil disimpan!',
+            'data' => $orderHostingDetail
+        ], 200);
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        DB::rollBack();
+        return response()->json([
+            'message' => 'Validasi gagal',
+            'errors' => $e->errors()
+        ], 422);
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return response()->json([
+            'message' => 'Terjadi kesalahan saat menyimpan data',
+            'error' => $e->getMessage()
+        ], 500);
     }
+}
 
     /**
      * Validasi harga sesuai dengan periode billing yang dipilih
