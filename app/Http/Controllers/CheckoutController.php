@@ -32,6 +32,7 @@ class CheckoutController extends Controller
         $hostingPlanId = $request->query('hosting_plan_id');
         $specs = [];
         $order_id = uniqid('ORD-'); // Generate order_id
+        $hostingPlan = null; // Initialize hostingPlan variable
 
         // Ambil data TLD berdasarkan tld_name
         $selectedTld = TLD::where('tld_name', $tld_name)->first();
@@ -40,8 +41,6 @@ class CheckoutController extends Controller
         $productInfo = $request->query('product_info');
         $prices = Price::where('hosting_plans_id', $hostingPlanId)->get();
         $addons = Addon::where('domain_order_id', null)->get();
-        $order = Order::with('user', 'hosting')->get();
-        $hosting = OrderHostingDetail::with('order')->get();
 
         if ($hostingPlanId) {
             $hostingPlan = HostingPlan::with(['prices'])->find($hostingPlanId);
@@ -55,7 +54,7 @@ class CheckoutController extends Controller
                     ['value' => 'Unlimited Domain'],
                     ['value' => 'Free SSL']
                 ];
-            } else {
+            } elseif ($hostingPlan) {
                 $specs = [
                     ['value' => $hostingPlan->storage . ' GB SSD Storage'],
                     ['value' => $hostingPlan->RAM . ' GB RAM'],
@@ -95,6 +94,11 @@ class CheckoutController extends Controller
         // Hitung harga berdasarkan TLD atau logika lainnya
         $price = $selectedTld ? $selectedTld->price : 0;
 
+        // Jika tidak ada hosting plan yang dipilih, ambil default hosting plan
+        if (!$hostingPlan) {
+            $hostingPlan = HostingPlan::first(); // atau logika lain untuk mendapatkan default plan
+        }
+
         return view('app.hosting-plans.checkout.index', [
             'tld_name' => $tld_name,
             'tlds' => $tlds,
@@ -107,8 +111,7 @@ class CheckoutController extends Controller
             'product_info' => $productInfo,
             'prices' => $prices,
             'addons' => $addons,
-            'order' => $order,
-            'hosting' => $hosting,
+            'hostingPlan' => $hostingPlan, // Pass hostingPlan ke view
         ]);
     }
 
@@ -431,6 +434,126 @@ class CheckoutController extends Controller
                 'success' => false,
                 'message' => 'Failed to save addons: ' . $e->getMessage()
             ], 500);
+        }
+    }
+
+    public function storeOrderHostingDetail(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            // Validate the request
+            $validated = $request->validate([
+                'order_id' => 'required|string',
+                'hosting_plans_id' => 'required|exists:hosting_plans,hosting_plans_id',
+                'name' => 'required|string',
+                'domain_name' => 'required|string',
+                'product_type' => 'required|string',
+                'package_type' => 'required|string',
+                'max_io' => 'integer',
+                'nproc' => 'integer',
+                'entry_process' => 'integer',
+                'ssl' => 'required|string',
+                'ram' => 'required|integer',
+                'cpu' => 'required|integer',
+                'storage' => 'required|integer',
+                'backup' => 'required|string',
+                'max_database' => 'required|string',
+                'max_bandwidth' => 'required|string',
+                'max_email_account' => 'required|string',
+                'max_domain' => 'required|string',
+                'max_addon_domain' => 'required|string',
+                'max_parked_domain' => 'required|string',
+                'ssh' => 'required|string',
+                'free_domain' => 'required|string',
+                'active_date' => 'required|date',
+                'expired_date' => 'required|date|after:active_date',
+                'periode' => 'required|string|in:monthly,quarterly,semi_annually,annually,biennially', // Ubah ini
+                'price' => 'required|integer'
+            ]);
+
+            // Get hosting plan data
+            $hostingPlan = HostingPlan::findOrFail($validated['hosting_plans_id']);
+
+            // Create order hosting detail
+            $orderHostingDetail = OrderHostingDetail::create([
+                'order_id' => $validated['order_id'],
+                'hosting_plans_id' => $validated['hosting_plans_id'],
+                'name' => $validated['name'],
+                'domain_name' => $validated['domain_name'],
+                'product_type' => $hostingPlan->product_type,
+                'package_type' => $hostingPlan->package_type,
+                'max_io' => $hostingPlan->max_io,
+                'nproc' => $hostingPlan->nproc,
+                'entry_process' => $hostingPlan->entry_process,
+                'ssl' => $hostingPlan->ssl,
+                'ram' => $validated['ram'],
+                'cpu' => $validated['cpu'],
+                'storage' => $validated['storage'],
+                'backup' => $hostingPlan->backup,
+                'max_database' => $hostingPlan->max_database,
+                'max_bandwidth' => $hostingPlan->max_bandwidth,
+                'max_email_account' => $hostingPlan->max_email_account,
+                'max_domain' => $hostingPlan->max_domain,
+                'max_addon_domain' => $hostingPlan->max_addon_domain,
+                'max_parked_domain' => $hostingPlan->max_parked_domain,
+                'ssh' => $hostingPlan->ssh,
+                'free_domain' => $hostingPlan->free_domain,
+                'active_date' => $validated['active_date'],
+                'expired_date' => $validated['expired_date'],
+                'periode' => $validated['periode'],
+                'price' => $validated['price']
+            ]);
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Data hosting berhasil disimpan!',
+                'data' => $orderHostingDetail
+            ], 200);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Validasi gagal',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat menyimpan data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Validasi harga sesuai dengan periode billing yang dipilih
+     */
+    private function validatePrice($billingPeriod, $selectedPrice)
+    {
+        // Ambil data harga yang valid dari database atau config
+        $validPrices = [
+            'monthly' => [
+                'price' => config('hosting.prices.monthly'),
+                'discount' => config('hosting.discounts.monthly')
+            ],
+            'quarterly' => [
+                'price' => config('hosting.prices.quarterly'),
+                'discount' => config('hosting.discounts.quarterly')
+            ],
+            // Tambahkan periode lainnya sesuai kebutuhan
+        ];
+
+        if (!isset($validPrices[$billingPeriod])) {
+            throw new \Exception('Periode billing tidak valid');
+        }
+
+        $expectedPrice = $validPrices[$billingPeriod]['price'];
+        $discount = $validPrices[$billingPeriod]['discount'];
+        $finalPrice = $expectedPrice - ($expectedPrice * ($discount / 100));
+
+        if ($selectedPrice !== (int)$finalPrice) {
+            throw new \Exception('Harga tidak sesuai dengan periode yang dipilih');
         }
     }
 }

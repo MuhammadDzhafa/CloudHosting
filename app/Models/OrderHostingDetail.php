@@ -10,16 +10,17 @@ class OrderHostingDetail extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $primaryKey = 'hosting_order_id';  // Menetapkan primary key
+    protected $primaryKey = 'hosting_order_id';
 
     protected $fillable = [
         'order_id',
-        'domain_option_id',
+        'hosting_plans_id',
         'name',
         'domain_name',
         'product_type',
-        'RAM',
-        'CPU',
+        'package_type',
+        'ram',
+        'cpu',
         'storage',
         'max_bandwidth',
         'max_domain',
@@ -32,6 +33,8 @@ class OrderHostingDetail extends Model
         'entry_process',
         'backup',
         'ssl',
+        'ssh',
+        'free_domain',
         'active_date',
         'expired_date',
         'periode',
@@ -42,19 +45,13 @@ class OrderHostingDetail extends Model
         'active_date' => 'date',
         'expired_date' => 'date',
         'price' => 'integer',
-        'RAM' => 'integer',
-        'CPU' => 'integer',
-        'storage' => 'integer',
-        'max_bandwidth' => 'integer',
-        'max_domain' => 'integer',
-        'max_addon_domain' => 'integer',
-        'max_parked_domain' => 'integer',
-        'max_email_account' => 'integer',
-        'max_database' => 'integer',
         'max_io' => 'integer',
         'nproc' => 'integer',
         'entry_process' => 'integer',
-        'periode' => 'integer',
+        'periode' => 'string',
+        'ram' => 'integer',
+        'cpu' => 'integer',
+        'storage' => 'integer',
     ];
 
     /**
@@ -95,5 +92,10 @@ class OrderHostingDetail extends Model
     public function domainOption()
     {
         return $this->belongsTo(DomainOption::class, 'domain_option_id', 'domain_option_id');
+    }
+
+    public function hostingPlan()
+    {
+        return $this->belongsTo(HostingPlan::class, 'hosting_plans_id');
     }
 }

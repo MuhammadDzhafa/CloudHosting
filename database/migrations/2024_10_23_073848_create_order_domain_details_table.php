@@ -10,7 +10,6 @@ class CreateOrderDomainDetailsTable extends Migration
     {
         Schema::create('order_domain_details', function (Blueprint $table) {
             $table->id();
-            $table->string('order_id'); // Kolom order_id untuk merujuk ke tabel orders
             $table->string('domain_name'); // Kolom nama domain
             $table->boolean('whois')->default(false); // Kolom untuk status WHOIS
             $table->boolean('dns_management')->default(false); // Kolom untuk status DNS management
@@ -22,12 +21,6 @@ class CreateOrderDomainDetailsTable extends Migration
 
             // Menambahkan kolom domain_order_id yang mengacu ke domain_options
             $table->unsignedBigInteger('domain_order_id')->nullable()->index();
-
-            // Menambahkan foreign key yang menghubungkan order_id ke tabel orders
-            $table->foreign('order_id')
-                ->references('order_id')
-                ->on('orders')
-                ->onDelete('restrict'); // Mengatur agar tidak bisa menghapus order jika ada detail domain terkait
 
             // Menambahkan foreign key yang menghubungkan domain_order_id ke domain_options
             $table->foreign('domain_order_id')

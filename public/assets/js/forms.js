@@ -86,68 +86,71 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
         
     
         // Handle tombol continue
-$("#next-button").on("click", function() {
-    const $button = $(this);
-    $button.addClass("is-loading");
-
-    console.log("Current step (i):", i);
-    console.log("Form step 3 active:", $("#form-step-3").hasClass("is-active"));
-
-    // Check if we're in hosting-only tab
-    if ($("#hosting-only").hasClass("is-active")) {
-        if (i === 0) {
-            i = 2;  // Langsung ke step 2 untuk hosting-only
-            proceedToNextStep();
-            return;
-        }
-        i += 1;  // Increment untuk step selanjutnya
-        proceedToNextStep();
-        return;
-    }
-
-    // Regular flow for other tabs
-    if (i === 0) {
-        proceedToNextStep();
-    } else if (i === 1) {
-        if ($("input[name='domain-choice']:checked").length === 0) {
-            showNotification('Please choose an option', 'error');
-            $button.removeClass("is-loading");
-            return;
-        }
-
-        const selectedChoice = $("input[name='domain-choice']:checked").val();
-        if (selectedChoice === "buy_with_hosting") {
-            saveDomainDetails(function() {
-                i = 2;
-                proceedToNextStep();
-            });
-        } else {
-            saveDomainDetails(function() {
-                i = 4;
-                proceedToNextStep();
-            });
-        }
-    } else if (i === 2) {
-        console.log("Inside step 3 check");
-        if ($("#form-step-3").hasClass("is-active")) {
-            console.log("Step 3 is active, saving addons...");
-            saveAddon(function() {
-                console.log("Addon saved successfully");
-                proceedToNextStep();
-            });
-        } else {
-            console.log("Step 3 is not active, skipping addon save");
-            proceedToNextStep();
-        }
-    } else if (i === 4) {
-        saveBillingAddress(function() {
-            proceedToNextStep();
-        });
-    } else {
-        proceedToNextStep();
-    }
-});
+        $("#next-button").on("click", function() {
+            const $button = $(this);
+            $button.addClass("is-loading");
         
+            console.log("Current step (i):", i);
+            console.log("Form step 3 active:", $("#form-step-3").hasClass("is-active"));
+        
+            // Check if we're in hosting-only tab
+            if ($("#hosting-only").hasClass("is-active")) {
+                if (i === 0) {
+                    i = 2;  // Langsung ke step 2 untuk hosting-only
+                    proceedToNextStep();
+                    $button.removeClass("is-loading");
+                    return;
+                }
+                i += 1;  // Increment untuk step selanjutnya
+                proceedToNextStep();
+                $button.removeClass("is-loading");
+                return;
+            }
+        
+            // Regular flow for other tabs
+            if (i === 0) {
+                proceedToNextStep();
+                $button.removeClass("is-loading");
+            } else if (i === 1) {
+                if ($("input[name='domain-choice']:checked").length === 0) {
+                    showNotification('Please choose an option', 'error');
+                    $button.removeClass("is-loading");
+                    return;
+                }
+        
+                const selectedChoice = $("input[name='domain-choice']:checked").val();
+                if (selectedChoice === "buy_with_hosting") {
+                    saveDomainDetails(function() {
+                        i = 2;
+                        proceedToNextStep();
+                        $button.removeClass("is-loading");
+                    });
+                } else {
+                    saveDomainDetails(function() {
+                        i = 4;
+                        proceedToNextStep();
+                        $button.removeClass("is-loading");
+                    });
+                }
+            } else if (i === 2) {
+                console.log("Inside step 3 check");
+                // Simpan data hosting
+                saveHostingDetails(function() {
+                    console.log("Hosting details saved successfully");
+                    i += 1;
+                    proceedToNextStep();
+                    $button.removeClass("is-loading");
+                });
+            } else if (i === 4) {
+                saveBillingAddress(function() {
+                    proceedToNextStep();
+                    $button.removeClass("is-loading");
+                });
+            } else {
+                proceedToNextStep();
+                $button.removeClass("is-loading");
+            }
+        });
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
@@ -196,6 +199,284 @@ $("#next-button").on("click", function() {
                 }
             });
         }
+
+        function saveHostingDetails(callback) {
+            // Ambil specs dari hidden input
+            const specsElement = document.getElementById('hosting-specs');
+            let specs = [];
+            
+            try {
+                if (specsElement && specsElement.dataset.specs) {
+                    specs = JSON.parse(specsElement.dataset.specs);
+                }
+            } catch (e) {
+                console.error('Error parsing specs:', e);
+            }
+        
+            // Dapatkan domain name
+            let domainName = '';
+            const h3DomainDisplay = $('#h3-domain-display').text().replace(/\n/g, '').trim();
+            if (h3DomainDisplay) {
+                domainName = h3DomainDisplay;
+            } else if ($('#domain_name').val()) {
+                domainName = $('#domain_name').val().trim();
+            } else if ($('input[name="domain_name"]').val()) {
+                domainName = $('input[name="domain_name"]').val().trim();
+            }
+        
+            let ram = 0, cpu = 0, storage = 0;
+            specs.forEach(spec => {
+                const value = spec.value;
+                if (value.includes('GB RAM')) {
+                    ram = parseInt(value);
+                } else if (value.includes('Core CPU')) {
+                    cpu = parseInt(value);
+                } else if (value.includes('GB SSD Storage')) {
+                    storage = parseInt(value);
+                }
+            });
+        
+            // Dapatkan hosting plan ID yang dipilih
+            const selectedHostingPlanId = $('input[name="hosting_plan_id"]').val();
+            console.log("Selected hosting plan ID:", selectedHostingPlanId);
+        
+            const activeDate = getCurrentDate();
+            const billingPeriod = $('input[name="billing_period"]:checked').val();
+        
+            const hostingData = {
+                order_id: $('input[name="order_id"]').val(),
+                hosting_plans_id: selectedHostingPlanId,
+                name: domainName,
+                domain_name: domainName,
+                product_type: $('#hosting_product_type').val() || 'Cloud Hosting',
+                package_type: $('#hosting_package_type').val() || 'Regular',
+                max_io: parseInt($('#hosting_max_io').val()) || 0,
+                nproc: parseInt($('#hosting_nproc').val()) || 0,
+                entry_process: parseInt($('#hosting_entry_process').val()) || 0,
+                ssl: $('#hosting_ssl').val() || 'Free',
+                ram: ram,
+                cpu: cpu,
+                storage: storage,
+                backup: $('#hosting_backup').val() || 'Weekly',
+                max_database: $('#hosting_max_database').val() || 'Unlimited',
+                max_bandwidth: $('#hosting_max_bandwidth').val() || 'Unlimited',
+                max_email_account: $('#hosting_max_email_account').val() || 'Unlimited',
+                max_domain: $('#hosting_max_domain').val() || 'Unlimited',
+                max_addon_domain: $('#hosting_max_addon_domain').val() || 'Unlimited',
+                max_parked_domain: $('#hosting_max_parked_domain').val() || 'Unlimited',
+                ssh: $('#hosting_ssh').val() || 'No',
+                free_domain: $('#hosting_free_domain').val() || 'No',
+                active_date: activeDate,
+                expired_date: calculateExpiredDate(activeDate, billingPeriod),
+                periode: getPeriodeFromBillingPeriod(billingPeriod),
+                price: getPriceForSelectedPeriod(),
+                billing_period: billingPeriod
+            };
+        
+            // Validasi
+            if (!hostingData.expired_date) {
+                showNotification('Gagal menghitung tanggal kedaluwarsa', 'error');
+                $("#next-button").removeClass("is-loading");
+                return;
+            }
+            
+            if (!hostingData.periode) {
+                showNotification('Periode tidak valid', 'error');
+                $("#next-button").removeClass("is-loading");
+                return;
+            }
+        
+            if (!hostingData.domain_name) {
+                showNotification('Domain name is required', 'error');
+                $("#next-button").removeClass("is-loading");
+                return;
+            }
+            
+            if (!hostingData.hosting_plans_id) {
+                showNotification('Please select a hosting plan', 'error');
+                $("#next-button").removeClass("is-loading");
+                return;
+            }
+            
+            if (!hostingData.price) {
+                showNotification('Please select a billing period', 'error');
+                $("#next-button").removeClass("is-loading");
+                return;
+            }
+        
+            $.ajax({
+                url: "/store-order-hosting-detail",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: hostingData,
+                success: function(response) {
+                    console.log("Hosting save response:", response);
+                    showNotification(response.message || 'Data hosting berhasil disimpan', 'success');
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                },
+                error: function(xhr) {
+                    console.error("Hosting save error:", xhr);
+                    const errorMsg = xhr.responseJSON?.message || 
+                                   xhr.responseJSON?.errors?.domain_name?.[0] || 
+                                   'Gagal menyimpan data hosting';
+                    showNotification(errorMsg, 'error');
+                    $("#next-button").removeClass("is-loading");
+                }
+            });
+        }
+        
+        // Helper functions
+        function getCurrentDate() {
+            return new Date().toISOString().split('T')[0];
+        }
+        
+        function calculateExpiredDate(activeDate, billingPeriod) {
+            const date = new Date(activeDate);
+            const monthsMap = {
+                'monthly': 1,
+                'quarterly': 3,
+                'semi_annually': 6,
+                'annually': 12,
+                'biennially': 24
+            };
+            const months = monthsMap[billingPeriod] || 0;
+            date.setMonth(date.getMonth() + months);
+            return date.toISOString().split('T')[0];
+        }
+        
+        function getPeriodeFromBillingPeriod(billingPeriod) {
+            const periodeMap = {
+                'monthly': 'monthly',
+                'quarterly': 'quarterly',
+                'semi_annually': 'semi_annually',
+                'annually': 'annually',
+                'biennially': 'biennially'
+            };
+            return periodeMap[billingPeriod] || '';
+        }
+        
+        function getPriceForSelectedPeriod() {
+            try {
+                const selectedPeriod = $('input[name="billing_period"]:checked');
+                if (!selectedPeriod.length) {
+                    console.log('No billing period selected');
+                    return 0;
+                }
+        
+                const cardElement = selectedPeriod.closest('.card-gradient');
+                if (!cardElement.length) {
+                    console.log('Card element not found');
+                    return 0;
+                }
+        
+                // Try to get price from data attribute
+                let price = parseInt(cardElement.data('price'));
+                if (price) {
+                    console.log('Price from data attribute:', price);
+                    return price;
+                }
+        
+                // Try to find price in span elements
+                const priceSpans = cardElement.find('span').filter(function() {
+                    return $(this).text().includes('Rp');
+                });
+        
+                if (priceSpans.length > 0) {
+                    const mainPriceSpan = priceSpans.filter(function() {
+                        return !$(this).hasClass('line-through') && 
+                               !$(this).parent().hasClass('line-through');
+                    }).first();
+        
+                    if (mainPriceSpan.length) {
+                        const priceText = mainPriceSpan.text();
+                        price = parseInt(priceText.replace(/[^\d]/g, ''));
+                        if (price) {
+                            console.log('Extracted price:', price);
+                            return price;
+                        }
+                    }
+                }
+        
+                // If still no price, try to find in text nodes
+                cardElement.contents().each(function() {
+                    if (this.nodeType === 3) { // Text node
+                        const text = $(this).text();
+                        if (text.includes('Rp')) {
+                            const extracted = parseInt(text.replace(/[^\d]/g, ''));
+                            if (extracted) {
+                                price = extracted;
+                                return false; // break loop
+                            }
+                        }
+                    }
+                });
+        
+                if (price) {
+                    console.log('Final price found:', price);
+                    return price;
+                }
+        
+                // Last resort: try regex on all text
+                const allText = cardElement.text();
+                const priceMatch = allText.match(/Rp[.\s]*([0-9.,]+)/);
+                if (priceMatch) {
+                    price = parseInt(priceMatch[1].replace(/[.,]/g, '')); console.log('Price from regex:', price);
+                    return price;
+                }
+        
+                console.log('No price found using any method');
+                return 0;
+        
+            } catch (error) {
+                console.error('Error getting price:', error);
+                return 0;
+            }
+        }
+        
+        // Tambahkan event listener untuk radio button
+        $('input[name="billing_period"]').on('change', function() {
+            console.log('Radio button changed:', $(this).val());
+            const price = getPriceForSelectedPeriod();
+            console.log('Price after selection:', price);
+        });
+        
+        // Debug function untuk memeriksa struktur card
+        function debugPriceStructure() {
+            $('.card-gradient').each(function(index) {
+                console.log(`Card ${index + 1}:`);
+                console.log('HTML:', $(this).html());
+                console.log('Text content:', $(this).text());
+                console.log('Radio button value:', $(this).find('input[name="billing_period"]').val());
+                $(this).find('span').each(function(i) {
+                    console.log(`Span ${i + 1}:`, {
+                        text: $(this).text(),
+                        classes: $(this).attr('class'),
+                        hasPrice: $(this).text().includes('Rp')
+                    });
+                });
+            });
+        }
+        
+        // Panggil debug function saat dokumen ready
+        $(document).ready(function() {
+            debugPriceStructure();
+            
+            // Log radio button state
+            console.log('Initial radio button state:', {
+                total: $('input[name="billing_period"]').length,
+                checked: $('input[name="billing_period"]:checked').length,
+                values: $('input[name="billing_period"]').map(function() {
+                    return {
+                        value: $(this).val(),
+                        checked: $(this).is(':checked')
+                    };
+                }).get()
+            });
+        });
 
         // Fungsi untuk menyimpan billing address (Step 5)
         function saveBillingAddress(callback) {

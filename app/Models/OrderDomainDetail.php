@@ -10,7 +10,6 @@ class OrderDomainDetail extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'order_id', 
         'domain_name', 
         'whois', 
         'dns_management', 
@@ -27,14 +26,6 @@ class OrderDomainDetail extends Model
         'whois' => 'boolean',
         'dns_management' => 'boolean',
     ];
-
-    /**
-     * Relasi ke Order (One to One).
-     */
-    public function order()
-    {
-        return $this->belongsTo(Order::class, 'order_id', 'order_id');
-    }
 
     /**
      * Relasi ke DomainOption (One to Many).

@@ -39,7 +39,11 @@
                         {{ ucfirst(str_replace('_', ' ', $price->duration)) }}
                     </span>
                     <label class="checkbox is-outlined is-circle is-info">
-                        <input type="radio" name="billing_period" value="{{ $price->duration }}" {{ $loop->first ? 'checked' : '' }}>
+                        <input type="radio"
+                            name="billing_period"
+                            value="{{ $price->duration }}"
+                            data-price="{{ $price->price_after }}"
+                            {{ $price->duration === 'monthly' ? 'checked' : '' }}>
                         <span></span>
                     </label>
                 </div>
@@ -77,7 +81,11 @@
                         {{ ucfirst(str_replace('_', ' ', $price->duration)) }}
                     </span>
                     <label class="checkbox is-outlined is-circle is-info">
-                        <input type="radio" name="billing_period" value="{{ $price->duration }}">
+                        <input type="radio"
+                            name="billing_period"
+                            value="{{ $price->duration }}"
+                            data-price="{{ $price->price_after }}"
+                            {{ $price->duration === 'monthly' ? 'checked' : '' }}>
                         <span></span>
                     </label>
                 </div>
@@ -106,3 +114,21 @@
         </div>
     </div>
 </div>
+
+{{-- Hidden inputs for hosting plan data --}}
+@if($hostingPlan)
+<input type="hidden" name="hosting_plan_id" value="{{ $hostingPlan->hosting_plans_id }}">
+<input type="hidden" id="hosting_product_type" value="{{ $hostingPlan->product_type }}">
+<input type="hidden" id="hosting_package_type" value="{{ $hostingPlan->package_type }}">
+<input type="hidden" id="hosting_max_io" value="{{ $hostingPlan->max_io }}">
+<input type="hidden" id="hosting_nproc" value="{{ $hostingPlan->nproc }}">
+<input type="hidden" id="hosting_entry_process" value="{{ $hostingPlan->entry_process }}">
+<input type="hidden" id="hosting_ssl" value="{{ $hostingPlan->ssl }}">
+<input type="hidden" id="hosting_backup" value="{{ $hostingPlan->backup }}">
+<input type="hidden" id="hosting_max_database" value="{{ $hostingPlan->max_database }}">
+<input type="hidden" id="hosting_max_bandwidth" value="{{ $hostingPlan->max_bandwidth }}">
+<input type="hidden" id="hosting_max_email_account" value="{{ $hostingPlan->max_email_account }}">
+<input type="hidden" id="hosting_max_domain" value="{{ $hostingPlan->max_domain }}">
+<input type="hidden" id="hosting_max_addon_domain" value="{{ $hostingPlan->max_addon_domain }}">
+<input type="hidden" id="hosting-specs" data-specs='@json($specs)'>
+@endif

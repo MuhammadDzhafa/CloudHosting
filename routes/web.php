@@ -202,3 +202,4 @@ Route::get('auth/google/phone', [RegisterController::class, 'showPhoneForm'])->n
 Route::post('auth/google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
 Route::post('/checkout', [CheckoutController::class, 'saveClientData'])->name('register');
 Route::post('/save-addons', [CheckoutController::class, 'saveAddons'])->name('addons.save');
+Route::post('/store-order-hosting-detail', [CheckoutController::class, 'storeOrderHostingDetail'])->name('store.order.hosting.detail');
