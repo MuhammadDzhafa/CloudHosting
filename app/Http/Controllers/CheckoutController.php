@@ -129,8 +129,8 @@ class CheckoutController extends Controller
                 'order_id' => 'required|string',
                 'domain_name' => 'required|string',
                 'price' => 'required|numeric',
-                'dns_management' => 'required|in:yes,no',
-                'whois' => 'required|in:yes,no',
+                'dns_management' => 'required|in:true,false', // menerima true/false sebagai string
+                'whois' => 'required|in:true,false', // menerima true/false sebagai string
                 'domain_option_id' => 'nullable|numeric'
             ]);
 
@@ -138,23 +138,23 @@ class CheckoutController extends Controller
             $userId = auth()->id(); // Ini bisa null jika pengguna tidak terautentikasi
 
             // Check if order exists
-            $existingOrder = Order::where('order_id', $request->order_id)->first();
+            $existingOrder = Order::where('order_id', $validatedData['order_id'])->first();
 
             if ($existingOrder) {
                 // Update existing order price
                 $existingOrder->update([
-                    'total_price' => $request->price
+                    'total_price' => $validatedData['price']
                 ]);
 
                 // Update or create domain details
                 $domainDetail = OrderDomainDetail::updateOrCreate(
-                    ['order_id' => $request->order_id],
+                    ['order_id' => $validatedData['order_id']],
                     [
-                        'domain_name' => $request->domain_name,
-                        'dns_management' => $request->dns_management === 'yes',
-                        'whois' => $request->whois === 'yes',
-                        'price' => (int)$request->price,
-                        'domain_option_id' => $request->domain_option_id,
+                        'domain_name' => $validatedData['domain_name'],
+                        'dns_management' => (bool)$validatedData['dns_management'],
+                        'whois' => (bool)$validatedData['whois'],
+                        'price' => (int)$validatedData['price'],
+                        'domain_option_id' => $validatedData['domain_option_id'],
                         'active_date' => now(),
                         'expired_date' => now()->addYear()
                     ]
@@ -172,31 +172,31 @@ class CheckoutController extends Controller
                 ]);
             }
 
+            // Data untuk order baru
             $orderData = [
-                'order_id' => $request->order_id,
+                'order_id' => $validatedData['order_id'],
                 'status' => 'pending',
-                'total_price' => (int)$request->price,
+                'total_price' => (int)$validatedData['price'],
                 'payment_method' => 'pending',
                 'date_created' => now(),
             ];
 
-            // Hanya masukkan user_id jika ada
+            // Tambahkan user_id jika ada
             if ($userId) {
-                $orderData['user_id'] = $userId; // Ini akan menambahkan user_id jika pengguna terautentikasi
+                $orderData['user_id'] = $userId;
             }
 
             // Buat order baru
             $order = Order::create($orderData);
 
-
             // Buat detail domain baru
             $domainDetail = OrderDomainDetail::create([
-                'order_id' => $request->order_id,
-                'domain_name' => $request->domain_name,
-                'dns_management' => $request->dns_management === 'yes',
-                'whois' => $request->whois === 'yes',
-                'price' => (int)$request->price,
-                'domain_option_id' => $request->domain_option_id,
+                'order_id' => $validatedData['order_id'],
+                'domain_name' => $validatedData['domain_name'],
+                'dns_management' => (bool)$validatedData['dns_management'],
+                'whois' => (bool)$validatedData['whois'],
+                'price' => (int)$validatedData['price'],
+                'domain_option_id' => $validatedData['domain_option_id'],
                 'active_date' => now(),
                 'expired_date' => now()->addYear()
             ]);
@@ -222,7 +222,6 @@ class CheckoutController extends Controller
             ], 500);
         }
     }
-
 
 
     // Method baru untuk update billing address nanti di step 5
@@ -442,21 +441,20 @@ class CheckoutController extends Controller
         try {
             DB::beginTransaction();
 
-            // Validate the request
+            // Validasi request
             $validated = $request->validate([
                 'order_id' => 'required|string',
                 'hosting_plans_id' => 'required|exists:hosting_plans,hosting_plans_id',
-                'name' => 'required|string',
                 'domain_name' => 'required|string',
                 'product_type' => 'required|string',
                 'package_type' => 'required|string',
-                'max_io' => 'integer',
-                'nproc' => 'integer',
-                'entry_process' => 'integer',
+                'max_io' => 'nullable|string',
+                'nproc' => 'nullable|string',
+                'entry_process' => 'nullable|string',
                 'ssl' => 'required|string',
-                'ram' => 'required|integer',
-                'cpu' => 'required|integer',
-                'storage' => 'required|integer',
+                'ram' => 'required|integer|min:1',
+                'cpu' => 'required|integer|min:1',
+                'storage' => 'required|integer|min:1',
                 'backup' => 'required|string',
                 'max_database' => 'required|string',
                 'max_bandwidth' => 'required|string',
@@ -468,63 +466,56 @@ class CheckoutController extends Controller
                 'free_domain' => 'required|string',
                 'active_date' => 'required|date',
                 'expired_date' => 'required|date|after:active_date',
-                'periode' => 'required|string|in:monthly,quarterly,semi_annually,annually,biennially', // Ubah ini
-                'price' => 'required|integer'
+                'period' => 'required|string|in:monthly,quarterly,semi_annually,annually,biennially',
+                'price' => 'required|integer',
             ]);
 
-            // Get hosting plan data
             $hostingPlan = HostingPlan::findOrFail($validated['hosting_plans_id']);
 
-            // Create order hosting detail
             $orderHostingDetail = OrderHostingDetail::create([
                 'order_id' => $validated['order_id'],
                 'hosting_plans_id' => $validated['hosting_plans_id'],
-                'name' => $validated['name'],
+                'name' => $hostingPlan->name,
                 'domain_name' => $validated['domain_name'],
                 'product_type' => $hostingPlan->product_type,
                 'package_type' => $hostingPlan->package_type,
-                'max_io' => $hostingPlan->max_io,
-                'nproc' => $hostingPlan->nproc,
-                'entry_process' => $hostingPlan->entry_process,
-                'ssl' => $hostingPlan->ssl,
+                'max_io' => $validated['max_io'] ?? $hostingPlan->max_io,
+                'nproc' => $validated['nproc'] ?? $hostingPlan->nproc,
+                'entry_process' => $validated['entry_process'] ?? $hostingPlan->entry_process,
+                'ssl' => $validated['ssl'] ?? $hostingPlan->ssl,
                 'ram' => $validated['ram'],
                 'cpu' => $validated['cpu'],
                 'storage' => $validated['storage'],
-                'backup' => $hostingPlan->backup,
-                'max_database' => $hostingPlan->max_database,
-                'max_bandwidth' => $hostingPlan->max_bandwidth,
-                'max_email_account' => $hostingPlan->max_email_account,
-                'max_domain' => $hostingPlan->max_domain,
-                'max_addon_domain' => $hostingPlan->max_addon_domain,
-                'max_parked_domain' => $hostingPlan->max_parked_domain,
-                'ssh' => $hostingPlan->ssh,
-                'free_domain' => $hostingPlan->free_domain,
+                'backup' => $validated['backup'] ?? $hostingPlan->backup,
+                'max_database' => $validated['max_database'] ?? $hostingPlan->max_database,
+                'max_bandwidth' => $validated['max_bandwidth'] ?? $hostingPlan->max_bandwidth,
+                'max_email_account' => $validated['max_email_account'] ?? $hostingPlan->max_email_account,
+                'max_domain' => $validated['max_domain'] ?? $hostingPlan->max_domain,
+                'max_addon_domain' => $validated['max_addon_domain'] ?? $hostingPlan->max_addon_domain,
+                'max_parked_domain' => $validated['max_parked_domain'] ?? $hostingPlan->max_parked_domain,
+                'ssh' => $validated['ssh'] ?? $hostingPlan->ssh,
+                'free_domain' => $validated['free_domain'] ?? $hostingPlan->free_domain,
                 'active_date' => $validated['active_date'],
                 'expired_date' => $validated['expired_date'],
-                'periode' => $validated['periode'],
+                'periode' => $validated['period'],
                 'price' => $validated['price']
             ]);
 
             DB::commit();
-
             return response()->json([
-                'message' => 'Data hosting berhasil disimpan!',
-                'data' => $orderHostingDetail
+                'message' => 'Data hosting berhasil disimpan',
+                'order_id' => $orderHostingDetail->order_id,
             ], 200);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            DB::rollBack();
-            return response()->json([
-                'message' => 'Validasi gagal',
-                'errors' => $e->errors()
-            ], 422);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
-                'message' => 'Terjadi kesalahan saat menyimpan data',
-                'error' => $e->getMessage()
+                'message' => 'Gagal menyimpan data hosting',
+                'error' => $e->getMessage(),
             ], 500);
         }
     }
+
+
 
     /**
      * Validasi harga sesuai dengan periode billing yang dipilih

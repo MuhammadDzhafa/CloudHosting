@@ -13,17 +13,17 @@ $(document).ready(function () {
         let i = 0; // Ganti var s menjadi let i 
     
         // Event handler untuk checkbox addon
-$("#form-step-3 input[type='checkbox']").on('change', function() {
-    console.log('Addon checkbox changed:', $(this).attr('name'), $(this).is(':checked'));
-    calculateAndUpdateTotal();
+    $("#form-step-3 input[type='checkbox']").on('change', function() {
+        console.log('Addon checkbox changed:', $(this).attr('name'), $(this).is(':checked'));
+        calculateAndUpdateTotal();
 
-    if ($("#form-step-3").hasClass("is-active")) {
-        console.log("Step 3 is active, saving addons...");
-        saveAddon(function() {
-            console.log("Addon saved successfully");
-        });
-    }
-});
+        if ($("#form-step-3").hasClass("is-active")) {
+            console.log("Step 3 is active, saving addons...");
+            saveAddon(function() {
+                console.log("Addon saved successfully");
+            });
+        }
+    });
 
         // Setup awal fungsi saveAddon
         function saveAddon(callback) {
@@ -90,95 +90,90 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
             const $button = $(this);
             $button.addClass("is-loading");
         
-            console.log("Current step (i):", i);
-            console.log("Form step 3 active:", $("#form-step-3").hasClass("is-active"));
+            console.log("Current step:", currentStep);
         
-            // Check if we're in hosting-only tab
-            if ($("#hosting-only").hasClass("is-active")) {
-                if (i === 0) {
-                    i = 2;  // Langsung ke step 2 untuk hosting-only
+            const activeTab = $('.tabs ul li.is-active').data('tab');
+        
+            if (activeTab === 'hosting-only') {
+                // Alur untuk hosting-only
+                if (currentStep === 0) {
+                    currentStep = 1; // Mulai dari step 1 untuk hosting-only
                     proceedToNextStep();
-                    $button.removeClass("is-loading");
-                    return;
-                }
-                i += 1;  // Increment untuk step selanjutnya
-                proceedToNextStep();
-                $button.removeClass("is-loading");
-                return;
-            }
-        
-            // Regular flow for other tabs
-            if (i === 0) {
-                proceedToNextStep();
-                $button.removeClass("is-loading");
-            } else if (i === 1) {
-                if ($("input[name='domain-choice']:checked").length === 0) {
-                    showNotification('Please choose an option', 'error');
-                    $button.removeClass("is-loading");
-                    return;
-                }
-        
-                const selectedChoice = $("input[name='domain-choice']:checked").val();
-                if (selectedChoice === "buy_with_hosting") {
-                    saveDomainDetails(function() {
-                        i = 2;
+                } else if (currentStep === 1) {
+                    // Simpan data hosting default
+                    saveDefaultHostingDetails(function() {
                         proceedToNextStep();
-                        $button.removeClass("is-loading");
                     });
                 } else {
-                    saveDomainDetails(function() {
-                        i = 4;
-                        proceedToNextStep();
-                        $button.removeClass("is-loading");
-                    });
+                    // Untuk step selanjutnya, lanjutkan seperti biasa
+                    proceedToNextStep();
                 }
-            } else if (i === 2) {
-                console.log("Inside step 3 check");
-                // Simpan data hosting
-                saveHostingDetails(function() {
-                    console.log("Hosting details saved successfully");
-                    i += 1;
-                    proceedToNextStep();
-                    $button.removeClass("is-loading");
-                });
-            } else if (i === 4) {
-                saveBillingAddress(function() {
-                    proceedToNextStep();
-                    $button.removeClass("is-loading");
-                });
             } else {
-                proceedToNextStep();
-                $button.removeClass("is-loading");
+                // Alur regular (new domain & transfer domain)
+                switch(currentStep) {
+                    case 0:
+                        proceedToNextStep();
+                        break;
+                    case 1:
+                        if ($("input[name='domain-choice']:checked").length === 0) {
+                            showNotification('Please choose an option', 'error');
+                            $button.removeClass("is-loading");
+                            return;
+                        }
+                        saveDomainDetails(function() {
+                            proceedToNextStep();
+                        });
+                        break;
+                    case 2:
+                        saveHostingDetails(function() {
+                            proceedToNextStep();
+                        });
+                        break;
+                    case 3:
+                        saveAddon(function() {
+                            proceedToNextStep();
+                        });
+                        break;
+                    case 4:
+                        saveBillingAddress(function() {
+                            proceedToNextStep();
+                        });
+                        break;
+                    case 5:
+                        completeOrder();
+                        break;
+                }
             }
+            $button.removeClass("is-loading");
         });
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
-            // Calculate total price based on selections
+            // Menghitung total harga berdasarkan pilihan
             let basePrice = parseFloat($('#domain_price').val() || 0);
-
-            // Add DNS management price if selected
+        
+            // Menambahkan harga manajemen DNS jika dipilih
             if ($('input[name="dns_management"]').is(':checked')) {
                 basePrice += 20000;
             }
-
-            // Add WHOIS price if selected
+        
+            // Menambahkan harga WHOIS jika dipilih
             if ($('input[name="whois"]').is(':checked')) {
                 basePrice += 20000;
             }
-
-            // Prepare the data
+        
+            // Menyiapkan data
             const data = {
                 order_id: $('#order_id').val(),
                 domain_name: $('#h3-domain-display').text().trim(),
                 price: Math.round(basePrice),
-                dns_management: $('input[name="dns_management"]').is(':checked') ? 'yes' : 'no',
-                whois: $('input[name="whois"]').is(':checked') ? 'yes' : 'no',
+                dns_management: $('input[name="dns_management"]').is(':checked'), // Mengirim sebagai boolean
+                whois: $('input[name="whois"]').is(':checked'), // Mengirim sebagai boolean
                 domain_option_id: $('#domain_option_id').val() || null
             };
-
+        
             console.log('Preparing to send domain data:', data);
-
+        
             $.ajax({
                 url: '/save-domain-details',
                 method: 'POST',
@@ -186,6 +181,7 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
                 success: function (response) {
                     console.log('Success response:', response);
                     if (response.success) {
+                        console.log("Callback is being called."); 
                         if (typeof callback === 'function') {
                             callback(response.data);
                         }
@@ -195,16 +191,89 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
                     }
                 },
                 error: function (xhr, status, error) {
+                    console.error("Error occurred:", xhr);
                     handleAjaxError(xhr, status, error);
                 }
             });
         }
+        
 
+        function saveDefaultHostingDetails(callback) {
+            const orderId = generateUniqueOrderId();
+            const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        
+            const defaultHostingData = {
+                order_id: orderId,
+                status: 'pending',
+                payment_method: 'pending',
+                date_created: currentDate,
+                hosting_plans_id: 1,
+                name: 'default',
+                domain_name: 'default',
+                product_type: 'Hosting Only',
+                package_type: 'Regular',
+                max_io: 0,
+                nproc: 0,
+                entry_process: 0,
+                ssl: 'No',
+                ram: 0,
+                cpu: 0,
+                storage: 0,
+                backup: 'No',
+                max_database: '0',
+                max_bandwidth: '0',
+                max_email_account: '0',
+                max_domain: '0',
+                max_addon_domain: '0',
+                max_parked_domain: '0',
+                ssh: 'No',
+                free_domain: 'No',
+                active_date: getCurrentDate(),
+                expired_date: calculateExpiredDate(getCurrentDate(), 'monthly'),
+                periode: 'monthly',
+                price: 0,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+        
+            // Log data that will be sent
+            console.log('Sending default hosting data:', defaultHostingData);
+        
+            $.ajax({
+                url: "/store-order-hosting-detail",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json'
+                },
+                data: defaultHostingData,
+                success: function(response) {
+                    console.log("Default hosting data saved:", response);
+                    if (response.order_id) {
+                        $('input[name="order_id"]').val(response.order_id);
+                    }
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                },
+                error: function(xhr) {
+                    console.error("Error saving default hosting data:", xhr);
+                    console.error("Response Text:", xhr.responseText);
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                }
+            });
+        }
+        
+        function generateUniqueOrderId() {
+            return 'ORD-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        }
+        
+        
         function saveHostingDetails(callback) {
-            // Ambil specs dari hidden input
             const specsElement = document.getElementById('hosting-specs');
             let specs = [];
-            
+        
             try {
                 if (specsElement && specsElement.dataset.specs) {
                     specs = JSON.parse(specsElement.dataset.specs);
@@ -213,16 +282,8 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
                 console.error('Error parsing specs:', e);
             }
         
-            // Dapatkan domain name
-            let domainName = '';
-            const h3DomainDisplay = $('#h3-domain-display').text().replace(/\n/g, '').trim();
-            if (h3DomainDisplay) {
-                domainName = h3DomainDisplay;
-            } else if ($('#domain_name').val()) {
-                domainName = $('#domain_name').val().trim();
-            } else if ($('input[name="domain_name"]').val()) {
-                domainName = $('input[name="domain_name"]').val().trim();
-            }
+            // Collect domain name
+            let domainName = $('#h3-domain-display').text().trim() || $('#domain_name').val().trim() || $('input[name="domain_name"]').val().trim();
         
             let ram = 0, cpu = 0, storage = 0;
             specs.forEach(spec => {
@@ -236,73 +297,73 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
                 }
             });
         
-            // Dapatkan hosting plan ID yang dipilih
             const selectedHostingPlanId = $('input[name="hosting_plan_id"]').val();
-            console.log("Selected hosting plan ID:", selectedHostingPlanId);
-        
             const activeDate = getCurrentDate();
+        
+            // Declare billingPeriod and ensure it is initialized before use
             const billingPeriod = $('input[name="billing_period"]:checked').val();
         
-            const hostingData = {
-                order_id: $('input[name="order_id"]').val(),
-                hosting_plans_id: selectedHostingPlanId,
-                name: domainName,
-                domain_name: domainName,
-                product_type: $('#hosting_product_type').val() || 'Cloud Hosting',
-                package_type: $('#hosting_package_type').val() || 'Regular',
-                max_io: parseInt($('#hosting_max_io').val()) || 0,
-                nproc: parseInt($('#hosting_nproc').val()) || 0,
-                entry_process: parseInt($('#hosting_entry_process').val()) || 0,
-                ssl: $('#hosting_ssl').val() || 'Free',
-                ram: ram,
-                cpu: cpu,
-                storage: storage,
-                backup: $('#hosting_backup').val() || 'Weekly',
-                max_database: $('#hosting_max_database').val() || 'Unlimited',
-                max_bandwidth: $('#hosting_max_bandwidth').val() || 'Unlimited',
-                max_email_account: $('#hosting_max_email_account').val() || 'Unlimited',
-                max_domain: $('#hosting_max_domain').val() || 'Unlimited',
-                max_addon_domain: $('#hosting_max_addon_domain').val() || 'Unlimited',
-                max_parked_domain: $('#hosting_max_parked_domain').val() || 'Unlimited',
-                ssh: $('#hosting_ssh').val() || 'No',
-                free_domain: $('#hosting_free_domain').val() || 'No',
-                active_date: activeDate,
-                expired_date: calculateExpiredDate(activeDate, billingPeriod),
-                periode: getPeriodeFromBillingPeriod(billingPeriod),
-                price: getPriceForSelectedPeriod(),
-                billing_period: billingPeriod
-            };
-        
-            // Validasi
-            if (!hostingData.expired_date) {
-                showNotification('Gagal menghitung tanggal kedaluwarsa', 'error');
-                $("#next-button").removeClass("is-loading");
-                return;
-            }
-            
-            if (!hostingData.periode) {
-                showNotification('Periode tidak valid', 'error');
+            // Validate billingPeriod
+            if (!billingPeriod) {
+                showNotification('Billing period is required', 'error');
                 $("#next-button").removeClass("is-loading");
                 return;
             }
         
-            if (!hostingData.domain_name) {
-                showNotification('Domain name is required', 'error');
+            const expiredDate = calculateExpiredDate(activeDate, billingPeriod);
+            const periode = getPeriodeFromBillingPeriod(billingPeriod);
+        
+            if (!expiredDate || !periode) {
+                showNotification('Invalid period or failed to calculate expiration date', 'error');
                 $("#next-button").removeClass("is-loading");
                 return;
             }
-            
-            if (!hostingData.hosting_plans_id) {
-                showNotification('Please select a hosting plan', 'error');
+        
+            if (!domainName || !selectedHostingPlanId) {
+                showNotification('Domain name and hosting plan ID are required', 'error');
                 $("#next-button").removeClass("is-loading");
                 return;
             }
-            
-            if (!hostingData.price) {
+        
+            const price = getPriceForSelectedPeriod();
+            if (!price) {
                 showNotification('Please select a billing period', 'error');
                 $("#next-button").removeClass("is-loading");
                 return;
             }
+        
+            // Now ensure that period is included in the hostingData
+            const hostingData = {
+                order_id: $('input[name="order_id"]').val(),
+                hosting_plans_id: selectedHostingPlanId,
+                domain_name: domainName,
+                ram: ram,
+                cpu: cpu,
+                storage: storage,
+                active_date: activeDate,
+                expired_date: expiredDate,
+                period: billingPeriod, // Gunakan 'period' di sini sesuai dengan nama field di database
+                price: price,
+                product_type: 'Hosting Only',
+                package_type: 'Regular',
+                max_io: '0',
+                nproc: '0',
+                entry_process: '0',
+                ssl: 'No',
+                backup: 'No',
+                max_database: '0',
+                max_bandwidth: '0',
+                max_email_account: '0',
+                max_domain: '0',
+                max_addon_domain: '0',
+                max_parked_domain: '0',
+                ssh: 'No',
+                free_domain: 'No',
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+            
+        
+            console.log('Hosting Data:', hostingData);
         
             $.ajax({
                 url: "/store-order-hosting-detail",
@@ -320,14 +381,17 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
                 },
                 error: function(xhr) {
                     console.error("Hosting save error:", xhr);
-                    const errorMsg = xhr.responseJSON?.message || 
-                                   xhr.responseJSON?.errors?.domain_name?.[0] || 
-                                   'Gagal menyimpan data hosting';
+                    const errorMsg = xhr.responseJSON?.message || xhr.responseJSON?.errors?.domain_name?.[0] || 'Gagal menyimpan data hosting';
                     showNotification(errorMsg, 'error');
                     $("#next-button").removeClass("is-loading");
                 }
             });
         }
+        
+        
+        
+        
+
         
         // Helper functions
         function getCurrentDate() {
@@ -696,28 +760,28 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
             return true;
         }
 
+        let currentStep = 0; // Gunakan variabel ini sebagai pengganti i
+        
         function proceedToNextStep() {
             const $button = $("#next-button");
             $button.addClass("is-loading");
-        
+
             setTimeout(function() {
                 $button.removeClass("is-loading");
-        
+
                 $(".form-step").removeClass("is-active");
-                if (!$("#hosting-only").hasClass("is-active")) {
-                    i += 1;  // Increment i hanya untuk non-hosting-only tabs
-                }
-                $("#form-step-" + i).addClass("is-active");
-        
+                currentStep += 1;
+                $("#form-step-" + currentStep).addClass("is-active");
+
                 $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
-                $("#step-segment-" + i).addClass("is-active");
-                $("#mobile-step-segment-" + i).addClass("is-active");
-        
+                $("#step-segment-" + currentStep).addClass("is-active");
+                $("#mobile-step-segment-" + currentStep).addClass("is-active");
+
                 $("html, body").animate({
-                    scrollTop: $("#form-step-" + i).offset().top
+                    scrollTop: $("#form-step-" + currentStep).offset().top
                 }, 500);
-        
-                if (i === 5) {
+
+                if (currentStep === 5) {
                     $("#next-button").text("Complete Order");
                 }
             }, 800);
@@ -779,3 +843,4 @@ $("#form-step-3 input[type='checkbox']").on('change', function() {
         return total;
     }
 });
+

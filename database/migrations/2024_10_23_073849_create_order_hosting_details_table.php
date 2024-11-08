@@ -6,66 +6,41 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('order_hosting_details', function (Blueprint $table) {
-            $table->id('hosting_order_id');
-
-            // Foreign Keys
-            $table->string('order_id');
-            $table->unsignedBigInteger('hosting_plans_id');
-
-            // Informasi Dasar
-            $table->string('name', 100);
-            $table->string('domain_name');
-            $table->string('product_type', 50);
-            $table->string('package_type', 50);
-
-            // Spesifikasi Sumber Daya
-            $table->string('max_bandwidth')->default('Unlimited');
-
-            // Batasan Terkait Domain
-            $table->string('max_domain')->default('Unlimited');
-            $table->string('max_addon_domain')->default('Unlimited');
-            $table->string('max_parked_domain')->default('Unlimited');
-
-            // Batasan Sumber Daya Lainnya
-            $table->string('max_email_account')->default('Unlimited');
-            $table->string('max_database')->default('Unlimited');
-            $table->integer('max_io')->default(0);
-            $table->integer('nproc')->default(0);
-            $table->integer('entry_process')->default(0);
-
-            // Fitur
-            $table->string('backup')->default('');
-            $table->string('ssl')->default('');
-            $table->string('ssh')->default('');
-            $table->string('free_domain')->default('');
-
-            // Tanggal dan Periode
-            $table->date('active_date');
-            $table->date('expired_date');
-            $table->string('periode');
-
-            // Penentuan Harga
-            $table->integer('price')->default(0);
-
-            $table->timestamps();
-            $table->softDeletes();
-
-            // Menambahkan Foreign Key Constraints
-            $table->foreign('order_id')
-                ->references('order_id')
-                ->on('orders')
-                ->onDelete('cascade');
-
-            $table->foreign('hosting_plans_id')
-                ->references('hosting_plans_id') // Mengacu pada hosting_plans_id di tabel hosting_plans
-                ->on('hosting_plans')
-                ->onDelete('cascade');
+            $table->id('hosting_order_id'); // Menetapkan hosting_order_id sebagai primary key
+            $table->string('name'); // Nama hosting
+            $table->string('domain_name'); // Nama domain
+            $table->string('product_type'); // Jenis produk
+            $table->string('max_io'); // Max I/O
+            $table->string('nproc'); // Jumlah proses
+            $table->string('entry_process'); // Proses entri
+            $table->string('ssl'); // SSL
+            $table->string('ram'); // RAM
+            $table->string('cpu'); // CPU
+            $table->string('storage'); // Penyimpanan
+            $table->string('backup'); // Backup
+            $table->string('max_database'); // Max database
+            $table->string('max_bandwidth'); // Max bandwidth
+            $table->string('max_email_account'); // Max akun email
+            $table->string('max_domain'); // Max domain
+            $table->string('max_addon_domain'); // Max addon domain
+            $table->string('max_parked_domain'); // Max parked domain
+            $table->string('period')->default('monthly'); // Menambahkan nilai default 'monthly'
+            $table->timestamp('active_date'); // Tanggal aktif
+            $table->timestamp('expired_date'); // Tanggal kedaluwarsa
+            $table->integer('price'); // Harga menggunakan integer
+            $table->timestamps(); // Timestamps (created_at, updated_at)
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('order_hosting_details');

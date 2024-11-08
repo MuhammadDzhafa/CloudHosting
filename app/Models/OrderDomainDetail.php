@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class OrderDomainDetail extends Model
 {
     use SoftDeletes;
+    // Primary key sesuai diagram
+    protected $primaryKey = 'domain_order_id';
 
     protected $fillable = [
-        'domain_name', 
-        'whois', 
-        'dns_management', 
-        'price', 
-        'active_date', 
-        'expired_date',
-        'domain_order_id'  // Menambahkan domain_order_id ke daftar fillable
+        'domain_name',
+        'whois',
+        'dns_management',
+        'price',
+        'active_date',
+        'expired_date'
     ];
 
     protected $casts = [
@@ -26,6 +27,7 @@ class OrderDomainDetail extends Model
         'whois' => 'boolean',
         'dns_management' => 'boolean',
     ];
+
 
     /**
      * Relasi ke DomainOption (One to Many).

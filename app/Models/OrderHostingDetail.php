@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -10,15 +9,19 @@ class OrderHostingDetail extends Model
 {
     use HasFactory, SoftDeletes;
 
+    // Menetapkan hosting_order_id sebagai primary key
     protected $primaryKey = 'hosting_order_id';
 
+    // Menetapkan apakah kolom hosting_order_id akan auto increment
+    public $incrementing = true;
+
+    // Tentukan tipe data untuk primary key jika bukan integer
+    protected $keyType = 'int';
+
     protected $fillable = [
-        'order_id',
-        'hosting_plans_id',
         'name',
         'domain_name',
         'product_type',
-        'package_type',
         'ram',
         'cpu',
         'storage',
@@ -33,11 +36,9 @@ class OrderHostingDetail extends Model
         'entry_process',
         'backup',
         'ssl',
-        'ssh',
-        'free_domain',
         'active_date',
         'expired_date',
-        'periode',
+        'period',
         'price',
     ];
 
@@ -48,10 +49,18 @@ class OrderHostingDetail extends Model
         'max_io' => 'integer',
         'nproc' => 'integer',
         'entry_process' => 'integer',
-        'periode' => 'string',
-        'ram' => 'integer',
-        'cpu' => 'integer',
-        'storage' => 'integer',
+        'period' => 'string',
+        'ram' => 'string',
+        'cpu' => 'string',
+        'storage' => 'string',
+        'max_bandwidth' => 'string',
+        'max_domain' => 'string',
+        'max_addon_domain' => 'string',
+        'max_parked_domain' => 'string',
+        'max_email_account' => 'string',
+        'max_database' => 'string',
+        'backup' => 'string',
+        'ssl' => 'string',
     ];
 
     /**
@@ -86,16 +95,4 @@ class OrderHostingDetail extends Model
         return $this->belongsTo(Order::class, 'order_id', 'order_id');
     }
 
-    /**
-     * Relasi ke DomainOption (One to Many).
-     */
-    public function domainOption()
-    {
-        return $this->belongsTo(DomainOption::class, 'domain_option_id', 'domain_option_id');
-    }
-
-    public function hostingPlan()
-    {
-        return $this->belongsTo(HostingPlan::class, 'hosting_plans_id');
-    }
 }
