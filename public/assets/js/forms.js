@@ -196,12 +196,11 @@ $(document).ready(function () {
                 }
             });
         }
-        
 
         function saveDefaultHostingDetails(callback) {
             const orderId = generateUniqueOrderId();
             const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
-        
+            
             const defaultHostingData = {
                 order_id: orderId,
                 status: 'pending',
@@ -235,7 +234,7 @@ $(document).ready(function () {
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
         
-            // Log data that will be sent
+            // Log data yang akan dikirim
             console.log('Sending default hosting data:', defaultHostingData);
         
             $.ajax({
@@ -264,11 +263,10 @@ $(document).ready(function () {
                 }
             });
         }
-        
+
         function generateUniqueOrderId() {
             return 'ORD-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         }
-        
         
         function saveHostingDetails(callback) {
             const specsElement = document.getElementById('hosting-specs');
@@ -342,7 +340,7 @@ $(document).ready(function () {
                 storage: storage,
                 active_date: activeDate,
                 expired_date: expiredDate,
-                period: billingPeriod, // Gunakan 'period' di sini sesuai dengan nama field di database
+                period: billingPeriod,
                 price: price,
                 product_type: 'Hosting Only',
                 package_type: 'Regular',
@@ -359,6 +357,10 @@ $(document).ready(function () {
                 max_parked_domain: '0',
                 ssh: 'No',
                 free_domain: 'No',
+                status: 'pending', // Status harus ada
+                payment_method: 'credit_card', // Payment method harus ada
+                date_created: new Date().toISOString(), // Pastikan ada
+                name: 'John Doe', // Pastikan nama ada
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
             
@@ -387,9 +389,6 @@ $(document).ready(function () {
                 }
             });
         }
-        
-        
-        
         
 
         
