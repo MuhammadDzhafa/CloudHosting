@@ -392,8 +392,8 @@ class CheckoutController extends Controller
         // Validasi input dengan aturan yang lebih spesifik
         $validated = $request->validate([
             'order_id' => 'required|string',
-            'daily_backup' => 'required|in:0,1,true,false',  // Terima berbagai format boolean
-            'email_protection' => 'required|in:0,1,true,false',  // Terima berbagai format boolean
+            'daily_backup' => 'required|in:0,1,true,false',
+            'email_protection' => 'required|in:0,1,true,false',
             'price' => 'required|integer|min:0',
             'domain_order_id' => 'nullable|string|exists:order_domain_details,domain_order_id',
         ]);
@@ -401,17 +401,15 @@ class CheckoutController extends Controller
         try {
             DB::beginTransaction();
 
-            // Konversi nilai boolean secara eksplisit
-            $addon = Addon::updateOrCreate(
-                ['domain_order_id' => $request->input('domain_order_id')],
-                [
-                    'daily_backup' => filter_var($request->input('daily_backup'), FILTER_VALIDATE_BOOLEAN),
-                    'email_protection' => filter_var($request->input('email_protection'), FILTER_VALIDATE_BOOLEAN),
-                    'price' => $request->input('price', 0),
-                    'active_date' => now(),
-                    'expired_date' => now()->addYear()
-                ]
-            );
+            // Menambahkan entri baru
+            $addon = Addon::create([
+                'domain_order_id' => $request->input('domain_order_id'),
+                'daily_backup' => filter_var($request->input('daily_backup'), FILTER_VALIDATE_BOOLEAN),
+                'email_protection' => filter_var($request->input('email_protection'), FILTER_VALIDATE_BOOLEAN),
+                'price' => $request->input('price', 0),
+                'active_date' => now(),
+                'expired_date' => now()->addYear()
+            ]);
 
             DB::commit();
 

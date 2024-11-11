@@ -90,8 +90,6 @@ $(document).ready(function () {
             const $button = $(this);
             $button.addClass("is-loading");
         
-            console.log("Current step:", currentStep);
-        
             const activeTab = $('.tabs ul li.is-active').data('tab');
         
             if (activeTab === 'hosting-only') {
@@ -102,6 +100,21 @@ $(document).ready(function () {
                 } else if (currentStep === 1) {
                     // Simpan data hosting default
                     saveDefaultHostingDetails(function() {
+                        proceedToNextStep();
+                    });
+                } else if (currentStep === 2) {
+                    // Simpan detail hosting
+                    saveHostingDetails(function() {
+                        proceedToNextStep();
+                    });
+                } else if (currentStep === 3) {
+                    // Simpan addon
+                    saveAddon(function() {
+                        proceedToNextStep();
+                    });
+                } else if (currentStep === 4) {
+                    // Simpan billing address
+                    saveBillingAddress(function() {
                         proceedToNextStep();
                     });
                 } else {
@@ -391,14 +404,6 @@ $(document).ready(function () {
                 }
             });
         }
-        
-        
-        
-        
-        
-        
-        
-
         
         // Helper functions
         function getCurrentDate() {
