@@ -208,77 +208,6 @@ $(document).ready(function () {
                 }
             });
         }
-
-        function saveDefaultHostingDetails(callback) {
-            const orderId = generateUniqueOrderId();
-            const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
-            
-            const defaultHostingData = {
-                order_id: orderId,
-                status: 'pending',
-                payment_method: 'pending',
-                date_created: currentDate,
-                hosting_plans_id: 1,
-                name: 'default',
-                domain_name: 'default',
-                product_type: 'Hosting Only',
-                package_type: 'Regular',
-                max_io: 0,
-                nproc: 0,
-                entry_process: 0,
-                ssl: 'No',
-                ram: 0,
-                cpu: 0,
-                storage: 0,
-                backup: 'No',
-                max_database: '0',
-                max_bandwidth: '0',
-                max_email_account: '0',
-                max_domain: '0',
-                max_addon_domain: '0',
-                max_parked_domain: '0',
-                ssh: 'No',
-                free_domain: 'No',
-                active_date: getCurrentDate(),
-                expired_date: calculateExpiredDate(getCurrentDate(), 'monthly'),
-                periode: 'monthly',
-                price: 0,
-                _token: $('meta[name="csrf-token"]').attr('content')
-            };
-        
-            // Log data yang akan dikirim
-            console.log('Sending default hosting data:', defaultHostingData);
-        
-            $.ajax({
-                url: "/store-order-hosting-detail",
-                method: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    'Accept': 'application/json'
-                },
-                data: defaultHostingData,
-                success: function(response) {
-                    console.log("Default hosting data saved:", response);
-                    if (response.order_id) {
-                        $('input[name="order_id"]').val(response.order_id);
-                    }
-                    if (typeof callback === 'function') {
-                        callback();
-                    }
-                },
-                error: function(xhr) {
-                    console.error("Error saving default hosting data:", xhr);
-                    console.error("Response Text:", xhr.responseText);
-                    if (typeof callback === 'function') {
-                        callback();
-                    }
-                }
-            });
-        }
-
-        function generateUniqueOrderId() {
-            return 'ORD-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-        }
         
         function saveHostingDetails(callback) {
             const specsElement = document.getElementById('hosting-specs');
@@ -315,6 +244,7 @@ $(document).ready(function () {
             const activeDate = getCurrentDate();
         
             const billingPeriod = $('input[name="billing_period"]:checked').val();
+            console.log('Selected Billing Period:', billingPeriod);
         
             if (!billingPeriod) {
                 showNotification('Billing period is required', 'error');
@@ -356,9 +286,9 @@ $(document).ready(function () {
                 storage: storage,
                 active_date: activeDate,
                 expired_date: expiredDate,
-                periode: periode,
+                period: periode,
                 price: price,
-                product_type: productType, // Mengambil nilai dari input hidden
+                product_type: productType,
                 package_type: 'Regular',
                 max_io: '0',
                 nproc: '0',
@@ -373,7 +303,7 @@ $(document).ready(function () {
                 max_parked_domain: '0',
                 ssh: 'No',
                 free_domain: 'No',
-                name: name, // Nama diambil dari elemen <td>
+                name: name,
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
         
@@ -387,7 +317,7 @@ $(document).ready(function () {
                 },
                 data: hostingData,
                 beforeSend: function() {
-                    $("#next-button").addClass("is-loading"); // Menambahkan loading saat proses pengiriman data
+                    $("#next-button").addClass("is-loading");
                 },
                 success: function(response) {
                     console.log("Hosting save response:", response);
@@ -500,7 +430,8 @@ $(document).ready(function () {
                 const allText = cardElement.text();
                 const priceMatch = allText.match(/Rp[.\s]*([0-9.,]+)/);
                 if (priceMatch) {
-                    price = parseInt(priceMatch[1].replace(/[.,]/g, '')); console.log('Price from regex:', price);
+                    price = parseInt(priceMatch[1].replace(/[.,]/g, ''));
+                    console.log('Price from regex:', price);
                     return price;
                 }
         
@@ -543,7 +474,7 @@ $(document).ready(function () {
             
             // Log radio button state
             console.log('Initial radio button state:', {
-                total: $('input[name="billing_period"]').length,
+                total: $('input [name="billing_period"]').length,
                 checked: $('input[name="billing_period"]:checked').length,
                 values: $('input[name="billing_period"]').map(function() {
                     return {
@@ -553,7 +484,7 @@ $(document).ready(function () {
                 }).get()
             });
         });
-
+        
         // Fungsi untuk menyimpan billing address (Step 5)
         function saveBillingAddress(callback) {
             const billingData = {

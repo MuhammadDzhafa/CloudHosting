@@ -41,7 +41,7 @@ class OrderHostingDetail extends Model
         'period',
         'price',
     ];    
-
+    
     protected $casts = [
         'active_date' => 'date',
         'expired_date' => 'date',
