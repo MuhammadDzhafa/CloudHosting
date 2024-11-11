@@ -189,6 +189,34 @@
                         </div>
                     </div>
                 </div>
+                <div id="demo-right-actions-modal" class="modal h-modal">
+                    <div class="modal-background  h-modal-close"></div>
+                    <div class="modal-content">
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <h3>Did you know?</h3>
+                                <button class="h-modal-close ml-auto" aria-label="close">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </header>
+                            <div class="modal-card-body">
+                                <div class="inner-content">
+                                    <div class="section-placeholder">
+                                        <div class="placeholder-content">
+                                            <img src="assets/img/placeholders/huro-1.svg" alt="">
+                                            <h3 class="dark-inverted">Go Premium</h3>
+                                            <p>Unlock more features and business tools by going premium</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-card-foot is-end">
+                                <a class="button h-button is-rounded h-modal-close">Cancel</a>
+                                <a class="button h-button is-primary is-raised is-rounded">Confirm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -319,16 +347,16 @@
                 const pDomainDisplay = document.getElementById("p-domain-display");
                 const nextButton = document.getElementById("next-button");
 
-                    if (searchQuery) {
-                        let dropdownHTML = '';
-                        const domainParts = searchQuery.split('.');
-                        const tld = domainParts.pop();
-                        const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
-                        const baseDomain = `${mainDomainPart}.${tld}`;
+                if (searchQuery) {
+                    let dropdownHTML = '';
+                    const domainParts = searchQuery.split('.');
+                    const tld = domainParts.pop();
+                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+                    const baseDomain = `${mainDomainPart}.${tld}`;
 
-                        // Untuk pencarian "New Domain"
-                        if (type === 'new') {
-                            dropdownHTML = `
+                    // Untuk pencarian "New Domain"
+                    if (type === 'new') {
+                        dropdownHTML = `
                         <div id="component-search">
                             <div class="message is-success flex-row flex justify-between items-center">
                                 <div class="message-body">
@@ -346,10 +374,10 @@
                                 <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
                             </div>
                         </div>`;
-                        }
-                        // Untuk pencarian "Transfer Domain"
-                        else if (type === 'transfer') {
-                            dropdownHTML = `
+                    }
+                    // Untuk pencarian "Transfer Domain"
+                    else if (type === 'transfer') {
+                        dropdownHTML = `
                         <div id="component-search">
                             <div class="message is-success flex-row flex justify-between items-center">
                                 <div class="message-body">
@@ -361,10 +389,10 @@
     </button>
                             </div>
                         </div>`;
-                        }
-                        // Untuk pencarian "Hosting Only"
-                        else if (type === 'hosting-only') {
-                            dropdownHTML = `
+                    }
+                    // Untuk pencarian "Hosting Only"
+                    else if (type === 'hosting-only') {
+                        dropdownHTML = `
                         <div id="component-search">
                             <div class="message is-success flex-row flex justify-between items-center">
                                 <div class="message-body">
@@ -376,37 +404,37 @@
                                 </button>
                             </div>
                         </div>`;
-                        }
-
-                        dropdownContent.innerHTML = dropdownHTML;
-                        dropdownContainer.classList.remove('hidden');
-
-                        const buyNowButtons = document.querySelectorAll('.buy-now-button');
-                        buyNowButtons.forEach(button => {
-                            button.addEventListener('click', function() {
-                                const domainName = this.getAttribute('data-domain-name');
-                                h3DomainDisplay.textContent = domainName;
-                                pDomainDisplay.textContent = domainName;
-
-                                if (nextButton) {
-                                    nextButton.click();
-                                }
-
-                                sessionStorage.setItem('selected_domain', domainName);
-                            });
-                        });
-
-                        setupWhoisModal();
-                        setupTransferButton();
-                        dropdownContainer.classList.add('show');
-                        dropdownContainer.classList.remove('hidden');
-                    } else {
-                        dropdownContainer.classList.remove('show');
-                        dropdownContainer.classList.add('hidden');
                     }
+
+                    dropdownContent.innerHTML = dropdownHTML;
+                    dropdownContainer.classList.remove('hidden');
+
+                    const buyNowButtons = document.querySelectorAll('.buy-now-button');
+                    buyNowButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const domainName = this.getAttribute('data-domain-name');
+                            h3DomainDisplay.textContent = domainName;
+                            pDomainDisplay.textContent = domainName;
+
+                            if (nextButton) {
+                                nextButton.click();
+                            }
+
+                            sessionStorage.setItem('selected_domain', domainName);
+                        });
+                    });
+
+                    setupWhoisModal();
+                    setupTransferButton();
+                    dropdownContainer.classList.add('show');
+                    dropdownContainer.classList.remove('hidden');
                 } else {
-                    console.error(`Element with ID 'domain-search-${type}' not found.`);
+                    dropdownContainer.classList.remove('show');
+                    dropdownContainer.classList.add('hidden');
                 }
+            } else {
+                console.error(`Element with ID 'domain-search-${type}' not found.`);
+            }
         }
 
         function setupTransferButton() {
@@ -536,6 +564,220 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+    });
+
+    let currentStep = 0;
+    let hasContinueBeenClicked = false;
+    let targetTabForSwitch = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabItems = document.querySelectorAll('.tabs ul li:not(.tab-naver)');
+        const tabContents = document.querySelectorAll('[id$="-domain-content"]');
+        const tabNaver = document.querySelector('.tab-naver');
+        const nextButton = document.getElementById('next-button');
+        const existingModal = document.getElementById('demo-right-actions-modal');
+
+        // Function to reset all steps except step 1
+        function resetAllStepsExceptFirst() {
+            console.log('Memulai reset langkah...');
+
+            // Reset global step counter
+            currentStep = 0;
+            console.log('Step counter direset');
+
+            // Reset form sections
+            const formSections = document.querySelectorAll('.form-section');
+            console.log('Jumlah form sections:', formSections.length);
+            formSections.forEach((section, index) => {
+                section.classList.remove('is-active');
+                console.log(`Section ${index} direset`);
+            });
+
+            // Aktifkan section pertama
+            const firstSection = document.querySelector('.form-section');
+            if (firstSection) {
+                firstSection.classList.add('is-active');
+                console.log('Section pertama diaktifkan');
+            } else {
+                console.error('Tidak dapat menemukan section pertama');
+            }
+
+            // Reset step segments (desktop dan spesifik)
+            const desktopSegments = document.querySelectorAll('.steps-segment, [id^="step-segment-"]');
+            console.log('Jumlah desktop segments:', desktopSegments.length);
+            desktopSegments.forEach((segment, index) => {
+                // Hapus is-active dari semua segment
+                segment.classList.remove('is-active');
+
+                // Aktifkan hanya segment pertama
+                if (index === 0) {
+                    segment.classList.add('is-active');
+
+                    // Reset konten step untuk segment pertama
+                    const stepNumber = segment.querySelector('.step-number');
+                    const stepInfo = segment.querySelector('.step-info');
+
+                    if (stepNumber) stepNumber.textContent = 'STEP 1';
+                    if (stepInfo) stepInfo.textContent = 'Domain';
+                }
+
+                console.log(`Desktop segment ${index} ${index === 0 ? 'diaktifkan' : 'direset'}`);
+            });
+
+            // Reset mobile step segments
+            const mobileSegments = document.querySelectorAll('[id^="mobile-step-segment-"]');
+            console.log('Jumlah mobile segments:', mobileSegments.length);
+            mobileSegments.forEach((segment, index) => {
+                segment.classList.toggle('is-active', index === 0);
+                console.log(`Mobile segment ${index} ${index === 0 ? 'diaktifkan' : 'direset'}`);
+            });
+
+            // Reset input fields
+            const inputs = document.querySelectorAll('input');
+            console.log('Jumlah input:', inputs.length);
+            inputs.forEach(input => {
+                input.value = '';
+                console.log('Input direset:', input);
+            });
+
+            // Reset tombol next
+            const nextButton = document.getElementById('next-button');
+            if (nextButton) {
+                nextButton.textContent = 'Continue';
+                console.log('Tombol next direset');
+            } else {
+                console.error('Tombol next tidak ditemukan');
+            }
+
+            // Reset tab ke kondisi awal
+            const tabs = document.querySelectorAll('.tabs ul li');
+            console.log('Jumlah tab:', tabs.length);
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('is-active', index === 0);
+                console.log(`Tab ${index} ${index === 0 ? 'diaktifkan' : 'direset'}`);
+            });
+
+            // Reset konten tab
+            const tabContents = document.querySelectorAll('[id$="-domain-content"]');
+            console.log('Jumlah konten tab:', tabContents.length);
+            tabContents.forEach((content, index) => {
+                content.classList.toggle('hidden', index !== 0);
+                console.log(`Konten tab ${index} ${index === 0 ? 'ditampilkan' : 'disembunyikan'}`);
+            });
+
+            // Reset state lanjutan
+            hasContinueBeenClicked = false;
+
+            console.log('Reset langkah selesai');
+        }
+
+        // Fungsi untuk menampilkan modal peringatan
+        function showWarningModal(clickedTab) {
+            targetTabForSwitch = clickedTab; // Simpan referensi tab yang diklik
+
+            const modalTitle = existingModal.querySelector('.modal-card-head h3');
+            const modalHeader = existingModal.querySelector('.placeholder-content h3');
+            const modalText = existingModal.querySelector('.placeholder-content p');
+
+            if (modalTitle) modalTitle.textContent = 'Warning';
+            if (modalHeader) modalHeader.textContent = 'Switch Tab';
+            if (modalText) modalText.textContent = 'Are you sure you want to switch tabs? Your current progress will be lost.';
+
+            existingModal.classList.add('is-active');
+        }
+
+        // Fungsi untuk melakukan perpindahan tab
+        function performTabSwitch(tab) {
+            console.log('Melakukan switch tab');
+
+            if (!tab) {
+                console.error('Tab tidak valid');
+                return;
+            }
+
+            const tabId = tab.getAttribute('data-tab');
+            console.log('Tab ID:', tabId);
+
+            // Hapus kelas aktif dari semua tab
+            const tabs = document.querySelectorAll('.tabs ul li');
+            tabs.forEach(t => t.classList.remove('is-active'));
+
+            // Tambahkan kelas aktif ke tab yang dipilih
+            tab.classList.add('is-active');
+
+            // Sembunyikan semua konten tab
+            const tabContents = document.querySelectorAll('[id$="-domain-content"]');
+            tabContents.forEach(content => content.classList.add('hidden'));
+
+            // Tampilkan konten tab yang sesuai
+            const targetContent = document.getElementById(`${tabId}-domain-content`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+                console.log('Konten tab ditampilkan');
+            } else {
+                console.error('Konten tab tidak ditemukan');
+            }
+
+            // Tambahkan log untuk jumlah konten yang tersembunyi
+            const hiddenContentsCount = document.querySelectorAll('.hidden').length;
+            console.log(`${hiddenContentsCount} konten tab tersembunyi`);
+
+            // Reset langkah
+            resetAllStepsExceptFirst();
+        }
+
+        // Fungsi untuk melakukan switch tab
+        function switchTab(clickedTab) {
+            if (hasContinueBeenClicked) {
+                showWarningModal(clickedTab);
+            } else {
+                performTabSwitch(clickedTab);
+            }
+        }
+
+        // Handler untuk tombol konfirmasi modal
+        const confirmButton = existingModal.querySelector('.modal-card-foot .button.is-primary');
+        if (confirmButton) {
+            confirmButton.addEventListener('click', () => {
+                if (targetTabForSwitch) {
+                    resetAllStepsExceptFirst();
+                    performTabSwitch(targetTabForSwitch);
+                    targetTabForSwitch = null;
+                }
+                existingModal.classList.remove('is-active');
+            });
+        }
+
+        // Handler untuk tombol batal dan close
+        const cancelButton = existingModal.querySelector('.modal-card-foot .button:not(.is-primary)');
+        const closeButtons = existingModal.querySelectorAll('.h-modal-close');
+
+        const handleCancel = () => {
+            targetTabForSwitch = null;
+            existingModal.classList.remove('is-active');
+        };
+
+        if (cancelButton) {
+            cancelButton.addEventListener('click', handleCancel);
+        }
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', handleCancel);
+        });
+
+        // Event listener untuk tab
+        tabItems.forEach(tab => {
+            tab.addEventListener('click', () => switchTab(tab));
+        });
+
+        // Event listener untuk tombol next
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                hasContinueBeenClicked = true;
+                console.log('Tombol next diklik');
+                // Logic untuk melanjutkan ke langkah berikutnya
+            });
+        }
     });
 </script>
 

@@ -10,7 +10,7 @@ $(document).ready(function () {
     });
 
     if ($("#form-layout-5").length) {
-        let i = 0; // Ganti var s menjadi let i 
+        let currentStep = 0; // Ganti var s menjadi let i 
     
         // Event handler untuk checkbox addon
     $("#form-step-3 input[type='checkbox']").on('change', function() {
@@ -702,8 +702,6 @@ $(document).ready(function () {
 
             return true;
         }
-
-        let currentStep = 0; // Gunakan variabel ini sebagai pengganti i
         
         function proceedToNextStep() {
             const $button = $("#next-button");
@@ -713,7 +711,7 @@ $(document).ready(function () {
                 $button.removeClass("is-loading");
 
                 $(".form-step").removeClass("is-active");
-                currentStep += 1;
+                currentStep += 1; // Gunakan currentStep
                 $("#form-step-" + currentStep).addClass("is-active");
 
                 $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
@@ -732,7 +730,7 @@ $(document).ready(function () {
         
         // Reset counter saat ganti tab
         $('.tabs li').on('click', function() {
-            i = 0;
+            currentStep = 0; // Ganti i menjadi currentStep
         });
 
         // Event handler untuk input fields
