@@ -149,7 +149,6 @@ $(document).ready(function () {
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
-            // Menghitung total harga berdasarkan pilihan
             let basePrice = parseFloat($('#domain_price').val() || 0);
         
             // Menambahkan harga manajemen DNS jika dipilih
@@ -167,12 +166,12 @@ $(document).ready(function () {
                 order_id: $('#order_id').val(),
                 domain_name: $('#h3-domain-display').text().trim(),
                 price: Math.round(basePrice),
-                dns_management: $('input[name="dns_management"]').is(':checked'), // Mengirim sebagai boolean
-                whois: $('input[name="whois"]').is(':checked'), // Mengirim sebagai boolean
+                dns_management: $('input[name="dns_management"]').is(':checked') ? 1 : 0,
+                whois: $('input[name="whois"]').is(':checked') ? 1 : 0,
                 domain_option_id: $('#domain_option_id').val() || null
             };
         
-            console.log('Preparing to send domain data:', data);
+            console.log('Preparing to send domain data:', data); // Debug log
         
             $.ajax({
                 url: '/save-domain-details',
@@ -280,8 +279,12 @@ $(document).ready(function () {
                 console.error('Error parsing specs:', e);
             }
         
+            // Ambil nilai name dari elemen <td> dengan id "hosting-plan-name"
+            const name = document.getElementById('hosting-plan-name').dataset.name;
+        
             // Collect domain name
             let domainName = $('#h3-domain-display').text().trim() || $('#domain_name').val().trim() || $('input[name="domain_name"]').val().trim();
+            console.log('Domain Name:', domainName);
         
             let ram = 0, cpu = 0, storage = 0;
             specs.forEach(spec => {
@@ -298,10 +301,8 @@ $(document).ready(function () {
             const selectedHostingPlanId = $('input[name="hosting_plan_id"]').val();
             const activeDate = getCurrentDate();
         
-            // Declare billingPeriod and ensure it is initialized before use
             const billingPeriod = $('input[name="billing_period"]:checked').val();
         
-            // Validate billingPeriod
             if (!billingPeriod) {
                 showNotification('Billing period is required', 'error');
                 $("#next-button").removeClass("is-loading");
@@ -330,7 +331,9 @@ $(document).ready(function () {
                 return;
             }
         
-            // Now ensure that period is included in the hostingData
+            // Ambil nilai product_type dari input hidden
+            const productType = $('#type-hidden').val();
+        
             const hostingData = {
                 order_id: $('input[name="order_id"]').val(),
                 hosting_plans_id: selectedHostingPlanId,
@@ -340,9 +343,9 @@ $(document).ready(function () {
                 storage: storage,
                 active_date: activeDate,
                 expired_date: expiredDate,
-                period: billingPeriod,
+                periode: periode,
                 price: price,
-                product_type: 'Hosting Only',
+                product_type: productType, // Mengambil nilai dari input hidden
                 package_type: 'Regular',
                 max_io: '0',
                 nproc: '0',
@@ -357,13 +360,9 @@ $(document).ready(function () {
                 max_parked_domain: '0',
                 ssh: 'No',
                 free_domain: 'No',
-                status: 'pending', // Status harus ada
-                payment_method: 'credit_card', // Payment method harus ada
-                date_created: new Date().toISOString(), // Pastikan ada
-                name: 'John Doe', // Pastikan nama ada
+                name: name, // Nama diambil dari elemen <td>
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
-            
         
             console.log('Hosting Data:', hostingData);
         
@@ -374,6 +373,9 @@ $(document).ready(function () {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: hostingData,
+                beforeSend: function() {
+                    $("#next-button").addClass("is-loading"); // Menambahkan loading saat proses pengiriman data
+                },
                 success: function(response) {
                     console.log("Hosting save response:", response);
                     showNotification(response.message || 'Data hosting berhasil disimpan', 'success');
@@ -389,6 +391,12 @@ $(document).ready(function () {
                 }
             });
         }
+        
+        
+        
+        
+        
+        
         
 
         

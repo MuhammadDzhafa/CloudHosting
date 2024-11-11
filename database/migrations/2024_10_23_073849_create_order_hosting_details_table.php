@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('order_hosting_details', function (Blueprint $table) {
             $table->id('hosting_order_id'); // Menetapkan hosting_order_id sebagai primary key
-            $table->string('name'); // Nama hosting
+            $table->string('name')->default('default_name');
             $table->string('domain_name'); // Nama domain
             $table->string('product_type'); // Jenis produk
             $table->string('max_io'); // Max I/O

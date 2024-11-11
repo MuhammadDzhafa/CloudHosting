@@ -129,8 +129,8 @@ class CheckoutController extends Controller
                 'order_id' => 'required|string',
                 'domain_name' => 'required|string',
                 'price' => 'required|numeric',
-                'dns_management' => 'required|in:true,false', // menerima true/false sebagai string
-                'whois' => 'required|in:true,false', // menerima true/false sebagai string
+                'dns_management' => 'required|boolean', // Menerima 1/0, true/false
+                'whois' => 'required|boolean', // Menerima 1/0, true/false
                 'domain_option_id' => 'nullable|numeric'
             ]);
 
@@ -438,71 +438,16 @@ class CheckoutController extends Controller
 
     // OrderHostingDetailController.php
     public function storeOrderHostingDetail(Request $request)
-{
-    try {
-        DB::beginTransaction();
+    {
+        try {
+            DB::beginTransaction();
 
-        // Jika product_type adalah 'Hosting Only', gunakan validasi dan logika yang berbeda
-        if ($request->product_type === 'Hosting Only') {
-            // Validasi minimal untuk Hosting Only
-            $request->validate([
-                'order_id' => 'required|string',
-                'status' => 'required|string',
-                'payment_method' => 'required|string',
-                'date_created' => 'required',
-                'hosting_plans_id' => 'required',
-                'name' => 'required',
-                'domain_name' => 'required',
-                'product_type' => 'required',
-                'package_type' => 'required'
-            ]);
-
-            // Cek apakah order sudah ada
-            $order = Order::firstOrCreate(
-                ['order_id' => $request->order_id],
-                [
-                    'status' => $request->status,
-                    'payment_method' => $request->payment_method,
-                    'date_created' => $request->date_created,
-                ]
-            );
-
-            // Simpan data default untuk Hosting Only
-            $orderHostingDetail = OrderHostingDetail::create([
-                'order_id' => $request->order_id,
-                'hosting_plans_id' => $request->hosting_plans_id,
-                'name' => $request->name,
-                'domain_name' => $request->domain_name,
-                'product_type' => $request->product_type,
-                'package_type' => $request->package_type,
-                'max_io' => $request->max_io ?? 0,
-                'nproc' => $request->nproc ?? 0,
-                'entry_process' => $request->entry_process ?? 0,
-                'ssl' => $request->ssl ?? 'No',
-                'ram' => $request->ram ?? 0,
-                'cpu' => $request->cpu ?? 0,
-                'storage' => $request->storage ?? 0,
-                'backup' => $request->backup ?? 'No',
-                'max_database' => $request->max_database ?? '0',
-                'max_bandwidth' => $request->max_bandwidth ?? '0',
-                'max_email_account' => $request->max_email_account ?? '0',
-                'max_domain' => $request->max_domain ?? '0',
-                'max_addon_domain' => $request->max_addon_domain ?? '0',
-                'max_parked_domain' => $request->max_parked_domain ?? '0',
-                'ssh' => $request->ssh ?? 'No',
-                'free_domain' => $request->free_domain ?? 'No',
-                'active_date' => $request->active_date,
-                'expired_date' => $request->expired_date,
-                'periode' => $request->periode ?? 'monthly',
-                'price' => $request->price ?? 0
-            ]);
-        } else {
-            // Gunakan validasi dan logika yang sudah ada untuk tab lainnya
+            // Validasi data
             $validated = $request->validate([
                 'order_id' => 'required|string',
                 'hosting_plans_id' => 'required|exists:hosting_plans,hosting_plans_id',
                 'domain_name' => 'required|string',
-                'product_type' => 'required|string',
+                'product_type' => 'required|string', // Pastikan 'product_type' divalidasi
                 'package_type' => 'required|string',
                 'max_io' => 'nullable|string',
                 'nproc' => 'nullable|string',
@@ -526,68 +471,68 @@ class CheckoutController extends Controller
                 'price' => 'required|integer'
             ]);
 
-            $hostingPlan = HostingPlan::findOrFail($validated['hosting_plans_id']);
-
-            // Pastikan order sudah ada
+            // Cek apakah order sudah ada
             $order = Order::firstOrCreate(
                 ['order_id' => $validated['order_id']],
                 [
-                    'status' => 'pending', // Anda mungkin perlu menyesuaikan ini
-                    'payment_method' => 'pending', // Anda mungkin perlu menyesuaikan ini
+                    'status' => 'pending',
+                    'payment_method' => 'pending',
                     'date_created' => now(),
                 ]
             );
 
+            // Buat detail order hosting
             $orderHostingDetail = OrderHostingDetail::create([
                 'order_id' => $validated['order_id'],
                 'hosting_plans_id' => $validated['hosting_plans_id'],
-                'name' => $hostingPlan->name,
-                'domain_name' => $validated['domain_name'],
-                'product_type' => $hostingPlan->product_type,
-                'package_type' => $hostingPlan->package_type,
-                'max_io' => $validated['max_io'] ?? $hostingPlan->max_io,
-                'nproc' => $validated['nproc'] ?? $hostingPlan->nproc,
-                'entry_process' => $validated['entry_process'] ?? $hostingPlan->entry_process,
-                'ssl' => $validated['ssl'] ?? $hostingPlan->ssl,
+                'name' => $request->input('name'),
+                'domain_name' => $request->input('domain_name'),
+                'product_type' => $validated['product_type'], // Ambil 'product_type' dari data yang sudah divalidasi
+                'package_type' => $validated['package_type'],
+                'max_io' => $validated['max_io'] ?? '0',
+                'nproc' => $validated['nproc'] ?? '0',
+                'entry_process' => $validated['entry_process'] ?? '0',
+                'ssl' => $validated['ssl'],
                 'ram' => $validated['ram'],
                 'cpu' => $validated['cpu'],
                 'storage' => $validated['storage'],
-                'backup' => $validated['backup'] ?? $hostingPlan->backup,
-                'max_database' => $validated['max_database'] ?? $hostingPlan->max_database,
-                'max_bandwidth' => $validated['max_bandwidth'] ?? $hostingPlan->max_bandwidth,
-                'max_email_account' => $validated['max_email_account'] ?? $hostingPlan->max_email_account,
-                'max_domain' => $validated['max_domain'] ?? $hostingPlan->max_domain,
-                'max_addon_domain' => $validated['max_addon_domain'] ?? $hostingPlan->max_addon_domain,
-                'max_parked_domain' => $validated['max_parked_domain'] ?? $hostingPlan->max_parked_domain,
-                'ssh' => $validated['ssh'] ?? $hostingPlan->ssh,
-                'free_domain' => $validated['free_domain'] ?? $hostingPlan->free_domain,
+                'backup' => $validated['backup'],
+                'max_database' => $validated['max_database'],
+                'max_bandwidth' => $validated['max_bandwidth'],
+                'max_email_account' => $validated['max_email_account'],
+                'max_domain' => $validated['max_domain'],
+                'max_addon_domain' => $validated['max_addon_domain'],
+                'max_parked_domain' => $validated['max_parked_domain'],
+                'ssh' => $validated['ssh'],
+                'free_domain' => $validated['free_domain'],
                 'active_date' => $validated['active_date'],
                 'expired_date' => $validated['expired_date'],
-                'periode' => $validated['period'],
+                'periode' => $validated['periode'],
                 'price' => $validated['price']
             ]);
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Data hosting berhasil disimpan!',
+                'data' => $orderHostingDetail
+            ], 200);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Validasi gagal',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat menyimpan data',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        DB::commit();
-
-        return response()->json([
-            'message' => 'Data hosting berhasil disimpan!',
-            'data' => $orderHostingDetail
-        ], 200);
-    } catch (\Illuminate\Validation\ValidationException $e) {
-        DB::rollBack();
-        return response()->json([
-            'message' => 'Validasi gagal',
-            'errors' => $e->errors()
-        ], 422);
-    } catch (\Exception $e) {
-        DB::rollBack();
-        return response()->json([
-            'message' => 'Terjadi kesalahan saat menyimpan data',
-            'error' => $e->getMessage()
-        ], 500);
     }
-}
+
+
 
     /**
      * Validasi harga sesuai dengan periode billing yang dipilih

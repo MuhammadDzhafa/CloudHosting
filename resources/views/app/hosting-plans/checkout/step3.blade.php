@@ -117,8 +117,9 @@
 
 {{-- Hidden inputs for hosting plan data --}}
 @if($hostingPlan)
+<input type="hidden" id="hosting-plan-name" data-name="{{ $hostingPlan->name }}">
 <input type="hidden" name="hosting_plan_id" value="{{ $hostingPlan->hosting_plans_id }}">
-<input type="hidden" id="hosting_product_type" value="{{ $hostingPlan->product_type }}">
+<input type="hidden" name="product_type" id="type-hidden" value="{{ $hostingPlan->product_type }}">
 <input type="hidden" id="hosting_package_type" value="{{ $hostingPlan->package_type }}">
 <input type="hidden" id="hosting_max_io" value="{{ $hostingPlan->max_io }}">
 <input type="hidden" id="hosting_nproc" value="{{ $hostingPlan->nproc }}">
