@@ -182,6 +182,8 @@ window.initializeNextButtonHandler = function() {
 };
 
 $('#confirm-modal').on('click', '.confirm-button', function() {
+    console.log('Confirm button clicked');
+    
     // Reset currentStep ke 0
     window.currentStep = 0;
 
@@ -196,6 +198,8 @@ $('#confirm-modal').on('click', '.confirm-button', function() {
     $("#step-segment-0").addClass("is-active");
     $("#mobile-step-segment-0").addClass("is-active");
     $("#next-button").text("Next");
+
+    console.log('Classes added successfully');
 
     // Inisialisasi handler tombol next
     window.initializeNextButtonHandler();

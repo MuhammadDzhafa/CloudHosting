@@ -608,9 +608,14 @@
 
             // Reset active state for step segments
             const allSegments = document.querySelectorAll('.steps-segment, [id^="step-segment-"], [id^="mobile-step-segment-"]');
-            allSegments.forEach((segment, index) => {
-                segment.classList.toggle('is-active', index === 0);
+            allSegments.forEach((segment) => {
+                segment.classList.remove('is-active');
             });
+
+            const firstStepSegment = document.getElementById('step-segment-0');
+            if (firstStepSegment) {
+                firstStepSegment.classList.add('is-active');
+            }
 
             // Reset next button
             if (nextButton) {
@@ -625,6 +630,26 @@
             if (typeof window.initializeNextButtonHandler === 'function') {
                 window.initializeNextButtonHandler();
             }
+
+            // Delay adding the is-active class to the specific mobile step segment
+            setTimeout(() => {
+                const mobileStepSegment0 = document.querySelector('#mobile-step-segment-0');
+                console.log('Mobile Step Segment 0:', mobileStepSegment0);
+                if (mobileStepSegment0) {
+                    console.log('Adding is-active class');
+
+                    // Hapus kelas yang menimbulkan konflik (jika ada)
+                    mobileStepSegment0.classList.remove('conflicting-class');
+
+                    // Tambahkan kelas is-active
+                    mobileStepSegment0.classList.add('is-active');
+
+                    // Terapkan gaya inline tambahan jika diperlukan
+                    mobileStepSegment0.style.display = 'block';
+
+                    console.log('Class list after adding:', mobileStepSegment0.classList);
+                }
+            }, 0);
         }
 
         function updateActiveTab(newTab) {
