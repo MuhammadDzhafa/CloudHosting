@@ -83,82 +83,128 @@ $(document).ready(function () {
             });
         }
         
-        
-    
-        // Handle tombol continue
-        $("#next-button").on("click", function() {
-            const $button = $(this);
-            $button.addClass("is-loading");
-        
-            const activeTab = $('.tabs ul li.is-active').data('tab');
-        
-            if (activeTab === 'hosting-only') {
-                // Alur untuk hosting-only
-                if (currentStep === 0) {
-                    currentStep = 1; // Mulai dari step 1 untuk hosting-only
-                    proceedToNextStep();
-                } else if (currentStep === 1) {
-                    // Simpan data hosting default
-                    saveDefaultHostingDetails(function() {
-                        proceedToNextStep();
-                    });
-                } else if (currentStep === 2) {
-                    // Simpan detail hosting
-                    saveHostingDetails(function() {
-                        proceedToNextStep();
-                    });
-                } else if (currentStep === 3) {
-                    // Simpan addon
-                    saveAddon(function() {
-                        proceedToNextStep();
-                    });
-                } else if (currentStep === 4) {
-                    // Simpan billing address
-                    saveBillingAddress(function() {
-                        proceedToNextStep();
-                    });
-                } else {
-                    // Untuk step selanjutnya, lanjutkan seperti biasa
-                    proceedToNextStep();
-                }
+        // Buat variabel global
+window.currentStep = 0;
+
+// Definisikan proceedToNextStep sebagai fungsi global
+window.proceedToNextStep = function() {
+    const $button = $("#next-button");
+    $button.addClass("is-loading");
+
+    setTimeout(function() {
+        $button.removeClass("is-loading");
+
+        window.currentStep += 1;
+        // Hanya menambahkan class is-active ke step berikutnya
+        $("#form-step-" + window.currentStep).addClass("is-active");
+
+        $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
+        $("#step-segment-" + window.currentStep).addClass("is-active");
+        $("#mobile-step-segment-" + window.currentStep).addClass("is-active");
+
+        $("html, body").animate({
+            scrollTop: $("#form-step-" + window.currentStep).offset().top
+        }, 500);
+
+        if (window.currentStep === 5) {
+            $("#next-button").text("Complete Order");
+        }
+    }, 800);
+};
+
+window.initializeNextButtonHandler = function() {
+    $("#next-button").off('click').on("click", function() {
+        const $button = $(this);
+        $button.addClass("is-loading");
+
+        const activeTab = $('.tabs ul li.is-active').data('tab');
+
+        if (activeTab === 'hosting-only') {
+            if (window.currentStep === 0) {
+                window.currentStep = 1; // Mulai dari step 1 untuk hosting-only
+                window.proceedToNextStep();
+            } else if (window.currentStep === 1) {
+                saveDefaultHostingDetails(function() {
+                    window.proceedToNextStep();
+                });
+            } else if (window.currentStep === 2) {
+                saveHostingDetails(function() {
+                    window.proceedToNextStep();
+                });
+            } else if (window.currentStep === 3) {
+                saveAddon(function() {
+                    window.proceedToNextStep();
+                });
+            } else if (window.currentStep === 4) {
+                saveBillingAddress(function() {
+                    window.proceedToNextStep();
+                });
             } else {
-                // Alur regular (new domain & transfer domain)
-                switch(currentStep) {
-                    case 0:
-                        proceedToNextStep();
-                        break;
-                    case 1:
-                        if ($("input[name='domain-choice']:checked").length === 0) {
-                            showNotification('Please choose an option', 'error');
-                            $button.removeClass("is-loading");
-                            return;
-                        }
-                        saveDomainDetails(function() {
-                            proceedToNextStep();
-                        });
-                        break;
-                    case 2:
-                        saveHostingDetails(function() {
-                            proceedToNextStep();
-                        });
-                        break;
-                    case 3:
-                        saveAddon(function() {
-                            proceedToNextStep();
-                        });
-                        break;
-                    case 4:
-                        saveBillingAddress(function() {
-                            proceedToNextStep();
-                        });
-                        break;
-                    case 5:
-                        completeOrder();
-                        break;
-                }
+                window.proceedToNextStep();
             }
-            $button.removeClass("is-loading");
-        });
+        } else {
+            switch(window.currentStep) {
+                case 0:
+                    window.proceedToNextStep();
+                    break;
+                case 1:
+                    if ($("input[name='domain-choice']:checked").length === 0) {
+                        showNotification('Please choose an option', 'error');
+                        $button.removeClass("is-loading");
+                        return;
+                    }
+                    saveDomainDetails(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 2:
+                    saveHostingDetails(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 3:
+                    saveAddon(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 4:
+                    saveBillingAddress(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 5:
+                    completeOrder();
+                    break;
+            }
+        }
+        $button.removeClass("is-loading");
+    });
+};
+
+$('#confirm-modal').on('click', '.confirm-button', function() {
+    // Reset currentStep ke 0
+    window.currentStep = 0;
+
+    // Hapus class is-active dari semua form-section
+    $(".form-section").removeClass("is-active");
+
+    // Tambahkan class is-active ke step pertama
+    $("#form-step-0").addClass("is-active");
+
+    // Tampilkan kembali elemen-elemen yang relevan
+    $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
+    $("#step-segment-0").addClass("is-active");
+    $("#mobile-step-segment-0").addClass("is-active");
+    $("#next-button").text("Next");
+
+    // Inisialisasi handler tombol next
+    window.initializeNextButtonHandler();
+});
+
+// Initialize ketika document ready
+$(document).ready(function() {
+    window.initializeNextButtonHandler();
+});
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
@@ -701,31 +747,6 @@ $(document).ready(function () {
             }
 
             return true;
-        }
-        
-        function proceedToNextStep() {
-            const $button = $("#next-button");
-            $button.addClass("is-loading");
-
-            setTimeout(function() {
-                $button.removeClass("is-loading");
-
-                $(".form-step").removeClass("is-active");
-                currentStep += 1; // Gunakan currentStep
-                $("#form-step-" + currentStep).addClass("is-active");
-
-                $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
-                $("#step-segment-" + currentStep).addClass("is-active");
-                $("#mobile-step-segment-" + currentStep).addClass("is-active");
-
-                $("html, body").animate({
-                    scrollTop: $("#form-step-" + currentStep).offset().top
-                }, 500);
-
-                if (currentStep === 5) {
-                    $("#next-button").text("Complete Order");
-                }
-            }, 800);
         }
         
         // Reset counter saat ganti tab

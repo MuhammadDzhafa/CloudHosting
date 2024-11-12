@@ -578,12 +578,12 @@
         const tabNaver = document.querySelector('.tab-naver');
         const nextButton = document.getElementById('next-button');
         const existingModal = document.getElementById('demo-right-actions-modal');
+        const formSections = document.querySelectorAll('.form-section');
 
         // Initialize active states
         currentActiveTab = document.querySelector('.tabs ul li.is-active');
         currentActiveContent = document.querySelector('.tab-content.is-active');
 
-        // Initialize tab naver position
         function initializeTabNaver() {
             if (currentActiveTab && tabNaver) {
                 const initialTabWidth = currentActiveTab.offsetWidth;
@@ -596,33 +596,35 @@
 
         initializeTabNaver();
 
-        function resetAllStepsExceptFirst() {
-            currentStep = 0;
+        function resetAllStepsAndForms() {
+            // Reset step counter
+            window.currentStep = 0;
+            hasContinueBeenClicked = false;
 
-            // Reset form sections
-            const formSections = document.querySelectorAll('.form-section');
+            // Reset active state for form sections
             formSections.forEach((section, index) => {
-                section.classList.remove('is-active');
-                if (index === 0) section.classList.add('is-active');
+                section.classList.toggle('is-active', index === 0);
             });
 
-            // Reset step segments
+            // Reset active state for step segments
             const allSegments = document.querySelectorAll('.steps-segment, [id^="step-segment-"], [id^="mobile-step-segment-"]');
             allSegments.forEach((segment, index) => {
                 segment.classList.toggle('is-active', index === 0);
             });
 
-            // Reset inputs
-            document.querySelectorAll('input').forEach(input => {
-                input.value = '';
-            });
-
             // Reset next button
             if (nextButton) {
                 nextButton.textContent = 'Continue';
+                nextButton.classList.remove('is-loading');
             }
 
-            hasContinueBeenClicked = false;
+            // Unbind existing click handler and reinitialize
+            $('#next-button').off('click');
+
+            // Re-initialize next button handler
+            if (typeof window.initializeNextButtonHandler === 'function') {
+                window.initializeNextButtonHandler();
+            }
         }
 
         function updateActiveTab(newTab) {
@@ -667,18 +669,15 @@
                 event.preventDefault();
                 event.stopPropagation();
 
-                // Don't do anything if clicking the current active tab
                 if (tab === currentActiveTab) {
                     return;
                 }
 
-                // If next button hasn't been clicked, allow direct tab switch
                 if (!hasContinueBeenClicked) {
                     updateActiveTab(tab);
                     return;
                 }
 
-                // If next button has been clicked, show warning modal
                 showWarningModal(tab);
             });
         });
@@ -688,7 +687,7 @@
         if (confirmButton) {
             confirmButton.addEventListener('click', () => {
                 if (targetTabForSwitch) {
-                    resetAllStepsExceptFirst();
+                    resetAllStepsAndForms();
                     updateActiveTab(targetTabForSwitch);
                     targetTabForSwitch = null;
                 }
@@ -713,7 +712,7 @@
             button.addEventListener('click', handleModalClose);
         });
 
-        // Set up next button listener
+        // Handle next button click to update hasContinueBeenClicked
         if (nextButton) {
             nextButton.addEventListener('click', () => {
                 hasContinueBeenClicked = true;
