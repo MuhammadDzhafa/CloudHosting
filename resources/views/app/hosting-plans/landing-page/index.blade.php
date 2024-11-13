@@ -114,7 +114,7 @@
         }
 
         // General function for domain search
-        function searchDomain(type) {
+        async function searchDomain(type) {
             console.log('searchDomain called with type:', type);
 
             if (!searchInput) {
@@ -136,57 +136,64 @@
                 return;
             }
 
-            // Generate dropdown content based on type
+            // Parse domain
             const domainParts = searchQuery.split('.');
             const tld = domainParts.pop() || '';
             const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
             const baseDomain = mainDomainPart && tld ? `${mainDomainPart}.${tld}` : searchQuery;
 
-            let dropdownHTML = '';
+            // URL API Domain Availability
+            const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop&domainName=${baseDomain}&outputFormat=json`;
 
-            if (type === 'transfer') {
-                dropdownHTML = `
-            <div id="component-search">
-                <div class="message is-success flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                        <br>Transfer this domain at a discount!
+            try {
+                // Panggilan API untuk cek ketersediaan domain
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                // Cek ketersediaan domain (sesuaikan dengan format respons API)
+                const isAvailable = data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE";
+
+                let dropdownHTML = '';
+
+                if (isAvailable) {
+                    // Kondisi jika domain tersedia
+                    dropdownHTML = `
+                <div id="component-search">
+                    <div class="message is-success flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
+                            <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
+                        </div>
+                        <button class="button h-button is-success rounded-full" onclick="window.redirectToCheckout('${searchQuery}')">
+                            Buy Now
+                        </button>
                     </div>
-                    <button class="button h-button is-success rounded-full transfer-button" id="transfer-button" data-domain-name="${baseDomain}">
-                        Transfer Now
-                    </button>
                 </div>
-            </div>`;
-            } else if (type === 'new') {
-                dropdownHTML = `
-            <div id="component-search">
-                <div class="message is-success flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
-                        <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
+            `;
+                } else {
+                    // Kondisi jika domain tidak tersedia
+                    dropdownHTML = `
+                <div id="component-search">
+                    <div class="message flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${baseDomain}</strong> is not available
+                        </div>
+                        <button class="button h-button rounded-full h-modal-trigger" data-modal="demo-right-actions-modal">WHOIS</button>
                     </div>
-                    <button class="button h-button is-success rounded-full" onclick="window.redirectToCheckout('${searchQuery}')">
-                        Buy Now
-                    </button>
                 </div>
-                <div class="message flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        <strong>${baseDomain}</strong> is not available
-                    </div>
-                    <button class="button h-button rounded-full h-modal-trigger" data-modal="demo-right-actions-modal">WHOIS</button>
-                </div>
-            </div>`;
+            `;
+                }
+
+                // Update konten dropdown dan tampilkan
+                dropdownContent.innerHTML = dropdownHTML;
+                dropdownContainer.classList.remove('hidden');
+                dropdownContainer.classList.add('show');
+            } catch (error) {
+                console.error('Error checking domain availability:', error);
             }
-
-            // Update dropdown content and display
-            dropdownContent.innerHTML = dropdownHTML;
-            dropdownContainer.classList.remove('hidden');
-            dropdownContainer.classList.add('show');
 
             // Setup event handlers
             type === 'transfer' ? setupTransferButton() : setupBuyNowButton();
-
-            // Setup WHOIS modal
             setupWhoisModal();
         }
 
@@ -243,7 +250,7 @@
         // Function to fetch WHOIS data
         function fetchWhoisData() {
             const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
-            const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU'; // Ganti dengan API key Anda
+            const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop'; // Ganti dengan API key Anda
             const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
 
             fetch(url)
@@ -259,12 +266,12 @@
                     if (data.WhoisRecord) {
                         // Tampilkan data yang diambil di elemen whois-output
                         whoisOutput.innerHTML = `
-                <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
-                <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
-                <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
-                <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
-                <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
-            `;
+                    <p><strong>Domain name:</strong> ${data.WhoisRecord.domainName || 'Not available'}</p>
+                    <p><strong>Contact email:</strong> ${data.WhoisRecord.contactEmail || 'Not available'}</p>
+                    <p><strong>Registrar:</strong> ${data.WhoisRecord.registrarName || 'Not available'}</p>
+                    <p><strong>Creation Date:</strong> ${data.WhoisRecord.createdDate || 'Not available'}</p>
+                    <p><strong>Expiration Date:</strong> ${data.WhoisRecord.expiresDate || 'Not available'}</p>
+                `;
                     } else {
                         console.log('No WHOIS record found.');
                         whoisOutput.innerHTML = '<p>No WHOIS record found.</p>';

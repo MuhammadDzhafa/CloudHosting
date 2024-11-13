@@ -95,6 +95,7 @@ class HostingController extends Controller
 
         // Define the custom order of the hosting plans
         $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
+        $specs = CustomMainSpec::first();
 
         $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
             foreach ($hostingPlanOrder as $key => $name) {
@@ -111,7 +112,8 @@ class HostingController extends Controller
             'testimonials' => $testimonials,
             'hostingPlans' => $sortedHostingPlans,
             'hostingGroups' => $hostingGroups,
-            'faqs' => $faqs
+            'faqs' => $faqs,
+            'specs' => $specs,
         ]);
     }
 

@@ -69,7 +69,7 @@
                                     <div id="ram-price" class="custom-price">Rp{{ number_format($specs->price_RAM) }}/mon</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <div id="ram-value" class="custom-slider-value text-center" style="width: 80px;">{{ $specs->min_RAM }} GB</div>
+                                    <div id="ram-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_RAM }} GB</div>
                                     <input id="ram-slider" type="range" min="{{ $specs->min_RAM }}" max="{{ $specs->max_RAM }}" step="1" value="{{ $specs->min_RAM }}" class="custom-slider">
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                     <div id="cpu-price" class="custom-price">Rp{{ number_format($specs->price_CPU) }}/mon</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <div id="cpu-value" class="custom-slider-value text-center" style="width: 80px;">{{ $specs->min_CPU }} Core</div>
+                                    <div id="cpu-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_CPU }} Core</div>
                                     <input id="cpu-slider" type="range" min="{{ $specs->min_CPU }}" max="{{ $specs->max_CPU }}" step="1" value="{{ $specs->min_CPU }}" class="custom-slider">
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                     <div id="storage-price" class="custom-price">Rp{{ number_format($specs->price_storage) }}/mon</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <div id="storage-value" class="custom-slider-value text-center" style="width: 80px;">{{ $specs->min_storage }} GB</div>
+                                    <div id="storage-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_storage }} GB</div>
                                     <input id="storage-slider" type="range" min="{{ $specs->min_storage }}" max="{{ $specs->max_storage }}" step="{{ $specs->step_storage }}" value="{{ $specs->min_storage }}" class="custom-slider">
                                 </div>
                             </div>

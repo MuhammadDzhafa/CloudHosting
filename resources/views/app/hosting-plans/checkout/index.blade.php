@@ -335,106 +335,127 @@
         });
 
         // Fungsi umum untuk pencarian domain
-        function searchDomain(type) {
+        async function searchDomain(type) {
             console.log('searchDomain called with type:', type);
             const searchInput = document.getElementById(`domain-search-${type}`);
-            if (searchInput) {
-                const searchQuery = searchInput.value;
-                console.log('searchQuery:', searchQuery);
-                const dropdownContainer = document.getElementById(`dropdown-container-${type}`);
-                const dropdownContent = document.getElementById(`dropdown-content-${type}`);
-                const h3DomainDisplay = document.getElementById("h3-domain-display");
-                const pDomainDisplay = document.getElementById("p-domain-display");
-                const nextButton = document.getElementById("next-button");
-
-                if (searchQuery) {
-                    let dropdownHTML = '';
-                    const domainParts = searchQuery.split('.');
-                    const tld = domainParts.pop();
-                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
-                    const baseDomain = `${mainDomainPart}.${tld}`;
-
-                    // Untuk pencarian "New Domain"
-                    if (type === 'new') {
-                        dropdownHTML = `
-                        <div id="component-search">
-                            <div class="message is-success flex-row flex justify-between items-center">
-                                <div class="message-body">
-                                    <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
-                                    <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
-                                </div>
-                                <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
-                                    Buy Now
-                                </button>
-                            </div>
-                            <div class="message flex-row flex justify-between items-center">
-                                <div class="message-body">
-                                    <strong>${baseDomain}</strong> is not available
-                                </div>
-                                <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
-                            </div>
-                        </div>`;
-                    }
-                    // Untuk pencarian "Transfer Domain"
-                    else if (type === 'transfer') {
-                        dropdownHTML = `
-                        <div id="component-search">
-                            <div class="message is-success flex-row flex justify-between items-center">
-                                <div class="message-body">
-                                    <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                                    <br>Transfer this domain at a discount!
-                                </div>
-                                <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
-        Transfer Now
-    </button>
-                            </div>
-                        </div>`;
-                    }
-                    // Untuk pencarian "Hosting Only"
-                    else if (type === 'hosting-only') {
-                        dropdownHTML = `
-                        <div id="component-search">
-                            <div class="message is-success flex-row flex justify-between items-center">
-                                <div class="message-body">
-                                    <strong id="search-tld-name">${baseDomain}</strong> is available for Hosting Only
-                                    <br>Get this domain with your hosting plan!
-                                </div>
-                                <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
-                                    Buy Now
-                                </button>
-                            </div>
-                        </div>`;
-                    }
-
-                    dropdownContent.innerHTML = dropdownHTML;
-                    dropdownContainer.classList.remove('hidden');
-
-                    const buyNowButtons = document.querySelectorAll('.buy-now-button');
-                    buyNowButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const domainName = this.getAttribute('data-domain-name');
-                            h3DomainDisplay.textContent = domainName;
-                            pDomainDisplay.textContent = domainName;
-
-                            if (nextButton) {
-                                nextButton.click();
-                            }
-
-                            sessionStorage.setItem('selected_domain', domainName);
-                        });
-                    });
-
-                    setupWhoisModal();
-                    setupTransferButton();
-                    dropdownContainer.classList.add('show');
-                    dropdownContainer.classList.remove('hidden');
-                } else {
-                    dropdownContainer.classList.remove('show');
-                    dropdownContainer.classList.add('hidden');
-                }
-            } else {
+            if (!searchInput) {
                 console.error(`Element with ID 'domain-search-${type}' not found.`);
+                return;
             }
+
+            const searchQuery = searchInput.value.trim();
+            console.log('searchQuery:', searchQuery);
+            const dropdownContainer = document.getElementById(`dropdown-container-${type}`);
+            const dropdownContent = document.getElementById(`dropdown-content-${type}`);
+            const h3DomainDisplay = document.getElementById("h3-domain-display");
+            const pDomainDisplay = document.getElementById("p-domain-display");
+            const nextButton = document.getElementById("next-button");
+
+            if (!searchQuery) {
+                dropdownContainer.classList.remove('show');
+                dropdownContainer.classList.add('hidden');
+                return;
+            }
+
+            const domainParts = searchQuery.split('.');
+            const tld = domainParts.pop() || '';
+            const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+            const baseDomain = `${mainDomainPart}.${tld}`;
+
+            let dropdownHTML = '';
+
+            // Cek untuk tipe 'new' (domain baru)
+            if (type === 'new') {
+                const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop&domainName=${baseDomain}&outputFormat=json`;
+                try {
+                    const response = await fetch(apiUrl);
+                    const data = await response.json();
+                    const isAvailable = data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE";
+
+                    if (isAvailable) {
+                        dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-success flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
+                                <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
+                            </div>
+                            <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>`;
+                    } else {
+                        dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong>${baseDomain}</strong> is not available
+                            </div>
+                            <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
+                        </div>
+                    </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error checking domain availability:', error);
+                }
+            }
+            // Cek untuk tipe 'transfer'
+            else if (type === 'transfer') {
+                dropdownHTML = `
+            <div id="component-search">
+                <div class="message is-success flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                        <br>Transfer this domain at a discount!
+                    </div>
+                    <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
+                        Transfer Now
+                    </button>
+                </div>
+            </div>`;
+            }
+            // Cek untuk tipe 'hosting-only'
+            else if (type === 'hosting-only') {
+                dropdownHTML = `
+            <div id="component-search">
+                <div class="message is-success flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong id="search-tld-name">${baseDomain}</strong> is available for Hosting Only
+                        <br>Get this domain with your hosting plan!
+                    </div>
+                    <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                        Buy Now
+                    </button>
+                </div>
+            </div>`;
+            }
+
+            // Menampilkan dropdown
+            dropdownContent.innerHTML = dropdownHTML;
+            dropdownContainer.classList.remove('hidden');
+
+            const buyNowButtons = document.querySelectorAll('.buy-now-button');
+            buyNowButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const domainName = this.getAttribute('data-domain-name');
+                    h3DomainDisplay.textContent = domainName;
+                    pDomainDisplay.textContent = domainName;
+
+                    if (nextButton) {
+                        nextButton.click();
+                    }
+
+                    sessionStorage.setItem('selected_domain', domainName);
+                });
+            });
+
+            // Menyiapkan modal WHOIS dan tombol transfer
+            setupWhoisModal();
+            setupTransferButton();
+
+            dropdownContainer.classList.add('show');
+            dropdownContainer.classList.remove('hidden');
         }
 
         function setupTransferButton() {
@@ -521,7 +542,7 @@
                     const domainElement = componentSearch.querySelector('#search-tld-name');
                     const searchQuery = domainElement ? domainElement.textContent : '';
 
-                    const apiKey = 'at_qAvnE2wQKsqDR6aLMgThLwluvbewU';
+                    const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
                     const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
 
                     fetch(url)
