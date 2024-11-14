@@ -36,7 +36,7 @@
                             <div id="ram-price" class="custom-price">Rp{{ number_format($specs->price_RAM) }}/mon</div>
                         </div>
                         <div class="flex items-center">
-                            <div id="ram-value" class="custom-slider-value text-center" style="width: 75px;">{{ $specs->min_RAM }} GB</div>
+                            <div id="ram-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_RAM }} GB</div>
                             <input id="ram-slider" type="range"
                                 min="{{ $specs->min_RAM }}"
                                 max="{{ $specs->max_RAM }}"
@@ -53,7 +53,7 @@
                             <div id="cpu-price" class="custom-price">Rp{{ number_format($specs->price_CPU) }}/mon</div>
                         </div>
                         <div class="flex items-center">
-                            <div id="cpu-value" class="custom-slider-value text-center" style="width: 75px;">{{ $specs->min_CPU }} Core</div>
+                            <div id="cpu-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_CPU }} Core</div>
                             <input id="cpu-slider" type="range"
                                 min="{{ $specs->min_CPU }}"
                                 max="{{ $specs->max_CPU }}"
@@ -70,7 +70,7 @@
                             <div id="storage-price" class="custom-price">Rp{{ number_format($specs->price_storage) }}/mon</div>
                         </div>
                         <div class="flex items-center">
-                            <div id="storage-value" class="custom-slider-value text-center" style="width: 75px;">{{ $specs->min_storage }} GB</div>
+                            <div id="storage-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_storage }} GB</div>
                             <input id="storage-slider" type="range"
                                 min="{{ $specs->min_storage }}"
                                 max="{{ $specs->max_storage }}"
@@ -95,8 +95,7 @@
                 </div>
 
                 <!-- Tombol Order di paling kanan -->
-                <a href="/checkout" class="md:w-auto mt-4 md:mt-0">
-                    <button class="custom-order-button w-full md:w-auto">
+                <a href="{{ url('/checkout') }}?hosting_plan_id={{ $hostingPlans->first()->hosting_plans_id }}&product_info={{ $hostingPlans->first()->product_type }} - {{ $hostingPlans->first()->name }}" class="md:w-auto mt-4 md:mt-0">                    <button class="custom-order-button w-full md:w-auto">
                         <span class="custom-order-text">Order Now</span>
                     </button>
                 </a>
@@ -114,3 +113,274 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Ambil nilai dari database dengan fallback values yang aman
+    window.specs = {
+    // RAM specs
+    min_RAM: {{ $specs->min_RAM ?? 4 }},
+    max_RAM: {{ $specs->max_RAM ?? 32 }},
+    // Set multiplier dari database dengan fallback ke 2
+    multiplier_RAM: {{ $specs->multiplier_RAM ?? 2 }},
+    price_RAM: {{ $specs->price_RAM ?? 0 }},
+
+    // CPU specs
+    min_CPU: {{ $specs->min_CPU ?? 1 }},
+    max_CPU: {{ $specs->max_CPU ?? 8 }},
+    // Set multiplier dari database dengan fallback ke 2
+    multiplier_CPU: {{ $specs->multiplier_CPU ?? 2 }},
+    price_CPU: {{ $specs->price_CPU ?? 0 }},
+
+    // Storage specs
+    min_storage: {{ $specs->min_storage ?? 10 }},
+    max_storage: {{ $specs->max_storage ?? 100 }},
+    // Set step dari database dengan fallback ke 10
+    step_storage: {{ $specs->step_storage ?? 10 }},
+    price_storage: {{ $specs->price_storage ?? 0 }},
+};
+
+
+    // Debug: Log semua specs di awal
+    console.log('Initial specs:', JSON.parse(JSON.stringify(window.specs)));
+
+    function formatPrice(price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function generateMultiplierValues(min, max, multiplier) {
+        // Convert string values to numbers
+        min = parseFloat(min);
+        max = parseFloat(max);
+        multiplier = parseFloat(multiplier);
+
+        console.log(`Generating multiplier values: min=${min}, max=${max}, multiplier=${multiplier}`);
+
+        const values = [];
+        let current = min;
+
+        // Ensure we have at least min and max values
+        values.push(min);
+
+        // Generate values using multiplier
+        while (current < max) {
+            current *= multiplier;
+            if (current <= max) {
+                values.push(Math.round(current));
+            }
+        }
+
+        // Ensure max is included if not already
+        if (values[values.length - 1] !== max) {
+            values.push(max);
+        }
+
+        // Remove duplicates and sort
+        const uniqueValues = [...new Set(values)].sort((a, b) => a - b);
+        console.log('Generated values:', uniqueValues);
+        return uniqueValues;
+    }
+
+    function generateStepValues(min, max, step) {
+        // Convert string values to numbers
+        min = parseFloat(min);
+        max = parseFloat(max);
+        step = parseFloat(step);
+
+        console.log(`Generating step values: min=${min}, max=${max}, step=${step}`);
+
+        const values = [];
+        for (let i = min; i <= max; i += step) {
+            values.push(Math.round(i));
+        }
+
+        // Ensure max is included if not already
+        if (values[values.length - 1] !== max) {
+            values.push(max);
+        }
+
+        console.log('Generated values:', values);
+        return values;
+    }
+
+    function getClosestValue(value, validValues) {
+        // Ensure we're working with numbers
+        value = parseFloat(value);
+        return validValues.reduce((prev, curr) => {
+            return Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev;
+        });
+    }
+
+    function calculatePrice(value, pricePerUnit, validValues) {
+        const index = validValues.indexOf(parseInt(value));
+        return index !== -1 ? pricePerUnit * (index + 1) : 0;
+    }
+
+    let ramValues, cpuValues, storageValues;
+
+    function updateSliderValue(slider, validValues, unit) {
+        if (!slider || !validValues || !validValues.length) return null;
+
+        const value = parseFloat(slider.value);
+        const closestValue = getClosestValue(value, validValues);
+
+        // Update slider position
+        slider.value = closestValue;
+
+        // Update display value
+        const valueElement = document.getElementById(slider.id.replace('-slider', '-value'));
+        if (valueElement) {
+            valueElement.textContent = `${closestValue} ${unit}`;
+        }
+
+        return closestValue;
+    }
+
+    function updateTotalPrice() {
+        const ramSlider = document.getElementById('ram-slider');
+        const cpuSlider = document.getElementById('cpu-slider');
+        const storageSlider = document.getElementById('storage-slider');
+
+        // Update each component
+        const ramValue = updateSliderValue(ramSlider, ramValues, 'GB');
+        const cpuValue = updateSliderValue(cpuSlider, cpuValues, 'Core');
+        const storageValue = updateSliderValue(storageSlider, storageValues, 'GB');
+
+        // Calculate prices
+        const ramPrice = calculatePrice(ramValue, window.specs.price_RAM, ramValues);
+        const cpuPrice = calculatePrice(cpuValue, window.specs.price_CPU, cpuValues);
+        const storagePrice = calculatePrice(storageValue, window.specs.price_storage, storageValues);
+
+        // Update price displays
+        document.getElementById('ram-price').textContent = `Rp${formatPrice(ramPrice)}/mon`;
+        document.getElementById('cpu-price').textContent = `Rp${formatPrice(cpuPrice)}/mon`;
+        document.getElementById('storage-price').textContent = `Rp${formatPrice(storagePrice)}/mon`;
+
+        // Update total price
+        const totalPrice = ramPrice + cpuPrice + storagePrice;
+        document.getElementById('total-price').textContent = formatPrice(totalPrice);
+    }
+
+    function initializeSlider(slider, validValues) {
+        if (!slider || !validValues || !validValues.length) return;
+
+        console.log(`Initializing ${slider.id} with values:`, validValues);
+
+        // Configure slider
+        slider.min = Math.min(...validValues);
+        slider.max = Math.max(...validValues);
+        slider.value = validValues[0];
+        slider.step = 1; // Use 1 for smooth sliding
+
+        // Remove existing listeners and add new one
+        const newSlider = slider.cloneNode(true);
+        slider.parentNode.replaceChild(newSlider, slider);
+        newSlider.addEventListener('input', updateTotalPrice);
+
+        // Log initialization
+        console.log(`${slider.id} initialized with:`, {
+            min: newSlider.min,
+            max: newSlider.max,
+            initial: newSlider.value,
+            validValues: validValues
+        });
+    }
+
+    function initializeSliders() {
+        // Generate valid values
+        ramValues = generateMultiplierValues(
+            window.specs.min_RAM,
+            window.specs.max_RAM,
+            window.specs.multiplier_RAM
+        );
+
+        cpuValues = generateMultiplierValues(
+            window.specs.min_CPU,
+            window.specs.max_CPU,
+            window.specs.multiplier_CPU
+        );
+
+        storageValues = generateStepValues(
+            window.specs.min_storage,
+            window.specs.max_storage,
+            window.specs.step_storage
+        );
+
+        // Initialize sliders
+        initializeSlider(document.getElementById('ram-slider'), ramValues);
+        initializeSlider(document.getElementById('cpu-slider'), cpuValues);
+        initializeSlider(document.getElementById('storage-slider'), storageValues);
+
+        // Set initial prices
+        updateTotalPrice();
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initializeSliders);
+    } else {
+        initializeSliders();
+    }
+
+    // Update the event listener for custom-order-btn
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('custom-order-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Get current slider values
+        const ramValue = document.getElementById('ram-value').textContent.split(' ')[0];
+        const cpuValue = document.getElementById('cpu-value').textContent.split(' ')[0];
+        const storageValue = document.getElementById('storage-value').textContent.split(' ')[0];
+
+        // Get price values (remove 'Rp' and '/mon', then parse)
+        const ramPrice = parseInt(document.getElementById('ram-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const cpuPrice = parseInt(document.getElementById('cpu-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const storagePrice = parseInt(document.getElementById('storage-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const totalPrice = parseInt(document.getElementById('total-price').textContent.replace(',', ''));
+
+        // Setup AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/save-custom-plan', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+        // Prepare data payload
+        const data = {
+            type: 'custom',
+            specs: {
+                ram: parseInt(ramValue),
+                cpu: parseInt(cpuValue),
+                storage: parseInt(storageValue),
+                details: {
+                    ram_price: ramPrice,
+                    cpu_price: cpuPrice,
+                    storage_price: storagePrice
+                }
+            },
+            total_price: totalPrice
+        };
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Redirect to checkout page with custom plan data
+                    window.location.href = response.data.redirect_url;
+                } else {
+                    alert('Failed to process order. Please try again.');
+                }
+            } else {
+                console.error('Error:', xhr.responseText);
+                alert('An error occurred. Please try again.');
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error('Request failed');
+            alert('Network error occurred. Please try again.');
+        };
+
+        // Send the data
+        xhr.send(JSON.stringify(data));
+    });
+});
+</script>
