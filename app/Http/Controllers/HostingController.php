@@ -118,18 +118,10 @@ class HostingController extends Controller
         $faqs = Faq::all()->groupBy('category');
         $hostingPlans = HostingPlan::with(['hostingGroup', 'prices'])->get();
         $testimonials = Testimonial::select('testimonial_text', 'picture', 'occupation', 'domain_web', 'facebook', 'instagram')->get();
+        $regularSpec = RegularMainSpec::whereIn('hosting_plans_id', $hostingPlans->pluck('hosting_plans_id'))->get()->keyBy('hosting_plans_id');
 
-        // Define the custom order of the hosting plans
-        $hostingPlanOrder = ['Strato', 'Alto', 'Cirrus'];
-
-        $sortedHostingPlans = $hostingPlans->sortBy(function ($hostingPlan) use ($hostingPlanOrder) {
-            foreach ($hostingPlanOrder as $key => $name) {
-                // Check if the plan name contains one of the keywords
-                if (str_contains($hostingPlan->name, $name)) {
-                    return $key; // Return the index based on the keyword
-                }
-            }
-            return count($hostingPlanOrder); // Default to end of the list if no match
+        $sortedHostingPlans = $hostingPlans->sortBy(function ($plan) {
+            return optional($plan->prices->where('duration', 'monthly')->first())->price_after;
         });
 
         // Return the landing page view with testimonials and sorted hosting plans
@@ -137,6 +129,7 @@ class HostingController extends Controller
             'testimonials' => $testimonials,
             'hostingPlans' => $sortedHostingPlans,
             'hostingGroups' => $hostingGroups,
+            'regularSpec' => $regularSpec,
             'faqs' => $faqs
         ]);
     }

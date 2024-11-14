@@ -3,184 +3,80 @@
         WordPress Hosting Plans
     </h2>
 
-    <div class="flex justify-center">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1440px]">
-            <!-- Strato -->
+    <div class="flex justify-center z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+            @foreach ($hostingGroups as $group)
+            @foreach ($hostingPlans as $hostingPlan)
+            @if($hostingPlan->product_type === 'Wordpress Hosting') <!-- Check product_type for each plan -->
+            @if($hostingPlan->hosting_group_id === $group->hosting_group_id && $hostingPlan->package_type === 'Regular')
             <div
-                class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 bg-white">
+                class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 
+                                                                                        {{ $hostingPlan->best_seller ? 'bg-gradient-custom text-white' : 'bg-white' }}">
                 <h5
-                    class="text-xl font-bold text-[#4A6DCB] mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] leading-[26px] text-center text-[#4A6DCB]">
-                    Strato
+                    class="text-xl font-bold mb-1 w-[240px] h-[26px] opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#4A6DCB]' }}">
+                    {{ $hostingPlan->name }}
                 </h5>
-                <p class="text-[14px] leading-[20.3px] font-normal text-center text-[#7C7C7C] mb-4">Larger business
-                    websites</p>
-
-                <div class="price-container text-center mb-4">
-                    <span class="flex items-center justify-center">
-                        <span class="text-[14px] leading-[20.3px] text-[#4A6DCB]">$</span>
-                        <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                            14.99
-                        </span>
-                        <span class="text-[14px] leading-[20.3px] text-[#4A6DCB]">/mon</span>
-                    </span>
-
-                    <div class="mt-2">
-                        <span class="text-[11px] leading-[15.95px] text-[#989EA0] line-through">
-                            $15.99 /mon
-                        </span>
-                        <span class="text-[11px] leading-[15.4px] text-[#6C88D5] ml-2">
-                            Save 10%
-                        </span>
-                    </div>
-                </div>
-                <ul class="list-none mb-6">
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        14 GB SSD Storage
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        6 GB RAM
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        4 Core CPU
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        Unlimited Domain
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        Free SSL
-                    </li>
-                </ul>
-                <a href="/checkout">
-                    <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
-                        <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
-                            Order Now
-                        </span>
-                    </button>
-                </a>
-            </div>
-            <!-- Alto -->
-            <div
-                class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white custom-gradient">
-                <h5
-                    class="text-xl font-bold mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] leading-[26px] text-center text-[#FFFFFF]">
-                    Alto
-                </h5>
-                <p class="text-[14px] leading-[20.3px] font-normal text-center text-[#FFF] mb-4">Established enterprises
+                <p
+                    class="mb-2 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-500,#7C7C7C)]' }}">
+                    {{ $hostingPlan->description }}
                 </p>
-
-                <div class="price-container text-center mb-4">
+                @foreach($hostingPlan->prices as $price)
+                @if($price->duration === 'monthly')
+                <div class="price-container text-center">
                     <span class="flex items-center justify-center">
-                        <span class="text-[14px] leading-[20.3px] text-[#FFFFFF]">$</span>
-                        <span class="text-[32px] font-bold leading-[38.4px] text-[#FFFFFF]">
-                            29.99
-                        </span>
-                        <span class="text-[14px] leading-[20.3px] text-[#FFFFFF]">/mon</span>
-                    </span>
-
-                    <div class="mt-2">
-                        <span class="text-[11px] leading-[15.95px] text-[#FFFFFF] line-through">
-                            $34.99 /mon
-                        </span>
                         <span
-                            class="text-[11px] leading-[15.4px] text-[#D3F2FD] ml-2 shadow-[0px_1px_2px_0px_#FFFFFF0F]">
-                            Save 30%
-                        </span>
-                    </div>
-                </div>
-                <ul class="list-none mb-6">
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#FFFFFF]">
-                        <img src="/assets/img/icons/checkwhite.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        100 GB SSD Storage
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#FFFFFF]">
-                        <img src="/assets/img/icons/checkwhite.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        8 GB RAM
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#FFFFFF]">
-                        <img src="/assets/img/icons/checkwhite.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        10 Core CPU
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#FFFFFF]">
-                        <img src="/assets/img/icons/checkwhite.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        Unlimited Domain
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#FFFFFF]">
-                        <img src="/assets/img/icons/checkwhite.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        Free SSL
-                    </li>
-                </ul>
-                <a href="/checkout">
-                    <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
-                        <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
-                            Order Now
-                        </span>
-                    </button>
-                </a>
-            </div>
-            <!-- Cirrus -->
-            <div
-                class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-[0px_1.75px_4px_-1px_#00000024] text-white bg-[#FFFFFF]">
-                <h5
-                    class="text-xl font-bold mb-2 w-[240px] h-[26px] gap-0 opacity-100 font-inter text-[20px] leading-[26px] text-center text-[#4A6DCB]">
-                    Cirrus
-                </h5>
-                <p class="text-[14px] leading-[20.3px] font-normal text-center text-[#7C7C7C] mb-4">Large corporations
-                </p>
-
-                <div class="price-container text-center mb-4">
-                    <span class="flex items-center justify-center">
-                        <span class="text-[14px] leading-[20.3px] text-[#4A6DCB]">$</span>
-                        <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                            54.99
-                        </span>
-                        <span class="text-[14px] leading-[20.3px] text-[#4A6DCB]">/mon</span>
-                    </span>
-
-                    <div class="mt-2">
-                        <span class="text-[11px] leading-[15.95px] text-[#989EA0] line-through">
-                            $55.99 /mon
-                        </span>
+                            class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">Rp</span>
                         <span
-                            class="text-[11px] leading-[15.4px] text-[#6C88D5] ml-2 shadow-[0px_1px_2px_0px_#FFFFFF0F]">
-                            Save 10%
-                        </span>
-                    </div>
+                            class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center mx-2 {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">{{ number_format($price->price_after, 0, ',', '.') }}</span>
+                        <span
+                            class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">/mon</span>
+                    </span>
                 </div>
+                <div class="mb-4 text-center">
+                    <span
+                        class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Grey-400,#989EA0)]' }} line-through">Rp
+                        {{ number_format($price->price, 0, ',', '.') }} /mon</span>
+                    <span
+                        class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-400,#6C88D5)]' }} ml-2">Save
+                        {{$price->discount}}%</span>
+                </div>
+                @endif
+                @endforeach
                 <ul class="list-none mb-6">
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        200 GB SSD Storage
+                    @foreach([
+                    'storage' => ['source' => 'specs', 'label' => 'GB SSD Storage'],
+                    'RAM' => ['source' => 'specs', 'label' => 'RAM'],
+                    'CPU' => ['source' => 'specs', 'label' => 'Core CPU'],
+                    'max_domain' => ['source' => 'plan', 'label' => 'Domain'],
+                    'ssl' => ['source' => 'plan', 'label' => 'SSL']
+                    ] as $key => $value)
+                    <li class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-900,#3D3D3D)]' }}">
+                        <img src="/assets/img/icons/{{ $hostingPlan->best_seller ? 'checkwhite' : 'checkblack' }}.svg"
+                            alt="" class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
+                        @if($value['source'] === 'specs')
+                        {{ $regularSpec[$hostingPlan->hosting_plans_id]->$key ?? '' }} {{ $value['label'] }}
+                        @else
+                        @if($key === 'max_domain')
+                        {{ $hostingPlan->max_domain }} {{ $value['label'] }}
+                        @elseif($key === 'ssl')
+                        {{ $hostingPlan->ssl }} {{ $value['label'] }}
+                        @endif
+                        @endif
                     </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        12 GB RAM
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        12 Core CPU
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        Unlimited Domain
-                    </li>
-                    <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] text-[#3D3D3D]">
-                        <img src="/assets/img/icons/checkblack.svg" alt="" class="w-[16.67px] h-[16.67px] mr-2">
-                        Free SSL
-                    </li>
+                    @endforeach
                 </ul>
-                <a href="/checkout">
-                    <button class="w-[240px] h-[47px] px-[var(--Spacespace-16)] py-[var(--Spacespace-12)] gap-[var(--Spacespace-10)] rounded-full border border-[#395FC6] bg-[#FFFFFF] shadow-lg text-center flex items-center justify-center">
-                        <span class="text-[18px] leading-[23.4px] text-[#395FC6]">
-                            Order Now
-                        </span>
-                    </button>
-                </a>
+                <div class="button-container">
+                    <a href="{{ url('/checkout') }}?hosting_plan_id={{ $hostingPlan->hosting_plans_id }}&product_info={{ $hostingPlan->product_type }} - {{ $hostingPlan->name }}&specs[]={{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->storage : '' }} GB SSD Storage&specs[]={{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->RAM : '' }} RAM&specs[]={{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->CPU : '' }} Core CPU&specs[]={{ $hostingPlan->max_domain }} Domain&specs[]={{ $hostingPlan->ssl }} SSL"
+                        class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] text-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"
+                        style="font-family: unset; width:100%">
+                        <span class="btn-text explore-button">Order Now</span>
+                    </a>
+                </div>
             </div>
+            @endif
+            @endif
+            @endforeach
+            @endforeach
         </div>
     </div>
     <p class="text-center text-[16px] font-normal leading-[23.2px] text-[#7C7C7C] font-inter mt-8">
