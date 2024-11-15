@@ -189,6 +189,34 @@
                         </div>
                     </div>
                 </div>
+                <div id="demo-right-actions-modal" class="modal h-modal">
+                    <div class="modal-background  h-modal-close"></div>
+                    <div class="modal-content">
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <h3>Did you know?</h3>
+                                <button class="h-modal-close ml-auto" aria-label="close">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </header>
+                            <div class="modal-card-body">
+                                <div class="inner-content">
+                                    <div class="section-placeholder">
+                                        <div class="placeholder-content">
+                                            <img src="assets/img/placeholders/huro-1.svg" alt="">
+                                            <h3 class="dark-inverted">Go Premium</h3>
+                                            <p>Unlock more features and business tools by going premium</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-card-foot is-end">
+                                <a class="button h-button is-rounded h-modal-close">Cancel</a>
+                                <a class="button h-button is-primary is-raised is-rounded">Confirm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -233,6 +261,7 @@
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
         const slider = document.querySelector('.slider');
+
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -359,14 +388,16 @@
                 </div>`;
                     } else {
                         dropdownHTML = `
-                <div id="component-search">
-                    <div class="message flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong>${baseDomain}</strong> is not available
+                    <div id="component-search">
+                        <div class="message flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong>${baseDomain}</strong> is not available
+                            </div>
+                            <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">
+                                WHOIS
+                            </button>
                         </div>
-                        <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
-                    </div>
-                </div>`;
+                    </div>`;
                     }
                 } catch (error) {
                     console.error('Error checking domain availability:', error);
@@ -579,24 +610,14 @@
                     }
 
                     // Ambil domain yang dipilih dari elemen yang sesuai
-                    const componentSearch = this.closest('#component-search');
-                    const domainElement = componentSearch ? componentSearch.querySelector('#search-tld-name') : null;
-                    let searchQuery = domainElement ? domainElement.textContent.trim() : '';
-
-                    // Jika #search-tld-name kosong, ambil domain dari URL
-                    if (!searchQuery) {
-                        const urlParams = new URLSearchParams(window.location.search);
-                        searchQuery = urlParams.get('tld_name') || ''; // Ambil domain dari query string
-                    }
-
-                    // Cek apakah searchQuery tidak kosong
-                    if (!searchQuery) {
-                        console.error('Domain name is missing!');
-                        return;
+                    const domainName = this.getAttribute('data-domain-name');
+                    if (!domainName) {
+                        console.error('Domain name is missing from button attribute!');
+                        return; // Hentikan jika tidak ada nama domain
                     }
 
                     const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
-                    const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
+                    const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
 
                     fetch(url)
                         .then(response => {
@@ -636,8 +657,7 @@
                     this.closest('.modal').classList.remove('is-active');
                 });
             });
-        }
-        // Setup CSRF token untuk AJAX (jika menggunakan jQuery)
+        } // Setup CSRF token untuk AJAX (jika menggunakan jQuery)
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

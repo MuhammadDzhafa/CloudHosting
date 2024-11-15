@@ -11,12 +11,6 @@
     <title>@yield('title')</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -41,14 +35,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
 
-    <!-- Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    @vite('resources/css/app.css')
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -101,7 +93,7 @@
             @yield('wordpress-hosting')
             @yield('cloud-hosting')
 
-            {{-- @include('layouts.template-landing-page.web.partials.scrolltotop') --}}
+            <!-- @include('layouts.template-landing-page.web.partials.scrolltotop') -->
             @include('layouts.template-landing-page.web.partials.footer')
         </div>
 
@@ -110,14 +102,26 @@
 
         <!--Huro Scripts-->
         <script src="{{ asset('assets/js/app.js') }}"></script>
-        <script src="{{ asset('assets/js/functions.js') }}"></script>
+
+        <!-- Huro js -->
+        <script src="{{ asset('assets/js/functions.js') }}" async></script>
         <script src="{{ asset('assets/js/main.js') }}" async></script>
         <script src="{{ asset('assets/js/components.js') }}" async></script>
         <script src="{{ asset('assets/js/popover.js') }}" async></script>
         <script src="{{ asset('assets/js/widgets.js') }}" async></script>
+
+        <!-- Additional Features -->
         <script src="{{ asset('assets/js/touch.js') }}" async></script>
-        <script src="{{ asset('assets/js/syntax.js') }}" async></script>
-        @yield('scripts')
+
+        <!-- Landing page js -->
+
+        <!-- Dashboards js -->
+        <script src="{{ asset('assets/js/syntax.js')}}" async></script>
+        <!-- Charts js -->
+
+        <!--Forms-->
+        <script src="{{ asset('assets/js/forms.js') }}" async></script>
+        @stack('scripts')
     </div>
 </body>
 

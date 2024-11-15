@@ -1,68 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends ('layouts.template-landing-page.web.master')
 
-<head>
-    <!-- Required meta tags  -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('domain')
+@include ('app.hosting-plans.pricing.domain.section1')
+@include ('app.hosting-plans.pricing.domain.section2')
+@include ('app.hosting-plans.pricing.domain.section3')
+@include ('app.hosting-plans.pricing.domain.section4')
+@include ('app.hosting-plans.pricing.domain.section5')
+@include ('app.hosting-plans.pricing.domain.section6')
+@include ('app.hosting-plans.pricing.domain.section7')
+@include ('app.hosting-plans.pricing.domain.section8')
+@endsection
 
-    <title>Awan Hosting :: Checkout</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
-
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-N8ZNRQ9');
-    </script>
-    <!-- End Google Tag Manager -->
-
-    <!--Core CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-
-<body>
-    @extends ('layouts.template-landing-page.web.master')
-
-    @section('domain')
-
-    @include ('app.hosting-plans.pricing.domain.section1')
-    @include ('app.hosting-plans.pricing.domain.section2')
-    @include ('app.hosting-plans.pricing.domain.section3')
-    @include ('app.hosting-plans.pricing.domain.section4')
-    @include ('app.hosting-plans.pricing.domain.section5')
-    @include ('app.hosting-plans.pricing.domain.section6')
-    @include ('app.hosting-plans.pricing.domain.section7')
-    @include ('app.hosting-plans.pricing.domain.section8')
-
-    @endsection
-</body>
-
-</html>
-
+@push ('scripts')
 <script>
     function redirectToCheckout() {
         const domainName = document.getElementById('domain-search').value;
@@ -98,42 +47,92 @@
         const dropdownContainer = document.getElementById('dropdown-container');
         const dropdownContent = document.getElementById('dropdown-content');
         const componentTransfer = document.getElementById('component-transfer');
-        const tldItems = document.querySelectorAll('.tld-item');
-        const tldResults = document.getElementById('tld-results');
+        const transferForm = document.getElementById('transfer-form');
+        const successMessage = document.getElementById('success-message');
         const searchInput = document.getElementById('domain-search');
 
+        function checkDomainAvailability(domainName) {
+            return new Promise((resolve, reject) => {
+                const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+                const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
+
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('API Response:', data); // Log respons API
+
+                        // Logika untuk menentukan ketersediaan domain
+                        const hasWhoisData = data.WhoisRecord && data.WhoisRecord.domainName;
+                        const hasDataError = data.WhoisRecord && data.WhoisRecord.dataError;
+
+                        // Jika ada data error, anggap domain tersedia
+                        if (hasDataError) {
+                            console.log('Domain is available (data error present)');
+                            resolve(true);
+                        } else if (hasWhoisData) {
+                            console.log('Domain is not available');
+                            resolve(false);
+                        } else {
+                            console.log('Domain is available (no WHOIS data)');
+                            resolve(true);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking domain availability:', error);
+                        reject(error);
+                    });
+            });
+        }
+        // Event listener untuk pencarian domain
         if (searchBtn) {
             searchBtn.addEventListener('click', function() {
                 const searchQuery = searchInput.value;
 
                 if (searchQuery) {
-                    const domainParts = searchQuery.split('.'); // Pisahkan bagian-bagian domain
-                    const tld = domainParts.pop(); // Ambil TLD
-                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.'); // Gabungkan bagian domain utama
-                    const baseDomain = `${mainDomainPart}.${tld}`; // Buat nama domain yang ingin ditampilkan
+                    const domainParts = searchQuery.split('.');
+                    const tld = domainParts.pop();
+                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+                    const baseDomain = `${mainDomainPart}.${tld}`;
 
-                    dropdownContent.innerHTML = `
-            <div id="component-search">
-                <div class="message is-success flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        <strong>${baseDomain}</strong> is available
-                        <br>Exclusive offer: $1.50/mon for a 2-year plan
+                    // Periksa ketersediaan domain
+                    checkDomainAvailability(baseDomain)
+                        .then(isAvailable => {
+                            const messageContainer = `
+                    <div id="component-search">
+                        <div class="message is-success flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong>${baseDomain}</strong> is ${isAvailable ? 'available' : 'not available'}
+                                ${isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
+                            </div>
+                            ${isAvailable ? 
+                                `<button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">Buy Now</button>` : 
+                                `<button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">WHOIS</button>`
+                            }
+                        </div>
                     </div>
-                    <button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">
-                        Buy Now
-                    </button>
-                </div>
-                <div class="message flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        <strong>${baseDomain}</strong> is not available
-                    </div>
-                    <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois">WHOIS</button>
-                </div>
-            </div>
-            `;
+                `;
 
-                    dropdownContainer.classList.add('show');
-                    componentTransfer.classList.add('hidden');
+                            dropdownContent.innerHTML = messageContainer;
+
+                            // Panggil setupWhoisModal setelah menambahkan konten
+                            if (!isAvailable) {
+                                setupWhoisModal();
+                            }
+
+                            dropdownContainer.classList.add('show');
+                            componentTransfer.classList.add('hidden');
+                        })
+                        .catch(error => {
+                            dropdownContent.innerHTML = `
+                    <div class="notification is-danger">
+                        Unable to check domain availability. Please try again later.
+                    </div>
+                `;
+                            console.error('Domain availability check failed:', error);
+                        });
                 } else {
                     dropdownContainer.classList.remove('show');
                 }
@@ -142,35 +141,113 @@
 
         if (searchButton) {
             searchButton.addEventListener('click', function() {
-                const searchQuery = searchInput.value.toLowerCase();
-                let hasResults = false;
+                const searchQuery = searchInput.value;
 
-                if (searchQuery === "") {
-                    tldResults.classList.add('hidden');
-                    return;
-                }
+                if (searchQuery) {
+                    const domainParts = searchQuery.split('.');
+                    const tld = domainParts.pop();
+                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+                    const baseDomain = `${mainDomainPart}.${tld}`;
 
-                tldItems.forEach(function(item) {
-                    const tldName = item.querySelector('.dark-text').textContent.toLowerCase();
-                    if (tldName.includes(searchQuery)) {
-                        item.classList.remove('hidden');
-                        hasResults = true;
-                    } else {
-                        item.classList.add('hidden');
+                    // Reset state sebelumnya
+                    if (transferForm) {
+                        transferForm.classList.add('hidden');
                     }
-                });
+                    if (successMessage) {
+                        successMessage.classList.add('hidden');
+                    }
 
-                if (hasResults) {
-                    tldResults.classList.remove('hidden');
+                    // Tampilkan form transfer
+                    dropdownContent.innerHTML = `
+                    <div id="component-search">
+                        <div class="message is-success flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                                <br>Transfer this domain at a discount!
+                            </div>
+                            <button class="button h-button is-success rounded-full" id="show-transfer-form">
+                                Transfer Now
+                            </button>
+                        </div>
+                    </div>`;
+
+                    // Tampilkan dropdown
+                    dropdownContainer.classList.add('show');
+                    componentTransfer.classList.remove('hidden');
+
+                    // Setup event listener untuk tombol Transfer Now yang baru
+                    const showTransferFormBtn = document.getElementById('show-transfer-form');
+                    if (showTransferFormBtn && transferForm) {
+                        showTransferFormBtn.addEventListener('click', function() {
+                            transferForm.classList.remove('hidden');
+                            // Scroll ke form
+                            setTimeout(() => {
+                                transferForm.scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            }, 100);
+                        });
+                    }
                 } else {
-                    tldResults.classList.add('hidden');
+                    dropdownContainer.classList.remove('show');
                 }
-
-                // Pindah ke komponen transfer
-                renderComponent('component-transfer');
             });
         }
 
+        // Fungsi untuk setup event listener tombol transfer
+        function setupTransferButton() {
+            const transferButton = document.getElementById('transfer-button');
+            const transferForm = document.getElementById('transfer-form');
+
+            if (transferButton && transferForm) {
+                transferButton.addEventListener('click', function() {
+                    // Tampilkan form dengan menghapus class hidden
+                    transferForm.classList.remove('hidden');
+
+                    // Optional: Scroll ke form
+                    transferForm.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        }
+
+        // Event listener untuk tombol Continue
+        const continueButton = document.getElementById('continue-button');
+        if (continueButton) {
+            continueButton.addEventListener('click', function() {
+                const eppCodeInput = document.querySelector('input[placeholder="Enter your EPP code here"]');
+
+                if (eppCodeInput) {
+                    const eppCode = eppCodeInput.value.trim();
+
+                    if (eppCode) {
+                        // Simulasi validasi EPP (ganti dengan validasi sebenarnya)
+                        setTimeout(() => {
+                            if (successMessage) {
+                                successMessage.classList.remove('hidden');
+                                // Scroll ke success message
+                                successMessage.scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }, 1000);
+                    } else {
+                        alert('Please enter EPP Code');
+                    }
+                }
+            });
+        }
+
+        // Single event listener untuk close message
+        const deleteMessage = document.getElementById('delete-message');
+        if (deleteMessage) {
+            deleteMessage.addEventListener('click', function() {
+                if (successMessage) {
+                    successMessage.classList.add('hidden');
+                }
+            });
+        }
         document.querySelectorAll('.popular-domain').forEach(domainCard => {
             domainCard.addEventListener('click', function() {
                 const selectedTLD = this.getAttribute('data-domain');
@@ -208,11 +285,6 @@
                 });
             });
         }
-
-        // Handle Continue Button and Success Message
-        document.getElementById('continue-button').addEventListener('click', function() {
-            document.getElementById('success-message').classList.remove('hidden');
-        });
 
         document.getElementById('delete-message').addEventListener('click', function() {
             document.getElementById('success-message').classList.add('hidden');
@@ -335,3 +407,4 @@
 
     console.log('Script TLD order loaded');
 </script>
+@endpush

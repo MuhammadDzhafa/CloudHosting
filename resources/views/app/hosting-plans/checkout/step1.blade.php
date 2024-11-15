@@ -343,25 +343,25 @@
                 row.className = 'border-b border-gray-200 text-center';
 
                 row.innerHTML = `
-                                <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    ${domain.tld_name}
-                                </td>
-                                <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    Rp${domain.tld_price.toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0})}
-                                </td>
-                                <td class="py-3 px-4 flex justify-center items-center">
-                                    <button 
-                                        class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" 
-                                        style="border: unset; padding:12px 16px;" 
-                                        data-tld-name="${domain.tld_name}" 
-                                        data-tld-price="${domain.tld_price}" 
-                                        onclick="orderTLD(this)">
-                                        <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                            Order
-                                        </span>
-                                    </button>
-                                </td>
-                            `;
+                            <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                ${domain.tld_name}
+                            </td>
+                            <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                Rp${domain.tld_price.toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0})}
+                            </td>
+                            <td class="py-3 px-4 flex justify-center items-center">
+                                <button 
+                                    class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" 
+                                    style="border: unset; padding:12px 16px;" 
+                                    data-tld-name="${domain.tld_name}" 
+                                    data-tld-price="${domain.tld_price}" 
+                                    onclick="orderTLD(this)">
+                                    <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                        Order
+                                    </span>
+                                </button>
+                            </td>
+                        `;
                 tbody.appendChild(row);
             });
         }
@@ -464,52 +464,13 @@
                     console.error('Error:', error);
                 });
         }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Fungsi untuk mengatur pencarian TLD
             function setupTldSearch(containerId) {
                 const container = document.getElementById(containerId);
-                const searchButton = container.querySelector('#search-button');
                 const domainSearch = container.querySelector('#domain-search');
                 const tldResults = container.querySelector('#tld-results');
-
-                searchButton.addEventListener('click', function() {
-                    const searchQuery = domainSearch.value.toLowerCase();
-                    const tldItems = tldResults.querySelectorAll('.tld-item');
-
-                    if (searchQuery === "") {
-                        tldResults.classList.add('hidden');
-                        return;
-                    }
-
-                    let hasResults = false;
-
-                    tldItems.forEach(function(item) {
-                        const tldName = item.querySelector('.dark-text').textContent.toLowerCase();
-                        if (tldName.includes(searchQuery)) {
-                            item.classList.remove('hidden');
-                            hasResults = true;
-                        } else {
-                            item.classList.add('hidden');
-                        }
-                    });
-
-                    tldResults.classList.toggle('hidden', !hasResults);
-
-                    // Menampilkan atau menyembunyikan pesan "No results found"
-                    let noResultsMessage = tldResults.querySelector('#no-results-message');
-                    if (!hasResults) {
-                        if (!noResultsMessage) {
-                            noResultsMessage = document.createElement('div');
-                            noResultsMessage.id = 'no-results-message';
-                            noResultsMessage.textContent = 'No matching TLD found.';
-                            noResultsMessage.className = 'mt-4 text-center text-gray-600';
-                            tldResults.appendChild(noResultsMessage);
-                        }
-                        noResultsMessage.classList.remove('hidden');
-                    } else if (noResultsMessage) {
-                        noResultsMessage.classList.add('hidden');
-                    }
-                });
             }
 
             // Fungsi untuk mengatur tombol transfer dan form
