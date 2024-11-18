@@ -334,8 +334,56 @@
             searchDomain('hosting-only');
         });
 
+        function resetTransferForm() {
+            const transferForm = document.getElementById('transfer-form');
+            const successMessage = document.getElementById('success-message');
+            const eppInputs = document.querySelectorAll('input[placeholder="Enter your EPP code here"]');
+            const h3DomainDisplay = document.getElementById('h3-domain-display-2');
+
+            if (transferForm && successMessage && eppInputs.length > 0) {
+                // Sembunyikan form transfer
+                transferForm.classList.add('hidden');
+
+                // Reset input EPP
+                eppInputs.forEach(input => {
+                    input.value = '';
+                });
+
+                // Sembunyikan pesan sukses
+                successMessage.classList.add('hidden');
+
+                // Reset judul
+                if (h3DomainDisplay) {
+                    h3DomainDisplay.textContent = 'Your domain search results';
+                }
+            }
+        }
+
+        // Modifikasi event listener untuk tombol "Transfer Now"
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.id === 'transfer-button') {
+                // Reset form terlebih dahulu
+                resetTransferForm();
+
+                const domainName = event.target.getAttribute('data-domain-name');
+                const transferForm = document.getElementById('transfer-form');
+                const tldResults = document.getElementById('tld-results');
+                const h3DomainDisplay = document.getElementById('h3-domain-display-2');
+
+                if (transferForm && tldResults && h3DomainDisplay) {
+                    // Tampilkan form transfer
+                    transferForm.classList.remove('hidden');
+                    tldResults.classList.remove('hidden');
+
+                    // Update judul dengan nama domain yang akan ditransfer
+                    h3DomainDisplay.textContent = `Transfer Domain: ${domainName}`;
+                }
+            }
+        });
+
         // Fungsi umum untuk pencarian domain
         async function searchDomain(type) {
+            resetTransferForm();
             console.log('searchDomain called with type:', type);
             const searchInput = document.getElementById(`domain-search-${type}`);
             if (!searchInput) {
@@ -821,6 +869,7 @@
             }, 0);
         }
 
+        // Fungsi updateActiveTab yang sudah Anda miliki
         function updateActiveTab(newTab) {
             if (!newTab) return;
 
@@ -842,6 +891,31 @@
                 currentActiveContent = targetContent;
             }
         }
+
+        // Event listener untuk tombol "New Domain"
+        document.addEventListener('click', function(event) {
+            // Cek apakah tombol yang diklik memiliki teks "New Domain"
+            if (event.target.textContent.trim() === 'New Domain') {
+                // Cari tab "New Domain"
+                const newDomainTab = document.querySelector('.tabs ul li[data-tab="new-domain"]');
+
+                if (newDomainTab) {
+                    // Gunakan fungsi updateActiveTab yang sudah ada
+                    updateActiveTab(newDomainTab);
+
+                    // Ambil nama domain dari atribut data
+                    const domainName = event.target.getAttribute('data-domain-name');
+
+                    // Isi input pencarian dengan nama domain jika tersedia
+                    if (domainName) {
+                        const newDomainSearchInput = document.getElementById('domain-search-new');
+                        if (newDomainSearchInput) {
+                            newDomainSearchInput.value = domainName;
+                        }
+                    }
+                }
+            }
+        });
 
         function showWarningModal(clickedTab) {
             targetTabForSwitch = clickedTab;
