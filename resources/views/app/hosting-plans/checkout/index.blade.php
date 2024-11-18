@@ -272,7 +272,6 @@
                 });
                 tab.classList.add('active', 'text-white');
                 const index = Array.from(tabs).indexOf(tab);
-                slider.style.left = `calc(${index * 50}% + 4px)`;
                 tabContents.forEach(content => content.classList.add('hidden'));
                 document.getElementById(`${tabId}-domain-content`).classList.remove('hidden');
             });
@@ -352,6 +351,7 @@
             const pDomainDisplay = document.getElementById("p-domain-display");
             const nextButton = document.getElementById("next-button");
 
+            // Jika tidak ada input pencarian, sembunyikan dropdown
             if (!searchQuery) {
                 dropdownContainer.classList.remove('show');
                 dropdownContainer.classList.add('hidden');
@@ -370,6 +370,7 @@
                 const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop&domainName=${baseDomain}&outputFormat=json`;
                 try {
                     const response = await fetch(apiUrl);
+                    console.log('Response Status:', response.status);
                     const data = await response.json();
                     const isAvailable = data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE";
 
@@ -388,34 +389,83 @@
                 </div>`;
                     } else {
                         dropdownHTML = `
+                <div id="component-search">
+                    <div class="message flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${baseDomain}</strong> is not available
+                        </div>
+                        <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">
+                            WHOIS
+                        </button>
+                    </div>
+                </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error checking domain availability:', error);
+                }
+            }
+            // Cek untuk tipe 'transfer'
+            else if (type === 'transfer') {
+                const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+                if (!apiKey) {
+                    console.error('API Key is missing!');
+                    return;
+                }
+
+                const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
+                console.log('API URL:', apiUrl);
+
+                try {
+                    const response = await fetch(apiUrl);
+                    console.log('Response Status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    console.log('API response data:', data);
+
+                    // Check if domain is available (not registered)
+                    if (data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE") {
+                        // Domain is available (not registered) - show "create new domain" message
+                        dropdownHTML = `
                     <div id="component-search">
-                        <div class="message flex-row flex justify-between items-center">
+                        <div class="message is-danger flex-row flex justify-between items-center">
                             <div class="message-body">
-                                <strong>${baseDomain}</strong> is not available
+                                <strong>${baseDomain}</strong> I'm sorry, your current domain isn't registered
+                                <br>Do you want to create a new domain?
                             </div>
-                            <button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">
-                                WHOIS
+                            <button class="button h-button is-danger rounded-full" data-domain-name="${baseDomain}">
+                                New Domain
+                            </button>
+                        </div>
+                    </div>`;
+                    } else {
+                        // Domain is not available (registered) - show transfer option
+                        dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-success flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                                <br>Transfer this domain at a discount!
+                            </div>
+                            <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
+                                Transfer Now
                             </button>
                         </div>
                     </div>`;
                     }
                 } catch (error) {
-                    console.error('Error checking domain availability:', error);
-                }
-            } // Cek untuk tipe 'transfer'
-            else if (type === 'transfer') {
-                dropdownHTML = `
-            <div id="component-search">
-                <div class="message is-success flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                        <br>Transfer this domain at a discount!
+                    console.error('Error checking domain availability for transfer:', error);
+                    dropdownHTML = `
+                <div id="component-search">
+                    <div class="message is-danger flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${baseDomain}</strong> Unable to check transfer availability. Please try again later.
+                        </div>
                     </div>
-                    <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
-                        Transfer Now
-                    </button>
-                </div>
-            </div>`;
+                </div>`;
+                }
             }
             // Cek untuk tipe 'hosting-only'
             else if (type === 'hosting-only') {
@@ -425,13 +475,13 @@
                 // Pastikan query mengandung nama domain yang lengkap (harus ada sebelum TLD)
                 if (domainParts.length < 2 || domainParts[0] === "") {
                     dropdownHTML = `
-        <div id="component-search">
-            <div class="message is-danger flex-row flex justify-between items-center">
-                <div class="message-body">
-                    <strong>${searchQuery}</strong> is not a valid domain name. Please enter a valid domain.
+            <div id="component-search">
+                <div class="message is-danger flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong>${searchQuery}</strong> is not a valid domain name. Please enter a valid domain.
+                    </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
                 } else {
                     const baseDomain = searchQuery; // Pastikan base domain adalah query lengkap
 
@@ -448,84 +498,60 @@
                             if (!isAvailable) {
                                 // Jika domain tidak tersedia untuk hosting
                                 dropdownHTML = `
-                    <div id="component-search">
-                        <div class="message is-success flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong id="search-tld-name">${baseDomain}</strong> is available for Hosting Only
-                                <br>Get this domain with your hosting plan!
+                        <div id="component-search">
+                            <div class="message is-success flex-row flex justify-between items-center">
+                                <div class="message-body">
+                                    <strong id="search-tld-name">${baseDomain}</strong> is available for Hosting Only
+                                    <br>Get this domain with your hosting plan!
+                                </div>
+                                <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                                    Buy Now
+                                </button>
                             </div>
-                            <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
-                                Buy Now
-                            </button>
-                        </div>
-                    </div>`;
+                        </div>`;
                             } else {
                                 // Jika domain tersedia untuk dibuat atau tidak ditemukan
                                 dropdownHTML = `
-                    <div id="component-search">
-                        <div class="message is-success flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong id="search-tld-name">${baseDomain}</strong> the domain name cannot be found
-                                <br>do you want to create a new domain?
+                        <div id="component-search">
+                            <div class="message is-success flex-row flex justify-between items-center">
+                                <div class="message-body">
+                                    <strong id="search-tld-name">${baseDomain}</strong> the domain name cannot be found
+                                    <br>do you want to create a new domain?
+                                </div>
+                                <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
+                                    create new domain
+                                </button>
                             </div>
-                            <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
-                                create new domain
-                            </button>
-                        </div>
-                    </div>`;
+                        </div>`;
                             }
                         } else {
                             // Jika data tidak valid atau API gagal
                             dropdownHTML = `
+                    <div id="component-search">
+                        <div class="message is-danger flex-row flex justify-between items-center">
+                            <div class="message-body">
+                                <strong>${baseDomain}</strong> Invalid domain or unable to check. Please try again later.
+                            </div>
+                        </div>
+                    </div>`;
+                        }
+                    } catch (error) {
+                        console.error('Error checking domain availability for hosting:', error);
+                        dropdownHTML = `
                 <div id="component-search">
                     <div class="message is-danger flex-row flex justify-between items-center">
                         <div class="message-body">
-                            <strong>${baseDomain}</strong> availability check failed. Please try again later.
+                            <strong>${baseDomain}</strong> Unable to check domain. Please try again later.
                         </div>
                     </div>
                 </div>`;
-                        }
-                    } catch (error) {
-                        // Menangani error jika API gagal diakses
-                        console.error('Error checking domain availability:', error);
-                        dropdownHTML = `
-            <div id="component-search">
-                <div class="message is-danger flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        <strong>${baseDomain}</strong> availability check failed. Please try again later.
-                    </div>
-                </div>
-            </div>`;
                     }
                 }
             }
 
-
-            // Menampilkan dropdown
             dropdownContent.innerHTML = dropdownHTML;
             dropdownContainer.classList.remove('hidden');
-
-            const buyNowButtons = document.querySelectorAll('.buy-now-button');
-            buyNowButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const domainName = this.getAttribute('data-domain-name');
-                    h3DomainDisplay.textContent = domainName;
-                    pDomainDisplay.textContent = domainName;
-
-                    if (nextButton) {
-                        nextButton.click();
-                    }
-
-                    sessionStorage.setItem('selected_domain', domainName);
-                });
-            });
-
-            // Menyiapkan modal WHOIS dan tombol transfer
-            setupWhoisModal();
-            setupTransferButton();
-
             dropdownContainer.classList.add('show');
-            dropdownContainer.classList.remove('hidden');
         }
 
         function setupTransferButton() {

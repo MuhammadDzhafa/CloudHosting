@@ -121,7 +121,7 @@
 
         <!--Forms-->
         <script src="{{ asset('assets/js/forms.js') }}" async></script>
-        @stack('scripts')
+        @yield('scripts')
     </div>
 </body>
 
