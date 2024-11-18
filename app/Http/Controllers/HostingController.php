@@ -11,6 +11,7 @@ use App\Models\Article; // Import the Article model
 use App\Models\TLD; // Import the Article model
 use Illuminate\View\View; // Import the View class
 use App\Models\RegularMainSpec;
+use App\Models\TransferDomain;
 
 use Illuminate\Http\Request;
 
@@ -54,7 +55,25 @@ class HostingController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        // Validasi input yang diterima
+        $request->validate([
+            'nama_domain' => 'required|string|max:255',
+            'price' => 'required|integer', // Validasi agar price adalah integer
+            'epp_code' => 'required|string|max:255',
+        ]);
 
+        // Simpan data ke dalam tabel transfer_domains
+        TransferDomain::create([
+            'nama_domain' => $request->input('nama_domain'),
+            'price' => $request->input('price'),  // Pastikan harga disimpan sebagai integer
+            'epp_code' => $request->input('epp_code'),
+        ]);
+
+        // Mengembalikan response sukses
+        return response()->json(['success' => true, 'message' => 'Domain transfer data saved successfully.']);
+    }
 
     public function tampilan3()
     {

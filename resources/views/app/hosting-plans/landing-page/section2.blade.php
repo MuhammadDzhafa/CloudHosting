@@ -58,13 +58,12 @@
                             <h3 id="h3-domain-display-1" class="text-[23px] font-[700] leading-[29.9px] text-center md:text-left text-[#fff]">Your domain search results</h3>
                         </div>
                     </div>
-
                     <div class="flex-table-container hidden" id="epp-input-container">
                         <div class="flex-table-item flex items-center w-full" style="align-items: center;">
                             <div class="flex flex-grow cell-start is-bold" data-th="Company">
                                 <div class="field w-full">
                                     <div class="control">
-                                        <input type="text" class="input w-full rounded-full" placeholder="Enter your EPP code here">
+                                        <input type="text" id="epp-code-input" class="input w-full rounded-full" placeholder="Enter your EPP code here">
                                     </div>
                                 </div>
                             </div>
@@ -76,13 +75,6 @@
                                         </span>
                                     </button>
                                 </span>
-                            </div>
-                        </div>
-                        <!-- Pesan sukses -->
-                        <div id="success-message" class="message is-success hidden mt-4">
-                            <a class="delete" id="delete-message"></a>
-                            <div class="message-body">
-                                The domain has been successfully transferred
                             </div>
                         </div>
                     </div>

@@ -99,6 +99,7 @@
         const componentTransfer = document.getElementById('component-transfer');
         const searchInput = document.getElementById('domain-search');
         const tldResults = document.getElementById('tld-results');
+        const eppInputContainer = document.getElementById('epp-input-container');
 
         // Event listeners for search buttons
         if (searchButton) {
@@ -142,22 +143,29 @@
             const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
             const baseDomain = mainDomainPart && tld ? `${mainDomainPart}.${tld}` : searchQuery;
 
-            // URL API Domain Availability
-            const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop&domainName=${baseDomain}&outputFormat=json`;
+            const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+            const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
+            console.log('API URL:', apiUrl);
 
             try {
-                // Panggilan API untuk cek ketersediaan domain
                 const response = await fetch(apiUrl);
-                const data = await response.json();
+                console.log('Response Status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-                // Cek ketersediaan domain (sesuaikan dengan format respons API)
-                const isAvailable = data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE";
+                const data = await response.json();
+                console.log('API response data:', data);
 
                 let dropdownHTML = '';
 
-                if (isAvailable) {
-                    // Kondisi jika domain tersedia
-                    dropdownHTML = `
+                if (type === 'new') {
+                    // Cek ketersediaan domain untuk pencarian baru
+                    const isAvailable = data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE";
+
+                    if (isAvailable) {
+                        // Kondisi jika domain tersedia
+                        dropdownHTML = `
                 <div id="component-search">
                     <div class="message is-success flex-row flex justify-between items-center">
                         <div class="message-body">
@@ -168,11 +176,10 @@
                             Buy Now
                         </button>
                     </div>
-                </div>
-            `;
-                } else {
-                    // Kondisi jika domain tidak tersedia
-                    dropdownHTML = `
+                </div>`;
+                    } else {
+                        // Kondisi jika domain tidak tersedia
+                        dropdownHTML = `
                 <div id="component-search">
                     <div class="message flex-row flex justify-between items-center">
                         <div class="message-body">
@@ -180,46 +187,70 @@
                         </div>
                         <button class="button h-button rounded-full h-modal-trigger" data-modal="demo-right-actions-modal">WHOIS</button>
                     </div>
-                </div>
-            `;
+                </div>`;
+                    }
+                } else if (type === 'transfer') {
+                    // Cek ketersediaan domain untuk transfer
+                    if (data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE") {
+                        // Domain is available (not registered) - show "create new domain" message
+                        dropdownHTML = `
+                <div id="component-search">
+                    <div class="message is-danger flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${baseDomain}</strong> I'm sorry, your current domain isn't registered
+                            <br>Do you want to create a new domain?
+                        </div>
+                        <button class="button h-button is-danger rounded-full" data-domain-name="${baseDomain}">
+                            New Domain
+                        </ button>
+                    </div>
+                </div>`;
+                    } else {
+                        // Domain is not available (registered) - show transfer option
+                        dropdownHTML = `
+                <div id="component-search">
+                    <div class="message is-success flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                            <br>Exclusive offer: Rp 185.000/mon for a 2-year plan
+                        </div>
+                        <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
+                            Transfer Now
+                        </button>
+                    </div>
+                </div>`;
+                    }
                 }
 
                 // Update konten dropdown dan tampilkan
                 dropdownContent.innerHTML = dropdownHTML;
                 dropdownContainer.classList.remove('hidden');
                 dropdownContainer.classList.add('show');
+
+                // Menambahkan event listener untuk tombol "Transfer Now"
+                const transferButton = document.getElementById('transfer-button');
+                if (transferButton) {
+                    transferButton.addEventListener('click', displayEPPInputContainer);
+                }
             } catch (error) {
                 console.error('Error checking domain availability:', error);
-            }
-
-            // Setup event handlers
-            type === 'transfer' ? setupTransferButton() : setupBuyNowButton();
-            setupWhoisModal();
-        }
-
-        // Helper function to setup transfer button
-        function setupTransferButton() {
-            const transferButton = document.getElementById('transfer-button');
-            if (transferButton) {
-                console.log('Transfer button setup complete');
-                transferButton.addEventListener('click', function() {
-                    const domainName = this.getAttribute('data-domain-name');
-                    handleDomainSelection(domainName);
-                    document.getElementById('epp-input-container')?.classList.remove('hidden');
-                    console.log('EPP input container displayed'); // Debugging log
-                });
+                dropdownContent.innerHTML = `
+        <div id="component-search">
+            <div class="message is-danger flex-row flex justify-between items-center">
+                <div class="message-body">
+                    <strong>${baseDomain}</strong> Unable to check availability. Please try again later.
+                </div>
+            </div>
+        </div>`;
+                dropdownContainer.classList.remove('hidden');
+                dropdownContainer.classList.add('show');
             }
         }
 
-        // Helper function to setup buy now button
-        function setupBuyNowButton() {
-            const buyNowButtons = document.querySelectorAll('.buy-now-button');
-            buyNowButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const domainName = this.getAttribute('data-domain-name');
-                    handleDomainSelection(domainName);
-                });
-            });
+        // Fungsi untuk menampilkan form EPP
+        function displayEPPInputContainer() {
+            eppInputContainer.classList.remove('hidden');
+            eppInputContainer.classList.add('flex-table-container'); // Pastikan untuk menambahkan kelas yang sesuai untuk menampilkan
         }
 
         function setupWhoisModal() {
@@ -323,11 +354,20 @@
 
         // Function to show success message
         function showSuccessMessage() {
+            // Membuat elemen div untuk pesan sukses
             const successMessage = document.createElement('div');
-            successMessage.className = 'message is-success';
-            successMessage.innerHTML = '<div class="message-body">Domain transfer initiated successfully!</div>';
+            successMessage.className = 'message is-success'; // Menambahkan kelas CSS untuk styling
+            successMessage.innerHTML = '<div class="message-body">The domain has been successfully transferred!</div>';
+
+            // Menambahkan elemen pesan sukses ke dalam komponen
             componentTransfer.appendChild(successMessage);
+
+            // Menghilangkan pesan sukses setelah 3 detik
+            setTimeout(() => {
+                successMessage.remove(); // Menghapus elemen setelah 3 detik
+            }, 3000); // 3000 ms = 3 detik
         }
+
 
         // Fungsi untuk merender komponen
         function renderComponent(componentId) {
@@ -353,6 +393,56 @@
             alert("Please enter a domain name.");
         }
     }
+
+    document.getElementById('continue-button').addEventListener('click', function() {
+        // Ambil nilai EPP Code dari input pengguna
+        const eppCode = document.getElementById('epp-code-input').value;
+
+        // Ambil nama domain yang ditampilkan
+        const domainName = document.getElementById('search-tld-name').textContent;
+
+        // Ambil harga dari elemen yang berisi informasi harga
+        const priceText = document.querySelector('.message-body').textContent;
+
+        // Menggunakan regex untuk mendapatkan harga setelah 'Rp'
+        const priceMatch = priceText.match(/Rp (\d[\d\.]*)/); // Cocokkan angka setelah 'Rp'
+
+        if (priceMatch) {
+            // Mengonversi harga menjadi integer dengan menghapus titik
+            const price = parseInt(priceMatch[1].replace(/\./g, ''));
+
+            if (!eppCode || !domainName) {
+                alert('Please ensure both domain name and EPP code are provided.');
+                return;
+            }
+
+            // Kirim data ke server menggunakan AJAX (Fetch API)
+            fetch('/store-epp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: JSON.stringify({
+                        nama_domain: domainName,
+                        price: price, // Kirim harga sebagai integer
+                        epp_code: eppCode,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('success-message').classList.remove('hidden');
+                    } else {
+                        alert('Failed to transfer domain.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            alert('Could not extract the price from the page.');
+        }
+    });
+
 
     /*
         ========================================================
