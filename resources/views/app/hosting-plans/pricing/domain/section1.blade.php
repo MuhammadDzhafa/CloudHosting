@@ -117,7 +117,7 @@
     </div>
 </div>
 
-@push('scripts')
+
 <script>
     function setupWhoisModal() {
         console.log('Setting up WHOIS Modal'); // Tambahkan log untuk debugging
@@ -261,4 +261,3 @@
         setupWhoisModal();
     });
 </script>
-@endpush

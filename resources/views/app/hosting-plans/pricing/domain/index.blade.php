@@ -11,7 +11,7 @@
 @include ('app.hosting-plans.pricing.domain.section8')
 @endsection
 
-@push ('scripts')
+
 <script>
     function redirectToCheckout() {
         const domainName = document.getElementById('domain-search').value;
@@ -139,47 +139,71 @@
             });
         }
 
-        if (searchButton) {
-            searchButton.addEventListener('click', function() {
-                const searchQuery = searchInput.value;
+        // Event listener untuk tombol Transfer
+        const transferButton = document.getElementById('search-button'); // Tombol Transfer
+        if (transferButton) {
+            transferButton.addEventListener('click', async function() {
+                const searchQuery = searchInput.value.trim();
+                if (!searchQuery) {
+                    dropdownContainer.classList.remove('show');
+                    return;
+                }
 
-                if (searchQuery) {
-                    const domainParts = searchQuery.split('.');
-                    const tld = domainParts.pop();
-                    const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
-                    const baseDomain = `${mainDomainPart}.${tld}`;
+                const domainParts = searchQuery.split('.');
+                const tld = domainParts.pop();
+                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+                const baseDomain = `${mainDomainPart}.${tld}`;
+                const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
 
-                    // Reset state sebelumnya
-                    if (transferForm) {
-                        transferForm.classList.add('hidden');
+                const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
+                console.log('API URL:', apiUrl);
+
+                try {
+                    const response = await fetch(apiUrl);
+                    console.log('Response Status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    if (successMessage) {
-                        successMessage.classList.add('hidden');
-                    }
 
-                    // Tampilkan form transfer
-                    dropdownContent.innerHTML = `
-                    <div id="component-search">
-                        <div class="message is-success flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                                <br>Transfer this domain at a discount!
-                            </div>
-                            <button class="button h-button is-success rounded-full" id="show-transfer-form">
-                                Transfer Now
-                            </button>
+                    const data = await response.json();
+                    console.log('API response data:', data);
+
+                    // Cek jika domain tersedia (tidak terdaftar)
+                    if (data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE") {
+                        // Domain tidak terdaftar - tampilkan opsi untuk membuat domain baru
+                        dropdownContent.innerHTML = `
+                <div id="component-search">
+                    <div class="message is-danger flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${baseDomain}</strong> I'm sorry, your current domain isn't registered
+                            <br>Do you want to create a new domain?
                         </div>
-                    </div>`;
+                        <a href="/checkout" class="button h-button is-danger rounded-full">
+                            New Domain
+                        </a>
+                    </div>
+                </div>`;
+                    } else {
+                        // Domain terdaftar - tampilkan opsi transfer
+                        dropdownContent.innerHTML = `
+                <div id="component-search">
+                    <div class="message is-success flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                            <br>Transfer this domain at a discount!
+                        </div>
+                        <button class="button h-button is-success rounded-full" id="transfer-now-button" data-domain-name="${baseDomain}">
+                            Transfer Now
+                        </button>
+                    </div>
+                </div>`;
 
-                    // Tampilkan dropdown
-                    dropdownContainer.classList.add('show');
-                    componentTransfer.classList.remove('hidden');
+                        // Tambahkan event listener untuk tombol Transfer Now
+                        const transferNowButton = document.getElementById('transfer-now-button');
+                        transferNowButton.addEventListener('click', function() {
+                            const transferForm = document.getElementById('transfer-form');
+                            transferForm.classList.remove('hidden'); // Tampilkan form EPP
 
-                    // Setup event listener untuk tombol Transfer Now yang baru
-                    const showTransferFormBtn = document.getElementById('show-transfer-form');
-                    if (showTransferFormBtn && transferForm) {
-                        showTransferFormBtn.addEventListener('click', function() {
-                            transferForm.classList.remove('hidden');
                             // Scroll ke form
                             setTimeout(() => {
                                 transferForm.scrollIntoView({
@@ -188,13 +212,21 @@
                             }, 100);
                         });
                     }
-                } else {
-                    dropdownContainer.classList.remove('show');
+
+                    dropdownContainer.classList.add('show');
+                } catch (error) {
+                    console.error('Error checking domain availability for transfer:', error);
+                    dropdownContent.innerHTML = `
+            <div id="component-search">
+                <div class="message is-danger flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong>${baseDomain}</strong> Unable to check transfer availability. Please try again later.
+                    </div>
+                </div>
+            </div>`;
                 }
             });
-        }
-
-        // Fungsi untuk setup event listener tombol transfer
+        } // Fungsi untuk setup event listener tombol transfer
         function setupTransferButton() {
             const transferButton = document.getElementById('transfer-button');
             const transferForm = document.getElementById('transfer-form');
@@ -407,4 +439,3 @@
 
     console.log('Script TLD order loaded');
 </script>
-@endpush
