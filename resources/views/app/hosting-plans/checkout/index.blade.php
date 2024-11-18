@@ -554,6 +554,50 @@
             dropdownContainer.classList.add('show');
         }
 
+        // Tambahkan event listener untuk tombol "Transfer Now"
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.id === 'transfer-button') {
+                const domainName = event.target.getAttribute('data-domain-name');
+                const transferForm = document.getElementById('transfer-form');
+                const tldResults = document.getElementById('tld-results');
+                const h3DomainDisplay = document.getElementById('h3-domain-display-2');
+
+                if (transferForm && tldResults && h3DomainDisplay) {
+                    // Tampilkan form transfer
+                    transferForm.classList.remove('hidden');
+                    tldResults.classList.remove('hidden');
+
+                    // Update judul dengan nama domain yang akan ditransfer
+                    h3DomainDisplay.textContent = `Transfer Domain: ${domainName}`;
+                }
+            }
+        });
+
+        // Tambahkan event listener untuk tombol Continue di form transfer
+        document.getElementById('continue-button').addEventListener('click', function() {
+            const eppInputs = document.querySelectorAll('input[placeholder="Enter your EPP code here"]');
+            const successMessage = document.getElementById('success-message');
+
+            if (eppInputs.length > 0 && successMessage) {
+                const eppCode = eppInputs[0].value.trim();
+
+                if (eppCode) {
+                    // Validasi atau proses EPP code di sini
+                    successMessage.classList.remove('hidden');
+                } else {
+                    alert('Please enter your EPP code');
+                }
+            }
+        });
+
+        // Optional: Event listener untuk menutup pesan sukses
+        document.getElementById('delete-message').addEventListener('click', function() {
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.classList.add('hidden');
+            }
+        });
+
         function setupTransferButton() {
             const transferButtons = document.querySelectorAll('.button.h-button.is-success');
             const transferForm = document.getElementById('transfer-form');
