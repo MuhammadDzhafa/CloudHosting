@@ -203,13 +203,6 @@
                         transferNowButton.addEventListener('click', function() {
                             const transferForm = document.getElementById('transfer-form');
                             transferForm.classList.remove('hidden'); // Tampilkan form EPP
-
-                            // Scroll ke form
-                            setTimeout(() => {
-                                transferForm.scrollIntoView({
-                                    behavior: 'smooth'
-                                });
-                            }, 100);
                         });
                     }
 
