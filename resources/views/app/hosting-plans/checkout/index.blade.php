@@ -495,7 +495,7 @@
                         <div class="message is-success flex-row flex justify-between items-center">
                             <div class="message-body">
                                 <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                                <br>Transfer this domain at a discount!
+                                <br>Exclusive offer: Rp 185.000/mon for a 2-year plan
                             </div>
                             <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
                                 Transfer Now
@@ -600,6 +600,7 @@
             dropdownContent.innerHTML = dropdownHTML;
             dropdownContainer.classList.remove('hidden');
             dropdownContainer.classList.add('show');
+            setupWhoisModal();
         }
 
         // Tambahkan event listener untuk tombol "Transfer Now"
@@ -621,102 +622,64 @@
             }
         });
 
-        // Tambahkan event listener untuk tombol Continue di form transfer
-        document.getElementById('continue-button').addEventListener('click', function() {
-            const eppInputs = document.querySelectorAll('input[placeholder="Enter your EPP code here"]');
-            const successMessage = document.getElementById('success-message');
-
-            if (eppInputs.length > 0 && successMessage) {
-                const eppCode = eppInputs[0].value.trim();
-
-                if (eppCode) {
-                    // Validasi atau proses EPP code di sini
-                    successMessage.classList.remove('hidden');
-                } else {
-                    alert('Please enter your EPP code');
-                }
-            }
-        });
-
         // Optional: Event listener untuk menutup pesan sukses
-        document.getElementById('delete-message').addEventListener('click', function() {
-            const successMessage = document.getElementById('success-message');
-            if (successMessage) {
-                successMessage.classList.add('hidden');
+        const deleteMessageButton = document.getElementById('delete-message');
+        if (deleteMessageButton) {
+            deleteMessageButton.addEventListener('click', function() {
+                const successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    successMessage.classList.add('hidden');
+                }
+            });
+        }
+
+        document.getElementById('continue-button').addEventListener('click', function() {
+            // Ambil nilai EPP Code dari input pengguna
+            const eppCode = document.getElementById('epp-code-input').value;
+            const domainName = document.getElementById('search-tld-name').textContent;
+            const priceText = document.querySelector('.message-body').textContent;
+
+            // Gunakan regex untuk mendapatkan harga setelah 'Rp'
+            const priceMatch = priceText.match(/Rp (\d[\d\.]*)/);
+
+            if (priceMatch) {
+                const price = parseInt(priceMatch[1].replace(/\./g, ''));
+
+                if (!eppCode || !domainName) {
+                    alert('Please ensure both domain name and EPP code are provided.');
+                    return;
+                }
+
+                // Kirim data ke server menggunakan Fetch API
+                fetch('/store-epp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        },
+                        body: JSON.stringify({
+                            nama_domain: domainName,
+                            price: price,
+                            epp_code: eppCode,
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const successMessage = document.getElementById('success-message');
+                            if (successMessage) {
+                                successMessage.classList.remove('hidden');
+                            }
+                        } else {
+                            alert('Failed to transfer domain.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                alert('Could not extract the price from the page.');
             }
         });
 
-        function setupTransferButton() {
-            const transferButtons = document.querySelectorAll('.button.h-button.is-success');
-            const transferForm = document.getElementById('transfer-form');
-            const continueButton = document.querySelector('#continue-button');
-            const successMessage = document.querySelector('#success-message');
-            const deleteMessage = document.querySelector('#delete-message');
-            const eppInputs = document.querySelectorAll('input[type="text"]');
-
-            transferButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    console.log('Transfer button clicked');
-
-                    if (transferForm) {
-                        console.log('Showing transfer form');
-                        transferForm.classList.remove('hidden');
-
-                        // Fokus ke input EPP yang sesuai berdasarkan viewport
-                        const visibleInput = window.innerWidth < 768 ?
-                            eppInputs[0] : eppInputs[1];
-                        visibleInput.focus();
-                    } else {
-                        console.error('Transfer form not found');
-                    }
-                });
-            });
-
-            // Sinkronkan nilai input mobile dan desktop
-            if (eppInputs.length > 0) {
-                eppInputs.forEach(input => {
-                    input.addEventListener('input', function(e) {
-                        eppInputs.forEach(otherInput => {
-                            if (otherInput !== e.target) {
-                                otherInput.value = e.target.value;
-                            }
-                        });
-                    });
-                });
-            }
-
-            // Handle continue button
-            if (continueButton) {
-                continueButton.addEventListener('click', function() {
-                    const eppCode = eppInputs[0].value.trim();
-
-                    if (eppCode === '') {
-                        alert('Please enter your EPP code');
-                        return;
-                    }
-
-                    // Di sini Anda bisa menambahkan validasi EPP code
-                    // dan logika untuk memproses transfer domain
-
-                    // Tampilkan pesan sukses
-                    if (successMessage) {
-                        successMessage.classList.remove('hidden');
-                    }
-
-                    // Reset form
-                    eppInputs.forEach(input => {
-                        input.value = '';
-                    });
-                });
-            }
-
-            // Handle close message button
-            if (deleteMessage) {
-                deleteMessage.addEventListener('click', function() {
-                    successMessage.classList.add('hidden');
-                });
-            }
-        }
 
         function setupWhoisModal() {
             document.querySelectorAll('.h-modal-trigger').forEach(button => {
@@ -805,9 +768,9 @@
             if (currentActiveTab && tabNaver) {
                 const initialTabWidth = currentActiveTab.offsetWidth;
                 const initialTabLeft = currentActiveTab.offsetLeft;
-                tabNaver.style.transform = `translateX(${initialTabLeft}px)`;
-                tabNaver.style.width = `${initialTabWidth}px`;
-                tabNaver.style.transition = 'transform 0.3s ease, width 0.3s ease';
+                // tabNaver.style.transform = `translateX(${initialTabLeft}px)`;
+                // tabNaver.style.width = `${initialTabWidth}px`;
+                // tabNaver.style.transition = 'transform 0.3s ease, width 0.3s ease';
             }
         }
 

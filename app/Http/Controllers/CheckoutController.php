@@ -18,6 +18,7 @@ use App\Models\Price;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Addon;
+use App\Models\TransferDomain;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -113,6 +114,22 @@ class CheckoutController extends Controller
             'addons' => $addons,
             'hostingPlan' => $hostingPlan, // Pass hostingPlan ke view
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_domain' => 'required|string|max:255',
+            'price' => 'required|integer',
+            'epp_code' => 'required|string|max:255',
+        ]);
+
+        $transferDomain = TransferDomain::create($validatedData);
+
+        return response()->json([
+            'message' => 'Domain transfer successfully saved!',
+            'data' => $transferDomain
+        ], 201);
     }
 
     // Tambahkan method baru untuk menyimpan detail domain

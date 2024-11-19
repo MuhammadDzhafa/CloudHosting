@@ -397,6 +397,7 @@
     document.getElementById('continue-button').addEventListener('click', function() {
         // Ambil nilai EPP Code dari input pengguna
         const eppCode = document.getElementById('epp-code-input').value;
+        console.log('masuk');
 
         // Ambil nama domain yang ditampilkan
         const domainName = document.getElementById('search-tld-name').textContent;

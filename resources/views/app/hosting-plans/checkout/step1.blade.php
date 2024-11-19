@@ -187,12 +187,12 @@
 
                         <!-- Table items hidden by default -->
                         <div id="transfer-form" class="flex-table-container hidden">
-                            <div class="flex-table-item flex items-center w-full" style="align-items: center;">
+                            <div class="flex-table-item flex items-center w-full gap-2 md:gap-0" style="align-items: center;">
                                 <div class="flex flex-grow cell-start is-bold" data-th="Company">
                                     <div class="field w-full">
                                         <div class="control">
-                                            <input type="text" class="input w-full rounded-full mb-4 md:hidden" placeholder="Enter your EPP code here">
-                                            <input type="text" class="hidden md:block input w-full rounded-full" placeholder="Enter your EPP code here">
+                                            <!-- <input id="epp-code-input" type="text" class="input w-full rounded-full mb-4 md:hidden" placeholder="Enter your EPP code here"> -->
+                                            <input id="epp-code-input" type="text" class="flex flex-col md:flex-row input md:w-full rounded-full" placeholder="Enter your EPP code here">
                                         </div>
                                     </div>
                                 </div>

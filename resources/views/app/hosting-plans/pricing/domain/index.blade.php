@@ -190,7 +190,7 @@
                     <div class="message is-success flex-row flex justify-between items-center">
                         <div class="message-body">
                             <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                            <br>Transfer this domain at a discount!
+                            <br>Exclusive offer: Rp 185.000/mon for a 2-year plan
                         </div>
                         <button class="button h-button is-success rounded-full" id="transfer-now-button" data-domain-name="${baseDomain}">
                             Transfer Now
@@ -235,11 +235,6 @@
                 transferButton.addEventListener('click', function() {
                     // Tampilkan form dengan menghapus class hidden
                     transferForm.classList.remove('hidden');
-
-                    // Optional: Scroll ke form
-                    transferForm.scrollIntoView({
-                        behavior: 'smooth'
-                    });
                 });
             }
         }
@@ -258,10 +253,6 @@
                         setTimeout(() => {
                             if (successMessage) {
                                 successMessage.classList.remove('hidden');
-                                // Scroll ke success message
-                                successMessage.scrollIntoView({
-                                    behavior: 'smooth'
-                                });
                             }
                         }, 1000);
                     } else {
@@ -292,6 +283,54 @@
                 }
             });
         });
+
+        document.getElementById('continue-button').addEventListener('click', function() {
+            // Ambil nilai EPP Code dari input pengguna
+            const eppCode = document.getElementById('epp-code-input').value;
+            const domainName = document.getElementById('search-tld-name').textContent;
+            const priceText = document.querySelector('.message-body').textContent;
+
+            // Gunakan regex untuk mendapatkan harga setelah 'Rp'
+            const priceMatch = priceText.match(/Rp (\d[\d\.]*)/);
+
+            if (priceMatch) {
+                const price = parseInt(priceMatch[1].replace(/\./g, ''));
+
+                if (!eppCode || !domainName) {
+                    alert('Please ensure both domain name and EPP code are provided.');
+                    return;
+                }
+
+                // Kirim data ke server menggunakan Fetch API
+                fetch('/store-epp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        },
+                        body: JSON.stringify({
+                            nama_domain: domainName,
+                            price: price,
+                            epp_code: eppCode,
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const successMessage = document.getElementById('success-message');
+                            if (successMessage) {
+                                successMessage.classList.remove('hidden');
+                            }
+                        } else {
+                            alert('Failed to transfer domain.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                alert('Could not extract the price from the page.');
+            }
+        });
+
 
         function replaceTLD(domainName, newTLD) {
             return domainName.replace(/(\.[a-z]{2,63}\.[a-z]{2,63}|(\.[a-z]{2,63})){1}$/, newTLD);
