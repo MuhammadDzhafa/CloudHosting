@@ -430,9 +430,9 @@
                             <strong id="search-tld-name">${baseDomain}</strong> is available as a new domain
                             <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
                         </div>
-                        <button class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
-                            Buy Now
-                        </button>
+                        <button id="buy-now-button" class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
+    Buy Now
+</button>
                     </div>
                 </div>`;
                     } else {
@@ -952,6 +952,26 @@
 
         // Handle window resize
         window.addEventListener('resize', initializeTabNaver);
+    });
+
+    // Menambahkan event listener untuk tombol "Buy Now"
+    document.addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('buy-now-button')) {
+            // Mengambil nama domain dari atribut data
+            const domainName = event.target.getAttribute('data-domain-name');
+
+            // Memperbarui elemen h3 dengan nama domain
+            const h3DomainDisplay = document.getElementById('h3-domain-display');
+            if (h3DomainDisplay) {
+                h3DomainDisplay.textContent = domainName;
+            }
+
+            // Mengklik tombol "Continue" secara programatis
+            const nextButton = document.getElementById('next-button');
+            if (nextButton) {
+                nextButton.click(); // Ini akan memicu event klik pada tombol Continue
+            }
+        }
     });
 </script>
 
