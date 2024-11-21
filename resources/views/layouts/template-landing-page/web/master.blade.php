@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
 
+    @vite('resources/css/app.css')
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -122,7 +123,6 @@
         <!--Forms-->
         <script src="{{ asset('assets/js/forms.js') }}" async></script>
         @yield('scripts')
-        
     </div>
 </body>
 

@@ -641,15 +641,25 @@ $(document).ready(function() {
             e.preventDefault();
             const $button = $("#next-button");
             $button.addClass("is-loading");
-
+        
             if (!validateDomainStep()) {
                 $button.removeClass("is-loading");
                 return;
             }
-
+        
             saveDomainDetails(function () {
-                i = 3;
-                proceedToNextStep();
+                // Gunakan fungsi yang sudah ada di kode Anda
+                window.currentStep = 2; // Sesuaikan dengan step billing address
+                
+                // Gunakan fungsi proceedToNextStep yang sudah ada
+                window.proceedToNextStep();
+        
+                // Optional: Scroll ke billing address
+                $('html, body').animate({
+                    scrollTop: $("#billing-address-section").offset().top
+                }, 500);
+        
+                $button.removeClass("is-loading");
             });
         });
 

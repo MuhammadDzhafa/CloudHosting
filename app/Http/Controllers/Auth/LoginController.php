@@ -59,7 +59,7 @@ class LoginController extends Controller
             return redirect()->intended('/client-dashboard');
         }
 
-        return redirect()->intended('/home'); // Default redirection if role is not set
+        return redirect()->intended('/'); // Default redirection if role is not set
     }
 
     protected function sendFailedLoginResponse(Request $request, $validator = null)

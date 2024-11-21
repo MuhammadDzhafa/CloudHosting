@@ -11,6 +11,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -27,31 +28,29 @@ class RegisterController extends Controller
     public function handleGoogleCallback(Request $request)
     {
         try {
-            $socialUser = Socialite::driver('google')->stateless()->user();
+            $socialUser  = Socialite::driver('google')->stateless()->user();
+            Log::info('Google User Data:', (array) $socialUser);
+
             $userByEmail = User::where('email', $socialUser->email)->first();
 
             if ($userByEmail) {
+                Log::info('User  found, updating information.');
                 // Update existing user with Google information
                 $userByEmail->update([
                     'google_id' => $socialUser->id,
                     'google_token' => $socialUser->token,
                     'google_refresh_token' => $socialUser->refreshToken,
-                    'google_profile_image' => $socialUser->avatar, // Save profile image
+                    'google_profile_image' => $socialUser->avatar,
                 ]);
 
                 Auth::login($userByEmail);
+                Log::info('User  logged in successfully.');
 
-                // Redirect berdasarkan role
-                if ($userByEmail->hasRole('admin')) {
-                    return redirect('/admin-dashboard');
-                } elseif ($userByEmail->hasRole('client')) {
-                    return redirect('/client-dashboard');
-                }
-
-                return redirect('/client-dashboard');
+                return redirect()->route('google.phone.form');
             }
 
-            // Jika pengguna baru, buat pengguna baru dengan peran 'client'
+            // Jika pengguna baru, buat pengguna baru
+            Log::info('Creating new user.');
             $user = User::create([
                 'google_id' => $socialUser->id,
                 'name' => $socialUser->name,
@@ -63,16 +62,15 @@ class RegisterController extends Controller
                 'phone' => null,
             ]);
 
-            
-
-            // Assign peran client
+            // Assign role client
             $user->roles()->attach(Role::where('name', 'client')->first());
 
             Auth::login($user);
-            $request->session()->put('user_email', Auth::user()->email);
+            Log::info('New user logged in successfully.');
 
             return redirect()->route('google.phone.form');
         } catch (\Exception $e) {
+            Log::error('Error during Google callback: ' . $e->getMessage());
             return redirect('/login')->withErrors('Failed to register with Google. Please try again.');
         }
     }

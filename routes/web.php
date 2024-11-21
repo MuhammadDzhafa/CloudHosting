@@ -16,7 +16,6 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CheckoutController;
 
-
 /* Welcome */
 
 Route::get('/', function () {
@@ -35,6 +34,12 @@ Route::get('/', [HostingController::class, 'index']);
 /* Register */
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+// Google Authentication
+Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);
+Route::get('auth/google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
+Route::post('auth/google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
 
 /* Check Email Verification */
 Route::get('/check-email', function () {
@@ -82,33 +87,6 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/', [LoginController::class, 'logout'])->name('logout');
 
-/* Login with Google */
-
-Route::get('/auth/redirect', [SocialiteController::class, 'redirect']);
-Route::get('/auth/google/callback', [SocialiteController::class, 'callback']);
-
-/* Sign up with google */
-Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name('google.redirect');
-Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback'])->name('google.callback');
-Route::get('google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
-Route::post('google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
-Route::get('/auth/google/redirect', [RegisterController::class, 'redirectToGoogle'])->name('google.redirect');
-Route::get('/auth/google/callback', [RegisterController::class, 'handleGoogleCallback'])->name('google.callback');
-Route::get('/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
-Route::post('/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
-
-
-Route::get('/profile.update', function () {
-    return view('layouts.auth.profile-update');
-})->name('profile.update');
-
-// Route::get('/client-dashboard', function () {
-//     return view('app.hosting-plans.dashboard.index');
-// })->name('client.dashboard');
-
-Route::post('/send-reset-link-via-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])->name('send.reset.link.whatsapp');
-
-
 /* CRUD Testimonial */
 Route::get('/admin/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
 Route::get('/admin/testimonials/create', [TestimonialController::class, 'create'])->name('testimonials.create');
@@ -118,7 +96,7 @@ Route::get('/admin/testimonials/{id}/edit', [TestimonialController::class, 'edit
 Route::put('/admin/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
 Route::delete('/admin/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
-/* Crud Clients */
+/* CRUD Clients */
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
 Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
@@ -128,13 +106,13 @@ Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
 
 /* CRUD TLD */
-Route::get('/admin/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index');
-Route::get('/admin/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
-Route::post('/admin/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
-Route::get('/admin/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
-Route::put('/admin/tlds/{id}', [TLDController::class, 'update'])->name('tlds.update');
-Route::delete('/admin/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
-Route::post('/admin/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
+Route::get('/admin/tlds', [TldController::class, 'index'])->name('app.admin.tlds.index');
+Route::get('/admin/tlds/create', [TldController::class, 'create'])->name('tlds.create');
+Route::post('/admin/tlds/store', [TldController::class, 'store'])->name('tlds.store');
+Route::get('/admin/tlds/{tld}/edit', [TldController::class, 'edit'])->name('tlds.edit');
+Route::put('/admin/tlds/{id}', [TldController::class, 'update'])->name('tlds.update');
+Route::delete('/admin/tlds/{tld}', [TldController::class, 'destroy'])->name('tlds.destroy');
+Route::post('/admin/tlds/order', [TldController::class, 'order'])->name('tlds.order');
 
 /* Hosting Plan */
 Route::get('/admin/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');
@@ -145,7 +123,6 @@ Route::get('/admin/hosting-plans/{id}/edit', [HostingPlanController::class, 'edi
 Route::put('/admin/hosting-plans/{id}', [HostingPlanController::class, 'update'])->name('hosting-plans.update');
 Route::delete('/admin/hosting-plans/{id}', [HostingPlanController::class, 'destroy'])->name('hosting-plans.destroy');
 Route::post('/admin/hosting-plans/{id}/restore', [HostingPlanController::class, 'restore'])->name('hosting-plans.restore');
-
 
 /* Hosting Group */
 Route::get('/hosting-groups', [HostingGroupController::class, 'index'])->name('hosting-groups.index');
@@ -166,6 +143,7 @@ Route::get('/admin/articles/{id}/edit', [ArticleController::class, 'edit'])->nam
 Route::put('/admin/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
 Route::delete('/admin/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 Route::post('/admin/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
+
 /* Faqs */
 Route::get('/admin/faqs', [FaqController::class, 'faqs'])->name('faqs.index'); // Menggunakan faqs()
 Route::get('/admin/faqs/create', [FaqController::class, 'create'])->name('faqs.create');
@@ -196,11 +174,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/checkout/process', [CheckoutController::class, 'processOrder'])->name('checkout.process');
 });
 
-Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);
-Route::get('auth/google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
-Route::post('auth/google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
 Route::post('/checkout', [CheckoutController::class, 'saveClientData'])->name('register');
 Route::post('/save-addons', [CheckoutController::class, 'saveAddons'])->name('addons.save');
 Route::post('/store-order-hosting-detail', [CheckoutController::class, 'storeOrderHostingDetail'])->name('store.order.hosting.detail');
 Route::post('/store-epp', [HostingController::class, 'store']);
+Route::post('/transfer-domain', [CheckoutController::class, 'store']);
+Route::get('/auth/redirect', [SocialiteController::class, 'redirect'])->name('auth.redirect');
+Route::get('/auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);

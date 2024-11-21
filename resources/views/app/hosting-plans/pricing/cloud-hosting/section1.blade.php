@@ -13,105 +13,100 @@
     </div>
 
     <!-- Right Section -->
-    <div class="w-full lg:w-1/2 h-auto bg-white text-gray-800 rounded-t-xl mt-8 lg:mt-0 p-6 lg:p-12 overflow-hidden">
-        <h4 class="custom-title mt-1 text-center lg:text-left">Fulfill your needs with our</h4>
-        <div class="custom-text-gradient mt-1 text-center lg:text-left">Customized Plan</div>
+    <div class="w-full lg:w-1/2 h-auto bg-white text-gray-800 rounded-t-xl mt-8 lg:mt-0 p-5 lg:p-12 overflow-hidden">
+    <h4 class="custom-title mt-1 text-center lg:text-left">Fulfill your needs with our</h4>
+    <div class="custom-text-gradient mt-1 text-center lg:text-left">Customized Plan</div>
 
-        <div class="custom-bg">
-            <div class="flex flex-wrap w-full">
-                <div class="custom-col w-full">
-                    <ul class="mb-4">
-                        <li class="flex items-center mb-2 mt-5 text-left text-[14px] lg:text-[16px] font-normal leading-[20px] lg:leading-[23.2px] text-[#465387] font-inter">
-                            <img src="assets/img/icons/checklist.svg" alt="" class="mr-2">
-                            Unlimited Domains, Bandwidth, Emails, Inodes
-                        </li>
-                    </ul>
+    <div class="custom-bg">
+        <div class="flex flex-wrap w-full">
+            <div class="custom-col w-full">
+                <ul class="mb-4">
+                    <li class="flex items-center mb-2 mt-5 text-left text-[14px] lg:text-[16px] font-normal leading-[20px] lg:leading-[23.2px] text-[#465387] font-inter">
+                        <img src="assets/img/icons/checklist.svg" alt="" class="mr-2">
+                        Unlimited Domains, Bandwidth, Emails, Inodes
+                    </li>
+                </ul>
+            </div>
+
+            <div class="custom-col custom-col-2 w-full">
+                <!-- RAM Slider -->
+                <div class="custom-slider-section px-2 lg:px-0">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="font-bold text-gray-800">RAM</label>
+                        <div id="ram-price" class="custom-price">Rp{{ number_format($specs->price_RAM) }}/mon</div>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="ram-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_RAM }} GB</div>
+                        <input id="ram-slider" type="range"
+                            min="{{ $specs->min_RAM }}"
+                            max="{{ $specs->max_RAM }}"
+                            step="1"
+                            value="{{ $specs->min_RAM }}"
+                            class="custom-slider flex-grow max-w-full">
+                    </div>
                 </div>
 
-                <div class="custom-col custom-col-2 w-full">
-                    <!-- RAM Slider -->
-                    <div class="custom-slider-section px-2 lg:px-0">
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="font-bold text-gray-800">RAM</label>
-                            <div id="ram-price" class="custom-price">Rp{{ number_format($specs->price_RAM) }}/mon</div>
-                        </div>
-                        <div class="flex items-center">
-                            <div id="ram-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_RAM }} GB</div>
-                            <input id="ram-slider" type="range"
-                                min="{{ $specs->min_RAM }}"
-                                max="{{ $specs->max_RAM }}"
-                                step="1"
-                                value="{{ $specs->min_RAM }}"
-                                class="custom-slider flex-grow max-w-full">
-                        </div>
+                <!-- CPU Slider -->
+                <div class="custom-slider-section px-2 lg:px-0">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="font-bold text-gray-800">CPU</label>
+                        <div id="cpu-price" class="custom-price">Rp{{ number_format($specs->price_CPU) }}/mon</div>
                     </div>
-
-                    <!-- CPU Slider -->
-                    <div class="custom-slider-section px-2 lg:px-0">
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="font-bold text-gray-800">CPU</label>
-                            <div id="cpu-price" class="custom-price">Rp{{ number_format($specs->price_CPU) }}/mon</div>
-                        </div>
-                        <div class="flex items-center">
-                            <div id="cpu-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_CPU }} Core</div>
-                            <input id="cpu-slider" type="range"
-                                min="{{ $specs->min_CPU }}"
-                                max="{{ $specs->max_CPU }}"
-                                step="1"
-                                value="{{ $specs->min_CPU }}"
-                                class="custom-slider flex-grow max-w-full">
-                        </div>
+                    <div class="flex items-center">
+                        <div id="cpu-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_CPU }} Core</div>
+                        <input id="cpu-slider" type="range"
+                            min="{{ $specs->min_CPU }}"
+                            max="{{ $specs->max_CPU }}"
+                            step="1"
+                            value="{{ $specs->min_CPU }}"
+                            class="custom-slider flex-grow max-w-full">
                     </div>
+                </div>
 
-                    <!-- Storage Slider -->
-                    <div class="custom-slider-section px-2 lg:px-0">
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="font-bold text-gray-800">Storage</label>
-                            <div id="storage-price" class="custom-price">Rp{{ number_format($specs->price_storage) }}/mon</div>
-                        </div>
-                        <div class="flex items-center">
-                            <div id="storage-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_storage }} GB</div>
-                            <input id="storage-slider" type="range"
-                                min="{{ $specs->min_storage }}"
-                                max="{{ $specs->max_storage }}"
-                                step="{{ $specs->step_storage }}"
-                                value="{{ $specs->min_storage }}"
-                                class="custom-slider flex-grow max-w-full">
-                        </div>
+                <!-- Storage Slider -->
+                <div class="custom-slider-section px-2 lg:px-0">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="font-bold text-gray-800">Storage</label>
+                        <div id="storage-price" class="custom-price">Rp{{ number_format($specs->price_storage) }}/mon</div>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="storage-value" class="custom-slider-value text-center" style="width: 85px;">{{ $specs->min_storage }} GB</div>
+                        <input id="storage-slider" type="range"
+                            min="{{ $specs->min_storage }}"
+                            max="{{ $specs->max_storage }}"
+                            step="{{ $specs->step_storage }}"
+                            value="{{ $specs->min_storage }}"
+                            class="custom-slider flex-grow max-w-full">
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="flex flex-col md:flex-row justify-between items-center mb-4 w-full">
-                <!-- Harga di paling kiri -->
-                <div class="text-2xl font-bold md:w-auto text-center md:text-left">
-                    <span class="flex items-center justify-center md:justify-start mt-5"> <!-- Tambahkan mt-2 di sini -->
-                        <span class="h-[20px] text-[14px] font-normal text-[color:var(--Kazee-Primary-500,#4A6DCB)]">Rp</span>
-                        <span id="total-price" class="h-[38px] mt-3 text-[32px] font-bold text-[color:var(--Kazee-Primary-500,#4A6DCB)]">
-                            {{ number_format($specs->price_RAM + $specs->price_CPU + $specs->price_storage) }}
-                        </span>
-                        <span class="h-[20px] text-[14px] font-normal text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
+        <div class="flex flex-col md:flex-row justify-between items-center mb-4 w-full">
+            <div class="text-2xl font-bold md:w-auto text-center md:text-left">
+                <span class="flex items-center justify-center md:justify-start mt-5">
+                    <span class="h-[20px] text-[14px] font-normal text-[color:var(--Kazee-Primary-500,#4A6DCB)]">Rp</span>
+                    <span id="total-price" class="h-[38px] mt-3 text-[32px] font-bold text-[color:var(--Kazee-Primary-500,#4A6DCB)]">
+                        {{ number_format($specs->price_RAM + $specs->price_CPU + $specs->price_storage) }}
                     </span>
-                </div>
-
-                <!-- Tombol Order di paling kanan -->
-                <a href="{{ url('/checkout') }}?hosting_plan_id={{ $hostingPlans->first()->hosting_plans_id }}&product_info={{ $hostingPlans->first()->product_type }} - {{ $hostingPlans->first()->name }}" class="md:w-auto mt-4 md:mt-0">                    <button class="custom-order-button w-full md:w-auto">
-                        <span class="custom-order-text">Order Now</span>
-                    </button>
-                </a>
+                    <span class="h-[20px] text-[14px] font-normal text-[color:var(--Kazee-Primary-500,#4A6DCB)]">/mon</span>
+                </span>
             </div>
 
-            <!-- Versi untuk md -->
-            <p class="custom-note text-center mt-4 ml-[25%] lg:hidden">
-                Price does not include tax.
-            </p>
+            <a href="{{ url('/checkout') }}?hosting_plan_id={{ $hostingPlans->first()->hosting_plans_id }}&product_info={{ $hostingPlans->first()->product_type }} - {{ $hostingPlans->first()->name }}" class="md:w-auto mt-4 md:mt-0">
+                <button class="custom-order-button w-full md:w-auto">
+                    <span class="custom-order-text">Order Now</span>
+                </button>
+            </a>
+        </div>
 
-            <!-- Versi untuk lg -->
-            <p class="custom-note text-left mt-0 ml-[30%] hidden lg:block">
+        <div class="flex justify-center items-center w-full mx-auto mt-8">
+            <p class="text-center text-[16px] font-normal leading-[23.2px] text-[#7C7C7C] font-inter">
                 Price does not include tax.
             </p>
         </div>
     </div>
+</div>
 </div>
 
 <script>

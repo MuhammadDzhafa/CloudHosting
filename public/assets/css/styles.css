@@ -934,6 +934,51 @@ p {
     .custom-text-style img.custom-icon {
         display: none;
     }
+
+    .custom-title {
+        font-size: 1.5rem;
+        /* Adjust title size for mobile */
+    }
+
+    .custom-slider-value {
+        width: 70px;
+        /* Adjust slider value width for mobile */
+    }
+
+    .custom-order-button {
+        padding: 10px;
+        /* Adjust button padding for mobile */
+    }
+    .table {
+        display: block; /* Make table block to enable scrolling */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        white-space: nowrap; /* Prevent line breaks */
+    }
+
+    .table th, .table td {
+        display: block; /* Stack table cells vertically */
+        text-align: left; /* Align text to the left */
+    }
+
+    .table thead {
+        display: none; /* Hide the header for mobile */
+    }
+
+    .table tr {
+        margin-bottom: 1rem; /* Add spacing between rows */
+        border: 1px solid #E7ECF8; /* Optional: Add border for better separation */
+        padding: 0.5rem; /* Add padding */
+    }
+
+    .title-detail {
+        font-weight: bold; /* Highlight detail titles */
+        color: #4A6DCB; /* Optional: Keep color for titles */
+    }
+
+    .text-content {
+        background: #f9f9f9; /* Optional: Add background for better readability */
+        padding: 0.5rem; /* Add padding */
+    }
 }
 
 .custom-icon {

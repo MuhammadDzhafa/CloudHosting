@@ -47,7 +47,7 @@
                     <p class="domain-name">{{ $domain }}</p>
                     <div class="price-container">
                         <span class="price-currency">Rp</span>
-                        <span class="price-number">20.000</span>
+                        <span class="price-number">20K</span>
                     </div>
                 </div>
             </div>

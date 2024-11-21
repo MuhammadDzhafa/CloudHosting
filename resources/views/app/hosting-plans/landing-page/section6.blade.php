@@ -466,4 +466,5 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.send(JSON.stringify(data));
     });
 });
+
 </script>
