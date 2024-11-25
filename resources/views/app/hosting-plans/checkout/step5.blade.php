@@ -21,44 +21,46 @@
                 </a>
             </p>
 
-            <form action="{{ route('register') }}" method="POST" id="register-form">
-                @csrf
-                <div class="space-y-2">
-                    <label class="block mb-1 mt-3 w-full">Name</label>
-                    <input type="text" name="name" class="input" placeholder="Username" required>
+            <form id="billing-form">
+                <form action="{{ route('register') }}" method="POST" id="register-form">
+                    @csrf
+                    <div class="space-y-2">
+                        <label class="block mb-1 mt-3 w-full">Name</label>
+                        <input type="text" name="name" class="input" placeholder="Username" required>
 
-                    <label class="block mb-1 mt-3 w-full">Email Address</label>
-                    <input type="email" name="email" class="input" placeholder="Email Address" required>
+                        <label class="block mb-1 mt-3 w-full">Email Address</label>
+                        <input type="email" name="email" class="input" placeholder="Email Address" required>
 
-                    <label class="block mb-1 mt-3 w-full">Phone</label>
-                    <div class="field has-addons">
-                        <div class="control">
-                            <a class="button is-static">
-                                +62
-                            </a>
-                        </div>
-                        <div class="control is-expanded">
-                            <input type="text" name="phone" class="input" placeholder="Phone Number" required>
-                        </div>
-                    </div>
-
-
-                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                        <div class="w-full md:w-1/2">
-                            <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Password</label>
-                            <div class="relative">
-                                <input type="password" name="password" class="input" placeholder="Password" required>
+                        <label class="block mb-1 mt-3 w-full">Phone</label>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <a class="button is-static">
+                                    +62
+                                </a>
+                            </div>
+                            <div class="control is-expanded">
+                                <input type="text" name="phone" class="input" placeholder="Phone Number" required>
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2">
-                            <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Confirm Password</label>
-                            <div class="relative">
-                                <input type="password" name="password_confirmation" class="input" placeholder="Confirm Password" required>
+
+
+                        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                            <div class="w-full md:w-1/2">
+                                <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Password</label>
+                                <div class="relative">
+                                    <input type="password" name="password" class="input" placeholder="Password" required>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Confirm Password</label>
+                                <div class="relative">
+                                    <input type="password" name="password_confirmation" class="input" placeholder="Confirm Password" required>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <button type="submit" class="button h-button w-full bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white mt-5 rounded-full">Register</button>
+                    <button type="submit" class="button h-button w-full bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white mt-5 rounded-full">Register</button>
+                </form>
             </form>
 
             <div class="relative my-4">

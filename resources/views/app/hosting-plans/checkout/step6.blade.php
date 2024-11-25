@@ -165,8 +165,9 @@
                         </span>
                     </div>
                 </div>
-                <button
-                    class="button h-button mt-5 w-full h-[47px] px-[16px] py-[12px] gap-[8px] bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] text-[16px] leading-[23.2px] font-['Inter'] font-medium text-center flex items-center justify-center opacity-100"
+                <button type="button"
+                    class="checkout-button button h-button mt-5 w-full h-[47px] px-[16px] py-[12px] gap-[8px] bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] text-[16px] leading-[23.2px] font-['Inter'] font-medium text-center flex items-center justify-center opacity-100"
+                    onclick="return false;"
                     style="border: unset;">
                     <span class="text-[16px] font-medium leading-[23.2px] text-center">
                         Checkout
@@ -175,7 +176,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
                 </button>
-
             </div>
         </div>
     </div>

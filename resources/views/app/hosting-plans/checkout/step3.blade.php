@@ -27,6 +27,7 @@
         </div>
     </div>
 
+    <form id="hosting-form">
     {{-- Container utama --}}
     <div class="container mx-auto px-4">
         {{-- Baris atas - 3 cards --}}
@@ -113,6 +114,7 @@
             @endforeach
         </div>
     </div>
+    </form>
 </div>
 
 {{-- Hidden inputs for hosting plan data --}}

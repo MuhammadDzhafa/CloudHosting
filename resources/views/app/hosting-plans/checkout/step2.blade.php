@@ -10,6 +10,7 @@
         Domain Configuration
     </h1>
 
+    <form id="domain-form">
     <!-- Main Container -->
     <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
         <!-- Domain Display -->
@@ -85,6 +86,7 @@
         <input type="hidden" id="domain_option_id" value="{{ $domain_option_id ?? '' }}">
         <input type="hidden" id="domain_price" value="{{ $price ?? 0 }}">
     </div>
+    </form>
 
     <!-- Notification -->
     <div id="notification" class="hidden fixed top-4 right-4 p-4 rounded-lg shadow-lg" style="z-index: 1000;">

@@ -966,6 +966,12 @@
                 h3DomainDisplay.textContent = domainName;
             }
 
+            // Memperbarui elemen p dengan nama domain
+            const pDomainDisplay = document.getElementById('p-domain-display');
+            if (pDomainDisplay) {
+                pDomainDisplay.textContent = domainName;
+            }
+
             // Mengklik tombol "Continue" secara programatis
             const nextButton = document.getElementById('next-button');
             if (nextButton) {
