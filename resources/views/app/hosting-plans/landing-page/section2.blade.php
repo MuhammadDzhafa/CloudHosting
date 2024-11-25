@@ -111,7 +111,7 @@
             </div>
         </div>
         <div id="demo-right-actions-modal" class="modal h-modal">
-            <div class="modal-background  h-modal-close"></div>
+            <div class="modal-background h-modal-close"></div>
             <div class="modal-content">
                 <div class="modal-card">
                     <header class="modal-card-head">

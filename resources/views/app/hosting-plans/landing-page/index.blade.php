@@ -58,6 +58,7 @@
     ========================================================
     */
     document.addEventListener('DOMContentLoaded', function() {
+        setupWhoisModal();
         if (window.location.pathname === '/checkout') {
             const urlParams = new URLSearchParams(window.location.search);
             const domainName = urlParams.get('tld_name');
@@ -245,6 +246,7 @@
                 dropdownContainer.classList.remove('hidden');
                 dropdownContainer.classList.add('show');
             }
+            setupWhoisModal();
         }
 
         // Fungsi untuk menampilkan form EPP
@@ -256,28 +258,42 @@
         function setupWhoisModal() {
             const whoisButtons = document.querySelectorAll('.h-modal-trigger[data-modal="demo-right-actions-modal"]');
             whoisButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('WHOIS button clicked'); // Debugging
                     const modal = document.getElementById('demo-right-actions-modal');
                     if (modal) {
-                        modal.classList.add('is-active'); // Tampilkan modal
-                        // Panggil fungsi untuk mendapatkan WHOIS data
+                        modal.classList.add('is-active');
                         fetchWhoisData();
+                    } else {
+                        console.error('Modal element not found');
                     }
                 });
             });
 
-            // Menutup modal saat latar belakang atau tombol close diklik
-            const closeModalButtons = document.querySelectorAll('.h-modal-close');
-            closeModalButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const modal = button.closest('.modal');
+            // Event listener untuk menutup modal
+            const closeButtons = document.querySelectorAll('.h-modal-close');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modal = document.getElementById('demo-right-actions-modal');
                     if (modal) {
-                        modal.classList.remove('is-active'); // Hapus kelas untuk menyembunyikan modal
+                        modal.classList.remove('is-active');
                     }
                 });
             });
-        }
 
+            // Event listener untuk background modal
+            const modalBackground = document.querySelector('.modal-background');
+            if (modalBackground) {
+                modalBackground.addEventListener('click', function() {
+                    const modal = document.getElementById('demo-right-actions-modal');
+                    if (modal) {
+                        modal.classList.remove('is-active');
+                    }
+                });
+            }
+        }
         // Function to fetch WHOIS data
         function fetchWhoisData() {
             const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
