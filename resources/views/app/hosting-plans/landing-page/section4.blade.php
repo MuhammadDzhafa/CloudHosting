@@ -2,18 +2,20 @@
     <h2 class="title-section text-center">Trusted by Over 100 Multinational Companies</h2>
     <div class="clients-row">
         @foreach([
-        'bank-indonesia.svg',
-        'logo-ojk.svg',
-        'logo-samsung.svg',
-        'cocacola.svg',
-        'logo-pertamina.svg',
-        'seagroup.svg',
-        'lintasarta.svg',
-        'itb.svg',
-        'logo-bri.svg',
-        'logo-hino.svg',
+        'bank-indonesia.png',
+        'logo-ojk.png',
+        'logo-samsung.png',
+        'cocacola.png',
+        'logo-pertamina.png',
+        'seagroup.png',
+        'lintasarta.png',
+        'itb.png',
+        'logo-bri.png',
+        'logo-hino.png',
         ] as $logo)
-        <div class="client-logo">
+        <div class="client-logo 
+        @if($logo == 'lintasarta.png' || $logo == 'logo-hino.png') elevate-logo 
+        @elseif($logo == 'seagroup.png') lower-logo @endif">
             <img src="{{ asset('assets/img/sponsor/' . $logo) }}" alt="{{ pathinfo($logo, PATHINFO_FILENAME) }}">
         </div>
         @endforeach

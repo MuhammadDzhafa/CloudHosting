@@ -14,5 +14,5 @@
 
 
     </div>
-    <img src="{{ asset('assets/img/laptop.svg') }}" alt="Laptop on desk" class="img-cta md:self-center">
+    <img src="{{ asset('assets/img/laptop.png') }}" alt="Laptop on desk" class="img-cta md:self-center">
 </div>

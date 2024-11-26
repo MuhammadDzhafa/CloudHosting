@@ -6,10 +6,10 @@
         </div>
         <div class="lg:w-2/3 relative">
             <div class="space-y-12 relative">
-                <img src="/assets/img/section9/Line.svg" alt="Vertical Line" class="vertical-line">
+                <img src="/assets/img/section9/Line.png" alt="Vertical Line" class="vertical-line">
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon1.svg" alt="Secure and Reliable Icon" class="icon">
+                        <img src="/assets/img/section9/icon1.png" alt="Secure and Reliable Icon" class="icon">
                     </div>
                     <div>
                         <h3 class="service-subtitle">Secure and Reliable</h3>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon3.svg" alt="Plans for Every Budget Icon" class="icon">
+                        <img src="/assets/img/section9/icon3.png" alt="Plans for Every Budget Icon" class="icon">
                     </div>
                     <div>
                         <h3 class="service-subtitle">Plans for Every Budget</h3>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon4.svg" alt="Enhanced Website Speed Icon" class="icon">
+                        <img src="/assets/img/section9/icon4.png" alt="Enhanced Website Speed Icon" class="icon">
                     </div>
                     <div>
                         <h3 class="service-subtitle">Enhanced Website Speed</h3>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon2.svg" alt="Intelligent Hosting Solutions Icon" class="icon">
+                        <img src="/assets/img/section9/icon2.png" alt="Intelligent Hosting Solutions Icon" class="icon">
                     </div>
                     <div>
                         <h3 class="service-subtitle">Intelligent Hosting Solutions</h3>
@@ -64,10 +64,10 @@
         </div>
         <div class="lg:w-2/3 relative">
             <div class="space-y-12 relative">
-            <img src="/assets/img/section9/Line.svg" alt="Vertical Line" class="absolute left-11 top-0 bottom-0 h-[80%] object-cover z-0">                
+            <img src="/assets/img/section9/Line.png" alt="Vertical Line" class="absolute left-11 top-0 bottom-0 h-[80%] object-cover z-0">                
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon1.svg" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
+                        <img src="/assets/img/section9/icon1.png" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
                     </div>
                     <div>
                         <h3 class="text-white text-[18px] font-[700] leading-[23.4px] mb-5">Secure and Reliable</h3>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon3.svg" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
+                        <img src="/assets/img/section9/icon3.png" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
                     </div>
                     <div>
                         <h3 class="text-white text-[18px] font-[700] leading-[23.4px] mb-5">Plans for Every Budget</h3>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon4.svg" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
+                        <img src="/assets/img/section9/icon4.png" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
                     </div>
                     <div>
                         <h3 class="text-white text-[18px] font-[700] leading-[23.4px] mb-5">Enhanced Website Speed</h3>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="flex items-start space-x-6 relative z-10">
                     <div>
-                        <img src="/assets/img/section9/icon2.svg" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
+                        <img src="/assets/img/section9/icon2.png" alt="" style="width: 80px; height: 69.65px; min-width: 80px; min-height: 69.65px;">
                     </div>
                     <div>
                         <h3 class="text-white text-[18px] font-[700] leading-[23.4px] mb-5">Intelligent Hosting Solutions</h3>

@@ -23,7 +23,7 @@
                     <li class="flex items-center w-full">
                         <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                             <img
-                                src="/assets/img/icons/email.svg"
+                                src="/assets/img/icons/email.png"
                                 alt="Email Icon"
                                 class="w-[18px] sm:w-[24px]">
                         </div>
@@ -42,7 +42,7 @@
                     <li class="flex items-center w-full">
                         <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                             <img
-                                src="/assets/img/icons/phone-enabled.svg"
+                                src="/assets/img/icons/call.png"
                                 alt="Phone Icon"
                                 class="w-[18px] sm:w-[24px]">
                         </div>
@@ -58,7 +58,7 @@
                     <li class="flex items-center w-full">
                         <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                             <img
-                                src="/assets/img/icons/email.svg"
+                                src="/assets/img/icons/email.png"
                                 alt="Email Icon"
                                 class="w-[18px] sm:w-[24px]">
                         </div>
@@ -77,7 +77,7 @@
                     <li class="flex items-center w-full">
                         <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                             <img
-                                src="/assets/img/icons/phone-enabled.svg"
+                                src="/assets/img/icons/call.png"
                                 alt="Phone Icon"
                                 class="w-[18px] sm:w-[24px]">
                         </div>
@@ -94,7 +94,7 @@
                     <li class="flex items-center w-full">
                         <div class="h-icon bg-[#DBCAEC] is-rounded flex-shrink-0">
                             <img
-                                src="/assets/img/icons/location.svg"
+                                src="/assets/img/icons/location.png"
                                 alt="Location Icon"
                                 class="w-[18px] sm:w-[24px]">
                         </div>

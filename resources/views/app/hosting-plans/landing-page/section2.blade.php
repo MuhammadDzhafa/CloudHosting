@@ -98,7 +98,7 @@
 
                 <div class="w-full flex justify-center lg:justify-end">
                     <a href="#" id="view-price-list"
-                        class="text-[#FFFFFF] font-inter text-[18px] font-semibold no-hover inline-flex items-center">
+                        class="text-[#FFFFFF] font-inter text-[18px] font-semibold inline-flex items-center no-underline hover:text-[#FFFFFF]">
                         View Price List
                         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="transform transition-transform duration-300 ml-1">
@@ -135,7 +135,7 @@
 
     <!-- SVG positioned in the bottom left corner -->
     <div class="absolute left-[139.5px] bottom-[-2px] hidden lg:block">
-        <img src="/assets/img/bg/globewhite.svg" alt="" class="w-auto h-auto">
+        <img src="/assets/img/bg/globewhite.png" alt="" class="w-auto h-auto">
     </div>
 
 </div>

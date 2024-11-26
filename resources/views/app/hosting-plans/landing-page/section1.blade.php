@@ -1,7 +1,4 @@
-<div class="section-frame padding-1">
-    <div class="background-container">
-        <img src="/assets/img/bg/bg-pattern2.svg" alt="Background Pattern" class="background-image">
-    </div>
+<div class="section-frame-1 padding-1">
     <div>
         <div class="flex flex-wrap items-center z-10">
             <div class="w-full lg:w-1/2">
@@ -28,30 +25,28 @@
                 <div class="button-container">
                     <a class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] text-[#4A6DCB] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#fff] active:border-[#4A6DCB] px-4 py-3" style="font-family: unset;">
                         <span class="btn-text explore-button" onclick="scrollToSection()">Explore Now</span>
-                        <svg class="btn-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.16669 10H15.8334M10.8334 5L15.8334 10L10.8334 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
             </div>
             <div class="w-full lg:w-1/2 lg:mt-0 relative">
-                <img src="{{ asset('assets/img/hero.svg') }}" alt="Smartphone" class="smartphone-image">
+                <img src="{{ asset('assets/img/hero.png') }}" alt="Smartphone" class="smartphone-image">
 
                 <div class="tooltip tooltip-1">
-                    <img src="{{ asset('assets/img/icons/tooltip-1.svg') }}" alt="Tooltip 1">
+                    <img src="{{ asset('assets/img/icons/tooltip-1.png') }}" alt="Tooltip 1">
                 </div>
 
                 <div class="tooltip tooltip-2">
-                    <img src="{{ asset('assets/img/icons/tooltip-2.svg') }}" alt="Tooltip 2">
+                    <img src="{{ asset('assets/img/icons/tooltip-2.png') }}" alt="Tooltip 2">
                 </div>
 
                 <div class="tooltip tooltip-3">
-                    <img src="{{ asset('assets/img/icons/tooltip-3.svg') }}" alt="Tooltip 3">
+                    <img src="{{ asset('assets/img/icons/tooltip-3.png') }}" alt="Tooltip 3">
                 </div>
 
                 <div class="tooltip tooltip-4">
-                    <img src="{{ asset('assets/img/icons/tooltip.svg') }}" alt="Tooltip 4">
+                    <img src="{{ asset('assets/img/icons/tooltip.png') }}" alt="Tooltip 4">
                 </div>
             </div>
         </div>
