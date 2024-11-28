@@ -169,7 +169,7 @@
                 return;
             }
 
-            const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+            const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
             const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
             console.log('API URL:', apiUrl);
 
@@ -321,7 +321,7 @@
         // Function to fetch WHOIS data
         function fetchWhoisData() {
             const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
-            const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop'; // Ganti dengan API key Anda
+            const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp'; // Ganti dengan API key Anda
             const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
 
             fetch(url)

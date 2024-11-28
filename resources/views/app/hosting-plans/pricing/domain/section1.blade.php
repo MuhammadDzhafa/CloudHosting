@@ -154,7 +154,7 @@
                     }
 
                     // Fetch WHOIS data
-                    const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+                    const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
                     const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
 
                     fetch(url)

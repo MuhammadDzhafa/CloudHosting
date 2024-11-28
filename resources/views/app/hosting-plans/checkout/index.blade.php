@@ -439,7 +439,7 @@
 
             // Cek untuk tipe 'new' (domain baru)
             if (type === 'new') {
-                const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop&domainName=${baseDomain}&outputFormat=json`;
+                const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_50ndnvrxO5vW0BVGxlhraK54ndQJp&domainName=${baseDomain}&outputFormat=json`;
                 try {
                     const response = await fetch(apiUrl);
                     console.log('Response Status:', response.status);
@@ -478,7 +478,7 @@
             }
             // Cek untuk tipe 'transfer'
             else if (type === 'transfer') {
-                const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+                const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
                 if (!apiKey) {
                     console.error('API Key is missing!');
                     return;
@@ -557,7 +557,7 @@
                 } else {
                     const baseDomain = searchQuery; // Pastikan base domain adalah query lengkap
 
-                    const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop&domainName=${baseDomain}&outputFormat=json`;
+                    const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_50ndnvrxO5vW0BVGxlhraK54ndQJp&domainName=${baseDomain}&outputFormat=json`;
 
                     try {
                         const response = await fetch(apiUrl);
@@ -720,7 +720,7 @@
                         return; // Hentikan jika tidak ada nama domain
                     }
 
-                    const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+                    const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
                     const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
 
                     fetch(url)

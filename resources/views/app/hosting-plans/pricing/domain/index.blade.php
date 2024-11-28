@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Domain</title>
+    <title>Awan Hosting :: Checkout</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->
@@ -98,7 +98,7 @@
 
         function checkDomainAvailability(domainName) {
             return new Promise((resolve, reject) => {
-                const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+                const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
                 const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
 
                 fetch(url)
@@ -198,19 +198,19 @@
                 checkDomainAvailability(baseDomain)
                     .then(isAvailable => {
                         const messageContainer = `
-                <div id="component-search">
-                    <div class="message ${isAvailable ? 'is-success' : 'is-danger'} flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong>${baseDomain}</strong> is ${isAvailable ? 'available' : 'not available'}
-                            ${isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
-                        </div>
-                        ${isAvailable ? 
-                            `<button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">Buy Now</button>` : 
-                            `<button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">WHOIS</button>`
-                        }
-                    </div>
+        <div id="component-search">
+            <div class="message ${isAvailable ? 'is-success' : ''} flex-row flex justify-between items-center">
+                <div class="message-body">
+                    <strong>${baseDomain}</strong> is ${isAvailable ? 'available' : 'not available'}
+                    ${isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
                 </div>
-                `;
+                ${isAvailable ? 
+                    `<button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">Buy Now</button>` : 
+                    `<button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">WHOIS</button>`
+                }
+            </div>
+        </div>
+        `;
 
                         dropdownContent.innerHTML = messageContainer;
 
@@ -224,13 +224,93 @@
                     })
                     .catch(error => {
                         dropdownContent.innerHTML = `
-                <div id="component-search">
-                    <div class="message is-danger flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            Unable to check domain availability. Please try again later.
-                        </div>
+        <div id="component-search">
+            <div class="message is-danger flex-row flex justify-between items-center">
+                <div class="message-body">
+                    Unable to check domain availability. Please try again later.
+                </div>
+            </div>
+        </div>`;
+                        console.error('Domain availability check failed:', error);
+                    });
+            });
+        }
+        // Event listener untuk pencarian domain
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                const searchQuery = searchInput.value.trim();
+
+                // Validasi input
+                if (!searchQuery || searchQuery.split('.').length < 2) {
+                    dropdownContent.innerHTML = `
+            <div id="component-search">
+                <div class="message is-danger flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        Please enter a valid domain name (e.g., example.com)
                     </div>
-                </div>`;
+                </div>
+            </div>`;
+                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
+                    return;
+                }
+
+                const domainParts = searchQuery.split('.');
+                const tld = domainParts.pop();
+                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+
+                // Memastikan bahwa bagian domain utama tidak kosong
+                if (!mainDomainPart) {
+                    dropdownContent.innerHTML = `
+            <div id="component-search">
+                <div class="message is-danger flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        Please enter a valid domain name (e.g., example.com)
+                    </div>
+                </div>
+            </div>`;
+                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
+                    return;
+                }
+
+                const baseDomain = `${mainDomainPart}.${tld}`;
+
+                // Periksa ketersediaan domain
+                checkDomainAvailability(baseDomain)
+                    .then(isAvailable => {
+                        const messageContainer = `
+        <div id="component-search">
+            <div class="message flex-row flex justify-between items-center">
+                <div class="message-body">
+                    <strong>${baseDomain}</strong> is ${isAvailable ? 'available' : 'not available'}
+                    ${isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
+                </div>
+                ${isAvailable ? 
+                    `<button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">Buy Now</button>` : 
+                    `<button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">WHOIS</button>`
+                }
+            </div>
+        </div>
+        `;
+
+                        dropdownContent.innerHTML = messageContainer;
+
+                        // Panggil setupWhoisModal setelah menambahkan konten
+                        if (!isAvailable) {
+                            setupWhoisModal();
+                        }
+
+                        dropdownContainer.classList.add('show');
+                        componentTransfer.classList.add('hidden');
+                    })
+                    .catch(error => {
+                        dropdownContent.innerHTML = `
+        <div id="component-search">
+            <div class="message flex-row flex justify-between items-center">
+                <div class="message-body">
+                    Unable to check domain availability. Please try again later.
+                </div>
+            </div>
+        </div>`;
                         console.error('Domain availability check failed:', error);
                     });
             });
@@ -274,22 +354,8 @@
                     return;
                 }
 
-                // Memeriksa apakah TLD valid
-                if (!allowedTLDs.includes(tld)) {
-                    dropdownContent.innerHTML = `
-            <div id="component-search">
-                <div class="message is-danger flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        The TLD <strong>.${tld}</strong> is not allowed. Please use one of the following: ${allowedTLDs.join(', ')}.
-                    </div>
-                </div>
-            </div>`;
-                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
-                    return;
-                }
-
                 const baseDomain = `${mainDomainPart}.${tld}`;
-                const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
+                const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
 
                 const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
                 console.log('API URL:', apiUrl);
