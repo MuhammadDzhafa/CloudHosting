@@ -20,13 +20,13 @@
             <div class="flex justify-center flex-row gap-2">
                 <div class="field flex-grow h-full mb-5">
                     <div class="control has-icon">
-                        <input type="text" placeholder="eg. example.com" id="domain-search" class="input is-rounded search-input" placeholder="Search...">
+                        <input type="text" placeholder="eg. example.com" id="search-domain" class="input is-rounded search-input" oninput="searchDomains()">
                         <div class="form-icon">
                             <i data-feather="search"></i>
                         </div>
                     </div>
                 </div>
-                <button id="search-btn" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;">
+                <button id="search-btn" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" style="border: unset; padding:12px 16px;" onclick="searchDomains()">
                     <span class="material-icons mr-2" style="color:#fff; font-size:20px">&#xe8b6;</span>
                     <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
                         Search
@@ -74,63 +74,79 @@
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
-                <div class="w-full md:w-1/4 bg-blue-50 p-4 md:block hidden">
-                    <ul class="space-y-2">
-                        <!-- Radio button untuk View All -->
-                        <li>
-                            <label class="flex items-center">
+            <div class="flex flex-col md:flex-row w-full">
+                <div class="mr-2 md:w-1/5 md:block hidden">
+                    <div class="widget text-widget flex flex-col items-center p-0 bg-[#EBEFF9]">
+                        <div class="px-7 py-2 w-full max-w-md">
+                            <label class="radio is-outlined is-info p-0 mb-2 text-left block mb-0"
+                                style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; line-height: 20.3px; color: #525252; text-underline-position: from-font; text-decoration-skip-ink: none;">
                                 <input type="radio" name="filter" class="mr-2 text-blue-600" checked onchange="filterDomains('View All')">
-                                <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
-                                    View All
-                                </span>
+                                <span></span>
+                                View All
                             </label>
-                        </li>
-                        @foreach ($categories as $index => $category)
-                        <li>
-                            <label class="flex items-center">
-                                <input type="radio" name="filter" class="mr-2 text-blue-600" onchange="filterDomains('{{ $category->category }}')">
-                                <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
-                                    {{ $category->category }}
-                                </span>
-                            </label>
-                        </li>
-                        @endforeach
-                    </ul>
+                            <ul class="list-none p-0 m-0">
+                                @foreach ($categories as $index => $category)
+                                <li>
+                                    <label class="radio is-outlined is-info p-0 mb-2 text-left block"
+                                        style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; line-height: 20.3px; color: #525252; text-underline-position: from-font; text-decoration-skip-ink: none;">
+                                        <input type="radio" name="filter" class="mr-2 text-blue-600" onchange="filterDomains('{{ $category->category }}')">
+                                        <span></span>
+                                        {{ $category->category }}
+                                    </label>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="w-full md:w-3/4 bg-white">
-                    <table class="table-auto w-full border-collapse">
-                        <thead>
-                            <tr class="table-header">
-                                <th class="table-cell" style="text-align: center;">TLD</th>
-                                <th class="table-cell" style="text-align: center;">Price</th>
-                                <th class="table-cell" style="text-align: center;">Order</th>
-                            </tr>
-                        </thead>
-                        <tbody id="domain-table-body">
-                            @foreach ($tlds as $tld)
-                            <tr class="border-b border-gray-200 text-center">
-                                <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    {{ $tld->tld_name }}
-                                </td>
-                                <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    ${{ number_format($tld->tld_price, 2) }}
-                                </td>
-                                <td class="py-3 px-4 flex justify-center items-center">
-                                    <button
-                                        class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
-                                        style="border: unset; padding:12px 16px;"
-                                        data-tld-name="{{ $tld->tld_name }}"
-                                        data-tld-price="{{ $tld->tld_price }}">
-                                        <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                            Order
-                                        </span>
-                                    </button>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
+                <div class="w-full md:w-4/5 bg-white">
+                    <div class="table-wrapper" style="min-height: unset;">
+                        <table id="users-datatable" class="table is-datatable is-hoverable table-is-bordered">
+                            <thead>
+                                <tr class="bg-[#EBEFF9]">
+                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                        TLD
+                                    </th>
+                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                        Price
+                                    </th>
+                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                        Order
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="domain-table-body">
+                                @foreach ($tlds as $tld)
+                                <tr class="border-gray-200 text-center">
+                                    <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                        {{ $tld->tld_name }}
+                                    </td>
+                                    <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                        ${{ number_format($tld->tld_price, 2) }}
+                                    </td>
+                                    <td class="py-3 px-4 flex justify-center items-center">
+                                        <button
+                                            class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
+                                            style="border: unset; padding:12px 16px;"
+                                            data-tld-name="{{ $tld->tld_name }}"
+                                            data-tld-price="{{ $tld->tld_price }}"
+                                            onclick="orderTLD(this)">
+                                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                Order
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
+                        <a class="pagination-previous has-chevron" onclick="handlePrevious()"><i data-feather="chevron-left"></i></a>
+                        <ul class="pagination-list"></ul>
+                        <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
+                    </nav>
                 </div>
             </div>
 
@@ -140,94 +156,102 @@
                 const itemsPerPage = 5; // Jumlah domain per halaman
                 let currentPage = 1; // Halaman saat ini
 
-                // Function untuk memfilter domain berdasarkan kategori
-                function filterDomains(filter) {
-                    currentPage = 1; // Reset halaman ke 1 setiap kali filter diubah
-                    renderTable(filter);
-                    renderPagination(filter);
+                function searchDomains() {
+                    const searchInput = document.getElementById('search-domain').value.toLowerCase().trim();
+
+                    // Filter domains berdasarkan input pencarian
+                    const filteredDomains = domains.filter(domain =>
+                        domain.tld_name.toLowerCase().includes(searchInput)
+                    );
+
+                    // Reset halaman ke 1 saat melakukan pencarian
+                    currentPage = 1;
+
+                    // Render ulang tabel dan pagination dengan domain yang difilter
+                    renderTable(filteredDomains);
+                    renderPagination(filteredDomains);
                 }
 
+
+                // Function untuk memfilter domain berdasarkan kategori
+                function filterDomains(filter) {
+                    currentPage = 1;
+                    currentFilter = filter;
+
+                    const filteredDomains = filter === 'View All' ? domains : domains.filter(domain => domain.category === filter);
+
+                    renderTable(filteredDomains);
+                    renderPagination(filteredDomains);
+                }
+
+
                 // Function untuk merender tabel berdasarkan filter
-                function renderTable(filter) {
+                function renderTable(domainsToRender) {
                     const tbody = document.getElementById('domain-table-body');
                     tbody.innerHTML = ''; // Kosongkan tabel sebelum diisi ulang
 
-                    // Filter domain berdasarkan kategori
-                    const filteredDomains = filter === 'View All' ? domains : domains.filter(domain => domain.category === filter);
-
-                    // Menghitung mulai dan akhir untuk pagination
                     const startIndex = (currentPage - 1) * itemsPerPage;
                     const endIndex = startIndex + itemsPerPage;
 
-                    // Mengisi tabel dengan data yang difilter
-                    filteredDomains.slice(startIndex, endIndex).forEach(domain => {
+                    domainsToRender.slice(startIndex, endIndex).forEach(domain => {
                         const row = document.createElement('tr');
-                        row.className = 'border-b border-gray-200 text-center';
-
+                        row.className = 'border-gray-200 text-center';
                         row.innerHTML = `
-                                <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    ${domain.tld_name}
-                                </td>
-                                <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                    Rp.${domain.tld_price.toFixed(2)}
-                                </td>
-                                <td class="py-3 px-4 flex justify-center items-center">
-                                    <button 
-                                        class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full" 
-                                        style="border: unset; padding:12px 16px;" 
-                                        data-tld-name="${domain.tld_name}" 
-                                        data-tld-price="${domain.tld_price}" 
-                                        onclick="orderTLD(this)">
-                                        <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                            Order
-                                        </span>
-                                    </button>
-                                </td>
-                            `;
+            <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">${domain.tld_name}</td>
+            <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">$${domain.tld_price.toFixed(2)}</td>
+            <td class="py-3 px-4 flex justify-center items-center">
+                <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white" data-tld-name="${domain.tld_name}" data-tld-price="${domain.tld_price}" onclick="orderTLD(this)">
+                    <span class="text-[16px] font-['Inter'] text-[#fff] text-center">Order</span>
+                </button>
+            </td>
+        `;
                         tbody.appendChild(row);
                     });
                 }
 
                 // Function untuk render pagination
-                function renderPagination(filter) {
+                function renderPagination(domainsToRender) {
                     const paginationList = document.querySelector('.pagination-list');
-                    paginationList.innerHTML = ''; // Kosongkan pagination sebelum diisi ulang
+                    paginationList.innerHTML = '';
 
-                    // Filter domain berdasarkan kategori
-                    const filteredDomains = filter === 'View All' ? domains : domains.filter(domain => domain.category === filter);
+                    const pageCount = Math.ceil(domainsToRender.length / itemsPerPage);
 
-                    // Hitung jumlah halaman
-                    const pageCount = Math.ceil(filteredDomains.length / itemsPerPage);
-
-                    // Tambahkan tombol previous
                     const previousButton = document.querySelector('.pagination-previous');
+                    const nextButton = document.querySelector('.pagination-next');
+                    const paginationContainer = document.querySelector('.flex-pagination');
+
+                    // Selalu tampilkan pagination container
+                    paginationContainer.style.display = 'flex';
+
                     previousButton.onclick = () => {
                         if (currentPage > 1) {
                             currentPage--;
-                            renderTable(filter);
-                            renderPagination(filter);
+                            renderTable(domainsToRender);
+                            renderPagination(domainsToRender);
                         }
                     };
 
-                    // Tambahkan tombol next
-                    const nextButton = document.querySelector('.pagination-next');
                     nextButton.onclick = () => {
                         if (currentPage < pageCount) {
                             currentPage++;
-                            renderTable(filter);
-                            renderPagination(filter);
+                            renderTable(domainsToRender);
+                            renderPagination(domainsToRender);
                         }
                     };
 
-                    // Generate pagination numbers
+                    // Nonaktifkan tombol previous/next jika hanya satu halaman
+                    previousButton.classList.toggle('is-disabled', pageCount <= 1);
+                    nextButton.classList.toggle('is-disabled', pageCount <= 1);
+
+                    // Buat nomor halaman
                     for (let i = 1; i <= pageCount; i++) {
                         const pageLink = document.createElement('a');
                         pageLink.className = `pagination-link ${i === currentPage ? 'is-current' : ''}`;
                         pageLink.textContent = i;
                         pageLink.onclick = () => {
                             currentPage = i;
-                            renderTable(filter);
-                            renderPagination(filter);
+                            renderTable(domainsToRender);
+                            renderPagination(domainsToRender);
                         };
 
                         const pageItem = document.createElement('li');
@@ -236,20 +260,6 @@
                     }
                 }
             </script>
-
-            <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
-                <a class="pagination-previous has-chevron" onclick="handlePrevious()"><i data-feather="chevron-left"></i></a>
-                <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
-                <ul class="pagination-list">
-                    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-                    <li><span class="pagination-ellipsis">…</span></li>
-                    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-                    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-                    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-                    <li><span class="pagination-ellipsis">…</span></li>
-                    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>

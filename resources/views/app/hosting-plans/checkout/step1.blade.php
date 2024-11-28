@@ -63,41 +63,54 @@
                         </div>
                     </div>
                     <!-- Harga Domain -->
-                    <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
+                    <div class="flex flex-col md:flex-row w-full">
                         <div class="w-full bg-white">
-                            <table class="table-auto w-full border-collapse">
-                                <thead>
-                                    <tr class="table-header">
-                                        <th class="table-cell" style="text-align: center;">TLD</th>
-                                        <th class="table-cell" style="text-align: center;">Price</th>
-                                        <th class="table-cell" style="text-align: center;">Order</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="domain-table-body">
-                                    @foreach ($tlds as $tld)
-                                    <tr class="border-b border-gray-200 text-center">
-                                        <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                            {{ $tld->tld_name }}
-                                        </td>
-                                        <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                            Rp{{ number_format($tld->tld_price, 0, '', '.') }}
-                                        </td>
-                                        <td class="py-3 px-4 flex justify-center items-center">
-                                            <button
-                                                class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
-                                                style="border: unset; padding:12px 16px;"
-                                                data-tld-name="{{ $tld->tld_name }}"
-                                                data-tld-price="{{ $tld->tld_price }}"
-                                                onclick="orderTLD(this)">
-                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                                    Order
-                                                </span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <div class="table-wrapper" style="min-height: unset;">
+                                <table id="users-datatable" class="table is-datatable is-hoverable table-is-bordered">
+                                    <thead>
+                                        <tr class="bg-[#EBEFF9]">
+                                            <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                                TLD
+                                            </th>
+                                            <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                                Price
+                                            </th>
+                                            <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                                Order
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="domain-table-body">
+                                        @foreach ($tlds as $tld)
+                                        <tr class="border-gray-200 text-center">
+                                            <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                                {{ $tld->tld_name }}
+                                            </td>
+                                            <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                                ${{ number_format($tld->tld_price, 2) }}
+                                            </td>
+                                            <td class="py-3 px-4 flex justify-center items-center">
+                                                <button
+                                                    class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
+                                                    style="border: unset; padding:12px 16px;"
+                                                    data-tld-name="{{ $tld->tld_name }}"
+                                                    data-tld-price="{{ $tld->tld_price }}"
+                                                    onclick="orderTLD(this)">
+                                                    <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                        Order
+                                                    </span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
+                                <a class="pagination-previous has-chevron" onclick="handlePrevious()"><i data-feather="chevron-left"></i></a>
+                                <ul class="pagination-list"></ul>
+                                <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
+                            </nav>
                         </div>
                     </div>
 
@@ -140,22 +153,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-                    <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
-                        <a class="pagination-previous has-chevron" onclick="handlePrevious()"><i data-feather="chevron-left"></i></a>
-                        <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
-                        <ul class="pagination-list">
-                            <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-                            <li><span class="pagination-ellipsis">…</span></li>
-                            <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-                            <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-                            <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-                            <li><span class="pagination-ellipsis">…</span></li>
-                            <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-                        </ul>
-                    </nav>
                 </div>
 
                 <div id="transfer-domain" class="tab-content">
