@@ -50215,14 +50215,14 @@ body.is-dark .pagination.datatable-pagination ul li a {
     vertical-align: middle
 }
 
-/* .table-wrapper .table.is-datatable th {
+.table-wrapper .table.is-datatable th {
     padding: 16px 20px;
     font-family: "Inter", sans-serif;
     font-size: .8rem;
     color: #283252;
     text-transform: uppercase;
     border: 1px solid #ededed
-} */
+}
 
 .table-wrapper .table.is-datatable th .checkbox {
     padding: 0

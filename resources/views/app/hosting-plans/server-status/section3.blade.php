@@ -1,5 +1,5 @@
 <div class="bg-white font-sans">
-    <div class="max-w-[1250px] mx-auto p-6">
+    <div class="mx-auto section-frame padding-1">
         <h1 class="md:w-[1040px] md:h-[30px] text-[23px] font-bold leading-[29.9px] text-[#292929] mb-6">
             Upcoming Maintenance
         </h1>

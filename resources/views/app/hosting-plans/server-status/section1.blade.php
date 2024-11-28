@@ -1,4 +1,4 @@
-<div class="section-frame padding-1 w-full bg-[#FFFFFF] mx-auto mt-16 sm:mt-10 lg:mt-5 px-4 md:px-8 lg:px-[200px] py-12 sm:py-16 md:py-20 lg:py-[100px]">
+<div class="section-frame padding-1 w-full bg-[#FFFFFF]">
     <h1 class="text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight md:leading-snug lg:leading-[50.4px] text-center text-[#292929] mb-6 sm:mb-1 lg:mb-3">
         Server Status
     </h1>    

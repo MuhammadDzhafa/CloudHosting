@@ -103,6 +103,16 @@
         const eppInputContainer = document.getElementById('epp-input-container');
 
         // Event listeners for search buttons
+        // Daftar ekstensi yang diizinkan
+        const allowedTLDs = [
+            'com', 'net', 'org', 'info', 'biz',
+            'id', 'ac', 'co.id', 'or.id',
+            'edu', 'gov', 'mil',
+            'io', 'app', 'dev',
+            // Tambahkan TLD lain yang Anda inginkan
+        ];
+
+        // Event listener untuk tombol Transfer
         if (searchButton) {
             searchButton.addEventListener('click', function() {
                 searchDomain('transfer');
@@ -143,6 +153,21 @@
             const tld = domainParts.pop() || '';
             const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
             const baseDomain = mainDomainPart && tld ? `${mainDomainPart}.${tld}` : searchQuery;
+
+            // Memeriksa apakah TLD valid
+            if (!allowedTLDs.includes(tld)) {
+                dropdownContent.innerHTML = `
+        <div id="component-search">
+            <div class="message is-danger flex-row flex justify-between items-center">
+                <div class="message-body">
+                    The TLD <strong>.${tld}</strong> is not allowed. Please use one of the following: ${allowedTLDs.join(', ')}.
+                </div>
+            </div>
+        </div>`;
+                dropdownContainer.classList.remove('hidden');
+                dropdownContainer.classList.add('show');
+                return;
+            }
 
             const apiKey = 'at_lhU0kk1YoN5B0JHLMsS9tTyNGPLop';
             const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
@@ -203,7 +228,7 @@
                         </div>
                         <button class="button h-button is-danger rounded-full" data-domain-name="${baseDomain}">
                             New Domain
-                        </ button>
+                        </button>
                     </div>
                 </div>`;
                     } else {
@@ -239,7 +264,7 @@
         <div id="component-search">
             <div class="message is-danger flex-row flex justify-between items-center">
                 <div class="message-body">
-                    <strong>${baseDomain}</strong> Unable to check availability. Please try again later.
+                    Please enter a valid domain name (e.g., example.com)
                 </div>
             </div>
         </div>`;
@@ -248,7 +273,6 @@
             }
             setupWhoisModal();
         }
-
         // Fungsi untuk menampilkan form EPP
         function displayEPPInputContainer() {
             eppInputContainer.classList.remove('hidden');
@@ -551,7 +575,7 @@
             .then(data => {
                 if (data.success) {
                     // Tampilkan modal setelah berhasil
-                    document.getElementById('demo-right-actions-modal').classList.add('is-active');
+                    document.getElementById('contact-us').classList.add('is-active');
                 } else {
                     // Handle error, tampilkan pesan error atau lakukan sesuatu
                     alert('Something went wrong!');

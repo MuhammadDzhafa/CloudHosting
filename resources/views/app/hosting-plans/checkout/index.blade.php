@@ -382,6 +382,15 @@
         });
 
         // Fungsi umum untuk pencarian domain
+        // Daftar ekstensi yang diizinkan
+        const allowedTLDs = [
+            'com', 'net', 'org', 'info', 'biz',
+            'id', 'ac', 'co.id', 'or.id',
+            'edu', 'gov', 'mil',
+            'io', 'app', 'dev',
+            // Tambahkan TLD lain yang Anda inginkan
+        ];
+
         async function searchDomain(type) {
             resetTransferForm();
             console.log('searchDomain called with type:', type);
@@ -411,6 +420,21 @@
             const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
             const baseDomain = `${mainDomainPart}.${tld}`;
 
+            // Memeriksa apakah TLD valid
+            if (!allowedTLDs.includes(tld)) {
+                dropdownContent.innerHTML = `
+        <div id="component-search">
+            <div class="message is-danger flex-row flex justify-between items-center">
+                <div class="message-body">
+                    The TLD <strong>.${tld}</strong> is not allowed. Please use one of the following: ${allowedTLDs.join(', ')}.
+                </div>
+            </div>
+        </div>`;
+                dropdownContainer.classList.remove('hidden');
+                dropdownContainer.classList.add('show');
+                return;
+            }
+
             let dropdownHTML = '';
 
             // Cek untuk tipe 'new' (domain baru)
@@ -431,8 +455,8 @@
                             <br>Exclusive offer: Rp 20.000/mon for a 2-year plan
                         </div>
                         <button id="buy-now-button" class="button h-button is-success rounded-full buy-now-button" data-domain-name="${baseDomain}">
-    Buy Now
-</button>
+                            Buy Now
+                        </button>
                     </div>
                 </div>`;
                     } else {
@@ -477,42 +501,42 @@
                     if (data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE") {
                         // Domain is available (not registered) - show "create new domain" message
                         dropdownHTML = `
-                    <div id="component-search">
-                        <div class="message is-danger flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong>${baseDomain}</strong> I'm sorry, your current domain isn't registered
-                                <br>Do you want to create a new domain?
-                            </div>
-                            <button class="button h-button is-danger rounded-full" data-domain-name="${baseDomain}">
-                                New Domain
-                            </button>
+                <div id="component-search">
+                    <div class="message is-danger flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong>${baseDomain}</strong> I'm sorry, your current domain isn't registered
+                            <br>Do you want to create a new domain?
                         </div>
-                    </div>`;
+                        <button class="button h-button is-danger rounded-full" data-domain-name="${baseDomain}">
+                            New Domain
+                        </button>
+                    </div>
+                </div>`;
                     } else {
                         // Domain is not available (registered) - show transfer option
                         dropdownHTML = `
-                    <div id="component-search">
-                        <div class="message is-success flex-row flex justify-between items-center">
-                            <div class="message-body">
-                                <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
-                                <br>Exclusive offer: Rp 185.000/mon for a 2-year plan
-                            </div>
-                            <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
-                                Transfer Now
-                            </button>
+                <div id="component-search">
+                    <div class="message is-success flex-row flex justify-between items-center">
+                        <div class="message-body">
+                            <strong id="search-tld-name">${baseDomain}</strong> is available for transfer
+                            <br>Exclusive offer: Rp 185.000/mon for a 2-year plan
                         </div>
-                    </div>`;
+                        <button class="button h-button is-success rounded-full" id="transfer-button" data-domain-name="${baseDomain}">
+                            Transfer Now
+                        </button>
+                    </div>
+                </div>`;
                     }
                 } catch (error) {
                     console.error('Error checking domain availability for transfer:', error);
                     dropdownHTML = `
-                <div id="component-search">
-                    <div class="message is-danger flex-row flex justify-between items-center">
-                        <div class="message-body">
-                            <strong>${baseDomain}</strong> Unable to check transfer availability. Please try again later.
-                        </div>
+            <div id="component-search">
+                <div class="message is-danger flex-row flex justify-between items-center">
+                    <div class="message-body">
+                        <strong>${baseDomain}</strong> Unable to check transfer availability. Please try again later.
                     </div>
-                </div>`;
+                </div>
+            </div>`;
                 }
             }
             // Cek untuk tipe 'hosting-only'
@@ -602,7 +626,6 @@
             dropdownContainer.classList.add('show');
             setupWhoisModal();
         }
-
         // Tambahkan event listener untuk tombol "Transfer Now"
         document.addEventListener('click', function(event) {
             if (event.target && event.target.id === 'transfer-button') {

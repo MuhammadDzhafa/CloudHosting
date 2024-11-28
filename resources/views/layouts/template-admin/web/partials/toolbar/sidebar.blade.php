@@ -34,7 +34,7 @@
 
 <div class="main-sidebar has-labels has-hover-labels">
     <div class="sidebar-brand">
-        <a href="/landing-page">
+        <a href="/">
             <img class="light-image" src="../../../assets/img/logos/logo/logoo.svg" alt="">
             <img class="dark-image" src="../../../assets/img/logos/logo/logoo.svg" alt="">
         </a>

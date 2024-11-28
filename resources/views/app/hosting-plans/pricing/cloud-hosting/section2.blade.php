@@ -3,8 +3,8 @@
         Cloud Hosting Plans
     </h2>
     <div class="tabs-wrapper is-slider">
-        <div class="tabs-inner">
-            <div class="tabs" style="max-width: unset;">
+        <div class="tabs-inner" style="display: flex; justify-content: center;">
+            <div class="tabs  w-full md:w-[70%]" style="max-width: unset;">
                 <ul>
                     @php
                     // Ambil dua grup hosting pertama yang memenuhi syarat
@@ -28,7 +28,6 @@
                 </ul>
             </div>
         </div>
-
 
         @foreach($hostingGroups as $group)
         <div id="{{ strtolower($group->name) }}-tab" class="tab-content {{ $loop->first ? 'is-active' : '' }}">
@@ -95,7 +94,7 @@
                             'ssl' => 'SSL'
                             ] as $key => $label)
                             <li class="flex items-center mb-2 text-[16px] font-medium leading-[23.2px] 
-                            {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#3D3D3D]' }}">
+                        {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#3D3D3D]' }}">
                                 <img src="/assets/img/icons/{{ $hostingPlan->best_seller ? 'checkwhite' : 'checkblack' }}.svg"
                                     alt="" class="w-[16.67px] h-[16.67px] mr-2">
 
@@ -142,7 +141,7 @@
                             <tr class="color-row">
                                 <th class="title-rincian" style="color: #4A6DCB;">Rincian</th>
                                 <th class="title-table" style="color: #4A6DCB;">Strato</th>
-                                <th class="title-table" style="color: #4A6DCB;">Alto</th>
+                                <th class="title-table" style="color: #4A6DCB;"> Alto</th>
                                 <th class="title-table" style="color: #4A6DCB;">Cirrus</th>
                             </tr>
                         </thead>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Checkout</title>
+    <title>Awan Hosting :: Cloud-Hosting</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->

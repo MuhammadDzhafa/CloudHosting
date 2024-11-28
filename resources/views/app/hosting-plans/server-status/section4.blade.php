@@ -1,5 +1,5 @@
 <div class="bg-white">
-    <div class="max-w-[1250px] mx-auto p-6">
+    <div class="section-frame padding-1 mx-auto">
         <h1 class="text-[#292929] text-[23px] font-bold leading-[29.9px] w-full h-[30px] mb-5">Incidents</h1>
 
         <div class="space-y-4 md:grid md:grid-cols-2 md:gap-4 lg:block lg:space-y-4">

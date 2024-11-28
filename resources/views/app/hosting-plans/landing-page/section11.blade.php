@@ -141,7 +141,7 @@
             </div>
         </div>
     </div>
-    <div id="demo-right-actions-modal" class="modal h-modal">
+    <div id="contact-us" class="modal h-modal">
         <div class="modal-background h-modal-close"></div>
         <div class="modal-content">
             <div class="modal-card">
@@ -170,3 +170,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const submitBtn = document.getElementById('submitBtn');
+        const modal = document.getElementById('contact-us');
+        const closeModalButtons = document.querySelectorAll('.h-modal-close');
+
+        // Event listener untuk menutup modal
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.style.display = 'none'; // Menyembunyikan modal
+            });
+        });
+
+        // Menutup modal jika area di luar modal diklik
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none'; // Menyembunyikan modal
+            }
+        });
+    });
+</script>

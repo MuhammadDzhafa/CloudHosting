@@ -105,13 +105,13 @@
                         <table id="users-datatable" class="table is-datatable is-hoverable table-is-bordered">
                             <thead>
                                 <tr class="bg-[#EBEFF9]">
-                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
                                         TLD
                                     </th>
-                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
                                         Price
                                     </th>
-                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                    <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
                                         Order
                                     </th>
                                 </tr>
@@ -198,9 +198,11 @@
                         row.className = 'border-gray-200 text-center';
                         row.innerHTML = `
             <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">${domain.tld_name}</td>
-            <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">$${domain.tld_price.toFixed(2)}</td>
+            <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                Rp${domain.tld_price.toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0})}
+                            </td>
             <td class="py-3 px-4 flex justify-center items-center">
-                <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white" data-tld-name="${domain.tld_name}" data-tld-price="${domain.tld_price}" onclick="orderTLD(this)">
+                <button class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white rounded-full border-none" data-tld-name="${domain.tld_name}" data-tld-price="${domain.tld_price}" onclick="orderTLD(this)">
                     <span class="text-[16px] font-['Inter'] text-[#fff] text-center">Order</span>
                 </button>
             </td>
