@@ -18,15 +18,7 @@
                     <span class="block text-[16px] font-normal text-[#000000]">
                         We will perform routine maintenance on our primary database to improve performance and security. During this time, the platform will be temporarily unavailable.
                     </span>
-                </p>  
-                <div class="text-right">
-                    <a href="#" class="inline-flex items-center w-[151px] h-[47px] bg-white border border-[#DDDFDF] rounded-[8px] text-[#45494A] text-[18px] font-medium leading-[23.4px] text-center px-[16px] py-[12px] hover:underline">
-                        See Detail 
-                        <img src="/assets/img/icons/arrow black.svg" alt="" class="ml-2"> 
-                    </a>
-                </div>                    
-                
-                
+                </p>                     
             </div>
             <div class="flex justify-between items-center">
                 <div>

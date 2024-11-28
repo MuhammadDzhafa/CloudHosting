@@ -17,13 +17,7 @@
                         <span class="block text-[16px] font-normal text-[#000000]">
                             A hardware malfunction in the core router caused a network failure.
                         </span>
-                    </p>                    
-                    <div class="text-right">
-                        <a href="#" class="inline-flex items-center w-[151px] h-[47px] bg-white border border-[#DDDFDF] rounded-[8px] text-[#45494A] text-[18px] font-medium leading-[23.4px] text-center px-[16px] py-[12px] hover:underline">
-                            See Detail 
-                            <img src="/assets/img/icons/arrow black.svg" alt="" class="ml-2"> 
-                        </a>
-                    </div>                                        
+                    </p>                                                          
                 </div>
                 <div class="flex justify-between items-center">
                     <div>
@@ -61,14 +55,6 @@
                             A critical database crash occurred due to a software bug in the latest update. This resulted in a temporary service disruption.
                         </span>
                     </p>  
-                    <div class="text-right">
-                        <a href="#" class="inline-flex items-center w-[151px] h-[47px] bg-white border border-[#DDDFDF] rounded-[8px] text-[#45494A] text-[18px] font-medium leading-[23.4px] text-center px-[16px] py-[12px] hover:underline">
-                            See Detail 
-                            <img src="/assets/img/icons/arrow black.svg" alt="" class="ml-2"> 
-                        </a>
-                    </div>                    
-                    
-                    
                 </div>
                 <div class="flex justify-between items-center">
                     <div>
@@ -113,14 +99,6 @@
                             A sudden power failure at the data center caused an unexpected server outage. The incident occurred due to a malfunction in the backup generator.
                         </span>
                     </p>  
-                    <div class="text-right">
-                        <a href="#" class="inline-flex items-center w-[151px] h-[47px] bg-white border border-[#DDDFDF] rounded-[8px] text-[#45494A] text-[18px] font-medium leading-[23.4px] text-center px-[16px] py-[12px] hover:underline">
-                            See Detail 
-                            <img src="/assets/img/icons/arrow black.svg" alt="" class="ml-2"> 
-                        </a>
-                    </div>                    
-                    
-                    
                 </div>
                 <div class="flex justify-between items-center">
                     <div>
