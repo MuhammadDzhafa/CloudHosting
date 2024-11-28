@@ -52,11 +52,6 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/orders" id="orders" data-content="Orders" class="menu-item">
-                    <i class="sidebar-svg" data-feather="shopping-cart"></i>
-                </a>
-            </li>
-            <li>
                 <a href="/admin/testimonials" id="testimonials" data-content="Testimonials" class="menu-item">
                     <i class="sidebar-svg" data-feather="star"></i>
                 </a>
