@@ -97,25 +97,23 @@
                                     <input id="storage-slider" type="range" min="{{ $specs->min_storage }}" max="{{ $specs->max_storage }}" step="{{ $specs->step_storage }}" value="{{ $specs->min_storage }}" class="custom-slider">
                                 </div>
                             </div>
+                            <div class="flex flex-row items-center justify-between w-full">
+                                <div class="custom-total-price">
+                                    <span class="custom-dollar-sign">IDR</span>
+                                    <span id="total-price" class="custom-total-amount"></span>
+                                    <span class="custom-monthly">/mon</span>
+                                </div>
+                                <button type="button" id="custom-order-btn" class="custom-order-button">
+                                    <span class="custom-order-text">
+                                        Order Now
+                                    </span>
+                                </button>
+                            </div>
+                            <p class="custom-note mt-6">
+                                Price does not include tax.
+                            </p>
                         </div>
                     </div>
-
-                    <div class="flex flex-col md:flex-row items-center w-full">
-                        <div class="custom-total-price">
-                            <span class="custom-dollar-sign">IDR</span>
-                            <span id="total-price" class="custom-total-amount"></span>
-                            <span class="custom-monthly">/mon</span>
-                        </div>
-                        <button type="button" id="custom-order-btn" class="custom-order-button mt-4 md:mt-0">
-                            <span class="custom-order-text">
-                                Order Now
-                            </span>
-                        </button>
-                    </div>
-
-                    <p class="custom-note">
-                        Price does not include tax.
-                    </p>
                 </div>
 
             </div>

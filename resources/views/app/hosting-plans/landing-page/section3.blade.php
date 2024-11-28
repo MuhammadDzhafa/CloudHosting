@@ -79,64 +79,80 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden mb-4">
-                    <div class="w-full md:w-1/4 bg-blue-50 p-4 md:block hidden">
-                        <ul class="space-y-2">
-                            <!-- Radio button untuk View All -->
-                            <li>
-                                <label class="flex items-center">
+                <div class="flex flex-col md:flex-row w-full">
+                    <div class="mr-2 md:w-1/5 md:block hidden">
+                        <div class="widget text-widget flex flex-col items-center p-0 bg-[#EBEFF9]">
+                            <div class="px-7 py-2 w-full max-w-md">
+                                <label class="radio is-outlined is-info p-0 mb-2 text-left block mb-0"
+                                    style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; line-height: 20.3px; color: #525252; text-underline-position: from-font; text-decoration-skip-ink: none;">
                                     <input type="radio" name="filter" class="mr-2 text-blue-600" checked onchange="filterDomains('View All')">
-                                    <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
-                                        View All
-                                    </span>
+                                    <span></span>
+                                    View All
                                 </label>
-                            </li>
-                            @foreach ($categories as $index => $category)
-                            <li>
-                                <label class="flex items-center">
-                                    <input type="radio" name="filter" class="mr-2 text-blue-600" onchange="filterDomains('{{ $category->category }}')">
-                                    <span class="text-[14px] font-medium leading-[20.3px] text-left text-[#525252]">
-                                        {{ $category->category }}
-                                    </span>
-                                </label>
-                            </li>
-                            @endforeach
-                        </ul>
+                                <ul class="list-none p-0 m-0">
+                                    @foreach ($categories as $index => $category)
+                                    <li>
+                                        <label class="radio is-outlined is-info p-0 mb-2 text-left block"
+                                            style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; line-height: 20.3px; color: #525252; text-underline-position: from-font; text-decoration-skip-ink: none;">
+                                            <input type="radio" name="filter" class="mr-2 text-blue-600" onchange="filterDomains('{{ $category->category }}')">
+                                            <span></span>
+                                            {{ $category->category }}
+                                        </label>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-full md:w-3/4 bg-white">
-                        <table class="table-auto w-full border-collapse">
-                            <thead>
-                                <tr class="table-header">
-                                    <th class="table-cell" style="text-align: center;">TLD</th>
-                                    <th class="table-cell" style="text-align: center;">Price</th>
-                                    <th class="table-cell" style="text-align: center;">Order</th>
-                                </tr>
-                            </thead>
-                            <tbody id="domain-table-body">
-                                @foreach ($tlds as $tld)
-                                <tr class="border-b border-gray-200 text-center">
-                                    <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                        {{ $tld->tld_name }}
-                                    </td>
-                                    <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
-                                        ${{ number_format($tld->tld_price, 2) }}
-                                    </td>
-                                    <td class="py-3 px-4 flex justify-center items-center">
-                                        <button
-                                            class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
-                                            style="border: unset; padding:12px 16px;"
-                                            data-tld-name="{{ $tld->tld_name }}"
-                                            data-tld-price="{{ $tld->tld_price }}"
-                                            onclick="orderTLD(this)">
-                                            <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
-                                                Order
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+
+                    <div class="w-full md:w-4/5 bg-white">
+                        <div class="table-wrapper" style="min-height: unset;">
+                            <table id="users-datatable" class="table is-datatable is-hoverable table-is-bordered">
+                                <thead>
+                                    <tr class="bg-[#EBEFF9]">
+                                        <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                            TLD
+                                        </th>
+                                        <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                            Price
+                                        </th>
+                                        <th style="border: unset; text-align: center; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; line-height: 23.4px; text-underline-position: from-font; text-decoration-skip-ink: none; color: #4A6DCB;">
+                                            Order
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="domain-table-body">
+                                    @foreach ($tlds as $tld)
+                                    <tr class=" border-gray-200 text-center">
+                                        <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                            {{ $tld->tld_name }}
+                                        </td>
+                                        <td class="domain-price py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
+                                            ${{ number_format($tld->tld_price, 2) }}
+                                        </td>
+                                        <td class="py-3 px-4 flex justify-center items-center">
+                                            <button
+                                                class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white rounded-full"
+                                                style="border: unset; padding:12px 16px;"
+                                                data-tld-name="{{ $tld->tld_name }}"
+                                                data-tld-price="{{ $tld->tld_price }}"
+                                                onclick="orderTLD(this)">
+                                                <span class="text-[16px] leading-[23.2px] font-['Inter'] font-medium text-[#fff] text-center">
+                                                    Order
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
+                            <a class="pagination-previous has-chevron" onclick="handlePrevious()"><i data-feather="chevron-left"></i></a>
+                            <ul class="pagination-list"></ul>
+                            <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
+                        </nav>
                     </div>
                 </div>
 
@@ -168,7 +184,7 @@
                         // Mengisi tabel dengan data yang difilter
                         filteredDomains.slice(startIndex, endIndex).forEach(domain => {
                             const row = document.createElement('tr');
-                            row.className = 'border-b border-gray-200 text-center';
+                            row.className = 'border-gray-200 text-center';
 
                             row.innerHTML = `
                                 <td class="domain-tld py-4 px-4 font-normal leading-[23.4px] justify-center items-center text-center text-[#999999]">
@@ -293,12 +309,6 @@
                             });
                     }
                 </script>
-
-                <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
-                    <a class="pagination-previous has-chevron" onclick="handlePrevious()"><i data-feather="chevron-left"></i></a>
-                    <ul class="pagination-list"></ul>
-                    <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
-                </nav>
             </div>
         </div>
     </div>

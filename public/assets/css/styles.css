@@ -593,6 +593,7 @@ p {
 /*            Section 3 - Domain Price List                  */
 /* ========================================================= */
 
+
 .table-header {
     background-color: #e7ecf8;
 }
@@ -1215,7 +1216,7 @@ p {
         color: #7c7c7c;
         font-family: "Inter", sans-serif;
         line-height: 23.2px;
-        margin-left: 20%;
+        /* margin-left: 20%; */
     }
 }
 
@@ -1224,7 +1225,7 @@ p {
         display: flex;
         align-items: baseline;
         gap: 8px;
-        margin-left: 40%;
+        /* margin-left: 40%; */
     }
 
     .custom-order-button {
@@ -1250,7 +1251,7 @@ p {
         color: #7c7c7c;
         font-family: "Inter", sans-serif;
         line-height: 23.2px;
-        margin-left: 40%;
+        /* margin-left: 40%; */
     }
 }
 
