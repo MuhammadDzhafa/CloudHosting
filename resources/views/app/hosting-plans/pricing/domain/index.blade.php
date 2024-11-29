@@ -218,7 +218,7 @@
 
                     const messageContainer = `
 <div id="component-search">
-    <div class="message is-success flex-row flex justify-between items-center">
+    <div class="message ${result.isAvailable ? 'is-success' : ''} flex-row flex justify-between items-center">
         <div class="message-body">
             <strong>${baseDomain}</strong> is ${result.isAvailable ? 'available' : 'not available'}
             ${result.isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
