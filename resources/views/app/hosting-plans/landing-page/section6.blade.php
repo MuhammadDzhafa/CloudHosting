@@ -5,7 +5,7 @@
     <div class="container-project z-10">
         <div class="tabs-wrapper  is-triple-slider">
             <div class="tabs-inner">
-                <div class="tabs" style="max-width: unset;">
+                <div class="tabs" style="max-width: unset; background:unset; border:1px solid #DEDEDE;">
                     <ul>
                         <li data-tab="custom-tab" class="is-active"><a><span>Custom</span></a></li>
                         @foreach($hostingGroups as $group)
@@ -30,35 +30,35 @@
                 </div>
             </div>
             <div id="custom-tab" class="tab-content is-active">
-                <h4 class="custom-title mt-5">
-                    Fulfill your needs with our
-                </h4>
-                <div class="custom-text-gradient mt-4">
-                    Customized Plan
-                </div>
+            <h4 class="custom-title text-center md:text-left mt-0 md:mt-5">
+                Fulfill your needs with our
+            </h4>
+            <div class="custom-text-gradient mt-0 lg:!mt-4">
+                Customized Plan
+            </div>
 
                 <div class="custom-bg">
                     <div class="flex flex-wrap w-full">
-                        <div class="custom-col">
-                            <ul class="list-none p-0">
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Domains
-                                </li>
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Bandwidth
-                                </li>
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Emails
-                                </li>
-                                <li class="custom-text-style mt-5">
-                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                    Unlimited Inodes
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="custom-col min-w-auto text-center lg:text-left mb-8 lg:mb-0">
+                        <ul class="list-none p-0">
+                            <li class="custom-text-style mt-5">
+                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                Unlimited Domains
+                            </li>
+                            <li class="custom-text-style mt-5">
+                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                <span class="hidden md:inline">Unlimited </span>Bandwidth
+                            </li>
+                            <li class="custom-text-style mt-5">
+                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                <span class="hidden md:inline">Unlimited </span>Emails
+                            </li>
+                            <li class="custom-text-style mt-5">
+                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                <span class="hidden md:inline">Unlimited </span>Inodes
+                            </li>
+                        </ul>
+                    </div>
 
                         <!-- Slider section for Hosting Plan Customization -->
                         <div class="custom-col custom-col-2">

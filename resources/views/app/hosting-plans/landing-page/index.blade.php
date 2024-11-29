@@ -152,10 +152,13 @@
             const domainParts = searchQuery.split('.');
             const tld = domainParts.pop() || '';
             const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
-            const baseDomain = mainDomainPart && tld ? `${mainDomainPart}.${tld}` : searchQuery;
+
+            // Cek jika TLD adalah 'co.id', ubah menjadi 'com'
+            const adjustedTLD = (tld === 'co.id') ? 'com' : tld;
+            const baseDomain = mainDomainPart && adjustedTLD ? `${mainDomainPart}.${adjustedTLD}` : searchQuery;
 
             // Memeriksa apakah TLD valid
-            if (!allowedTLDs.includes(tld)) {
+            if (!allowedTLDs.includes(adjustedTLD)) {
                 dropdownContent.innerHTML = `
         <div id="component-search">
             <div class="message is-danger flex-row flex justify-between items-center">
@@ -273,6 +276,7 @@
             }
             setupWhoisModal();
         }
+
         // Fungsi untuk menampilkan form EPP
         function displayEPPInputContainer() {
             eppInputContainer.classList.remove('hidden');
@@ -356,8 +360,18 @@
         // Function to handle domain selection
         function handleDomainSelection(domainName) {
             console.log('Domain selected:', domainName); // Debugging log
-            searchInput.value = domainName; // Contoh: Setel input pencarian ke domain yang dipilih
+            document.getElementById('domain-search').value = domainName; // Setel input pencarian ke domain yang dipilih
         }
+
+        $(document).ready(function() {
+            // Menangani klik pada kartu domain
+            $('.domain-card').on('click', function() {
+                // Ambil nama domain dari atribut data-domain
+                var domain = $(this).data('domain');
+                // Panggil fungsi untuk menangani pemilihan domain
+                handleDomainSelection(domain);
+            });
+        });
 
         // Function to replace TLD
         function replaceTLD(domainName, newTLD) {

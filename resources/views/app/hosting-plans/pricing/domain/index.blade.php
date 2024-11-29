@@ -96,6 +96,165 @@
         const successMessage = document.getElementById('success-message');
         const searchInput = document.getElementById('domain-search');
 
+        async function searchDomain(domainName, type = 'new') {
+            const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
+            const allowedTLDs = [
+                'com', 'net', 'org', 'info', 'biz',
+                'id', 'ac', 'co.id', 'or.id',
+                'edu', 'gov', 'mil',
+                'io', 'app', 'dev'
+            ];
+
+            // Validasi TLD
+            const domainParts = domainName.split('.');
+            const tld = domainParts.pop();
+
+            if (!allowedTLDs.includes(tld)) {
+                return {
+                    status: 'error',
+                    message: `The TLD .${tld} is not allowed. Use: ${allowedTLDs.join(', ')}`
+                };
+            }
+
+            const baseDomain = domainName;
+            const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const data = await response.json();
+                const isAvailable = data.DomainInfo && data.DomainInfo.domainAvailability === "AVAILABLE";
+
+                // Logika berbeda berdasarkan tipe pencarian
+                switch (type) {
+                    case 'new':
+                        return {
+                            status: isAvailable ? 'success' : 'unavailable',
+                                domain: baseDomain,
+                                isAvailable: isAvailable,
+                                message: isAvailable ?
+                                `${baseDomain} is available as a new domain` :
+                                `${baseDomain} is not available`
+                        };
+
+                    case 'transfer':
+                        return {
+                            status: isAvailable ? 'not-registered' : 'transferable',
+                                domain: baseDomain,
+                                isAvailable: isAvailable,
+                                message: isAvailable ?
+                                `${baseDomain} is not registered` :
+                                `${baseDomain} is available for transfer`
+                        };
+
+                    case 'hosting-only':
+                        return {
+                            status: !isAvailable ? 'hosting-ready' : 'create-new',
+                                domain: baseDomain,
+                                isAvailable: !isAvailable,
+                                message: !isAvailable ?
+                                `${baseDomain} is available for Hosting` :
+                                `${baseDomain} is not found, create new domain?`
+                        };
+
+                    default:
+                        return {
+                            status: 'error',
+                                message: 'Invalid search type'
+                        };
+                }
+            } catch (error) {
+                console.error('Domain availability check failed:', error);
+                return {
+                    status: 'error',
+                    message: `Unable to check ${baseDomain}. Try again later.`
+                };
+            }
+        }
+
+        // Modifikasi event listener untuk menggunakan fungsi baru
+        if (searchBtn) {
+            searchBtn.addEventListener('click', async function() {
+                const searchQuery = searchInput.value.trim();
+
+                // Validasi input
+                if (searchQuery.split('.').length < 2) {
+                    dropdownContent.innerHTML = `
+    <div id="component-search">
+        <div class="message is-danger flex-row flex justify-between items-center">
+            <div class="message-body">
+                Please enter a valid domain name (e.g., example.com)
+            </div>
+        </div>
+    </div>`;
+                    dropdownContainer.classList.add('show');
+                    return;
+                }
+
+                const domainParts = searchQuery.split('.');
+                const tld = domainParts.pop();
+                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
+
+                // Memastikan bahwa bagian domain utama tidak kosong
+                if (!mainDomainPart) {
+                    dropdownContent.innerHTML = `
+    <div id="component-search">
+        <div class="message is-danger flex-row flex justify-between items-center">
+            <div class="message-body">
+                Please enter a valid domain name (e.g., example.com)
+            </div>
+        </div>
+    </div>`;
+                    dropdownContainer.classList.add('show');
+                    return;
+                }
+
+                const baseDomain = `${mainDomainPart}.${tld}`;
+
+                try {
+                    // Gunakan fungsi baru untuk pencarian domain
+                    const result = await searchDomain(baseDomain, 'new');
+
+                    const messageContainer = `
+<div id="component-search">
+    <div class="message is-success flex-row flex justify-between items-center">
+        <div class="message-body">
+            <strong>${baseDomain}</strong> is ${result.isAvailable ? 'available' : 'not available'}
+            ${result.isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
+        </div>
+        ${result.isAvailable ? 
+            `<button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">Buy Now</button>` : 
+            `<button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">WHOIS</button>`
+        }
+    </div>
+</div>
+`;
+
+                    dropdownContent.innerHTML = messageContainer;
+
+                    // Panggil setupWhoisModal setelah menambahkan konten
+                    if (!result.isAvailable) {
+                        setupWhoisModal();
+                    }
+
+                    dropdownContainer.classList.add('show');
+                    componentTransfer.classList.add('hidden');
+                } catch (error) {
+                    dropdownContent.innerHTML = `
+<div id="component-search">
+    <div class="message flex-row flex justify-between items-center">
+        <div class="message-body">
+            Unable to check domain availability. Please try again later.
+        </div>
+    </div>
+</div>`;
+                    console.error('Domain availability check failed:', error);
+                }
+            });
+        }
+
+        // Fungsi lama tetap dapat dipertahankan jika masih diperlukan
         function checkDomainAvailability(domainName) {
             return new Promise((resolve, reject) => {
                 const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
@@ -107,13 +266,11 @@
                         return response.json();
                     })
                     .then(data => {
-                        console.log('API Response:', data); // Log respons API
+                        console.log('API Response:', data);
 
-                        // Logika untuk menentukan ketersediaan domain
                         const hasWhoisData = data.WhoisRecord && data.WhoisRecord.domainName;
                         const hasDataError = data.WhoisRecord && data.WhoisRecord.dataError;
 
-                        // Jika ada data error, anggap domain tersedia
                         if (hasDataError) {
                             console.log('Domain is available (data error present)');
                             resolve(true);
@@ -128,190 +285,6 @@
                     .catch(error => {
                         console.error('Error checking domain availability:', error);
                         reject(error);
-                    });
-            });
-        }
-
-        // Daftar ekstensi yang diizinkan
-        const allowedTLDs = [
-            'com', 'net', 'org', 'info', 'biz',
-            'id', 'ac', 'co.id', 'or.id',
-            'edu', 'gov', 'mil',
-            'io', 'app', 'dev',
-            // Tambahkan TLD lain yang Anda inginkan
-        ];
-
-        // Event listener untuk pencarian domain
-        if (searchBtn) {
-            searchBtn.addEventListener('click', function() {
-                const searchQuery = searchInput.value.trim();
-
-                // Validasi input
-                if (!searchQuery || searchQuery.split('.').length < 2) {
-                    dropdownContent.innerHTML = `
-            <div id="component-search">
-                <div class="message is-danger flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        Please enter a valid domain name (e.g., example.com)
-                    </div>
-                </div>
-            </div>`;
-                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
-                    return;
-                }
-
-                const domainParts = searchQuery.split('.');
-                const tld = domainParts.pop();
-                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
-
-                // Memastikan bahwa bagian domain utama tidak kosong
-                if (!mainDomainPart) {
-                    dropdownContent.innerHTML = `
-            <div id="component-search">
-                <div class="message is-danger flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        Please enter a valid domain name (e.g., example.com)
-                    </div>
-                </div>
-            </div>`;
-                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
-                    return;
-                }
-
-                // Memeriksa apakah TLD valid
-                if (!allowedTLDs.includes(tld)) {
-                    dropdownContent.innerHTML = `
-            <div id="component-search">
-                <div class="message is-danger flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        The TLD <strong>.${tld}</strong> is not allowed. Please use one of the following: ${allowedTLDs.join(', ')}.
-                    </div>
-                </div>
-            </div>`;
-                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
-                    return;
-                }
-
-                const baseDomain = `${mainDomainPart}.${tld}`;
-
-                // Periksa ketersediaan domain
-                checkDomainAvailability(baseDomain)
-                    .then(isAvailable => {
-                        const messageContainer = `
-        <div id="component-search">
-            <div class="message ${isAvailable ? 'is-success' : ''} flex-row flex justify-between items-center">
-                <div class="message-body">
-                    <strong>${baseDomain}</strong> is ${isAvailable ? 'available' : 'not available'}
-                    ${isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
-                </div>
-                ${isAvailable ? 
-                    `<button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">Buy Now</button>` : 
-                    `<button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">WHOIS</button>`
-                }
-            </div>
-        </div>
-        `;
-
-                        dropdownContent.innerHTML = messageContainer;
-
-                        // Panggil setupWhoisModal setelah menambahkan konten
-                        if (!isAvailable) {
-                            setupWhoisModal();
-                        }
-
-                        dropdownContainer.classList.add('show');
-                        componentTransfer.classList.add('hidden');
-                    })
-                    .catch(error => {
-                        dropdownContent.innerHTML = `
-        <div id="component-search">
-            <div class="message is-danger flex-row flex justify-between items-center">
-                <div class="message-body">
-                    Unable to check domain availability. Please try again later.
-                </div>
-            </div>
-        </div>`;
-                        console.error('Domain availability check failed:', error);
-                    });
-            });
-        }
-        // Event listener untuk pencarian domain
-        if (searchBtn) {
-            searchBtn.addEventListener('click', function() {
-                const searchQuery = searchInput.value.trim();
-
-                // Validasi input
-                if (!searchQuery || searchQuery.split('.').length < 2) {
-                    dropdownContent.innerHTML = `
-            <div id="component-search">
-                <div class="message is-danger flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        Please enter a valid domain name (e.g., example.com)
-                    </div>
-                </div>
-            </div>`;
-                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
-                    return;
-                }
-
-                const domainParts = searchQuery.split('.');
-                const tld = domainParts.pop();
-                const mainDomainPart = domainParts.filter(part => part.toLowerCase() !== 'www').join('.');
-
-                // Memastikan bahwa bagian domain utama tidak kosong
-                if (!mainDomainPart) {
-                    dropdownContent.innerHTML = `
-            <div id="component-search">
-                <div class="message is-danger flex-row flex justify-between items-center">
-                    <div class="message-body">
-                        Please enter a valid domain name (e.g., example.com)
-                    </div>
-                </div>
-            </div>`;
-                    dropdownContainer.classList.add('show'); // Tampilkan dropdown
-                    return;
-                }
-
-                const baseDomain = `${mainDomainPart}.${tld}`;
-
-                // Periksa ketersediaan domain
-                checkDomainAvailability(baseDomain)
-                    .then(isAvailable => {
-                        const messageContainer = `
-        <div id="component-search">
-            <div class="message flex-row flex justify-between items-center">
-                <div class="message-body">
-                    <strong>${baseDomain}</strong> is ${isAvailable ? 'available' : 'not available'}
-                    ${isAvailable ? '<br>Exclusive offer: Rp20.000/mon for a 2-year plan' : ''}
-                </div>
-                ${isAvailable ? 
-                    `<button class="button h-button is-success rounded-full" onclick="redirectToCheckout('${baseDomain}')">Buy Now</button>` : 
-                    `<button class="button h-button rounded-full h-modal-trigger" data-modal="modal-whois" data-domain-name="${baseDomain}">WHOIS</button>`
-                }
-            </div>
-        </div>
-        `;
-
-                        dropdownContent.innerHTML = messageContainer;
-
-                        // Panggil setupWhoisModal setelah menambahkan konten
-                        if (!isAvailable) {
-                            setupWhoisModal();
-                        }
-
-                        dropdownContainer.classList.add('show');
-                        componentTransfer.classList.add('hidden');
-                    })
-                    .catch(error => {
-                        dropdownContent.innerHTML = `
-        <div id="component-search">
-            <div class="message flex-row flex justify-between items-center">
-                <div class="message-body">
-                    Unable to check domain availability. Please try again later.
-                </div>
-            </div>
-        </div>`;
-                        console.error('Domain availability check failed:', error);
                     });
             });
         }

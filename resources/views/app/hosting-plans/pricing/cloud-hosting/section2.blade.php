@@ -4,7 +4,7 @@
     </h2>
     <div class="tabs-wrapper is-slider">
         <div class="tabs-inner" style="display: flex; justify-content: center;">
-            <div class="tabs  w-full md:w-[70%]" style="max-width: unset;">
+            <div class="tabs  w-full md:w-[70%]" style="max-width: unset; background:unset; border:1px solid #DEDEDE;">
                 <ul>
                     @php
                     // Ambil dua grup hosting pertama yang memenuhi syarat

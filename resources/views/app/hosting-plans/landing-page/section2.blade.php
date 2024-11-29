@@ -137,5 +137,5 @@
     <div class="absolute left-[139.5px] bottom-[-2px] hidden lg:block">
         <img src="/assets/img/bg/globewhite.png" alt="" class="w-auto h-auto">
     </div>
-
 </div>
+

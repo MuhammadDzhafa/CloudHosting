@@ -12,7 +12,7 @@
             <!-- Form Pencarian Domain -->
             <div class="tabs-wrapper is-triple-slider">
                 <div class="tabs-inner">
-                    <div class="tabs" style="max-width:unset;">
+                    <div class="tabs" style="max-width: unset; background:unset; border:1px solid #DEDEDE;">
                         <ul>
                             <li data-tab="new-domain" class="is-active"><a><span>New Domain</span></a></li>
                             <li data-tab="transfer-domain"><a><span>Transfer Domain</span></a></li>
@@ -39,7 +39,45 @@
                     <div id="dropdown-container-new" class="hidden mb-4">
                         <div id="dropdown-content-new"></div>
                     </div>
+                    <div class="field dropdown-filter">
+                        @php
+                        $filters = ['View All'];
+                        @endphp
+                        @foreach ($categories as $category)
+                        @php
+                        $filters[] = $category->category;
+                        @endphp
+                        @endforeach
 
+                        <div class="control">
+                            <div class="h-select">
+                                <div class="select-box">
+                                    <span>Select Filter</span>
+                                </div>
+                                <div class="select-icon">
+                                    <i data-feather="chevron-down"></i>
+                                </div>
+                                <div class="select-drop has-slimscroll-sm">
+                                    <div class="drop-inner">
+                                        <div class="option-row">
+                                            <input type="radio" name="filter" id="filter-all" value="View All" onchange="filterDomains('View All')">
+                                            <label for="filter-all" class="option-meta">
+                                                <span>View All</span>
+                                            </label>
+                                        </div>
+                                        @foreach ($categories as $category)
+                                        <div class="option-row">
+                                            <input type="radio" name="filter" id="filter-{{ $loop->index }}" value="{{ $category->category }}" onchange="filterDomains('{{ $category->category }}')">
+                                            <label for="filter-{{ $loop->index }}" class="option-meta">
+                                                <span>{{ $category->category }}</span>
+                                            </label>
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div id="modal-whois" class="modal h-modal">
                         <div class="modal-background h-modal-close"></div>
@@ -111,46 +149,6 @@
                                 <ul class="pagination-list"></ul>
                                 <a class="pagination-next has-chevron" onclick="handleNext()"><i data-feather="chevron-right"></i></a>
                             </nav>
-                        </div>
-                    </div>
-
-                    <div class="field dropdown-filter">
-                        @php
-                        $filters = ['View All'];
-                        @endphp
-                        @foreach ($categories as $category)
-                        @php
-                        $filters[] = $category->category;
-                        @endphp
-                        @endforeach
-
-                        <div class="control">
-                            <div class="h-select">
-                                <div class="select-box">
-                                    <span>Select Filter</span>
-                                </div>
-                                <div class="select-icon">
-                                    <i data-feather="chevron-down"></i>
-                                </div>
-                                <div class="select-drop has-slimscroll-sm">
-                                    <div class="drop-inner">
-                                        <div class="option-row">
-                                            <input type="radio" name="filter" id="filter-all" value="View All" onchange="filterDomains('View All')">
-                                            <label for="filter-all" class="option-meta">
-                                                <span>View All</span>
-                                            </label>
-                                        </div>
-                                        @foreach ($categories as $category)
-                                        <div class="option-row">
-                                            <input type="radio" name="filter" id="filter-{{ $loop->index }}" value="{{ $category->category }}" onchange="filterDomains('{{ $category->category }}')">
-                                            <label for="filter-{{ $loop->index }}" class="option-meta">
-                                                <span>{{ $category->category }}</span>
-                                            </label>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

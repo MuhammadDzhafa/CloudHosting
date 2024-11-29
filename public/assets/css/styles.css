@@ -949,7 +949,7 @@ p {
     font-weight: 700;
     line-height: 1.2;
     /* Use relative line-height */
-    /* text-align: left; */
+    text-align: left;
     display: inline-block;
     /* Allow text to take up only as much space as needed */
     background-size: 100% 100%;
@@ -1037,11 +1037,30 @@ p {
 }
 
 @media (max-width: 768px) {
+    .custom-text-gradient {
+        background: radial-gradient(at left,
+                rgba(100, 52, 147, 0.76) 23.63%,
+                rgba(74, 109, 203, 0.8) 70.69%,
+                rgba(100, 210, 247, 0.8) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: "Inter", sans-serif;
+        font-size: 23px;
+        font-weight: 700;
+        line-height: 28px;
+        /* Use relative line-height */
+        text-align: center;
+        display: inline-block;
+        /* Allow text to take up only as much space as needed */
+        background-size: 100% 100%;
+        /* Ensure the gradient covers the entire text */
+    }
+
     .custom-text-style {
         display: inline;
         margin-bottom: 0;
-        margin-right: 15px;
-        font-size: 16px;
+        margin-right: 0;
+        font-size: 14px;
     }
 
     .custom-text-style::after {
@@ -1057,7 +1076,7 @@ p {
     }
 
     .custom-title {
-        font-size: 1.5rem;
+        font-size: 18px;
         /* Adjust title size for mobile */
     }
 
@@ -1187,6 +1206,22 @@ p {
 }
 
 @media (max-width: 768px) {
+    .custom-monthly {
+        color: #4a6dcb;
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+    }
+
+    .custom-dollar-sign {
+        color: #4a6dcb;
+        font-family: Inter, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 29.9px;
+    }
+
     .custom-total-price {
         display: flex;
         align-items: baseline;
@@ -1489,7 +1524,7 @@ p {
     }
 
     .text-base-hero {
-        font-size: 14px;
+        font-size: 18px;
         line-height: 20.3px;
         text-align: center;
     }
