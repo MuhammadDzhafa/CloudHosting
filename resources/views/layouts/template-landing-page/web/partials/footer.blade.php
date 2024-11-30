@@ -21,9 +21,6 @@
             <a href="/about">About</a>
           </li>
           <li class="footer-content">
-            <a href="#">Blog</a>
-          </li>
-          <li class="footer-content">
             <a href="/faq">FAQ</a>
           </li>
           <li class="footer-content">
