@@ -91,7 +91,7 @@
                     </div>
                     <div class="list-flex-toolbar">
                         <div class="control has-icon">
-                            <input class="input" placeholder="Search..." />
+                            <input id="searchInput" class="input" placeholder="Search..." />
                             <div class="form-icon">
                                 <i data-feather="search"></i>
                             </div>
@@ -219,5 +219,25 @@
 
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('articles-datatable');
+        const rows = table.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            rows.forEach(row => {
+                // Ambil title dari kolom pertama
+                const title = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                // Tampilkan/sembunyikan baris berdasarkan pencarian
+                row.style.display = title.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    });
+</script>
 
 </html>

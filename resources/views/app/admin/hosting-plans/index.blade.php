@@ -204,7 +204,7 @@
 
                     <div class="list-flex-toolbar">
                         <div class="control has-icon">
-                            <input class="input" placeholder="Search..." />
+                            <input id="searchInput" class="input" placeholder="Search..." />
                             <div class="form-icon">
                                 <i data-feather="search"></i>
                             </div>
@@ -427,6 +427,50 @@
                 const modal = document.getElementById('confirm-delete-modal');
                 modal.classList.add('is-active');
             }
+            document.addEventListener('DOMContentLoaded', function() {
+                const searchInput = document.getElementById('searchInput');
+                const table = document.getElementById('users-datatable');
+                const rows = table.querySelectorAll('tbody tr');
+
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase().trim();
+
+                    rows.forEach(row => {
+                        // Cek apakah baris adalah header group atau baris hosting plan
+                        const isGroupRow = row.querySelector('td:first-child').getAttribute('style')?.includes('font-weight: 500');
+
+                        if (isGroupRow) {
+                            // Selalu tampilkan baris group
+                            row.style.display = '';
+                        } else {
+                            // Untuk baris hosting plan
+                            const productName = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                            // Tampilkan jika sesuai dengan pencarian
+                            row.style.display = productName.includes(searchTerm) ? '' : 'none';
+                        }
+                    });
+
+                    // Sembunyikan group yang tidak memiliki hosting plan yang cocok
+                    const groupRows = table.querySelectorAll('tr[style*="background-color:#F2F3F3"]');
+                    groupRows.forEach(groupRow => {
+                        const nextRows = [];
+                        let nextSibling = groupRow.nextElementSibling;
+
+                        // Kumpulkan baris hosting plan di bawah group
+                        while (nextSibling && !nextSibling.querySelector('td:first-child[style*="font-weight: 500"]')) {
+                            nextRows.push(nextSibling);
+                            nextSibling = nextSibling.nextElementSibling;
+                        }
+
+                        // Cek apakah ada hosting plan yang masih terlihat
+                        const hasVisiblePlans = nextRows.some(row => row.style.display !== 'none');
+
+                        // Tampilkan/sembunyikan group
+                        groupRow.style.display = hasVisiblePlans ? '' : 'none';
+                    });
+                });
+            });
         </script>
 
 

@@ -87,7 +87,7 @@
                         </div>
                         <div class="list-flex-toolbar">
                             <div class="control has-icon">
-                                <input class="input" placeholder="Search..." />
+                                <input id="searchInput" class="input" placeholder="Search..." />
                                 <div class="form-icon">
                                     <i data-feather="search"></i>
                                 </div>
@@ -190,5 +190,25 @@
             <script src="{{ asset('assets/js/syntax.js') }}" async></script>
         </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('users-datatable');
+        const rows = table.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            rows.forEach(row => {
+                // Ambil domain name dari kolom pertama
+                const domainName = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                // Tampilkan/sembunyikan baris berdasarkan pencarian
+                row.style.display = domainName.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    });
+</script>
 
 </html>

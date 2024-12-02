@@ -51,7 +51,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Awan Hosting :: Articles</title>
+    <title>Awan Hosting :: TLD</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->
@@ -135,7 +135,7 @@
                     </div>
                     <div class="list-flex-toolbar">
                         <div class="control has-icon">
-                            <input class="input" placeholder="Search..." />
+                            <input id="searchInput" class="input" placeholder="Search..." />
                             <div class="form-icon">
                                 <i data-feather="search"></i>
                             </div>
@@ -259,5 +259,25 @@
 
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('articles-datatable');
+        const rows = table.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            rows.forEach(row => {
+                // Ambil TLD name dari kolom pertama
+                const tldName = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                // Tampilkan/sembunyikan baris berdasarkan pencarian
+                row.style.display = tldName.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    });
+</script>
 
 </html>

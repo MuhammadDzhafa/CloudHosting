@@ -91,7 +91,7 @@
                         </div>
                         <div class="list-flex-toolbar">
                             <div class="control has-icon">
-                                <input class="input" placeholder="Search..." />
+                                <input id="searchInput" class="input" placeholder="Search..." />
                                 <div class="form-icon">
                                     <i data-feather="search"></i>
                                 </div>
@@ -200,5 +200,54 @@
         <script src="{{ asset('assets/js/syntax.js') }}" async></script>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('faq-datatable');
+        const rows = table.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            rows.forEach(row => {
+                // Abaikan baris kategori
+                if (row.querySelector('td[colspan="4"]')) {
+                    return;
+                }
+
+                // Ambil question dari kolom pertama
+                const question = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                // Tampilkan/sembunyikan baris berdasarkan pencarian
+                row.style.display = question.includes(searchTerm) ? '' : 'none';
+            });
+
+            // Tampilkan/sembunyikan kategori
+            updateCategoryVisibility();
+        });
+
+        function updateCategoryVisibility() {
+            const categoryRows = table.querySelectorAll('tr:has(td[colspan="4"])');
+
+            categoryRows.forEach(categoryRow => {
+                const category = categoryRow.querySelector('td').textContent;
+                const nextRows = [];
+                let nextSibling = categoryRow.nextElementSibling;
+
+                // Kumpulkan baris-baris di bawah kategori
+                while (nextSibling && !nextSibling.querySelector('td[colspan="4"]')) {
+                    nextRows.push(nextSibling);
+                    nextSibling = nextSibling.nextElementSibling;
+                }
+
+                // Periksa apakah ada baris dalam kategori yang terlihat
+                const hasVisibleRows = nextRows.some(row => row.style.display !== 'none');
+
+                // Tampilkan/sembunyikan kategori
+                categoryRow.style.display = hasVisibleRows ? '' : 'none';
+            });
+        }
+    });
+</script>
 
 </html>
