@@ -70,7 +70,7 @@ class FaqController extends Controller
     public function faqs()
     {
         // Ambil semua FAQ dan kelompokkan berdasarkan kategori
-        $faqs = Faq::all()->groupBy('category');
+        $faqs = Faq::orderBy('created_at', 'DESC')->get()->groupBy('category');
 
         // dd($faqs);
         // Kirimkan data ke view

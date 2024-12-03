@@ -1792,24 +1792,55 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Temukan semua elemen input yang perlu diubah
+            const toggleInputs = document.querySelectorAll('[data-toggle-input]');
+
+            toggleInputs.forEach(input => {
+                const limitedRadio = document.getElementById(input.dataset.limitedId);
+                const unlimitedRadio = document.getElementById(input.dataset.unlimitedId);
+
+                // Fungsi untuk mengupdate placeholder dan nilai input
+                function updatePlaceholder() {
+                    if (unlimitedRadio.checked) {
+                        input.placeholder = 'Unlimited';
+                        input.value = 'Unlimited';
+                        input.disabled = true; // Nonaktifkan input manual
+                    } else if (limitedRadio.checked) {
+                        input.placeholder = '0';
+                        input.value = '';
+                        input.disabled = false; // Aktifkan input manual
+                    }
+                }
+
+                // Event listener untuk perubahan pada radio button
+                unlimitedRadio.addEventListener('change', updatePlaceholder);
+                limitedRadio.addEventListener('change', updatePlaceholder);
+
+                // Set nilai awal sesuai dengan status radio button
+                updatePlaceholder();
+            });
+        });
+    </script>
+
 
 
     <!--Huro Scripts-->
     <!--Load Mapbox-->
 
     <!-- Concatenated plugins -->
-    <script src="../../../assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     <!-- Huro js -->
-    <script src="../../../assets/js/functions.js"></script>
-    <script src="../../../assets/js/main.js" async></script>
-    <script src="../../../assets/js/components.js" async></script>
-    <script src="../../../assets/js/popover.js" async></script>
-    <script src="../../../assets/js/widgets.js" async></script>
-
+    <script src="{{ asset('assets/js/functions.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}" async></script>
+    <script src="{{ asset('assets/js/components.js') }}" async></script>
+    <script src="{{ asset('assets/js/popover.js') }}" async></script>
+    <script src="{{ asset('assets/js/widgets.js') }}" async></script>
 
     <!-- Additional Features -->
-    <script src="assets/js/touch.js" async></script>
+    <script src="{{ asset('assets/js/touch.js') }}" async></script>
 
     <!-- Landing page js -->
 
@@ -1822,9 +1853,8 @@
     <!--Wizard-->
 
     <!-- Layouts js -->
+    <script src="{{ asset('assets/js/syntax.js') }}" async></script>
 
-
-    <script src="assets/js/syntax.js" async></script>
     </div>
 </body>
 

@@ -128,10 +128,6 @@
                         <div class="title-wrap">
                             <h1 class="title is-4">TLD</h1>
                         </div>
-                        <div class="toolbar ml-auto">
-                            @include("layouts.template-admin.web.partials.toolbar.notification")
-                            @include("layouts.template-admin.web.partials.toolbar.activity-panel")
-                        </div>
                     </div>
                     <div class="list-flex-toolbar">
                         <div class="control has-icon">

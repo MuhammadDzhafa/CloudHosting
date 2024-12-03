@@ -92,8 +92,8 @@
                                                 </div>
                                                 <div class="right">
                                                     <div class="buttons">
-                                                        <a href="/articles" class="button h-button is-light is-dark-outlined">
-                                                            <span class="icon">
+                                                        <a href="/admin/articles" class="button h-button is-light is-dark-outlined">
+                                                            <span class="icon" style="min-width: unset;">
                                                                 <i class="lnir lnir-arrow-left rem-100"></i>
                                                             </span>
                                                             <span>Back to Article</span>
@@ -123,7 +123,6 @@
                                                     <!-- <textarea name="content" id="sun-editor" placeholder="Write your text here..."></textarea> -->
                                                      <!-- SunEditor -->
                                                     <textarea name="content" id="content" placeholder="Write your text here.."></textarea>
-
                                                 </div>
                                             </div>
 
@@ -238,7 +237,7 @@
                     var content = $('#summernote').summernote('code');
                     $('#sun-editor').val(content);
                 });
-
+                
             </script>
             
             

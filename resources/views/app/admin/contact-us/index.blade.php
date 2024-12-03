@@ -82,10 +82,6 @@
                         <div class="title-wrap">
                             <h1 class="title is-4">Contact Us</h1>
                         </div>
-                        <div class="toolbar ml-auto">
-                            @include("layouts.template-admin.web.partials.toolbar.notification")
-                            @include("layouts.template-admin.web.partials.toolbar.activity-panel")
-                        </div>
                     </div>
                     <div class="list-flex-toolbar">
                         <div class="control has-icon">
@@ -93,14 +89,6 @@
                             <div class="form-icon">
                                 <i data-feather="search"></i>
                             </div>
-                        </div>
-                        <div class="buttons">
-                            <a href="{{ route('contact-us.create') }}" class="button h-button is-primary is-elevated">
-                                <span class="icon" style="min-width: unset;">
-                                    <i aria-hidden="true" class="fas fa-plus"></i>
-                                </span>
-                                <span>Add New</span>
-                            </a>
                         </div>
                     </div>
                     <div class="page-content-inner">

@@ -195,10 +195,6 @@
                             <a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
                                 <img src="assets/img/icons/flags/united-states-of-america.svg" alt="">
                             </a> --}}
-
-                            @include("layouts.template-admin.web.partials.toolbar.notification")
-
-                            @include("layouts.template-admin.web.partials.toolbar.activity-panel")
                         </div>
                     </div>
 
@@ -227,6 +223,7 @@
                             </button>
                         </div>
                     </div>
+                    <div id="validation-message" class="mb-3"></div>
 
                     {{-- <--Modals--> --}}
                     <div id="new-group-modal" class="modal h-modal">
@@ -239,6 +236,7 @@
                                         <i data-feather="x"></i>
                                     </button>
                                 </header>
+
                                 <form method="POST" id="new-group-form" enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-card-body">
@@ -550,5 +548,106 @@
 
     </div>
 </body>
+
+<script>
+    document.getElementById('new-group-form').addEventListener('submit', function(e) {
+        const groupNameInput = document.querySelector('input[name="name"]');
+        const groupName = groupNameInput.value;
+
+        const allowedPattern = /^[a-zA-Z0-9 ()&-]+$/;
+
+        if (!allowedPattern.test(groupName)) {
+            e.preventDefault();
+
+            let notificationContainer = document.getElementById('modal-notification');
+
+            if (!notificationContainer) {
+                notificationContainer = document.createElement('div');
+                notificationContainer.id = 'modal-notification';
+                notificationContainer.classList.add('notification-container');
+
+                const modal = document.getElementById('new-group-modal');
+                modal.insertBefore(notificationContainer, modal.firstChild);
+            }
+
+            notificationContainer.innerHTML = '';
+
+            const notification = document.createElement('div');
+            notification.classList.add('message', 'is-danger', 'responsive-notification');
+
+            const deleteButton = document.createElement('a');
+            deleteButton.classList.add('delete');
+            deleteButton.addEventListener('click', () => {
+                fadeOutNotification(notification);
+            });
+
+            const messageBody = document.createElement('div');
+            messageBody.classList.add('message-body');
+            messageBody.textContent = 'Group name can only contain letters, numbers, spaces, (), &, and -';
+
+            notification.appendChild(deleteButton);
+            notification.appendChild(messageBody);
+
+            notificationContainer.appendChild(notification);
+
+            // Fade out setelah 2 detik
+            setTimeout(() => {
+                fadeOutNotification(notification);
+            }, 2000);
+
+            groupNameInput.focus();
+        }
+    });
+
+    // Fungsi fade out dengan animasi
+    function fadeOutNotification(element) {
+        element.classList.add('fade-out');
+        setTimeout(() => {
+            element.remove();
+        }, 500); // Sesuaikan dengan durasi transisi CSS
+    }
+
+    // CSS
+    const style = document.createElement('style');
+    style.textContent = `
+.notification-container {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    padding: 0 10px;
+}
+
+.responsive-notification {
+    width: 50%; /* Default lebar untuk layar besar */
+    max-width: 600px; /* Batasi lebar maksimum */
+}
+
+/* Responsive untuk layar mobile */
+@media screen and (max-width: 768px) {
+    .responsive-notification {
+        width: 100%; /* Lebar penuh di layar mobile */
+        margin: 0 10px; /* Sedikit margin di sisi kiri dan kanan */
+    }
+}
+
+.message {
+    transition: opacity 0.5s ease-out;
+}
+
+.message.fade-out {
+    opacity: 0;
+}
+
+/* Tambahan styling opsional untuk notifikasi */
+.responsive-notification .message-body {
+    word-wrap: break-word; /* Memastikan teks tidak keluar dari kontainer */
+}
+`;
+    document.head.appendChild(style);
+</script>
 
 </html>

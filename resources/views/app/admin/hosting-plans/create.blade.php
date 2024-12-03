@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -74,21 +74,21 @@
                             </div>
                             <div class="dropdown-menu" id="group-dropdown-menu" role="menu">
                                 <div class="dropdown-content">
-                                @foreach ($hostingGroups as $group)
+                                    @foreach ($hostingGroups as $group)
                                     <a href="#" class="dropdown-item" data-value="{{ $group->hosting_group_id }}"
                                         onclick="selectGroup(this)">{{ $group->name }}</a>
-                                @endforeach
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="field" style="flex-basis: 50%;">
                         <label>Package Name</label>
                         <input class="input" name="name" placeholder="E.g Basic Plan"
                             style="width: 100%; padding: 10px;">
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -97,8 +97,18 @@
                 <div class="column-content">
                     <div class="field" style="flex-basis: 50%;">
                         <label>Package Description</label>
-                        <input class="input" name="description" placeholder="E.g Starter website"
-                            style="width: 100%; padding: 10px;">
+                        <input
+                            class="input"
+                            id="package-description-input"
+                            name="description"
+                            placeholder="E.g Starter website"
+                            pattern="^[a-zA-Z0-9\s()&-]+$"
+                            title="Hanya huruf, angka, spasi, dan karakter ()&- yang diperbolehkan"
+                            style="width: 100%; padding: 10px;"
+                            required>
+                        <p id="package-description-error" class="help is-danger" style="display:none;">
+                            Hanya huruf, angka, spasi, dan karakter ()&- yang diperbolehkan
+                        </p>
                     </div>
                 </div>
             </div>

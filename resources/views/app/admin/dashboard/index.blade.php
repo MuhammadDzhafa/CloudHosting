@@ -191,81 +191,6 @@
                                 </label>
                             </div>
 
-                            <a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
-                                <img src="assets/img/icons/flags/united-states-of-america.svg" alt="">
-                            </a>
-
-                            <div class="toolbar-notifications is-hidden-mobile">
-                                <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
-                                    <div class="is-trigger" aria-haspopup="true">
-                                        <i data-feather="bell"></i>
-                                        <span class="new-indicator pulsate"></span>
-                                    </div>
-                                    <div class="dropdown-menu" role="menu">
-                                        <div class="dropdown-content">
-                                            <div class="heading">
-                                                <div class="heading-left">
-                                                    <h6 class="heading-title">Notifications</h6>
-                                                </div>
-                                                <div class="heading-right">
-                                                    <a class="notification-link" href="/admin-profile-notifications.html">See all</a>
-                                                </div>
-                                            </div>
-                                            <ul class="notification-list">
-                                                <li>
-                                                    <a class="notification-item">
-                                                        <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Alice C.</span> left a comment.</p>
-                                                            <p class="time">1 hour ago</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="notification-item">
-                                                        <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
-                                                            <p class="time">2 hours ago</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="notification-item">
-                                                        <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Tara S.</span> sent you a message.</p>
-                                                            <p class="time">2 hours ago</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="notification-item">
-                                                        <div class="img-left">
-                                                            <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" />
-                                                        </div>
-                                                        <div class="user-content">
-                                                            <p class="user-info"><span class="name">Melany W.</span> left a comment.</p>
-                                                            <p class="time">3 hours ago</p>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <a class="toolbar-link right-panel-trigger" data-panel="activity-panel">
-                                <i data-feather="grid"></i>
-                            </a>
                         </div>
                     </div>
 
@@ -280,7 +205,7 @@
 
                                     <div class="columns is-multiline">
                                         <!--Dashboard Tile-->
-                                        <div class="column is-4">
+                                        <div class="column is-6">
                                             <div class="dashboard-tile">
                                                 <div class="tile-head">
                                                     <h3 class="dark-inverted">Transactions</h3>
@@ -298,7 +223,7 @@
                                             </div>
                                         </div>
                                         <!--Dashboard Tile-->
-                                        <div class="column is-4">
+                                        <div class="column is-6">
                                             <div class="dashboard-tile">
                                                 <div class="tile-head">
                                                     <h3 class="dark-inverted">Subscriptions</h3>
@@ -315,26 +240,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--Dashboard Tile-->
-                                        <div class="column is-4">
-                                            <div class="dashboard-tile">
-                                                <div class="tile-head">
-                                                    <h3 class="dark-inverted">Referals</h3>
-                                                    <div class="h-icon is-green is-rounded is-small">
-                                                        <i aria-hidden="true" class="fas fa-bullhorn"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tile-body">
-                                                    <span class="dark-inverted">1,911</span>
-                                                </div>
-                                                <div class="tile-foot">
-                                                    <span class="text-h-green">+4.2% <i data-feather="trending-up"></i></span>
-                                                    <span>going up</span>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <!--Dashboard Card-->
-                                        <div class="column is-8">
+                                        <!-- <div class="column is-full">
                                             <div class="dashboard-card">
                                                 <div class="card-head">
                                                     <h3 class="dark-inverted">Revenue</h3>
@@ -351,52 +258,9 @@
                                                 </div>
                                                 <div id="revenue-chart"></div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!--Dashboard Card-->
-                                        <div class="column is-4">
-                                            <div class="dashboard-card">
-                                                <div class="card-head">
-                                                    <h3 class="dark-inverted">Goal Overview</h3>
-                                                </div>
-
-                                                <div class="radial-wrap">
-                                                    <div id="goal-gauge"></div>
-                                                    <div class="radial-stats is-dark-bordered-12">
-                                                        <div class="radial-stat is-dark-bordered-12">
-                                                            <span>Completed</span>
-                                                            <span class="dark-inverted">1,223</span>
-                                                        </div>
-                                                        <div class="radial-stat">
-                                                            <span>In Progress</span>
-                                                            <span class="dark-inverted">467</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Dashboard Card-->
-                                        <div class="column is-4">
-                                            <div class="dashboard-card">
-                                                <div class="card-head">
-                                                    <h3 class="dark-inverted">Sales</h3>
-                                                </div>
-
-                                                <div class="progress-block">
-                                                    <div class="value">
-                                                        <span class="dark-inverted">78%</span>
-                                                    </div>
-                                                    <progress class="progress is-primary is-tiny" value="78" max="100">78%</progress>
-                                                    <div class="progress-foot">
-                                                        <span class="text-h-green">+6.4% <i data-feather="trending-up"></i></span>
-                                                        <span>since last month</span>
-                                                    </div>
-
-                                                    <div class="circle-chart-wrapper" id="radial-circle"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Dashboard Card-->
-                                        <div class="column is-8">
+                                        <div class="column is-full">
                                             <div class="dashboard-card">
                                                 <div class="card-head">
                                                     <h3 class="dark-inverted">Profit</h3>
@@ -412,34 +276,34 @@
                                     <!--Widget-->
                                     <div class="widget contact-widget is-reversed is-straight">
                                         <div class="widget-content">
-                                            <div class="left">
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" data-user-popover="3">
-                                                </div>
-                                            </div>
                                             <div class="right">
-                                                <h3>Erik K.</h3>
+                                                <h3>Hello, {{ Auth::user()->name ?? 'Guest' }}.</h3>
                                                 <div class="company">
-                                                    <span>Huro Ltd.</span>
-                                                    <p>Product Manager</p>
+                                                    <span>Management</span>
+                                                    <p>AwanHosting</p>
                                                 </div>
                                                 <div class="contact-info">
                                                     <span>
                                                         <i data-feather="map-pin"></i>
-                                                        <span>Los Angeles, CA</span>
+                                                        <span>Indonesia</span>
                                                     </span>
                                                     <span>
                                                         <i data-feather="phone"></i>
-                                                        <span>+1 444-5156</span>
+                                                        <span>+1 234-567-8910</span>
                                                     </span>
+                                                </div>
+                                            </div>
+                                            <div class="left">
+                                                <div class="h-avatar is-medium">
+                                                    <img class="avatar" src="{{ Auth::user()->google_profile_image ?? 'https://via.placeholder.com/150x150' }}" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <p class="email">erikkovalsky@huro.io</p>
+                                        <p class="email">{{ Auth::user()->email ?? 'No Email' }}</p>
                                     </div>
                                     <!--Widget-->
-                                    <div class="widget picker-widget is-straight">
+                                    <!-- <div class="widget picker-widget is-straight">
                                         <div class="widget-toolbar">
                                             <div class="left">
                                                 <a class="action-icon">
@@ -528,112 +392,30 @@
                                             </tbody>
 
                                         </table>
-                                    </div>
+                                    </div> -->
 
                                     <!--Widget-->
-                                    <div class="widget text-widget is-straight">
-                                        <div class="widget-toolbar">
-                                            <div class="left">
-                                                <h3>New Followers</h3>
+                                    <div class="is-full" style="height: 60%;">
+                                        <div class="dashboard-card">
+                                            <div class="card-head">
+                                                <h3 class="dark-inverted">Sales</h3>
                                             </div>
-                                            <div class="right">
-                                                <div class="avatar-stack">
-                                                    <div class="h-avatar is-small">
-                                                        <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                                                    </div>
-                                                    <div class="h-avatar is-small">
-                                                        <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
-                                                    </div>
-                                                    <div class="h-avatar is-small">
-                                                        <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/5.jpg" alt="">
-                                                    </div>
+
+                                            <div class="progress-block">
+                                                <div class="value">
+                                                    <span class="dark-inverted">78%</span>
                                                 </div>
+                                                <progress class="progress is-primary is-tiny" value="78" max="100">78%</progress>
+                                                <div class="progress-foot">
+                                                    <span class="text-h-green">+6.4% <i data-feather="trending-up"></i></span>
+                                                    <span>since last month</span>
+                                                </div>
+
+                                                <div class="circle-chart-wrapper" id="radial-circle"></div>
                                             </div>
-                                        </div>
-                                        <div class="widget-content">
-                                            <p>Great News! <span>Alice</span>, <span>Erik</span> and <span>Mary</span> are now
-                                                following you. Take some time to look at their profile.</p>
                                         </div>
                                     </div>
 
-                                    <!--Widget-->
-                                    <div class="widget list-widget is-straight">
-                                        <div class="widget-toolbar">
-                                            <div class="left">
-                                                <h3>Notifications</h3>
-                                            </div>
-                                            <div class="right">
-                                                <div class="dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
-                                                    <div class="is-trigger" aria-haspopup="true">
-                                                        <i data-feather="more-vertical"></i>
-                                                    </div>
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <div class="dropdown-content">
-                                                            <a href="#" class="dropdown-item is-media">
-                                                                <div class="icon">
-                                                                    <i class="lnil lnil-reload"></i>
-                                                                </div>
-                                                                <div class="meta">
-                                                                    <span>Reload</span>
-                                                                    <span>Reload Widget</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="dropdown-item is-media">
-                                                                <div class="icon">
-                                                                    <i class="lnil lnil-cogs"></i>
-                                                                </div>
-                                                                <div class="meta">
-                                                                    <span>Configure</span>
-                                                                    <span>Configure widget</span>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="dropdown-item is-media">
-                                                                <div class="icon">
-                                                                    <i class="lnil lnil-cog"></i>
-                                                                </div>
-                                                                <div class="meta">
-                                                                    <span>Settings</span>
-                                                                    <span>Widget Settings</span>
-                                                                </div>
-                                                            </a>
-                                                            <hr class="dropdown-divider">
-                                                            <a href="#" class="dropdown-item is-media">
-                                                                <div class="icon">
-                                                                    <i class="lnil lnil-trash-can-alt"></i>
-                                                                </div>
-                                                                <div class="meta">
-                                                                    <span>Remove</span>
-                                                                    <span>Remove from view</span>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget-content">
-                                            <ul>
-                                                <li>
-                                                    <a>
-                                                        <span>Personal</span>
-                                                        <span class="tag is-rounded">4</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a>
-                                                        <span>Business</span>
-                                                        <span class="tag is-rounded">9</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a>
-                                                        <span>Family</span>
-                                                        <span class="tag is-rounded">2</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>

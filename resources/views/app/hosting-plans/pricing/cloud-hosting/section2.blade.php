@@ -4,7 +4,7 @@
     </h2>
     <div class="tabs-wrapper is-slider">
         <div class="tabs-inner" style="display: flex; justify-content: center;">
-            <div class="tabs  w-full md:w-[70%]" style="max-width: unset; background:unset; border:1px solid #DEDEDE;">
+            <div class="tabs w-full md:!w-[70%]" style="max-width: unset; background:unset; border:1px solid #DEDEDE;">
                 <ul>
                     @php
                     // Ambil dua grup hosting pertama yang memenuhi syarat
@@ -39,7 +39,7 @@
                     return $hostingPlan->hosting_group_id === $group->hosting_group_id &&
                     $hostingPlan->product_type === 'Cloud Hosting' &&
                     $hostingPlan->package_type === 'Regular';
-                    })->sortBy('name');
+                    })->sortBy('hosting_plans_id');
                     @endphp
 
                     @foreach ($groupHostingPlans as $hostingPlan)
@@ -273,4 +273,6 @@
         // Re-render feather icons untuk memperbarui tampilan ikon
         feather.replace();
     });
+
+    
 </script>

@@ -7,7 +7,7 @@
     <form id="delete-form" method="POST">
         @csrf
         @method('DELETE')
-        <button class="button h-button h-modal-close">Cancel</button>
+        <button class="button h-button h-modal-close" type="button">Cancel</button>
         <button class="button h-button is-danger is-raised" type="submit">Yes, Delete</button>
     </form>
 </div>

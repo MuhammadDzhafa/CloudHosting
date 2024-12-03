@@ -84,10 +84,6 @@
                         <div class="title-wrap">
                             <h1 class="title is-4">Articles</h1>
                         </div>
-                        <div class="toolbar ml-auto">
-                            @include("layouts.template-admin.web.partials.toolbar.notification")
-                            @include("layouts.template-admin.web.partials.toolbar.activity-panel")
-                        </div>
                     </div>
                     <div class="list-flex-toolbar">
                         <div class="control has-icon">
@@ -122,7 +118,7 @@
                                     @foreach ($articles as $article)
                                     <tr>
                                         <td style="max-width: 200px;">{{ $article->title }}</td>
-                                        <td style="max-width: 300px;">{{ Str::limit($article->content, 150) }}</td>
+                                        <td style="max-width: 300px;">{!! $article->content !!}</td>
                                         <td>{{ $article->author }}</td>
                                         <td>
                                             @if ($article->image)
@@ -194,7 +190,7 @@
                         <section class="modal-card-body">
                             <p>Are you sure you want to delete the article titled "<span id="modal-article-title"></span>"?</p>
                         </section>
-                        <footer class="modal-card-foot">
+                        <footer class="modal-card-foot is-centered">
                             <button type="submit" class="button is-danger">Delete</button>
                             <button type="button" class="button h-modal-close">Cancel</button>
                         </footer>

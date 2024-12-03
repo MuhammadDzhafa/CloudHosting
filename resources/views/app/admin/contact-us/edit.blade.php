@@ -89,7 +89,7 @@
                                             <div class="right">
                                                 <div class="buttons">
                                                     <a href="{{ route('contact-us.index') }}" class="button h-button is-light is-dark-outlined">
-                                                        <span class="icon">
+                                                        <span class="icon" style="min-width: unset;">
                                                             <i class="lnir lnir-arrow-left rem-100"></i>
                                                         </span>
                                                         <span>Back to Contacts</span>

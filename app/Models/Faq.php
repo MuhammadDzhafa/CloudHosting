@@ -24,4 +24,5 @@ class Faq extends Model
     // Jika primary key bukan tipe integer
     public $incrementing = false; // Jika menggunakan UUID atau jenis lain
     protected $keyType = 'int'; // Jika menggunakan integer
+    public $timestamps = true;
 }

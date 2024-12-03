@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Mews\Purifier\Facades\Purifier;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -11,8 +13,21 @@ class ArticleController extends Controller
     // Menampilkan daftar artikel
     public function index()
     {
-        $articles = Article::all();
-        return view('app.admin.articles.index', compact('articles'));
+        // Retrieve all articles from the database, ordered by 'created_at' in descending order (latest first)
+        $articles = Article::orderBy('created_at', 'desc')->get();
+
+        // Loop through the articles, sanitize the content with a limit
+        $sanitizedArticles = $articles->map(function ($article) {
+            // Sanitize the content with Purifier and limit to 150 characters
+            $article->content = Str::limit(strip_tags(Purifier::clean($article->content)), 150);
+
+            return $article;
+        });
+
+        // Pass the sanitized and limited articles data to the view
+        return view('app.admin.articles.index', [
+            'articles' => $sanitizedArticles,
+        ]);
     }
 
     // Menampilkan form untuk membuat artikel baru
@@ -32,7 +47,6 @@ class ArticleController extends Controller
             'author' => 'required|max:255',
             'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar
         ]);
-
         // Membuat artikel baru
         $articleData = $request->all();
 
