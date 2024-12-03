@@ -30,35 +30,35 @@
                 </div>
             </div>
             <div id="custom-tab" class="tab-content is-active">
-            <h4 class="custom-title text-center md:text-left mt-0 md:mt-5">
-                Fulfill your needs with our
-            </h4>
-            <div class="custom-text-gradient mt-0 lg:!mt-4">
-                Customized Plan
-            </div>
+                <h4 class="custom-title text-center md:text-left mt-0 md:mt-5">
+                    Fulfill your needs with our
+                </h4>
+                <div class="custom-text-gradient mt-0 lg:!mt-4">
+                    Customized Plan
+                </div>
 
                 <div class="custom-bg">
                     <div class="flex flex-wrap w-full">
-                    <div class="custom-col min-w-auto text-center lg:text-left mb-8 lg:mb-0">
-                        <ul class="list-none p-0">
-                            <li class="custom-text-style mt-5">
-                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                Unlimited Domains
-                            </li>
-                            <li class="custom-text-style mt-5">
-                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                <span class="hidden md:inline">Unlimited </span>Bandwidth
-                            </li>
-                            <li class="custom-text-style mt-5">
-                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                <span class="hidden md:inline">Unlimited </span>Emails
-                            </li>
-                            <li class="custom-text-style mt-5">
-                                <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
-                                <span class="hidden md:inline">Unlimited </span>Inodes
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="custom-col min-w-auto text-center lg:text-left mb-8 lg:mb-0">
+                            <ul class="list-none p-0">
+                                <li class="custom-text-style mt-5">
+                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                    Unlimited Domains
+                                </li>
+                                <li class="custom-text-style mt-5">
+                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                    <span class="hidden md:inline">Unlimited </span>Bandwidth
+                                </li>
+                                <li class="custom-text-style mt-5">
+                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                    <span class="hidden md:inline">Unlimited </span>Emails
+                                </li>
+                                <li class="custom-text-style mt-5">
+                                    <img src="/assets/img/icons/checklist.svg" alt="" class="custom-icon" />
+                                    <span class="hidden md:inline">Unlimited </span>Inodes
+                                </li>
+                            </ul>
+                        </div>
 
                         <!-- Slider section for Hosting Plan Customization -->
                         <div class="custom-col custom-col-2">
@@ -123,7 +123,7 @@
             <div id="{{ strtolower($group->name) }}-tab" class="tab-content">
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                        @foreach ($hostingPlans as $hostingPlan)
+                        @foreach ($hostingPlans->sortBy('hosting_plans_id') as $hostingPlan)
                         @if($hostingPlan->product_type === 'Cloud Hosting') <!-- Check product_type for each plan -->
                         @if($hostingPlan->hosting_group_id === $group->hosting_group_id && $hostingPlan->package_type === 'Regular')
                         <div
@@ -164,11 +164,11 @@
                                 <li class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-900,#3D3D3D)]' }}">
                                     <img src="/assets/img/icons/{{ $hostingPlan->best_seller ? 'checkwhite' : 'checkblack' }}.svg" alt="" class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
                                     @if($key === 'max_domain')
-                                        {{ $hostingPlan->max_domain }} {{ $label }}
+                                    {{ $hostingPlan->max_domain }} {{ $label }}
                                     @elseif($key === 'ssl')
-                                        {{ $hostingPlan->ssl }} {{ $label }}
+                                    {{ $hostingPlan->ssl }} {{ $label }}
                                     @else
-                                        {{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->$key : '' }} {{ $label }}
+                                    {{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->$key : '' }} {{ $label }}
                                     @endif
                                 </li>
                                 @endforeach
@@ -198,27 +198,75 @@
 <script>
     // Ambil nilai dari database dengan fallback values yang aman
     window.specs = {
-    // RAM specs
-    min_RAM: {{ $specs->min_RAM ?? 4 }},
-    max_RAM: {{ $specs->max_RAM ?? 32 }},
-    // Set multiplier dari database dengan fallback ke 2
-    multiplier_RAM: {{ $specs->multiplier_RAM ?? 2 }},
-    price_RAM: {{ $specs->price_RAM ?? 0 }},
+        // RAM specs
+        min_RAM: {
+            {
+                $specs - > min_RAM ?? 4
+            }
+        },
+        max_RAM: {
+            {
+                $specs - > max_RAM ?? 32
+            }
+        },
+        // Set multiplier dari database dengan fallback ke 2
+        multiplier_RAM: {
+            {
+                $specs - > multiplier_RAM ?? 2
+            }
+        },
+        price_RAM: {
+            {
+                $specs - > price_RAM ?? 0
+            }
+        },
 
-    // CPU specs
-    min_CPU: {{ $specs->min_CPU ?? 1 }},
-    max_CPU: {{ $specs->max_CPU ?? 8 }},
-    // Set multiplier dari database dengan fallback ke 2
-    multiplier_CPU: {{ $specs->multiplier_CPU ?? 2 }},
-    price_CPU: {{ $specs->price_CPU ?? 0 }},
+        // CPU specs
+        min_CPU: {
+            {
+                $specs - > min_CPU ?? 1
+            }
+        },
+        max_CPU: {
+            {
+                $specs - > max_CPU ?? 8
+            }
+        },
+        // Set multiplier dari database dengan fallback ke 2
+        multiplier_CPU: {
+            {
+                $specs - > multiplier_CPU ?? 2
+            }
+        },
+        price_CPU: {
+            {
+                $specs - > price_CPU ?? 0
+            }
+        },
 
-    // Storage specs
-    min_storage: {{ $specs->min_storage ?? 10 }},
-    max_storage: {{ $specs->max_storage ?? 100 }},
-    // Set step dari database dengan fallback ke 10
-    step_storage: {{ $specs->step_storage ?? 10 }},
-    price_storage: {{ $specs->price_storage ?? 0 }},
-};
+        // Storage specs
+        min_storage: {
+            {
+                $specs - > min_storage ?? 10
+            }
+        },
+        max_storage: {
+            {
+                $specs - > max_storage ?? 100
+            }
+        },
+        // Set step dari database dengan fallback ke 10
+        step_storage: {
+            {
+                $specs - > step_storage ?? 10
+            }
+        },
+        price_storage: {
+            {
+                $specs - > price_storage ?? 0
+            }
+        },
+    };
 
 
     // Debug: Log semua specs di awal
@@ -403,66 +451,65 @@
     }
 
     // Update the event listener for custom-order-btn
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('custom-order-btn').addEventListener('click', function(e) {
-        e.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('custom-order-btn').addEventListener('click', function(e) {
+            e.preventDefault();
 
-        // Get current slider values
-        const ramValue = document.getElementById('ram-value').textContent.split(' ')[0];
-        const cpuValue = document.getElementById('cpu-value').textContent.split(' ')[0];
-        const storageValue = document.getElementById('storage-value').textContent.split(' ')[0];
+            // Get current slider values
+            const ramValue = document.getElementById('ram-value').textContent.split(' ')[0];
+            const cpuValue = document.getElementById('cpu-value').textContent.split(' ')[0];
+            const storageValue = document.getElementById('storage-value').textContent.split(' ')[0];
 
-        // Get price values (remove 'Rp' and '/mon', then parse)
-        const ramPrice = parseInt(document.getElementById('ram-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
-        const cpuPrice = parseInt(document.getElementById('cpu-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
-        const storagePrice = parseInt(document.getElementById('storage-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
-        const totalPrice = parseInt(document.getElementById('total-price').textContent.replace(',', ''));
+            // Get price values (remove 'Rp' and '/mon', then parse)
+            const ramPrice = parseInt(document.getElementById('ram-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+            const cpuPrice = parseInt(document.getElementById('cpu-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+            const storagePrice = parseInt(document.getElementById('storage-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+            const totalPrice = parseInt(document.getElementById('total-price').textContent.replace(',', ''));
 
-        // Setup AJAX request
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/save-custom-plan', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            // Setup AJAX request
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/save-custom-plan', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
-        // Prepare data payload
-        const data = {
-            type: 'custom',
-            specs: {
-                ram: parseInt(ramValue),
-                cpu: parseInt(cpuValue),
-                storage: parseInt(storageValue),
-                details: {
-                    ram_price: ramPrice,
-                    cpu_price: cpuPrice,
-                    storage_price: storagePrice
-                }
-            },
-            total_price: totalPrice
-        };
+            // Prepare data payload
+            const data = {
+                type: 'custom',
+                specs: {
+                    ram: parseInt(ramValue),
+                    cpu: parseInt(cpuValue),
+                    storage: parseInt(storageValue),
+                    details: {
+                        ram_price: ramPrice,
+                        cpu_price: cpuPrice,
+                        storage_price: storagePrice
+                    }
+                },
+                total_price: totalPrice
+            };
 
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                if (response.success) {
-                    // Redirect to checkout page with custom plan data
-                    window.location.href = response.data.redirect_url;
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        // Redirect to checkout page with custom plan data
+                        window.location.href = response.data.redirect_url;
+                    } else {
+                        alert('Failed to process order. Please try again.');
+                    }
                 } else {
-                    alert('Failed to process order. Please try again.');
+                    console.error('Error:', xhr.responseText);
+                    alert('An error occurred. Please try again.');
                 }
-            } else {
-                console.error('Error:', xhr.responseText);
-                alert('An error occurred. Please try again.');
-            }
-        };
+            };
 
-        xhr.onerror = function() {
-            console.error('Request failed');
-            alert('Network error occurred. Please try again.');
-        };
+            xhr.onerror = function() {
+                console.error('Request failed');
+                alert('Network error occurred. Please try again.');
+            };
 
-        // Send the data
-        xhr.send(JSON.stringify(data));
+            // Send the data
+            xhr.send(JSON.stringify(data));
+        });
     });
-});
-
 </script>
