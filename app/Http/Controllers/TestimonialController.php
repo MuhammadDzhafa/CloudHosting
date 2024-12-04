@@ -30,39 +30,35 @@ class TestimonialController extends Controller
         $request->validate([
             'domain_web' => 'required|string|max:255',
             'testimonial_text' => 'required|string',
-            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:8048',
+            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480',
         ], [
             'picture.image' => 'File yang diunggah harus berupa gambar.',
             'picture.mimes' => 'Gambar harus memiliki format jpg, jpeg, atau png.',
-            'picture.max' => 'Ukuran gambar maksimal 8MB.',
+            'picture.max' => 'Ukuran gambar maksimal 20MB.', // Sesuaikan pesan
         ]);
 
+        // Tambahkan pengecekan ukuran file secara manual
+        if ($request->hasFile('picture') && $request->file('picture')->getSize() > 20 * 1024 * 1024) {
+            return back()->withErrors(['picture' => 'Ukuran gambar tidak boleh lebih dari 20MB.'])->withInput();
+        }
 
+        // Proses penyimpanan data
         $testimonial = new Testimonial();
         $testimonial->domain_web = $request->input('domain_web');
         $testimonial->testimonial_text = $request->input('testimonial_text');
 
         if ($request->hasFile('picture')) {
-
             $file = $request->file('picture');
-            // Buat nama file dengan timestamp + nama asli file
-            $originalName = $request->file('picture')->getClientOriginalName();
+            $originalName = $file->getClientOriginalName();
             $fileName = time() . '_' . $originalName;
-            // Simpan file dengan nama yang ditentukan
-            // $filePath = $request->file('picture')->storeAs('testimonial_pictures', $fileName, 'public');   
 
-            // Tentukan path untuk folder penyimpanan gambar
             $directoryPath = public_path('storage/testimonial_pictures');
-
-            // Periksa apakah folder testimonial_pictures ada, jika tidak, buat foldernya
             if (!is_dir($directoryPath)) {
                 mkdir($directoryPath, 0755, true);
             }
 
-            // Simpan file dengan nama yang ditentukan
             $filePath = "{$directoryPath}/{$fileName}";
 
-            // $filePath = public_path("storage/testimonial_pictures/{$fileName}");
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image = $image->cover(400, 400);
@@ -70,7 +66,6 @@ class TestimonialController extends Controller
 
             $testimonial->picture = $fileName;
         } else {
-            // Gunakan default picture jika tidak ada file yang diunggah
             $testimonial->picture = 'testimonial_pictures/default_picture.png';
         }
 
@@ -84,6 +79,7 @@ class TestimonialController extends Controller
     }
 
 
+
     public function edit($id): View
     {
         $testimonial = Testimonial::where('testimonial_id', $id)->firstOrFail();
@@ -94,57 +90,50 @@ class TestimonialController extends Controller
     {
         Log::info('Update method called for ID', ['id' => $id]);
 
-        // Validate the request
         $request->validate([
             'domain_web' => 'required|string|max:255',
             'testimonial_text' => 'required|string',
-            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480',
             'occupation' => 'nullable|string|max:255',
             'facebook' => 'nullable|string|max:255',
             'instagram' => 'nullable|string|max:255',
         ]);
 
-        // Find the testimonial by its primary key
-        $testimonial = Testimonial::where('testimonial_id', $id)->firstOrFail();
+        if ($request->hasFile('picture') && $request->file('picture')->getSize() > 20 * 1024 * 1024) {
+            return back()->withErrors(['picture' => 'Ukuran gambar tidak boleh lebih dari 20MB.'])->withInput();
+        }
 
-        // Update fields
+        $testimonial = Testimonial::where('testimonial_id', $id)->firstOrFail();
         $testimonial->domain_web = $request->input('domain_web');
         $testimonial->testimonial_text = $request->input('testimonial_text');
         $testimonial->occupation = $request->input('occupation');
         $testimonial->facebook = $request->input('facebook');
         $testimonial->instagram = $request->input('instagram');
 
-        // Handle the picture update
         if ($request->hasFile('picture')) {
-            // Delete old picture if it exists
             if ($testimonial->picture && Storage::disk('public')->exists($testimonial->picture)) {
                 Storage::disk('public')->delete($testimonial->picture);
             }
 
-            // Create new file name
-            $originalName = $request->file('picture')->getClientOriginalName();
+            $file = $request->file('picture');
+            $originalName = $file->getClientOriginalName();
             $fileName = time() . '_' . $originalName;
 
-            // Define the file path
             $filePath = public_path("storage/testimonial_pictures/{$fileName}");
 
-            // Process and save the new picture
             $manager = new ImageManager(new Driver());
-            $image = $manager->read($request->file('picture'));
+            $image = $manager->read($file);
             $image = $image->cover(400, 400);
             $image->toPng()->save($filePath);
 
-            // Update the picture field in the testimonial
             $testimonial->picture = $fileName;
         }
 
-        // Save the updated testimonial
         $testimonial->save();
 
-        // Redirect with a success message
-        return redirect()->route('testimonials.index')
-            ->with('success', 'Testimonial updated successfully.');
+        return redirect()->route('testimonials.index')->with('success', 'Testimonial updated successfully.');
     }
+
 
 
     public function destroy($id)

@@ -230,7 +230,7 @@
                         <section class="modal-card-body">
                             <p>Are you sure you want to delete the article titled "<span id="modal-tld-title"></span>"?</p>
                         </section>
-                        <footer class="modal-card-foot">
+                        <footer class="modal-card-foot is-centered">
                             <button type="submit" class="button is-danger">Delete</button>
                             <button type="button" class="button h-modal-close">Cancel</button>
                         </footer>

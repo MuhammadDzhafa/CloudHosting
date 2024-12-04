@@ -43,10 +43,11 @@ class ArticleController extends Controller
         // Validasi input
         $request->validate([
             'title' => 'required|max:255',
-            'content' => 'required', // Tidak ada batasan panjang
+            'content' => 'required',
             'author' => 'required|max:255',
-            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar, max 20MB
         ]);
+
         // Membuat artikel baru
         $articleData = $request->all();
 
@@ -76,8 +77,9 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'author' => 'required|max:255',
-            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar, max 20MB
         ]);
+
 
         // Mengupdate artikel
         $article = Article::findOrFail($id);

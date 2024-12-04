@@ -44,9 +44,11 @@
                                 </div>
                                 <img id="picture-preview" src="" style="max-width: 100px; margin-top: 10px;">
                             </div>
-                            @error('picture')
-                            <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                            @if ($errors->has('picture'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('picture') }}
+                            </div>
+                            @endif
                         </div>
 
                         <div class="field">
@@ -111,30 +113,37 @@
         const picturePreview = document.querySelector('#picture-preview');
 
         fileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-            const maxSize = 8 * 1024 * 1024; // 8 MB
+            const file = event.target.files[0]; // Ambil file yang dipilih
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Validasi format file
+            const maxSize = 20 * 1024 * 1024; // 20 MB dalam byte
 
             if (file) {
+                // Validasi tipe file
                 if (!validTypes.includes(file.type)) {
                     alert('File harus berupa gambar dengan format jpg, jpeg, atau png.');
                     fileInput.value = ''; // Reset input file
                     return;
                 }
+
+                // Validasi ukuran file
                 if (file.size > maxSize) {
-                    alert('Ukuran file maksimal 8MB.');
+                    alert('Ukuran file maksimal 20MB.');
                     fileInput.value = ''; // Reset input file
                     return;
                 }
+
+                // Jika file valid, tampilkan preview
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    picturePreview.src = e.target.result;
+                    picturePreview.src = e.target.result; // Tampilkan gambar yang diunggah
                 };
                 reader.readAsDataURL(file);
             } else {
+                // Reset jika tidak ada file
                 picturePreview.src = '';
             }
         });
+
 
 
         // Fungsi untuk membuka modal dan mereset isinya

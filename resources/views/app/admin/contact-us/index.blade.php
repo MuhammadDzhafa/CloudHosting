@@ -165,7 +165,7 @@
                         <section class="modal-card-body">
                             <p>Are you sure you want to delete the contact message from "<span id="modal-contact-name"></span>"?</p>
                         </section>
-                        <footer class="modal-card-foot">
+                        <footer class="modal-card-foot is-centered">
                             <button type="submit" class="button is-danger">Delete</button>
                             <button type="button" class="button h-modal-close">Cancel</button>
                         </footer>
@@ -206,6 +206,44 @@
                 // Tampilkan/sembunyikan baris berdasarkan pencarian
                 row.style.display = name.includes(searchTerm) ? '' : 'none';
             });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.querySelector('#confirm-delete-modal');
+        const closeModalButtons = document.querySelectorAll('.h-modal-close'); // Tombol close (close modal)
+        const cancelButton = modal.querySelector('.h-modal-close[type="button"]'); // Tombol Cancel
+        const form = document.querySelector('#delete-form'); // Form yang ada di dalam modal
+
+        // Cek jika elemen-elemen ditemukan
+        if (!modal || !cancelButton || !form) {
+            console.error("Modal or form or Cancel button not found!");
+            return;
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            modal.classList.remove('is-active');
+        }
+
+        // Menutup modal saat tombol close (X) atau tombol Cancel diklik
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Mencegah form disubmit jika tombol close diklik
+                closeModal(); // Tutup modal
+            });
+        });
+
+        // Mencegah pengiriman form saat Cancel
+        cancelButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Mencegah form disubmit
+            closeModal(); // Menutup modal
+        });
+
+        // Menyusun form delete jika Yes, Delete diklik
+        form.addEventListener('submit', (event) => {
+            // Menambahkan proses untuk konfirmasi penghapusan (misalnya menampilkan pesan konfirmasi)
+            // Form akan dikirim hanya jika Yes, Delete ditekan
         });
     });
 </script>

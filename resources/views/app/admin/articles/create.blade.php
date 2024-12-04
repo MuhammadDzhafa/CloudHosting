@@ -209,30 +209,27 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const editLinks = document.querySelectorAll('.edit-link');
-                const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
-                const form = document.querySelector('#testimonial-form');
                 const fileInput = document.querySelector('#image');
                 const fileNameDisplay = document.querySelector('#image-name');
                 const imagePreview = document.querySelector('#image-preview');
 
                 fileInput.addEventListener('change', (event) => {
-                    const file = event.target.files[0]; // Ambil file yang dipilih
+                    const file = event.target.files[0];
                     if (file) {
-                        fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                        fileNameDisplay.textContent = file.name; // Menampilkan nama file
                         const reader = new FileReader();
                         reader.onload = function(e) {
-                            imagePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
-                            imagePreview.style.display = 'block'; // Tampilkan gambar
+                            imagePreview.src = e.target.result; // Set gambar preview
+                            imagePreview.style.display = 'block'; // Menampilkan preview
                         };
                         reader.readAsDataURL(file);
                     } else {
-                        fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
-                        imagePreview.src = ''; // Hapus preview gambar
-                        imagePreview.style.display = 'none'; // Sembunyikan gambar
+                        fileNameDisplay.textContent = 'Choose a file...'; // Jika file tidak ada
+                        imagePreview.style.display = 'none'; // Sembunyikan preview
                     }
                 });
             });
+
 
             $('#submit').on('click', function() {
                 var content = $('#summernote').summernote('code');
@@ -254,7 +251,7 @@
 
         <!-- Additional Features -->
         <script src="{{ asset('assets/js/touch.js') }}" async></script>
-        <script src="{{ asset('assets/js/syntax.js') }}" async></script>    
+        <script src="{{ asset('assets/js/syntax.js') }}" async></script>
     </div>
 </body>
 
