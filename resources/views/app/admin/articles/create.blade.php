@@ -82,6 +82,9 @@
                             <h1 class="title is-4">Products</h1>
                         </div>
                     </div>
+                    <!-- Container untuk menampung notifikasi -->
+                    <div class="mb-3" id="notification-container"></div>
+
 
                     <div class="page-content-inner">
                         <!-- Flash messages for success -->
@@ -232,50 +235,59 @@
                 const fileInput = document.querySelector('#image');
                 const fileNameDisplay = document.querySelector('#image-name');
                 const imagePreview = document.querySelector('#image-preview');
+                const maxFileSize = 2 * 1024 * 1024; // 2MB dalam byte
 
                 fileInput.addEventListener('change', (event) => {
                     const file = event.target.files[0];
+                    const notificationContainer = document.querySelector('#notification-container');
+
                     if (file) {
-                        fileNameDisplay.textContent = file.name; // Menampilkan nama file
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            imagePreview.src = e.target.result; // Set gambar preview
-                            imagePreview.style.display = 'block'; // Menampilkan preview
-                        };
-                        reader.readAsDataURL(file);
-                    } else {
-                        fileNameDisplay.textContent = 'Choose a file...'; // Jika file tidak ada
-                        imagePreview.style.display = 'none'; // Sembunyikan preview
+                        if (file.size > maxFileSize) {
+                            // Membuat notifikasi untuk ukuran file terlalu besar
+                            const notification = document.createElement('div');
+                            notification.classList.add('message', 'is-danger');
+                            notification.innerHTML = `
+                    <a class="delete"></a>
+                    <div class="message-body">
+                        The file size is too large. The maximum file size is 2MB.
+                    </div>
+                `;
+
+                            // Menambahkan notifikasi ke dalam container notifikasi
+                            notificationContainer.innerHTML = ''; // Clear any previous notifications
+                            notificationContainer.appendChild(notification);
+
+                            // Menghilangkan notifikasi saat tombol delete diklik
+                            notification.querySelector('.delete').addEventListener('click', function() {
+                                notification.remove();
+                            });
+
+                            // Menghilangkan notifikasi otomatis setelah 7 detik
+                            setTimeout(function() {
+                                notification.remove();
+                            }, 7000); // 7000 ms = 7 detik
+
+                            // Reset input file dan preview
+                            fileInput.value = '';
+                            fileNameDisplay.textContent = 'Choose a file...';
+                            imagePreview.style.display = 'none'; // Menyembunyikan preview
+                        } else {
+                            // Menampilkan nama file dan preview gambar
+                            fileNameDisplay.textContent = file.name;
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                imagePreview.src = e.target.result;
+                                imagePreview.style.display = 'block';
+                            };
+                            reader.readAsDataURL(file);
+                        }
                     }
                 });
             });
 
-
             $('#submit').on('click', function() {
                 var content = $('#summernote').summernote('code');
                 $('#sun-editor').val(content);
-            });
-        </script>
-
-        <script>
-            // Menghilangkan notifikasi otomatis setelah 2 detik
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(function() {
-                    const notifications = document.querySelectorAll('.notification');
-                    notifications.forEach(notification => {
-                        notification.classList.add('is-hidden'); // Menyembunyikan dengan CSS
-                    });
-                }, 5000);
-            });
-
-            // Menghapus notifikasi secara manual ketika tombol delete ditekan
-            document.addEventListener('click', function(event) {
-                if (event.target.classList.contains('delete')) {
-                    const notification = event.target.closest('.notification');
-                    if (notification) {
-                        notification.remove();
-                    }
-                }
             });
         </script>
 

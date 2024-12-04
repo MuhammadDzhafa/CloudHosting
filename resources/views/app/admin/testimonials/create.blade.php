@@ -12,8 +12,7 @@
             <div class="modal-card-body">
                 <div class="inner-content">
                     <div id="error-notification" class="notification is-danger is-light" style="display: none;">
-                        <button class="delete"></button>
-                        Ukuran file tidak boleh lebih dari 2MB.
+                        The file size is too large. The maximum file size is 2MB.
                     </div>
                     <form id="testimonial-form" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -109,118 +108,120 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const editLinks = document.querySelectorAll('.edit-link');
-        const addNewButton = document.querySelector('.addData'); // Tombol "Add New"
         const form = document.querySelector('#testimonial-form');
         const fileInput = document.querySelector('#picture');
+        const errorNotification = document.querySelector('#error-notification');
         const fileNameDisplay = document.querySelector('#picture-name');
         const picturePreview = document.querySelector('#picture-preview');
+        const maxFileSize = 2 * 1024 * 1024; // 2MB dalam byte
 
         fileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0]; // Ambil file yang dipilih
-            const validTypes = ['image/jpeg', 'image/jpg', 'image/png']; // Validasi format file
-            const maxSize = 20 * 1024 * 1024; // 20 MB dalam byte
-
+            const file = event.target.files[0];
             if (file) {
-                // Validasi tipe file
-                if (!validTypes.includes(file.type)) {
-                    alert('File harus berupa gambar dengan format jpg, jpeg, atau png.');
-                    fileInput.value = ''; // Reset input file
-                    return;
-                }
-
                 // Validasi ukuran file
-                if (file.size > maxSize) {
-                    alert('Ukuran file maksimal 20MB.');
-                    fileInput.value = ''; // Reset input file
+                if (file.size > maxFileSize) {
+                    // Menampilkan notifikasi error
+                    errorNotification.style.display = 'block';
+
+                    // Menghilangkan notifikasi setelah 7 detik
+                    setTimeout(() => {
+                        errorNotification.style.display = 'none';
+                    }, 7000); // 7000ms = 7 detik
+
+                    // Menghapus file input
+                    fileInput.value = '';
+                    fileNameDisplay.textContent = 'Choose a file...';
+                    picturePreview.style.display = 'none';
                     return;
                 }
 
                 // Jika file valid, tampilkan preview
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    picturePreview.src = e.target.result; // Tampilkan gambar yang diunggah
+                    picturePreview.src = e.target.result; // Menampilkan gambar yang diunggah
+                    picturePreview.style.display = 'block';
                 };
                 reader.readAsDataURL(file);
             } else {
                 // Reset jika tidak ada file
                 picturePreview.src = '';
+                picturePreview.style.display = 'none';
             }
         });
-
-
-
-        // Fungsi untuk membuka modal dan mereset isinya
-        function openModal(isEdit = false) {
-            if (isEdit) {
-                document.querySelector('#modal-title').textContent = 'Edit Testimonial';
-            } else {
-                resetForm();
-                document.querySelector('#modal-title').textContent = 'Add Testimonial';
-            }
-            document.querySelector('#addandedit').classList.add('is-active');
-        }
-
-        // Handle add button click
-        addNewButton.addEventListener('click', () => {
-            resetForm(); // Reset the form for adding new testimonial
-            document.querySelector('#modal-title').textContent = 'Add Testimonial'; // Set modal title
-            form.action = "{{ route('testimonials.store') }}"; // Set action for adding
-            form.method = 'POST'; // Set method to POST
-        });
-
-        // Handle edit button clicks
-        editLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const id = link.getAttribute('data-id');
-                const domain = link.getAttribute('data-domain');
-                const text = link.getAttribute('data-text');
-                const picture = link.getAttribute('data-picture');
-                const occupation = link.getAttribute('data-occupation');
-                const facebook = link.getAttribute('data-facebook');
-                const instagram = link.getAttribute('data-instagram');
-
-                // Set modal action for editing
-                form.action = "{{ url('/admin/testimonials') }}/" + id; // Set action for PUT
-                form.method = 'POST'; // Set method to POST
-
-                // Populate form fields
-                document.querySelector('#domain_web').value = domain;
-                document.querySelector('#testimonial_text').value = text;
-                document.querySelector('#occupation').value = occupation;
-                document.querySelector('#facebook').value = facebook;
-                document.querySelector('#instagram').value = instagram;
-                document.querySelector('#picture-preview').src = picture ? `/storage/testimonial_pictures/${picture}` : '';
-                document.querySelector('#picture-name').textContent = picture ? picture.split('/').pop() : 'Choose a file…';
-
-                // Ensure PUT method hidden input is there
-                let methodField = form.querySelector('input[name="_method"]');
-                if (!methodField) {
-                    methodField = document.createElement('input');
-                    methodField.type = 'hidden';
-                    methodField.name = '_method';
-                    methodField.value = 'PUT';
-                    form.appendChild(methodField);
-                }
-
-                // Open modal
-                openModal(true);
-            });
-        });
-
-        // Function to reset the form
-        function resetForm() {
-            form.reset(); // Clear all fields
-            document.querySelector('#picture-preview').src = ''; // Clear picture preview
-            document.querySelector('#picture-name').textContent = 'Choose a file…'; // Reset file name display
-
-            // Remove hidden input for PUT method if it exists
-            const methodField = form.querySelector('input[name="_method"]');
-            if (methodField) {
-                methodField.remove();
-            }
-        }
     });
+
+
+
+    // Fungsi untuk membuka modal dan mereset isinya
+    function openModal(isEdit = false) {
+        if (isEdit) {
+            document.querySelector('#modal-title').textContent = 'Edit Testimonial';
+        } else {
+            resetForm();
+            document.querySelector('#modal-title').textContent = 'Add Testimonial';
+        }
+        document.querySelector('#addandedit').classList.add('is-active');
+    }
+
+    // Handle add button click
+    addNewButton.addEventListener('click', () => {
+        resetForm(); // Reset the form for adding new testimonial
+        document.querySelector('#modal-title').textContent = 'Add Testimonial'; // Set modal title
+        form.action = "{{ route('testimonials.store') }}"; // Set action for adding
+        form.method = 'POST'; // Set method to POST
+    });
+
+    // Handle edit button clicks
+    editLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const id = link.getAttribute('data-id');
+            const domain = link.getAttribute('data-domain');
+            const text = link.getAttribute('data-text');
+            const picture = link.getAttribute('data-picture');
+            const occupation = link.getAttribute('data-occupation');
+            const facebook = link.getAttribute('data-facebook');
+            const instagram = link.getAttribute('data-instagram');
+
+            // Set modal action for editing
+            form.action = "{{ url('/admin/testimonials') }}/" + id; // Set action for PUT
+            form.method = 'POST'; // Set method to POST
+
+            // Populate form fields
+            document.querySelector('#domain_web').value = domain;
+            document.querySelector('#testimonial_text').value = text;
+            document.querySelector('#occupation').value = occupation;
+            document.querySelector('#facebook').value = facebook;
+            document.querySelector('#instagram').value = instagram;
+            document.querySelector('#picture-preview').src = picture ? `/storage/testimonial_pictures/${picture}` : '';
+            document.querySelector('#picture-name').textContent = picture ? picture.split('/').pop() : 'Choose a file…';
+
+            // Ensure PUT method hidden input is there
+            let methodField = form.querySelector('input[name="_method"]');
+            if (!methodField) {
+                methodField = document.createElement('input');
+                methodField.type = 'hidden';
+                methodField.name = '_method';
+                methodField.value = 'PUT';
+                form.appendChild(methodField);
+            }
+
+            // Open modal
+            openModal(true);
+        });
+    });
+
+    // Function to reset the form
+    function resetForm() {
+        form.reset(); // Clear all fields
+        document.querySelector('#picture-preview').src = ''; // Clear picture preview
+        document.querySelector('#picture-name').textContent = 'Choose a file…'; // Reset file name display
+
+        // Remove hidden input for PUT method if it exists
+        const methodField = form.querySelector('input[name="_method"]');
+        if (methodField) {
+            methodField.remove();
+        }
+    }
 </script>
 
 <script>
@@ -237,7 +238,7 @@
                 // Automatically hide notification after 5 seconds
                 setTimeout(() => {
                     errorNotification.style.display = 'none';
-                }, 5000);
+                }, 7000);
             }
         }
     });
