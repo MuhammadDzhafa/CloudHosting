@@ -20,13 +20,26 @@ class HostingGroupController extends Controller
 
     public function store(Request $request)
     {
+        // Count how many hosting groups already exist
+        $existingGroupCount = HostingGroup::count();
+
+        // Check if there are already 3 groups, and prevent creating a new one if true
+        if ($existingGroupCount >= 3) {
+            return redirect()->back()->with('error', 'You can only create a maximum of 3 hosting groups.');
+        }
+
+        // Validate the group name input
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        HostingGroup::create($request->all()); // Simpan data baru
+        // Create the new hosting group
+        HostingGroup::create($request->all());
+
+        // Redirect with success message
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group created successfully.');
     }
+
 
     public function edit($id)
     {

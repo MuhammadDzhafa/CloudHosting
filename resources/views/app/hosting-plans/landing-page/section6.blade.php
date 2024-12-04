@@ -4,31 +4,33 @@
     </h2>
     <div class="container-project z-10">
         <div class="tabs-wrapper  is-triple-slider">
-            <div class="tabs-inner">
-                <div class="tabs" style="max-width: unset; background:unset; border:1px solid #DEDEDE;">
-                    <ul>
-                        <li data-tab="custom-tab" class="is-active"><a><span>Custom</span></a></li>
-                        @foreach($hostingGroups as $group)
-                        @if(
-                        $hostingPlans->where('hosting_group_id', $group->hosting_group_id)
-                        ->where('product_type', 'Cloud Hosting')
-                        ->where('package_type', 'Regular') // Tambahkan kondisi untuk tipe paket
-                        ->isNotEmpty()
-                        )
-                        <li data-tab="{{ strtolower(str_replace(' ', '-', $group->name)) }}-tab">
-                            <a><span>{{ $group->name }}</span></a>
-                        </li>
-                        @endif
-                        @endforeach
-                        <!-- @foreach($hostingGroups as $group)
-                            <li data-tab="{{strtolower(str_replace(' ', '-', $group->name))}}-tab">
-                                <a><span>{{$group->name}}</span></a>
-                            </li>
-                        @endforeach -->
-                        <li class="tab-naver" style="background:#4A6DCB;"></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="tabs-inner">
+    <div class="tabs" style="max-width: unset; background:unset; border:1px solid #DEDEDE;">
+        <ul>
+            <li data-tab="custom-tab" class="is-active"><a><span>Custom</span></a></li>
+            
+            @php
+                $validGroups = $hostingGroups
+                    ->filter(function ($group) use ($hostingPlans) {
+                        return $hostingPlans
+                            ->where('hosting_group_id', $group->hosting_group_id)
+                            ->where('product_type', 'Cloud Hosting')
+                            ->where('package_type', 'Regular')
+                            ->count() > 0;
+                    })
+                    ->slice(0, 3);
+            @endphp
+
+            @foreach($validGroups as $group)
+                <li data-tab="{{ strtolower(str_replace(' ', '-', $group->name)) }}-tab">
+                    <a><span>{{ $group->name }}</span></a>
+                </li>
+            @endforeach
+            
+            <li class="tab-naver" style="background:#4A6DCB;"></li>
+        </ul>
+    </div>
+</div>
             <div id="custom-tab" class="tab-content is-active">
                 <h4 class="custom-title text-center md:text-left mt-0 md:mt-5">
                     Fulfill your needs with our

@@ -28,18 +28,27 @@ class HostingPlanController extends Controller
 
     public function store(Request $request)
     {
+        // Validate input
         $request->validate([
-            'name' => 'required|string',
-            'hosting_group_id' => 'required|exists:hosting_groups,hosting_group_id', // Correct column name
+            'name' => 'required|string|max:255',
+            'hosting_group_id' => 'required|exists:hosting_groups,hosting_group_id', // Validate hosting group
             'product_type' => 'required|string',
             'package_type' => 'required|string',
             'description' => 'required|string',
         ]);
 
+        // Ensure there is at least one "Custom" package type among all groups
+        $existingGroups = HostingGroup::all();
+        $customGroupCount = $existingGroups->where('package_type', 'Custom')->count();
+
+        if ($customGroupCount == 0 && $request->package_type !== 'Custom') {
+            return redirect()->back()->with('error', 'You must select at least one "Custom" package type in the groups.');
+        }
+
         // Create the hosting plan and store it in the database
         $hostingPlan = HostingPlan::create([
             'name' => $request->name,
-            'hosting_group_id' => $request->hosting_group_id, // Correct field name
+            'hosting_group_id' => $request->hosting_group_id,
             'product_type' => $request->product_type,
             'package_type' => $request->package_type,
             'description' => $request->description,
@@ -89,6 +98,7 @@ class HostingPlanController extends Controller
         // Redirect to the edit page of the newly created hosting plan
         return redirect()->route('hosting-plans.edit', $hostingPlan->hosting_plans_id)->with('success', 'Hosting plan created successfully.');
     }
+
 
 
 

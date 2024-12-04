@@ -224,6 +224,23 @@
                         </div>
                     </div>
                     <div id="validation-message" class="mb-3"></div>
+                    <!-- Success Message -->
+                    @if(session('success'))
+                    <div class="message is-success">
+                        <div class="message-body">
+                            {{ session('success') }}
+                        </div>
+                    </div>
+                    @endif
+
+                    <!-- Error Message -->
+                    @if(session('error'))
+                    <div class="message is-danger">
+                        <div class="message-body">
+                            {{ session('error') }}
+                        </div>
+                    </div>
+                    @endif
 
                     {{-- <--Modals--> --}}
                     <div id="new-group-modal" class="modal h-modal">
@@ -333,35 +350,7 @@
                                                 </a>
                                             </div>
                                         </td>
-
                                     </tr>
-
-                                    <!-- Tampilkan hosting plans yang berelasi dengan grup -->
-                                    {{-- @foreach ($group->hostingPlans as $hostingPlan)
-                                            <!-- Relasi hosting plans di dalam group -->
-                                            <tr class="is-striped-row">
-                                                <td>{{ $hostingPlan->name }}</td>
-                                    <td>{{ $hostingPlan->type }}</td>
-                                    <td>{{ $hostingPlan->description }}</td>
-                                    <td>{{ $regularMainSpecs->storage }}</td>
-                                    <td>{{ $regularMainSpecs->CPU }}</td>
-                                    <td>{{ $regularMainSpecs->RAM }}</td>
-                                    <td>
-                                        <div class="d-flex justify-end">
-                                            <!-- <a href=""><img src="assets/img/product/open.svg" alt=""
-                                                                                class="mr-3"></a> -->
-                                            <a
-                                                href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
-                                                <img src="assets/img/product/edit.svg" alt="" class="mr-3">
-                                            </a>
-                                            <a href="#" class="h-modal-trigger"
-                                                onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
-                                                <img src="assets/img/product/trash.svg" alt="">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    </tr>
-                                    @endforeach --}}
 
                                     @foreach ($group->hostingPlans as $hostingPlan) <!-- Relasi hosting plans di dalam group -->
                                     <tr class="is-striped-row">
@@ -408,23 +397,34 @@
 
         <script>
             function openDeleteModal(id, name, type) {
-                // Set the name in the modal
-                document.getElementById('modal-hosting-plan-name').textContent = name;
+                // Ensure the modal elements exist before trying to modify them
+                const modalNameElement = document.getElementById('modal-hosting-plan-name');
+                const modalMessageElement = document.getElementById('modal-message');
+                const form = document.getElementById('delete-form'); // Ensure you have a delete form with this ID
 
-                // Set the form action based on the type
-                const form = document.getElementById('delete-form');
-                if (type === 'group') {
-                    form.action = `{{ route('hosting-groups.destroy', '') }}/${id}`; // For group deletion
-                    document.getElementById('modal-message').innerHTML = `Are you sure you want to delete the group <strong>${name}</strong> and all related hosting plans?`;
+                if (modalNameElement && modalMessageElement && form) {
+                    // Set the name in the modal
+                    modalNameElement.textContent = name;
+
+                    // Set the form action based on the type
+                    if (type === 'group') {
+                        form.action = `{{ route('hosting-groups.destroy', '') }}/${id}`; // For group deletion
+                        modalMessageElement.innerHTML = `Are you sure you want to delete the group <strong>${name}</strong> and all related hosting plans?`;
+                    } else {
+                        form.action = `{{ route('hosting-plans.destroy', '') }}/${id}`; // For hosting plan deletion
+                        modalMessageElement.innerHTML = `Are you sure you want to delete <strong>${name}</strong>?`;
+                    }
+
+                    // Open the modal
+                    const modal = document.getElementById('confirm-delete-modal');
+                    if (modal) {
+                        modal.classList.add('is-active');
+                    }
                 } else {
-                    form.action = `{{ route('hosting-plans.destroy', '') }}/${id}`; // For hosting plan deletion
-                    document.getElementById('modal-message').innerHTML = `Are you sure you want to delete <strong>${name}</strong>?`;
+                    console.error('Error: Modal elements not found');
                 }
-
-                // Open the modal
-                const modal = document.getElementById('confirm-delete-modal');
-                modal.classList.add('is-active');
             }
+
             document.addEventListener('DOMContentLoaded', function() {
                 const searchInput = document.getElementById('searchInput');
                 const table = document.getElementById('users-datatable');
@@ -557,29 +557,28 @@
         const allowedPattern = /^[a-zA-Z0-9 ()&-]+$/;
 
         if (!allowedPattern.test(groupName)) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent form submission
 
+            // Check if notification container exists, create if not
             let notificationContainer = document.getElementById('modal-notification');
-
             if (!notificationContainer) {
                 notificationContainer = document.createElement('div');
                 notificationContainer.id = 'modal-notification';
                 notificationContainer.classList.add('notification-container');
-
                 const modal = document.getElementById('new-group-modal');
                 modal.insertBefore(notificationContainer, modal.firstChild);
             }
 
+            // Clear previous notifications
             notificationContainer.innerHTML = '';
 
+            // Create the new notification
             const notification = document.createElement('div');
             notification.classList.add('message', 'is-danger', 'responsive-notification');
 
             const deleteButton = document.createElement('a');
             deleteButton.classList.add('delete');
-            deleteButton.addEventListener('click', () => {
-                fadeOutNotification(notification);
-            });
+            deleteButton.addEventListener('click', () => fadeOutNotification(notification));
 
             const messageBody = document.createElement('div');
             messageBody.classList.add('message-body');
@@ -587,27 +586,27 @@
 
             notification.appendChild(deleteButton);
             notification.appendChild(messageBody);
-
             notificationContainer.appendChild(notification);
 
-            // Fade out setelah 2 detik
+            // Focus on the input field
+            groupNameInput.focus();
+
+            // Automatically fade out the notification after 2 seconds
             setTimeout(() => {
                 fadeOutNotification(notification);
             }, 2000);
-
-            groupNameInput.focus();
         }
     });
 
-    // Fungsi fade out dengan animasi
+    // Function for smooth fade-out animation
     function fadeOutNotification(element) {
         element.classList.add('fade-out');
         setTimeout(() => {
-            element.remove();
-        }, 500); // Sesuaikan dengan durasi transisi CSS
+            element.remove(); // Remove the notification after fading out
+        }, 500); // Match with the duration of the fade-out transition
     }
 
-    // CSS
+    // CSS for notification and fade-out effect
     const style = document.createElement('style');
     style.textContent = `
 .notification-container {
@@ -622,15 +621,15 @@
 }
 
 .responsive-notification {
-    width: 50%; /* Default lebar untuk layar besar */
-    max-width: 600px; /* Batasi lebar maksimum */
+    width: 50%;
+    max-width: 600px;
+    margin-bottom: 10px; /* Space between notifications */
 }
 
-/* Responsive untuk layar mobile */
 @media screen and (max-width: 768px) {
     .responsive-notification {
-        width: 100%; /* Lebar penuh di layar mobile */
-        margin: 0 10px; /* Sedikit margin di sisi kiri dan kanan */
+        width: 100%;
+        margin: 0 10px;
     }
 }
 
@@ -642,9 +641,9 @@
     opacity: 0;
 }
 
-/* Tambahan styling opsional untuk notifikasi */
+/* Additional styling for message body */
 .responsive-notification .message-body {
-    word-wrap: break-word; /* Memastikan teks tidak keluar dari kontainer */
+    word-wrap: break-word;
 }
 `;
     document.head.appendChild(style);
