@@ -11,6 +11,10 @@
             </header>
             <div class="modal-card-body">
                 <div class="inner-content">
+                    <div id="error-notification" class="notification is-danger is-light" style="display: none;">
+                        <button class="delete"></button>
+                        Ukuran file tidak boleh lebih dari 2MB.
+                    </div>
                     <form id="testimonial-form" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="field">
@@ -204,14 +208,6 @@
             });
         });
 
-        // Modal close handling
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal || event.target.classList.contains('h-modal-close')) {
-                resetForm(); // Reset form when modal is closed
-                modal.classList.remove('is-active'); // Close modal
-            }
-        });
-
         // Function to reset the form
         function resetForm() {
             form.reset(); // Clear all fields
@@ -222,6 +218,26 @@
             const methodField = form.querySelector('input[name="_method"]');
             if (methodField) {
                 methodField.remove();
+            }
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('testimonial-form').addEventListener('submit', function(e) {
+        const fileInput = document.getElementById('picture');
+        const errorNotification = document.getElementById('error-notification');
+
+        if (fileInput.files.length > 0) {
+            const fileSize = fileInput.files[0].size / 1024 / 1024; // Convert bytes to MB
+            if (fileSize > 2) {
+                e.preventDefault(); // Stop form submission
+                errorNotification.style.display = 'block'; // Show error notification
+
+                // Automatically hide notification after 5 seconds
+                setTimeout(() => {
+                    errorNotification.style.display = 'none';
+                }, 5000);
             }
         }
     });

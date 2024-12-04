@@ -30,11 +30,11 @@ class TestimonialController extends Controller
         $request->validate([
             'domain_web' => 'required|string|max:255',
             'testimonial_text' => 'required|string',
-            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480',
+            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Ubah max ke 2048 (2MB)
         ], [
             'picture.image' => 'File yang diunggah harus berupa gambar.',
             'picture.mimes' => 'Gambar harus memiliki format jpg, jpeg, atau png.',
-            'picture.max' => 'Ukuran gambar maksimal 20MB.', // Sesuaikan pesan
+            'picture.max' => 'Ukuran gambar maksimal 2MB.', // Sesuaikan pesan
         ]);
 
         // Tambahkan pengecekan ukuran file secara manual
@@ -93,7 +93,7 @@ class TestimonialController extends Controller
         $request->validate([
             'domain_web' => 'required|string|max:255',
             'testimonial_text' => 'required|string',
-            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:20480',
+            'picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Ubah max ke 2048 (2MB)
             'occupation' => 'nullable|string|max:255',
             'facebook' => 'nullable|string|max:255',
             'instagram' => 'nullable|string|max:255',
