@@ -254,7 +254,7 @@
 
         <!-- Additional Features -->
         <script src="{{ asset('assets/js/touch.js') }}" async></script>
-        <script src="{{ asset('assets/js/syntax.js') }}" async></script>
+        <script src="{{ asset('assets/js/syntax.js') }}" async></script>    
     </div>
 </body>
 

@@ -29,14 +29,14 @@
                             <label class="label" for="picture">Picture</label>
                             <div class="control">
                                 <div class="file has-name is-fullwidth">
-                                    <label class="file-label" for="picture">
+                                    <label class="file-label">
                                         <input class="file-input" type="file" id="picture" name="picture">
                                         <span class="file-cta">
                                             <span class="file-icon">
                                                 <i class="lnil lnil-lg lnil-cloud-upload"></i>
                                             </span>
-                                            <span class="file-label" id="picture" name="picture">
-                                                Chosee a file..
+                                            <span class="file-label">
+                                                Choose a file...
                                             </span>
                                         </span>
                                         <span class="file-name light-text" id="picture-name"></span>
@@ -44,7 +44,11 @@
                                 </div>
                                 <img id="picture-preview" src="" style="max-width: 100px; margin-top: 10px;">
                             </div>
+                            @error('picture')
+                            <p class="help is-danger">{{ $message }}</p>
+                            @enderror
                         </div>
+
                         <div class="field">
                             <label class="label" for="occupation">Occupation</label>
                             <div class="control">
@@ -107,19 +111,31 @@
         const picturePreview = document.querySelector('#picture-preview');
 
         fileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0]; // Ambil file yang dipilih
+            const file = event.target.files[0];
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+            const maxSize = 8 * 1024 * 1024; // 8 MB
+
             if (file) {
-                fileNameDisplay.textContent = file.name; // Ubah teks menjadi nama file
+                if (!validTypes.includes(file.type)) {
+                    alert('File harus berupa gambar dengan format jpg, jpeg, atau png.');
+                    fileInput.value = ''; // Reset input file
+                    return;
+                }
+                if (file.size > maxSize) {
+                    alert('Ukuran file maksimal 8MB.');
+                    fileInput.value = ''; // Reset input file
+                    return;
+                }
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    picturePreview.src = e.target.result; // Tampilkan preview gambar yang diupload
+                    picturePreview.src = e.target.result;
                 };
                 reader.readAsDataURL(file);
             } else {
-                fileNameDisplay.textContent = 'Choose a file...'; // Jika tidak ada file yang dipilih
-                picturePreview.src = ''; // Hapus preview gambar
+                picturePreview.src = '';
             }
         });
+
 
         // Fungsi untuk membuka modal dan mereset isinya
         function openModal(isEdit = false) {
