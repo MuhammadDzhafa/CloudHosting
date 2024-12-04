@@ -39,13 +39,12 @@ class ArticleController extends Controller
     // Menyimpan artikel baru ke database
     public function store(Request $request)
     {
-        //  dd($request->all());
         // Validasi input
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
             'author' => 'required|max:255',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar, max 20MB
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Validasi gambar, max 2MB
         ]);
 
         // Membuat artikel baru
@@ -62,6 +61,7 @@ class ArticleController extends Controller
         return redirect()->route('articles.index')->with('success', 'Article created successfully.');
     }
 
+
     // Menampilkan form untuk mengedit artikel
     public function edit($id)
     {
@@ -77,9 +77,8 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'author' => 'required|max:255',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:20480', // Validasi gambar, max 20MB
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Validasi gambar, max 2MB
         ]);
-
 
         // Mengupdate artikel
         $article = Article::findOrFail($id);
@@ -100,6 +99,7 @@ class ArticleController extends Controller
 
         return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
+
 
     // Menghapus artikel
     public function destroy($id)

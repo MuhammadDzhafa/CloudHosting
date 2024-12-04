@@ -82,6 +82,27 @@
                     </div>
 
                     <div class="page-content-inner">
+                        <!-- Flash messages for success -->
+                        @if (session('success'))
+                        <div id="notification-success" class="notification is-success is-light">
+                            <button class="delete"></button>
+                            {{ session('success') }}
+                        </div>
+                        @endif
+
+                        <!-- Flash messages for validation errors -->
+                        @if ($errors->any())
+                        <div id="notification-error" class="notification is-danger is-light">
+                            <button class="delete"></button>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        <!-- Form content -->
                         <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-layout" style="max-width: none;">
@@ -105,28 +126,25 @@
                                         </div>
                                     </div>
                                     <div class="form-body">
+                                        <!-- Fields -->
                                         <div class="field">
                                             <label class="label" for="title">Title</label>
                                             <div class="control">
-                                                <input type="text" class="input" id="title" name="title">
+                                                <input type="text" class="input" id="title" name="title" value="{{ old('title') }}">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <label class="label" for="author">Author</label>
                                             <div class="control">
-                                                <input type="text" class="input" id="author" name="author">
+                                                <input type="text" class="input" id="author" name="author" value="{{ old('author') }}">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <label class="label" for="content">Content</label>
                                             <div class="control w-full">
-                                                <!-- SunEditor or Textarea to write content -->
-                                                <!-- <textarea name="content" id="sun-editor" placeholder="Write your text here..."></textarea> -->
-                                                <!-- SunEditor -->
-                                                <textarea name="content" id="content" placeholder="Write your text here.."></textarea>
+                                                <textarea name="content" id="content" placeholder="Write your text here..">{{ old('content') }}</textarea>
                                             </div>
                                         </div>
-
                                         <div class="field">
                                             <label class="label" for="image">Picture</label>
                                             <div class="control">
@@ -137,9 +155,7 @@
                                                             <span class="file-icon">
                                                                 <i class="lnil lnil-lg lnil-cloud-upload"></i>
                                                             </span>
-                                                            <span class="file-label">
-                                                                Choose a file...
-                                                            </span>
+                                                            <span class="file-label">Choose a file...</span>
                                                         </span>
                                                         <span class="file-name light-text" id="image-name"></span>
                                                     </label>
@@ -149,8 +165,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -234,6 +252,28 @@
             $('#submit').on('click', function() {
                 var content = $('#summernote').summernote('code');
                 $('#sun-editor').val(content);
+            });
+        </script>
+
+        <script>
+            // Menghilangkan notifikasi otomatis setelah 2 detik
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(function() {
+                    const notifications = document.querySelectorAll('.notification');
+                    notifications.forEach(notification => {
+                        notification.classList.add('is-hidden'); // Menyembunyikan dengan CSS
+                    });
+                }, 5000);
+            });
+
+            // Menghapus notifikasi secara manual ketika tombol delete ditekan
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('delete')) {
+                    const notification = event.target.closest('.notification');
+                    if (notification) {
+                        notification.remove();
+                    }
+                }
             });
         </script>
 

@@ -196,77 +196,26 @@
 </section>
 
 <script>
-    // Ambil nilai dari database dengan fallback values yang aman
     window.specs = {
-        // RAM specs
-        min_RAM: {
-            {
-                $specs - > min_RAM ?? 4
-            }
-        },
-        max_RAM: {
-            {
-                $specs - > max_RAM ?? 32
-            }
-        },
-        // Set multiplier dari database dengan fallback ke 2
-        multiplier_RAM: {
-            {
-                $specs - > multiplier_RAM ?? 2
-            }
-        },
-        price_RAM: {
-            {
-                $specs - > price_RAM ?? 0
-            }
-        },
+    // RAM specs
+    min_RAM: {{ $specs->min_RAM ?? 4 }},
+    max_RAM: {{ $specs->max_RAM ?? 32 }},
+    multiplier_RAM: {{ $specs->multiplier_RAM ?? 2 }},
+    price_RAM: {{ $specs->price_RAM ?? 0 }},
 
-        // CPU specs
-        min_CPU: {
-            {
-                $specs - > min_CPU ?? 1
-            }
-        },
-        max_CPU: {
-            {
-                $specs - > max_CPU ?? 8
-            }
-        },
-        // Set multiplier dari database dengan fallback ke 2
-        multiplier_CPU: {
-            {
-                $specs - > multiplier_CPU ?? 2
-            }
-        },
-        price_CPU: {
-            {
-                $specs - > price_CPU ?? 0
-            }
-        },
+    // CPU specs
+    min_CPU: {{ $specs->min_CPU ?? 1 }},
+    max_CPU: {{ $specs->max_CPU ?? 8 }},
+    multiplier_CPU: {{ $specs->multiplier_CPU ?? 2 }},
+    price_CPU: {{ $specs->price_CPU ?? 0 }},
 
-        // Storage specs
-        min_storage: {
-            {
-                $specs - > min_storage ?? 10
-            }
-        },
-        max_storage: {
-            {
-                $specs - > max_storage ?? 100
-            }
-        },
-        // Set step dari database dengan fallback ke 10
-        step_storage: {
-            {
-                $specs - > step_storage ?? 10
-            }
-        },
-        price_storage: {
-            {
-                $specs - > price_storage ?? 0
-            }
-        },
-    };
+    // Storage specs
+    min_storage: {{ $specs->min_storage ?? 10 }},
+    max_storage: {{ $specs->max_storage ?? 100 }},
+    step_storage: {{ $specs->step_storage ?? 10 }},
+    price_storage: {{ $specs->price_storage ?? 0 }},
+};
+
 
 
     // Debug: Log semua specs di awal
