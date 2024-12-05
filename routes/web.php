@@ -133,6 +133,7 @@ Route::get('/hosting-groups/{id}/edit', [HostingGroupController::class, 'edit'])
 Route::put('/hosting-groups/{id}', [HostingGroupController::class, 'update'])->name('hosting-groups.update');
 Route::delete('/hosting-groups/{id}', [HostingGroupController::class, 'destroy'])->name('hosting-groups.destroy');
 Route::post('/hosting-groups/{id}/restore', [HostingGroupController::class, 'restore'])->name('hosting-groups.restore');
+Route::get('/check-hosting-group-count', [HostingGroupController::class, 'checkHostingGroupCount']);
 
 /* Article */
 Route::get('/admin/articles', [ArticleController::class, 'index'])->name('articles.index');

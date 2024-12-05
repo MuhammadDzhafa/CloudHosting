@@ -207,7 +207,7 @@
                         </div>
 
                         <div class="buttons">
-                            <button class="button h-button is-primary is-elevated h-modal-trigger"
+                            <button class="button h-button is-primary is-elevated h-modal-trigger group-trigger"
                                 style="border-radius: 4px;" data-modal="new-group-button">
                                 <span class="icon" style="min-width: unset">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
@@ -226,16 +226,15 @@
                     <div id="validation-message" class="mb-3"></div>
                     <!-- Success Message -->
                     @if(session('success'))
-                    <div class="message is-success">
+                    <div class="message is-success" id="success-message">
                         <div class="message-body">
                             {{ session('success') }}
                         </div>
                     </div>
                     @endif
 
-                    <!-- Error Message -->
                     @if(session('error'))
-                    <div class="message is-danger">
+                    <div class="message is-danger" id="error-message">
                         <div class="message-body">
                             {{ session('error') }}
                         </div>
@@ -259,6 +258,7 @@
                                     <div class="modal-card-body">
                                         <div class="inner-content">
                                             <div class="field">
+                                                <div class="mb-3" id="notification-area"></div>
                                                 <label class="label" style="font-weight:400;">Enter Group
                                                     Name</label>
                                                 <div class="control">
@@ -471,22 +471,63 @@
             });
         </script>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const newGroupForm = document.querySelector('#new-group-form');
+                const notificationArea = document.querySelector('#notification-area');
+
+                const validGroupNameRegex = /^[a-zA-Z0-9()&-\s]+$/;
+
+                newGroupForm.addEventListener('submit', function(e) {
+                    const groupNameInput = newGroupForm.querySelector('input[name="name"]');
+                    const groupName = groupNameInput.value;
+
+                    // Clear previous notifications
+                    notificationArea.innerHTML = '';
+
+                    if (!validGroupNameRegex.test(groupName)) {
+                        e.preventDefault(); // Prevent form submission
+
+                        // Add styled notification
+                        notificationArea.innerHTML = `
+                    <div class="message is-danger">
+                        <a class="delete"></a>
+                        <div class="message-body">
+                            Use only letters, numbers, spaces, (), &, and -.
+                        </div>
+                    </div>
+                `;
+
+                        // Add delete functionality to close the notification
+                        const deleteButton = notificationArea.querySelector('.delete');
+                        deleteButton.addEventListener('click', () => {
+                            notificationArea.innerHTML = '';
+                        });
+
+                        // Automatically remove the notification after 5 seconds
+                        setTimeout(() => {
+                            notificationArea.innerHTML = '';
+                        }, 5000);
+                    }
+                });
+            });
+        </script>
+
+
 
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const addNewGroupButton = document.querySelector('.h-modal-trigger[data-modal="new-group-button"]'); // Tombol "New Group"
+            document.addEventListener('DOMContentLoaded', function() {
                 const newGroupModal = document.querySelector('#new-group-modal');
                 const newGroupForm = document.querySelector('#new-group-form');
-                const modalCloseButton = document.querySelector('.h-modal-close'); // Tombol close modal
-                const modalTitle = document.querySelector('#modal-title'); // Judul modal
+                const modalTitle = document.querySelector('#modal-title');
+                const validationMessageContainer = document.getElementById('validation-message');
 
-                // Fungsi untuk membuka modal dan mereset isinya
+                // Function to open the modal
                 function openModal(isEdit = false, groupId = null, groupName = '') {
                     if (isEdit) {
-                        modalTitle.textContent = 'Edit Group'; // Judul untuk edit
-                        newGroupForm.action = `/hosting-groups/${groupId}`; // Set action untuk update
-                        newGroupForm.method = 'POST'; // Set method untuk POST
-                        // Tambahkan input hidden untuk metode PUT
+                        modalTitle.textContent = 'Edit Group';
+                        newGroupForm.action = `/hosting-groups/${groupId}`;
+                        newGroupForm.method = 'POST';
                         let methodField = newGroupForm.querySelector('input[name="_method"]');
                         if (!methodField) {
                             methodField = document.createElement('input');
@@ -495,44 +536,106 @@
                             methodField.value = 'PUT';
                             newGroupForm.appendChild(methodField);
                         }
-                        newGroupForm.name.value = groupName; // Isi nama grup untuk edit
+                        newGroupForm.name.value = groupName;
                     } else {
-                        resetForm(); // Reset form untuk menambah grup baru
-                        modalTitle.textContent = 'Create a New Group'; // Judul untuk tambah
-                        // methodField.innerHTML = ''; // Remove PUT metho
-                        newGroupForm.action = "{{ route('hosting-groups.store') }}"; // Set action untuk store
-                        delete newGroupForm.querySelector('input[name="_method"]'); // Hapus input hidden jika ada
+                        resetForm();
+                        modalTitle.textContent = 'Create a New Group';
+                        newGroupForm.action = "{{ route('hosting-groups.store') }}";
+                        const methodField = newGroupForm.querySelector('input[name="_method"]');
+                        if (methodField) {
+                            methodField.remove();
+                        }
                     }
-                    newGroupModal.classList.add('is-active'); // Buka modal
+                    newGroupModal.classList.add('is-active');
                 }
 
-                // Handle tombol "Add New Group"
-                addNewGroupButton.addEventListener('click', () => {
-                    openModal(); // Buka modal untuk menambah grup baru
-                });
+                // Function to reset the form
+                function resetForm() {
+                    newGroupForm.reset();
+                    const methodField = newGroupForm.querySelector('input[name="_method"]');
+                    if (methodField) {
+                        methodField.remove();
+                    }
+                }
 
-                // Handle edit button clicks
-                document.querySelectorAll('.edit-link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        const groupId = link.getAttribute('data-id');
-                        const groupName = link.getAttribute('data-name');
-                        openModal(true, groupId, groupName); // Buka modal untuk mengedit grup
+                // Attach event listeners to the "New Group" button
+                const modalTriggers = document.querySelectorAll('.group-trigger');
+                modalTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', function(e) {
+                        e.preventDefault();
+
+                        // Fetch the hosting group count
+                        fetch('/check-hosting-group-count')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.count >= 2) {
+                                    // Show validation error
+                                    if (validationMessageContainer) {
+                                        validationMessageContainer.innerHTML = `
+                                    <div class="message is-danger">
+                                        <div class="message-body">
+                                            You can only create a maximum of 2 hosting groups.
+                                        </div>
+                                    </div>
+                                `;
+
+                                        // Remove the message after 5 seconds
+                                        setTimeout(() => {
+                                            validationMessageContainer.innerHTML = '';
+                                        }, 5000);
+                                    }
+
+                                    // Ensure the modal does not open
+                                    newGroupModal.classList.remove('is-active');
+                                } else {
+                                    // Open the modal
+                                    openModal();
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
                     });
                 });
 
-                // Modal close handling
-                modalCloseButton.addEventListener('click', () => {
-                    resetForm(); // Reset form saat modal ditutup
-                    newGroupModal.classList.remove('is-active'); // Tutup modal
+                // Attach event listeners to edit buttons
+                const editLinks = document.querySelectorAll('.edit-link');
+                editLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        const groupId = this.getAttribute('data-id');
+                        const groupName = this.getAttribute('data-name');
+                        openModal(true, groupId, groupName);
+                    });
                 });
 
-                // Reset form function
-                function resetForm() {
-                    newGroupForm.reset(); // Bersihkan semua field di form
-                    const methodField = newGroupForm.querySelector('input[name="_method"]');
-                    if (methodField) {
-                        methodField.remove(); // Hapus hidden input untuk PUT jika ada
-                    }
+                // Close the modal
+                const modalCloseButton = document.querySelector('.h-modal-close');
+                if (modalCloseButton) {
+                    modalCloseButton.addEventListener('click', function() {
+                        resetForm();
+                        newGroupModal.classList.remove('is-active');
+                    });
+                }
+            });
+        </script>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Automatically hide success message after 5 seconds
+                const successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000); // 5000ms = 5 seconds
+                }
+
+                // Automatically hide error message after 5 seconds
+                const errorMessage = document.getElementById('error-message');
+                if (errorMessage) {
+                    setTimeout(() => {
+                        errorMessage.remove();
+                    }, 5000); // 5000ms = 5 seconds
                 }
             });
         </script>
@@ -549,104 +652,5 @@
     </div>
 </body>
 
-<script>
-    document.getElementById('new-group-form').addEventListener('submit', function(e) {
-        const groupNameInput = document.querySelector('input[name="name"]');
-        const groupName = groupNameInput.value;
-
-        const allowedPattern = /^[a-zA-Z0-9 ()&-]+$/;
-
-        if (!allowedPattern.test(groupName)) {
-            e.preventDefault(); // Prevent form submission
-
-            // Check if notification container exists, create if not
-            let notificationContainer = document.getElementById('modal-notification');
-            if (!notificationContainer) {
-                notificationContainer = document.createElement('div');
-                notificationContainer.id = 'modal-notification';
-                notificationContainer.classList.add('notification-container');
-                const modal = document.getElementById('new-group-modal');
-                modal.insertBefore(notificationContainer, modal.firstChild);
-            }
-
-            // Clear previous notifications
-            notificationContainer.innerHTML = '';
-
-            // Create the new notification
-            const notification = document.createElement('div');
-            notification.classList.add('message', 'is-danger', 'responsive-notification');
-
-            const deleteButton = document.createElement('a');
-            deleteButton.classList.add('delete');
-            deleteButton.addEventListener('click', () => fadeOutNotification(notification));
-
-            const messageBody = document.createElement('div');
-            messageBody.classList.add('message-body');
-            messageBody.textContent = 'Group name can only contain letters, numbers, spaces, (), &, and -';
-
-            notification.appendChild(deleteButton);
-            notification.appendChild(messageBody);
-            notificationContainer.appendChild(notification);
-
-            // Focus on the input field
-            groupNameInput.focus();
-
-            // Automatically fade out the notification after 2 seconds
-            setTimeout(() => {
-                fadeOutNotification(notification);
-            }, 2000);
-        }
-    });
-
-    // Function for smooth fade-out animation
-    function fadeOutNotification(element) {
-        element.classList.add('fade-out');
-        setTimeout(() => {
-            element.remove(); // Remove the notification after fading out
-        }, 500); // Match with the duration of the fade-out transition
-    }
-
-    // CSS for notification and fade-out effect
-    const style = document.createElement('style');
-    style.textContent = `
-.notification-container {
-    position: fixed;
-    top: 20px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 1000;
-    padding: 0 10px;
-}
-
-.responsive-notification {
-    width: 50%;
-    max-width: 600px;
-    margin-bottom: 10px; /* Space between notifications */
-}
-
-@media screen and (max-width: 768px) {
-    .responsive-notification {
-        width: 100%;
-        margin: 0 10px;
-    }
-}
-
-.message {
-    transition: opacity 0.5s ease-out;
-}
-
-.message.fade-out {
-    opacity: 0;
-}
-
-/* Additional styling for message body */
-.responsive-notification .message-body {
-    word-wrap: break-word;
-}
-`;
-    document.head.appendChild(style);
-</script>
 
 </html>

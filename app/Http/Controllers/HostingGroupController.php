@@ -24,8 +24,9 @@ class HostingGroupController extends Controller
         $existingGroupCount = HostingGroup::count();
 
         // Check if there are already 3 groups, and prevent creating a new one if true
-        if ($existingGroupCount >= 3) {
-            return redirect()->back()->with('error', 'You can only create a maximum of 3 hosting groups.');
+        if ($existingGroupCount >= 2) {
+            // Ini adalah contoh pesan error
+            return redirect()->back()->with('error', 'You can only create a maximum of 2 hosting groups.');
         }
 
         // Validate the group name input
@@ -36,7 +37,7 @@ class HostingGroupController extends Controller
         // Create the new hosting group
         HostingGroup::create($request->all());
 
-        // Redirect with success message
+        // Ini adalah contoh pesan success
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Group created successfully.');
     }
 
@@ -65,5 +66,11 @@ class HostingGroupController extends Controller
         $hostingGroup->hostingPlans()->delete();
         $hostingGroup->delete(); // Hapus data
         return redirect()->route('hosting-plans.index')->with('success', 'Hosting Plan deleted successfully.');
+    }
+
+    public function checkHostingGroupCount()
+    {
+        $count = HostingGroup::count();
+        return response()->json(['count' => $count]);
     }
 }

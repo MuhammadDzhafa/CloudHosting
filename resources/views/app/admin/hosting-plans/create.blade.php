@@ -52,7 +52,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -75,7 +74,9 @@
                             <div class="dropdown-menu" id="group-dropdown-menu" role="menu">
                                 <div class="dropdown-content">
                                     @foreach ($hostingGroups as $group)
-                                    <a href="#" class="dropdown-item" data-value="{{ $group->hosting_group_id }}"
+                                    <a href="#" class="dropdown-item group-package-type"
+                                        data-value="{{ $group->hosting_group_id }}"
+                                        data-type="{{ $group->package_type }}"
                                         onclick="selectGroup(this)">{{ $group->name }}</a>
                                     @endforeach
                                 </div>
@@ -88,7 +89,6 @@
                         <input class="input" name="name" placeholder="E.g Basic Plan"
                             style="width: 100%; padding: 10px;">
                     </div>
-
                 </div>
             </div>
         </div>
@@ -113,12 +113,22 @@
                 </div>
             </div>
         </div>
+        <!-- Error Message -->
+        @if(session('error'))
+        <div class="message is-danger">
+            <div class="message-body">
+                {{ session('error') }}
+            </div>
+        </div>
+        @endif
     </div>
     <div class="modal-card-foot is-centered">
         <button type="button" class="button h-button h-modal-close">Cancel</button>
         <button type="submit" class="button h-button is-primary is-raised">Create</button>
     </div>
 </form>
+
+<script src="{{ asset('js/package-type-validation.js') }}"></script>
 
 <script>
     function selectGroup(element) {
