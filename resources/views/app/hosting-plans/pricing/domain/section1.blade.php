@@ -260,4 +260,44 @@
     document.addEventListener('DOMContentLoaded', function() {
         setupWhoisModal();
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil semua card domain
+        const domainCards = document.querySelectorAll('.domain-card');
+        const domainSearchInput = document.getElementById('domain-search');
+
+        // Fungsi untuk smooth scroll
+        function smoothScrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }
+        }
+
+        // Tambahkan event listener ke setiap card domain
+        domainCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Ambil nama domain dari atribut data-domain
+                const domainName = this.getAttribute('data-domain');
+
+                // Pastikan input pencarian ada
+                if (domainSearchInput) {
+                    // Set value input dengan nama domain
+                    domainSearchInput.value = domainName;
+
+                    // Focus ke input
+                    domainSearchInput.focus();
+
+                    // Scroll smooth ke input
+                    smoothScrollToElement('domain-search');
+                } else {
+                    console.error('Input pencarian domain tidak ditemukan');
+                }
+            });
+        });
+    });
 </script>

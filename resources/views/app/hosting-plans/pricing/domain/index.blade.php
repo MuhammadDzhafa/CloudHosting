@@ -41,6 +41,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 @extends ('layouts.template-landing-page.web.master')
@@ -565,9 +566,23 @@
         }
     });
 
-    // Panggil function filterDomains dengan default "View All" saat halaman pertama kali dimuat    
     document.addEventListener('DOMContentLoaded', function() {
         console.log('DOM fully loaded');
+
+        // Tambahkan CSS untuk smooth scroll global
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Fungsi untuk smooth scroll
+        function smoothScrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }
+        }
 
         // Panggil filterDomains('View All') saat DOM loaded
         if (typeof filterDomains === 'function') {
@@ -624,10 +639,9 @@
             if (searchInput) {
                 searchInput.value = tldName;
                 searchInput.focus();
-                searchInput.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
+
+                // Gunakan fungsi smooth scroll yang baru
+                smoothScrollToElement('domain-search');
             } else {
                 console.error('Input search tidak ditemukan');
             }
@@ -641,6 +655,16 @@
             button.addEventListener('click', function(event) {
                 event.preventDefault();
                 orderTLD(this);
+            });
+        });
+
+        // Tambahan: Smooth scroll untuk semua link internal
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                smoothScrollToElement(targetId);
             });
         });
     });
