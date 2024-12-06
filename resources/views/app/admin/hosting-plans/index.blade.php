@@ -37,7 +37,9 @@
     <!--Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -335,20 +337,17 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>
-                                            <div class="d-flex justify-end">
-                                                <a href="javascript:void(0);" class="edit-link"
-                                                    data-id="{{ $group->hosting_group_id }}"
-                                                    data-name="{{ $group->name }}">
-                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="" class="mr-3">
-                                                </a>
-
-                                                <a href="#"
-                                                    onclick="openDeleteModal({{ $group->hosting_group_id }}, '{{ $group->name }}', 'group')">
-                                                    <img src="{{ asset('assets/img/product/trash.svg') }}"
-                                                        alt="Delete Hosting Group">
-                                                </a>
-                                            </div>
+                                        <td class="text-left">
+                                            <a href="javascript:void(0);"
+                                                class="edit-link mr-4"
+                                                data-id="{{ $group->hosting_group_id }}"
+                                                data-name="{{ $group->name }}">
+                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="inline w-6 h-6">
+                                            </a>
+                                            <a href="#"
+                                                onclick="openDeleteModal({{ $group->hosting_group_id }}, '{{ $group->name }}', 'group')">
+                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete Hosting Group" class="inline w-6 h-6">
+                                            </a>
                                         </td>
                                     </tr>
 
@@ -359,16 +358,15 @@
                                         <td>{{ $hostingPlan->package_type }}</td>
                                         <td>{{ $hostingPlan->description }}</td>
 
-                                        <td>
-                                            <div class="d-flex justify-end">
-                                                <a href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}">
-                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="" class="mr-3">
-                                                </a>
-                                                <a href="#" class="h-modal-trigger"
-                                                    onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
-                                                    <img src="{{ asset('assets/img/product/trash.svg') }}" alt="">
-                                                </a>
-                                            </div>
+                                        <td class="text-left">
+                                            <a href="{{ route('hosting-plans.edit', $hostingPlan->hosting_plans_id) }}" class="mr-4">
+                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="inline w-6 h-6">
+                                            </a>
+                                            <a href="#"
+                                                class="h-modal-trigger"
+                                                onclick="event.preventDefault(); openDeleteModal('{{ $hostingPlan->hosting_plans_id }}', '{{ $hostingPlan->name }}')">
+                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete" class="inline w-6 h-6">
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach

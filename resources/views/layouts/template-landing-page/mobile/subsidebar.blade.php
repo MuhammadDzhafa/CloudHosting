@@ -41,13 +41,8 @@
             </li>
         </ul>
         <a href="/login" class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] active:bg-[#4A6DCB] border-1 border-[#395FC6] text-[#4A6DCB] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#fff] active:border-[#4A6DCB] py-3 mb-4"
-            style="font-family: unset; width: 84%; margin-top: -60px;">
+            style="font-family: unset; width: 84%;">
             <span>Login</span>
-        </a>
-
-        <a class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white"
-            style="width: 84%; margin-top: -30px;">
-            Contact Us
         </a>
     </div>
 </div>

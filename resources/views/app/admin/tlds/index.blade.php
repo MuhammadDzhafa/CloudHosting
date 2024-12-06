@@ -77,6 +77,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -163,20 +164,20 @@
                                         <td>{{ $tld->tld_name }}</td>
                                         <td>{{ $tld->tld_price }}</td>
                                         <td>{{ $tld->category }}</td>
-                                        <td>
+                                        <td class="text-left">
                                             <a href="{{ route('tlds.edit', $tld->tld_id) }}"
-                                                class="edit-link"
+                                                class="edit-link mr-4"
                                                 data-id="{{ $tld->tld_id }}"
                                                 data-name="{{ $tld->tld_name }}"
                                                 data-category="{{ $tld->category }}">
-                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="mr-6">
+                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="inline w-6 h-6">
                                             </a>
-                                            <a href="#" class="h-modal-trigger"
+                                            <a href="#"
+                                                class="h-modal-trigger"
                                                 onclick="event.preventDefault(); openDeleteModal('{{ $tld->tld_id }}', '{{ $tld->tld_name }}')">
-                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="">
+                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete" class="inline w-6 h-6">
                                             </a>
                                         </td>
-
                                     </tr>
                                     @endforeach
                                 </tbody>

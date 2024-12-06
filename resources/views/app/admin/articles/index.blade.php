@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -127,20 +128,23 @@
                                             No Image
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="text-left">
                                             <a href="{{ route('articles.edit', $article->article_id) }}"
-                                                class="edit-link"
+                                                class="edit-link mr-4"
                                                 data-id="{{ $article->article_id }}"
                                                 data-title="{{ $article->title }}"
                                                 data-content="{{ $article->content }}"
                                                 data-author="{{ $article->author }}"
                                                 data-likes="{{ $article->likes }}">
-                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="mr-6">
+                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="inline w-6 h-6">
                                             </a>
-                                            <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $article->article_id }}', '{{ $article->title }}')">
-                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete">
+                                            <a href="#"
+                                                class="h-modal-trigger"
+                                                onclick="event.preventDefault(); openDeleteModal('{{ $article->article_id }}', '{{ $article->title }}')">
+                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete" class="inline w-6 h-6">
                                             </a>
                                         </td>
+
 
                                     </tr>
                                     @endforeach

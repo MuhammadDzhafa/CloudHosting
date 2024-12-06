@@ -148,81 +148,83 @@
                 picturePreview.style.display = 'none';
             }
         });
-    });
 
-
-
-    // Fungsi untuk membuka modal dan mereset isinya
-    function openModal(isEdit = false) {
-        if (isEdit) {
-            document.querySelector('#modal-title').textContent = 'Edit Testimonial';
-        } else {
-            resetForm();
-            document.querySelector('#modal-title').textContent = 'Add Testimonial';
-        }
-        document.querySelector('#addandedit').classList.add('is-active');
-    }
-
-    // Handle add button click
-    addNewButton.addEventListener('click', () => {
-        resetForm(); // Reset the form for adding new testimonial
-        document.querySelector('#modal-title').textContent = 'Add Testimonial'; // Set modal title
-        form.action = "{{ route('testimonials.store') }}"; // Set action for adding
-        form.method = 'POST'; // Set method to POST
-    });
-
-    // Handle edit button clicks
-    editLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            const id = link.getAttribute('data-id');
-            const domain = link.getAttribute('data-domain');
-            const text = link.getAttribute('data-text');
-            const picture = link.getAttribute('data-picture');
-            const occupation = link.getAttribute('data-occupation');
-            const facebook = link.getAttribute('data-facebook');
-            const instagram = link.getAttribute('data-instagram');
-
-            // Set modal action for editing
-            form.action = "{{ url('/admin/testimonials') }}/" + id; // Set action for PUT
-            form.method = 'POST'; // Set method to POST
-
-            // Populate form fields
-            document.querySelector('#domain_web').value = domain;
-            document.querySelector('#testimonial_text').value = text;
-            document.querySelector('#occupation').value = occupation;
-            document.querySelector('#facebook').value = facebook;
-            document.querySelector('#instagram').value = instagram;
-            document.querySelector('#picture-preview').src = picture ? `/storage/testimonial_pictures/${picture}` : '';
-            document.querySelector('#picture-name').textContent = picture ? picture.split('/').pop() : 'Choose a file…';
-
-            // Ensure PUT method hidden input is there
-            let methodField = form.querySelector('input[name="_method"]');
-            if (!methodField) {
-                methodField = document.createElement('input');
-                methodField.type = 'hidden';
-                methodField.name = '_method';
-                methodField.value = 'PUT';
-                form.appendChild(methodField);
-            }
-
-            // Open modal
-            openModal(true);
+        // Handle add button click
+        const addNewButton = document.querySelector('.addData');
+        const formElement = document.querySelector('#yourForm');
+        addNewButton.addEventListener('click', () => {
+            resetForm(); // Reset the form for adding new testimonial
+            document.querySelector('#modal-title').textContent = 'Add Testimonial'; // Set modal title
+            formElement.action = "{{ route('testimonials.store') }}"; // Set action for adding
+            formElement.method = 'POST'; // Set method to POST
         });
-    });
 
-    // Function to reset the form
-    function resetForm() {
-        form.reset(); // Clear all fields
-        document.querySelector('#picture-preview').src = ''; // Clear picture preview
-        document.querySelector('#picture-name').textContent = 'Choose a file…'; // Reset file name display
+        // Select all edit links and add event listeners
+        const editLinks = document.querySelectorAll('.edit-link'); // Select all edit links
+        editLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const id = link.getAttribute('data-id');
+                const domain = link.getAttribute('data-domain');
+                const text = link.getAttribute('data-text');
+                const picture = link.getAttribute('data-picture');
+                const occupation = link.getAttribute('data-occupation');
+                const facebook = link.getAttribute('data-facebook');
+                const instagram = link.getAttribute('data-instagram');
 
-        // Remove hidden input for PUT method if it exists
-        const methodField = form.querySelector('input[name="_method"]');
-        if (methodField) {
-            methodField.remove();
+                // Set modal action for editing
+                form.action = "{{ url('/admin/testimonials') }}/" + id; // Set action for PUT
+                form.method = 'POST'; // Set method to POST
+
+                // Populate form fields
+                document.querySelector('#domain_web').value = domain;
+                document.querySelector('#testimonial_text').value = text;
+                document.querySelector('#occupation').value = occupation;
+                document.querySelector('#facebook').value = facebook;
+                document.querySelector('#instagram').value = instagram;
+                document.querySelector('#picture-preview').src = picture ? `/storage/testimonial_pictures/${picture}` : '';
+                document.querySelector('#picture-name').textContent = picture ? picture.split('/').pop() : 'Choose a file…';
+
+                // Ensure PUT method hidden input is there
+                let methodField = form.querySelector('input[name="_method"]');
+                if (!methodField) {
+                    methodField = document.createElement('input');
+                    methodField.type = 'hidden';
+                    methodField.name = '_method';
+                    methodField.value = 'PUT';
+                    form.appendChild(methodField);
+                }
+
+                // Open modal for editing
+                openModal(true);
+            });
+        });
+
+        // Function to reset the form
+        function resetForm() {
+            form.reset(); // Clear all fields
+            document.querySelector('#picture-preview').src = ''; // Clear picture preview
+            document.querySelector('#picture-name').textContent = 'Choose a file…'; // Reset file name display
+
+            // Remove hidden input for PUT method if it exists
+            const methodField = form.querySelector('input[name="_method"]');
+            if (methodField) {
+                methodField.remove();
+            }
         }
-    }
+
+        // Function to open modal for adding or editing
+        function openModal(isEdit = false) {
+            if (isEdit) {
+                document.querySelector('#modal-title').textContent = 'Edit Testimonial';
+            } else {
+                resetForm();
+                document.querySelector('#modal-title').textContent = 'Add Testimonial';
+            }
+            document.querySelector('#addandedit').classList.add('is-active');
+        }
+    });
 </script>
+
 
 <script>
     document.getElementById('testimonial-form').addEventListener('submit', function(e) {

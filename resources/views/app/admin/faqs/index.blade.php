@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -122,15 +123,22 @@
                                             <td>{{ $faq->question }}</td>
                                             <td style="max-width: 200px;">{{ $faq->answer }}</td>
                                             <td>{{ $faq->category }}</td>
-                                            <td>
-                                                <a href="javascript:void(0);" class="edit-link" data-id="{{ $faq->faq_id }}" data-question="{{ $faq->question }}" data-answer="{{ $faq->answer }}" data-category="{{ $faq->category }}">
-                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="mr-6">
+                                            <td class="text-left">
+                                                <a href="javascript:void(0);"
+                                                    class="edit-link mr-4"
+                                                    data-id="{{ $faq->faq_id }}"
+                                                    data-question="{{ $faq->question }}"
+                                                    data-answer="{{ $faq->answer }}"
+                                                    data-category="{{ $faq->category }}">
+                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="inline w-6 h-6">
                                                 </a>
-                                                <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $faq->faq_id }}', '{{ $faq->question }}')">
-                                                    <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete">
+                                                <a href="#"
+                                                    class="h-modal-trigger"
+                                                    onclick="event.preventDefault(); openDeleteModal('{{ $faq->faq_id }}', '{{ $faq->question }}')">
+                                                    <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete" class="inline w-6 h-6">
                                                 </a>
-
                                             </td>
+
                                         </tr>
                                         @endforeach
                                         @endforeach

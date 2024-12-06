@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HostingGroup;
 use Illuminate\Http\Request;
 
+
 class HostingGroupController extends Controller
 {
     public function index()

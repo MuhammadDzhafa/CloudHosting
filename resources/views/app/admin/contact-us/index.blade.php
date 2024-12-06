@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -108,12 +109,13 @@
                                         <td>{{ $contact->name }}</td>
                                         <td>{{ $contact->email }}</td>
                                         <td>{{ Str::limit($contact->message, 50) }}</td>
-                                        <td>
-                                            <a href="{{ route('contact-us.edit', $contact->contact_us_id) }}" class="edit-link">
-                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit">
+                                        <td class="text-left">
+                                            <a href="{{ route('contact-us.edit', $contact->contact_us_id) }}" class="edit-link mr-4">
+                                                <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="inline w-6 h-6">
                                             </a>
-                                            <a href="#" onclick="event.preventDefault(); openDeleteModal('{{ $contact->contact_us_id }}', '{{ $contact->name }}')">
-                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete">
+                                            <a href="#"
+                                                onclick="event.preventDefault(); openDeleteModal('{{ $contact->contact_us_id }}', '{{ $contact->name }}')">
+                                                <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete" class="inline w-6 h-6">
                                             </a>
                                         </td>
                                     </tr>

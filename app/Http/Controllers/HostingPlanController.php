@@ -11,6 +11,7 @@ use App\Models\RegularMainSpec;
 
 
 
+
 class HostingPlanController extends Controller
 {
     public function index()

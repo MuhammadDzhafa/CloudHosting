@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags  -->
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>Awan Hosting :: Edit Plan</title>
-    <link rel="icon" type="image/png" href="../../../assets/img/logos/logo/logoo.svg" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo/logoo.svg') }}" />
 
     <!-- Google Tag Manager -->
     <script>
@@ -29,17 +29,17 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <!--Core CSS -->
-    <link rel="stylesheet" href="../../../assets/css/app.css" />
-    <link rel="stylesheet" href="../../../assets/css/main.css" />
-    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
-
 </head>
+
 
 <body>
     <!-- Google Tag Manager (noscript) -->

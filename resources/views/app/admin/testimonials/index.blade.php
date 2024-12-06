@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -122,12 +123,22 @@
                                                 @endif
                                             </td>
                                             <td>{{ $testimonial->occupation }}</td>
-                                            <td>
-                                                <a href="javascript:void(0);" class="edit-link" data-id="{{ $testimonial->testimonial_id }}" data-domain="{{ $testimonial->domain_web }}" data-text="{{ $testimonial->testimonial_text }}" data-picture="{{ $testimonial->picture }}" data-occupation="{{ $testimonial->occupation }}" data-facebook="{{ $testimonial->facebook }}" data-instagram="{{ $testimonial->instagram }}">
-                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="" class="mr-6">
+                                            <td class="text-left">
+                                                <a href="javascript:void(0);"
+                                                    class="edit-link mr-4"
+                                                    data-id="{{ $testimonial->testimonial_id }}"
+                                                    data-domain="{{ $testimonial->domain_web }}"
+                                                    data-text="{{ $testimonial->testimonial_text }}"
+                                                    data-picture="{{ $testimonial->picture }}"
+                                                    data-occupation="{{ $testimonial->occupation }}"
+                                                    data-facebook="{{ $testimonial->facebook }}"
+                                                    data-instagram="{{ $testimonial->instagram }}">
+                                                    <img src="{{ asset('assets/img/product/edit.svg') }}" alt="Edit" class="inline w-6 h-6">
                                                 </a>
-                                                <a href="#" class="h-modal-trigger" onclick="event.preventDefault(); openDeleteModal('{{ $testimonial->testimonial_id }}', '{{ $testimonial->domain_web }}')">
-                                                    <img src="{{ asset('assets/img/product/trash.svg') }}" alt="">
+                                                <a href="#"
+                                                    class="h-modal-trigger"
+                                                    onclick="event.preventDefault(); openDeleteModal('{{ $testimonial->testimonial_id }}', '{{ $testimonial->domain_web }}')">
+                                                    <img src="{{ asset('assets/img/product/trash.svg') }}" alt="Delete" class="inline w-6 h-6">
                                                 </a>
                                             </td>
                                         </tr>
