@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\TldController;
+use App\Http\Controllers\TLDController;
 use App\Http\Controllers\HostingPlanController;
 use App\Http\Controllers\HostingGroupController;
 use App\Http\Controllers\FaqController;
@@ -106,13 +106,13 @@ Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.
 Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
 
 /* CRUD TLD */
-Route::get('/admin/tlds', [TldController::class, 'index'])->name('app.admin.tlds.index');
-Route::get('/admin/tlds/create', [TldController::class, 'create'])->name('tlds.create');
-Route::post('/admin/tlds/store', [TldController::class, 'store'])->name('tlds.store');
-Route::get('/admin/tlds/{tld}/edit', [TldController::class, 'edit'])->name('tlds.edit');
-Route::put('/admin/tlds/{id}', [TldController::class, 'update'])->name('tlds.update');
-Route::delete('/admin/tlds/{tld}', [TldController::class, 'destroy'])->name('tlds.destroy');
-Route::post('/admin/tlds/order', [TldController::class, 'order'])->name('tlds.order');
+Route::get('/admin/tlds', [TLDController::class, 'index'])->name('app.admin.tlds.index');
+Route::get('/admin/tlds/create', [TLDController::class, 'create'])->name('tlds.create');
+Route::post('/admin/tlds/store', [TLDController::class, 'store'])->name('tlds.store');
+Route::get('/admin/tlds/{tld}/edit', [TLDController::class, 'edit'])->name('tlds.edit');
+Route::put('/admin/tlds/{id}', [TLDController::class, 'update'])->name('tlds.update');
+Route::delete('/admin/tlds/{tld}', [TLDController::class, 'destroy'])->name('tlds.destroy');
+Route::post('/admin/tlds/order', [TLDController::class, 'order'])->name('tlds.order');
 
 /* Hosting Plan */
 Route::get('/admin/hosting-plans', [HostingPlanController::class, 'index'])->name('hosting-plans.index');
