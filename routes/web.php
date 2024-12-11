@@ -35,14 +35,19 @@ Route::get('/', [HostingController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-// Google Authentication
+/* Sign up with Google */
 Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);
-Route::get('auth/google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
-Route::post('auth/google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
-// Tambahkan route ini di routes/web.php
-Route::get('login/callback/google', [RegisterController::class, 'handleGoogleCallback']);
+Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback'])->name('google.callback');
 
+Route::get('google/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
+Route::post('google/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
+
+Route::get('/phone', [RegisterController::class, 'showPhoneForm'])->name('google.phone.form');
+Route::post('/phone', [RegisterController::class, 'storePhone'])->name('google.phone.store');
+
+Route::get('/profile.update', function () {
+    return view('layouts.auth.profile-update');
+})->name('profile.update');
 
 /* Check Email Verification */
 Route::get('/check-email', function () {
@@ -184,4 +189,3 @@ Route::post('/store-order-hosting-detail', [CheckoutController::class, 'storeOrd
 Route::post('/store-epp', [HostingController::class, 'store']);
 Route::post('/transfer-domain', [CheckoutController::class, 'store']);
 Route::get('/auth/redirect', [SocialiteController::class, 'redirect'])->name('auth.redirect');
-Route::get('/auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -17,6 +18,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        Log::info('Login attempt for email: ' . $request->input('email'));
+
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
@@ -29,21 +32,27 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
+            Log::warning('Validation failed for login attempt.', $validator->errors()->toArray());
             return $this->sendFailedLoginResponse($request, $validator);
         }
 
         if ($this->attemptLogin($request)) {
+            Log::info('Login successful for email: ' . $request->input('email'));
             return $this->sendLoginResponse($request);
         }
 
+        Log::warning('Login failed for email: ' . $request->input('email'));
         return $this->sendFailedLoginResponse($request);
     }
 
     protected function attemptLogin(Request $request)
     {
+        $credentials = $request->only('email', 'password');
+        Log::info('Attempting login with credentials: ', $credentials);
+
         return Auth::attempt(
-            $request->only('email', 'password'),
-            $request->filled('remember') // Ini sudah benar untuk menangani "Remember Me"
+            $credentials,
+            $request->filled('remember')
         );
     }
 

@@ -12,12 +12,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('google_id')->nullable();
-            $table->string('google_token')->nullable();
-            $table->string('google_refresh_token')->nullable();
+            $table->string('google_id')->nullable(); // Tetap sebagai string
+            $table->text('google_token')->nullable(); // Ubah menjadi text
+            $table->text('google_refresh_token')->nullable(); // Ubah menjadi text
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {

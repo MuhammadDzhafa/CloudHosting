@@ -28,14 +28,18 @@ class RegisterController extends Controller
     public function handleGoogleCallback(Request $request)
     {
         try {
+            // Mendapatkan data pengguna dari Google
             $socialUser  = Socialite::driver('google')->stateless()->user();
-            Log::info('Google User Data:', (array) $socialUser);
 
+            // Debugging: Tampilkan data pengguna yang diterima dari Google
+            Log::info('Google user data: ', (array) $socialUser);
+
+            // Mencari pengguna berdasarkan email
             $userByEmail = User::where('email', $socialUser->email)->first();
 
             if ($userByEmail) {
                 Log::info('User  found, updating information.');
-                // Update existing user with Google information
+                // Update informasi pengguna yang ada
                 $userByEmail->update([
                     'google_id' => $socialUser->id,
                     'google_token' => $socialUser->token,
@@ -55,7 +59,7 @@ class RegisterController extends Controller
                 'google_id' => $socialUser->id,
                 'name' => $socialUser->name,
                 'email' => $socialUser->email,
-                'password' => Hash::make(Str::random(24)),
+                'password' => Hash::make(Str::random(24)), // Password acak untuk pengguna baru
                 'google_token' => $socialUser->token,
                 'google_refresh_token' => $socialUser->refreshToken,
                 'google_profile_image' => $socialUser->avatar,
@@ -63,13 +67,22 @@ class RegisterController extends Controller
             ]);
 
             // Assign role client
-            $user->roles()->attach(Role::where('name', 'client')->first());
+            $role = Role::where('name', 'client')->first();
+            if ($role) {
+                $user->roles()->attach($role);
+                Log::info('Role assigned to new user: client');
+            } else {
+                Log::warning('Role client not found.');
+            }
 
             Auth::login($user);
             Log::info('New user logged in successfully.');
 
             return redirect()->route('google.phone.form');
         } catch (\Exception $e) {
+            // Gunakan dd() untuk menampilkan error
+            dd('Error during Google callback: ' . $e->getMessage());
+            // Jika Anda ingin tetap mencatat error ke log, Anda bisa menggunakan Log::error() juga
             Log::error('Error during Google callback: ' . $e->getMessage());
             return redirect('/login')->withErrors('Failed to register with Google. Please try again.');
         }
@@ -125,7 +138,7 @@ class RegisterController extends Controller
                 'string',
                 'confirmed',
                 'min:8',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$! %*?&]{8,}$/'
             ],
             'phone' => 'required|string|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'terms' => 'required|accepted',
@@ -161,7 +174,12 @@ class RegisterController extends Controller
 
         // Assign role based on input
         $role = Role::where('name', $request->input('role'))->first();
-        $user->roles()->attach($role);
+        if ($role) {
+            $user->roles()->attach($role);
+            Log::info('Role assigned to user: ' . $role->name);
+        } else {
+            Log::warning('Role ' . $request->input('role') . ' not found.');
+        }
 
         $request->session()->put('user_email', $user->email);
 
