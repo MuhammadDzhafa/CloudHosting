@@ -9,19 +9,15 @@ class CreateOrderDomainDetailsTable extends Migration
     public function up(): void
     {
         Schema::create('order_domain_details', function (Blueprint $table) {
-            // Primary Key
-            $table->id('domain_order_id'); // Sesuai dengan diagram, menggunakan domain_order_id sebagai primary key
-            
-            // Kolom-kolom sesuai diagram
+            $table->id('domain_order_id'); // Primary Key
             $table->string('domain_name');
             $table->boolean('whois');
             $table->boolean('dns_management');
-            $table->integer('price'); // Menggunakan integer untuk price
+            $table->integer('price');
             $table->timestamp('active_date')->nullable();
             $table->timestamp('expired_date')->nullable();
-            
-            // Timestamps standar
-            $table->timestamps();
+            $table->timestamps(); // Timestamps created_at dan updated_at
+            $table->softDeletes(); // Menambahkan kolom deleted_at untuk soft deletes
         });
     }
 

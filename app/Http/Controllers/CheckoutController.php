@@ -234,7 +234,7 @@ class CheckoutController extends Controller
                 'data' => $request->all()
             ]);
 
-            // Validasi data tanpa menggunakan user_id
+            // Validasi data
             $billingData = $request->validate([
                 'street_address_1' => 'required|string|max:255',
                 'street_address_2' => 'nullable|string|max:255',
@@ -245,9 +245,11 @@ class CheckoutController extends Controller
                 'company_name' => 'nullable|string|max:255'
             ]);
 
+            Log::info('Validated billing data:', $billingData);
+
             DB::beginTransaction();
 
-            // Simpan alamat penagihan tanpa user_id
+            // Simpan alamat penagihan
             $billingAddress = BillingAddress::create($billingData);
 
             DB::commit();
@@ -259,6 +261,7 @@ class CheckoutController extends Controller
             ]);
         } catch (ValidationException $e) {
             DB::rollBack();
+            Log::error('Validation failed:', $e->errors());
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
@@ -266,6 +269,7 @@ class CheckoutController extends Controller
             ], 422);
         } catch (\Exception $e) {
             DB::rollBack();
+            Log::error('Failed to save billing address:', ['error' => $e->getMessage()]);
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to save billing address: ' . $e->getMessage()
@@ -377,12 +381,20 @@ class CheckoutController extends Controller
 
             DB::commit();
 
-            return redirect('/checkout');
+            return response()->json([
+                'success' => true,
+                'message' => 'Data client berhasil disimpan',
+                'redirect_url' => url('/checkout'),
+            ]);
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data');
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage(),
+            ], 500);
         }
     }
+
 
     public function saveAddons(Request $request)
     {

@@ -87,13 +87,6 @@
         <input type="hidden" id="domain_price" value="{{ $price ?? 0 }}">
     </div>
     </form>
-
-    <!-- Notification -->
-    <div id="notification" class="hidden fixed top-4 right-4 p-4 rounded-lg shadow-lg" style="z-index: 1000;">
-        <div class="bg-green-500 text-white p-4 rounded">
-            <span id="notification-message"></span>
-        </div>
-    </div>
 </div>
 
 <div class="w-full mt-8">

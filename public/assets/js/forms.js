@@ -106,11 +106,28 @@ window.proceedToNextStep = function() {
             scrollTop: $("#form-step-" + window.currentStep).offset().top
         }, 500);
 
+        // Logika untuk menampilkan/menyembunyikan tombol Continue
+        if (window.currentStep <= 1) {
+            // Sembunyikan tombol di step 0 dan 1
+            $("#next-button").hide();
+        } else {
+            // Tampilkan tombol di step 2 dan seterusnya
+            $("#next-button").show();
+        }
+
         if (window.currentStep === 5) {
             $("#next-button").text("Complete Order");
         }
     }, 800);
 };
+
+// Tambahkan inisialisasi awal untuk menyembunyikan tombol
+$(document).ready(function() {
+    // Sembunyikan tombol di step awal (0 dan 1)
+    if (window.currentStep <= 1) {
+        $("#next-button").hide();
+    }
+});
 
 window.initializeNextButtonHandler = function() {
     $("#next-button").off('click').on("click", function() {
@@ -201,6 +218,9 @@ $('#confirm-modal').on('click', '.confirm-button', function() {
 
     console.log('Classes added successfully');
 
+    // Sembunyikan tombol Continue pada reset
+    $("#next-button").hide();
+
     // Inisialisasi handler tombol next
     window.initializeNextButtonHandler();
 });
@@ -209,6 +229,7 @@ $('#confirm-modal').on('click', '.confirm-button', function() {
 $(document).ready(function() {
     window.initializeNextButtonHandler();
 });
+
 
         // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
@@ -586,6 +607,7 @@ $(document).ready(function() {
             });
         }
         
+        
 
         // Helper function untuk handle error
         function handleAjaxError(xhr, status, error) {
@@ -636,48 +658,63 @@ $(document).ready(function() {
             }, 3000);
         }
 
-        // Handle Buy Domain Only button
-        $("#buy-domain-button").on('click', function (e) {
-            e.preventDefault();
-            const $button = $("#next-button");
-            $button.addClass("is-loading");
-        
-            if (!validateDomainStep()) {
-                $button.removeClass("is-loading");
-                return;
-            }
-        
-            saveDomainDetails(function () {
-                // Gunakan fungsi yang sudah ada di kode Anda
-                window.currentStep = 2; // Sesuaikan dengan step billing address
-                
-                // Gunakan fungsi proceedToNextStep yang sudah ada
-                window.proceedToNextStep();
-        
-                // Optional: Scroll ke billing address
-                $('html, body').animate({
-                    scrollTop: $("#billing-address-section").offset().top
-                }, 500);
-        
-                $button.removeClass("is-loading");
-            });
-        });
+       // Handle Buy Domain Only button
+$("#buy-domain-button").on('click', function (e) {
+    e.preventDefault();
+    if (buyDomainOnlyClicked || buyWithHostingClicked) return;  // Cek apakah tombol sudah diklik
 
-        // Handle Buy With Hosting button
-        $("#buy-with-hosting").on('click', function (e) {
-            e.preventDefault();
-            const $button = $("#next-button");
-            $button.addClass("is-loading");
+    // Disable tombol lainnya
+    $("#buy-with-hosting").prop("disabled", true);
+    $(this).addClass("is-loading"); // Menambahkan efek loading di tombol "Buy Domain Only"
+    buyDomainOnlyClicked = true;  // Tandai tombol ini telah diklik
 
-            if (!validateDomainStep()) {
-                $button.removeClass("is-loading");
-                return;
-            }
+    const $button = $("#next-button");
+    $button.addClass("is-loading");
 
-            saveDomainDetails(function () {
-                proceedToNextStep();
-            });
-        });
+    if (!validateDomainStep()) {
+        $button.removeClass("is-loading");
+        $(this).removeClass("is-loading");
+        return;
+    }
+
+    saveDomainDetails(function () {
+        window.currentStep = 3; // Sesuaikan dengan step billing address
+        window.proceedToNextStep();
+
+        // Optional: Scroll ke billing address
+        $('html, body').animate({
+            scrollTop: $("#billing-address-section").offset().top
+        }, 500);
+
+        $button.removeClass("is-loading");
+        $(this).removeClass("is-loading");
+    });
+});
+
+// Handle Buy With Hosting button
+$("#buy-with-hosting").on('click', function (e) {
+    e.preventDefault();
+    if (buyWithHostingClicked || buyDomainOnlyClicked) return;  // Cek apakah tombol sudah diklik
+
+    // Disable tombol lainnya
+    $("#buy-domain-button").prop("disabled", true);
+    $(this).addClass("is-loading"); // Menambahkan efek loading di tombol "Buy with Hosting"
+    buyWithHostingClicked = true;  // Tandai tombol ini telah diklik
+
+    const $button = $("#next-button");
+    $button.addClass("is-loading");
+
+    if (!validateDomainStep()) {
+        $button.removeClass("is-loading");
+        $(this).removeClass("is-loading");
+        return;
+    }
+
+    saveDomainDetails(function () {
+        proceedToNextStep();
+    });
+});
+
 
         // Validasi untuk step domain
         function validateDomainStep() {

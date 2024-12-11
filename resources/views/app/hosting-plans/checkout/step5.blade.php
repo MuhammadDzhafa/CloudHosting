@@ -8,7 +8,7 @@
     </h1>
 
     @guest
-    <div class="guest-section">
+    <div class="guest-section" id="guest-section">
         <div class="mb-8">
             <h3 class="font-semibold text-left mt-5 w-full md:w-auto" style="height: 30px; font-family: Inter; font-size: 23px; font-weight: 600; line-height: 29.9px; color: #000000;">
                 Create an Account
@@ -21,47 +21,63 @@
                 </a>
             </p>
 
-            <form id="billing-form">
-                <form action="{{ route('register') }}" method="POST" id="register-form">
-                    @csrf
-                    <div class="space-y-2">
-                        <label class="block mb-1 mt-3 w-full">Name</label>
-                        <input type="text" name="name" class="input" placeholder="Username" required>
+            <form action="{{ route('register') }}" method="POST" id="register-form">
+                @csrf
+                <div class="space-y-2">
+                    <label class="block mb-1 mt-3 w-full">Name</label>
+                    <input type="text" name="name" class="input" placeholder="Username" required>
 
-                        <label class="block mb-1 mt-3 w-full">Email Address</label>
-                        <input type="email" name="email" class="input" placeholder="Email Address" required>
+                    <label class="block mb-1 mt-3 w-full">Email Address</label>
+                    <input type="email" name="email" class="input" placeholder="Email Address" required>
 
-                        <label class="block mb-1 mt-3 w-full">Phone</label>
-                        <div class="field has-addons">
-                            <div class="control">
-                                <a class="button is-static">
-                                    +62
-                                </a>
-                            </div>
-                            <div class="control is-expanded">
-                                <input type="text" name="phone" class="input" placeholder="Phone Number" required>
+                    <label class="block mb-1 mt-3 w-full">Phone</label>
+                    <div class="field has-addons">
+                        <div class="control">
+                            <a class="button is-static">
+                                +62
+                            </a>
+                        </div>
+                        <div class="control is-expanded">
+                            <input type="text" name="phone" class="input" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+
+                    <!-- Wrapper untuk menempatkan kedua field dalam satu baris -->
+                    <div class="flex w-full space-x-4">
+                        <!-- Password Field -->
+                        <div class="w-full md:w-1/2">
+                            <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Password</label>
+                            <div class="field">
+                                <div class="control has-icon has-validation">
+                                    <input type="password" name="password" id="password" class="input" placeholder="Password" required>
+                                    <div class="form-icon">
+                                        <i data-feather="lock"></i>
+                                    </div>
+                                </div>
+                                <p class="help danger-text" id="password-error" style="display: none;">Password should be at least 8 characters.</p>
                             </div>
                         </div>
 
-
-                        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                            <div class="w-full md:w-1/2">
-                                <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Password</label>
-                                <div class="relative">
-                                    <input type="password" name="password" class="input" placeholder="Password" required>
+                        <!-- Confirm Password Field -->
+                        <div class="w-full md:w-1/2">
+                            <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Confirm Password</label>
+                            <div class="field">
+                                <div class="control has-icon has-validation">
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="input" placeholder="Confirm Password" required>
+                                    <div class="form-icon">
+                                        <i data-feather="lock"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="w-full md:w-1/2">
-                                <label class="w-full text-[16px] font-normal leading-[23.2px] text-black">Confirm Password</label>
-                                <div class="relative">
-                                    <input type="password" name="password_confirmation" class="input" placeholder="Confirm Password" required>
-                                </div>
+                                <p class="help danger-text" id="confirm-password-error" style="display: none;">Passwords do not match.</p>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="button h-button w-full bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white mt-5 rounded-full">Register</button>
-                </form>
+
+
+                </div>
+                <button type="submit" class="button h-button w-full bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white mt-5 rounded-full">Register</button>
             </form>
+
 
             <div class="relative my-4">
                 <div class="absolute inset-0 flex items-center">
@@ -96,7 +112,7 @@
                     Company Name (Optional)
                 </label>
                 <div class="control">
-                    <input type="text" name="company_name" placeholder="Company Name" class="input h-12">
+                    <input type="text" name="company_name" placeholder="Company Name" class="input">
                 </div>
             </div>
 
@@ -106,7 +122,7 @@
                     Street Address
                 </label>
                 <div class="control">
-                    <input type="text" name="street_address_1" placeholder="Street Address" class="input h-12" required>
+                    <input type="text" name="street_address_1" placeholder="Street Address" class="input" required>
                 </div>
             </div>
 
@@ -116,7 +132,7 @@
                     Street Address 2 (Optional)
                 </label>
                 <div class="control">
-                    <input type="text" name="street_address_2" placeholder="Apartment, suite, etc." class="input h-12">
+                    <input type="text" name="street_address_2" placeholder="Apartment, suite, etc." class="input">
                 </div>
             </div>
 
@@ -126,7 +142,7 @@
                     City
                 </label>
                 <div class="control">
-                    <input type="text" name="city" placeholder="City" class="input h-12" required>
+                    <input type="text" name="city" placeholder="City" class="input" required>
                 </div>
             </div>
 
@@ -178,7 +194,7 @@
                         State
                     </label>
                     <div class="control">
-                        <input type="text" name="state" placeholder="State/Province" class="input h-12" required>
+                        <input type="text" name="state" placeholder="State/Province" class="input" required>
                     </div>
                 </div>
                 <div>
@@ -186,7 +202,7 @@
                         Post Code
                     </label>
                     <div class="control">
-                        <input type="text" name="post_code" placeholder="Post Code" class="input h-12" required>
+                        <input type="text" name="post_code" placeholder="Post Code" class="input" required>
                     </div>
                 </div>
             </div>
@@ -196,23 +212,92 @@
 </div>
 
 
+
 <script>
     $(document).ready(function() {
+        // Validasi password saat blur atau input
+        $('#password').on('input', function() {
+            const password = $(this).val();
+            if (password.length < 8) {
+                $('#password-error').show(); // Tampilkan pesan error
+            } else {
+                $('#password-error').hide(); // Sembunyikan pesan error
+            }
+        });
+
+        // Validasi konfirmasi password
+        $('#password_confirmation').on('input', function() {
+            const password = $('#password').val();
+            const confirmPassword = $(this).val();
+            if (password !== confirmPassword) {
+                $('#confirm-password-error').show(); // Tampilkan pesan error
+            } else {
+                $('#confirm-password-error').hide(); // Sembunyikan pesan error
+            }
+        });
+
+        // Proses submit form dengan AJAX
         $('#register-form').on('submit', function(e) {
             e.preventDefault();
+
+            const password = $('#password').val();
+            const confirmPassword = $('#password_confirmation').val();
+            let isValid = true;
+
+            // Periksa panjang password
+            if (password.length < 8) {
+                $('#password-error').show();
+                isValid = false;
+            }
+
+            // Periksa kecocokan password
+            if (password !== confirmPassword) {
+                $('#confirm-password-error').show();
+                isValid = false;
+            }
+
+            // Jika validasi gagal, hentikan submit
+            if (!isValid) {
+                return;
+            }
 
             var form = $(this);
             $.ajax({
                 type: 'POST',
                 url: form.attr('action'),
                 data: form.serialize(),
-                success: function() {
-                    window.location.href = '/checkout';
+                success: function(response) {
+                    console.log('Response:', response); // Debug response
+                    if (response.success) {
+                        // Tampilkan pesan sukses
+                        $('#success-message').text(response.message).show();
+                        form[0].reset(); // Reset form jika sukses
+
+                        // Sembunyikan elemen guest-section dan tombol login
+                        $('#guest-section').hide();
+                        $('#guest-login-button').hide();
+                    } else {
+                        alert('Registrasi gagal: ' + response.message);
+                    }
                 },
-                error: function() {
-                    alert('Ada kesalahan. Silakan coba lagi.');
+                error: function(xhr) {
+                    console.error('Error Response:', xhr); // Debug error
+                    let errorMsg = 'Terjadi kesalahan. Silakan coba lagi.';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMsg = xhr.responseJSON.message;
+                    } else if (xhr.responseText) {
+                        errorMsg = xhr.responseText;
+                    }
+                    alert('Error: ' + errorMsg);
                 }
             });
         });
     });
 </script>
+
+
+
+<!-- Tambahkan elemen untuk pesan sukses -->
+<div id="success-message" style="display: none; color: green; margin-top: 10px;">
+    Data berhasil disimpan!
+</div>

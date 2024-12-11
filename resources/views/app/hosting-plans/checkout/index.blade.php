@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -111,7 +113,7 @@
 
                             <!-- Form Layout 5 -->
                             <div class="stepper-form" style="max-width: unset; margin: unset; padding-top: unset;">
-                                <div class="form-sections w-full" style="max-width:unset;">
+                                <div id="form-step-0" class="form-sections w-full" style="max-width:unset;">
                                     @include('app.hosting-plans.checkout.step1')
                                 </div>
                                 <div id="form-step-1" class="form-section" style="font-family: Inter;">
@@ -126,10 +128,10 @@
                                 <div id="form-step-4" class="form-section">
                                     @include('app.hosting-plans.checkout.step5')
                                 </div>
-
                                 <div id="form-step-5" class="form-section">
                                     @include('app.hosting-plans.checkout.step6')
                                 </div>
+
                                 <!-- Navigation Buttons -->
                                 <div class="navigation-buttons">
                                     <div class="buttons is-right">
@@ -139,6 +141,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="form-stepper">
                                 <ul class="steps is-vertical is-thin is-short">
@@ -771,6 +774,8 @@
 
     let currentStep = 0;
     let hasContinueBeenClicked = false;
+    let buyDomainOnlyClicked = false;
+    let buyWithHostingClicked = false;
     let targetTabForSwitch = null;
     let currentActiveTab = null;
     let currentActiveContent = null;
@@ -826,6 +831,11 @@
                 nextButton.classList.remove('is-loading');
             }
 
+            // **Menambahkan logika untuk sembunyikan tombol Continue di langkah awal**
+            if (window.currentStep <= 1) {
+                $("#next-button").hide(); // Sembunyikan tombol pada langkah 0 dan 1
+            }
+
             // Unbind existing click handler and reinitialize
             $('#next-button').off('click');
 
@@ -837,23 +847,21 @@
             // Delay adding the is-active class to the specific mobile step segment
             setTimeout(() => {
                 const mobileStepSegment0 = document.querySelector('#mobile-step-segment-0');
-                console.log('Mobile Step Segment 0:', mobileStepSegment0);
                 if (mobileStepSegment0) {
-                    console.log('Adding is-active class');
-
-                    // Hapus kelas yang menimbulkan konflik (jika ada)
                     mobileStepSegment0.classList.remove('conflicting-class');
-
-                    // Tambahkan kelas is-active
                     mobileStepSegment0.classList.add('is-active');
-
-                    // Terapkan gaya inline tambahan jika diperlukan
                     mobileStepSegment0.style.display = 'block';
-
-                    console.log('Class list after adding:', mobileStepSegment0.classList);
                 }
             }, 0);
+
+            // Reset tombol Buy Domain Only dan Buy with Hosting
+            buyDomainOnlyClicked = false;
+            buyWithHostingClicked = false;
+            $("#buy-domain-button").prop("disabled", false).removeClass("is-loading");
+            $("#buy-with-hosting").prop("disabled", false).removeClass("is-loading");
         }
+
+
 
         // Fungsi updateActiveTab yang sudah Anda miliki
         function updateActiveTab(newTab) {
