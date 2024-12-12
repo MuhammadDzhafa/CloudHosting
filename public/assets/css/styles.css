@@ -339,6 +339,10 @@ p {
 }
 
 @media (max-width: 768px) {
+    .padding-invoice {
+        padding: 100px 20px;
+    }
+
     .button.is-info.is-outlined {
         display: flex;
         justify-content: center;
@@ -458,6 +462,10 @@ p {
     }
 
     .padding-1 {
+        padding: 100px 120px;
+    }
+
+    .padding-invoice {
         padding: 100px 120px;
     }
 
@@ -2114,5 +2122,3 @@ p {
         flex: 0 0 calc(33% - 5px);
     }
 }
-
-

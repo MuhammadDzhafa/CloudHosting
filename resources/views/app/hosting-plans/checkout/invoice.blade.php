@@ -47,7 +47,7 @@
     @extends('layouts.template-landing-page.web.master')
 
     <div class="bg-white font-sans">
-        <div class="container section-frame padding-1" style="padding: 100px 20px;">
+        <div class="container section-frame padding-invoice">
             <div class="max-w-[1200px] w-full h-auto px-8 md:px-4 lg:px-12 pt-8 lg:pt-12 pb-8 lg:pb-12 gap-6 lg:gap-10 bg-white border border-gray-300 rounded-md opacity-100 shadow-lg">
                 <div class="flex flex-col md:flex-row justify-between items-start mb-8">
                     <div class="mb-6 md:mb-0">
