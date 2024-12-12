@@ -209,6 +209,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="navigation-buttons">
+                        <div class="buttons is-right">
+                            <button id="next-button-helper" class="button h-button bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-white hover:text-white active:text-white" style="min-height: unset; min-width: unset;">
+                                Next Step
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="hosting-only" class="tab-content">
@@ -476,20 +483,38 @@
                 const continueButton = container.querySelector('#continue-button');
                 const successMessage = container.querySelector('#success-message');
                 const deleteMessage = container.querySelector('#delete-message');
+                const nextButton = container.querySelector('#next-button-helper');
 
+                // Fungsi untuk mengatur tombol Next Step
+                function toggleNextButton() {
+                    if (successMessage.classList.contains('hidden')) {
+                        nextButton.style.display = 'none'; // Hide Next Step button
+                    } else {
+                        nextButton.style.display = 'block'; // Show Next Step button
+                    }
+                }
+
+                // Event listener untuk tombol transfer
                 transferButtons.forEach(function(button) {
                     button.addEventListener('click', function() {
                         transferForm.classList.toggle('hidden');
                     });
                 });
 
+                // Event listener untuk tombol continue
                 continueButton.addEventListener('click', function() {
                     successMessage.classList.remove('hidden');
+                    toggleNextButton(); // Update the visibility of Next Step button
                 });
 
+                // Event listener untuk tombol delete message
                 deleteMessage.addEventListener('click', function() {
                     successMessage.classList.add('hidden');
+                    toggleNextButton(); // Update the visibility of Next Step button
                 });
+
+                // Initial state: Hide the Next Step button until success message appears
+                toggleNextButton();
             }
 
             // Mengatur fungsi untuk kedua bagian

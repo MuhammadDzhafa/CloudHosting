@@ -831,9 +831,9 @@
                 nextButton.classList.remove('is-loading');
             }
 
-            // **Menambahkan logika untuk sembunyikan tombol Continue di langkah awal**
+            // **Hide Continue button on initial steps**
             if (window.currentStep <= 1) {
-                $("#next-button").hide(); // Sembunyikan tombol pada langkah 0 dan 1
+                $("#next-button").hide(); // Hide button at steps 0 and 1
             }
 
             // Unbind existing click handler and reinitialize
@@ -854,13 +854,88 @@
                 }
             }, 0);
 
-            // Reset tombol Buy Domain Only dan Buy with Hosting
+            // Reset domain-only and hosting button states
             buyDomainOnlyClicked = false;
             buyWithHostingClicked = false;
             $("#buy-domain-button").prop("disabled", false).removeClass("is-loading");
             $("#buy-with-hosting").prop("disabled", false).removeClass("is-loading");
-        }
 
+            // Reset form-step-0
+            const formStep0 = document.getElementById('form-step-0');
+            if (formStep0) {
+                // Reset domain-search-new input
+                const domainSearchNew = formStep0.querySelector('#domain-search-new');
+                if (domainSearchNew) {
+                    domainSearchNew.value = '';
+                }
+
+                // Reset dropdown-container-new
+                const dropdownContainerNew = formStep0.querySelector('#dropdown-container-new');
+                if (dropdownContainerNew) {
+                    dropdownContainerNew.classList.add('hidden');
+                    const dropdownContentNew = dropdownContainerNew.querySelector('#dropdown-content-new');
+                    if (dropdownContentNew) {
+                        dropdownContentNew.innerHTML = '';
+                    }
+                }
+
+                // Reset domain-search-transfer input
+                const domainSearchTransfer = formStep0.querySelector('#domain-search-transfer');
+                if (domainSearchTransfer) {
+                    domainSearchTransfer.value = '';
+                }
+
+                // Reset dropdown-container-transfer
+                const dropdownContainerTransfer = formStep0.querySelector('#dropdown-container-transfer');
+                if (dropdownContainerTransfer) {
+                    dropdownContainerTransfer.classList.add('hidden');
+                    const dropdownContentTransfer = dropdownContainerTransfer.querySelector('#dropdown-content-transfer');
+                    if (dropdownContentTransfer) {
+                        dropdownContentTransfer.innerHTML = '';
+                    }
+                }
+
+                // Reset domain-search-hosting-only input
+                const domainSearchHostingOnly = formStep0.querySelector('#domain-search-hosting-only');
+                if (domainSearchHostingOnly) {
+                    domainSearchHostingOnly.value = '';
+                }
+
+                // Reset dropdown-container-hosting-only
+                const dropdownContainerHostingOnly = formStep0.querySelector('#dropdown-container-hosting-only');
+                if (dropdownContainerHostingOnly) {
+                    dropdownContainerHostingOnly.classList.add('hidden');
+                    const dropdownContentHostingOnly = dropdownContainerHostingOnly.querySelector('#dropdown-content-hosting-only');
+                    if (dropdownContentHostingOnly) {
+                        dropdownContentHostingOnly.innerHTML = '';
+                    }
+                }
+            }
+
+            // Reset domain search results section
+            const tldResults = document.getElementById('tld-results');
+            if (tldResults) {
+                tldResults.classList.add('hidden'); // Hide results
+            }
+
+            // Reset transfer form section
+            const transferForm = document.getElementById('transfer-form');
+            if (transferForm) {
+                transferForm.classList.add('hidden'); // Hide transfer form
+            }
+
+            // Reset EPP code input
+            const eppCodeInput = document.getElementById('epp-code-input');
+            if (eppCodeInput) {
+                eppCodeInput.value = ''; // Clear the EPP code input
+            }
+
+            // Hide success message
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.classList.add('hidden'); // Hide success message
+            }
+        }
 
 
         // Fungsi updateActiveTab yang sudah Anda miliki
@@ -1009,6 +1084,45 @@
                 nextButton.click(); // Ini akan memicu event klik pada tombol Continue
             }
         }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fungsi untuk mengecek visibilitas pesan sukses
+        function checkSuccessMessage() {
+            const successMessage = document.getElementById('success-message');
+            const nextButton = document.getElementById('next-button-helper');
+
+            if (!successMessage.classList.contains('hidden')) {
+                // Tampilkan tombol Next Step jika pesan sukses terlihat
+                nextButton.style.display = 'block';
+            } else {
+                // Sembunyikan tombol Next Step jika pesan sukses tidak terlihat
+                nextButton.style.display = 'none';
+            }
+        }
+
+        // Fungsi untuk menampilkan pesan sukses setelah tombol Continue diklik
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('success-message');
+            successMessage.classList.remove('hidden'); // Tampilkan pesan sukses
+            checkSuccessMessage(); // Periksa apakah tombol Next Step perlu ditampilkan
+        }
+
+        // Ketika tombol Continue diklik, tampilkan pesan sukses
+        document.getElementById('continue-button').addEventListener('click', function() {
+            showSuccessMessage(); // Tampilkan pesan sukses setelah tombol Continue diklik
+        });
+
+        // Ketika tombol Next Step diklik, klik tombol Continue dan sembunyikan tombol Next Step
+        document.getElementById('next-button-helper').addEventListener('click', function() {
+            document.getElementById('next-button').click(); // Klik tombol Continue
+            document.getElementById('next-button-helper').style.display = 'none'; // Sembunyikan tombol Next Step setelah diklik
+        });
+
+        // Setelan awal: Sembunyikan tombol Next Step sampai pesan sukses ditampilkan
+        checkSuccessMessage();
     });
 </script>
 

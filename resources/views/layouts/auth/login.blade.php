@@ -355,10 +355,10 @@
         </div>
 
         <div>
-            <a href="auth/redirect" class="flex items-center justify-center w-full h-[40px] border border-custom-gray rounded-full px-5 py-4 bg-white text-gray-800 hover:bg-gray-50 transition duration-300">
+            <a href="{{ url('auth/redirect?redirect=/client-dashboard') }}" class="flex items-center justify-center w-full h-[40px] border border-custom-gray rounded-full px-5 py-4 bg-white text-gray-800 hover:bg-gray-50 transition duration-300">
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-6 h-6 mr-3" alt="Google logo">
                 <span class="text-m">
-                    Login with Google
+                    Login with Google (Client Dashboard)
                 </span>
             </a>
         </div>

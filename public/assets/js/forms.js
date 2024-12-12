@@ -606,8 +606,154 @@ $(document).ready(function() {
                 }
             });
         }
-        
-        
+        // Buat variabel global
+window.currentStep = 0;
+
+// Definisikan proceedToNextStep sebagai fungsi global
+window.proceedToNextStep = function() {
+    const $button = $("#next-button");
+    $button.addClass("is-loading");
+
+    setTimeout(function() {
+        $button.removeClass("is-loading");
+
+        window.currentStep += 1;
+        // Hanya menambahkan class is-active ke step berikutnya
+        $("#form-step-" + window.currentStep).addClass("is-active");
+
+        $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
+        $("#step-segment-" + window.currentStep).addClass("is-active");
+        $("#mobile-step-segment-" + window.currentStep).addClass("is-active");
+
+        $("html, body").animate({
+            scrollTop: $("#form-step-" + window.currentStep).offset().top
+        }, 500);
+
+        // Logika untuk menampilkan/menyembunyikan tombol Continue
+        if (window.currentStep <= 1) {
+            // Sembunyikan tombol di step 0 dan 1
+            $("#next-button").hide();
+        } else {
+            // Tampilkan tombol di step 2 dan seterusnya
+            $("#next-button").show();
+        }
+
+        if (window.currentStep === 5) {
+            $("#next-button").text("Complete Order");
+        }
+    }, 800);
+};
+
+// Tambahkan inisialisasi awal untuk menyembunyikan tombol
+$(document).ready(function() {
+    // Sembunyikan tombol di step awal (0 dan 1)
+    if (window.currentStep <= 1) {
+        $("#next-button").hide();
+    }
+});
+
+window.initializeNextButtonHandler = function() {
+    $("#next-button").off('click').on("click", function() {
+        const $button = $(this);
+        $button.addClass("is-loading");
+
+        const activeTab = $('.tabs ul li.is-active').data('tab');
+
+        if (activeTab === 'hosting-only') {
+            if (window.currentStep === 0) {
+                window.currentStep = 1; // Mulai dari step 1 untuk hosting-only
+                window.proceedToNextStep();
+            } else if (window.currentStep === 1) {
+                saveDefaultHostingDetails(function() {
+                    window.proceedToNextStep();
+                });
+            } else if (window.currentStep === 2) {
+                saveHostingDetails(function() {
+                    window.proceedToNextStep();
+                });
+            } else if (window.currentStep === 3) {
+                saveAddon(function() {
+                    window.proceedToNextStep();
+                });
+            } else if (window.currentStep === 4) {
+                saveBillingAddress(function() {
+                    window.proceedToNextStep();
+                });
+            } else {
+                window.proceedToNextStep();
+            }
+        } else {
+            switch(window.currentStep) {
+                case 0:
+                    window.proceedToNextStep();
+                    break;
+                case 1:
+                    if ($("input[name='domain-choice']:checked").length === 0) {
+                        showNotification('Please choose an option', 'error');
+                        $button.removeClass("is-loading");
+                        return;
+                    }
+                    saveDomainDetails(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 2:
+                    saveHostingDetails(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 3:
+                    saveAddon(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 4:
+                    saveBillingAddress(function() {
+                        window.proceedToNextStep();
+                    });
+                    break;
+                case 5:
+                    completeOrder();
+                    break;
+            }
+        }
+        $button.removeClass("is-loading");
+    });
+};
+
+$('#confirm-modal').on('click', '.confirm-button', function() {
+    console.log('Confirm button clicked');
+    
+    // Reset currentStep ke 0
+    window.currentStep = 0;
+
+    // Hapus class is-active dari semua form-section
+    $(".form-section").removeClass("is-active");
+
+    // Tambahkan class is-active ke step pertama
+    $("#form-step-0").addClass("is-active");
+
+    // Tampilkan kembali elemen-elemen yang relevan
+    $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
+    $("#step-segment-0").addClass("is-active");
+    $("#mobile-step-segment-0").addClass("is-active");
+    $("#next-button").text("Next");
+
+    console.log('Classes added successfully');
+
+    // Sembunyikan tombol Continue pada reset
+    $("#next-button").hide();
+
+    // Inisialisasi handler tombol next
+    window.initializeNextButtonHandler();
+});
+
+// Initialize ketika document ready
+$(document).ready(function() {
+    window.initializeNextButtonHandler();
+});
+
+
 
         // Helper function untuk handle error
         function handleAjaxError(xhr, status, error) {

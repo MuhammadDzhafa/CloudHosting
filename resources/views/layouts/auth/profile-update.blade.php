@@ -21,14 +21,20 @@
         <div class="text-center mb-6">
             <img src="/assets/img/logos/logo/logoo.svg" alt="Logo" class="w-16 h-16 mx-auto mb-4">
             <h2 class="text-2xl font-bold text-gray-800 mb-2">Profile Updated!</h2>
-            <a href="{{ route('client.dashboard') }}" class="text-gray-600 text-lg">Redirecting you to the client area.</a>
+
+            @if(request()->input('redirect') === '/checkout')
+            <p class="text-gray-600 text-lg">Redirecting you to the checkout area.</p>
+            @else
+            <p class="text-gray-600 text-lg">Redirecting you to the client area.</p>
+            @endif
         </div>
     </div>
 
     <script>
-        // Redirect to client-dashboard after 2 seconds
+        // Redirect to the appropriate area after 2 seconds
         setTimeout(function() {
-            window.location.href = "/client-dashboard";
+            const redirectUrl = "{{ request()->input('redirect', '/client-dashboard') }}";
+            window.location.href = redirectUrl;
         }, 2000);
     </script>
 </body>

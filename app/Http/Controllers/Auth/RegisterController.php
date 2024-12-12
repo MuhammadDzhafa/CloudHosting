@@ -20,8 +20,11 @@ class RegisterController extends Controller
         return view('layouts.auth.signup');
     }
 
-    public function redirectToGoogle()
+    public function redirectToGoogle(Request $request)
     {
+        // Simpan redirect ke session
+        $request->session()->put('redirect_after_phone', $request->input('redirect', '/client-dashboard'));
+
         return Socialite::driver('google')->redirect();
     }
 
@@ -29,7 +32,7 @@ class RegisterController extends Controller
     {
         try {
             // Mendapatkan data pengguna dari Google
-            $socialUser  = Socialite::driver('google')->stateless()->user();
+            $socialUser   = Socialite::driver('google')->stateless()->user();
 
             // Debugging: Tampilkan data pengguna yang diterima dari Google
             Log::info('Google user data: ', (array) $socialUser);
@@ -50,7 +53,11 @@ class RegisterController extends Controller
                 Auth::login($userByEmail);
                 Log::info('User  logged in successfully.');
 
-                return redirect()->route('google.phone.form');
+                // Ambil informasi redirect dari session
+                $redirect = $request->session()->get('redirect_after_phone', '/client-dashboard'); // Default ke client-dashboard
+                Log::info('Redirecting to: ' . $redirect);
+
+                return redirect($redirect);
             }
 
             // Jika pengguna baru, buat pengguna baru
@@ -78,11 +85,14 @@ class RegisterController extends Controller
             Auth::login($user);
             Log::info('New user logged in successfully.');
 
-            return redirect()->route('google.phone.form');
+            // Ambil informasi redirect dari session
+            $redirect = $request->session()->get('redirect_after_phone', '/client-dashboard'); // Default ke client-dashboard
+            Log::info('Redirecting to: ' . $redirect);
+
+            return redirect($redirect);
         } catch (\Exception $e) {
             // Gunakan dd() untuk menampilkan error
             dd('Error during Google callback: ' . $e->getMessage());
-            // Jika Anda ingin tetap mencatat error ke log, Anda bisa menggunakan Log::error() juga
             Log::error('Error during Google callback: ' . $e->getMessage());
             return redirect('/login')->withErrors('Failed to register with Google. Please try again.');
         }
