@@ -638,11 +638,13 @@ window.proceedToNextStep = function() {
             $("#next-button").show();
         }
 
+        // Sembunyikan tombol pada langkah terakhir (misalnya, jika langkah terakhir adalah step 5)
         if (window.currentStep === 5) {
-            $("#next-button").text("Complete Order");
+            $("#next-button").hide();
         }
     }, 800);
 };
+
 
 // Tambahkan inisialisasi awal untuk menyembunyikan tombol
 $(document).ready(function() {

@@ -94,11 +94,16 @@ class HostingController extends Controller
         return view('app.hosting-plans.server-status.index');
     }
 
-    public function finalcheckout()
+    public function finalcheckout(Request $request)
     {
-        return view('app.hosting-plans.checkout.invoice');
+        // Get 'product_info' from the query string
+        $productInfo = $request->query('product_info');
+    
+        // Pass 'product_info' to the view
+        return view('app.hosting-plans.checkout.invoice', [
+            'product_info' => $productInfo,
+        ]);
     }
-
     public function finalserver()
     {
         return view('app.hosting-plans.server-status.invoice');

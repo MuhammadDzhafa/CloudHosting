@@ -47,7 +47,7 @@
     @extends('layouts.template-landing-page.web.master')
 
     <div class="bg-white font-sans">
-        <div class="container mx-auto py-8 lg:py-[170px]">
+        <div class="container section-frame padding-1" style="padding: 100px 20px;">
             <div class="max-w-[1200px] w-full h-auto px-8 md:px-4 lg:px-12 pt-8 lg:pt-12 pb-8 lg:pb-12 gap-6 lg:gap-10 bg-white border border-gray-300 rounded-md opacity-100 shadow-lg">
                 <div class="flex flex-col md:flex-row justify-between items-start mb-8">
                     <div class="mb-6 md:mb-0">
@@ -81,7 +81,7 @@
                             <span class="w-[114px] h-[23px] text-[14px] lg:text-[16px] text-left font-semibold leading-[20px] lg:leading-[23.2px] text-[#263E83]">
                                 Invoice No :
                             </span>
-                            <span class="w-[68px] h-[23px] text-[14px] lg:text-[16px] text-right font-normal leading-[20px] lg:leading-[23.2px] text-[#263E83]">
+                            <span class="h-[23px] text-[14px] lg:text-[16px] text-right font-normal leading-[20px] lg:leading-[23.2px] text-[#263E83]">
                                 #A246281
                             </span>
                         </p>
@@ -90,7 +90,7 @@
                             <span class="w-[114px] h-[23px] text-[14px] lg:text-[16px] text-left font-semibold leading-[20px] lg:leading-[23.2px] text-[#263E83]">
                                 Invoice Date :
                             </span>
-                            <span class="w-[68px] h-[23px] text-[14px] lg:text-[16px] text-right font-normal leading-[20px] lg:leading-[23.2px] text-[#263E83]">
+                            <span class="h-[23px] text-[14px] lg:text-[16px] text-right font-normal leading-[20px] lg:leading-[23.2px] text-[#263E83]">
                                 24/08/24
                             </span>
                         </p>
@@ -99,7 +99,7 @@
                             <span class="w-[114px] h-[23px] text-[14px] lg:text-[16px] text-left font-semibold leading-[20px] lg:leading-[23.2px] text-[#263E83]">
                                 Due Date :
                             </span>
-                            <span class="w-[68px] h-[23px] text-[14px] lg:text-[16px] text-right font-normal leading-[20px] lg:leading-[23.2px] text-[#263E83]">
+                            <span class="h-[23px] text-[14px] lg:text-[16px] text-right font-normal leading-[20px] lg:leading-[23.2px] text-[#263E83]">
                                 24/08/24
                             </span>
                         </p>
@@ -108,27 +108,32 @@
 
                 <div class="text-center mb-8">
                     <p class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4">
-                        <span class="w-full md:w-[130px] text-[18px] lg:text-[20px] font-bold leading-[24px] lg:leading-[26px] text-[#3C476C]">Payment Due</span>
-                        <span class="w-full md:w-[297px] text-[18px] lg:text-[20px] font-bold leading-[24px] lg:leading-[26px] text-[#3C476C]">24 August 2024, 19:00 UTC+7</span>
+                        <span class="text-[18px] lg:text-[20px] font-bold leading-[24px] lg:leading-[26px] text-[#3C476C]">
+                            Payment Due
+                        </span>
+                        <span id="payment-due-time" class="text-[18px] lg:text-[20px] font-bold leading-[24px] lg:leading-[26px] text-[#3C476C]">
+                            Loading...
+                        </span>
                     </p>
                 </div>
 
+
                 <div class="flex flex-col md:flex-row justify-between mb-8">
-                    <div class="w-full md:w-[48%] mb-6 md:mb-0">
+                    <div class="w-full md:w-1/2 mb-6 md:mb-0">
                         <div class="relative bg-white border border-transparent rounded-lg overflow-hidden h-full">
                             <div class="absolute inset-0 border-2 border-transparent rounded-lg pointer-events-none gradient-border"></div>
-                            <div class="p-4 lg:p-5">
-                                <h2 class="w-full lg:w-[434px] text-[18px] lg:text-[20px] font-bold leading-[24px] lg:leading-[26px] text-[#3C476C]">
+                            <div class="px-5 py-4" style="z-index: 100; position: relative;">
+                                <h2 class="text-lg lg:text-xl font-bold leading-6 lg:leading-7 text-[#3C476C]">
                                     How to Pay Using Virtual Account (VA)
                                 </h2>
                             </div>
-                            <div class="p-2">
-                                <ol class="w-full lg:w-[470px] list-decimal pl-5 space-y-3 lg:space-y-4 text-[14px] lg:text-[16px] font-normal leading-[20px] lg:leading-[23.2px] text-[#3C476C]">
+                            <div class="px-6" style="z-index: 100; position: relative;">
+                                <ol class="list-decimal pl-5 space-y-3 lg:space-y-4 text-sm lg:text-base font-normal leading-5 lg:leading-6 text-[#3C476C]">
                                     <li>
-                                        <p class="w-[470px] text-[16px] font-normal leading-[23.2px] text-[#3C476C]">
+                                        <p class="text-base font-normal leading-6 text-[#3C476C]">
                                             Payment via ATM
                                         </p>
-                                        <p class="mb-2 w-[470px] text-[16px] font-normal leading-[23.2px] text-[#3C476C]">Steps:</p>
+                                        <p class="mb-2 text-base font-normal leading-6 text-[#3C476C]">Steps:</p>
                                         <ul class="list-disc pl-5 space-y-1">
                                             <li>Insert your ATM card and enter your PIN.</li>
                                             <li>Select "Other Transactions" > "Payment" > "Others" > "Virtual Account".</li>
@@ -141,8 +146,8 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <p class="mb-2 font-semibold w-[470px] text-[16px] leading-[23.2px] text-[#3C476C]">Payment via Mobile Banking</p>
-                                        <p class="mb-2 w-[470px] text-[16px] font-normal leading-[23.2px] text-[#3C476C]">Steps:</p>
+                                        <p class="mb-2 text-base font-semibold leading-6 text-[#3C476C]">Payment via Mobile Banking</p>
+                                        <p class="mb-2 text-base font-normal leading-6 text-[#3C476C]">Steps:</p>
                                         <ul class="list-disc pl-5 space-y-1 mb-5">
                                             <li>Open your mobile banking application.</li>
                                             <li>Select "Payment" > "Virtual Account".</li>
@@ -159,16 +164,17 @@
                         </div>
                     </div>
 
+
                     <div class="w-full md:w-[48%]">
-                        <div class="w-full h-[60px] lg:h-[70px] p-[20px] lg:p-[30px] pt-[0px] pb-[0px] gap-[10px] rounded-t-lg rounded-b-none opacity-100 bg-[radial-gradient(104.31%_150.2%_at_0%_22.79%,rgba(100,52,147,0.95)_23.63%,#4A6DCB_70.69%,#64D2F7_100%)] text-white">
-                            <div class="flex justify-between items-center py-4 sm:py-5 lg:py-3 lg:-mt-4">
+                        <div class="w-full px-5 py-5 rounded-t-lg rounded-b-none opacity-100 bg-[radial-gradient(104.31%_150.2%_at_0%_22.79%,rgba(100,52,147,0.95)_23.63%,#4A6DCB_70.69%,#64D2F7_100%)] text-white">
+                            <div class="flex justify-between items-center">
                                 <h3 class="text-[20px] sm:text-[22px] lg:text-[23px] font-semibold leading-[26px] lg:leading-[29.9px] text-left text-[#FFFFFF]">Order Summary</h3>
                                 <span class="px-2 py-1 text-[10px] sm:text-[11px] font-normal leading-[14px] lg:leading-[15.4px] rounded-full bg-[#DEDEDE] text-center text-[#525252]">
                                     1 Item
                                 </span>
                             </div>
                         </div>
-                        <div class="bg-white rounded-b-lg shadow-lg p-4 lg:p-6">
+                        <div class="bg-white rounded-b-lg shadow-lg p-5 lg:p-6">
                             <div class="flex justify-between items-center mb-4">
                                 <div>
                                     <h4 class="w-[285.4px] h-[23px] mb-3 gap-0 opacity-100 font-inter text-[16px] font-medium leading-[23.2px] text-left text-[#283252]">
@@ -177,24 +183,6 @@
                                     <p class="w-[285.4px] h-[23px] mb-1 gap-0 opacity-100 font-inter text-[16px] font-normal leading-[23.2px] text-left text-[#283252]">
                                         Example.id
                                     </p>
-                                    <div class="flex items-center gap-1">
-                                        <img src="/assets/img/icons/location.svg" alt="location icon">
-                                        <p class="opacity-100 font-inter text-[14px] font-normal leading-[20.3px] text-left text-[#999999]">
-                                            Indonesia
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                                        </svg>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                    </button>
                                 </div>
                             </div>
                             <div class="border-t pt-4">
@@ -241,18 +229,18 @@
                 </div>
 
                 <div class="mt-8 text-sm text-gray-600">
-                    <p class="font-semibold list-decimal pl-4 w-full lg:w-[1100px] text-[14px] lg:text-[16px] leading-[20px] lg:leading-[23.2px] text-[#263E83] -ml-5">Notes :</p>
-                    <ol class="list-decimal pl-4 w-full lg:w-[1100px] text-[14px] lg:text-[16px] leading-[20px] lg:leading-[23.2px] text-[#263E83]">
+                    <p class="font-semibold list-decimal pl-4 w-full text-[14px] lg:text-[16px] leading-[20px] lg:leading-[23.2px] text-[#263E83] -ml-5">Notes :</p>
+                    <ol class="list-decimal pl-4 w-full text-[14px] lg:text-[16px] leading-[20px] lg:leading-[23.2px] text-[#263E83]">
                         <li>Please make the payment by the due date to avoid any service interruptions.</li>
                         <li>If you have any questions about this invoice, please contact us at billing@awanhosting.com or call +62 21 1234 5678.</li>
                     </ol>
                 </div>
 
                 <div class="mt-8 text-center md:text-right">
-                    <p class="w-full lg:w-[1100px] text-[20px] lg:text-[23px] font-bold leading-[26px] lg:leading-[29.9px] text-[#263E83]">
+                    <p class="w-full text-[20px] lg:text-[23px] font-bold leading-[26px] lg:leading-[29.9px] text-[#263E83]">
                         Thank you for your business!
                     </p>
-                    <p class="w-full lg:w-[1100px] text-[20px] lg:text-[23px] font-bold leading-[26px] lg:leading-[29.9px] text-[#263E83]">
+                    <p class="w-full text-[20px] lg:text-[23px] font-bold leading-[26px] lg:leading-[29.9px] text-[#263E83]">
                         Awan Hosting
                     </p>
                 </div>
@@ -262,3 +250,26 @@
 </body>
 
 </html>
+
+<script>
+    function updatePaymentDueTime() {
+        const paymentDueElement = document.getElementById('payment-due-time');
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZoneName: 'short'
+        };
+        const now = new Date();
+
+        // Format waktu ke zona waktu UTC+7
+        const timeZoneOffset = 7 * 60 * 60 * 1000; // 7 jam dalam milidetik
+        const localTime = new Date(now.getTime() + timeZoneOffset);
+        paymentDueElement.textContent = localTime.toLocaleDateString('en-US', options);
+    }
+
+    // Panggil fungsi saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', updatePaymentDueTime);
+</script>

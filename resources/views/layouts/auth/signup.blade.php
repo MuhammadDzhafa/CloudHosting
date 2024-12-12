@@ -286,9 +286,11 @@
 
                     <!-- Google Sign Up -->
                     <div>
-                        <a href="{{ route('auth.google', ['redirect' => '/client-dashboard']) }}" class="flex items-center justify-center w-full h-[40px] border border-custom-gray rounded-full px-5 py-4 bg-white text-gray-800 hover:bg-gray-50 transition duration-300">
+                        <a href="{{ url('auth/redirect?redirect=/client-dashboard') }}" class="flex items-center justify-center w-full h-[40px] border border-custom-gray rounded-full px-5 py-4 bg-white text-gray-800 hover:bg-gray-50 transition duration-300">
                             <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-6 h-6 mr-3" alt="Google logo">
-                            <span class="text-">Sign up with Google</span>
+                            <span class="text-">
+                                Sign up with Google
+                            </span>
                         </a>
                     </div>
 
