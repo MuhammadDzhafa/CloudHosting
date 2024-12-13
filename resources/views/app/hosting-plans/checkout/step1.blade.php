@@ -471,13 +471,25 @@
             // Fungsi untuk mengatur pencarian TLD
             function setupTldSearch(containerId) {
                 const container = document.getElementById(containerId);
+                if (!container) {
+                    console.warn(`Container with ID ${containerId} not found`);
+                    return;
+                }
+
                 const domainSearch = container.querySelector('#domain-search');
                 const tldResults = container.querySelector('#tld-results');
+
+                // Optional: Add additional setup for domain search if needed
             }
 
             // Fungsi untuk mengatur tombol transfer dan form
             function setupTransferButtons(containerId) {
                 const container = document.getElementById(containerId);
+                if (!container) {
+                    console.warn(`Container with ID ${containerId} not found`);
+                    return;
+                }
+
                 const transferButtons = container.querySelectorAll('#transfer-button');
                 const transferForm = container.querySelector('#transfer-form');
                 const continueButton = container.querySelector('#continue-button');
@@ -487,6 +499,11 @@
 
                 // Fungsi untuk mengatur tombol Next Step
                 function toggleNextButton() {
+                    if (!successMessage || !nextButton) {
+                        console.warn('Success message or next button not found');
+                        return;
+                    }
+
                     if (successMessage.classList.contains('hidden')) {
                         nextButton.style.display = 'none'; // Hide Next Step button
                     } else {
@@ -495,23 +512,31 @@
                 }
 
                 // Event listener untuk tombol transfer
-                transferButtons.forEach(function(button) {
-                    button.addEventListener('click', function() {
-                        transferForm.classList.toggle('hidden');
+                if (transferButtons.length > 0) {
+                    transferButtons.forEach(function(button) {
+                        button.addEventListener('click', function() {
+                            if (transferForm) {
+                                transferForm.classList.toggle('hidden');
+                            }
+                        });
                     });
-                });
+                }
 
                 // Event listener untuk tombol continue
-                continueButton.addEventListener('click', function() {
-                    successMessage.classList.remove('hidden');
-                    toggleNextButton(); // Update the visibility of Next Step button
-                });
+                if (continueButton && successMessage) {
+                    continueButton.addEventListener('click', function() {
+                        successMessage.classList.remove('hidden');
+                        toggleNextButton(); // Update the visibility of Next Step button
+                    });
+                }
 
                 // Event listener untuk tombol delete message
-                deleteMessage.addEventListener('click', function() {
-                    successMessage.classList.add('hidden');
-                    toggleNextButton(); // Update the visibility of Next Step button
-                });
+                if (deleteMessage && successMessage) {
+                    deleteMessage.addEventListener('click', function() {
+                        successMessage.classList.add('hidden');
+                        toggleNextButton(); // Update the visibility of Next Step button
+                    });
+                }
 
                 // Initial state: Hide the Next Step button until success message appears
                 toggleNextButton();

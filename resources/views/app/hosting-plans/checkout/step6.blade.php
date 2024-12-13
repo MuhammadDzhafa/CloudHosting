@@ -167,7 +167,7 @@
                 </div>
                 <button type="button"
                     class="checkout-button button h-button mt-5 w-full h-[47px] px-[16px] py-[12px] gap-[8px] bg-[#4A6DCB] hover:bg-[#395FC6] active:bg-[#3253AE] text-[#F3F5FC] hover:text-[#F3F5FC] active:text-[#F3F5FC] text-[16px] leading-[23.2px] font-['Inter'] font-medium text-center flex items-center justify-center opacity-100"
-                    onclick="window.location.href='/invoicecheckout';"
+                    onclick="handleCheckoutButtonClick()"
                     style="border: unset;">
                     <span class="text-[16px] font-medium leading-[23.2px] text-center">
                         Checkout

@@ -13,28 +13,33 @@ $(document).ready(function () {
         let currentStep = 0; // Ganti var s menjadi let i 
     
         // Event handler untuk checkbox addon
-    $("#form-step-3 input[type='checkbox']").on('change', function() {
-        console.log('Addon checkbox changed:', $(this).attr('name'), $(this).is(':checked'));
-        calculateAndUpdateTotal();
-
-        if ($("#form-step-3").hasClass("is-active")) {
-            console.log("Step 3 is active, saving addons...");
-            saveAddon(function() {
-                console.log("Addon saved successfully");
-            });
-        }
-    });
+        $("#form-step-3 input[type='checkbox']").on('change', function() {
+            console.log('Addon checkbox changed:', $(this).attr('name'), $(this).is(':checked'));
+            calculateAndUpdateTotal();
+        });
+        
 
         // Setup awal fungsi saveAddon
         function saveAddon(callback) {
-            // Konversi nilai checkbox ke boolean yang eksplisit
+            const isDailyBackupChecked = $('input[name="daily_backup"]').is(':checked');
+            const isEmailProtectionChecked = $('input[name="email_protection"]').is(':checked');
+        
+            // Cek apakah ada addon yang dipilih
+            if (!isDailyBackupChecked && !isEmailProtectionChecked) {
+                console.log("No addons selected, skipping save.");
+                if (typeof callback === 'function') {
+                    callback(true); // Langsung lanjutkan jika tidak ada addon yang dipilih
+                }
+                return; // Jika tidak ada addon yang dipilih, tidak perlu menyimpan data
+            }
+        
             const data = {
                 order_id: $('input[name="order_id"]').val(),
-                daily_backup: $('input[name="daily_backup"]').is(':checked') ? 1 : 0, // Konversi ke 1/0
-                email_protection: $('input[name="email_protection"]').is(':checked') ? 1 : 0, // Konversi ke 1/0
+                daily_backup: isDailyBackupChecked ? 1 : 0,
+                email_protection: isEmailProtectionChecked ? 1 : 0,
                 price: calculateAddonTotalPrice(),
-                domain_order_id: $('input[name="domain_order_id"]').val() || null // Handle undefined
-            };            
+                domain_order_id: $('input[name="domain_order_id"]').val() || null
+            };
         
             console.log('Data yang akan dikirim:', data);
         
@@ -43,7 +48,7 @@ $(document).ready(function () {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    'Accept': 'application/json' // Tambahkan header ini
+                    'Accept': 'application/json'
                 },
                 data: data,
                 dataType: 'json',
@@ -51,39 +56,27 @@ $(document).ready(function () {
                     if (response.success) {
                         showNotification('Addon berhasil disimpan', 'success');
                         if (typeof callback === 'function') {
-                            callback();
+                            callback(true); // Kirim true jika berhasil disimpan
                         }
                     } else {
                         showNotification(response.message || 'Gagal menyimpan addon', 'error');
+                        if (typeof callback === 'function') {
+                            callback(false); // Kirim false jika gagal
+                        }
                     }
                 },
                 error: function(xhr) {
-                    console.error('Error detail:', {
-                        status: xhr.status,
-                        statusText: xhr.statusText,
-                        responseText: xhr.responseText
-                    });
-                    
-                    // Tambahkan penanganan error yang lebih spesifik
-                    if (xhr.status === 422) {
-                        try {
-                            const errors = JSON.parse(xhr.responseText);
-                            let errorMessage = 'Validation error: ';
-                            if (errors.errors) {
-                                errorMessage += Object.values(errors.errors).flat().join(', ');
-                            }
-                            showNotification(errorMessage, 'error');
-                        } catch (e) {
-                            handleAjaxError(xhr);
-                        }
-                    } else {
-                        handleAjaxError(xhr);
+                    console.error('Error detail:', xhr);
+                    handleAjaxError(xhr);
+                    if (typeof callback === 'function') {
+                        callback(false); // Kirim false jika terjadi error
                     }
                 }
             });
         }
         
-        // Buat variabel global
+        
+// Buat variabel global
 window.currentStep = 0;
 
 // Definisikan proceedToNextStep sebagai fungsi global
@@ -107,16 +100,16 @@ window.proceedToNextStep = function() {
         }, 500);
 
         // Logika untuk menampilkan/menyembunyikan tombol Continue
-        if (window.currentStep <= 1) {
+        if (window.currentStep === 5) {
+            // Sembunyikan tombol di step 5
+            $("#next-button").hide();
+        } else if (window.currentStep <= 1) {
             // Sembunyikan tombol di step 0 dan 1
             $("#next-button").hide();
         } else {
-            // Tampilkan tombol di step 2 dan seterusnya
+            // Tampilkan tombol di step 2, 3, dan 4
             $("#next-button").show();
-        }
-
-        if (window.currentStep === 5) {
-            $("#next-button").text("Complete Order");
+            $("#next-button").text("Continue");
         }
     }, 800);
 };
@@ -124,9 +117,7 @@ window.proceedToNextStep = function() {
 // Tambahkan inisialisasi awal untuk menyembunyikan tombol
 $(document).ready(function() {
     // Sembunyikan tombol di step awal (0 dan 1)
-    if (window.currentStep <= 1) {
-        $("#next-button").hide();
-    }
+    $("#next-button").hide();
 });
 
 window.initializeNextButtonHandler = function() {
@@ -149,8 +140,14 @@ window.initializeNextButtonHandler = function() {
                     window.proceedToNextStep();
                 });
             } else if (window.currentStep === 3) {
-                saveAddon(function() {
-                    window.proceedToNextStep();
+                saveAddon(function(success) {
+                    if (success) {
+                        window.proceedToNextStep();
+                    } else {
+                        // Jika tidak ada addon yang dipilih atau terjadi kesalahan saat menyimpan, lanjutkan
+                        showNotification('No addons selected or failed to save. Continuing...', 'warning');
+                        window.proceedToNextStep();
+                    }
                 });
             } else if (window.currentStep === 4) {
                 saveBillingAddress(function() {
@@ -180,18 +177,23 @@ window.initializeNextButtonHandler = function() {
                     });
                     break;
                 case 3:
-                    saveAddon(function() {
-                        window.proceedToNextStep();
+                    saveAddon(function(success) {
+                        // Jika berhasil menyimpan atau tidak ada addon yang dipilih, lanjutkan ke langkah berikutnya
+                        if (success) {
+                            window.proceedToNextStep();
+                        } else {
+                            // Jika ada kesalahan saat menyimpan, beri notifikasi dan jangan lanjutkan
+                            showNotification('Failed to save addons, but continuing...', 'warning');
+                            window.proceedToNextStep();
+                        }
                     });
-                    break;
+                    break;                    
                 case 4:
                     saveBillingAddress(function() {
                         window.proceedToNextStep();
                     });
                     break;
-                case 5:
-                    completeOrder();
-                    break;
+                // Menghapus case 5: completeOrder(); 
             }
         }
         $button.removeClass("is-loading");
@@ -629,18 +631,18 @@ window.proceedToNextStep = function() {
             scrollTop: $("#form-step-" + window.currentStep).offset().top
         }, 500);
 
-        // Logika untuk menampilkan/menyembunyikan tombol Continue
-        if (window.currentStep <= 1) {
-            // Sembunyikan tombol di step 0 dan 1
-            $("#next-button").hide();
+        // Logika untuk menyembunyikan tombol di step 0, 1, dan 5
+        if (window.currentStep === 0 || window.currentStep === 1 || window.currentStep === 5) {
+            $("#next-button").hide(); // Hide the button on steps 0, 1, and 5
         } else {
-            // Tampilkan tombol di step 2 dan seterusnya
-            $("#next-button").show();
+            $("#next-button").show(); // Show the button on steps 2, 3, and 4
         }
 
-        // Sembunyikan tombol pada langkah terakhir (misalnya, jika langkah terakhir adalah step 5)
+        // Logic for setting button text (optional for clarity)
         if (window.currentStep === 5) {
-            $("#next-button").hide();
+            $("#next-button").text("Complete Order"); // Set text to "Complete Order" on step 5
+        } else {
+            $("#next-button").text("Continue"); // Set text to "Continue" on other steps
         }
     }, 800);
 };
