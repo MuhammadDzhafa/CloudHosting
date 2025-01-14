@@ -1,8 +1,6 @@
 "use strict";
 $(document).ready(function () {
     // Setup AJAX CSRF token
-    console.log('Order ID:', $('input[name="order_id"]').val());
-    console.log('CSRF token:', $('meta[name="csrf-token"]').attr('content'));
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -14,242 +12,89 @@ $(document).ready(function () {
     
         // Event handler untuk checkbox addon
         $("#form-step-3 input[type='checkbox']").on('change', function() {
-            console.log('Addon checkbox changed:', $(this).attr('name'), $(this).is(':checked'));
             calculateAndUpdateTotal();
         });
         
 
         // Setup awal fungsi saveAddon
-        function saveAddon(callback) {
+        function saveAddon(callback) { 
             const isDailyBackupChecked = $('input[name="daily_backup"]').is(':checked');
             const isEmailProtectionChecked = $('input[name="email_protection"]').is(':checked');
         
-            // Cek apakah ada addon yang dipilih
-            if (!isDailyBackupChecked && !isEmailProtectionChecked) {
-                console.log("No addons selected, skipping save.");
-                if (typeof callback === 'function') {
-                    callback(true); // Langsung lanjutkan jika tidak ada addon yang dipilih
-                }
-                return; // Jika tidak ada addon yang dipilih, tidak perlu menyimpan data
-            }
-        
             const data = {
-                order_id: $('input[name="order_id"]').val(),
                 daily_backup: isDailyBackupChecked ? 1 : 0,
                 email_protection: isEmailProtectionChecked ? 1 : 0,
-                price: calculateAddonTotalPrice(),
+                price: calculateAddonTotalPrice() || 0,
                 domain_order_id: $('input[name="domain_order_id"]').val() || null
             };
         
-            console.log('Data yang akan dikirim:', data);
+            console.log('Addon Data to Send:', data);
         
             $.ajax({
                 url: '/save-addons',
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                data: data,
+                data: JSON.stringify(data),
                 dataType: 'json',
                 success: function(response) {
+                    console.log('Addon Save Response:', response);
+                    
                     if (response.success) {
                         showNotification('Addon berhasil disimpan', 'success');
                         if (typeof callback === 'function') {
-                            callback(true); // Kirim true jika berhasil disimpan
+                            callback(true);
                         }
                     } else {
+                        console.error('Addon save failed:', response.message);
                         showNotification(response.message || 'Gagal menyimpan addon', 'error');
                         if (typeof callback === 'function') {
-                            callback(false); // Kirim false jika gagal
+                            callback(false);
                         }
                     }
                 },
                 error: function(xhr) {
-                    console.error('Error detail:', xhr);
+                    console.error('Addon Save Error:', {
+                        status: xhr.status,
+                        responseText: xhr.responseText
+                    });
+                    
                     handleAjaxError(xhr);
+                    
                     if (typeof callback === 'function') {
-                        callback(false); // Kirim false jika terjadi error
+                        callback(false);
                     }
                 }
             });
         }
-        
-        
-// Buat variabel global
-window.currentStep = 0;
-
-// Definisikan proceedToNextStep sebagai fungsi global
-window.proceedToNextStep = function() {
-    const $button = $("#next-button");
-    $button.addClass("is-loading");
-
-    setTimeout(function() {
-        $button.removeClass("is-loading");
-
-        window.currentStep += 1;
-        // Hanya menambahkan class is-active ke step berikutnya
-        $("#form-step-" + window.currentStep).addClass("is-active");
-
-        $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
-        $("#step-segment-" + window.currentStep).addClass("is-active");
-        $("#mobile-step-segment-" + window.currentStep).addClass("is-active");
-
-        $("html, body").animate({
-            scrollTop: $("#form-step-" + window.currentStep).offset().top
-        }, 500);
-
-        // Logika untuk menampilkan/menyembunyikan tombol Continue
-        if (window.currentStep === 5) {
-            // Sembunyikan tombol di step 5
-            $("#next-button").hide();
-        } else if (window.currentStep <= 1) {
-            // Sembunyikan tombol di step 0 dan 1
-            $("#next-button").hide();
-        } else {
-            // Tampilkan tombol di step 2, 3, dan 4
-            $("#next-button").show();
-            $("#next-button").text("Continue");
-        }
-    }, 800);
-};
-
-// Tambahkan inisialisasi awal untuk menyembunyikan tombol
-$(document).ready(function() {
-    // Sembunyikan tombol di step awal (0 dan 1)
-    $("#next-button").hide();
-});
-
-window.initializeNextButtonHandler = function() {
-    $("#next-button").off('click').on("click", function() {
-        const $button = $(this);
-        $button.addClass("is-loading");
-
-        const activeTab = $('.tabs ul li.is-active').data('tab');
-
-        if (activeTab === 'hosting-only') {
-            if (window.currentStep === 0) {
-                window.currentStep = 1; // Mulai dari step 1 untuk hosting-only
-                window.proceedToNextStep();
-            } else if (window.currentStep === 1) {
-                saveDefaultHostingDetails(function() {
-                    window.proceedToNextStep();
-                });
-            } else if (window.currentStep === 2) {
-                saveHostingDetails(function() {
-                    window.proceedToNextStep();
-                });
-            } else if (window.currentStep === 3) {
-                saveAddon(function(success) {
-                    if (success) {
-                        window.proceedToNextStep();
-                    } else {
-                        // Jika tidak ada addon yang dipilih atau terjadi kesalahan saat menyimpan, lanjutkan
-                        showNotification('No addons selected or failed to save. Continuing...', 'warning');
-                        window.proceedToNextStep();
-                    }
-                });
-            } else if (window.currentStep === 4) {
-                saveBillingAddress(function() {
-                    window.proceedToNextStep();
-                });
-            } else {
-                window.proceedToNextStep();
-            }
-        } else {
-            switch(window.currentStep) {
-                case 0:
-                    window.proceedToNextStep();
-                    break;
-                case 1:
-                    if ($("input[name='domain-choice']:checked").length === 0) {
-                        showNotification('Please choose an option', 'error');
-                        $button.removeClass("is-loading");
-                        return;
-                    }
-                    saveDomainDetails(function() {
-                        window.proceedToNextStep();
-                    });
-                    break;
-                case 2:
-                    saveHostingDetails(function() {
-                        window.proceedToNextStep();
-                    });
-                    break;
-                case 3:
-                    saveAddon(function(success) {
-                        // Jika berhasil menyimpan atau tidak ada addon yang dipilih, lanjutkan ke langkah berikutnya
-                        if (success) {
-                            window.proceedToNextStep();
-                        } else {
-                            // Jika ada kesalahan saat menyimpan, beri notifikasi dan jangan lanjutkan
-                            showNotification('Failed to save addons, but continuing...', 'warning');
-                            window.proceedToNextStep();
-                        }
-                    });
-                    break;                    
-                case 4:
-                    saveBillingAddress(function() {
-                        window.proceedToNextStep();
-                    });
-                    break;
-                // Menghapus case 5: completeOrder(); 
-            }
-        }
-        $button.removeClass("is-loading");
-    });
-};
-
-$('#confirm-modal').on('click', '.confirm-button', function() {
-    console.log('Confirm button clicked');
-    
-    // Reset currentStep ke 0
-    window.currentStep = 0;
-
-    // Hapus class is-active dari semua form-section
-    $(".form-section").removeClass("is-active");
-
-    // Tambahkan class is-active ke step pertama
-    $("#form-step-0").addClass("is-active");
-
-    // Tampilkan kembali elemen-elemen yang relevan
-    $(".stepper-form .steps-segment, .mobile-steps .steps-segment").removeClass("is-active");
-    $("#step-segment-0").addClass("is-active");
-    $("#mobile-step-segment-0").addClass("is-active");
-    $("#next-button").text("Next");
-
-    console.log('Classes added successfully');
-
-    // Sembunyikan tombol Continue pada reset
-    $("#next-button").hide();
-
-    // Inisialisasi handler tombol next
-    window.initializeNextButtonHandler();
-});
-
-// Initialize ketika document ready
-$(document).ready(function() {
-    window.initializeNextButtonHandler();
-});
 
 
-        // Fungsi untuk menyimpan detail domain (Step 2)
         function saveDomainDetails(callback) {
-            let basePrice = parseFloat($('#domain_price').val() || 0);
+            let orderId = $('#order_id').val();
+            
+            // Jika order_id kosong, generate baru
+            if (!orderId) {
+                orderId = 'ORD-' + Date.now();
+                $('#order_id').val(orderId);
+            }
         
+            let basePrice = parseFloat($('#domain_price').val() || 0);
+            
             // Menambahkan harga manajemen DNS jika dipilih
             if ($('input[name="dns_management"]').is(':checked')) {
                 basePrice += 20000;
             }
-        
+            
             // Menambahkan harga WHOIS jika dipilih
             if ($('input[name="whois"]').is(':checked')) {
                 basePrice += 20000;
             }
         
-            // Menyiapkan data
             const data = {
-                order_id: $('#order_id').val(),
+                order_id: orderId, 
                 domain_name: $('#h3-domain-display').text().trim(),
                 price: Math.round(basePrice),
                 dns_management: $('input[name="dns_management"]').is(':checked') ? 1 : 0,
@@ -257,306 +102,481 @@ $(document).ready(function() {
                 domain_option_id: $('#domain_option_id').val() || null
             };
         
-            console.log('Preparing to send domain data:', data); // Debug log
+            console.log('Data yang akan dikirim:', data);
+        
+            const DomainDetailsData = [data];
+            localStorage.setItem('DomainDetails', JSON.stringify(DomainDetailsData));
+        
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         
             $.ajax({
                 url: '/save-domain-details',
                 method: 'POST',
                 data: data,
-                success: function (response) {
-                    console.log('Success response:', response);
+                success: function(response) {
                     if (response.success) {
-                        console.log("Callback is being called."); 
                         if (typeof callback === 'function') {
                             callback(response.data);
                         }
                     } else {
-                        console.error('Server returned error:', response);
+                        console.error('Server mengembalikan error:', response);
                         alert(response.message || 'Terjadi kesalahan saat menyimpan data.');
                     }
                 },
-                error: function (xhr, status, error) {
-                    console.error("Error occurred:", xhr);
-                    handleAjaxError(xhr, status, error);
+                error: function(xhr, status, error) {
+                    console.error("Terjadi kesalahan:", xhr);
+                    console.error("Status:", status);
+                    console.error("Error:", error);
+                    alert('Gagal menyimpan data domain. Silakan coba lagi.');
                 }
             });
         }
-        
-        function saveHostingDetails(callback) {
-            const specsElement = document.getElementById('hosting-specs');
-            let specs = [];
-        
-            try {
-                if (specsElement && specsElement.dataset.specs) {
-                    specs = JSON.parse(specsElement.dataset.specs);
-                }
-            } catch (e) {
-                console.error('Error parsing specs:', e);
-            }
-        
-            // Ambil nilai name dari elemen <td> dengan id "hosting-plan-name"
-            const name = document.getElementById('hosting-plan-name').dataset.name;
-        
-            // Collect domain name
-            let domainName = $('#h3-domain-display').text().trim() || $('#domain_name').val().trim() || $('input[name="domain_name"]').val().trim();
-            console.log('Domain Name:', domainName);
-        
-            let ram = 0, cpu = 0, storage = 0;
-            specs.forEach(spec => {
-                const value = spec.value;
-                if (value.includes('GB RAM')) {
-                    ram = parseInt(value);
-                } else if (value.includes('Core CPU')) {
-                    cpu = parseInt(value);
-                } else if (value.includes('GB SSD Storage')) {
-                    storage = parseInt(value);
-                }
-            });
-        
-            const selectedHostingPlanId = $('input[name="hosting_plan_id"]').val();
-            const activeDate = getCurrentDate();
-        
-            const billingPeriod = $('input[name="billing_period"]:checked').val();
-            console.log('Selected Billing Period:', billingPeriod);
-        
-            if (!billingPeriod) {
-                showNotification('Billing period is required', 'error');
-                $("#next-button").removeClass("is-loading");
-                return;
-            }
-        
-            const expiredDate = calculateExpiredDate(activeDate, billingPeriod);
-            const periode = getPeriodeFromBillingPeriod(billingPeriod);
-        
-            if (!expiredDate || !periode) {
-                showNotification('Invalid period or failed to calculate expiration date', 'error');
-                $("#next-button").removeClass("is-loading");
-                return;
-            }
-        
-            if (!domainName || !selectedHostingPlanId) {
-                showNotification('Domain name and hosting plan ID are required', 'error');
-                $("#next-button").removeClass("is-loading");
-                return;
-            }
-        
-            const price = getPriceForSelectedPeriod();
-            if (!price) {
-                showNotification('Please select a billing period', 'error');
-                $("#next-button").removeClass("is-loading");
-                return;
-            }
-        
-            // Ambil nilai product_type dari input hidden
-            const productType = $('#type-hidden').val();
-        
-            const hostingData = {
-                order_id: $('input[name="order_id"]').val(),
-                hosting_plans_id: selectedHostingPlanId,
-                domain_name: domainName,
-                ram: ram,
-                cpu: cpu,
-                storage: storage,
-                active_date: activeDate,
-                expired_date: expiredDate,
-                period: periode,
-                price: price,
-                product_type: productType,
-                package_type: 'Regular',
-                max_io: '0',
-                nproc: '0',
-                entry_process: '0',
-                ssl: 'No',
-                backup: 'No',
-                max_database: '0',
-                max_bandwidth: '0',
-                max_email_account: '0',
-                max_domain: '0',
-                max_addon_domain: '0',
-                max_parked_domain: '0',
-                ssh: 'No',
-                free_domain: 'No',
-                name: name,
-                _token: $('meta[name="csrf-token"]').attr('content')
-            };
-        
-            console.log('Hosting Data:', hostingData);
-        
-            $.ajax({
-                url: "/store-order-hosting-detail",
-                method: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: hostingData,
-                beforeSend: function() {
-                    $("#next-button").addClass("is-loading");
-                },
-                success: function(response) {
-                    console.log("Hosting save response:", response);
-                    showNotification(response.message || 'Data hosting berhasil disimpan', 'success');
-                    if (typeof callback === 'function') {
-                        callback();
-                    }
-                },
-                error: function(xhr) {
-                    console.error("Hosting save error:", xhr);
-                    const errorMsg = xhr.responseJSON?.message || xhr.responseJSON?.errors?.domain_name?.[0] || 'Gagal menyimpan data hosting';
-                    showNotification(errorMsg, 'error');
-                    $("#next-button").removeClass("is-loading");
-                }
-            });
+
+// Global variables to track selections
+let selectedHostingPlanId = null;
+let selectedBillingPeriod = 'monthly';
+
+const HostingHandler = {
+    saveHostingDetails(callback) {
+        const selectedPlanElement = document.querySelector('[data-selected="true"]');
+        const selectedBillingElement = document.querySelector('input[name="billing_period"]:checked');
+
+        if (!selectedPlanElement || !selectedBillingElement) {
+            console.error('No selected plan or billing period found');
+            return;
         }
-        
-        // Helper functions
-        function getCurrentDate() {
-            return new Date().toISOString().split('T')[0];
-        }
-        
-        function calculateExpiredDate(activeDate, billingPeriod) {
-            const date = new Date(activeDate);
-            const monthsMap = {
-                'monthly': 1,
-                'quarterly': 3,
-                'semi_annually': 6,
-                'annually': 12,
-                'biennially': 24
-            };
-            const months = monthsMap[billingPeriod] || 0;
-            date.setMonth(date.getMonth() + months);
-            return date.toISOString().split('T')[0];
-        }
-        
-        function getPeriodeFromBillingPeriod(billingPeriod) {
-            const periodeMap = {
-                'monthly': 'monthly',
-                'quarterly': 'quarterly',
-                'semi_annually': 'semi_annually',
-                'annually': 'annually',
-                'biennially': 'biennially'
-            };
-            return periodeMap[billingPeriod] || '';
-        }
-        
-        function getPriceForSelectedPeriod() {
-            try {
-                const selectedPeriod = $('input[name="billing_period"]:checked');
-                if (!selectedPeriod.length) {
-                    console.log('No billing period selected');
-                    return 0;
-                }
-        
-                const cardElement = selectedPeriod.closest('.card-gradient');
-                if (!cardElement.length) {
-                    console.log('Card element not found');
-                    return 0;
-                }
-        
-                // Try to get price from data attribute
-                let price = parseInt(cardElement.data('price'));
-                if (price) {
-                    console.log('Price from data attribute:', price);
-                    return price;
-                }
-        
-                // Try to find price in span elements
-                const priceSpans = cardElement.find('span').filter(function() {
-                    return $(this).text().includes('Rp');
-                });
-        
-                if (priceSpans.length > 0) {
-                    const mainPriceSpan = priceSpans.filter(function() {
-                        return !$(this).hasClass('line-through') && 
-                               !$(this).parent().hasClass('line-through');
-                    }).first();
-        
-                    if (mainPriceSpan.length) {
-                        const priceText = mainPriceSpan.text();
-                        price = parseInt(priceText.replace(/[^\d]/g, ''));
-                        if (price) {
-                            console.log('Extracted price:', price);
-                            return price;
-                        }
-                    }
-                }
-        
-                // If still no price, try to find in text nodes
-                cardElement.contents().each(function() {
-                    if (this.nodeType === 3) { // Text node
-                        const text = $(this).text();
-                        if (text.includes('Rp')) {
-                            const extracted = parseInt(text.replace(/[^\d]/g, ''));
-                            if (extracted) {
-                                price = extracted;
-                                return false; // break loop
-                            }
-                        }
-                    }
-                });
-        
-                if (price) {
-                    console.log('Final price found:', price);
-                    return price;
-                }
-        
-                // Last resort: try regex on all text
-                const allText = cardElement.text();
-                const priceMatch = allText.match(/Rp[.\s]*([0-9.,]+)/);
-                if (priceMatch) {
-                    price = parseInt(priceMatch[1].replace(/[.,]/g, ''));
-                    console.log('Price from regex:', price);
-                    return price;
-                }
-        
-                console.log('No price found using any method');
-                return 0;
-        
-            } catch (error) {
-                console.error('Error getting price:', error);
-                return 0;
-            }
-        }
-        
-        // Tambahkan event listener untuk radio button
-        $('input[name="billing_period"]').on('change', function() {
-            console.log('Radio button changed:', $(this).val());
-            const price = getPriceForSelectedPeriod();
-            console.log('Price after selection:', price);
-        });
-        
-        // Debug function untuk memeriksa struktur card
-        function debugPriceStructure() {
-            $('.card-gradient').each(function(index) {
-                console.log(`Card ${index + 1}:`);
-                console.log('HTML:', $(this).html());
-                console.log('Text content:', $(this).text());
-                console.log('Radio button value:', $(this).find('input[name="billing_period"]').val());
-                $(this).find('span').each(function(i) {
-                    console.log(`Span ${i + 1}:`, {
-                        text: $(this).text(),
-                        classes: $(this).attr('class'),
-                        hasPrice: $(this).text().includes('Rp')
-                    });
-                });
-            });
-        }
-        
-        // Panggil debug function saat dokumen ready
-        $(document).ready(function() {
-            debugPriceStructure();
+
+        const isCustomPlan = selectedPlanElement.classList.contains('custom-plan');
+
+        // Perbaikan: Ambil data yang lebih spesifik dari view
+        const data = {
+            hosting_plans_id: isCustomPlan 
+                ? selectedPlanElement.getAttribute('data-id') 
+                : selectedPlanElement.getAttribute('data-hosting-plan-id'),
             
-            // Log radio button state
-            console.log('Initial radio button state:', {
-                total: $('input [name="billing_period"]').length,
-                checked: $('input[name="billing_period"]:checked').length,
-                values: $('input[name="billing_period"]').map(function() {
-                    return {
-                        value: $(this).val(),
-                        checked: $(this).is(':checked')
-                    };
-                }).get()
-            });
+            name: isCustomPlan 
+                ? 'Custom Hosting Plan' 
+                : selectedPlanElement.querySelector('.plan-title')?.textContent.trim(),
+            
+            plan_type: isCustomPlan ? 'custom' : 'regular',
+            
+            domain_name: document.querySelector('#domain-name')?.value || 'kazee.id',
+            
+            billing_period: selectedBillingElement.value,
+            
+            price: selectedBillingElement.getAttribute('data-price') || 
+                   selectedBillingElement.dataset.price || 0,
+            
+            // Perbaikan ekstraksi spesifikasi
+            ram: isCustomPlan 
+                ? selectedPlanElement.querySelector('.spec-item:contains("RAM") span')?.textContent.split(' ')[1] 
+                : selectedPlanElement.querySelector('.spec-item:nth-child(1) span')?.textContent.split(' ')[1] || 'Default',
+            
+            cpu: isCustomPlan 
+                ? selectedPlanElement.querySelector('.spec-item:contains("CPU") span')?.textContent.split(' ')[1]
+                : selectedPlanElement.querySelector('.spec-item:nth-child(2) span')?.textContent.split(' ')[1] || 'Default',
+            
+            storage: isCustomPlan 
+                ? selectedPlanElement.querySelector('.spec-item:contains("Storage") span')?.textContent.split(' ')[1]
+                : selectedPlanElement.querySelector('.spec-item:nth-child(3) span')?.textContent.split(' ')[1] || 'Default',
+            
+            active_date: new Date().toISOString().split('T')[0],
+            expired_date: calculateExpiredDate(selectedBillingElement.value),
+        };
+
+        console.log('Data being sent to backend:', data);
+
+        fetch('/save-hosting-details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('Result from backend:', result);
+            if (result.success) {
+                showNotification('Hosting details saved successfully!', 'success');
+                if (typeof callback === 'function') {
+                    callback(result);
+                }
+            } else {
+                showNotification(result.message || 'Failed to save hosting details', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error saving hosting details:', error);
+            showNotification('An error occurred while saving hosting details', 'error');
         });
+    },
+
+    determinePlanType() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const planType = urlParams.get('plan');
+        const orderId = urlParams.get('order_id');
+        const hostingPlanId = urlParams.get('hosting_plan_id');
+
+        // Tambahkan logging untuk debugging
+        console.log('URL Parameters:', {
+            planType,
+            orderId,
+            hostingPlanId
+        });
+
+        if (planType === 'custom') {
+            return 'custom';
+        } else if (hostingPlanId) {
+            return 'specific';
+        } else if (selectedHostingPlanId) {
+            return 'regular';
+        }
+        return 'regular';
+    }
+};
+
+function logHostingSelection() {
+    const selectedPlan = document.querySelector('[data-selected="true"]');
+    const selectedBilling = document.querySelector('input[name="billing_period"]:checked');
+
+    console.log('Current Hosting Selection:', {
+        plan: {
+            id: selectedPlan?.getAttribute('data-hosting-plan-id') || selectedPlan?.getAttribute('data-id'),
+            type: selectedPlan?.classList.contains('custom-plan') ? 'custom' : 'regular',
+            name: selectedPlan?.querySelector('.plan-title')?.textContent.trim()
+        },
+        billing: {
+            period: selectedBilling?.value,
+            price: selectedBilling?.getAttribute('data-price')
+        }
+    });
+}
+
+function toggleDropdown(element) {
+    const hostingPlanId = element.getAttribute('data-hosting-plan-id');
+    const isCustomPlan = element.classList.contains('custom-plan');
+
+    if (!hostingPlanId && !isCustomPlan) {
+        console.error('Hosting plan ID not found for the clicked element.');
+        return;
+    }
+
+    const dropdownContent = element.nextElementSibling;
+    if (!isCustomPlan && (!dropdownContent || !dropdownContent.classList)) {
+        console.warn('No dropdown available for this plan. Skipping toggle logic.');
+        return;
+    }
+
+    console.log('Dropdown content valid for hosting plan:', hostingPlanId || 'Custom Plan');
+
+    document.querySelectorAll('.regular-plan, .custom-plan').forEach(plan => {
+        plan.removeAttribute('data-selected');
+        plan.classList.remove('gradientstep-border');
+        plan.classList.add('grey-border');
+    });
+
+    element.setAttribute('data-selected', 'true');
+    selectedHostingPlanId = hostingPlanId || 'custom';
+    console.log('Updated selectedHostingPlanId:', selectedHostingPlanId);
+
+    if (!isCustomPlan) {
+        const isCurrentlyOpen = dropdownContent.classList.contains('show');
+
+        document.querySelectorAll('div[data-hosting-plan-id]').forEach(dropdown => {
+            const dropdownSibling = dropdown.nextElementSibling;
+            if (dropdownSibling && dropdownSibling.classList) {
+                dropdownSibling.classList.remove('show');
+            }
+        });
+
+        if (!isCurrentlyOpen) {
+            dropdownContent.classList.add('show');
+            element.classList.remove('grey-border');
+            element.classList.add('gradientstep-border');
+        }
+
+        const billingPeriods = dropdownContent.querySelectorAll('input[name="billing_period"]');
+        let hasSelectedPeriod = false;
+        billingPeriods.forEach(input => {
+            if (input.checked) hasSelectedPeriod = true;
+        });
+
+        if (!hasSelectedPeriod && billingPeriods.length > 0) {
+            const monthlyOption = Array.from(billingPeriods).find(input => input.value === 'monthly');
+            if (monthlyOption) {
+                monthlyOption.checked = true;
+                selectedBillingPeriod = monthlyOption.value;
+                console.log('Default billing period set:', selectedBillingPeriod);
+
+                // Mencoba menyimpan setelah mengatur default
+                try {
+                    setTimeout(() => {
+                        saveHostingDetails(() => {
+                            console.log('Default hosting details saved successfully');
+                        });
+                    }, 100);
+                } catch (error) {
+                    console.error('Error saving default hosting details:', error);
+                }
+            }
+        }
+    }
+}
+
+// Tambahkan di event listener DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default selections pada page load
+    const defaultPlan = document.querySelector('.regular-plan');
+    const defaultBilling = document.querySelector('input[name="billing_period"][value="monthly"]');
+
+    if (defaultPlan) {
+        defaultPlan.setAttribute('data-selected', 'true');
+        defaultPlan.classList.add('gradientstep-border');
+        defaultPlan.classList.remove('grey-border');
+        // Trigger dropdown untuk default plan
+        toggleDropdown(defaultPlan);
+    }
+
+    // Initialize hosting plan selection handlers
+    document.querySelectorAll('.regular-plan, .custom-plan').forEach(plan => {
+        plan.addEventListener('click', function() {
+            // Remove selection from all plans
+            document.querySelectorAll('.regular-plan, .custom-plan').forEach(p => {
+                p.removeAttribute('data-selected');
+                p.classList.remove('gradientstep-border');
+                p.classList.add('grey-border');
+            });
+
+            // Set selection on clicked plan
+            this.setAttribute('data-selected', 'true');
+            this.classList.remove('grey-border');
+            this.classList.add('gradientstep-border');
+
+            // Show corresponding pricing options if needed
+            if (this.classList.contains('regular-plan')) {
+                toggleDropdown(this);
+            }
+        });
+    });
+    console.log('Hosting Plan Selection Initialized');
+    logHostingSelection();
+
+    // Initialize billing period handlers
+    const checkboxes = document.querySelectorAll('input[name="billing_period"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                checkboxes.forEach(cb => {
+                    if (cb !== this && cb.name === 'billing_period') {
+                        cb.checked = false;
+                    }
+                });
+            }
+        });
+    });
+});
+
+function saveHostingDetails(callback) {
+    const activePlan = document.querySelector('[data-selected="true"]');
+    const selectedCheckbox = document.querySelector('input[name="billing_period"]:checked');
+
+    if (!activePlan || !selectedCheckbox) {
+        showNotification('Please select a hosting plan and billing period.', 'error');
+        return;
+    }
+
+    const extractSpecValue = (specText) => {
+        const specItems = activePlan.querySelectorAll('.spec-item');
+        for (let item of specItems) {
+            if (item.textContent.toLowerCase().includes(specText.toLowerCase())) {
+                const spanElement = item.querySelector('span');
+                if (spanElement) {
+                    const match = spanElement.textContent.match(/(\d+)\s*(GB|Core)/);
+                    return match ? match[1] : 'Default';
+                }
+            }
+        }
+        console.warn(`Spec "${specText}" not found.`);
+        return 'Default';
+    };
+
+    const calculateExpiredDate = (billingPeriod) => {
+        const periods = {
+            monthly: 1,
+            quarterly: 3,
+            semi_annually: 6,
+            annually: 12,
+            biennially: 24,
+        };
+        const monthsToAdd = periods[billingPeriod.toLowerCase()] || 1;
+        const date = new Date();
+        date.setMonth(date.getMonth() + monthsToAdd);
+        return date.toISOString().split('T')[0];
+    };
+
+    const nameElement = activePlan.querySelector('h3');
+    const name = nameElement 
+        ? nameElement.textContent.trim() 
+        : (activePlan.classList.contains('custom-plan') 
+            ? 'Custom Hosting Plan' 
+            : 'Default Hosting Plan');
+
+    const hostingData = {
+        hosting_plans_id: activePlan.getAttribute('data-hosting-plan-id'), 
+        name: name,
+        domain_name: 'kazee.id',
+        product_type: activePlan.classList.contains('custom-plan') ? 'Custom Cloud Hosting' : 'Cloud Hosting',
+        plan_type: activePlan.classList.contains('custom-plan') ? 'custom' : 'regular',
+        billing_period: selectedCheckbox.value,
+        ram: extractSpecValue('RAM') + ' GB',
+        cpu: extractSpecValue('CPU') + ' Core',
+        storage: extractSpecValue('Storage') + ' GB',
+        max_io: activePlan.getAttribute('data-max-io') || 'Unlimited',
+        nproc: activePlan.getAttribute('data-nproc') || '1',
+        entry_process: activePlan.getAttribute('data-entry-process') || '5',
+        ssl: activePlan.getAttribute('data-ssl') || 'Yes',
+        backup: activePlan.getAttribute('data-backup') || 'Yes',
+        max_database: activePlan.getAttribute('data-max-database') || 'Unlimited',
+        max_bandwidth: activePlan.getAttribute('data-max-bandwidth') || 'Unlimited',
+        max_email_account: activePlan.getAttribute('data-max-email-account') || 'Unlimited',
+        max_domain: activePlan.getAttribute('data-max-domain') || 'Unlimited',
+        max_addon_domain: activePlan.getAttribute('data-max-addon-domain') || '0',
+        max_parked_domain: activePlan.getAttribute('data-max-parked-domain') || '0',
+        price: selectedCheckbox.dataset.price || 0,
+        active_date: new Date().toISOString().split('T')[0],
+        expired_date: calculateExpiredDate(selectedCheckbox.value),
+    };
+
+    console.log('Payload yang dikirim:', hostingData);
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    if (!csrfToken) {
+        showNotification('CSRF token not found. Please refresh the page.', 'error');
+        return;
+    }
+
+    fetch('/save-hosting-details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify(hostingData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                console.error('Server Error:', err);
+                throw new Error(err.message || 'Server Error');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Parsed Response:', data);
+        if (data.success) {
+            showNotification('Hosting details saved successfully!', 'success');
+            if (typeof callback === 'function') {
+                callback();
+            }
+        } else {
+            showNotification(data.message || 'An error occurred.', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error saving hosting details:', error);
+        showNotification(error.message || 'An unexpected error occurred.', 'error');
+    });
+}
+
+
+function calculateExpiredDate(billingPeriod) {
+    const currentDate = new Date();
+    let expirationDate = new Date(currentDate);
+
+    switch (billingPeriod) {
+        case 'monthly':
+            expirationDate.setMonth(currentDate.getMonth() + 1);
+            break;
+        case 'quarterly':
+            expirationDate.setMonth(currentDate.getMonth() + 3);
+            break;
+        case 'semi-annually':
+            expirationDate.setMonth(currentDate.getMonth() + 6);
+            break;
+        case 'annually':
+            expirationDate.setFullYear(currentDate.getFullYear() + 1);
+            break;
+        case 'biennially':
+            expirationDate.setFullYear(currentDate.getFullYear() + 2);
+            break;
+        default:
+            break;
+    }
+
+    return expirationDate.toISOString().split('T')[0];
+}
+
+// Function to handle the different conditions
+function handleConditions() {
+    const allPlans = document.querySelectorAll('.regular-plan, .custom-plan');
+    allPlans.forEach(plan => {
+        plan.addEventListener('click', function() {
+            const planType = this.classList.contains('custom-plan') ? 'custom' : 'regular';
+            console.log('Plan Type:', planType);
+            // Additional logic based on plan type can be added here
+        });
+    });
+}
+
+// Call the function to handle conditions
+handleConditions();
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.classList.add('notification', `notification-${type}`);
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '5px';
+            notification.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
+            notification.style.color = 'white';
+            notification.style.zIndex = '1000';
+            notification.textContent = message;
+        
+            document.body.appendChild(notification);
+        
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+        
         
         // Fungsi untuk menyimpan billing address (Step 5)
         function saveBillingAddress(callback) {
@@ -575,7 +595,8 @@ $(document).ready(function() {
                 return;
             }
         
-            console.log('Preparing to send billing data:', billingData);
+            const ArrayBillingAddressData = [billingData];
+            localStorage.setItem('BillingAddress', JSON.stringify(ArrayBillingAddressData));
         
             $.ajax({
                 url: '/save-billing-address',
@@ -584,10 +605,9 @@ $(document).ready(function() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     'Accept': 'application/json'
                 },
-                data: billingData, // Send only the necessary billing data
+                data: billingData,
                 dataType: 'json',
                 success: function(response) {
-                    console.log('Billing address response:', response);
                     if (response.success) {
                         showNotification('Alamat penagihan berhasil disimpan', 'success');
                         if (typeof callback === 'function') {
@@ -607,6 +627,12 @@ $(document).ready(function() {
                     }
                 }
             });
+        }
+    
+        // Fungsi untuk menyelesaikan order
+        function completeOrder() {
+            console.log("Order completed!");
+            // Logika untuk menyelesaikan pesanan
         }
         // Buat variabel global
 window.currentStep = 0;
@@ -631,22 +657,20 @@ window.proceedToNextStep = function() {
             scrollTop: $("#form-step-" + window.currentStep).offset().top
         }, 500);
 
-        // Logika untuk menyembunyikan tombol di step 0, 1, dan 5
-        if (window.currentStep === 0 || window.currentStep === 1 || window.currentStep === 5) {
-            $("#next-button").hide(); // Hide the button on steps 0, 1, and 5
+        // Logika untuk menampilkan/menyembunyikan tombol Continue
+        if (window.currentStep <= 1) {
+            // Sembunyikan tombol di step 0 dan 1
+            $("#next-button").hide();
         } else {
-            $("#next-button").show(); // Show the button on steps 2, 3, and 4
+            // Tampilkan tombol di step 2 dan seterusnya
+            $("#next-button").show();
         }
 
-        // Logic for setting button text (optional for clarity)
         if (window.currentStep === 5) {
-            $("#next-button").text("Complete Order"); // Set text to "Complete Order" on step 5
-        } else {
-            $("#next-button").text("Continue"); // Set text to "Continue" on other steps
+            $("#next-button").text("Complete Order");
         }
     }, 800);
 };
-
 
 // Tambahkan inisialisasi awal untuk menyembunyikan tombol
 $(document).ready(function() {
@@ -657,6 +681,7 @@ $(document).ready(function() {
 });
 
 window.initializeNextButtonHandler = function() {
+    console.log('Next button clicked. Current Step:', window.currentStep);
     $("#next-button").off('click').on("click", function() {
         const $button = $(this);
         $button.addClass("is-loading");
@@ -668,21 +693,13 @@ window.initializeNextButtonHandler = function() {
                 window.currentStep = 1; // Mulai dari step 1 untuk hosting-only
                 window.proceedToNextStep();
             } else if (window.currentStep === 1) {
-                saveDefaultHostingDetails(function() {
-                    window.proceedToNextStep();
-                });
+                window.proceedToNextStep();
             } else if (window.currentStep === 2) {
-                saveHostingDetails(function() {
-                    window.proceedToNextStep();
-                });
+                window.proceedToNextStep();
             } else if (window.currentStep === 3) {
-                saveAddon(function() {
-                    window.proceedToNextStep();
-                });
+                window.proceedToNextStep();
             } else if (window.currentStep === 4) {
-                saveBillingAddress(function() {
-                    window.proceedToNextStep();
-                });
+                window.proceedToNextStep();
             } else {
                 window.proceedToNextStep();
             }
@@ -697,24 +714,16 @@ window.initializeNextButtonHandler = function() {
                         $button.removeClass("is-loading");
                         return;
                     }
-                    saveDomainDetails(function() {
-                        window.proceedToNextStep();
-                    });
+                    window.proceedToNextStep(); 
                     break;
                 case 2:
-                    saveHostingDetails(function() {
-                        window.proceedToNextStep();
-                    });
+                    window.proceedToNextStep();
                     break;
                 case 3:
-                    saveAddon(function() {
-                        window.proceedToNextStep();
-                    });
+                    window.proceedToNextStep();
                     break;
                 case 4:
-                    saveBillingAddress(function() {
-                        window.proceedToNextStep();
-                    });
+                    window.proceedToNextStep();
                     break;
                 case 5:
                     completeOrder();
@@ -725,8 +734,9 @@ window.initializeNextButtonHandler = function() {
     });
 };
 
+
+
 $('#confirm-modal').on('click', '.confirm-button', function() {
-    console.log('Confirm button clicked');
     
     // Reset currentStep ke 0
     window.currentStep = 0;
@@ -743,7 +753,6 @@ $('#confirm-modal').on('click', '.confirm-button', function() {
     $("#mobile-step-segment-0").addClass("is-active");
     $("#next-button").text("Next");
 
-    console.log('Classes added successfully');
 
     // Sembunyikan tombol Continue pada reset
     $("#next-button").hide();
@@ -789,25 +798,6 @@ $(document).ready(function() {
             showNotification(errorMessage, 'error');
         }
 
-        // Function untuk menampilkan notifikasi
-        function showNotification(message, type = 'success') {
-            const notification = $('#notification');
-            const notificationMessage = $('#notification-message');
-
-            notificationMessage.text(message);
-            notification.removeClass('hidden');
-
-            if (type === 'success') {
-                notification.find('div').removeClass('bg-red-500').addClass('bg-green-500');
-            } else {
-                notification.find('div').removeClass('bg-green-500').addClass('bg-red-500');
-            }
-
-            setTimeout(() => {
-                notification.addClass('hidden');
-            }, 3000);
-        }
-
        // Handle Buy Domain Only button
 $("#buy-domain-button").on('click', function (e) {
     e.preventDefault();
@@ -827,18 +817,7 @@ $("#buy-domain-button").on('click', function (e) {
         return;
     }
 
-    saveDomainDetails(function () {
-        window.currentStep = 3; // Sesuaikan dengan step billing address
-        window.proceedToNextStep();
-
-        // Optional: Scroll ke billing address
-        $('html, body').animate({
-            scrollTop: $("#billing-address-section").offset().top
-        }, 500);
-
-        $button.removeClass("is-loading");
-        $(this).removeClass("is-loading");
-    });
+    window.proceedToNextStep();
 });
 
 // Handle Buy With Hosting button
@@ -860,10 +839,34 @@ $("#buy-with-hosting").on('click', function (e) {
         return;
     }
 
-    saveDomainDetails(function () {
-        proceedToNextStep();
-    });
+    window.proceedToNextStep();
 });
+
+window.handleCheckoutButtonClick = function() {
+    const $button = $(".checkout-button");
+    $button.addClass("is-loading");
+
+    // Pastikan proses berjalan berurutan
+    saveDomainDetails(function() {
+        saveHostingDetails(function() {
+            // Simpan addon saat tombol checkout diklik
+            saveAddon(function(addonSaved) {
+                if (!addonSaved) {
+                    showNotification('Gagal menyimpan addon', 'error');
+                    $button.removeClass("is-loading");
+                    return;
+                }
+
+                saveBillingAddress(function() {
+                    completeOrder(function() {
+                        // Pastikan button loading dilepas di sini
+                        $button.removeClass("is-loading");
+                    });
+                });
+            });
+        });
+    });
+};
 
 
         // Validasi untuk step domain

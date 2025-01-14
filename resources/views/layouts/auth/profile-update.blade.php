@@ -34,6 +34,7 @@
         // Redirect to the appropriate area after 2 seconds
         setTimeout(function() {
             const redirectUrl = "{{ request()->input('redirect', '/client-dashboard') }}";
+            localStorage.setItem('user_has_log_in', true);
             window.location.href = redirectUrl;
         }, 2000);
     </script>

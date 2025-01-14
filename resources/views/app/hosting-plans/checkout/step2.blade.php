@@ -11,81 +11,81 @@
     </h1>
 
     <form id="domain-form">
-    <!-- Main Container -->
-    <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
-        <!-- Domain Display -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-            <div class="flex flex-col items-start mb-4 md:mb-0">
-                <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">
-                    Example.id
-                </h3>
+        <!-- Main Container -->
+        <div class="gradient-border w-full lg:w-full md:w-full p-6 md:p-8 lg:p-[30px] bg-white shadow-lg relative">
+            <!-- Domain Display -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div class="flex flex-col items-start mb-4 md:mb-0">
+                    <h3 id="h3-domain-display" class="text-[23px] font-[700] leading-[29.9px] text-left text-[#3C476C]">
+                        Example.id
+                    </h3>
+                </div>
             </div>
+
+            <!-- Grid untuk DNS Management dan Whois Protection -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- DNS Management Card -->
+                <div class="card-gradient p-4 w-full" id="dns-whois-section">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
+                        <label class="checkbox is-outlined is-circle is-info">
+                            <input type="checkbox" name="dns_management" value="1">
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="flex items-baseline">
+                        <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                            Rp
+                        </span>
+                        <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
+                            20.000
+                        </span>
+                        <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                            /mon
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="line-through text-gray-400 text-sm">Rp 28.000 /mon</span>
+                        <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
+                            Save 30%
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Whois Protection Card -->
+                <div class="card-gradient p-4 w-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
+                        <label class="checkbox is-outlined is-circle is-info">
+                            <input id="whois" type="checkbox" name="whois" value="1" checked>
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="flex items-baseline">
+                        <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                            Rp
+                        </span>
+                        <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
+                            20.000
+                        </span>
+                        <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
+                            /mon
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="line-through text-gray-400 text-sm">Rp 28.000 /mon</span>
+                        <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
+                            Save 30%
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden Inputs -->
+            <input type="hidden" id="order_id" name="order_id" value="{{ $order_id ?? '' }}">
+            <input type="hidden" id="domain_option_id" value="{{ $domain_option_id ?? '' }}">
+            <input type="hidden" id="domain_price" value="{{ $price ?? 0 }}">
         </div>
-
-        <!-- Grid untuk DNS Management dan Whois Protection -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <!-- DNS Management Card -->
-            <div class="card-gradient p-4 w-full" id="dns-whois-section">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
-                    <label class="checkbox is-outlined is-circle is-info">
-                        <input type="checkbox" name="dns_management" value="1">
-                        <span></span>
-                    </label>
-                </div>
-                <div class="flex items-baseline">
-                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        Rp
-                    </span>
-                    <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                        20.000
-                    </span>
-                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        /mon
-                    </span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="line-through text-gray-400 text-sm">Rp 28.000 /mon</span>
-                    <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
-                        Save 30%
-                    </span>
-                </div>
-            </div>
-
-            <!-- Whois Protection Card -->
-            <div class="card-gradient p-4 w-full">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
-                    <label class="checkbox is-outlined is-circle is-info">
-                        <input type="checkbox" name="whois" value="1">
-                        <span></span>
-                    </label>
-                </div>
-                <div class="flex items-baseline">
-                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        Rp
-                    </span>
-                    <span class="text-[32px] font-bold leading-[38.4px] text-[#4A6DCB]">
-                        20.000
-                    </span>
-                    <span class="text-[14px] font-normal leading-[20.3px] text-[#4A6DCB]">
-                        /mon
-                    </span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="line-through text-gray-400 text-sm">Rp 28.000 /mon</span>
-                    <span class="text-[13px] font-semibold leading-[18.85px] text-[#6C88D5] bg-[#F5F7FF] px-2 py-1 rounded">
-                        Save 30%
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hidden Inputs -->
-        <input type="hidden" id="order_id" value="{{ $order_id ?? '' }}">
-        <input type="hidden" id="domain_option_id" value="{{ $domain_option_id ?? '' }}">
-        <input type="hidden" id="domain_price" value="{{ $price ?? 0 }}">
-    </div>
     </form>
 </div>
 

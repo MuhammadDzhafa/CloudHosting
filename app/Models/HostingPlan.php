@@ -38,7 +38,7 @@ class HostingPlan extends Model
     // Relasi ke model Price
     public function prices()
     {
-        return $this->hasMany(Price::class, 'hosting_plans_id');
+        return $this->hasMany(Price::class, 'hosting_plans_id', 'hosting_plans_id');
     }
 
     // Relasi ke model HostingGroup
@@ -48,14 +48,14 @@ class HostingPlan extends Model
     }
 
     // Relasi ke model CustomMainSpec
-    public function customMainSpec()
+    public function customSpec()
     {
-        return $this->hasOne(CustomMainSpec::class, 'custom_main_spec_id');
+        return $this->hasOne(CustomMainSpec::class, 'hosting_plans_id', 'hosting_plans_id');
     }
 
     // Relasi ke model RegularMainSpec
-    public function regularMainSpec()
+    public function regularSpec()
     {
-        return $this->hasOne(RegularMainSpec::class, 'regular_main_spec_id');
+        return $this->hasOne(RegularMainSpec::class, 'hosting_plans_id', 'hosting_plans_id');
     }
 }

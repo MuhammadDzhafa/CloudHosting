@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     <!-- Fonts -->
@@ -206,7 +207,7 @@
                                 <div class="inner-content">
                                     <div class="section-placeholder">
                                         <div class="placeholder-content">
-                                            <img src="assets/img/placeholders/huro-1.svg" alt="">
+                                        <img src="{{ asset('assets/img/placeholders/huro-1.svg') }}" alt="Placeholder Image">
                                             <h3 class="dark-inverted">Go Premium</h3>
                                             <p>Unlock more features and business tools by going premium</p>
                                         </div>
@@ -257,7 +258,6 @@
 
 <!-- Layouts js -->
 
-<script src="assets/js/syntax.js" async></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Mengelola tab
@@ -442,7 +442,7 @@
 
             // Cek untuk tipe 'new' (domain baru)
             if (type === 'new') {
-                const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_50ndnvrxO5vW0BVGxlhraK54ndQJp&domainName=${baseDomain}&outputFormat=json`;
+                const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz&domainName=${baseDomain}&outputFormat=json`;
                 try {
                     const response = await fetch(apiUrl);
                     console.log('Response Status:', response.status);
@@ -481,7 +481,7 @@
             }
             // Cek untuk tipe 'transfer'
             else if (type === 'transfer') {
-                const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
+                const apiKey = 'at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz';
                 if (!apiKey) {
                     console.error('API Key is missing!');
                     return;
@@ -560,7 +560,7 @@
                 } else {
                     const baseDomain = searchQuery; // Pastikan base domain adalah query lengkap
 
-                    const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_50ndnvrxO5vW0BVGxlhraK54ndQJp&domainName=${baseDomain}&outputFormat=json`;
+                    const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz&domainName=${baseDomain}&outputFormat=json`;
 
                     try {
                         const response = await fetch(apiUrl);
@@ -723,7 +723,7 @@
                         return; // Hentikan jika tidak ada nama domain
                     }
 
-                    const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
+                    const apiKey = 'at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz';
                     const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
 
                     fetch(url)
@@ -1125,6 +1125,62 @@
         checkSuccessMessage();
     });
 </script>
+<!-- <script>    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Periksa parameter step aktif dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeStep = urlParams.get('active_step');
+
+        // Fungsi untuk mengatur langkah aktif di stepper
+        function setStepperActive(stepIndex) {
+            // Hapus kelas is-active dari semua segmen langkah
+            document.querySelectorAll('.steps-segment').forEach(segment => {
+                segment.classList.remove('is-active');
+            });
+
+            // Tambahkan kelas is-active ke segmen langkah yang dipilih
+            const stepSegment = document.getElementById(`step-segment-${stepIndex}`);
+            if (stepSegment) {
+                stepSegment.classList.add('is-active');
+            }
+        }
+
+        // Fungsi untuk mengatur form section aktif
+        function setFormSectionsActive(stepIndex) {
+            // Aktifkan form section dari 1 hingga stepIndex
+            for (let i = 1; i <= stepIndex; i++) {
+                const formSection = document.getElementById(`form-step-${i}`);
+                if (formSection) {
+                    formSection.classList.add('is-active');
+                    formSection.style.display = 'block'; // Atur display menjadi block
+                }
+            }
+        }
+
+        // Pastikan form-step-0 selalu terlihat
+        const formStep0 = document.getElementById('form-step-0');
+        if (formStep0) {
+            formStep0.classList.add('is-active');
+            formStep0.style.display = 'block'; // Pastikan display menjadi block
+        }
+
+        // Pastikan tombol 'Continue' terlihat
+        const nextButton = document.getElementById('next-button');
+        if (nextButton) {
+            nextButton.style.display = 'block'; // Pastikan tombol 'Continue' terlihat
+        }
+
+        // Jika ada parameter active_step dari URL
+        if (activeStep !== null) {
+            const stepIndex = parseInt(activeStep);
+
+            // Atur stepper dan form sections aktif
+            setStepperActive(stepIndex);
+            setFormSectionsActive(stepIndex);
+        }
+    });
+</script> -->
+
 
 
 

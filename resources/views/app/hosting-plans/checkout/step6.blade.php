@@ -220,27 +220,6 @@
 
         const VAT_RATE = 0.11;
 
-        // Reset all checkboxes to unchecked state initially
-        function resetCheckboxes() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
-            });
-
-            // Reset orderData
-            orderData = {
-                ...orderData,
-                dns_management: false,
-                whois: false,
-                addons: {
-                    daily_backup: false,
-                    email_protection: false
-                }
-            };
-
-            // Update session storage
-            sessionStorage.setItem('orderData', JSON.stringify(orderData));
-        }
 
         function hasSelectedOptions() {
             return orderData.dns_management ||

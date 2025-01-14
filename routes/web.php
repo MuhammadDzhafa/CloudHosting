@@ -70,12 +70,18 @@ Route::post('/forgot-email', [ForgotPasswordController::class, 'recoverEmail'])
 Route::get('/sms-sent-confirmation', function () {
     return view('layouts.auth.recovery.emailrecovery.sms-sent-confirmation', ['phone' => session('phone')]);
 })->name('sms.sent.confirmation');
+Route::post('/send-reset-link-whatsapp', [ForgotPasswordController::class, 'sendRecoveryLinkViaWhatsApp'])
+    ->name('send.reset.link.whatsapp'); 
+
+
 
 /* Tampilans */
 Route::get('/tampilan2', [HostingController::class, 'tampilan2']);
 Route::get('/tampilan3', [HostingController::class, 'tampilan3']);
 Route::get('/tampilan3mail', [HostingController::class, 'tampilan3mail']);
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/checkout/{hosting_plan_id}', [CheckoutController::class, 'index'])
+    ->name('checkout')
+    ->where('hosting_plan_id', '[0-9]+');
 Route::get('/server', [HostingController::class, 'server']);
 Route::get('/invoicecheckout', [HostingController::class, 'finalcheckout']);
 Route::get('/invoiceserver', [HostingController::class, 'finalserver']);
@@ -183,9 +189,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/checkout/process', [CheckoutController::class, 'processOrder'])->name('checkout.process');
 });
 
-Route::post('/checkout', [CheckoutController::class, 'saveClientData'])->name('register');
+Route::post('/checkout', [CheckoutController::class, 'saveClientData'])->name('register-checkout');
 Route::post('/save-addons', [CheckoutController::class, 'saveAddons'])->name('addons.save');
-Route::post('/store-order-hosting-detail', [CheckoutController::class, 'storeOrderHostingDetail'])->name('store.order.hosting.detail');
+Route::post('/save-hosting-details', [CheckoutController::class, 'saveHostingDetails']);
 Route::post('/store-epp', [HostingController::class, 'store']);
 Route::post('/transfer-domain', [CheckoutController::class, 'store']);
 Route::get('/auth/redirect', [SocialiteController::class, 'redirect'])->name('auth.redirect');
+Route::post('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('login-checkout');

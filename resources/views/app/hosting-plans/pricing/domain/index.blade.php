@@ -98,7 +98,7 @@
         const searchInput = document.getElementById('domain-search');
 
         async function searchDomain(domainName, type = 'new') {
-            const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
+            const apiKey = 'at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz';
             const allowedTLDs = [
                 'com', 'net', 'org', 'info', 'biz',
                 'id', 'ac', 'co.id', 'or.id',
@@ -258,7 +258,7 @@
         // Fungsi lama tetap dapat dipertahankan jika masih diperlukan
         function checkDomainAvailability(domainName) {
             return new Promise((resolve, reject) => {
-                const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
+                const apiKey = 'at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz';
                 const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
 
                 fetch(url)
@@ -329,7 +329,7 @@
                 }
 
                 const baseDomain = `${mainDomainPart}.${tld}`;
-                const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
+                const apiKey = 'at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz';
 
                 const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
                 console.log('API URL:', apiUrl);

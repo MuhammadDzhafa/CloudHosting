@@ -1,4 +1,4 @@
-<div id="form-step-0" class="form-section is-active w-950px]">
+<div id="form-step-0" class="form-section is-active">
     <div>
         <!-- Konten Utama -->
         <div class="lex-1 w-full">

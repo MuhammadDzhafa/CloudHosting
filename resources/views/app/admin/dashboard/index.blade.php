@@ -428,7 +428,18 @@
             </div>
 
         </div>
+        <script>
+            // Get the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
 
+            // Check if login was successful
+            if (urlParams.has('login_success')) {
+                // Set localStorage if login is successful
+                localStorage.setItem('user_has_log_in', true);
+            } else {
+                localStorage.setItem('user_has_log_in', false);
+            }
+        </script>
         <!--Huro Scripts-->
         <!--Load Mapbox-->
 

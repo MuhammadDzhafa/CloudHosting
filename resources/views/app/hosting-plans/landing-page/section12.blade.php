@@ -8,7 +8,7 @@
         </div>
 
 
-        <a href="/checkout" class="button h-button bg-[#FFF] hover:bg-[#DDDFDF] active:bg-[#FFF] rounded-full text-[#45494A] font-inter px-4 py-3" style="font-family: unset;">
+        <a id="orderNowBtn" class="button h-button bg-[#FFF] hover:bg-[#DDDFDF] active:bg-[#FFF] rounded-full text-[#45494A] font-inter px-4 py-3" style="font-family: unset;">
             Order Now
         </a>
 

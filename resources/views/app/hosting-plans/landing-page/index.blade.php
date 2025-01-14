@@ -12,7 +12,9 @@
 <div id="section6">
     @include("app.hosting-plans.landing-page.section6")
 </div>
-@include("app.hosting-plans.landing-page.section7")
+<div id="section7">
+    @include("app.hosting-plans.landing-page.section7")
+</div>
 @include("app.hosting-plans.landing-page.section8")
 @include("app.hosting-plans.landing-page.section9")
 @include("app.hosting-plans.landing-page.section10")
@@ -22,6 +24,18 @@
 @endsection
 
 @section('scripts')
+<script>
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Check if login was successful
+    if (urlParams.has('login_success')) {
+        // Set localStorage if login is successful
+        localStorage.setItem('user_has_log_in', true);
+    } else {
+        localStorage.setItem('user_has_log_in', false);
+    }
+</script>
 <script>
     /*
 ========================================================
@@ -172,7 +186,7 @@
                 return;
             }
 
-            const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp';
+            const apiKey = 'at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz';
             const apiUrl = `https://domain-availability.whoisxmlapi.com/api/v1?apiKey=${apiKey}&domainName=${baseDomain}&outputFormat=json`;
             console.log('API URL:', apiUrl);
 
@@ -325,7 +339,7 @@
         // Function to fetch WHOIS data
         function fetchWhoisData() {
             const searchQuery = document.getElementById('domain-search').value; // Ambil nilai dari input
-            const apiKey = 'at_50ndnvrxO5vW0BVGxlhraK54ndQJp'; // Ganti dengan API key Anda
+            const apiKey = 'at_vOl3FPL1qTzm8tqkzTzgTM3x7zIuz'; // Ganti dengan API key Anda
             const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${searchQuery}&outputFormat=JSON`;
 
             fetch(url)
@@ -612,14 +626,20 @@
     */
     document.addEventListener('DOMContentLoaded', function() {
         const orderNowBtn = document.getElementById('orderNowBtn');
-        orderNowBtn.addEventListener('click', function() {
-            const section7 = document.getElementById('section7');
-            if (section7) {
-                section7.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+
+        // Cek apakah elemen ada sebelum menambahkan event listener
+        if (orderNowBtn) {
+            orderNowBtn.addEventListener('click', function() {
+                const section7 = document.getElementById('section7');
+                if (section7) {
+                    section7.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        } else {
+            console.warn('Order Now button not found');
+        }
     });
 
     /*Scroll To Top javascript*/
@@ -772,4 +792,5 @@
         }
     });
 </script>
+
 @endsection

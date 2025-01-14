@@ -121,78 +121,79 @@
             </div>
 
 
-            @foreach ($hostingGroups as $group)
-            <div id="{{ strtolower($group->name) }}-tab" class="tab-content">
-                <div class="flex justify-center">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-                        @foreach ($hostingPlans->sortBy('hosting_plans_id') as $hostingPlan)
-                        @if($hostingPlan->product_type === 'Cloud Hosting') <!-- Check product_type for each plan -->
-                        @if($hostingPlan->hosting_group_id === $group->hosting_group_id && $hostingPlan->package_type === 'Regular')
-                        <div
-                            class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 
-                                                                                        {{ $hostingPlan->best_seller ? 'bg-gradient-custom text-white' : 'bg-white' }}">
-                            <h5
-                                class="text-xl font-bold mb-1 w-[240px] h-[26px] opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#4A6DCB]' }}">
-                                {{ $hostingPlan->name }}
-                            </h5>
-                            <p
-                                class="mb-2 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-500,#7C7C7C)]' }}">
-                                {{ $hostingPlan->description }}
-                            </p>
-                            @foreach($hostingPlan->prices as $price)
-                            @if($price->duration === 'monthly')
-                            <div class="price-container text-center">
-                                <span class="flex items-center justify-center">
+                @foreach ($hostingGroups as $group)
+                <div id="{{ strtolower($group->name) }}-tab" class="tab-content">
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+                            @foreach ($hostingPlans->sortBy('hosting_plans_id') as $hostingPlan)
+                            @if($hostingPlan->product_type === 'Cloud Hosting') <!-- Check product_type for each plan -->
+                            @if($hostingPlan->hosting_group_id === $group->hosting_group_id && $hostingPlan->package_type === 'Regular')
+                            <div
+                                class="w-[300px] h-[469px] p-[30px] pb-[40px] gap-[30px] rounded-[16px] border border-[#4A6DCB] shadow-custom opacity-100 
+                                                                                            {{ $hostingPlan->best_seller ? 'bg-gradient-custom text-white' : 'bg-white' }}">
+                                <h5
+                                    class="text-xl font-bold mb-1 w-[240px] h-[26px] opacity-100 font-inter text-[20px] font-[700] leading-[26px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[#4A6DCB]' }}">
+                                    {{ $hostingPlan->name }}
+                                </h5>
+                                <p
+                                    class="mb-2 w-[240px] h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-500,#7C7C7C)]' }}">
+                                    {{ $hostingPlan->description }}
+                                </p>
+                                @foreach($hostingPlan->prices as $price)
+                                @if($price->duration === 'monthly')
+                                <div class="price-container text-center">
+                                    <span class="flex items-center justify-center">
+                                        <span
+                                            class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">Rp</span>
+                                        <span
+                                            class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center mx-2 {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">{{ number_format($price->price_after, 0, ',', '.') }}</span>
+                                        <span
+                                            class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">/mon</span>
+                                    </span>
+                                </div>
+                                <div class="mb-4 text-center">
                                     <span
-                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">Rp</span>
+                                        class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Grey-400,#989EA0)]' }} line-through">Rp
+                                        {{ number_format($price->price, 0, ',', '.') }} /mon</span>
                                     <span
-                                        class="h-[38px] gap-0 opacity-100 font-inter text-[32px] font-[700] leading-[38.4px] text-center mx-2 {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">{{ number_format($price->price_after, 0, ',', '.') }}</span>
-                                    <span
-                                        class="h-[20px] gap-0 opacity-100 font-inter text-[14px] font-[400] leading-[20.3px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-500,#4A6DCB)]' }}">/mon</span>
-                                </span>
-                            </div>
-                            <div class="mb-4 text-center">
-                                <span
-                                    class="w-[65px] h-[16px] gap-0 opacity-100 font-inter text-[11px] font-[400] leading-[15.95px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Grey-400,#989EA0)]' }} line-through">Rp
-                                    {{ number_format($price->price, 0, ',', '.') }} /mon</span>
-                                <span
-                                    class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-400,#6C88D5)]' }} ml-2">Save
-                                    {{$price->discount}}%</span>
+                                        class="w-[51px] h-[15px] gap-0 opacity-100 font-inter text-[11px] font-[600] leading-[15.4px] text-center {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Kazee-Primary-400,#6C88D5)]' }} ml-2">Save
+                                        {{$price->discount}}%</span>
+                                </div>
+                                @endif
+                                @endforeach
+                                <ul class="list-none mb-6">
+                                    @foreach(['storage' => 'GB SSD Storage', 'RAM' => 'RAM', 'CPU' => 'Core CPU', 'max_domain' => 'Domain', 'ssl' => 'SSL'] as $key => $label)
+                                    <li class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-900,#3D3D3D)]' }}">
+                                        <img src="/assets/img/icons/{{ $hostingPlan->best_seller ? 'checkwhite' : 'checkblack' }}.svg" alt="" class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
+                                        @if($key === 'max_domain')
+                                        {{ $hostingPlan->max_domain }} {{ $label }}
+                                        @elseif($key === 'ssl')
+                                        {{ $hostingPlan->ssl }} {{ $label }}
+                                        @else
+                                        {{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->$key : '' }} {{ $label }}
+                                        @endif
+                                    </li>
+                                    @endforeach
+                                </ul>
+                                <div class="button-container">
+                                    <a href="{{ route('checkout', ['hosting_plan_id' => $hostingPlan->hosting_plans_id]) }}"
+                                        class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] text-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"
+                                        style="font-family: unset; width:100%">
+                                        <span class="btn-text explore-button">Order Now</span>
+                                    </a>
+                                </div>
+
+                                <a href="/cloud-hosting"
+                                    class="block text-center {{ $hostingPlan->best_seller ? 'text-white hover:text-white' : 'text-[#4A6DCB] hover:text-[#4A6DCB]'  }} text-opacity-85 mt-4">
+                                    More detail →</a>
                             </div>
                             @endif
+                            @endif
                             @endforeach
-                            <ul class="list-none mb-6">
-                                @foreach(['storage' => 'GB SSD Storage', 'RAM' => 'RAM', 'CPU' => 'Core CPU', 'max_domain' => 'Domain', 'ssl' => 'SSL'] as $key => $label)
-                                <li class="flex items-center mb-2 w-[210px] h-[23px] gap-0 opacity-100 font-inter text-[16px] font-[500] leading-[23.2px] text-left {{ $hostingPlan->best_seller ? 'text-white' : 'text-[color:var(--Base-900,#3D3D3D)]' }}">
-                                    <img src="/assets/img/icons/{{ $hostingPlan->best_seller ? 'checkwhite' : 'checkblack' }}.svg" alt="" class="w-[16.67px] h-[16.67px] relative top-[1.67px] left-[1.67px] opacity-100 mr-2">
-                                    @if($key === 'max_domain')
-                                    {{ $hostingPlan->max_domain }} {{ $label }}
-                                    @elseif($key === 'ssl')
-                                    {{ $hostingPlan->ssl }} {{ $label }}
-                                    @else
-                                    {{ isset($regularSpec[$hostingPlan->hosting_plans_id]) ? $regularSpec[$hostingPlan->hosting_plans_id]->$key : '' }} {{ $label }}
-                                    @endif
-                                </li>
-                                @endforeach
-                            </ul>
-                            <div class="button-container">
-                                <a href="{{ url('/checkout') }}?hosting_plan_id={{ $hostingPlan->hosting_plans_id }}&product_info={{ $hostingPlan->product_type }} - {{ $hostingPlan->name }}"
-                                    class="button h-button is-outlined bg-[#FFF] hover:bg-[#4A6DCB] text-[#4A6DCB] active:bg-[#4A6DCB] rounded-full border-1 border-[#395FC6] hover:text-[#FFF] hover:border-[#4A6DCB] active:text-[#4A6DCB] active:border-[#4A6DCB] px-4 py-3"
-                                    style="font-family: unset; width:100%">
-                                    <span class="btn-text explore-button">Order Now</span>
-                                </a>
-                            </div>
-                            <a href="/cloud-hosting"
-                                class="block text-center {{ $hostingPlan->best_seller ? 'text-white hover:text-white' : 'text-[#4A6DCB] hover:text-[#4A6DCB]'  }} text-opacity-85 mt-4">
-                                More detail →</a>
                         </div>
-                        @endif
-                        @endif
-                        @endforeach
                     </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
         </div>
     </div>
 </section>
@@ -403,64 +404,60 @@
 
     // Update the event listener for custom-order-btn
     document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('custom-order-btn').addEventListener('click', function(e) {
-            e.preventDefault();
+    document.getElementById('custom-order-btn').addEventListener('click', function(e) {
+        e.preventDefault();
 
-            // Get current slider values
-            const ramValue = document.getElementById('ram-value').textContent.split(' ')[0];
-            const cpuValue = document.getElementById('cpu-value').textContent.split(' ')[0];
-            const storageValue = document.getElementById('storage-value').textContent.split(' ')[0];
+        // Ambil nilai slider (RAM, CPU, Storage) dan harga (Rp)
+        const ramValue = document.getElementById('ram-value').textContent.split(' ')[0];
+        const cpuValue = document.getElementById('cpu-value').textContent.split(' ')[0];
+        const storageValue = document.getElementById('storage-value').textContent.split(' ')[0];
 
-            // Get price values (remove 'Rp' and '/mon', then parse)
-            const ramPrice = parseInt(document.getElementById('ram-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
-            const cpuPrice = parseInt(document.getElementById('cpu-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
-            const storagePrice = parseInt(document.getElementById('storage-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
-            const totalPrice = parseInt(document.getElementById('total-price').textContent.replace(',', ''));
+        const ramPrice = parseInt(document.getElementById('ram-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const cpuPrice = parseInt(document.getElementById('cpu-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const storagePrice = parseInt(document.getElementById('storage-price').textContent.replace('Rp', '').replace(',', '').replace('/mon', ''));
+        const totalPrice = parseInt(document.getElementById('total-price').textContent.replace(',', ''));
 
-            // Setup AJAX request
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/save-custom-plan', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-
-            // Prepare data payload
-            const data = {
-                type: 'custom',
-                specs: {
-                    ram: parseInt(ramValue),
-                    cpu: parseInt(cpuValue),
-                    storage: parseInt(storageValue),
-                    details: {
-                        ram_price: ramPrice,
-                        cpu_price: cpuPrice,
-                        storage_price: storagePrice
-                    }
-                },
-                total_price: totalPrice
-            };
-
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        // Redirect to checkout page with custom plan data
-                        window.location.href = response.data.redirect_url;
-                    } else {
-                        alert('Failed to process order. Please try again.');
-                    }
-                } else {
-                    console.error('Error:', xhr.responseText);
-                    alert('An error occurred. Please try again.');
+        // Persiapkan data untuk dikirim melalui AJAX
+        const data = {
+            specs: {
+                ram: parseInt(ramValue),
+                cpu: parseInt(cpuValue),
+                storage: parseInt(storageValue),
+                details: {
+                    ram_price: ramPrice,
+                    cpu_price: cpuPrice,
+                    storage_price: storagePrice
                 }
-            };
+            },
+            total_price: totalPrice
+        };
 
-            xhr.onerror = function() {
-                console.error('Request failed');
-                alert('Network error occurred. Please try again.');
-            };
+        // AJAX request untuk menyimpan custom plan
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/save-custom-plan', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
-            // Send the data
-            xhr.send(JSON.stringify(data));
-        });
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Redirect ke halaman checkout dengan data custom plan
+                    window.location.href = response.data.redirect_url;
+                } else {
+                    alert('Gagal memproses pesanan. Coba lagi.');
+                }
+            } else {
+                alert('Terjadi kesalahan. Coba lagi.');
+            }
+        };
+
+        xhr.onerror = function() {
+            alert('Kesalahan jaringan. Coba lagi.');
+        };
+
+        xhr.send(JSON.stringify(data));
     });
+});
+
 </script>

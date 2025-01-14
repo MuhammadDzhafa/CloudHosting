@@ -63,12 +63,12 @@ class LoginController extends Controller
         $user = Auth::user();
 
         if ($user->hasRole('admin')) {
-            return redirect()->intended('/admin-dashboard');
+            return redirect()->intended('/admin-dashboard?login_success=true');
         } elseif ($user->hasRole('client')) {
-            return redirect()->intended('/');
+            return redirect()->intended('/?login_success=true');
         }
 
-        return redirect()->intended('/'); // Default redirection if role is not set
+        return redirect()->intended('/?login_success=true'); // Default redirection if role is not set
     }
 
     protected function sendFailedLoginResponse(Request $request, $validator = null)

@@ -1966,6 +1966,25 @@ p {
             #64d2f7 100%);
 }
 
+.stepcard-gradient {
+    transition: border 0.1s ease;
+    border: 0.68px solid #dedede;
+    background: #ffffff;
+    box-shadow: 0px 1.75px 4px -1px #00000024;
+    border-radius: 10px;
+}
+
+.stepcard-gradient:hover {
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-image: linear-gradient(white, white),
+        radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.95) 23.63%,
+            #4a6dcb 70.69%,
+            #64d2f7 100%);
+}
+
 .gradient-border {
     position: relative;
     z-index: 1;
@@ -1992,6 +2011,56 @@ p {
     background-origin: border-box;
     background-clip: content-box, border-box;
 }
+
+.gradientstep-border {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.gradientstep-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 2px;
+    /* Adjust the border thickness */
+    background: linear-gradient(white, white),
+        radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.grey-border {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.grey-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 2px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border: 2px solid #DEDEDE; /* Menambahkan warna border baru */
+}
+
 
 /*
 ========================================================
@@ -2039,6 +2108,19 @@ p {
     .no-margin {
         margin-bottom: 0 !important;
     }
+}
+
+.dropdown-transition {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    opacity: 0;
+}
+
+.dropdown-transition.show {
+    max-height: 1000px; /* Sesuaikan dengan kebutuhan */
+    opacity: 1;
+    transition: max-height 0.3s ease-in, opacity 0.2s ease-in;
 }
 
 /*

@@ -90,7 +90,7 @@
                                 <form action="{{ route('logout') }}" method="POST" id="logout-form" style="display: none;">
                                     @csrf
                                 </form>
-                                <button type="button" class="button h-button is-primary is-raised is-fullwidth logout-button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <button type="button" class="button h-button is-primary is-raised is-fullwidth logout-button" onclick="event.preventDefault(); document.getElementById('logout-form').submit(); localStorage.setItem('user_has_log_in', false);">
                                     <span class="icon is-small" style="min-width:unset; min-height:unset;">
                                         <i data-feather="log-out"></i>
                                     </span>
