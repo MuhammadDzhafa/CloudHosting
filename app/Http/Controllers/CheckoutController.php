@@ -408,15 +408,13 @@ class CheckoutController extends Controller
                 'data' => $billingAddress
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Tangani error validasi
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
                 'errors' => $e->errors()
             ], 422);
         } catch (\Exception $e) {
-            // Tangani error lainnya
-            \Log::error('Billing Address save error:', [
+            Log::error('Billing Address save error:', [
                 'message' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
             ]);

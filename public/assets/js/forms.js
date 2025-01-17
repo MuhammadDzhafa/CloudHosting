@@ -16,7 +16,7 @@ $(document).ready(function () {
         });
         
 
-        // Setup awal fungsi saveAddon
+        // Setup awal fungsi save   Addon
         function saveAddon(callback) { 
             const isDailyBackupChecked = $('input[name="daily_backup"]').is(':checked');
             const isEmailProtectionChecked = $('input[name="email_protection"]').is(':checked');
@@ -714,15 +714,90 @@ window.initializeNextButtonHandler = function() {
                         $button.removeClass("is-loading");
                         return;
                     }
-                    window.proceedToNextStep(); 
+                    window.proceedToNextStep();
                     break;
                 case 2:
+                    const userLogin = localStorage.getItem('user_has_log_in');
+                    if (userLogin === 'false') {
+                    const selectedPlanElement = document.querySelector('[data-selected="true"]');
+                    const selectedBillingElement = document.querySelector('input[name="billing_period"]:checked');
+
+                    if (!selectedPlanElement || !selectedBillingElement) {
+                        console.error('No selected plan or billing period found');
+                        return;
+                    }
+                
+                    const isCustomPlan = selectedPlanElement.classList.contains('custom-plan');
+                
+                    // Perbaikan: Ambil data yang lebih spesifik dari view
+                    const data = {
+                        hosting_plans_id: isCustomPlan 
+                            ? selectedPlanElement.getAttribute('data-id') 
+                            : selectedPlanElement.getAttribute('data-hosting-plan-id'),
+
+                        name: isCustomPlan 
+                            ? 'Custom Hosting Plan' 
+                            : selectedPlanElement.querySelector('.plan-title')?.textContent.trim(),
+
+                        plan_type: isCustomPlan ? 'custom' : 'regular',
+
+                        domain_name: document.querySelector('#domain-name')?.value || 'kazee.id',
+
+                        billing_period: selectedBillingElement.value,
+
+                        price: selectedBillingElement.getAttribute('data-price') || 
+                               selectedBillingElement.dataset.price || 0,
+
+                        // Perbaikan ekstraksi spesifikasi
+                        ram: isCustomPlan 
+                            ? selectedPlanElement.querySelector('.spec-item:contains("RAM") span')?.textContent.split(' ')[1] 
+                            : selectedPlanElement.querySelector('.spec-item:nth-child(1) span')?.textContent.split(' ')[1] || 'Default',
+
+                        cpu: isCustomPlan 
+                            ? selectedPlanElement.querySelector('.spec-item:contains("CPU") span')?.textContent.split(' ')[1]
+                            : selectedPlanElement.querySelector('.spec-item:nth-child(2) span')?.textContent.split(' ')[1] || 'Default',
+
+                        storage: isCustomPlan 
+                            ? selectedPlanElement.querySelector('.spec-item:contains("Storage") span')?.textContent.split(' ')[1]
+                            : selectedPlanElement.querySelector('.spec-item:nth-child(3) span')?.textContent.split(' ')[1] || 'Default',
+
+                        active_date: new Date().toISOString().split('T')[0],
+                        expired_date: calculateExpiredDate(selectedBillingElement.value),
+                    };
+                    localStorage.setItem('HostingDetails', JSON.stringify([data]));
+                    }
                     window.proceedToNextStep();
                     break;
                 case 3:
+                    const userLogins = localStorage.getItem('user_has_log_in');
+                    if (userLogins === 'false') {
+                    const isDailyBackupChecked = $('input[name="daily_backup"]').is(':checked');
+                    const isEmailProtectionChecked = $('input[name="email_protection"]').is(':checked');
+                
+                    const data = {
+                        daily_backup: isDailyBackupChecked ? 1 : 0,
+                        email_protection: isEmailProtectionChecked ? 1 : 0,
+                        price: calculateAddonTotalPrice() || 0,
+                        domain_order_id: $('input[name="domain_order_id"]').val() || null
+                    };
+                    localStorage.setItem('AddonDetails', JSON.stringify([data]));
+                    }
                     window.proceedToNextStep();
                     break;
                 case 4:
+                    const userLogit = localStorage.getItem('user_has_log_in');
+                    if (userLogit === 'false') {
+                    const billingData = {
+                        street_address_1: $('input[name="street_address_1"]').val(),
+                        street_address_2: $('input[name="street_address_2"]').val(),
+                        city: $('input[name="city"]').val(),
+                        state: $('input[name="state"]').val(),
+                        country: $('input[name="country"]:checked').val(),
+                        company_name: $('input[name="company_name"]').val(),
+                        post_code: $('input[name="post_code"]').val()
+                    };
+                    localStorage.setItem('BillingDetails', JSON.stringify([billingData]));
+                }
                     window.proceedToNextStep();
                     break;
                 case 5:
@@ -798,69 +873,73 @@ $(document).ready(function() {
             showNotification(errorMessage, 'error');
         }
 
-       // Handle Buy Domain Only button
-$("#buy-domain-button").on('click', function (e) {
-    e.preventDefault();
-    if (buyDomainOnlyClicked || buyWithHostingClicked) return;  // Cek apakah tombol sudah diklik
-
-    // Disable tombol lainnya
-    $("#buy-with-hosting").prop("disabled", true);
-    $(this).addClass("is-loading"); // Menambahkan efek loading di tombol "Buy Domain Only"
-    buyDomainOnlyClicked = true;  // Tandai tombol ini telah diklik
-
-    const $button = $("#next-button");
+// Function to handle both hosting and domain button clicks
+function handleButtonClick(buttonId, disableButtonId) {
+    const $button = $(buttonId);
+    if (buyDomainOnlyClicked || buyWithHostingClicked) return;
+    $(disableButtonId).prop("disabled", true);
     $button.addClass("is-loading");
+    buyDomainOnlyClicked = buttonId === "#buy-domain-button";
+    buyWithHostingClicked = buttonId === "#buy-with-hosting";
+
+    const $nextButton = $("#next-button");
+    $nextButton.addClass("is-loading");
 
     if (!validateDomainStep()) {
+        $nextButton.removeClass("is-loading");
         $button.removeClass("is-loading");
-        $(this).removeClass("is-loading");
         return;
     }
 
+    const userLogin = localStorage.getItem('user_has_log_in');
+    if (userLogin === 'false') {
+        let orderId = $('#order_id').val() || 'ORD-' + Date.now();
+        $('#order_id').val(orderId);
+
+        const basePrice = parseFloat($('#domain_price').val() || 0);
+        const data = {
+            order_id: orderId,
+            domain_name: $('#h3-domain-display').text().trim(),
+            price: Math.round(basePrice),
+            dns_management: $('input[name="dns_management"]').is(':checked') ? 1 : 0,
+            whois: $('input[name="whois"]').is(':checked') ? 1 : 0,
+            domain_option_id: $('#domain_option_id').val() || null
+        };
+
+        localStorage.setItem('DomainDetails', JSON.stringify([data]));
+    }
+
     window.proceedToNextStep();
+}
+
+// Handle Buy Domain Only button
+$("#buy-domain-button").on('click', function (e) {
+    e.preventDefault();
+    handleButtonClick("#buy-domain-button", "#buy-with-hosting");
 });
 
 // Handle Buy With Hosting button
 $("#buy-with-hosting").on('click', function (e) {
     e.preventDefault();
-    if (buyWithHostingClicked || buyDomainOnlyClicked) return;  // Cek apakah tombol sudah diklik
-
-    // Disable tombol lainnya
-    $("#buy-domain-button").prop("disabled", true);
-    $(this).addClass("is-loading"); // Menambahkan efek loading di tombol "Buy with Hosting"
-    buyWithHostingClicked = true;  // Tandai tombol ini telah diklik
-
-    const $button = $("#next-button");
-    $button.addClass("is-loading");
-
-    if (!validateDomainStep()) {
-        $button.removeClass("is-loading");
-        $(this).removeClass("is-loading");
-        return;
-    }
-
-    window.proceedToNextStep();
+    handleButtonClick("#buy-with-hosting", "#buy-domain-button");
 });
+
 
 window.handleCheckoutButtonClick = function() {
     const $button = $(".checkout-button");
-    $button.addClass("is-loading");
-
-    // Pastikan proses berjalan berurutan
+    // $button.addClass("is-loading");
     saveDomainDetails(function() {
         saveHostingDetails(function() {
-            // Simpan addon saat tombol checkout diklik
             saveAddon(function(addonSaved) {
                 if (!addonSaved) {
                     showNotification('Gagal menyimpan addon', 'error');
-                    $button.removeClass("is-loading");
+                    // $button.removeClass("is-loading");
                     return;
                 }
 
                 saveBillingAddress(function() {
                     completeOrder(function() {
-                        // Pastikan button loading dilepas di sini
-                        $button.removeClass("is-loading");
+                        // $button.removeClass("is-loading");
                     });
                 });
             });

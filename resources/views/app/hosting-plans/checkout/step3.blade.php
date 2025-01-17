@@ -381,3 +381,28 @@ $plan->hosting_plans_id == request()->query('hosting_plan_id');
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const parsedData = JSON.parse(localStorage.getItem("HostingDetails"));
+        if (parsedData?.[0]) {
+            // Mengatur elemen berdasarkan data yang ada di localStorage
+            const hostingData = parsedData[0];
+
+            document.getElementById('domain-name').value = hostingData.domain_name || '';  // Set domain name
+            document.getElementById('billing-period').value = hostingData.billing_period || '';  // Set billing period
+            document.getElementById('price').textContent = hostingData.price || '';  // Set price info
+
+            // Menambahkan kondisi jika ada data spesifik lainnya
+            if (hostingData.ram) {
+                document.getElementById('ram').textContent = hostingData.ram;
+            }
+            if (hostingData.cpu) {
+                document.getElementById('cpu').textContent = hostingData.cpu;
+            }
+            if (hostingData.storage) {
+                document.getElementById('storage').textContent = hostingData.storage;
+            }
+        }
+    });
+</script>

@@ -29,7 +29,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">DNS Management</span>
                         <label class="checkbox is-outlined is-circle is-info">
-                            <input type="checkbox" name="dns_management" value="1">
+                            <input type="checkbox" name="dns_management" id="dns_management" value="1">
                             <span></span>
                         </label>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-[18px] font-[600] leading-[23.4px] text-left text-[#3C476C]">Whois Protection</span>
                         <label class="checkbox is-outlined is-circle is-info">
-                            <input id="whois" type="checkbox" name="whois" value="1" checked>
+                            <input id="whois" type="checkbox" name="whois" value="1">
                             <span></span>
                         </label>
                     </div>
@@ -109,3 +109,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const parsedData = JSON.parse(localStorage.getItem("DomainDetails"));
+        if (parsedData?.[0]) {
+            document.getElementById('whois').checked = parsedData[0].whois === 1;
+            document.getElementById('dns_management').checked = parsedData[0].dns_management === 1;
+        }
+    });
+</script>
