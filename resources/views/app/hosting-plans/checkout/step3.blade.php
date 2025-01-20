@@ -18,7 +18,7 @@
     @foreach ($customPlans as $id)
     <div class="custom-plan gradient-border grey-border p-4"
         data-hosting-plan-id="{{ $id }}"
-        data-id="{{ $id }}"
+        data-id="{{ $id }}" 
         id="custom-plan-{{ $id }}"
         onclick="toggleDropdown(this)">
         <h3 id="custom-plan-title-{{ $id }}" class="plan-title text-[20px] font-[700] leading-[26px] text-left mb-4 w-full"
