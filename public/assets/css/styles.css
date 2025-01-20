@@ -1,0 +1,2206 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.title-section {
+    color: var(--Base-950, #292929);
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.section-frame {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section-frame-1 {
+    position: relative;
+    /* Pastikan posisi relatif */
+    z-index: 1;
+    /* Atur z-index untuk memastikan konten berada di atas */
+}
+
+.section-frame-1::before {
+    content: "";
+    /* Membuat pseudo-elemen */
+    position: absolute;
+    /* Posisi absolut */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/assets/img/bg/bg-pattern2.svg");
+    background-size: cover;
+    /* Atur ukuran gambar */
+    opacity: 0.15;
+    /* Atur opacity */
+    z-index: -1;
+    /* Pastikan gambar berada di belakang konten */
+}
+
+.padding-2 {
+    padding: 100px 120px 50px 120px;
+}
+
+.padding-3 {
+    padding: 0px 120px 0px 120px;
+}
+
+.padding-4 {
+    padding: 0 0 0 120px;
+}
+
+.padding-5 {
+    padding: 40px 16px;
+}
+
+.padding-6 {
+    padding: 100px 120px 50px 120px;
+}
+
+.button-light-grey {
+    display: flex;
+    gap: 8px;
+    min-width: 47px;
+    min-height: 47px;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    background: #f2f3f3;
+    font-family: "Inter", sans-serif;
+    color: #45494a;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.button-light-grey:hover {
+    background: #dddfdf;
+}
+
+.button-gradient {
+    display: flex;
+    gap: 8px;
+    min-width: 47px;
+    min-height: 47px;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.85) 23.63%,
+            rgba(74, 109, 203, 0.9) 70.69%,
+            rgba(100, 210, 247, 0.88) 100%);
+    font-family: "Inter", sans-serif;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    height: 100%;
+}
+
+.button-gradient:hover {
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+}
+
+.button-light-grey {
+    display: flex;
+    gap: 8px;
+    min-width: 47px;
+    min-height: 47px;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    background: #f2f3f3;
+    font-family: "Inter", sans-serif;
+    color: #45494a;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.button-light-grey:hover {
+    background: #dddfdf;
+}
+
+@media (max-width: 1028px) {
+    .section-frame {
+        padding: 40px 16px;
+    }
+
+    .section-frame-1 {
+        padding: 40px 16px;
+    }
+
+    .navbar-mobile {
+        padding: 0 20px;
+    }
+}
+
+/* .p-gradient {
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%, rgba(100, 52, 147, 0.76) 23.63%, rgba(74, 109, 203, 0.8) 70.69%, rgba(100, 210, 247, 0.8) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+} */
+
+/* ========================================================= */
+/*                   Section 1 - Hero                        */
+/* ========================================================= */
+
+.background-image {
+    width: 100%;
+    height: 200px;
+    /* Default height */
+    object-fit: cover;
+    opacity: 15%;
+}
+
+/* Gaya Umum untuk Semua Elemen Teks */
+body,
+h1,
+h2,
+p {
+    font-family: "Inter";
+}
+
+/* Elemen <p> */
+.text-base-hero {
+    color: #3c476c;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+    max-width: 100%;
+    font-weight: normal;
+}
+
+.text-primary {
+    max-width: 557.42px;
+}
+
+.text-secondary {
+    font-weight: 700;
+    margin-bottom: 2px;
+    /* max-width: 374px; */
+}
+
+/* Title */
+
+.title-hero {
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 60px;
+    margin-bottom: 2px;
+    max-width: 100%;
+}
+
+.title-primary {
+    color: #3c476c;
+    margin-bottom: 2px;
+    max-width: 473px;
+}
+
+.title-secondary {
+    margin-bottom: 28px;
+}
+
+/* Styling for the price text container */
+.price-text {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Styling for the price symbol */
+.price-currency {
+    font-size: 1.625rem;
+    /* Equivalent to text-[26px] */
+    line-height: 2.125rem;
+    /* Equivalent to leading-[34px] */
+    font-weight: 600;
+    /* Equivalent to font-semibold */
+    color: transparent;
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-right: 5px;
+}
+
+/* Styling for the price amount */
+.price-number {
+    font-size: 2.1875rem;
+    /* Equivalent to text-[35px] */
+    line-height: 2.8125rem;
+    /* Equivalent to leading-[45px] */
+    font-weight: 700;
+    /* Equivalent to font-bold */
+    color: transparent;
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* margin-right: 5px; */
+}
+
+/* Styling for the price duration */
+.price-suffix {
+    font-size: 1.375rem;
+    /* Equivalent to text-[22px] */
+    line-height: 2rem;
+    /* Equivalent to leading-[32px] */
+    font-weight: 400;
+    /* Equivalent to font-normal */
+    color: transparent;
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.btn-explore:hover {
+    background-color: #f0f4ff;
+}
+
+.btn-text {
+    margin-right: 5px;
+    font-size: 1rem;
+    /* default text-base */
+    font-weight: 500;
+    /* font-medium */
+}
+
+.btn-icon {
+    width: 1rem;
+    /* default width (w-4) */
+    height: 1rem;
+    /* default height (h-4) */
+}
+
+.container {
+    width: 100%;
+    /* margin-top: 3rem; */
+    /* mt-12 */
+    position: relative;
+}
+
+.smartphone-image {
+    position: relative;
+    z-index: 10;
+    padding-left: 60px;
+    transform: rotate(-6deg);
+    max-width: 100%;
+    /* sm:max-w-[400px] - replace with actual breakpoint if using media queries */
+}
+
+.tooltip {
+    position: absolute;
+    animation: fade-tooltip 0.3s ease-in-out;
+    /* animate-fade-tooltip */
+    z-index: 20;
+}
+
+.tooltip-1 {
+    top: 0%;
+    left: 13%;
+}
+
+.tooltip-2 {
+    top: 30%;
+    right: 5%;
+}
+
+.tooltip-3 {
+    bottom: 32%;
+    left: 3%;
+}
+
+.tooltip-4 {
+    bottom: 2%;
+    right: 15%;
+}
+
+@keyframes fade-tooltip {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .padding-invoice {
+        padding: 100px 20px;
+    }
+
+    .button.is-info.is-outlined {
+        display: flex;
+        justify-content: center;
+        /* Horizontal alignment */
+        align-items: center;
+        /* Vertical alignment */
+    }
+
+    .text-secondary {
+        font-weight: 600;
+        margin-bottom: 2px;
+        /* max-width: 374px; */
+    }
+
+    /* .w-full {
+        padding: 14px 14px;
+    } */
+
+    .smartphone-image {
+        display: none;
+    }
+
+    .tooltip img {
+        display: none;
+    }
+
+    .background-image {
+        height: 300px;
+        /* Height for small screens and up */
+    }
+
+    .title-hero {
+        font-size: 29px;
+        line-height: 35px;
+        text-align: center;
+    }
+
+    .text-base {
+        font-size: 18px;
+        line-height: 23.4px;
+    }
+
+    .title-secondary {
+        margin-bottom: 20px;
+        /* max-width: 227px; */
+    }
+
+    .price-text {
+        font-size: 1.875rem;
+        /* Equivalent to text-3xl */
+        margin-bottom: 2rem;
+        /* Equivalent to mb-8 */
+        justify-content: center;
+    }
+
+    .price-currency {
+        font-size: 1.8125rem;
+        /* Equivalent to text-[29px] */
+        line-height: 2.35625rem;
+        /* Equivalent to leading-[37.7px] */
+    }
+
+    .price-number {
+        font-size: 2.5625rem;
+        /* Equivalent to text-[41px] */
+        line-height: 3.0625rem;
+        /* Equivalent to leading-[49.2px] */
+    }
+
+    .price-suffix {
+        font-size: 1.625rem;
+        /* Equivalent to text-[26px] */
+        line-height: 2.1125rem;
+        /* Equivalent to leading-[33.8px] */
+    }
+
+    .btn-explore {
+        background-color: #ffffff;
+        border: 1px solid #395fc6;
+        color: #395fc6;
+        padding: 8px 12px;
+        border-radius: 9999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        max-width: 129px;
+        margin: 0 auto;
+        -webkit-transition: background-color 0.3s;
+        -moz-transition: background-color 0.3s;
+        -ms-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        /* Centers the button horizontally */
+        align-items: center;
+    }
+
+    .background-container {
+        position: absolute;
+        inset: 0;
+    }
+
+    .background-image {
+        height: 450px;
+    }
+}
+
+@media (min-width: 768px) {
+    .title-hero {
+        font-size: 50px;
+        line-height: 60px;
+    }
+
+    .padding-1 {
+        padding: 100px 120px;
+    }
+
+    .padding-invoice {
+        padding: 100px 120px;
+    }
+
+    .price-text {
+        font-size: 2.25rem;
+        /* Equivalent to text-4xl */
+    }
+
+    .price-currency {
+        font-size: 2rem;
+        /* Equivalent to text-[32px] */
+        line-height: 2.4375rem;
+        /* Equivalent to leading-[40px] */
+    }
+
+    .price-number {
+        font-size: 2.8125rem;
+        /* Equivalent to text-[45px] */
+        line-height: 3.4375rem;
+        /* Equivalent to leading-[55px] */
+    }
+
+    .btn-explore {
+        background-color: white;
+        border: 1px solid #395fc6;
+        color: #395fc6;
+        padding: 0.5rem 1.5rem;
+        /* default padding (px-6 py-2) */
+        border-radius: 9999px;
+        /* rounded-full */
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        /* default gap (gap-2) */
+        text-decoration: none;
+        /* to remove underline */
+        transition: background-color 0.3s;
+        /* transition duration-300 */
+    }
+
+    .background-container {
+        position: absolute;
+        inset: 0;
+    }
+
+    .background-image {
+        height: 10%;
+        /* Height for large screens and up */
+    }
+}
+
+/* Gaya untuk Gradien Teks */
+.text-gradient {
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+/* Gaya untuk Tooltip */
+.tooltip img {
+    animation: float 2s ease-in-out infinite;
+    animation-delay: 1ms;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Gaya untuk Animasi Teks */
+.animate-text {
+    display: inline-block;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms linear, transform 300ms linear;
+}
+
+.animate-text.changing {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes textFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gaya Kustom untuk Latar Belakang */
+.bg-gradient-custom {
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+}
+
+/* ========================================================= */
+/*               Section 1 - Domain Search                   */
+/* ========================================================= */
+
+/* Initial hidden state */
+#dropdown-container {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-out;
+    /* Ease-out effect */
+}
+
+/* Visible state with animation */
+#dropdown-container.show {
+    max-height: 400px;
+    /* Adjust based on your design */
+    opacity: 1;
+}
+
+/* ========================================================= */
+/*            Section 3 - Domain Price List                  */
+/* ========================================================= */
+
+.table-header {
+    background-color: #e7ecf8;
+}
+
+.table-cell {
+    padding: 0.5rem 1rem;
+    /* 8px 16px */
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 23.4px;
+    text-align: center;
+    color: #4a6dcb;
+}
+
+@media (max-width: 768px) {
+    .filter {
+        display: none;
+    }
+
+    .field.dropdown-filter {
+        display: block;
+    }
+}
+
+/* Show default filters on large screens */
+@media (min-width: 768px) {
+    .field.dropdown-filter {
+        display: none;
+    }
+
+    .filter {
+        display: block;
+    }
+}
+
+/* ========================================================= */
+/*                    Section 4 - Client                     */
+/* ========================================================= */
+
+/* Container untuk logo */
+.clients-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    z-index: 50;
+    width: 100%;
+    /* Pastikan lebar container tidak keluar layar */
+}
+
+/* Styling untuk setiap logo dengan transisi eksplisit */
+.client-logo,
+.elevate-logo,
+.lower-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out !important;
+    overflow: hidden;
+    opacity: 0.8;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Efek hover pada logo */
+.client-logo:hover,
+.elevate-logo:hover,
+.lower-logo:hover {
+    transform: translateY(-10px);
+    /* Efek hover yang sudah ada */
+    opacity: 1;
+}
+
+/* Logo Hino sedikit lebih ke atas */
+.client-logo img[src*="logo-hino.png"] {
+    transform: translateY(-3px);
+    /* Logo Hino naik -5px */
+}
+
+/* Logo Lintasarta sedikit lebih ke atas */
+.client-logo img[src*="lintasarta.png"] {
+    transform: translateY(-13px);
+    /* Logo Lintasarta naik -10px */
+}
+
+/* Media Queries untuk pengaturan ukuran layar */
+@media (max-width: 900px) and (min-width: 769px) {
+    .clients-row {
+        grid-template-columns: repeat(3, 1fr);
+        /* Menggunakan 3 kolom untuk perangkat mobile */
+        gap: 10px;
+    }
+
+    .client-logo,
+    .elevate-logo,
+    .lower-logo {
+        width: 100%;
+        /* Logo mengambil 100% dari kolom */
+        max-width: 120px;
+        /* Ukuran logo lebih kecil pada layar kecil */
+    }
+
+    /* Baris 1: Logo 1, 2, 3 */
+    .client-logo:nth-child(-n+3) {
+        grid-row: 1;
+    }
+
+    /* Baris 2: Logo 4, 5, 6 */
+    .client-logo:nth-child(n+4):nth-child(-n+6) {
+        grid-row: 2;
+    }
+
+    /* Baris 3: Logo 7, 8, 9 */
+    .client-logo:nth-child(n+7):nth-child(-n+9) {
+        grid-row: 3;
+    }
+
+    /* Baris 4: Logo 10 di tengah */
+    .client-logo:nth-child(10) {
+        grid-row: 4;
+        grid-column: 2;
+        /* Menempatkan logo ke-10 di tengah */
+        justify-self: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .clients-row {
+        grid-template-columns: repeat(3, 1fr);
+        /* Menggunakan 3 kolom untuk perangkat mobile */
+        gap: 10px;
+    }
+
+    .client-logo,
+    .elevate-logo,
+    .lower-logo {
+        width: 100%;
+        /* Logo mengambil 100% dari kolom */
+        max-width: 100px;
+        /* Ukuran logo lebih kecil pada layar kecil */
+    }
+
+    /* Baris 1: Logo 1, 2, 3 */
+    .client-logo:nth-child(-n+3) {
+        grid-row: 1;
+    }
+
+    /* Baris 2: Logo 4, 5, 6 */
+    .client-logo:nth-child(n+4):nth-child(-n+6) {
+        grid-row: 2;
+    }
+
+    /* Baris 3: Logo 7, 8, 9 */
+    .client-logo:nth-child(n+7):nth-child(-n+9) {
+        grid-row: 3;
+    }
+
+    /* Baris 4: Logo 10 di tengah */
+    .client-logo:nth-child(10) {
+        grid-row: 4;
+        grid-column: 2;
+        /* Menempatkan logo ke-10 di tengah */
+        justify-self: center;
+    }
+}
+
+
+
+/* ========================================================= */
+/*                    Section 5 - Product                    */
+/* ========================================================= */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    /* Allows cards to grow and shrink as needed */
+}
+
+/* Card styling */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    /* Adjusted for better spacing on smaller screens */
+    border-radius: 8px;
+    border: 1px solid var(--Base-100, #f5f5f5);
+    background: var(--Netral-White, #fff);
+    flex: 1 1 100%;
+    /* Makes the card take full width on small screens */
+    box-sizing: border-box;
+    /* Includes padding and border in the element's total width and height */
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition effects */
+    height: 100%;
+    width: 100%;
+}
+
+/* Card hover effects */
+.card:hover {
+    transform: translateY(-10px);
+    border: 0.67px solid var(--Kazee-Primary-500, #4a6dcb);
+    box-shadow: 0px 10px 10px -5px #00000014, 0px 20px 25px -5px #ffffff24;
+}
+
+/* Content styling */
+.card-content-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.card-domain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--Base-100, #f5f5f5);
+    background: var(--Netral-White, #fff);
+    box-sizing: border-box;
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    max-width: 130px;
+}
+
+.card:hover,
+.card-domain:hover {
+    transform: translateY(-10px);
+    border: 0.67px solid var(--Kazee-Primary-500, #4a6dcb);
+    box-shadow: 0px 10px 10px -5px #00000014, 0px 20px 25px -5px #ffffff24;
+}
+
+/* Card icon styling */
+.card-icon {
+    width: 50px;
+    height: 50px;
+}
+
+/* Title and content styling */
+.card-title {
+    color: #3c476c;
+    font-family: "Inter", sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 29.9px;
+    text-align: center;
+    width: 100%;
+    /* Adjust width to fill the card container */
+    max-width: 320px;
+    /* Restrict the max width for larger screens */
+    margin-top: 15px;
+}
+
+.content {
+    color: #3c476c;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.4px;
+    text-align: center;
+    width: 100%;
+    /* Adjust width to fill the card container */
+    max-width: 320px;
+    /* Restrict the max width for larger screens */
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .content {
+        color: #3c476c;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 23.4px;
+        text-align: center;
+        width: 100%;
+        /* Adjust width to fill the card container */
+        max-width: 320px;
+        /* Restrict the max width for larger screens */
+        margin-top: 10px;
+    }
+
+    .card-domain {
+        max-width: unset;
+    }
+
+    .card-title {
+        color: #3c476c;
+        font-family: "Inter", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        text-align: center;
+        width: 100%;
+        /* Adjust width to fill the card container */
+        max-width: 320px;
+        /* Restrict the max width for larger screens */
+        margin-top: 15px;
+    }
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+
+    /* Medium devices (tablets, small laptops) */
+    .card {
+        padding: 30px;
+        /* Larger padding on medium screens and up */
+        max-width: 100%;
+        /* Card takes full width */
+    }
+
+    .card-container {
+        width: 33.3333%;
+        /* Each card takes 1/3 width of container */
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* Large devices (desktops) */
+    .card-container {
+        width: 33.3333%;
+        /* Each card takes 1/3 width of container */
+    }
+}
+
+/* ========================================================= */
+/*            Section 6 - Paket Cloud Hosting                */
+/* ========================================================= */
+
+/* Default style for larger screens: align to the left */
+.custom-header {
+    text-align: left;
+    gap: 16px;
+}
+
+.custom-text-gradient {
+    background: radial-gradient(at left,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    /* Use relative line-height */
+    text-align: left;
+    display: inline-block;
+    /* Allow text to take up only as much space as needed */
+    background-size: 100% 100%;
+    /* Ensure the gradient covers the entire text */
+}
+
+.custom-text-style {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #465387;
+}
+
+.custom-gradient {
+    background: radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+}
+
+.custom-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #1e1e1e;
+    line-height: 33.8px;
+    font-family: "Inter", sans-serif;
+    color: #1e1e1e;
+    /* Assuming this is base-background */
+}
+
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tabs {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 50px;
+    list-style-type: none;
+}
+
+.custom-bg {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    /* Membungkus jika tidak cukup ruang */
+    gap: 20px;
+    /* Jarak antar kolom */
+    justify-content: space-between;
+    /* Mengatur agar spasi antar elemen rata */
+}
+
+.custom-col {
+    flex: 1;
+    /* Kolom mengambil ruang yang sama */
+    min-width: 300px;
+    /* Lebar minimum agar kolom tidak terlalu sempit */
+}
+
+.custom-col-2 {
+    flex: 2;
+    /* Kolom kedua juga mengambil ruang yang sama */
+}
+
+.custom-text-style {
+    align-items: center;
+    margin-bottom: 16px;
+    color: #465387;
+    /* Assuming you want to change color */
+    display: block;
+    /* Default block display */
+    margin-bottom: 10px;
+    /* Space between items */
+}
+
+.custom-text-style img.custom-icon {
+    display: inline;
+    /* Icon inline with text */
+    margin-right: 5px;
+    /* Space between icon and text */
+}
+
+@media (max-width: 768px) {
+    .custom-text-gradient {
+        background: radial-gradient(at left,
+                rgba(100, 52, 147, 0.76) 23.63%,
+                rgba(74, 109, 203, 0.8) 70.69%,
+                rgba(100, 210, 247, 0.8) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: "Inter", sans-serif;
+        font-size: 23px;
+        font-weight: 700;
+        line-height: 28px;
+        /* Use relative line-height */
+        text-align: center;
+        display: inline-block;
+        /* Allow text to take up only as much space as needed */
+        background-size: 100% 100%;
+        /* Ensure the gradient covers the entire text */
+    }
+
+    .custom-text-style {
+        display: inline;
+        margin-bottom: 0;
+        margin-right: 0;
+        font-size: 14px;
+    }
+
+    .custom-text-style::after {
+        content: ", ";
+    }
+
+    .custom-text-style:last-child::after {
+        content: "";
+    }
+
+    .custom-text-style img.custom-icon {
+        display: none;
+    }
+
+    .custom-title {
+        font-size: 18px;
+        /* Adjust title size for mobile */
+    }
+
+    .custom-slider-value {
+        width: 70px;
+        /* Adjust slider value width for mobile */
+    }
+
+    .custom-order-button {
+        padding: 10px;
+        /* Adjust button padding for mobile */
+    }
+
+    .table {
+        display: block;
+        /* Make table block to enable scrolling */
+        overflow-x: auto;
+        /* Allow horizontal scrolling */
+        white-space: nowrap;
+        /* Prevent line breaks */
+    }
+
+    .table th,
+    .table td {
+        display: block;
+        /* Stack table cells vertically */
+        text-align: left;
+        /* Align text to the left */
+    }
+
+    .table thead {
+        display: none;
+        /* Hide the header for mobile */
+    }
+
+    .table tr {
+        margin-bottom: 1rem;
+        /* Add spacing between rows */
+        border: 1px solid #e7ecf8;
+        /* Optional: Add border for better separation */
+        padding: 0.5rem;
+        /* Add padding */
+    }
+
+    .title-detail {
+        font-weight: bold;
+        /* Highlight detail titles */
+        color: #4a6dcb;
+        /* Optional: Keep color for titles */
+    }
+
+    .text-content {
+        background: #f9f9f9;
+        /* Optional: Add background for better readability */
+        padding: 0.5rem;
+        /* Add padding */
+    }
+}
+
+.custom-icon {
+    width: 16.67px;
+    height: 16.67px;
+    position: relative;
+    top: 1.67px;
+    left: 1.67px;
+    opacity: 100;
+    margin-right: 8px;
+}
+
+.custom-slider-section {
+    margin-bottom: 32px;
+}
+
+.custom-price {
+    color: #4a6dcb;
+}
+
+.custom-slider-value {
+    background-color: #4a6dcb;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    /* Tailwind's text-sm */
+    margin-right: 12px;
+}
+
+.custom-slider {
+    flex-grow: 1;
+    height: 8px;
+    background-color: #dedede;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    appearance: none;
+}
+
+.custom-dollar-sign {
+    color: #4a6dcb;
+    font-family: Inter, sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 29.9px;
+}
+
+.custom-total-amount {
+    color: #4a6dcb;
+    font-family: Inter, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 49.2px;
+}
+
+.custom-monthly {
+    color: #4a6dcb;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.custom-order-text {
+    color: #f3f5fc;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 23.4px;
+}
+
+@media (max-width: 768px) {
+    .custom-monthly {
+        color: #4a6dcb;
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+    }
+
+    .custom-dollar-sign {
+        color: #4a6dcb;
+        font-family: Inter, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 29.9px;
+    }
+
+    .custom-total-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+    }
+
+    .custom-order-button {
+        width: 125px;
+        height: 47px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: radial-gradient(at top left,
+                rgba(100, 52, 147, 0.76),
+                rgba(74, 109, 203, 0.8),
+                rgba(100, 210, 247, 0.78));
+        opacity: 100;
+    }
+
+    .custom-note {
+        max-width: 1440px;
+        height: 23px;
+        opacity: 100;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: #7c7c7c;
+        font-family: "Inter", sans-serif;
+        line-height: 23.2px;
+        /* margin-left: 20%; */
+    }
+}
+
+@media (min-width: 1024px) {
+    .custom-total-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        /* margin-left: 40%; */
+    }
+
+    .custom-order-button {
+        margin-left: auto;
+        width: 125px;
+        height: 47px;
+        padding: 12px 16px;
+        border-radius: 9999px;
+        background: radial-gradient(at top left,
+                rgba(100, 52, 147, 0.76),
+                rgba(74, 109, 203, 0.8),
+                rgba(100, 210, 247, 0.78));
+        opacity: 100;
+    }
+
+    .custom-note {
+        max-width: 1440px;
+        height: 23px;
+        opacity: 100;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: #7c7c7c;
+        font-family: "Inter", sans-serif;
+        line-height: 23.2px;
+        /* margin-left: 40%; */
+    }
+}
+
+/* ========================================================= */
+/*                   Section 8 - Kelebihan                   */
+/* ========================================================= */
+.vertical-line {
+    position: absolute;
+    left: 2.75rem;
+    /* 11px */
+    top: 0;
+    bottom: 0;
+    height: 80%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.icon {
+    width: 80px;
+    height: 69.65px;
+    min-width: 80px;
+    min-height: 69.65px;
+}
+
+.service-subtitle {
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23.4px;
+    margin-bottom: 1.25rem;
+    /* 5px */
+}
+
+.service-description {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.4px;
+}
+
+@media (max-width: 1024px) {
+    .lg\:w-1\/3 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .why-choose-title {
+        color: white;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20.3px;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        opacity: 100%;
+    }
+
+    .service-title {
+        color: white;
+        font-size: 23px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .service-subtitle {
+        font-family: "Inter", sans-serif;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        margin-bottom: 1.25rem;
+        /* 5px */
+    }
+
+    .service-description {
+        font-family: "Inter", sans-serif;
+        color: white;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20.3px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .why-choose-title {
+        color: white;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 26px;
+        text-align: left;
+        font-family: "Inter", sans-serif;
+        opacity: 100%;
+    }
+
+    .service-title {
+        color: white;
+        font-size: 2.25rem;
+        /* 4xl */
+        font-weight: 700;
+        text-align: left;
+    }
+}
+
+/* ========================================================= */
+/*                 Section 9 - Testimoni                     */
+/* ========================================================= */
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.kutipan-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+    .img-slide {
+        width: 35%;
+        height: auto;
+    }
+
+    .client-review {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .text-testimonial {
+        font-size: 23px;
+    }
+
+    .backgroundblue {
+        width: 400px;
+        height: 388.99px;
+    }
+
+    .kutipan {
+        width: 69px;
+        /* Lebar untuk tampilan mobile */
+        height: 60px;
+        /* Tinggi untuk tampilan mobile */
+    }
+
+    .testimonial {
+        width: 400px;
+        height: 388.99px;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-testimonial {
+        font-size: 20px;
+    }
+
+    .backgroundblue {
+        width: 280px;
+        height: 280px;
+    }
+
+    .kutipan {
+        width: 40px;
+        /* Lebar untuk tampilan mobile */
+        height: 41px;
+        /* Tinggi untuk tampilan mobile */
+    }
+
+    .kutipan span {
+        /* font-size: 20px; */
+        /* Sesuaikan ukuran font untuk tampilan mobile */
+        line-height: 24px;
+        /* Sesuaikan line-height untuk tampilan mobile */
+    }
+
+    .slider-item {
+        padding-bottom: 60px;
+        /* Memberikan ruang di bagian bawah agar tombol tidak terpotong */
+    }
+
+    #prev,
+    #next {
+        bottom: 20px;
+        /* Pastikan ini bukan nilai negatif agar tidak keluar dari container */
+    }
+
+    .slider-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial-container {
+        margin-top: 50px;
+        /* Gap 50px antara gambar dan teks */
+        width: 100%;
+        /* Biar teks mengambil lebar penuh di tampilan mobile */
+        margin-left: 0;
+        /* Menghilangkan margin kiri */
+    }
+
+    .relative {
+        width: 100%;
+        /* Agar gambar tetap center dan full width di mobile */
+    }
+
+    .testimonial-container {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .kutipan-container {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .kutipan {
+        margin-left: 0 !important;
+    }
+
+    .testimonial {
+        width: 246px;
+        height: 246px;
+    }
+
+    .img-slide {
+        width: 100%;
+        /* Mengatur gambar agar memenuhi lebar kontainer */
+        height: auto;
+        /* Menyesuaikan tinggi berdasarkan lebar yang baru */
+        max-width: 300px;
+        /* Batas maksimum ukuran gambar agar tetap proporsional */
+    }
+
+    .title-section {
+        font-family: "Inter", sans-serif;
+        font-size: 23px;
+    }
+
+    .text-base-hero {
+        font-size: 18px;
+        line-height: 20.3px;
+        text-align: center;
+    }
+
+    .client-review {
+        margin-top: 20px;
+        /* Tambahkan jarak atas untuk membuatnya turun ke bawah */
+    }
+
+    .quote-icon {
+        align-self: flex-start;
+        /* Mengatur posisi ikon di atas */
+    }
+
+    .slider-item {
+        flex-direction: column;
+        /* Mengatur arah flex menjadi kolom saat layar >= 768px */
+        align-items: flex-start;
+        /* Mengatur item dalam kolom menjadi rata kiri */
+    }
+}
+
+.slider-content {
+    width: 100% !important;
+}
+
+.quote-icon {
+    width: 69px;
+    height: 69px;
+    padding: 10px;
+    background-color: #b8c5eb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 100%;
+}
+
+.quote-text {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 49px;
+    line-height: 49px;
+    color: #643493;
+}
+
+.client-review {
+    font-family: Inter;
+    font-size: 23px;
+    font-weight: normal;
+    line-height: 29.9px;
+    text-align: left;
+    color: black;
+    margin-bottom: 8px;
+    min-width: 100px;
+}
+
+.client-name {
+    font-family: Inter;
+    font-size: 23px;
+    font-weight: normal;
+    line-height: 29.9px;
+    color: #465890;
+    margin-bottom: 12px;
+}
+
+.slider-button {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    /* Menempatkan tombol di sebelah kanan */
+    width: 50px;
+    height: 50px;
+    background-color: #4a6dcb;
+    color: white;
+    padding: 2px;
+    border-radius: 50%;
+    focus: outline-none;
+    display: flex;
+    align-items: center;
+    /* Pusatkan ikon di dalam tombol secara vertikal */
+    justify-content: center;
+    /* Pusatkan ikon di dalam tombol secara horizontal */
+}
+
+/* Jarak antara tombol slider */
+#prev {
+    right: 60px;
+    /* Menempatkan tombol "prev" sedikit lebih ke kiri */
+}
+
+#next {
+    right: 4px;
+    /* Menempatkan tombol "next" tetap di kanan bawah */
+}
+
+/*
+========================================================
+               Section 11 - Contact Us
+=========================================================
+*/
+
+.form-card {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.contact-header {
+    font-size: 14px;
+    font-weight: 500;
+    /* Medium corresponds to 500 */
+    color: #292929;
+    font-family: "Inter", sans-serif;
+}
+
+.contact-content {
+    font-size: 14px;
+    font-weight: 400;
+    /* Normal corresponds to 400 */
+    line-height: 23.2px;
+    color: #292929;
+    font-family: "Inter", sans-serif;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .contact-container {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/*
+========================================================
+               Section 12 - CTA
+=========================================================
+*/
+
+.cta-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    align-items: start;
+}
+
+.img-cta {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+}
+
+@media (max-width: 1028px) {
+    .img-cta {
+        display: none;
+    }
+
+    .section-frame-cta {
+        padding: 100px 120px;
+        align-items: center;
+    }
+
+    .cta-container {
+        align-items: center;
+    }
+
+    .text-container {
+        text-align: center;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-frame-cta {
+        padding: 60px 50px;
+    }
+
+    .title-section {
+        font-family: "Inter", sans-serif;
+        font-size: 23px;
+        font-weight: 600;
+        line-height: 29.9px;
+        text-align: center;
+    }
+
+    .text-base-hero {
+        font-size: 14px;
+        /* font-weight: 400; */
+        line-height: 20.3px;
+        text-align: center;
+    }
+}
+
+/*
+========================================================
+               Section 13 - Footer
+=========================================================
+*/
+
+.section-frame-footer {
+    width: 100%;
+    display: flex;
+    padding: 60px 120px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-column,
+    .footer-header,
+    .footer-content {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column+.footer-column::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #283252;
+        opacity: 0.1;
+        margin: 10px 0;
+    }
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.footer-header {
+    color: #283252;
+    font: 14px;
+    font-weight: 600;
+}
+
+.footer-content {
+    color: #283252;
+    opacity: 70%;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.footer-content.has-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.footer-content:hover {
+    opacity: 100%;
+    text-decoration: underline;
+}
+
+.footer-content.no-hover:hover {
+    text-decoration: none !important;
+    opacity: 70%;
+}
+
+.line-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #283252;
+    opacity: 0.1;
+}
+
+@media (max-width: 768px) {
+    .section-frame-footer {
+        padding: 16px 40px;
+    }
+}
+
+/* ========================================================= */
+/*                     Product table                         */
+/* ========================================================= */
+
+.d-flex {
+    display: flex;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.mr-3 {
+    margin-right: 0.75rem;
+    /* Atur margin sesuai kebutuhan */
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    /* Mengatur arah elemen secara vertikal */
+    align-items: center;
+    /* Menyelaraskan elemen di tengah secara horizontal */
+    text-align: center;
+    /* Teks berada di tengah */
+}
+
+.menu-item img {
+    margin-bottom: 5px;
+    /* Menambahkan sedikit jarak antara logo dan teks */
+}
+
+.menu-item p {
+    font-family: "Inter";
+    font-size: 11px;
+    color: #643493;
+    /* Warna teks */
+    padding: 0 20px;
+    /* Padding 10px pada kanan dan kiri */
+    font-weight: 500;
+    line-height: 15.4px;
+}
+
+/* @media (max-width: 1300px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1300px) {
+    .navbar-burger {
+        display: none;
+    }
+} */
+
+/*
+========================================================
+                        Cloud Hosting
+=========================================================
+*/
+.title-table {
+    color: #4a6dcb !important;
+    text-transform: unset !important;
+    font-size: 18px !important;
+    line-height: 23.4px !important;
+    text-align: center !important;
+    font-weight: 600;
+}
+
+.title-rincian {
+    color: #4a6dcb !important;
+    text-transform: unset !important;
+    font-size: 18px !important;
+    line-height: 23.4px !important;
+    font-weight: 600;
+}
+
+.title-detail {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 23.4px;
+    color: #595959;
+}
+
+.text-content {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.4px;
+    text-align: center !important;
+    color: #999999;
+}
+
+/*
+========================================================
+                        Card Price
+=========================================================
+*/
+
+.card-gradient {
+    transition: border 0.1s ease;
+    border: 0.68px solid #dedede;
+    background: #ffffff;
+    box-shadow: 0px 1.75px 4px -1px #00000024;
+    border-radius: 10px;
+}
+
+.card-gradient:hover {
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-image: linear-gradient(white, white),
+        radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.95) 23.63%,
+            #4a6dcb 70.69%,
+            #64d2f7 100%);
+}
+
+.stepcard-gradient {
+    transition: border 0.1s ease;
+    border: 0.68px solid #dedede;
+    background: #ffffff;
+    box-shadow: 0px 1.75px 4px -1px #00000024;
+    border-radius: 10px;
+}
+
+.stepcard-gradient:hover {
+    border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-image: linear-gradient(white, white),
+        radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.95) 23.63%,
+            #4a6dcb 70.69%,
+            #64d2f7 100%);
+}
+
+.gradient-border {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.gradient-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 2px;
+    /* Adjust the border thickness */
+    background: linear-gradient(white, white),
+        radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.gradientstep-border {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.gradientstep-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 2px;
+    /* Adjust the border thickness */
+    background: linear-gradient(white, white),
+        radial-gradient(104.31% 150.2% at 0% 22.79%,
+            rgba(100, 52, 147, 0.76) 23.63%,
+            rgba(74, 109, 203, 0.8) 70.69%,
+            rgba(100, 210, 247, 0.8) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.grey-border {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.grey-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 2px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border: 2px solid #DEDEDE; /* Menambahkan warna border baru */
+}
+
+
+/*
+========================================================
+                    Article Content
+========================================================
+*/
+.article-content {
+    cursor: pointer;
+}
+
+.read-more {
+    color: #4a6dcb;
+    text-decoration: underline;
+}
+
+/* Toast Notification CSS */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    /* Hijau */
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*
+========================================================
+                    Checkout
+========================================================
+*/
+@media (min-width: 1024px) {
+
+    /* ukuran desktop */
+    .no-margin {
+        margin-bottom: 0 !important;
+    }
+}
+
+.dropdown-transition {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    opacity: 0;
+}
+
+.dropdown-transition.show {
+    max-height: 1000px; /* Sesuaikan dengan kebutuhan */
+    opacity: 1;
+    transition: max-height 0.3s ease-in, opacity 0.2s ease-in;
+}
+
+/*
+========================================================
+                    Card Paket
+========================================================
+*/
+#domain-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.domain-card {
+    flex: 1 1 calc(20% - 10px);
+    min-width: 100px;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #dedede;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.domain-card:hover {
+    transform: translateY(-10px);
+    border: 1px solid var(--Kazee-Primary-500, #4a6dcb);
+    box-shadow: 0px 10px 10px -5px #00000014, 0px 20px 25px -5px #ffffff24;
+}
+
+.card-content-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.domain-name {
+    font-size: 18px;
+    color: #643493;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.price-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.price-currency {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.price-number {
+    font-size: 26px;
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+@media (max-width: 768px) {
+    #domain-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .domain-card {
+        flex: 0 0 calc(33.33% - 7px);
+        min-width: 0;
+        margin-bottom: 10px;
+    }
+
+    .domain-card:nth-child(4),
+    .domain-card:nth-child(5) {
+        flex: 0 0 calc(33% - 5px);
+    }
+}
